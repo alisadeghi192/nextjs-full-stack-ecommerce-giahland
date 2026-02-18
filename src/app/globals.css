@@ -1,5 +1,24 @@
 @import "tailwindcss";
 @theme {
-    --font-modam : var(--font-modam) , sans-serif;
+  --font-modam: var(--font-modam), sans-serif;
 }
 
+@utility container {
+  @media (width >= 40rem /* 640px */) {
+    max-width: 40rem /* 640px */;
+  }
+  @media (width >= 48rem /* 768px */) {
+    max-width: 48rem /* 768px */;
+  }
+  @media (width >= 64rem /* 1024px */) {
+    max-width: 64rem /* 1024px */;
+  }
+  @media (width >= 80rem /* 1280px */) {
+    max-width: 80rem /* 1280px */;
+  }
+  @media (width >= 90rem /* 1440px */) {
+    max-width: 90rem; /* 1440px */
+  }
+
+  @apply w-full mx-auto 2xl:max-w-320 px-4 md:px-2.5;
+}
