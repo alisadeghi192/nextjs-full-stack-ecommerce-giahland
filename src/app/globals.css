@@ -1,2 +1,5 @@
 @import "tailwindcss";
+@theme {
+    --font-modam : var(--font-modam) , sans-serif;
+}
 
