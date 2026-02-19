@@ -1,6 +1,38 @@
 @import "tailwindcss";
 @theme {
   --font-modam: var(--font-modam), sans-serif;
+  --color-tint1: #b7d9d6;
+  --color-tint2: #9fcdc9;
+  --color-tint3: #87c1bb;
+  --color-tint4: #6fb4ad;
+  --color-tint5: #57a7a0;
+  --color-tint6: #3f9b92;
+  --color-tint7: #278f85;
+  --color-primary: #417f56;
+  --color-shade1: #396f4b;
+  --color-shade2: #315f41;
+  --color-shade3: #294f36;
+  --color-shade4: #21402b;
+  --color-shade5: #183020;
+  --color-shade6: #102016;
+  --color-neutral1: #fafafa;
+  --color-neutral2: #f6f6f6;
+  --color-neutral3: #efefef;
+  --color-neutral4: #e1e1e1;
+  --color-neutral5: #d9d9d9;
+  --color-neutral6: #cbcbcb;
+  --color-neutral7: #adadad;
+  --color-neutral8: #909090;
+  --color-neutral9: #717171;
+  --color-neutral10: #505050;
+  --color-neutral11: #353535;
+  --color-neutral12: #212121;
+  --color-error: #ed2e2e;
+  --color-bg-error: #fff2f2;
+  --color-bg-primary: #f3fdfa;
+  --color-bg-service: #e5f2e9;
+  --color-WHITE : #FFFFFF
+  --color-BLACK : #121212
 }
 
 @utility container {
