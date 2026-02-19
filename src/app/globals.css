@@ -31,8 +31,8 @@
   --color-bg-error: #fff2f2;
   --color-bg-primary: #f3fdfa;
   --color-bg-service: #e5f2e9;
-  --color-WHITE : #FFFFFF
-  --color-BLACK : #121212
+  --color-WHITE : #FFFFFF;
+  --color-BLACK : #121212;
 }
 
 @utility container {

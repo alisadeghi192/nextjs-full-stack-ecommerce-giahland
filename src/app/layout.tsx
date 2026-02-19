@@ -56,7 +56,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fa" dir="rtl" className={modamFont.variable}>
-      <body>{children}</body>
+      <body className="container">{children}</body>
     </html>
   );
 }
