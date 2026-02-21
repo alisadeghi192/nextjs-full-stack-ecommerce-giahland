@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import PublicHeader from "./components/layout/public/Public-header";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -56,7 +57,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fa" dir="rtl" className={modamFont.variable}>
-      <body className="container">{children}</body>
+      <body className="container">
+      <PublicHeader />
+        {children}
+        </body>
     </html>
   );
 }
