@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import IconButton from "@/app/components/shared/ui/IconButton";
 import {
@@ -11,16 +12,20 @@ import SearchBox from "../../shared/ui/SearchBox";
 import Logo from "../../shared/ui/Logo";
 import NavLinks from "../../shared/ui/NavLinks";
 import MobileMenu from "../../shared/ui/MobileMenu";
+import { useScroll } from "@/lib/hooks/useScroll";
 
-const isUserLogin = false;
+const isUserLogin = true;
 
 const PublicHeader = () => {
+  const isScrolled = useScroll(90);
   return (
-    <header className="font-modam">
+    <header className="sticky top-0 right-0 left-0">
       {/* desktop header */}
-      <nav className="border-neutral5 border-b font-medium max-md:hidden">
+      <nav className="border-neutral5 container border-b font-medium max-md:hidden">
         {/* navlinks */}
-        <div className="bg-WHITE text-neutral12 flex items-center justify-between py-6">
+        <div
+          className={`bg-WHITE text-neutral12 flex items-center justify-between transition-all ${isScrolled ? "h-15" : "h-24"} `}
+        >
           <div className="flex gap-8 max-lg:gap-4">
             {/* logo */}
             <Logo pageSize="desktop" />
@@ -63,35 +68,37 @@ const PublicHeader = () => {
         </div>
       </nav>
       {/* mobile header */}
-      <nav className="border-neutral3 flex flex-col gap-y-3 border-b p-3 sm:p-4 md:hidden">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            {/* burgur menu */}
-            <MobileMenu />
-            {/* logo */}
-            <Logo pageSize="mobile" />
+      <nav className="border-neutral3 bg-WHITE border-b p-3 sm:p-4 md:hidden">
+        <div className={`container flex flex-col gap-y-3 ${isScrolled ? 'gap-y-2.5!' : ''}`}>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              {/* burgur menu */}
+              <MobileMenu />
+              {/* logo */}
+              <Logo pageSize="mobile" />
+            </div>
+            <div className="flex items-center gap-2">
+              {/* theme btn */}
+              <IconButton icon={<MdOutlineDarkMode size={20} />} />
+              {/* cart btn */}
+              <IconButton icon={<MdOutlineShoppingCart size={20} />} />
+              {/* user/login btn */}
+              {isUserLogin ? (
+                <Image
+                  src="/default-user.jpg"
+                  alt="user profile"
+                  width={32}
+                  height={32}
+                  className="rounded-full sm:size-10"
+                ></Image>
+              ) : (
+                <IconButton icon={<MdOutlineLogin size={20} />} />
+              )}
+            </div>
           </div>
-          <div className="flex items-center gap-2">
-            {/* theme btn */}
-            <IconButton icon={<MdOutlineDarkMode size={20} />} />
-            {/* cart btn */}
-            <IconButton icon={<MdOutlineShoppingCart size={20} />} />
-            {/* user/login btn */}
-            {isUserLogin ? (
-              <Image
-                src="/default-user.jpg"
-                alt="user profile"
-                width={32}
-                height={32}
-                className="rounded-full sm:size-10"
-              ></Image>
-            ) : (
-              <IconButton icon={<MdOutlineLogin size={20} />} />
-            )}
-          </div>
+          {/* search input */}
+          <SearchBox  />
         </div>
-        {/* search input */}
-        <SearchBox />
       </nav>
     </header>
   );
