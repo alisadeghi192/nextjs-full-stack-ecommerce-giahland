@@ -1,0 +1,26 @@
+// components/shared/ui/nav-links.tsx
+import NavLink from './NavLink'
+
+const navLinks = [
+  { text: "صفحه اصلی", href: "/" },
+  { text: "گیاه پزشک", href: "/plant-doctor" },
+  { text: "وبلاگ", href: "/blogs" },
+  { text: "تماس با ما", href: "/contact-us" },
+  { text: "درباره ما", href: "/about-us" },
+]
+
+export default function NavLinks() {
+  return (
+    <>
+      {navLinks.map((link) => (
+        <NavLink
+          key={link.href}
+          href={link.href}
+          className="hover:text-primary text-lg/8.5 transition-colors"
+        >
+          {link.text}
+        </NavLink>
+      ))}
+    </>
+  )
+}

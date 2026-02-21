@@ -1,23 +1,16 @@
 import React from "react";
-import Link from "next/link";
-import NavLink from "@/app/components/shared/ui/NavLink";
 import Image from "next/image";
-import IconButton from "@/app/components/shared/ui/Icon-button";
+import IconButton from "@/app/components/shared/ui/IconButton";
 import {
   MdOutlineDarkMode,
   MdOutlineLogin,
-  MdOutlineMenu,
   MdOutlineSearch,
   MdOutlineShoppingCart,
 } from "react-icons/md";
-
-const navLinks = [
-  { text: "صفحه اصلی", href: "/" },
-  { text: "گیاه پزشک", href: "/plant-doctor" },
-  { text: "وبلاگ", href: "/blogs" },
-  { text: "تماس با ما", href: "/contact-us" },
-  { text: "درباره ما", href: "/about-us" },
-];
+import SearchBox from "../../shared/ui/SearchBox";
+import Logo from "../../shared/ui/Logo";
+import NavLinks from "../../shared/ui/NavLinks";
+import MobileMenu from "../../shared/ui/MobileMenu";
 
 const isUserLogin = false;
 
@@ -30,26 +23,12 @@ const PublicHeader = () => {
         <div className="bg-WHITE text-neutral12 flex items-center justify-between py-6">
           <div className="flex gap-8 max-lg:gap-4">
             {/* logo */}
-            <Link href="/">
-              <h4 className="text-primary hover:text-shade3 text-2xl/8.5 font-bold transition-colors">
-                گیاه لند
-              </h4>
-            </Link>
-
+            <Logo pageSize="desktop" />
             <div className="flex gap-6 max-lg:gap-3">
-              {navLinks.map((link, index) => (
-                <NavLink
-                  key={index}
-                  href={link.href}
-                  className="hover:text-primary text-lg/8.5 transition-colors"
-                >
-                  {link.text}
-                </NavLink>
-              ))}
+              <NavLinks />
             </div>
           </div>
           {/* header buttuns */}
-
           <div className="flex gap-4 max-xl:gap-2">
             {/* theme btn */}
             <IconButton icon={<MdOutlineDarkMode size={24} />} />
@@ -88,15 +67,9 @@ const PublicHeader = () => {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             {/* burgur menu */}
-            <button className="bg-neutral3 flex size-8 items-center justify-center rounded-lg sm:size-10">
-              <MdOutlineMenu className="size-5 sm:size-6" />
-            </button>
+            <MobileMenu />
             {/* logo */}
-            <Link href="/">
-              <h6 className="text-primary leading-5.5 font-medium sm:text-xl">
-                گیاه لند
-              </h6>
-            </Link>
+            <Logo pageSize="mobile" />
           </div>
           <div className="flex items-center gap-2">
             {/* theme btn */}
@@ -118,14 +91,7 @@ const PublicHeader = () => {
           </div>
         </div>
         {/* search input */}
-        <div className="bg-neutral3 flex h-10 w-full items-center gap-2 rounded-lg px-3 py-2.5">
-          <MdOutlineSearch className="text-neutral9 size-5" />
-          <input
-            type="text"
-            placeholder="جستجوی گیاه "
-            className="text-neutral11 placeholder:text-neutral9 w-full border-0 outline-0"
-          ></input>
-        </div>
+        <SearchBox />
       </nav>
     </header>
   );
