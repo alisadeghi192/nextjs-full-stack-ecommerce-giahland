@@ -14,7 +14,7 @@ import NavLinks from "../../shared/ui/NavLinks";
 import MobileMenu from "../../shared/ui/MobileMenu";
 import { useScroll } from "@/lib/hooks/useScroll";
 
-const isUserLogin = true;
+const isUserLogin = false;
 
 const PublicHeader = () => {
   const isScrolled = useScroll(90);
