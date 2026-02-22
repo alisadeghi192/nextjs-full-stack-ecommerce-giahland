@@ -10,8 +10,6 @@ import type { Swiper as SwiperType } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import {
   MdNavigateBefore,
-  MdOutlineArrowBack,
-  MdOutlineArrowForward,
   MdOutlineNavigateNext,
 } from "react-icons/md";
 // Import Swiper styles
@@ -273,14 +271,14 @@ export default function Home() {
             </SwiperSlide>
           </Swiper>
           <button
-            onClick={() => swiperRef.current?.slidePrev()}
-            className="text-primary max-sm:hidden border-primary absolute -top-15 left-51/100 z-10 flex h-12 w-12 items-center justify-center rounded-full border bg-white"
+            onClick={() => swiperRef.current?.slideNext()}
+            className="text-primary max-sm:hidden border-primary absolute -top-15 left-51/100 z-10 flex h-12 w-12 items-center justify-center rounded-full border bg-white transition-all duration-300 hover:bg-primary hover:text-white hover:border-primary"
           >
             <MdOutlineNavigateNext size={24} />
           </button>
           <button
-            onClick={() => swiperRef.current?.slideNext()}
-            className="text-primary max-sm:hidden border-primary absolute -top-15 right-51/100 z-10 flex h-12 w-12 items-center justify-center rounded-full border bg-white"
+            onClick={() => swiperRef.current?.slidePrev()}
+            className="text-primary max-sm:hidden border-primary absolute -top-15 right-51/100 z-10 flex h-12 w-12 items-center justify-center rounded-full border bg-white transition-all duration-300 hover:bg-primary hover:text-white hover:border-primary"
           >
             <MdNavigateBefore size={24} />
           </button>
