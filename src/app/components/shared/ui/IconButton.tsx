@@ -5,7 +5,7 @@ interface IconButtonProps {
   onClick?: () => void;
 }
 
-export default function IconButton({ icon, onClick }: IconButtonProps) {
+const IconButton = ({ icon, onClick }: IconButtonProps) => {
   return (
     <button
       onClick={onClick}
@@ -16,4 +16,5 @@ export default function IconButton({ icon, onClick }: IconButtonProps) {
       </span>
     </button>
   );
-}
+};
+export default IconButton;

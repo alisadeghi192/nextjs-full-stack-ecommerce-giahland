@@ -1,5 +1,4 @@
-// components/shared/ui/nav-links.tsx
-import NavLink from './NavLink'
+import NavLink from "./NavLink";
 
 const navLinks = [
   { text: "صفحه اصلی", href: "/" },
@@ -7,9 +6,9 @@ const navLinks = [
   { text: "وبلاگ", href: "/blogs" },
   { text: "تماس با ما", href: "/contact-us" },
   { text: "درباره ما", href: "/about-us" },
-]
+];
 
-export default function NavLinks() {
+const NavLinks = () => {
   return (
     <>
       {navLinks.map((link) => (
@@ -22,5 +21,6 @@ export default function NavLinks() {
         </NavLink>
       ))}
     </>
-  )
-}
+  );
+};
+export default NavLinks;

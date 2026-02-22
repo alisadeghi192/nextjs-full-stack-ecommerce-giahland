@@ -1,9 +1,8 @@
-// components/shared/ui/mobile-menu.tsx
-'use client'
+"use client";
 
-import { useState } from 'react'
-import { MdOutlineMenu } from 'react-icons/md'
-import NavLink from './NavLink'
+import { useState } from "react";
+import { MdOutlineMenu } from "react-icons/md";
+import NavLink from "./NavLink";
 
 const navLinks = [
   { text: "صفحه اصلی", href: "/" },
@@ -11,20 +10,20 @@ const navLinks = [
   { text: "وبلاگ", href: "/blogs" },
   { text: "تماس با ما", href: "/contact-us" },
   { text: "درباره ما", href: "/about-us" },
-]
+];
 
-export default function MobileMenu() {
-  const [isOpen, setIsOpen] = useState(false)
+const MobileMenu = () => {
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
-      <button 
-        onClick={() => console.log('open') }
+      <button
+        onClick={() => console.log("open")}
         className="bg-neutral3 flex size-8 items-center justify-center rounded-lg sm:size-10"
       >
         <MdOutlineMenu className="size-5 sm:size-6" />
       </button>
-
     </>
-  )
-}
+  );
+};
+export default MobileMenu;

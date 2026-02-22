@@ -6,11 +6,7 @@ interface ServiceCardProps {
   description: string;
 }
 
-export default function ServiceCard({
-  icon,
-  title,
-  description,
-}: ServiceCardProps) {
+const ServiceCard = ({ icon, title, description }: ServiceCardProps) => {
   return (
     <div className="basis-1/3 text-center max-md:mt-7">
       <div className="bg-bg-service mb-2 flex size-20 items-center justify-center justify-self-center rounded-full max-sm:size-18">
@@ -24,4 +20,5 @@ export default function ServiceCard({
       </p>
     </div>
   );
-}
+};
+export default ServiceCard;

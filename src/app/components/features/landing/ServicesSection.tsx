@@ -1,7 +1,11 @@
-import { MdOutlinePayment, MdOutlineVerified, MdOutlineLocalShipping } from 'react-icons/md'
-import ServiceCard from './ServiceCard'
+import {
+  MdOutlinePayment,
+  MdOutlineVerified,
+  MdOutlineLocalShipping,
+} from "react-icons/md";
+import ServiceCard from "./ServiceCard";
 
-export default function ServicesSection() {
+const ServicesSection = () => {
   return (
     <div className="mt-15 flex w-full items-center justify-center gap-x-20 max-md:mt-3 max-md:flex-col">
       <ServiceCard
@@ -20,5 +24,6 @@ export default function ServicesSection() {
         description="با ایجاد آدرس منزل خود در پروفایل کاربری،محصول خود را درب منزل تحویل بگیرید."
       />
     </div>
-  )
-}
+  );
+};
+export default ServicesSection;

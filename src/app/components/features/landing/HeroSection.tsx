@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { MdOutlineArrowBack } from 'react-icons/md'
 import HeroStatsItem from './HeroStatsItem'
 
-export default function HeroSection() {
+  const HeroSection =()=> {
   return (
     <div className="mt-19 flex items-center justify-between max-xl:gap-x-10 max-md:mt-15 max-md:flex-col-reverse">
       <div className="basis-1/2 max-md:mt-10">
@@ -51,3 +51,4 @@ export default function HeroSection() {
     </div>
   )
 }
+export default HeroSection

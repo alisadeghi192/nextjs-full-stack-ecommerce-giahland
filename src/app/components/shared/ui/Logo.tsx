@@ -1,19 +1,18 @@
-// components/shared/ui/logo.tsx
-import Link from 'next/link'
+import Link from "next/link";
 
 interface LogoProps {
-    pageSize: 'desktop' | 'mobile'  // تعریف درست prop
+  pageSize: "desktop" | "mobile";
 }
 
-export default function Logo({pageSize} : LogoProps) {
-  if (pageSize == 'desktop') {
+const Logo = ({ pageSize }: LogoProps) => {
+  if (pageSize == "desktop") {
     return (
       <Link href="/">
         <h4 className="text-primary hover:text-shade3 text-2xl/8.5 font-bold transition-colors">
           گیاه لند
         </h4>
       </Link>
-    )
+    );
   }
 
   return (
@@ -22,5 +21,6 @@ export default function Logo({pageSize} : LogoProps) {
         گیاه لند
       </h6>
     </Link>
-  )
-}
+  );
+};
+export default Logo;
