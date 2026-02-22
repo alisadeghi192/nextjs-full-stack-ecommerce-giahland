@@ -3,7 +3,7 @@ import { useScroll } from "@/lib/hooks/useScroll";
 import { MdOutlineSearch } from "react-icons/md";
 
 export default function SearchBox( ) {
-  const isScroll = useScroll(90)
+  const isScroll = useScroll(80)
   return (
     <div
       className={` bg-neutral3 flex h-10 w-full items-center gap-x-2 rounded-lg px-3 py-2.5 transition-all ${isScroll ? "h-8!" : "" }`}

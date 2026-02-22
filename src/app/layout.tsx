@@ -57,7 +57,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fa" dir="rtl" className={modamFont.variable}>
+    <html lang="fa" dir="rtl" className={`${modamFont.variable} scroll-smooth`} >
       <body className="font-modam min-h-dvh antialiased">
         <PublicHeader />
         {children}
