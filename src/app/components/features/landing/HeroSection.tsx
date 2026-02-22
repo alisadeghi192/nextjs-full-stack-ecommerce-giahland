@@ -1,10 +1,10 @@
-'use client'
+"use client";
 
-import Image from 'next/image'
-import { MdOutlineArrowBack } from 'react-icons/md'
-import HeroStatsItem from './HeroStatsItem'
+import Image from "next/image";
+import { MdOutlineArrowBack } from "react-icons/md";
+import HeroStatsItem from "./HeroStatsItem";
 
-  const HeroSection =()=> {
+const HeroSection = () => {
   return (
     <div className="mt-19 flex items-center justify-between max-xl:gap-x-10 max-md:mt-15 max-md:flex-col-reverse">
       <div className="basis-1/2 max-md:mt-10">
@@ -12,9 +12,9 @@ import HeroStatsItem from './HeroStatsItem'
           خرید راحت گیاه با،<span className="text-primary">گیاه لند!</span>
         </h1>
         <p className="text-neutral11 mb-8 max-w-134.75 text-[20px]/9 max-lg:mb-4 max-lg:text-base max-md:mb-6 max-md:text-center max-md:text-base/6.25 max-sm:text-sm">
-          با گیاه لند،آنلاین گیاه خودت رو سفارش بده و از تخفیف های ویژه
-          استفاده کن.علاوه بر اینها میتونی به صورت رایگان از گیاه پزشک سایت
-          مشاوره بگیری.
+          با گیاه لند،آنلاین گیاه خودت رو سفارش بده و از تخفیف های ویژه استفاده
+          کن.علاوه بر اینها میتونی به صورت رایگان از گیاه پزشک سایت مشاوره
+          بگیری.
         </p>
         <div className="mb-12 flex max-w-134.75 gap-x-5.5 max-lg:flex-col max-lg:gap-y-2 max-md:mb-10 max-md:flex-row max-md:gap-x-3">
           <button className="bg-primary text-WHITE flex flex-1 cursor-pointer items-center justify-center rounded-xl py-3 max-md:basis-1/2 max-md:py-2">
@@ -49,6 +49,6 @@ import HeroStatsItem from './HeroStatsItem'
         </picture>
       </div>
     </div>
-  )
-}
-export default HeroSection
+  );
+};
+export default HeroSection;
