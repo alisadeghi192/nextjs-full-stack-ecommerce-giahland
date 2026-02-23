@@ -84,6 +84,7 @@ export default function Home() {
       <BlogSlider posts={blogPosts} title="مقالات" />
       <PlantDoctorServices />
       <ProductSlider title="گیاهان تزئینی" products={indoorPlants} />
+      <BlogSlider posts={blogPosts} title="مقالات" />
 
     </section>
   );
