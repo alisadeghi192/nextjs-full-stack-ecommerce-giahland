@@ -1,4 +1,3 @@
-// components/features/blog/BlogSlider.tsx
 'use client'
 
 import { useRef } from "react";

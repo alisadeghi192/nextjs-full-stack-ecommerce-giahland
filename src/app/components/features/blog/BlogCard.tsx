@@ -1,4 +1,3 @@
-// components/features/blog/BlogCard.tsx
 import Link from "next/link";
 import { MdOutlineArrowBack } from "react-icons/md";
 
