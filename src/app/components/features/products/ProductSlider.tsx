@@ -26,8 +26,8 @@ export default function ProductSlider({ title, products }: ProductSliderProps) {
   const swiperRef = useRef<SwiperType | null>(null);
 
   return (
-    <div className="relative mt-16">
-      <h4 className="text-primary mb-6 text-2xl/8.5 font-bold">{title}</h4>
+    <div className="relative mt-16 max-sm:mt-13.75">
+      <h4 className="text-primary mb-6 text-2xl/8.5 font-bold max-sm:font-semibold max-sm:text-xl/7">{title}</h4>
       <div className="relative">
         <Swiper
           onBeforeInit={(swiper) => {
