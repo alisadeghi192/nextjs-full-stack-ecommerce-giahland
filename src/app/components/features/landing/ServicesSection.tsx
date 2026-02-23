@@ -7,7 +7,7 @@ import ServiceCard from "./ServiceCard";
 
 const ServicesSection = () => {
   return (
-    <div className="mt-15 flex w-full items-center justify-center gap-x-20 max-md:mt-3 max-md:flex-col">
+    <section className="mt-15 flex w-full items-center justify-center gap-x-20 max-md:mt-3 max-md:flex-col">
       <ServiceCard
         icon={<MdOutlinePayment className="size-10 max-sm:size-8" />}
         title="پرداخت درب منزل"
@@ -23,7 +23,7 @@ const ServicesSection = () => {
         title="تحویل درب منزل"
         description="با ایجاد آدرس منزل خود در پروفایل کاربری،محصول خود را درب منزل تحویل بگیرید."
       />
-    </div>
+    </section>
   );
 };
 export default ServicesSection;
