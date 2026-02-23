@@ -1,7 +1,10 @@
+"use client";
+
 import ServicesSection from "./components/features/landing/ServicesSection";
 import HeroSection from "./components/features/landing/HeroSection";
 import BannerSection from "./components/features/landing/BannerSection";
 import ProductSlider from "./components/features/products/ProductSlider";
+import BlogSlider from "./components/features/blog/BlogSlider";
 
 const indoorPlants = [
   {
@@ -48,6 +51,29 @@ const indoorPlants = [
   },
 ];
 
+const blogPosts = [
+  {
+    title: "چطور . چگونه نگهداری کنیم : تاریخچه بونسای و شرایط نگهداری اصولی",
+    image: "/blog-covers/plant5.png",
+    slug: "/blog/bonsai-care",
+  },
+  {
+    title: "چطور . چگونه نگهداری کنیم : تاریخچه بونسای و شرایط نگهداری اصولی",
+    image: "/blog-covers/plant6.png",
+    slug: "/blog/bonsai-care",
+  },
+  {
+    title: "چطور . چگونه نگهداری کنیم : تاریخچه بونسای و شرایط نگهداری اصولی",
+    image: "/blog-covers/plant7.png",
+    slug: "/blog/bonsai-care",
+  },
+  {
+    title: "چطور . چگونه نگهداری کنیم : تاریخچه بونسای و شرایط نگهداری اصولی",
+    image: "/blog-covers/plant8.png",
+    slug: "/blog/bonsai-care",
+  },
+];
+
 export default function Home() {
   return (
     <section className="container">
@@ -55,6 +81,7 @@ export default function Home() {
       <ServicesSection />
       <BannerSection />
       <ProductSlider title="گیاهان آپارتمانی" products={indoorPlants} />
+      <BlogSlider posts={blogPosts} title="مقالات" />
     </section>
   );
 }
