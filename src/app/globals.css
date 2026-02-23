@@ -56,5 +56,5 @@
     max-width: 90rem; /* 1440px */
   }
 
-  @apply mx-auto w-full px-4 md:px-2.5 2xl:max-w-320;
+  @apply mx-auto w-full px-4 md:px-2.5 2xl:max-w-7xl;
 }
