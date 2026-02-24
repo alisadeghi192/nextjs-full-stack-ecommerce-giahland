@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import PublicHeader from "./components/layout/public/PublicHeader";
 import ScrollToTop from "@/lib/utils/ScrollToTop";
-import Footer from "./components/layout/public/Footer";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -61,9 +59,7 @@ export default function RootLayout({
     <html lang="fa" dir="rtl" className={`${modamFont.variable} scroll-smooth`}>
       <body className="font-modam antialiased">
         <div className="flex min-h-dvh flex-col justify-between">
-          <PublicHeader />
           {children} 
-          <Footer />
         </div>
         <ScrollToTop />
       </body>
