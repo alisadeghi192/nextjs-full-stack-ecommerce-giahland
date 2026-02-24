@@ -68,7 +68,7 @@ const PublicHeader = () => {
         </div>
       </nav>
       {/* mobile header */}
-      <nav className="border-neutral3 bg-WHITE border-b p-3 sm:p-4 md:hidden">
+      <nav className="border-neutral3 bg-WHITE border-b py-3 md:hidden">
         <div className={`container flex flex-col gap-y-3 ${isScrolled ? 'gap-y-2.5!' : ''}`}>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
