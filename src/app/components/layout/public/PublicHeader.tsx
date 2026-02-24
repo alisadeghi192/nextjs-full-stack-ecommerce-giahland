@@ -19,7 +19,7 @@ const isUserLogin = false;
 const PublicHeader = () => {
   const isScrolled = useScroll(80);
   return (
-    <header className="sticky top-0 right-0 left-0 h-24 z-10">
+    <header className="sticky top-0 right-0 left-0 h-24 z-20">
       {/* desktop header */}
       <nav className="border-neutral5 container border-b font-medium max-md:hidden">
         {/* navlinks */}
