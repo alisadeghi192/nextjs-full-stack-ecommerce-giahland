@@ -13,6 +13,7 @@ import Logo from "../../shared/ui/Logo";
 import NavLinks from "../../shared/ui/NavLinks";
 import MobileMenu from "../../shared/ui/MobileMenu";
 import { useScroll } from "@/lib/hooks/useScroll";
+import Link from "next/link";
 
 const isUserLogin = false;
 
@@ -54,7 +55,7 @@ const PublicHeader = () => {
                 <span className="text-lg max-lg:hidden">سلام کاربر</span>
               </button>
             ) : (
-              <button className="border-primary group hover:border-shade2 transition-color flex h-12 cursor-pointer items-center justify-center gap-2 rounded-xl border px-4 max-lg:size-12 max-lg:gap-0 max-lg:px-3">
+              <Link href="/login-register" className="border-primary group hover:border-shade2 transition-color flex h-12 cursor-pointer items-center justify-center gap-2 rounded-xl border px-4 max-lg:size-12 max-lg:gap-0 max-lg:px-3">
                 <MdOutlineLogin
                   size={24}
                   className="text-primary group-hover:text-shade2 transition-colors"
@@ -62,7 +63,7 @@ const PublicHeader = () => {
                 <span className="text-primary group-hover:text-shade2 text-lg/8.5 transition-colors max-lg:hidden">
                   ورود/ثبت نام
                 </span>
-              </button>
+              </Link>
             )}
           </div>
         </div>
@@ -92,7 +93,7 @@ const PublicHeader = () => {
                   className="rounded-full sm:size-10"
                 ></Image>
               ) : (
-                <IconButton icon={<MdOutlineLogin size={20} />} />
+                <Link href="/login-register"><IconButton icon={<MdOutlineLogin size={20} />} /></Link>
               )}
             </div>
           </div>
