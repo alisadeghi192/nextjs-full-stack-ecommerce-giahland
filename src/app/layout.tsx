@@ -58,11 +58,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fa" dir="rtl" className={`${modamFont.variable} scroll-smooth`} >
-      <body className="font-modam min-h-dvh antialiased">
-        <PublicHeader />
-        {children}
-        <Footer/>
+    <html lang="fa" dir="rtl" className={`${modamFont.variable} scroll-smooth`}>
+      <body className="font-modam antialiased">
+        <div className="flex min-h-dvh flex-col justify-between">
+          <PublicHeader />
+          {children} 
+          <Footer />
+        </div>
         <ScrollToTop />
       </body>
     </html>
