@@ -5,7 +5,6 @@ import ProductSlider from "@@/components/features/products/ProductSlider";
 import BlogSlider from "@@/components/features/blog/BlogSlider";
 import PlantDoctorServices from "@@/components/features/landing/PlantDoctorServices";
 
-// ... داده‌
 const indoorPlants = [
   {
     name: "گیاه طبیعی بابا آدم",
