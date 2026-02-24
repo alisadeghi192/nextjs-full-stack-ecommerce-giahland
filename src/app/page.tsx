@@ -76,7 +76,7 @@ const blogPosts = [
 
 export default function Home() {
   return (
-    <section className="container">
+    <main className="container">
       <HeroSection />
       <ServicesSection />
       <BannerSection />
@@ -88,6 +88,6 @@ export default function Home() {
       <ProductSlider title="گیاهان کادویی" products={indoorPlants} />
 
 
-    </section>
+    </main>
   );
 }
