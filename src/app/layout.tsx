@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import PublicHeader from "./components/layout/public/PublicHeader";
 import ScrollToTop from "@/lib/utils/ScrollToTop";
+import Footer from "./components/layout/public/Footer";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -61,6 +62,7 @@ export default function RootLayout({
       <body className="font-modam min-h-dvh antialiased">
         <PublicHeader />
         {children}
+        <Footer/>
         <ScrollToTop />
       </body>
     </html>
