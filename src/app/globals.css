@@ -34,6 +34,7 @@
   --color-bg-service: #e5f2e9;
   --color-WHITE: #ffffff;
   --color-BLACK: #121212;
+  --color-Border: #ededed;
 }
 
 @utility container {
