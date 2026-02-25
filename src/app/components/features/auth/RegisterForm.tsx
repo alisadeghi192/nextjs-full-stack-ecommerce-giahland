@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import FormField from "./FormField";
 import PasswordField from "./PasswordField";
@@ -10,10 +10,12 @@ interface RegisterFormProps {
 
 export default function RegisterForm({ onToggle }: RegisterFormProps) {
   return (
-    <div className="w-1/2">
-      <div className="mx-auto w-72/100">
-        <h5 className="mb-8 text-xl/7 font-semibold">ثبت نام</h5>
-        <form className="flex flex-col gap-y-6">
+    <div className="bg-WHITE relative z-10 w-1/2 max-lg:w-2/3 max-sm:h-5/8 max-sm:w-full max-sm:rounded-t-[20px]">
+      <div className="mx-auto w-72/100 max-md:w-90/100 mb-4">
+        <h5 className="mb-8 text-xl/7 font-semibold max-sm:mt-3.25 max-sm:mb-6 max-sm:text-center max-sm:text-lg/8 max-sm:font-normal">
+          ثبت نام
+        </h5>
+        <form className="flex flex-col gap-y-6 max-sm:gap-y-4">
           <FormField
             icon={<MdOutlineMobileFriendly size={22} />}
             type="text"
@@ -40,17 +42,18 @@ export default function RegisterForm({ onToggle }: RegisterFormProps) {
           />
           <button
             type="submit"
-            className="bg-primary text-WHITE mt-2 h-14 rounded-xl text-lg"
+            className="bg-primary text-WHITE mt-2 flex h-14 items-center justify-center rounded-xl text-lg/10 max-sm:text-sm/6.25 max-sm:h-10"
           >
             ثبت نام
           </button>
         </form>
-        <p className="mt-3 text-center">
+        <p className="mt-3 text-center max-sm:text-sm">
           حساب کاربری دارید؟
-          <span
-            onClick={onToggle}
-            className="text-primary cursor-pointer mr-1"
-          >{" "}ورود{" "}</span>کنید.
+          <span onClick={onToggle} className="text-primary mr-1 cursor-pointer">
+            {" "}
+            ورود{" "}
+          </span>
+          کنید.
         </p>
       </div>
     </div>
