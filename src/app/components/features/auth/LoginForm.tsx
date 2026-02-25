@@ -40,7 +40,7 @@ export default function LoginForm({ onToggle }: LoginFormProps) {
             onClick={onToggle}
             className="text-primary cursor-pointer mr-1"
           >
-            ثبت نام
+           {" "}ثبت نام{" "}
           </span>
           کنید.
         </p>

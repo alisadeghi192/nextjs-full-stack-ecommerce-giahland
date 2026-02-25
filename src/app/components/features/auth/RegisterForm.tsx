@@ -50,10 +50,7 @@ export default function RegisterForm({ onToggle }: RegisterFormProps) {
           <span
             onClick={onToggle}
             className="text-primary cursor-pointer mr-1"
-          >
-            ورود
-          </span>
-          کنید.
+          >{" "}ورود{" "}</span>کنید.
         </p>
       </div>
     </div>
