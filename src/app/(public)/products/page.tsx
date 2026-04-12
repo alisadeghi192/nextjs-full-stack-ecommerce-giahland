@@ -1,5 +1,5 @@
 'use client'
-import { useState, useRef, useEffect } from "react"; 
+import { useState, useRef, useEffect } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Breadcrumb from "@@/components/shared/ui/Breadcrumb";
 import ProductsTabs from "@@/components/features/products/ProductsTabs";
@@ -12,10 +12,9 @@ export default function ProductsPage() {
   
   const activeTab = searchParams.get("category") || "indoor";
   const viewMode = searchParams.get("view") || "grid";
+  const selectedSort = searchParams.get("sort") || "newest";
   
-  const [selectedSort, setSelectedSort] = useState("newest");
   const [showMenu, setShowMenu] = useState(false);
-  
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -40,17 +39,19 @@ export default function ProductsPage() {
     router.push(`?${params.toString()}`);
   };
 
+  const setSort = (sortValue: string) => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("sort", sortValue);
+    router.push(`?${params.toString()}`);
+    setShowMenu(false);
+  };
+
   const sortOptions = [
     { value: "newest", label: "جدیدترین" },
     { value: "price_asc", label: "ارزان‌ترین" },
     { value: "price_desc", label: "گران‌ترین" },
     { value: "popular", label: "محبوب‌ترین" },
   ];
-
-  const handleSortChange = (value: string) => {
-    setSelectedSort(value);
-    setShowMenu(false);
-  };
 
   return (
     <main className="container">
@@ -98,7 +99,7 @@ export default function ProductsPage() {
                   {sortOptions.map((option) => (
                     <button
                       key={option.value}
-                      onClick={() => handleSortChange(option.value)}
+                      onClick={() => setSort(option.value)}
                       className={`block w-full px-4 py-2 text-right text-neutral12 hover:bg-neutral3 ${
                         selectedSort === option.value ? "bg-neutral3 text-primary" : ""
                       }`}
