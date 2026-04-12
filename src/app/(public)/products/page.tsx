@@ -1,16 +1,22 @@
 "use client";
-import { useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import Breadcrumb from "@@/components/shared/ui/Breadcrumb";
 import ProductsTabs from "@@/components/features/products/ProductsTabs";
-import { MdDensityMedium, MdGridView } from "react-icons/md";
+import { MdDensityMedium, MdGridView, MdSort } from "react-icons/md";
 import { BsSortDownAlt } from "react-icons/bs";
 
 export default function ProductsPage() {
   const searchParams = useSearchParams();
-  const activeTab = searchParams.get("category") || "indoor";
+  const router = useRouter();
 
-  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
+  const activeTab = searchParams.get("category") || "indoor";
+  const viewMode = searchParams.get("view") || "grid";
+
+  const setViewMode = (mode: "grid" | "list") => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("view", mode);
+    router.push(`?${params.toString()}`);
+  };
 
   return (
     <main className="container">
@@ -24,7 +30,7 @@ export default function ProductsPage() {
           <div className="flex items-center gap-x-4">
             <button
               onClick={() => setViewMode("grid")}
-              className={`border-neutral5 flex size-12 items-center justify-center rounded-xl border transition-all ${
+              className={`border-neutral5 flex size-12 cursor-pointer items-center justify-center rounded-xl border transition-all ${
                 viewMode === "grid"
                   ? "bg-primary text-white"
                   : "bg-neutral2 text-primary"
@@ -35,7 +41,7 @@ export default function ProductsPage() {
 
             <button
               onClick={() => setViewMode("list")}
-              className={`border-neutral5 flex size-12 items-center justify-center rounded-xl border transition-all ${
+              className={`border-neutral5 flex size-12 cursor-pointer items-center justify-center rounded-xl border transition-all ${
                 viewMode === "list"
                   ? "bg-primary text-white"
                   : "bg-neutral2 text-primary"
@@ -50,8 +56,6 @@ export default function ProductsPage() {
             </button>
           </div>
         </div>
-
-        <div className="mt-8"></div>
       </section>
     </main>
   );
