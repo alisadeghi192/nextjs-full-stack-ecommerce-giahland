@@ -1,42 +1,24 @@
-'use client'
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
 
-interface ProductTabsItems {
-  id: 'indoor' | 'decoration' | 'gift';
-  label: string;
-}
-
-const tabs: ProductTabsItems[] = [
+const tabs = [
   { id: "indoor", label: "گیاهان آپارتمانی" },
   { id: "decoration", label: "گیاهان تزئینی" },
   { id: "gift", label: "گیاهان کادویی" },
 ];
 
 interface ProductsTabsProps {
-  activeTab: ProductTabsItems['id'];
+  activeTab: string;
+  currentView: string;
+  currentSort: string;
 }
 
-export default function ProductsTabs({ activeTab }: ProductsTabsProps) {
-  const searchParams = useSearchParams();
-  
-  const view = searchParams.get("view") || "grid";
-  const sort = searchParams.get("sort") || "newest";
-
-  const buildLink = (tabId: string) => {
-    const params = new URLSearchParams();
-    params.set("category", tabId);
-    params.set("view", view);
-    params.set("sort", sort);
-    return `?${params.toString()}`;
-  };
-
+export default function ProductsTabs({ activeTab, currentView, currentSort }: ProductsTabsProps) {
   return (
     <div className="flex">
-      {tabs.map((tab) => (
+      {tabs.map(tab => (
         <Link
           key={tab.id}
-          href={buildLink(tab.id)}
+          href={`?category=${tab.id}&view=${currentView}&sort=${currentSort}`}
           className={`border-neutral5 cursor-pointer border-b p-3 text-2xl/6 transition-all ${
             activeTab === tab.id
               ? "font-bold text-primary border-b-2 border-primary"
