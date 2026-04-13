@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 const tabs = [
+  { id: "all", label: "همه" },
   { id: "indoor", label: "گیاهان آپارتمانی" },
   { id: "decoration", label: "گیاهان تزئینی" },
   { id: "gift", label: "گیاهان کادویی" },
@@ -12,10 +13,14 @@ interface ProductsTabsProps {
   currentSort: string;
 }
 
-export default function ProductsTabs({ activeTab, currentView, currentSort }: ProductsTabsProps) {
+export default function ProductsTabs({
+  activeTab,
+  currentView,
+  currentSort,
+}: ProductsTabsProps) {
   return (
     <div className="flex">
-      {tabs.map(tab => (
+      {tabs.map((tab) => (
         <Link
           key={tab.id}
           href={`?category=${tab.id}&view=${currentView}&sort=${currentSort}`}
