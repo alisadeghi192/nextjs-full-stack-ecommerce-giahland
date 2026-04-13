@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import LoginForm from "@@/components/features/auth/LoginForm";
-import RegisterForm from "@@/components/features/auth/RegisterForm";
+import LoginForm from "@/components/features/auth/LoginForm";
+import RegisterForm from "@/components/features/auth/RegisterForm";
 import Image from "next/image";
-import PublicHeader from "@/app/components/layout/public/PublicHeader";
+import PublicHeader from "@/components/layout/public/PublicHeader";
 
 type authTypes = "login" | "register";
 
@@ -22,7 +22,7 @@ export default function AuthPage() {
         <LoginForm onToggle={() => setAuthType("register")} />
       )}
       <div className="relative h-screen max-sm:h-3/8 w-1/2 max-sm:w-full max-lg:w-1/3">
-        <Image alt="login page pic" src="/login-cover.png" fill className="object-cover max-sm:mt-10"/>
+        <Image alt="login page pic" src="/images/login-cover.png" fill className="object-cover max-sm:mt-10"/>
       </div>
     </main>
   );

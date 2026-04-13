@@ -1,8 +1,8 @@
 'use client'
 import { useState, useRef, useEffect } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import Breadcrumb from "@@/components/shared/ui/Breadcrumb";
-import ProductsTabs from "@@/components/features/products/ProductsTabs";
+import Breadcrumb from "@/components/shared/ui/Breadcrumb";
+import ProductsTabs from "@/components/features/products/ProductsTabs";
 import { MdDensityMedium, MdGridView } from "react-icons/md";
 import { BsSortDownAlt } from "react-icons/bs";
 

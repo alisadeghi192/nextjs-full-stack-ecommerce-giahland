@@ -1,51 +1,51 @@
-import ServicesSection from "@@/components/features/landing/ServicesSection";
-import HeroSection from "@@/components/features/landing/HeroSection";
-import BannerSection from "@@/components/features/landing/BannerSection";
-import ProductSlider from "@@/components/features/products/ProductSlider";
-import BlogSlider from "@@/components/features/blog/BlogSlider";
-import PlantDoctorServices from "@@/components/features/landing/PlantDoctorServices";
+import ServicesSection from "@/components/features/landing/ServicesSection";
+import HeroSection from "@/components/features/landing/HeroSection";
+import BannerSection from "@/components/features/landing/BannerSection";
+import ProductSlider from "@/components/features/products/ProductSlider";
+import BlogSlider from "@/components/features/blog/BlogSlider";
+import PlantDoctorServices from "@/components/features/landing/PlantDoctorServices";
 
 const indoorPlants = [
   {
     name: "گیاه طبیعی بابا آدم",
     price: 852000,
-    image: "/Houseplant/Succulent.png",
+    image: "/images/Houseplant/Succulent.png",
     slug: "/",
   },
   {
     name: "گیاه طبیعی بابا آدم",
     price: 852000,
-    image: "/Houseplant/BabaAdam.png",
+    image: "/images/Houseplant/BabaAdam.png",
     slug: "/",
   },
   {
     name: "گیاه طبیعی بابا آدم",
     price: 852000,
-    image: "/Houseplant/BabaAdam.png",
+    image: "/images/Houseplant/BabaAdam.png",
     slug: "/",
   },
   {
     name: "گیاه طبیعی بابا آدم",
     price: 852000,
-    image: "/Houseplant/BabaAdam.png",
+    image: "/images/Houseplant/BabaAdam.png",
     slug: "/",
   },
   {
     name: "گیاه طبیعی بابا آدم",
     price: 852000,
-    image: "/Houseplant/BabaAdam.png",
+    image: "/images/Houseplant/BabaAdam.png",
     slug: "/",
   },
   {
     name: "گیاه طبیعی بابا آدم",
     price: 852000,
-    image: "/Houseplant/BabaAdam.png",
+    image: "/images/Houseplant/BabaAdam.png",
     slug: "/",
   },
   {
     name: "گیاه طبیعی بابا آدم",
     price: 852000,
-    image: "/Houseplant/BabaAdam.png",
+    image: "/images/Houseplant/BabaAdam.png",
     slug: "/",
   },
 ];
@@ -53,22 +53,22 @@ const indoorPlants = [
 const blogPosts = [
   {
     title: "چطور . چگونه نگهداری کنیم : تاریخچه بونسای و شرایط نگهداری اصولی",
-    image: "/blog-covers/plant5.png",
+    image: "/images/blog-covers/plant5.png",
     slug: "/blog/bonsai-care",
   },
   {
     title: "چطور . چگونه نگهداری کنیم : تاریخچه بونسای و شرایط نگهداری اصولی",
-    image: "/blog-covers/plant6.png",
+    image: "/images/blog-covers/plant6.png",
     slug: "/blog/bonsai-care",
   },
   {
     title: "چطور . چگونه نگهداری کنیم : تاریخچه بونسای و شرایط نگهداری اصولی",
-    image: "/blog-covers/plant7.png",
+    image: "/images/blog-covers/plant7.png",
     slug: "/blog/bonsai-care",
   },
   {
     title: "چطور . چگونه نگهداری کنیم : تاریخچه بونسای و شرایط نگهداری اصولی",
-    image: "/blog-covers/plant8.png",
+    image: "/images/blog-covers/plant8.png",
     slug: "/blog/bonsai-care",
   },
 ];

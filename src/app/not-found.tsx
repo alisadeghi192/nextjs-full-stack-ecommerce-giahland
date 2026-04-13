@@ -1,5 +1,5 @@
 import Link from "next/link";
-import PublicHeader from "@@/components/layout/public/PublicHeader";
+import PublicHeader from "@/components/layout/public/PublicHeader";
 import Image from "next/image";
 
 export default function NotFound() {
@@ -27,7 +27,7 @@ export default function NotFound() {
             </span>
           </Link>
         </div>
-        <Image alt="404" src="/404.png" width={500} height={500} className="max-lg:size-100 max-md:size-80 aspect-square"  />
+        <Image alt="404" src="/images/404.png" width={500} height={500} className="max-lg:size-100 max-md:size-80 aspect-square"  />
       </div>
     </main>
   );

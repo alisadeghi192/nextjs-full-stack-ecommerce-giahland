@@ -1,7 +1,7 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Image from "next/image";
-import IconButton from "@/app/components/shared/ui/IconButton";
+import IconButton from "@/components/shared/ui/IconButton";
 import {
   MdOutlineDarkMode,
   MdOutlineLogin,
@@ -46,7 +46,7 @@ const PublicHeader = () => {
             {isUserLogin ? (
               <button className="flex items-center gap-2">
                 <Image
-                  src="/default-user.jpg"
+                  src="/images/default-user.jpg"
                   alt="user"
                   width={48}
                   height={48}
