@@ -57,7 +57,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fa" dir="rtl" className={`${modamFont.variable} scroll-smooth`}>
-      <body className="font-modam antialiased">
+      <body className="font-modam antialiased text-BLACK">
         <div className="flex min-h-dvh flex-col justify-between">
           {children} 
         </div>
