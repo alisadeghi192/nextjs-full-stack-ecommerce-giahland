@@ -5,7 +5,8 @@ import type { Swiper as SwiperType } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
 import { MdNavigateBefore, MdOutlineNavigateNext } from "react-icons/md";
-import ProductCard from "./ProductCardGrid";
+import { Product } from "@/features/products/types/product.types";
+import ProductCardGrid from "./ProductCardGrid";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -13,12 +14,7 @@ import "swiper/css/navigation";
 
 interface ProductSliderProps {
   title: string;
-  products: Array<{
-    name: string;
-    price: number;
-    image: string;
-    slug?: string;
-  }>;
+  products: Product[];
 }
 
 export default function ProductSlider({ title, products }: ProductSliderProps) {
@@ -59,7 +55,7 @@ export default function ProductSlider({ title, products }: ProductSliderProps) {
         >
           {products.map((product, index) => (
             <SwiperSlide key={index}>
-              <ProductCard {...product} />
+              <ProductCardGrid {...product} />
             </SwiperSlide>
           ))}
         </Swiper>
