@@ -7,7 +7,6 @@ import { Autoplay, Navigation } from "swiper/modules";
 import { MdNavigateBefore, MdOutlineNavigateNext } from "react-icons/md";
 import ProductCard from "./ProductCardGrid";
 
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
