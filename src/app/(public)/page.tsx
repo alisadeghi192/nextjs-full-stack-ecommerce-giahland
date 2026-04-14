@@ -4,51 +4,9 @@ import BannerSection from "@/components/features/landing/BannerSection";
 import ProductSlider from "@/components/features/products/ProductSlider";
 import BlogSlider from "@/components/features/blog/BlogSlider";
 import PlantDoctorServices from "@/components/features/landing/PlantDoctorServices";
+import { fakeProducts } from "@/data/products";
+import { getLatestProducts } from "@/features/products/utils/productHelpers";
 
-const indoorPlants = [
-  {
-    name: "گیاه طبیعی بابا آدم",
-    price: 852000,
-    image: "/images/Houseplant/Succulent.png",
-    slug: "/",
-  },
-  {
-    name: "گیاه طبیعی بابا آدم",
-    price: 852000,
-    image: "/images/Houseplant/BabaAdam.png",
-    slug: "/",
-  },
-  {
-    name: "گیاه طبیعی بابا آدم",
-    price: 852000,
-    image: "/images/Houseplant/BabaAdam.png",
-    slug: "/",
-  },
-  {
-    name: "گیاه طبیعی بابا آدم",
-    price: 852000,
-    image: "/images/Houseplant/BabaAdam.png",
-    slug: "/",
-  },
-  {
-    name: "گیاه طبیعی بابا آدم",
-    price: 852000,
-    image: "/images/Houseplant/BabaAdam.png",
-    slug: "/",
-  },
-  {
-    name: "گیاه طبیعی بابا آدم",
-    price: 852000,
-    image: "/images/Houseplant/BabaAdam.png",
-    slug: "/",
-  },
-  {
-    name: "گیاه طبیعی بابا آدم",
-    price: 852000,
-    image: "/images/Houseplant/BabaAdam.png",
-    slug: "/",
-  },
-];
 
 const blogPosts = [
   {
@@ -74,17 +32,21 @@ const blogPosts = [
 ];
 
 export default function Home() {
+  const indoorLatest = getLatestProducts(fakeProducts , "indoor" , 8)
+  const decorationLatest = getLatestProducts(fakeProducts , "decoration" , 8)
+  const giftLatest = getLatestProducts(fakeProducts , "gift" , 8)
+  console.log(giftLatest)
   return (
     <main className="container">
       <HeroSection />
       <ServicesSection />
       <BannerSection />
-      <ProductSlider title="گیاهان آپارتمانی" products={indoorPlants} />
+      <ProductSlider title="گیاهان آپارتمانی" products={indoorLatest} />
       <BlogSlider posts={blogPosts} title="مقالات" />
       <PlantDoctorServices />
-      <ProductSlider title="گیاهان تزئینی" products={indoorPlants} />
+      <ProductSlider title="گیاهان تزئینی" products={decorationLatest} />
       <BlogSlider posts={blogPosts} title="مقالات" />
-      <ProductSlider title="گیاهان کادویی" products={indoorPlants} />
+      <ProductSlider title="گیاهان کادویی" products={giftLatest} />
     </main>
   );
 }
