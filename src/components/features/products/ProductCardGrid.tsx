@@ -1,19 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Product } from "@/features/products/types/product.types";
 
-interface ProductCardGridProps {
-  name: string;
-  price: number;
-  image: string;
-  slug?: string;
-}
+
 
 export default function ProductCardGrid({
   name,
   price,
   image,
   slug = "/",
-}: ProductCardGridProps) {
+}: Product) {
   return (
     <div className="border-neutral5 bg-WHITE flex max-w-72 flex-col justify-between gap-y-6 rounded-xl border p-4 max-xl:gap-y-4 max-sm:max-w-57">
       <Image
@@ -36,7 +32,7 @@ export default function ProductCardGrid({
           </span>
         </div>
       </div>
-      <Link href="/">
+      <Link href={slug}>
         <button className="text-WHITE cursor-pointer bg-primary flex h-10 w-full items-center justify-center rounded-lg">
           <span className="text-sm/5.5 font-medium">مشاهده بیشتر</span>
         </button>
