@@ -1,19 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Product } from "@/features/products/types/product.types";
 
-interface ProductCardListProps {
-  name: string;
-  price: number;
-  image: string;
-  slug?: string;
-}
 
 export default function ProductCardList({
   name,
   price,
   image,
   slug = "/",
-}: ProductCardListProps) {
+  category,
+}: Product) {
   return (
     <div className="border border-neutral5 rounded-lg p-4 flex">
       <div className="rounded-lg overflow-hidden">
@@ -24,7 +20,7 @@ export default function ProductCardList({
           <Link href={slug}>
             <p className=" text-lg/8">{name}</p>
           </Link>
-          <p className="text-neutral9 leading-7">گیاه آپارتمانی</p>
+          <p className="text-neutral9 leading-7">{category} </p>
         </div>
         <div className="flex justify-between  gap-x-6">
           <div className="flex justify-between items-center basis-2/3">
