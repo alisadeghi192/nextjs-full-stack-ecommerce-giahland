@@ -6,6 +6,7 @@ import { getDiscountedPrice } from "@/features/products/utils/productHelpers";
 import { formatPrice } from "@/lib/utils/formatPrice";
 import { useState } from "react";
 import { formatDimensions } from "@/lib/utils/formatDimensions";
+import { BsHeart, BsHeartFill } from "react-icons/bs";
 
 export default function ProductCardGrid({
   name,
@@ -17,10 +18,13 @@ export default function ProductCardGrid({
   stock,
 }: Product) {
   const [isLiked, setIsLiked] = useState<boolean>(false);
+  const toggleLike = () => {
+    setIsLiked(!isLiked);
+  };
   const finalPrice = getDiscountedPrice(price, discount);
   return (
-    <Link href={slug} className="group">
-      <div className="relative border-neutral5 bg-WHITE flex max-w-72 flex-col justify-between gap-y-2 rounded-xl border p-4 max-xl:gap-y-4 max-sm:max-w-57">
+    <div className="relative group border-neutral5 bg-WHITE flex max-w-72 flex-col justify-between gap-y-2 rounded-xl border p-4 max-xl:gap-y-4 max-sm:max-w-57 overflow-hidden">
+      <Link href={slug}>
         <Image
           alt={name}
           src={image}
@@ -30,7 +34,7 @@ export default function ProductCardGrid({
         />
         <div className="flex flex-col gap-y-4 max-sm:gap-y-2">
           <div className="flex flex-col gap-y-1">
-            <p className="text-BLACK line-clamp-1 text-lg/8 max-sm:text-base/7.25 group-hover:text-primary transition color">
+            <p className={` ${stock === 0 && "text-neutral9"} line-clamp-1 text-lg/8 max-sm:text-base/7.25 group-hover:text-primary transition color`}>
               {name}
             </p>
             <p className="text-sm/6.25 text-neutral9">
@@ -61,7 +65,17 @@ export default function ProductCardGrid({
             {discount}%
           </span>
         )}
-      </div>
-    </Link>
+      </Link>
+      <button
+        className="absolute cursor-pointer top-4 -left-9 group-hover:left-4 size-8 rounded-full bg-bg-error flex items-center justify-center transition-all"
+        onClick={toggleLike}
+      >
+        {isLiked ? (
+          <BsHeartFill className="text-error size-5" />
+        ) : (
+          <BsHeart className="text-neutral7 size-5" />
+        )}
+      </button>
+    </div>
   );
 }
