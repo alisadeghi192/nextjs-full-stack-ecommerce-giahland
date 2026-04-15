@@ -9,6 +9,7 @@ export default function ProductCardList({
   image,
   slug = "/",
   category,
+  discount
 }: Product) {
   return (
     <div className="border border-neutral5 rounded-lg p-4 flex">
@@ -21,6 +22,8 @@ export default function ProductCardList({
             <p className=" text-lg/8">{name}</p>
           </Link>
           <p className="text-neutral9 leading-7">{category} </p>
+        <p>تخفیف: {discount}%</p>
+
         </div>
         <div className="flex justify-between  gap-x-6">
           <div className="flex justify-between items-center basis-2/3">
