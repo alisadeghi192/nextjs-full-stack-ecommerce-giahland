@@ -5,6 +5,7 @@ const tabs = [
   { id: "indoor", label: "گیاهان آپارتمانی" },
   { id: "decoration", label: "گیاهان تزئینی" },
   { id: "gift", label: "گیاهان کادویی" },
+  { id: "discounted", label: "تخفیف دار ها" },
 ];
 
 interface ProductsTabsProps {
