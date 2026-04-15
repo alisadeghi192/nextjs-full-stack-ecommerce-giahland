@@ -6,5 +6,6 @@ export interface Product {
   slug: string;
   category: "indoor" | "decoration" | "gift";
   createdAt: Date;
-  liked: number;     
+  liked: number;    
+  discount : number; 
 }
