@@ -12,9 +12,9 @@ export default function ProductCardList({
   discount
 }: Product) {
   return (
-    <div className="border border-neutral5 rounded-lg p-4 flex">
+    <div className="border border-neutral5 rounded-lg p-4 flex gap-x-6">
       <div className="rounded-lg overflow-hidden">
-        <Image alt={name} src={image} width={150} height={150}></Image>
+        <Image alt={name} src={image} width={150} height={150} className="object-cover aspect-square rounded-lg"></Image>
       </div>
       <div className="grow justify-between flex flex-col">
         <div className="flex flex-col ">
