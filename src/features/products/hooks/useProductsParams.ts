@@ -5,7 +5,7 @@ export function useProductsParams() {
   const searchParams = useSearchParams();
   const router = useRouter();
 
-  const activeTab = searchParams.get("category") || "indoor";
+  const activeTab = searchParams.get("category") || "all";
   const viewMode = searchParams.get("view") || "grid";
   const selectedSort = searchParams.get("sort") || "newest";
 
@@ -18,6 +18,7 @@ export function useProductsParams() {
   const setSort = (sortValue: string) => {
     const params = new URLSearchParams(searchParams.toString());
     params.set("sort", sortValue);
+    params.set("page", "1");
     router.push(`?${params.toString()}`);
   };
 
