@@ -35,3 +35,7 @@ export const paginateProducts = (products: Product[], page: number, pageSize: nu
   const start = (page - 1) * pageSize;
   return products.slice(start, start + pageSize);
 };
+
+export const getDiscountedPrice = (price: number, discount: number) => {
+  return price - (price * discount) / 100;
+};
