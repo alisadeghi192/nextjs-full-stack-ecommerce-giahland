@@ -35,7 +35,6 @@ export default function Home() {
   const indoorLatest = getLatestProducts(fakeProducts , "indoor" , 8)
   const decorationLatest = getLatestProducts(fakeProducts , "decoration" , 8)
   const giftLatest = getLatestProducts(fakeProducts , "gift" , 8)
-  console.log(giftLatest)
   return (
     <main className="container">
       <HeroSection />
