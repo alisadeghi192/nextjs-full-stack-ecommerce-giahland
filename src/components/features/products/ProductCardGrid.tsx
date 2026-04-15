@@ -17,7 +17,7 @@ export default function ProductCardGrid({
         src={image}
         width={256}
         height={261}
-        className="self-center object-cover aspect-square "
+        className="self-center object-cover aspect-square rounded-lg "
       />
       <div className="flex flex-col gap-y-4 max-sm:gap-y-2">
         <Link href={slug}>
