@@ -45,7 +45,7 @@ export default function ProductCardGrid({
           )}
         </div>
       </div>
-      {hasDiscount && <DiscountBadge discount={discount} />}
+      {hasDiscount && !isOutOfStock && <DiscountBadge discount={discount} />}
     </>
   );
 
@@ -56,10 +56,12 @@ export default function ProductCardGrid({
       ) : (
         <Link href={slug}>{Content()}</Link>
       )}
-      <LikeButton
-        className="bg-bg-error absolute top-4 -left-9 flex size-8 cursor-pointer items-center justify-center rounded-full transition-all group-hover:left-4 max-md:left-4!"
-        mobileResponsive={false}
-      />
+      {!isOutOfStock && (
+        <LikeButton
+          className="bg-bg-error absolute top-4 -left-9 flex size-8 cursor-pointer items-center justify-center rounded-full transition-all group-hover:left-4 max-md:left-4!"
+          mobileResponsive={false}
+        />
+      )}
     </div>
   );
 }

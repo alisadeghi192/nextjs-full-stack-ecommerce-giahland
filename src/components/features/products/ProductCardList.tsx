@@ -41,7 +41,7 @@ export default function ProductCardList({
             <PriceSection price={price} discount={discount} />
           )}
         </div>
-        {hasDiscount && <DiscountBadge discount={discount} />}
+        {hasDiscount && !isOutOfStock && <DiscountBadge discount={discount} />}
       </div>
     </div>
   );
@@ -53,11 +53,15 @@ export default function ProductCardList({
       ) : (
         <Link href={slug}>{Content()}</Link>
       )}
-      <LikeButton
-        mobileResponsive={true}
-        className="bg-bg-error absolute top-4 -left-9 flex size-8 cursor-pointer items-center justify-center rounded-full transition-all group-hover:left-4 max-md:top-2 max-md:left-2 max-md:size-7 max-md:group-hover:left-2"
-      />
-      <AddToCartButton className="bg-neutral3 hover:bg-primary hover:*:text-WHITE absolute top-14 -left-9 flex size-8 shrink-0 items-center justify-center rounded-full transition-all group-hover:left-4 max-md:top-10 max-md:left-2 max-md:size-7 max-md:group-hover:left-2" />
+      {!isOutOfStock && (
+        <LikeButton
+          mobileResponsive={true}
+          className="bg-bg-error absolute top-4 -left-9 flex size-8 cursor-pointer items-center justify-center rounded-full transition-all group-hover:left-4 max-md:top-2 max-md:left-2 max-md:size-7 max-md:group-hover:left-2"
+        />
+      )}
+      {!isOutOfStock && (
+        <AddToCartButton className="bg-neutral3 hover:bg-primary hover:*:text-WHITE absolute top-14 -left-9 flex size-8 shrink-0 items-center justify-center rounded-full transition-all group-hover:left-4 max-md:top-10 max-md:left-2 max-md:size-7 max-md:group-hover:left-2" />
+      )}
     </div>
   );
 }
