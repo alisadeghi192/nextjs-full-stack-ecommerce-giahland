@@ -1,4 +1,3 @@
-"use client";
 import Link from "next/link";
 import { Product } from "@/features/products/types/product.types";
 import LikeButton from "./LikeButton";
