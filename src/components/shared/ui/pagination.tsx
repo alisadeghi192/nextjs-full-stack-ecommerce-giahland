@@ -63,7 +63,7 @@ export default function Pagination({
           return (
             <span
               key={index}
-              className="border-primary flex size-10 items-center justify-center rounded-lg border leading-6"
+              className="border-primary flex size-10 max-md:size-7 items-center justify-center rounded-lg border leading-6"
             >
               ...
             </span>
@@ -73,7 +73,7 @@ export default function Pagination({
           <Link
             key={index}
             href={`${baseUrl}&page=${page}`}
-            className={`border-primary flex size-10 items-center justify-center rounded-lg border leading-6 transition-colors ${
+            className={`border-primary flex size-10 max-md:size-7 items-center justify-center rounded-lg border leading-6 transition-colors ${
               currentPage === page
                 ? "bg-primary text-white"
                 : "hover:bg-gray-50"
