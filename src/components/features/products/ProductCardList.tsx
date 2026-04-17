@@ -21,32 +21,38 @@ export default function ProductCardList({
   const isOutOfStock = stock === 0;
   const hasDiscount = discount > 0;
 
+  const Content = () => (
+    <div className="flex gap-x-6 p-4 max-md:gap-x-3">
+      <ProductImage image={image} view="list" name={name} />
+      <div className="flex grow flex-col justify-between">
+        <ProductInfo
+          name={name}
+          potDimensions={potDimensions}
+          stock={stock}
+          nameClassName="text-lg/8 max-md:text-base max-md:text-wrap"
+        />
+        <div className="flex items-center justify-end">
+          {isOutOfStock ? (
+            <StockStatus
+              stock={stock}
+              className="text-error mr-auto text-lg/8 max-md:text-base"
+            />
+          ) : (
+            <PriceSection price={price} discount={discount} />
+          )}
+        </div>
+        {hasDiscount && <DiscountBadge discount={discount} />}
+      </div>
+    </div>
+  );
+
   return (
     <div className="border-neutral5 group relative overflow-hidden rounded-lg border">
-      <Link href={slug}>
-        <div className="flex gap-x-6 p-4 max-md:gap-x-3">
-          <ProductImage image={image} view="list" name={name} />
-          <div className="flex grow flex-col justify-between">
-            <ProductInfo
-              name={name}
-              potDimensions={potDimensions}
-              stock={stock}
-              nameClassName="text-lg/8 max-md:text-base max-md:text-wrap"
-            />
-            <div className="flex items-center justify-end">
-              {isOutOfStock ? (
-                <StockStatus
-                  stock={stock}
-                  className="text-error mr-auto text-lg/8 max-md:text-base"
-                />
-              ) : (
-                <PriceSection price={price} discount={discount} />
-              )}
-            </div>
-            {hasDiscount && <DiscountBadge discount={discount} />}
-          </div>
-        </div>
-      </Link>
+      {isOutOfStock ? (
+        <div className="cursor-default">{Content()}</div>
+      ) : (
+        <Link href={slug}>{Content()}</Link>
+      )}
       <LikeButton
         mobileResponsive={true}
         className="bg-bg-error absolute top-4 -left-9 flex size-8 cursor-pointer items-center justify-center rounded-full transition-all group-hover:left-4 max-md:top-2 max-md:left-2 max-md:size-7 max-md:group-hover:left-2"

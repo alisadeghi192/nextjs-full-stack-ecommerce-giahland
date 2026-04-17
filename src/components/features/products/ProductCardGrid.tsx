@@ -21,34 +21,41 @@ export default function ProductCardGrid({
   const isOutOfStock = stock === 0;
   const hasDiscount = discount > 0;
 
+  const Content = () => (
+    <>
+      <ProductImage image={image} view="grid" name={name} />
+      <div className="flex flex-col gap-y-4 max-sm:gap-y-2">
+        <ProductInfo
+          name={name}
+          potDimensions={potDimensions}
+          stock={stock}
+          nameClassName="max-xs:text-sm mt-2 line-clamp-1 text-lg/8 max-sm:text-base/7.25"
+        />
+        <div className="flex items-center justify-between">
+          {isOutOfStock ? (
+            <StockStatus
+              stock={stock}
+              className="text-error max-xs:text-sm mr-auto text-lg/8 max-sm:text-base/7.25"
+            />
+          ) : (
+            <>
+              <AddToCartButton className="bg-neutral3 hover:bg-primary hover:*:text-WHITE flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-full transition-colors" />
+              <PriceSection price={price} discount={discount} />
+            </>
+          )}
+        </div>
+      </div>
+      {hasDiscount && <DiscountBadge discount={discount} />}
+    </>
+  );
+
   return (
     <div className="group border-neutral5 bg-WHITE relative flex h-full flex-col justify-between gap-y-2 justify-self-center overflow-hidden rounded-xl border p-4 max-xl:gap-y-4 max-sm:max-w-57">
-      <Link href={slug}>
-        <ProductImage image={image} view="grid" name={name} />
-        <div className="flex flex-col gap-y-4 max-sm:gap-y-2">
-          <ProductInfo
-            name={name}
-            potDimensions={potDimensions}
-            stock={stock}
-            nameClassName="max-xs:text-sm mt-2 line-clamp-1 text-lg/8 max-sm:text-base/7.25"
-          />
-
-          <div className="flex items-center justify-between">
-            {isOutOfStock ? (
-              <StockStatus
-                stock={stock}
-                className="text-error max-xs:text-sm mr-auto text-lg/8 max-sm:text-base/7.25"
-              />
-            ) : (
-              <>
-                <AddToCartButton className="bg-neutral3 hover:bg-primary hover:*:text-WHITE flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-full transition-colors" />
-                <PriceSection price={price} discount={discount} />
-              </>
-            )}
-          </div>
-        </div>
-        {hasDiscount && <DiscountBadge discount={discount} />}
-      </Link>
+      {isOutOfStock ? (
+        <div className="cursor-default">{Content()}</div>
+      ) : (
+        <Link href={slug}>{Content()}</Link>
+      )}
       <LikeButton
         className="bg-bg-error absolute top-4 -left-9 flex size-8 cursor-pointer items-center justify-center rounded-full transition-all group-hover:left-4 max-md:left-4!"
         mobileResponsive={false}
