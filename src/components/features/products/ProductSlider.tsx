@@ -56,7 +56,7 @@ export default function ProductSlider({ title, products }: ProductSliderProps) {
           className="mySwiper"
         >
           {products.map((product, index) => (
-            <SwiperSlide key={index}>
+            <SwiperSlide key={index} className="h-auto">
               <ProductCardGrid {...product} />
             </SwiperSlide>
           ))}
