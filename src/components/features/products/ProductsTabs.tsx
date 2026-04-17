@@ -20,14 +20,14 @@ export default function ProductsTabs({
   currentSort,
 }: ProductsTabsProps) {
   return (
-    <div className="flex">
+    <div className="flex flex-wrap justify-center">
       {tabs.map((tab) => (
         <Link
           key={tab.id}
           href={`?category=${tab.id}&view=${currentView}&sort=${currentSort}`}
-          className={`border-neutral5 cursor-pointer border-b p-3 text-2xl/6 transition-all ${
+          className={`border-neutral5 cursor-pointer border-b p-3 text-2xl/6 transition-all max-md:text-xl max-sm:p-2 max-sm:text-base/6 ${
             activeTab === tab.id
-              ? "font-bold text-primary border-b-2 border-primary"
+              ? "text-primary border-primary border-b-2 font-bold"
               : "text-neutral9 hover:text-primary"
           }`}
         >
