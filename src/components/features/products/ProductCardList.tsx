@@ -7,6 +7,7 @@ import { formatPrice } from "@/lib/utils/formatPrice";
 import { getDiscountedPrice } from "@/features/products/utils/productHelpers";
 import { useState } from "react";
 import { BsHeart, BsHeartFill } from "react-icons/bs";
+import { MdOutlineShoppingCart } from "react-icons/md";
 
 export default function ProductCardList({
   name,
@@ -22,6 +23,12 @@ export default function ProductCardList({
     setIsLiked(!isLiked);
   };
   const finalPrice = getDiscountedPrice(price, discount);
+
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    alert("به سبد خرید اضافه شد");
+  };
 
   return (
     <div className="border-neutral5 group relative overflow-hidden rounded-lg border">
@@ -47,20 +54,28 @@ export default function ProductCardList({
                 ابعاد: {formatDimensions(potDimensions)}
               </p>
             </div>
-            <div className="flex items-center justify-end gap-x-2">
+            <div className="flex items-center justify-between">
               {stock === 0 ? (
-                <span className="text-error text-lg/8">ناموجود</span>
+                <span className="text-error text-lg/8 mr-auto">ناموجود</span>
               ) : (
                 <>
-                  {discount > 0 && (
-                    <span className="text-error relative text-sm/6.25">
-                      {formatPrice(price, false)}
-                      <span className="bg-error absolute top-1/2 m-auto block h-px w-full"></span>
+                  <div className="bg-neutral3 hover:bg-primary hover:*:text-WHITE flex size-8 items-center justify-center rounded-full transition-colors" onClick={handleAddToCart}>
+                    <MdOutlineShoppingCart
+                      className="text-BLACK size-5 justify-self-start transition-colors"
+                      onClick={handleAddToCart}
+                    />
+                  </div>
+                  <div className="flex items-center justify-center gap-x-2">
+                    {discount > 0 && (
+                      <span className="text-error relative text-sm/6.25">
+                        {formatPrice(price, false)}
+                        <span className="bg-error absolute top-1/2 m-auto block h-px w-full"></span>
+                      </span>
+                    )}
+                    <span className="text-lg/8 max-sm:text-base/7.25">
+                      {formatPrice(finalPrice)}
                     </span>
-                  )}
-                  <span className="text-lg/8 max-sm:text-base/7.25">
-                    {formatPrice(finalPrice)}
-                  </span>
+                  </div>
                 </>
               )}
             </div>
