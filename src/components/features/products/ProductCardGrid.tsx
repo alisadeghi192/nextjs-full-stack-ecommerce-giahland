@@ -59,17 +59,17 @@ export default function ProductCardGrid({
               </span>
             ) : (
               <>
-                <div
-                  className="bg-neutral3 hover:bg-primary hover:*:text-WHITE flex size-8 shrink-0 items-center justify-center rounded-full transition-colors"
+                <button
+                  className="bg-neutral3 hover:bg-primary cursor-pointer hover:*:text-WHITE flex size-8 shrink-0 items-center justify-center rounded-full transition-colors"
                   onClick={handleAddToCart}
                 >
                   <MdOutlineShoppingCart className="text-BLACK size-5 justify-self-start transition-colors" />
-                </div>
+                </button>
                 <div className="flex flex-wrap items-center justify-center gap-x-2">
                   {discount > 0 && (
                     <span className="text-error relative mr-auto text-sm/6.25">
                       {formatPrice(price, false)}
-                      <span className="bg-error absolute top-1/2 m-auto block h-px w-full"></span>
+                      <span className="bg-error absolute top-1/2 mr-0-auto block h-px w-full"></span>
                     </span>
                   )}
                   <span className="mr-auto text-lg/8 max-sm:text-base/7.25">
