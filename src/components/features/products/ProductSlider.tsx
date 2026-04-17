@@ -22,7 +22,9 @@ export default function ProductSlider({ title, products }: ProductSliderProps) {
 
   return (
     <section className="relative mt-16 max-sm:mt-10">
-      <h4 className="text-primary mb-6 text-2xl/8.5 font-bold max-sm:font-semibold max-sm:text-xl/7">{title}</h4>
+      <h4 className="text-primary mb-6 text-2xl/8.5 font-bold max-sm:text-xl/7 max-sm:font-semibold">
+        {title}
+      </h4>
       <div className="relative">
         <Swiper
           onBeforeInit={(swiper) => {

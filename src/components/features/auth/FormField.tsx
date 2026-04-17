@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { ReactNode } from "react";
 
@@ -22,7 +22,7 @@ export default function FormField({
   onChange,
 }: FormFieldProps) {
   return (
-    <div className="border-neutral6 group focus-within:border-primary relative flex h-14 max-sm:h-12 items-center gap-x-2 rounded-xl border px-3.75 transition-colors duration-200">
+    <div className="border-neutral6 focus-within:border-primary group relative flex h-14 items-center gap-x-2 rounded-xl border px-3.75 transition-colors duration-200 max-sm:h-12">
       <span className="text-neutral9 group-focus-within:text-primary relative z-10 size-5.5 transition-colors duration-200">
         {icon}
       </span>

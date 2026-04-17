@@ -11,7 +11,7 @@ interface LoginFormProps {
 export default function LoginForm({ onToggle }: LoginFormProps) {
   return (
     <div className="bg-WHITE relative z-10 w-1/2 max-lg:w-2/3 max-sm:h-5/8 max-sm:w-full max-sm:rounded-t-[20px]">
-      <div className="mx-auto w-72/100 max-md:w-90/100 mb-4">
+      <div className="mx-auto mb-4 w-72/100 max-md:w-90/100">
         <h5 className="mb-8 text-xl/7 font-semibold max-sm:mt-3.25 max-sm:mb-6 max-sm:text-center max-sm:text-lg/8 max-sm:font-normal">
           ورود
         </h5>
@@ -28,10 +28,12 @@ export default function LoginForm({ onToggle }: LoginFormProps) {
             id="login-password"
             label="رمز عبور"
           />
-          <p className="text-primary -mt-2 text-sm max-sm:-mt-1">بازیابی رمز عبور</p>
+          <p className="text-primary -mt-2 text-sm max-sm:-mt-1">
+            بازیابی رمز عبور
+          </p>
           <button
             type="submit"
-            className="bg-primary text-WHITE mt-2 flex h-14 items-center justify-center rounded-xl text-lg/10 max-sm:text-sm/6.25 max-sm:h-10 max-sm:mt-1"
+            className="bg-primary text-WHITE mt-2 flex h-14 items-center justify-center rounded-xl text-lg/10 max-sm:mt-1 max-sm:h-10 max-sm:text-sm/6.25"
           >
             ورود
           </button>

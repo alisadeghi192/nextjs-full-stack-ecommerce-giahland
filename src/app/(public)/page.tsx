@@ -7,7 +7,6 @@ import PlantDoctorServices from "@/components/features/landing/PlantDoctorServic
 import { fakeProducts } from "@/data/products";
 import { getLatestProducts } from "@/features/products/utils/productHelpers";
 
-
 const blogPosts = [
   {
     title: "چطور . چگونه نگهداری کنیم : تاریخچه بونسای و شرایط نگهداری اصولی",
@@ -32,9 +31,9 @@ const blogPosts = [
 ];
 
 export default function Home() {
-  const indoorLatest = getLatestProducts(fakeProducts , "indoor" , 8)
-  const decorationLatest = getLatestProducts(fakeProducts , "decoration" , 8)
-  const giftLatest = getLatestProducts(fakeProducts , "gift" , 8)
+  const indoorLatest = getLatestProducts(fakeProducts, "indoor", 8);
+  const decorationLatest = getLatestProducts(fakeProducts, "decoration", 8);
+  const giftLatest = getLatestProducts(fakeProducts, "gift", 8);
   return (
     <main className="container">
       <HeroSection />

@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { useRef } from "react";
 import Link from "next/link";
@@ -21,9 +21,9 @@ interface BlogSliderProps {
   title?: string;
 }
 
-export default function BlogSlider({ 
-  posts, 
-  title = "مقالات", 
+export default function BlogSlider({
+  posts,
+  title = "مقالات",
 }: BlogSliderProps) {
   const swiperRef = useRef<SwiperType | null>(null);
 
@@ -31,10 +31,13 @@ export default function BlogSlider({
     <section className="relative mt-16 max-sm:mt-10">
       {/* هدر سکشن */}
       <div className="flex items-center justify-between">
-        <h4 className="text-primary mb-6 text-2xl/8.5 font-bold max-sm:font-semibold max-sm:text-xl/7">
+        <h4 className="text-primary mb-6 text-2xl/8.5 font-bold max-sm:text-xl/7 max-sm:font-semibold">
           {title}
         </h4>
-        <Link className="text-shade3 mb-6 flex items-center gap-x-1" href="/blog">
+        <Link
+          className="text-shade3 mb-6 flex items-center gap-x-1"
+          href="/blog"
+        >
           <span className="text-xl font-medium max-sm:text-lg">مشاهده همه</span>
           <IoIosArrowBack className="size-6" />
         </Link>

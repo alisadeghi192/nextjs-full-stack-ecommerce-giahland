@@ -9,7 +9,7 @@ interface BlogCardProps {
 
 export default function BlogCard({ title, image, slug = "/" }: BlogCardProps) {
   return (
-    <div 
+    <div
       className="relative flex h-60 max-w-72 flex-col justify-between overflow-hidden rounded-lg bg-cover bg-center px-5 py-7 max-sm:max-w-54"
       style={{ backgroundImage: `url(${image})` }}
     >

@@ -3,3 +3,9 @@ declare module '*.svg' {
   const content: FC<SVGProps<SVGSVGElement>>;
   export default content;
 }
+
+declare module '*.css';
+declare module '*.css' {
+  const content: { [className: string]: string };
+  export default content;
+}

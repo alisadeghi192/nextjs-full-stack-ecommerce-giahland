@@ -20,7 +20,7 @@ const isUserLogin = false;
 const PublicHeader = () => {
   const isScrolled = useScroll(80);
   return (
-    <header className="sticky top-0 right-0 left-0 h-24 z-20">
+    <header className="sticky top-0 right-0 left-0 z-20 h-24">
       {/* desktop header */}
       <nav className="border-neutral5 container border-b font-medium max-md:hidden">
         {/* navlinks */}
@@ -55,7 +55,10 @@ const PublicHeader = () => {
                 <span className="text-lg max-lg:hidden">سلام کاربر</span>
               </button>
             ) : (
-              <Link href="/login-register" className="border-primary group hover:border-shade2 transition-color flex h-12 cursor-pointer items-center justify-center gap-2 rounded-xl border px-4 max-lg:size-12 max-lg:gap-0 max-lg:px-3">
+              <Link
+                href="/login-register"
+                className="border-primary group hover:border-shade2 transition-color flex h-12 cursor-pointer items-center justify-center gap-2 rounded-xl border px-4 max-lg:size-12 max-lg:gap-0 max-lg:px-3"
+              >
                 <MdOutlineLogin
                   size={24}
                   className="text-primary group-hover:text-shade2 transition-colors"
@@ -70,7 +73,9 @@ const PublicHeader = () => {
       </nav>
       {/* mobile header */}
       <nav className="border-neutral3 bg-WHITE border-b py-3 md:hidden">
-        <div className={`container flex flex-col gap-y-3 ${isScrolled ? 'gap-y-2.5!' : ''}`}>
+        <div
+          className={`container flex flex-col gap-y-3 ${isScrolled ? "gap-y-2.5!" : ""}`}
+        >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               {/* burgur menu */}
@@ -93,12 +98,14 @@ const PublicHeader = () => {
                   className="rounded-full sm:size-10"
                 ></Image>
               ) : (
-                <Link href="/login-register"><IconButton icon={<MdOutlineLogin size={20} />} /></Link>
+                <Link href="/login-register">
+                  <IconButton icon={<MdOutlineLogin size={20} />} />
+                </Link>
               )}
             </div>
           </div>
           {/* search input */}
-          <SearchBox  />
+          <SearchBox />
         </div>
       </nav>
     </header>

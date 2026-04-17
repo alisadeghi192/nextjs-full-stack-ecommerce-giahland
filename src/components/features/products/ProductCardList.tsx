@@ -24,38 +24,38 @@ export default function ProductCardList({
   const finalPrice = getDiscountedPrice(price, discount);
 
   return (
-    <div className="border relative border-neutral5 rounded-lg group overflow-hidden">
+    <div className="border-neutral5 group relative overflow-hidden rounded-lg border">
       <Link href={slug}>
-        <div className=" p-4 flex gap-x-6">
-          <div className="rounded-lg overflow-hidden">
+        <div className="flex gap-x-6 p-4">
+          <div className="overflow-hidden rounded-lg">
             <Image
               alt={name}
               src={image}
               width={120}
               height={120}
-              className="object-cover aspect-square rounded-lg"
+              className="aspect-square rounded-lg object-cover"
             ></Image>
           </div>
-          <div className="grow justify-between flex flex-col">
+          <div className="flex grow flex-col justify-between">
             <div className="flex flex-col gap-y-1">
               <p
-                className={`${stock === 0 && "text-neutral9"} text-lg/8 group-hover:text-primary transition color`}
+                className={`${stock === 0 && "text-neutral9"} group-hover:text-primary color text-lg/8 transition`}
               >
                 {name}
               </p>
-              <p className="text-sm/6.25 text-neutral9">
+              <p className="text-neutral9 text-sm/6.25">
                 ابعاد: {formatDimensions(potDimensions)}
               </p>
             </div>
-            <div className="flex justify-end items-center gap-x-2">
+            <div className="flex items-center justify-end gap-x-2">
               {stock === 0 ? (
                 <span className="text-error text-lg/8">ناموجود</span>
               ) : (
                 <>
                   {discount > 0 && (
-                    <span className="relative text-sm/6.25 text-error">
+                    <span className="text-error relative text-sm/6.25">
                       {formatPrice(price, false)}
-                      <span className="block absolute top-1/2 w-full h-px m-auto bg-error "></span>
+                      <span className="bg-error absolute top-1/2 m-auto block h-px w-full"></span>
                     </span>
                   )}
                   <span className="text-lg/8 max-sm:text-base/7.25">
@@ -65,7 +65,7 @@ export default function ProductCardList({
               )}
             </div>
             {discount > 0 && (
-              <span className="font-bold text-xs/5.5 px-1 rounded-xl bg-bg-error absolute top-5 right-5 text-error">
+              <span className="bg-bg-error text-error absolute top-5 right-5 rounded-xl px-1 text-xs/5.5 font-bold">
                 {discount}%
               </span>
             )}
@@ -73,7 +73,7 @@ export default function ProductCardList({
         </div>
       </Link>
       <button
-        className="absolute cursor-pointer top-4 -left-9 group-hover:left-4 size-8 rounded-full bg-bg-error flex items-center justify-center transition-all"
+        className="bg-bg-error absolute top-4 -left-9 flex size-8 cursor-pointer items-center justify-center rounded-full transition-all group-hover:left-4"
         onClick={toggleLike}
       >
         {isLiked ? (

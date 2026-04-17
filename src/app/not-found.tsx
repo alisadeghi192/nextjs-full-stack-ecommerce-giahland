@@ -4,13 +4,15 @@ import Image from "next/image";
 
 export default function NotFound() {
   return (
-    <main className="font-modam min-h-dvh ">
-      <div className="absolute top-0 left-0 right-0">
+    <main className="font-modam min-h-dvh">
+      <div className="absolute top-0 right-0 left-0">
         <PublicHeader />
       </div>
-      <div className="flex max-sm:flex-col-reverse items-center min-h-dvh justify-center basis-1/2 px-4 text-center">
+      <div className="flex min-h-dvh basis-1/2 items-center justify-center px-4 text-center max-sm:flex-col-reverse">
         <div>
-          <h1 className="text-primary text-8xl font-black max-sm:text-5xl">۴۰۴</h1>
+          <h1 className="text-primary text-8xl font-black max-sm:text-5xl">
+            ۴۰۴
+          </h1>
           <h2 className="text-neutral11 mt-5 text-2xl font-semibold max-sm:text-xl">
             صفحه مورد نظر یافت نشد.
           </h2>
@@ -20,14 +22,20 @@ export default function NotFound() {
           </p>
           <Link
             href="/"
-            className="bg-primary text-WHITE mt-5 flex flex-1 cursor-pointer items-center justify-center rounded-xl py-3 w-9/10 mx-auto"
+            className="bg-primary text-WHITE mx-auto mt-5 flex w-9/10 flex-1 cursor-pointer items-center justify-center rounded-xl py-3"
           >
             <span className="text-lg/8 max-md:text-sm max-md:font-medium">
               بازگشت به صفحه اصلی
             </span>
           </Link>
         </div>
-        <Image alt="404" src="/images/404.png" width={500} height={500} className="max-lg:size-100 max-md:size-80 aspect-square"  />
+        <Image
+          alt="404"
+          src="/images/404.png"
+          width={500}
+          height={500}
+          className="aspect-square max-lg:size-100 max-md:size-80"
+        />
       </div>
     </main>
   );

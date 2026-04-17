@@ -16,7 +16,7 @@ const NavLinks = () => {
         <NavLink
           key={link.href}
           href={link.href}
-          className="hover:text-primary text-lg/8.5 max-lg:text-base/8.5 transition-colors"
+          className="hover:text-primary text-lg/8.5 transition-colors max-lg:text-base/8.5"
         >
           {link.text}
         </NavLink>

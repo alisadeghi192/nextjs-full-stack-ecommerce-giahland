@@ -9,7 +9,7 @@ interface PlantDoctorServiceCardProps {
 export default function PlantDoctorServiceCard({
   icon: Icon,
   title,
-  description
+  description,
 }: PlantDoctorServiceCardProps) {
   return (
     <div className="flex max-w-76 items-center gap-x-2.25 max-md:gap-x-2">
@@ -20,9 +20,7 @@ export default function PlantDoctorServiceCard({
         <h6 className="text-neutral12 text-base/8 font-medium text-nowrap max-md:text-sm/5.5">
           {title}
         </h6>
-        <p className="text-neutral11 text-[12px]/5.5">
-          {description}
-        </p>
+        <p className="text-neutral11 text-[12px]/5.5">{description}</p>
       </div>
     </div>
   );
