@@ -7,6 +7,7 @@ import { MdKeyboardArrowLeft, MdOutlineHome } from "react-icons/md";
 export default function Breadcrumb() {
   const nameMap: Record<string, string> = {
     products: "محصولات",
+    "plant-doctor" : "گیاه پزشک"
   };
 
   const pathname = usePathname();
