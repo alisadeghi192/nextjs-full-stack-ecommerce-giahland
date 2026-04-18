@@ -1,9 +1,9 @@
 "use client";
 import ViewToggle from "./ViewToggle";
-import { useProductsParams } from "@/features/products/hooks/useProductsParams";
+import { usePageParams } from "@/lib/hooks/usePageParams";
 
 export default function ViewToggleWrapper() {
-  const { viewMode, setViewMode } = useProductsParams();
+  const { viewMode, setViewMode } = usePageParams();
   return (
     <ViewToggle
       viewMode={viewMode as "grid" | "list"}
