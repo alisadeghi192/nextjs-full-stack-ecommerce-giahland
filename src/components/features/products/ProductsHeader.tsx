@@ -1,28 +1,40 @@
-import ProductsTabs from "./ProductsTabs";
+"use client";
+import Tabs from "@/components/shared/ui/Tabs";
 import ViewToggleWrapper from "./ViewToggleWrapper";
-import SortDropdownWrapper from "./SortDropdownWrapper";
+import SortDropdownWrapper from "@/components/shared/ui/SortDropdownWrapper";
+import { usePageParams } from "@/lib/hooks/usePageParams";
 
-interface ProductsHeaderProps {
-  activeTab: string;
-  viewMode: string;
-  selectedSort: string;
-}
+const productTabs = [
+  { id: "all", label: "همه محصولات" },
+  { id: "indoor", label: "گیاهان آپارتمانی" },
+  { id: "decoration", label: "گیاهان تزئینی" },
+  { id: "gift", label: "گیاهان کادویی" },
+  { id: "discounted", label: "تخفیف دار" },
+];
 
-export default function ProductsHeader({
-  activeTab,
-  viewMode,
-  selectedSort,
-}: ProductsHeaderProps) {
+const productSortOptions = [
+  { value: "newest", label: "جدیدترین" },
+  { value: "price_asc", label: "ارزان‌ترین" },
+  { value: "price_desc", label: "گران‌ترین" },
+  { value: "popular", label: "محبوب‌ترین" },
+];
+
+export default function ProductsHeader() {
+  const { activeTab, viewMode, selectedSort } = usePageParams();
+
   return (
-    <div className="flex items-center justify-between max-lg:flex-col-reverse max-lg:gap-y-6">
-      <ProductsTabs
-        activeTab={activeTab}
-        currentView={viewMode}
-        currentSort={selectedSort}
-      />
-      <div className="flex items-center gap-x-4 max-sm:gap-x-2.5">
-        <ViewToggleWrapper />
-        <SortDropdownWrapper />
+    <div className="mb-6">
+      <div className="flex items-center justify-between max-lg:flex-col-reverse max-lg:gap-y-6">
+        <Tabs
+          tabs={productTabs}
+          activeTab={activeTab}
+          currentSort={selectedSort}
+          currentView={viewMode}
+        />
+        <div className="flex items-center gap-x-4 max-sm:gap-x-2.5">
+          <ViewToggleWrapper />
+          <SortDropdownWrapper options={productSortOptions} />
+        </div>
       </div>
     </div>
   );
