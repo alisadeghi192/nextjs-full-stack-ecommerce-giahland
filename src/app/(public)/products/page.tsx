@@ -8,6 +8,7 @@ import {
   filterByCategory,
   sortProducts,
   paginateProducts,
+  filterProductsByTab
 } from "@/features/products/utils/productHelpers";
 
 interface ProductsPageProps {
@@ -25,12 +26,7 @@ export default async function ProductsPage({
   const currentPage = Number(params.page) || 1;
 
   const allProducts = getAllProducts();
-  const filteredProducts = (() => {
-    if (activeTab === "all") return allProducts;
-    if (activeTab === "discounted")
-      return allProducts.filter((p) => p.discount > 0);
-    return filterByCategory(allProducts, activeTab);
-  })();
+  const filteredProducts = filterProductsByTab(allProducts, activeTab);
   const sortedProducts = sortProducts(filteredProducts, selectedSort);
   const paginatedProducts = paginateProducts(sortedProducts, currentPage, 12);
   const totalPages = Math.ceil(sortedProducts.length / 12);

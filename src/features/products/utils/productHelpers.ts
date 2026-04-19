@@ -19,6 +19,11 @@ export const getAllProducts = (): Product[] => {
 export const filterByCategory = (products: Product[], category: string) => {
   return products.filter((p) => p.category === category);
 };
+export const filterProductsByTab = (products: Product[], tab: string) => {
+  if (tab === "all") return products;
+  if (tab === "discounted") return products.filter((p) => p.discount > 0);
+  return filterByCategory(products, tab); 
+};
 
 export const sortProducts = (products: Product[], sortBy: string) => {
   switch (sortBy) {
