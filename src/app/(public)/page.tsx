@@ -6,45 +6,27 @@ import BlogSlider from "@/components/features/blogs/BlogSlider";
 import PlantDoctorServices from "@/components/features/landing/PlantDoctorServices";
 import { fakeProducts } from "@/data/products";
 import { getLatestProducts } from "@/features/products/utils/productHelpers";
+import { getLatestPosts, getMostViewedPosts } from "@/features/blogs/utils/blogHelpers";
 
-const blogPosts = [
-  {
-    title: "چطور . چگونه نگهداری کنیم : تاریخچه بونسای و شرایط نگهداری اصولی",
-    image: "/images/blog-covers/plant5.png",
-    slug: "/blog/bonsai-care",
-  },
-  {
-    title: "چطور . چگونه نگهداری کنیم : تاریخچه بونسای و شرایط نگهداری اصولی",
-    image: "/images/blog-covers/plant6.png",
-    slug: "/blog/bonsai-care",
-  },
-  {
-    title: "چطور . چگونه نگهداری کنیم : تاریخچه بونسای و شرایط نگهداری اصولی",
-    image: "/images/blog-covers/plant7.png",
-    slug: "/blog/bonsai-care",
-  },
-  {
-    title: "چطور . چگونه نگهداری کنیم : تاریخچه بونسای و شرایط نگهداری اصولی",
-    image: "/images/blog-covers/plant8.png",
-    slug: "/blog/bonsai-care",
-  },
-];
+
 
 export default function Home() {
   const indoorLatest = getLatestProducts(fakeProducts, "indoor", 8);
   const decorationLatest = getLatestProducts(fakeProducts, "decoration", 8);
   const giftLatest = getLatestProducts(fakeProducts, "gift", 8);
+  const latestPosts = getLatestPosts(4)
+  const mostViewedPosts = getMostViewedPosts(4)
   return (
     <main className="container">
       <HeroSection />
       <ServicesSection />
       <BannerSection />
-      <ProductSlider title="گیاهان آپارتمانی" products={indoorLatest} />
-      <BlogSlider posts={blogPosts} title="مقالات" />
+      <ProductSlider title="گیاهان آپارتمانی" products={indoorLatest} link="/products?category=indoor&sort=newest&view=grid"/>
+      <BlogSlider posts={latestPosts} title="آخرین مقالات" link="/blogs" />
       <PlantDoctorServices />
-      <ProductSlider title="گیاهان تزئینی" products={decorationLatest} />
-      <BlogSlider posts={blogPosts} title="مقالات" />
-      <ProductSlider title="گیاهان کادویی" products={giftLatest} />
+      <ProductSlider title="گیاهان تزئینی" products={decorationLatest} link="/products?category=decoration&sort=newest&view=grid" />
+      <BlogSlider posts={mostViewedPosts} title="پربازدید ترین مقالات" link="/blogs?sort=most_viewed&page=1"/>
+      <ProductSlider title="گیاهان کادویی" products={giftLatest} link="/products?category=gift&sort=newest&view=grid"/>
     </main>
   );
 }

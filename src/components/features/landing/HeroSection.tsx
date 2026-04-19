@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { MdOutlineArrowBack } from "react-icons/md";
 import HeroStatsItem from "./HeroStatsItem";
+import Link from "next/link";
 
 const HeroSection = () => {
   return (
@@ -17,11 +18,11 @@ const HeroSection = () => {
           بگیری.
         </p>
         <div className="mb-12 flex max-w-134.75 gap-x-5.5 max-lg:flex-col max-lg:gap-y-2 max-md:mb-10 max-md:flex-row max-md:gap-x-3">
-          <button className="bg-primary text-WHITE flex flex-1 cursor-pointer items-center justify-center rounded-xl py-3 max-md:basis-1/2 max-md:py-2">
+          <Link href="/products?category=discounted&sort=newest&view=grid" className="bg-primary text-WHITE flex flex-1 cursor-pointer items-center justify-center rounded-xl py-3 max-md:basis-1/2 max-md:py-2">
             <span className="text-lg/8 max-md:text-sm max-md:font-medium">
               گیاهان تخفیف دار
             </span>
-          </button>
+          </Link>
           <button className="text-primary border-primary flex max-w-134.75 flex-1 cursor-pointer items-center justify-center gap-x-2 rounded-xl border border-dashed py-3 text-lg max-md:basis-1/2 max-md:py-2">
             <span className="text-lg/8 max-md:text-sm max-md:font-medium">
               مشاوره با گیاه پزشک
