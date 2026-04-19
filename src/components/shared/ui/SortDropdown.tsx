@@ -43,7 +43,7 @@ export default function SortDropdown({
         </span>
       </button>
       {showMenu && (
-        <div className="absolute top-full left-0 z-10 mt-2 w-36 overflow-hidden rounded-xl border bg-white shadow-lg">
+        <div className="absolute top-full left-0 z-20 mt-2 w-36 overflow-hidden rounded-xl border bg-white shadow-lg">
           {options.map((option) => (
             <button
               key={option.value}
