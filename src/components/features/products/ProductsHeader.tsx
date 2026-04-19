@@ -5,10 +5,10 @@ import SortDropdownWrapper from "@/components/shared/ui/SortDropdownWrapper";
 import { usePageParams } from "@/lib/hooks/usePageParams";
 
 const productTabs = [
-  { id: "all", label: "همه محصولات" },
-  { id: "indoor", label: "گیاهان آپارتمانی" },
-  { id: "decoration", label: "گیاهان تزئینی" },
-  { id: "gift", label: "گیاهان کادویی" },
+  { id: "all", label: "همه" },
+  { id: "indoor", label: "آپارتمانی" },
+  { id: "decoration", label: "تزئینی" },
+  { id: "gift", label: "کادویی" },
   { id: "discounted", label: "تخفیف دار" },
 ];
 

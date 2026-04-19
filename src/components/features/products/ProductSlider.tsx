@@ -11,20 +11,28 @@ import ProductCardGrid from "./ProductCardGrid";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import Link from "next/link";
 
 interface ProductSliderProps {
   title: string;
   products: Product[];
+  link: string;
 }
 
-export default function ProductSlider({ title, products }: ProductSliderProps) {
+export default function ProductSlider({
+  title,
+  products,
+  link,
+}: ProductSliderProps) {
   const swiperRef = useRef<SwiperType | null>(null);
 
   return (
     <section className="relative mt-16 max-sm:mt-10">
-      <h4 className="text-primary mb-6 text-2xl/8.5 font-bold max-sm:text-xl/7 max-sm:font-semibold">
-        {title}
-      </h4>
+      <Link href={link}>
+        <h4 className="text-primary mb-6 text-2xl/8.5 font-bold max-sm:text-xl/7 max-sm:font-semibold">
+          {title}
+        </h4>
+      </Link>
       <div className="relative">
         <Swiper
           onBeforeInit={(swiper) => {

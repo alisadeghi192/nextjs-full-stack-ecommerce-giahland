@@ -21,9 +21,9 @@ export default function ProductCardGrid({
   const hasDiscount = discount > 0;
 
   const Content = () => (
-    <>
+    <div className="flex flex-col">
       <ProductImage image={image} view="grid" name={name} />
-      <div className="flex flex-col gap-y-4 max-sm:gap-y-2">
+      <div className="flex flex-col gap-y-4 max-sm:gap-y-2 mt-auto">
         <ProductInfo
           name={name}
           potDimensions={potDimensions}
@@ -34,7 +34,7 @@ export default function ProductCardGrid({
           {isOutOfStock ? (
             <StockStatus
               stock={stock}
-              className="text-error max-xs:text-sm mr-auto text-lg/8 max-sm:text-base/7.25"
+              className="text-error max-xs:text-sm mr-auto  text-lg/8 max-sm:text-base/7.25"
             />
           ) : (
             <>
@@ -45,7 +45,7 @@ export default function ProductCardGrid({
         </div>
       </div>
       {hasDiscount && !isOutOfStock && <DiscountBadge discount={discount} />}
-    </>
+    </div>
   );
 
   return (
