@@ -5,7 +5,7 @@ import type { Swiper as SwiperType } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
 import { MdNavigateBefore, MdOutlineNavigateNext } from "react-icons/md";
-import { Product } from "@/features/products/types/product.types";
+import { ProductType } from "@/features/products/types/product.types";
 import ProductCardGrid from "./ProductCardGrid";
 
 import "swiper/css";
@@ -15,7 +15,7 @@ import Link from "next/link";
 
 interface ProductSliderProps {
   title: string;
-  products: Product[];
+  products: ProductType[];
   link: string;
 }
 
