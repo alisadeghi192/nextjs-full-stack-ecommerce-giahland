@@ -4,21 +4,37 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { MdKeyboardArrowLeft, MdOutlineHome } from "react-icons/md";
 
-export default function Breadcrumb() {
+interface BreadcrumbProps {
+  title?: string;
+}
+
+export default function Breadcrumb({ title }: BreadcrumbProps) {
   const nameMap: Record<string, string> = {
     products: "محصولات",
-    "plant-doctor" : "گیاه پزشک",
-    blogs : "مقاله ها"
+    "plant-doctor": "گیاه پزشک",
+    blogs: "مجله گیاه لند",
+    intro: "معرفی",
+    care: "نگهداری",
+    health: "آفت‌ها و بیماری‌ها",
   };
-
   const pathname = usePathname();
   const segments = pathname.split("/").filter(Boolean);
 
+  const getDisplayName = (segment: string, isLast: boolean) => {
+    if (isLast && title) {
+      return title;
+    }
+    if (isLast && (segment.includes("-") || segment.length > 25)) {
+      return "مشاهده";
+    }
+    return nameMap[segment] || segment;
+  };
+
   return (
-    <nav className="max-xs:mb-7 mt-6 mb-8 flex items-center max-lg:mt-4 max-lg:mb-4 max-md:mt-7 max-sm:mt-5">
+    <nav className="max-xs:mb-7 mt-6 mb-8 flex flex-wrap items-center gap-y-2 max-lg:mt-4 max-lg:mb-4 max-md:mt-7 max-sm:mt-5">
       <Link
         href="/"
-        className="text-primary hover:text-shade2 max-xs:text-sm flex items-center gap-x-1 text-lg/8 font-normal transition-colors max-md:text-base/6.25"
+        className="text-primary hover:text-shade2 max-xs:text-xs flex items-center gap-x-1 text-lg/8 font-normal transition-colors max-md:text-base/6.25"
       >
         <MdOutlineHome className="max-xs:size-4 size-6 max-md:size-5" />
         خانه
@@ -32,12 +48,15 @@ export default function Breadcrumb() {
           <div key={href} className="flex items-center gap-x-1">
             <MdKeyboardArrowLeft className="max-xs:size-4 text-neutral9 mr-1 size-6 max-md:size-5" />
             {isLast ? (
-              <span className="text-neutral9 max-xs:text-sm text-lg/8 font-normal max-md:text-base/6.25">
-                {nameMap[segment] || segment}
+              <span className="text-neutral9 max-xs:text-xs text-lg/8 font-normal max-md:text-base/6.25">
+                {getDisplayName(segment, true)}
               </span>
             ) : (
-              <Link href={href} className="hover:text-shade2 transition-colors">
-                {nameMap[segment] || segment}
+              <Link
+                href={href}
+                className="hover:text-shade2 text-primary max-xs:text-xs text-lg/8 font-normal transition-colors max-md:text-base/6.25"
+              >
+                {getDisplayName(segment, false)}
               </Link>
             )}
           </div>
