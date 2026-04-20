@@ -5,9 +5,9 @@ import { usePageParams } from "@/lib/hooks/usePageParams";
 
 const blogTabs = [
   { id: "all", label: "همه" },
-  { id: "care", label: "آموزش" },
-  { id: "health", label: "سلامت" },
-  { id: "propagation", label: "تکثیر و قلمه" },
+  { id: "intro", label: "معرفی" },
+  { id: "care", label: "نگهداری" },
+  { id: "health", label: "آفت‌ها و بیماری‌ها" },
 ];
 
 const blogSortOptions = [
