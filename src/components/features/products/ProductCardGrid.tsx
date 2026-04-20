@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Product } from "@/features/products/types/product.types";
 import LikeButton from "./LikeButton";
 import AddToCartButton from "./AddToCartButton";
 import PriceSection from "./PriceSection";
@@ -7,6 +6,21 @@ import ProductInfo from "./ProductInfo";
 import StockStatus from "./StockStatus";
 import DiscountBadge from "./DiscountBadge";
 import ProductImage from "./ProductImage";
+
+interface ProductCardGridProps {
+  name: string;
+  price: number;
+  image: string;
+  slug: string;
+  discount: number;
+  potDimensions: {
+    length: number;
+    width: number;
+    height: number;
+  };
+  stock: number;
+}
+
 
 export default function ProductCardGrid({
   name,
@@ -16,7 +30,7 @@ export default function ProductCardGrid({
   discount,
   potDimensions,
   stock,
-}: Product) {
+}: ProductCardGridProps) {
   const isOutOfStock = stock === 0;
   const hasDiscount = discount > 0;
 
