@@ -1,4 +1,4 @@
-export interface BlogPost {
+export interface BlogPostType {
   id: number;
   title: string;
   coverImage: string;
@@ -6,7 +6,7 @@ export interface BlogPost {
   date: Date;
   excerpt: string;
   author: string;
-  category: "care" | "health" | "propagation";
+  category: "care" | "health" | "intro";
   views: number;
   publishedAt: Date;
 }
