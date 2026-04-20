@@ -5,7 +5,6 @@ import ProductsGrid from "@/components/features/products/ProductsGrid";
 import Pagination from "@/components/shared/ui/pagination";
 import {
   getAllProducts,
-  filterByCategory,
   sortProducts,
   paginateProducts,
   filterProductsByTab
