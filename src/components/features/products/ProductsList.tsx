@@ -1,8 +1,8 @@
 import ProductCardList from "./ProductCardList";
-import { Product } from "@/features/products/types/product.types";
+import { ProductType } from "@/features/products/types/product.types";
 
 interface ProductsListProps {
-  products: Product[];
+  products: ProductType[];
 }
 
 export default function ProductsList({ products }: ProductsListProps) {
