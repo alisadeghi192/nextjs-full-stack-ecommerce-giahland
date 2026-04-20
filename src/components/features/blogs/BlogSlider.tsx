@@ -6,17 +6,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperType } from "swiper";
 import { Autoplay, Navigation } from "swiper/modules";
 import BlogCard from "./BlogCard";
+import { BlogPostType } from "@/features/blogs/types/blog.types";
 
 import "swiper/css";
 
-interface BlogPost {
-  title: string;
-  coverImage: string;
-  slug?: string;
-}
-
 interface BlogSliderProps {
-  posts: BlogPost[];
+  posts: BlogPostType[];
   title?: string;
   link: string;
 }
