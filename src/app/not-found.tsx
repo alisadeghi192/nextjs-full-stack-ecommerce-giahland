@@ -22,7 +22,7 @@ export default function NotFound() {
           </p>
           <Link
             href="/"
-            className="bg-primary text-WHITE mx-auto mt-5 flex w-9/10 flex-1 cursor-pointer items-center justify-center rounded-xl py-3"
+            className="bg-primary text-WHITE mx-auto mt-5 flex w-9/10 flex-1 cursor-pointer items-center justify-center rounded-xl py-3 transition-colors hover:bg-shade2"
           >
             <span className="text-lg/8 max-md:text-sm max-md:font-medium">
               بازگشت به صفحه اصلی

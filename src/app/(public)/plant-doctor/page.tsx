@@ -20,7 +20,7 @@ export default function PlantDoctorPage() {
               گیاه پزشک آنلاین
             </h1>
             <p className="mt-4 mb-6 text-lg/8">عکس بفرست ، نسخه بگیر</p>
-            <button className="text-WHITE bg-primary m-auto flex h-10 w-34 cursor-pointer items-center justify-center rounded-lg">
+            <button className="text-WHITE bg-primary m-auto flex h-10 w-34 cursor-pointer items-center justify-center rounded-lg transition-colors hover:bg-shade2">
               مشاره با پزشک
             </button>
           </div>
@@ -83,7 +83,7 @@ export default function PlantDoctorPage() {
             آگلونما و...) و شرایط محیطی (نور، خاک، دما و رطوبت)، علت را شناسایی
             کرده و نسخه درمانی متناسب ارائه می‌کند.
           </p>
-          <button className="text-WHITE bg-primary max-xs:mt-8 max-xs:w-full m-auto mt-10 flex h-10 w-52.5 cursor-pointer items-center justify-center rounded-lg">
+          <button className="text-WHITE bg-primary max-xs:mt-8 max-xs:w-full m-auto mt-10 flex h-10 w-52.5 cursor-pointer items-center justify-center rounded-lg transition-colors hover:bg-shade2">
             شروع مشاوره
           </button>
         </div>

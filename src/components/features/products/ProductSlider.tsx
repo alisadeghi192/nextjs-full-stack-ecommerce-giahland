@@ -29,7 +29,7 @@ export default function ProductSlider({
   return (
     <section className="relative mt-16 max-sm:mt-10">
       <Link href={link}>
-        <h4 className="text-primary mb-6 text-2xl/8.5 font-bold max-sm:text-xl/7 max-sm:font-semibold">
+        <h4 className="text-primary hover:text-shade2 mb-6 text-2xl/8.5 font-bold transition-colors max-sm:text-xl/7 max-sm:font-semibold">
           {title}
         </h4>
       </Link>
