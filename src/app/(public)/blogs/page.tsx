@@ -19,7 +19,7 @@ export default async function BlogsPage({ searchParams }: BlogsPageProps) {
   const activeTab = (params.category as string) || "all";
   const selectedSort = (params.sort as string) || "newest";
   const currentPage = Number(params.page) || 1;
-  const pageSize = 12; 
+  const pageSize = 12;
 
   const allPosts = getAllPosts();
 
@@ -38,7 +38,7 @@ export default async function BlogsPage({ searchParams }: BlogsPageProps) {
       <section>
         <BlogsHeader />
 
-        <div className="grid grid-cols-4 gap-6 max-xs:grid-cols-1 max-xl:grid-cols-4 max-lg:grid-cols-3 max-md:grid-cols-2 max-md:gap-4">
+        <div className="max-xs:grid-cols-1 grid grid-cols-4 gap-6 max-xl:grid-cols-4 max-lg:grid-cols-3 max-md:grid-cols-2 max-md:gap-4">
           {paginatedPosts.map((post) => (
             <BlogCard key={post.id} {...post} />
           ))}
