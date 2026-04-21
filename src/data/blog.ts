@@ -1,4 +1,4 @@
-import { BlogPostType } from "@/features/blogs/types/blog.types";
+import { BlogPostType } from "@/features/blog/types/blog.types";
 
   // ==================== دسته care ====================
 

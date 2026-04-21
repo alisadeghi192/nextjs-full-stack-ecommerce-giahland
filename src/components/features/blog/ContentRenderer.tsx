@@ -1,5 +1,5 @@
 import Image from "next/image";
-import type { ContentBlock } from "@/features/blogs/types/blog.types";
+import type { ContentBlock } from "@/features/blog/types/blog.types";
 
 export default function ContentRenderer({ content }: { content: ContentBlock[] }) {
   const renderBlock = (block: ContentBlock, index: number) => {

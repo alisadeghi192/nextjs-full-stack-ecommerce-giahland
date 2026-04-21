@@ -1,19 +1,19 @@
 import Breadcrumb from "@/components/shared/ui/Breadcrumb";
-import BlogsHeader from "@/components/features/blogs/BlogsHeader";
-import BlogCard from "@/components/features/blogs/BlogCard";
+import BlogHeader from "@/components/features/blog/BlogHeader";
+import BlogCard from "@/components/features/blog/BlogCard";
 import Pagination from "@/components/shared/ui/pagination";
 import {
   getAllPosts,
   filterPostsByCategory,
   sortPosts,
   paginatePosts,
-} from "@/features/blogs/utils/blogHelpers";
+} from "@/features/blog/utils/blogHelpers";
 
-interface BlogsPageProps {
+interface BlogPageProps {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
-export default async function BlogsPage({ searchParams }: BlogsPageProps) {
+export default async function BlogPage({ searchParams }: BlogPageProps) {
   const params = await searchParams;
 
   const activeTab = (params.category as string) || "all";
@@ -36,7 +36,7 @@ export default async function BlogsPage({ searchParams }: BlogsPageProps) {
     <main className="container">
       <Breadcrumb />
       <section>
-        <BlogsHeader />
+        <BlogHeader />
 
         <div className="max-xs:grid-cols-1 grid grid-cols-4 gap-6 max-xl:grid-cols-4 max-lg:grid-cols-3 max-md:grid-cols-2 max-md:gap-4">
           {paginatedPosts.map((post) => (

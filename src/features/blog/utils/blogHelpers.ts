@@ -1,16 +1,16 @@
-import { blogPosts } from "@/data/blogs";
-import { BlogPost } from "../types/blog.types";
+import { blogPosts } from "@/data/blog";
+import { BlogPostType } from "../types/blog.types";
 
-export const getAllPosts = (): BlogPost[] => {
+export const getAllPosts = (): BlogPostType[] => {
   return blogPosts;
 };
 
-export const filterPostsByCategory = (posts: BlogPost[], category: string) => {
+export const filterPostsByCategory = (posts: BlogPostType[], category: string) => {
   if (category === "all") return posts;
   return posts.filter((post) => post.category === category);
 };
 
-export const sortPosts = (posts: BlogPost[], sortBy: string) => {
+export const sortPosts = (posts: BlogPostType[], sortBy: string) => {
   switch (sortBy) {
     case "newest":
       return [...posts].sort(
@@ -28,7 +28,7 @@ export const sortPosts = (posts: BlogPost[], sortBy: string) => {
 };
 
 export const paginatePosts = (
-  posts: BlogPost[],
+  posts: BlogPostType[],
   page: number,
   pageSize: number = 12
 ) => {
@@ -37,13 +37,13 @@ export const paginatePosts = (
 };
 
 
-export const getLatestPosts = (count: number = 5): BlogPost[] => {
+export const getLatestPosts = (count: number = 5): BlogPostType[] => {
   return [...blogPosts]
     .sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime())
     .slice(0, count);
 };
 
-export const getMostViewedPosts = (count: number = 5): BlogPost[] => {
+export const getMostViewedPosts = (count: number = 5): BlogPostType[] => {
   return [...blogPosts]
     .sort((a, b) => b.views - a.views)
     .slice(0, count);

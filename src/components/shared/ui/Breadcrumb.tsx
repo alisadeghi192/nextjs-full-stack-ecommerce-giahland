@@ -12,7 +12,7 @@ export default function Breadcrumb({ title }: BreadcrumbProps) {
   const nameMap: Record<string, string> = {
     products: "محصولات",
     "plant-doctor": "گیاه پزشک",
-    blogs: "مجله گیاه لند",
+    blog: "مجله گیاه لند",
     intro: "معرفی",
     care: "نگهداری",
     health: "آفت‌ها و بیماری‌ها",

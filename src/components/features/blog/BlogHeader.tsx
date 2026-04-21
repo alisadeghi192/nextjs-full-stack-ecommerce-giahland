@@ -16,7 +16,7 @@ const blogSortOptions = [
   { value: "most_viewed", label: "پربازدیدترین" },
 ];
 
-export default function BlogsHeader() {
+export default function BlogHeader() {
   const { activeTab, selectedSort } = usePageParams();
 
   return (

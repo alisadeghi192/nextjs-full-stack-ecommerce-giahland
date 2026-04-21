@@ -23,7 +23,7 @@ export default function BlogCard({
   return (
     <>
       <div className="text-WHITE justify-self-center overflow-hidden rounded-xl">
-        <Link href={`/blogs/${category}/${slug}`}>
+        <Link href={`/blog/${category}/${slug}`}>
           <div
             className="max-xs:h-80 relative flex h-94.5 max-w-72 flex-col justify-between overflow-hidden rounded-xl bg-cover bg-center p-4"
             style={{ backgroundImage: `url(${coverImage})` }}

@@ -1,4 +1,4 @@
-import { blogPosts } from "@/data/blogs";
+import { blogPosts } from "@/data/blog";
 import { notFound } from "next/navigation";
 import Breadcrumb from "@/components/shared/ui/Breadcrumb";
 import {
@@ -7,7 +7,7 @@ import {
   MdOutlineRemoveRedEye,
 } from "react-icons/md";
 import Image from "next/image";
-import ContentRenderer from "@/components/features/blogs/ContentRenderer";
+import ContentRenderer from "@/components/features/blog/ContentRenderer";
 import { formatDate, toPersianNumber } from "@/lib/utils/format";
 
 interface BlogPostPageProps {
