@@ -10,3 +10,15 @@ export const formatDimensions = (dimensions: Dimensions): string => {
   const height = dimensions.height.toLocaleString("fa-IR");
   return `${height} × ${width} × ${length}`;
 };
+
+export const formatPrice = (price: number, unit: boolean = true): string => {
+  return `${price.toLocaleString("fa-IR")} ${unit ? "تومان" : ""}`;
+};
+
+export const toPersianNumber = (num: number): string => {
+  return num.toLocaleString("fa-IR");
+};
+
+export const formatDate = (date: Date): string => {
+  return date.toLocaleDateString("fa-IR")
+};
