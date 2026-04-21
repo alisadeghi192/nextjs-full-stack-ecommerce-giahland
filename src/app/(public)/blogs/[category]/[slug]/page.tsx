@@ -7,87 +7,14 @@ import {
   MdOutlineRemoveRedEye,
 } from "react-icons/md";
 import Image from "next/image";
-import type { ContentBlock } from "@/features/blogs/types/blog.types";
+import ContentRenderer from "@/components/features/blogs/ContentRenderer";
+import { formatDate, toPersianNumber } from "@/lib/utils/format";
 
 interface BlogPostPageProps {
   params: {
     category: string;
     slug: string;
   };
-}
-
-import React from "react";
-
-function renderContentBlock(block: ContentBlock, index: number) {
-  switch (block.type) {
-    case "paragraph":
-      return (
-        <p
-          key={index}
-          className="text-neutral10 max-xs:text-sm/6.25 mb-10 text-justify leading-7.25 max-sm:mb-6"
-        >
-          {block.data.text}
-        </p>
-      );
-
-    case "image":
-      return (
-        <figure key={index} className="my-8">
-          <div className="relative aspect-video w-full">
-            <Image
-              src={block.data.src}
-              alt={block.data.alt}
-              fill
-              className="rounded-lg object-cover"
-            />
-          </div>
-          {block.data.caption && (
-            <figcaption className="text-neutral8 mt-3 text-center text-sm italic">
-              {block.data.caption}
-            </figcaption>
-          )}
-        </figure>
-      );
-
-    case "heading":
-      const level = block.data.level || 2;
-      const HeadingTag = `h${level}` as `h${1 | 2 | 3 | 4 | 5 | 6}`;
-      return (
-        <HeadingTag
-          key={index}
-          className="text-neutral12 max-xs:mt-7 max-xs:text-base mt-10 mb-4 text-xl font-semibold max-sm:text-lg"
-        >
-          {block.data.text}
-        </HeadingTag>
-      );
-
-    case "bulletList":
-      return (
-        <ul
-          key={index}
-          className="text-neutral10 max-xs:text-sm/6.25 mr-6 mb-4 list-disc space-y-2"
-        >
-          {block.data.items.map((item, i) => (
-            <li key={i}>{item}</li>
-          ))}
-        </ul>
-      );
-
-    case "orderedList":
-      return (
-        <ol
-          key={index}
-          className="text-neutral10 max-xs:text-sm/6.25 mr-6 mb-4 list-decimal space-y-2"
-        >
-          {block.data.items.map((item, i) => (
-            <li key={i}>{item}</li>
-          ))}
-        </ol>
-      );
-
-    default:
-      return null;
-  }
 }
 
 export default function BlogPostPage({ params }: BlogPostPageProps) {
@@ -112,7 +39,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
           <div className="mr-auto flex items-center justify-center gap-x-0.5">
             <MdOutlineRemoveRedEye className="text-neutral9 size-5" />
             <span className="text-neutral9 text-sm">
-              تعداد بازدید: {post.views}
+              تعداد بازدید: {toPersianNumber(post.views)}
             </span>
           </div>
         </div>
@@ -133,16 +60,12 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
             </span>
             <span className="flex items-center justify-between gap-1">
               <MdOutlineCalendarMonth className="size-5" />{" "}
-              {new Date(post.publishedAt).toLocaleDateString("fa-IR")}
+              {formatDate(new Date(post.publishedAt))}
             </span>
           </div>
         </div>
 
-        <div className="mt-10">
-          {post.content?.map((block, index) =>
-            renderContentBlock(block, index),
-          )}
-        </div>
+        <ContentRenderer content={post.content || []} />
       </div>
     </main>
   );
