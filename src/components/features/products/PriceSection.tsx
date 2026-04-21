@@ -1,5 +1,5 @@
 "use client";
-import { formatPrice } from "@/lib/utils/formatPrice";
+import { formatPrice } from "@/lib/utils/format";
 import { getDiscountedPrice } from "@/features/products/utils/productHelpers";
 
 interface PriceSectionProps {

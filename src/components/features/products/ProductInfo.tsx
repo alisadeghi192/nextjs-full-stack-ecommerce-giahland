@@ -1,4 +1,4 @@
-import { formatDimensions } from "@/lib/utils/formatDimensions";
+import { formatDimensions } from "@/lib/utils/format";
 
 interface ProductInfoProps {
   name: string;
