@@ -4,7 +4,11 @@ import { useRef } from "react";
 import type { Swiper as SwiperType } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
-import { MdNavigateBefore, MdOutlineNavigateNext } from "react-icons/md";
+import {
+  MdKeyboardArrowLeft,
+  MdNavigateBefore,
+  MdOutlineNavigateNext,
+} from "react-icons/md";
 import { ProductType } from "@/features/products/types/product.types";
 import ProductCardGrid from "./ProductCardGrid";
 
@@ -28,11 +32,21 @@ export default function ProductSlider({
 
   return (
     <section className="relative mt-16 max-sm:mt-10">
-      <Link href={link}>
-        <h4 className="text-primary hover:text-shade2 mb-6 text-2xl/8.5 font-bold transition-colors max-sm:text-xl/7 max-sm:font-semibold">
+     <div className="flex items-center justify-between">
+        <h4 className="text-primary mb-6 text-2xl/8.5 font-bold max-sm:text-xl/7 max-sm:font-semibold">
           {title}
         </h4>
-      </Link>
+        <Link
+          href={link}
+          className="text-primary hover:text-shade2 mb-6 text-xl font-semibold transition-colors max-sm:text-base"
+        >
+          <div className="flex items-center justify-center">
+            <h4 className="">مشاهده همه</h4>
+            <MdKeyboardArrowLeft className="size-5" />
+          </div>
+        </Link>
+      </div>
+
       <div className="relative">
         <Swiper
           onBeforeInit={(swiper) => {
