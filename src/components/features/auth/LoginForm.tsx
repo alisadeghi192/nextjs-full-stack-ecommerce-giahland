@@ -1,7 +1,7 @@
 "use client";
 
-import FormField from "./FormField";
-import PasswordField from "./PasswordField";
+import FormField from "../../shared/ui/FormField";
+import PasswordField from "../../shared/ui/PasswordField";
 import { MdOutlineMobileFriendly } from "react-icons/md";
 
 interface LoginFormProps {
@@ -20,12 +20,10 @@ export default function LoginForm({ onToggle }: LoginFormProps) {
             icon={<MdOutlineMobileFriendly size={22} />}
             type="text"
             name="login-phone"
-            id="login-phone"
             label="شماره موبایل"
           />
           <PasswordField
             name="login-password"
-            id="login-password"
             label="رمز عبور"
           />
           <p className="text-primary -mt-2 text-sm max-sm:-mt-1">

@@ -1,7 +1,7 @@
 "use client";
 
-import FormField from "./FormField";
-import PasswordField from "./PasswordField";
+import FormField from "../../shared/ui/FormField";
+import PasswordField from "../../shared/ui/PasswordField";
 import { MdMailOutline, MdOutlineMobileFriendly } from "react-icons/md";
 
 interface RegisterFormProps {
@@ -20,24 +20,20 @@ export default function RegisterForm({ onToggle }: RegisterFormProps) {
             icon={<MdOutlineMobileFriendly size={22} />}
             type="text"
             name="register-phone"
-            id="register-phone"
             label="شماره موبایل"
           />
           <FormField
             icon={<MdMailOutline size={22} />}
             type="email"
             name="email"
-            id="email"
             label="ایمیل"
           />
           <PasswordField
             name="register-password"
-            id="register-password"
             label="رمز عبور"
           />
           <PasswordField
             name="confirm-password"
-            id="confirm-password"
             label="تکرار رمز عبور"
           />
           <button
