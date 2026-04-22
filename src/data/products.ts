@@ -1,6 +1,6 @@
-import { Product } from "@/features/products/types/product.types";
+import {  ProductType } from "@/features/products/types/product.types";
 
-export const fakeProducts: Product[] = [
+export const fakeProducts: ProductType[] = [
   // indoor - 20 محصول
   {
     id: "indoor-1",

@@ -1,8 +1,8 @@
 import { fakeProducts } from "@/data/products";
-import { Product } from "../types/product.types";
+import { ProductType } from "../types/product.types";
 
 export const getLatestProducts = (
-  products: Product[],
+  products: ProductType[],
   category: string,
   count: number = 8,
 ) => {
@@ -12,20 +12,20 @@ export const getLatestProducts = (
     .slice(0, count);
 };
 
-export const getAllProducts = (): Product[] => {
+export const getAllProducts = (): ProductType[] => {
   return fakeProducts;
 };
 
-export const filterByCategory = (products: Product[], category: string) => {
+export const filterByCategory = (products: ProductType[], category: string) => {
   return products.filter((p) => p.category === category);
 };
-export const filterProductsByTab = (products: Product[], tab: string) => {
+export const filterProductsByTab = (products: ProductType[], tab: string) => {
   if (tab === "all") return products;
   if (tab === "discounted") return products.filter((p) => p.discount > 0);
   return filterByCategory(products, tab); 
 };
 
-export const sortProducts = (products: Product[], sortBy: string) => {
+export const sortProducts = (products: ProductType[], sortBy: string) => {
   switch (sortBy) {
     case "price_asc":
       return [...products].sort((a, b) => a.price - b.price);
@@ -43,7 +43,7 @@ export const sortProducts = (products: Product[], sortBy: string) => {
 };
 
 export const paginateProducts = (
-  products: Product[],
+  products: ProductType[],
   page: number,
   pageSize: number = 12,
 ) => {
