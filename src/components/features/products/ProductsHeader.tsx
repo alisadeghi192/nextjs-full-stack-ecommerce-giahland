@@ -24,14 +24,14 @@ export default function ProductsHeader() {
 
   return (
     <div className="mb-6">
-      <div className="flex items-center justify-between max-lg:flex-col-reverse max-lg:gap-y-6">
+      <div className="flex items-center justify-between max-lg:flex-col-reverse max-lg:gap-y-6 ">
         <Tabs
           tabs={productTabs}
           activeTab={activeTab}
           currentSort={selectedSort}
           currentView={viewMode}
         />
-        <div className="flex items-center gap-x-4 max-sm:gap-x-2.5">
+        <div className="flex items-center gap-x-4  max-xs:w-full max-xs:justify-between">
           <ViewToggleWrapper />
           <SortDropdownWrapper options={productSortOptions} />
         </div>
