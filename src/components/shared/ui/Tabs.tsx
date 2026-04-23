@@ -24,7 +24,7 @@ export default function Tabs({
         <Link
           key={tab.id}
           href={`?category=${tab.id}&sort=${currentSort}${currentView ? `&view=${currentView}` : ""}`}
-          className={`border-neutral5 cursor-pointer border-b p-3 text-2xl/6 transition-all  max-sm:p-2 max-sm:text-xl max-xs:text-lg ${
+          className={`border-neutral5 cursor-pointer border-b p-3 text-xl/6 transition-all  max-sm:p-2  max-xs:text-lg ${
             activeTab === tab.id
               ? "text-primary border-primary border-b-2 font-bold"
               : "text-neutral9 hover:text-primary"
