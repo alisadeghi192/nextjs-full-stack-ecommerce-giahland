@@ -71,7 +71,7 @@ export default function ProductCardGrid({
       )}
       {!isOutOfStock && (
         <LikeButton
-          className="bg-bg-error absolute top-4 -left-9 flex size-8 cursor-pointer items-center justify-center rounded-full transition-all group-hover:left-4 max-md:left-4!"
+          className="max-md:left-4!"
           mobileResponsive={false}
         />
       )}
