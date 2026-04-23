@@ -15,9 +15,13 @@ import MobileMenu from "../../shared/ui/MobileMenu";
 import { useScroll } from "@/lib/hooks/useScroll";
 import Link from "next/link";
 
-const isUserLogin = true;
+const isUserLogin = false;
 
-const PublicHeader = () => {
+interface PublicHeaderProps {
+  hasSearchInput?: boolean;
+}
+
+const PublicHeader = ({ hasSearchInput = true }: PublicHeaderProps) => {
   const isScrolled = useScroll(80);
   return (
     <header className="sticky top-0 right-0 left-0 z-20 h-24">
@@ -95,7 +99,7 @@ const PublicHeader = () => {
                   alt="user profile"
                   width={48}
                   height={48}
-                  className="rounded-full max-md:size-10  max-sm:size-8"
+                  className="rounded-full max-md:size-10 max-sm:size-8"
                 ></Image>
               ) : (
                 <Link href="/login-register">
@@ -105,7 +109,7 @@ const PublicHeader = () => {
             </div>
           </div>
           {/* search input */}
-          <SearchBox />
+          {hasSearchInput && <SearchBox />}
         </div>
       </nav>
     </header>
