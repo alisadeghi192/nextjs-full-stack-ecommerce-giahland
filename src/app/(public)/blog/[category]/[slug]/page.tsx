@@ -40,6 +40,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
           publishedAt={post.publishedAt}
         />
         <ContentRenderer content={post.content || []} />
+
         <div className="border-neutral3 mb-4 flex flex-col space-y-4 rounded-xl border p-6">
           <h3 className="font-bold">دیدگاه خود را ثبت کنید.</h3>
           <form className="space-y-4">
@@ -71,40 +72,101 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
             </button>
           </form>
         </div>
-        <div className="bg-neutral2 relative flex flex-col space-y-6 rounded-xl p-6">
-          <div className="flex items-start gap-x-2">
-            <div className="shrink-0">
-              <Image
-                src="/images/default-user.jpg"
-                alt="user profile"
-                width={44}
-                height={44}
-                className="size-11 rounded-full"
-              ></Image>
+
+        <div className="bg-neutral2 flex flex-col space-y-4 rounded-xl p-6 mb-4 ">
+          <div className="flex flex-col">
+            <div className="border-neutral5 flex items-center gap-x-2 border-b pb-2">
+              <div className="shrink-0">
+                <Image
+                  src="/images/default-user.jpg"
+                  alt="user profile"
+                  width={44}
+                  height={44}
+                  className="size-11 rounded-full"
+                ></Image>
+              </div>
+              <div className="flex flex-col gap-y-2">
+                <div className="flex items-center gap-x-2.5">
+                  <span className="text-neutral10 text-sm/5 font-bold">
+                    علی صادقی
+                  </span>
+                  <span className="bg-neutral3 text-neutral9 h-5 rounded-md px-1 text-xs/5 font-medium">
+                    کاربر
+                  </span>
+                </div>
+                <span className="text-neutral8 text-xs">(1405/12/25)</span>
+              </div>
             </div>
-            <div className="flex flex-col gap-y-2">
-              <span className="text-neutral10 text-sm/5 font-bold">
-                علی صادقی
-              </span>
-              <p className="text-neutral9 leading-5">
+            <p className="text-neutral9 pt-2 leading-5">
+              لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
+              استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در
+              ستون و سطر آنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز
+            </p>
+          </div>
+
+          <div className="bg-primary/10 flex flex-col rounded-xl p-6">
+            <div className="flex flex-col">
+              <div className="border-neutral5 flex items-center gap-x-2 border-b pb-2">
+                <div className="shrink-0">
+                  <Image
+                    src="/images/default-user.jpg"
+                    alt="user profile"
+                    width={44}
+                    height={44}
+                    className="size-11 rounded-full"
+                  ></Image>
+                </div>
+                <div className="flex flex-col gap-y-2">
+                  <div className="flex items-center gap-x-2.5">
+                    <span className="text-neutral10 text-sm/5 font-bold">
+                      علی صادقی
+                    </span>
+                    <span className="bg-neutral3 text-neutral9 h-5 rounded-md px-1 text-xs/5 font-medium">
+                      کاربر
+                    </span>
+                  </div>
+                  <span className="text-neutral8 text-xs">(1405/12/25)</span>
+                </div>
+              </div>
+              <p className="text-neutral9 pt-2 leading-5">
                 لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
                 استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله
                 در ستون و سطر آنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد
                 نیاز
               </p>
             </div>
-            {/* <div className="absolute -bottom-6 right-20 w-10 h-0.5 bg-BLACK"></div> */}
-            <div className="flex flex-col gap-y-2">
-              <span className="text-neutral10 text-sm/5 font-bold">
-                علی صادقی
-              </span>
-              <p className="text-neutral9 leading-5">
-                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله
-                در ستون و سطر آنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد
-                نیاز
-              </p>
+          </div>
+        </div>
+
+        <div className="bg-neutral2 flex flex-col space-y-4 rounded-xl p-6 mb-4 ">
+          <div className="flex flex-col">
+            <div className="border-neutral5 flex items-center gap-x-2 border-b pb-2">
+              <div className="shrink-0">
+                <Image
+                  src="/images/default-user.jpg"
+                  alt="user profile"
+                  width={44}
+                  height={44}
+                  className="size-11 rounded-full"
+                ></Image>
+              </div>
+              <div className="flex flex-col gap-y-2">
+                <div className="flex items-center gap-x-2.5">
+                  <span className="text-neutral10 text-sm/5 font-bold">
+                    علی صادقی
+                  </span>
+                  <span className="bg-neutral3 text-neutral9 h-5 rounded-md px-1 text-xs/5 font-medium">
+                    کاربر
+                  </span>
+                </div>
+                <span className="text-neutral8 text-xs">(1405/12/25)</span>
+              </div>
             </div>
+            <p className="text-neutral9 pt-2 leading-5">
+              لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
+              استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در
+              ستون و سطر آنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز
+            </p>
           </div>
         </div>
       </div>
