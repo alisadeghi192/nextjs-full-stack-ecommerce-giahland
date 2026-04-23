@@ -6,7 +6,7 @@ export default function AuthPage() {
   return (
     <main className="relative flex h-dvh items-center max-sm:flex-col-reverse">
       <div className="absolute top-0 right-0 left-0 sm:hidden">
-        <PublicHeader />
+        <PublicHeader hasSearchInput={false} />
       </div>
       <AuthToggle />
       <div className="relative h-screen w-1/2 max-lg:w-1/3 max-sm:h-3/8 max-sm:w-full">
