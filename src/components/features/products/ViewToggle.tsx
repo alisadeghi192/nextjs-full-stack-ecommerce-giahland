@@ -24,7 +24,7 @@ export default function ViewToggle({
       </button>
       <button
         onClick={() => onViewChange("list")}
-        className={`max-sm:size10 border-neutral5 flex size-12 cursor-pointer items-center justify-center rounded-xl border transition-all max-md:size-11 ${
+        className={`max-sm:size10 border-neutral5 flex size-12 cursor-pointer items-center justify-center rounded-xl border transition-all max-md:size-11 max-sm:size-10 ${
           viewMode === "list"
             ? "bg-primary text-white"
             : "bg-neutral2 text-primary"
