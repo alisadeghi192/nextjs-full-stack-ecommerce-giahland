@@ -1,11 +1,17 @@
 import Image from "next/image";
+import { formatDate } from "@/lib/utils/format";
 
 interface CommentItemProps {
   name: string;
   role: "admin" | "user" | "plant-doctor";
-  date: string;
+  date: Date;
   text: string;
-  isReply?: boolean;
+  reply?: {
+    name: string;
+    role: "admin" | "user" | "plant-doctor";
+    date: Date;
+    text: string;
+  };
 }
 
 const roleConfig = {
@@ -14,9 +20,9 @@ const roleConfig = {
   "plant-doctor": { label: "گیاه پزشک", className: "bg-blue-50 text-blue-600" },
 };
 
-export default function CommentItem({ name, role, date, text, isReply = false }: CommentItemProps) {
+export default function CommentItem({ name, role, date, text, reply }: CommentItemProps) {
   return (
-    <div className={`flex flex-col ${isReply ? "bg-primary/10 rounded-xl p-6" : "bg-neutral2 rounded-xl p-6"} `}>
+    <div className="bg-neutral2 flex flex-col rounded-xl p-6">
       <div className="flex flex-col">
         <div className="border-neutral5 flex items-center gap-x-2 border-b pb-2">
           <div className="shrink-0">
@@ -35,11 +41,39 @@ export default function CommentItem({ name, role, date, text, isReply = false }:
                 {roleConfig[role].label}
               </span>
             </div>
-            <span className="text-neutral8 text-xs">{date}</span>
+            <span className="text-neutral8 text-xs">{formatDate(date)}</span>
           </div>
         </div>
         <p className="text-neutral9 pt-2 leading-5">{text}</p>
       </div>
+
+      {reply && (
+        <div className="bg-primary/10 mt-4 flex flex-col rounded-xl p-6">
+          <div className="flex flex-col">
+            <div className="border-neutral5 flex items-center gap-x-2 border-b pb-2">
+              <div className="shrink-0">
+                <Image
+                  src="/images/default-user.jpg"
+                  alt="user profile"
+                  width={44}
+                  height={44}
+                  className="size-11 rounded-full"
+                />
+              </div>
+              <div className="flex flex-col gap-y-2">
+                <div className="flex items-center gap-x-2.5">
+                  <span className="text-neutral10 text-sm/5 font-bold">{reply.name}</span>
+                  <span className={`h-5 rounded-md px-1 text-xs/5 font-medium ${roleConfig[reply.role].className}`}>
+                    {roleConfig[reply.role].label}
+                  </span>
+                </div>
+                <span className="text-neutral8 text-xs">{formatDate(reply.date)}</span>
+              </div>
+            </div>
+            <p className="text-neutral9 pt-2 leading-5">{reply.text}</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

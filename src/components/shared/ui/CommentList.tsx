@@ -1,9 +1,8 @@
-import { formatDate } from "@/lib/utils/format";
 import CommentItem from "./CommentItem";
 import { Comment } from "@/features/blog/types/blog.types";
 
 interface CommentListProps {
-  comments: Comment[];
+  comments?: Comment[];
 }
 
 export default function CommentList({ comments }: CommentListProps) {
@@ -18,23 +17,7 @@ export default function CommentList({ comments }: CommentListProps) {
   return (
     <div className="flex flex-col space-y-4">
       {comments.map((comment) => (
-        <div key={comment.id} className="flex flex-col space-y-4">
-          <CommentItem
-            name={comment.name}
-            role={comment.role}
-            date={formatDate(comment.date)}
-            text={comment.text}
-          />
-          {comment.reply && (
-            <CommentItem
-              name={comment.reply.name}
-              role={comment.reply.role}
-              date={formatDate(comment.reply.date)}
-              text={comment.reply.text}
-              isReply={true}
-            />
-          )}
-        </div>
+        <CommentItem key={comment.id} {...comment} />
       ))}
     </div>
   );
