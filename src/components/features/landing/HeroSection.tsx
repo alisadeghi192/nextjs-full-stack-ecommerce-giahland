@@ -10,7 +10,7 @@ const HeroSection = () => {
     <section className="mt-19 flex items-center justify-between max-xl:gap-x-10 max-md:mt-15 max-md:flex-col-reverse">
       <div className="basis-1/2 max-md:mt-10">
         <h1 className="text-BLACK mb-8 text-[40px]/14 font-bold max-lg:mb-4 max-lg:text-3xl max-md:text-center max-md:text-2xl/7 max-md:font-semibold max-sm:text-xl/7">
-          خرید راحت گیاه با،<span className="text-primary">گیاه لند!</span>
+          خرید راحت گیاه با،<span className="text-primary"> گیاه لند!</span>
         </h1>
         <p className="text-neutral11 mb-8 max-w-134.75 text-[20px]/9 max-lg:mb-4 max-lg:text-base max-md:mb-6 max-md:text-center max-md:text-base/6.25 max-sm:text-sm">
           با گیاه لند،آنلاین گیاه خودت رو سفارش بده و از تخفیف های ویژه استفاده
