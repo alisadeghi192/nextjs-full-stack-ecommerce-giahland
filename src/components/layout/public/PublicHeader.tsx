@@ -15,7 +15,7 @@ import MobileMenu from "../../shared/ui/MobileMenu";
 import { useScroll } from "@/lib/hooks/useScroll";
 import Link from "next/link";
 
-const isUserLogin = false;
+const isUserLogin = true;
 
 const PublicHeader = () => {
   const isScrolled = useScroll(80);
@@ -91,11 +91,11 @@ const PublicHeader = () => {
               {/* user/login btn */}
               {isUserLogin ? (
                 <Image
-                  src="/default-user.jpg"
+                  src="/images/default-user.jpg"
                   alt="user profile"
-                  width={32}
-                  height={32}
-                  className="rounded-full sm:size-10"
+                  width={48}
+                  height={48}
+                  className="rounded-full max-md:size-10  max-sm:size-8"
                 ></Image>
               ) : (
                 <Link href="/login-register">
