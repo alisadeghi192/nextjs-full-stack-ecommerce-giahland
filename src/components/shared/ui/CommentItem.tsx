@@ -16,7 +16,7 @@ const roleConfig = {
 
 export default function CommentItem({ name, role, date, text, isReply = false }: CommentItemProps) {
   return (
-    <div className={`flex flex-col ${!isReply && "bg-neutral2 rounded-xl p-6"} ${isReply && "bg-primary/10 rounded-xl p-6"}`}>
+    <div className={`flex flex-col ${isReply ? "bg-primary/10 rounded-xl p-6" : "bg-neutral2 rounded-xl p-6"} `}>
       <div className="flex flex-col">
         <div className="border-neutral5 flex items-center gap-x-2 border-b pb-2">
           <div className="shrink-0">
