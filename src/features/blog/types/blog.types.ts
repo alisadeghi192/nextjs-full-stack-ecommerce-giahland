@@ -35,6 +35,20 @@ export type ContentBlock =
     };
 
 
+export interface Comment {
+  id: number;
+  name: string;
+  role: "admin" | "user" | "plant-doctor";
+  date: Date;
+  text: string;
+  reply?: {
+    name: string;
+    role: "admin" | "user" | "plant-doctor";
+    date: Date;
+    text: string;
+  };
+}
+
 export interface BlogPostType {
   id: number;
   title: string;
@@ -48,4 +62,5 @@ export interface BlogPostType {
   views: number;
   publishedAt: Date;
   content?: ContentBlock[];
+  comments?: Comment[];   
 }
