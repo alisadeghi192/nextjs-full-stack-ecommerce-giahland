@@ -32,10 +32,10 @@ export default function SortDropdown({
   }, [showMenu]);
 
   return (
-    <div className="relative" ref={menuRef}>
+    <div className="relative max-xs:w-full" ref={menuRef}>
       <button
         onClick={() => setShowMenu(!showMenu)}
-        className="bg-neutral2 border-neutral5 text-primary max-xs:text-sm flex h-12 w-36 cursor-pointer items-center justify-center gap-x-2 rounded-xl border max-md:h-11 max-sm:h-10"
+        className="bg-neutral2 border-neutral5 text-primary max-xs:text-sm flex h-12 w-36 max-xs:w-full cursor-pointer items-center justify-center gap-x-2 rounded-xl border max-md:h-11 max-sm:h-10"
       >
         <BsSortDownAlt className="size-6 max-sm:size-5" />
         <span>
