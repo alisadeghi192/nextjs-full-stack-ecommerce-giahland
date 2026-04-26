@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { MdKeyboardArrowLeft, MdOutlineHome } from "react-icons/md";
+import { useEffect, useState } from "react";
 
 interface BreadcrumbProps {
   title?: string;
@@ -17,12 +18,28 @@ export default function Breadcrumb({ title }: BreadcrumbProps) {
     care: "نگهداری",
     health: "آفت‌ها و بیماری‌ها",
   };
+
   const pathname = usePathname();
   const segments = pathname.split("/").filter(Boolean);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  const truncateText = (text: string, maxLength: number) => {
+    if (text.length <= maxLength) return text;
+    return text.slice(0, maxLength) + "...";
+  };
 
   const getDisplayName = (segment: string, isLast: boolean) => {
     if (isLast && title) {
-      return title;
+      return isMobile && title.length > 6 ? truncateText(title, 6) : title;
     }
     if (isLast && (segment.includes("-") || segment.length > 25)) {
       return "مشاهده";
@@ -31,7 +48,7 @@ export default function Breadcrumb({ title }: BreadcrumbProps) {
   };
 
   return (
-    <nav className="mt-6  mb-8 flex flex-wrap items-center gap-y-2 max-lg:mt-4 max-lg:mb-4 max-md:mt-7 max-sm:mt-5 max-sm:mb-5">
+    <nav className="max-xs:mb-7 mt-6 mb-8 flex flex-wrap items-center gap-y-2 max-lg:mt-4 max-lg:mb-4 max-md:mt-7 max-sm:mt-5">
       <Link
         href="/"
         className="text-primary hover:text-shade2 max-xs:text-xs flex items-center gap-x-1 text-lg/8 font-normal transition-colors max-md:text-base/6.25"
