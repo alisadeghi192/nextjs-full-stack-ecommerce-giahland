@@ -9,14 +9,14 @@ import CommentList from "@/components/shared/ui/CommentList";
 import BlogSlider from "@/components/features/blog/BlogSlider";
 
 interface BlogPostPageProps {
-  params: {
+  params: Promise<{
     category: string;
     slug: string;
-  };
+  }>;
 }
 
-export default function BlogPostPage({ params }: BlogPostPageProps) {
-  const { category, slug } = params;
+export default async function BlogPostPage({ params }: BlogPostPageProps) {
+  const { category, slug } = await params;
 
   const post = blogPosts.find(
     (post) => post.category === category && post.slug === slug,
