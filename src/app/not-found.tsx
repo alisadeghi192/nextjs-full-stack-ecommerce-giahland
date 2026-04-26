@@ -35,6 +35,7 @@ export default function NotFound() {
           width={500}
           height={500}
           className="aspect-square size-100 max-lg:size-100 max-md:size-80 max-sm:size-70"
+          priority
         />
       </div>
     </main>
