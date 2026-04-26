@@ -27,7 +27,7 @@ export default function CommentItem({ name, role, date, text, reply }: CommentIt
         <div className="border-neutral5 flex items-center gap-x-2 border-b pb-2">
           <div className="shrink-0">
             <Image
-              src="/images/default-user.jpg"
+              src="/static/images/default-user.jpg"
               alt="user profile"
               width={44}
               height={44}
@@ -53,7 +53,7 @@ export default function CommentItem({ name, role, date, text, reply }: CommentIt
             <div className="border-neutral5 flex items-center gap-x-2 border-b pb-2">
               <div className="shrink-0">
                 <Image
-                  src="/images/default-user.jpg"
+                  src="/static/images/default-user.jpg"
                   alt="user profile"
                   width={44}
                   height={44}

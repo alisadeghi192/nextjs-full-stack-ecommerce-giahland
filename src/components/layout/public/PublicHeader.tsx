@@ -50,7 +50,7 @@ const PublicHeader = ({ hasSearchInput = true }: PublicHeaderProps) => {
             {isUserLogin ? (
               <button className="flex items-center gap-2">
                 <Image
-                  src="/images/default-user.jpg"
+                  src="/static/images/default-user.jpg"
                   alt="user"
                   width={48}
                   height={48}
@@ -95,7 +95,7 @@ const PublicHeader = ({ hasSearchInput = true }: PublicHeaderProps) => {
               {/* user/login btn */}
               {isUserLogin ? (
                 <Image
-                  src="/images/default-user.jpg"
+                  src="/static/images/default-user.jpg"
                   alt="user profile"
                   width={48}
                   height={48}

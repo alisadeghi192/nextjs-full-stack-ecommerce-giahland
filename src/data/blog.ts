@@ -7,8 +7,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 150,
     title: "۱۰ نکته طلایی برای آبیاری گیاهان آپارتمانی",
-    coverImage: "/images/blog-covers/plant5.png",
-    mainImage: "/images/blog-main/blogmain1.jpg",
+    coverImage: "/static/images/blog-covers/plant5.png",
+    mainImage: "/static/images/blog-main/blogmain1.jpg",
     slug: "10-tips-watering-indoor-plants",
     date: new Date(),
     excerpt:
@@ -31,7 +31,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain2.jpg",
+          src: "/static/images/blog-main/blogmain2.jpg",
           alt: "آبیاری گیاه",
           caption: "روش صحیح آبیاری گیاهان آپارتمانی",
         },
@@ -258,8 +258,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 151,
     title: "بهترین خاک برای گیاهان خانگی",
-    coverImage: "/images/blog-covers/plant6.png",
-    mainImage: "/images/blog-main/blogmain2.jpg",
+    coverImage: "/static/images/blog-covers/plant6.png",
+    mainImage: "/static/images/blog-main/blogmain2.jpg",
     slug: "best-soil-for-houseplants",
     date: new Date(),
     excerpt:
@@ -290,7 +290,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain3.jpg",
+          src: "/static/images/blog-main/blogmain3.jpg",
           alt: "ترکیب خاک",
           caption: "مواد تشکیل‌دهنده خاک مناسب",
         },
@@ -525,8 +525,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 152,
     title: "راهنمای کامل تعویض گلدان",
-    coverImage: "/images/blog-covers/plant8.png",
-    mainImage: "/images/blog-main/blogmain4.jpg",
+    coverImage: "/static/images/blog-covers/plant8.png",
+    mainImage: "/static/images/blog-main/blogmain4.jpg",
     slug: "complete-guide-repotting",
     date: new Date(),
     excerpt:
@@ -564,7 +564,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain5.jpg",
+          src: "/static/images/blog-main/blogmain5.jpg",
           alt: "تعویض گلدان",
           caption: "مراحل تعویض گلدان گیاه",
         },
@@ -810,8 +810,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 1,
     title: "۱۰ نکته طلایی برای آبیاری گیاهان آپارتمانی",
-    coverImage: "/images/blog-covers/plant5.png",
-    mainImage: "/images/blog-main/blogmain1.jpg",
+    coverImage: "/static/images/blog-covers/plant5.png",
+    mainImage: "/static/images/blog-main/blogmain1.jpg",
     slug: "10-tips-watering-indoor-plants",
     date: new Date("2024-05-12"),
     excerpt:
@@ -830,7 +830,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain2.jpg",
+          src: "/static/images/blog-main/blogmain2.jpg",
           alt: "آبیاری گیاه آپارتمانی",
           caption: "روش صحیح آبیاری گیاهان آپارتمانی",
         },
@@ -1061,8 +1061,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 2,
     title: "بهترین خاک برای گیاهان خانگی و ترکیبات ایده‌آل",
-    coverImage: "/images/blog-covers/plant6.png",
-    mainImage: "/images/blog-main/blogmain2.jpg",
+    coverImage: "/static/images/blog-covers/plant6.png",
+    mainImage: "/static/images/blog-main/blogmain2.jpg",
     slug: "best-soil-for-houseplants-ideal-mixture",
     date: new Date("2024-06-03"),
     excerpt:
@@ -1081,7 +1081,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain3.jpg",
+          src: "/static/images/blog-main/blogmain3.jpg",
           alt: "ترکیب خاک مناسب",
           caption: "ترکیبات ایده‌آل خاک برای گیاهان خانگی",
         },
@@ -1109,8 +1109,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 3,
     title: "نور مناسب برای گیاهان سایه‌دوست و کم نور",
-    coverImage: "/images/blog-covers/plant7.png",
-    mainImage: "/images/blog-main/blogmain3.jpg",
+    coverImage: "/static/images/blog-covers/plant7.png",
+    mainImage: "/static/images/blog-main/blogmain3.jpg",
     slug: "proper-light-for-shade-loving-plants",
     date: new Date("2024-07-18"),
     excerpt:
@@ -1129,7 +1129,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain4.jpg",
+          src: "/static/images/blog-main/blogmain4.jpg",
           alt: "نور غیرمستقیم برای گیاهان",
           caption: "نور مناسب برای گیاهان سایه‌دوست",
         },
@@ -1157,8 +1157,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 4,
     title: "راهنمای کامل تعویض گلدان قدم به قدم",
-    coverImage: "/images/blog-covers/plant8.png",
-    mainImage: "/images/blog-main/blogmain4.jpg",
+    coverImage: "/static/images/blog-covers/plant8.png",
+    mainImage: "/static/images/blog-main/blogmain4.jpg",
     slug: "complete-guide-repotting-step-by-step",
     date: new Date("2024-08-22"),
     excerpt:
@@ -1177,7 +1177,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain5.jpg",
+          src: "/static/images/blog-main/blogmain5.jpg",
           alt: "تعویض گلدان",
           caption: "مراحل صحیح تعویض گلدان گیاهان",
         },
@@ -1205,8 +1205,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 5,
     title: "افزایش رطوبت هوا در اطراف گیاهان با روش‌های ساده",
-    coverImage: "/images/blog-covers/plant13.png",
-    mainImage: "/images/blog-main/blogmain5.jpg",
+    coverImage: "/static/images/blog-covers/plant13.png",
+    mainImage: "/static/images/blog-main/blogmain5.jpg",
     slug: "increase-humidity-around-plants-simple-methods",
     date: new Date("2024-09-05"),
     excerpt:
@@ -1225,7 +1225,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain6.jpg",
+          src: "/static/images/blog-main/blogmain6.jpg",
           alt: "افزایش رطوبت گیاهان",
           caption: "روش‌های ساده افزایش رطوبت برای گیاهان",
         },
@@ -1253,8 +1253,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 6,
     title: "علت ریزش برگ گیاهان آپارتمانی و راه حل قطعی",
-    coverImage: "/images/blog-covers/plant14.png",
-    mainImage: "/images/blog-main/blogmain6.jpg",
+    coverImage: "/static/images/blog-covers/plant14.png",
+    mainImage: "/static/images/blog-main/blogmain6.jpg",
     slug: "cause-of-leaf-drop-solutions",
     date: new Date("2024-10-11"),
     excerpt:
@@ -1273,7 +1273,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain7.jpg",
+          src: "/static/images/blog-main/blogmain7.jpg",
           alt: "ریزش برگ گیاه",
           caption: "تشخیص علت ریزش برگ گیاهان آپارتمانی",
         },
@@ -1301,8 +1301,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 7,
     title: "کوددهی اصولی گیاهان در فصول مختلف سال",
-    coverImage: "/images/blog-covers/plant15.png",
-    mainImage: "/images/blog-main/blogmain1.jpg",
+    coverImage: "/static/images/blog-covers/plant15.png",
+    mainImage: "/static/images/blog-main/blogmain1.jpg",
     slug: "proper-fertilization-by-season",
     date: new Date("2024-11-02"),
     excerpt:
@@ -1321,7 +1321,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain2.jpg",
+          src: "/static/images/blog-main/blogmain2.jpg",
           alt: "کوددهی گیاهان",
           caption: "برنامه کوددهی فصلی گیاهان آپارتمانی",
         },
@@ -1349,8 +1349,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 8,
     title: "هرس صحیح گیاهان زینتی و آپارتمانی",
-    coverImage: "/images/blog-covers/plant16.png",
-    mainImage: "/images/blog-main/blogmain2.jpg",
+    coverImage: "/static/images/blog-covers/plant16.png",
+    mainImage: "/static/images/blog-main/blogmain2.jpg",
     slug: "correct-pruning-ornamental-plants",
     date: new Date("2024-12-14"),
     excerpt:
@@ -1369,7 +1369,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain3.jpg",
+          src: "/static/images/blog-main/blogmain3.jpg",
           alt: "هرس گیاهان",
           caption: "تکنیک‌های صحیح هرس گیاهان زینتی",
         },
@@ -1397,8 +1397,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 9,
     title: "تشخیص نیاز گیاه به تعویض گلدان با علائم فیزیکی",
-    coverImage: "/images/blog-covers/plant5.png",
-    mainImage: "/images/blog-main/blogmain3.jpg",
+    coverImage: "/static/images/blog-covers/plant5.png",
+    mainImage: "/static/images/blog-main/blogmain3.jpg",
     slug: "signs-plant-needs-repotting",
     date: new Date("2025-01-07"),
     excerpt:
@@ -1417,7 +1417,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain4.jpg",
+          src: "/static/images/blog-main/blogmain4.jpg",
           alt: "ریشه گیاه",
           caption: "علائم نیاز گیاه به تعویض گلدان",
         },
@@ -1445,8 +1445,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 10,
     title: "روش صحیح تمیز کردن برگ گیاهان برای فتوسنتز بهتر",
-    coverImage: "/images/blog-covers/plant6.png",
-    mainImage: "/images/blog-main/blogmain4.jpg",
+    coverImage: "/static/images/blog-covers/plant6.png",
+    mainImage: "/static/images/blog-main/blogmain4.jpg",
     slug: "proper-leaf-cleaning-method",
     date: new Date("2025-02-18"),
     excerpt:
@@ -1465,7 +1465,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain5.jpg",
+          src: "/static/images/blog-main/blogmain5.jpg",
           alt: "تمیز کردن برگ گیاه",
           caption: "روش صحیح تمیز کردن برگ گیاهان",
         },
@@ -1493,8 +1493,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 11,
     title: "بهترین دما برای گیاهان آپارتمانی در زمستان و تابستان",
-    coverImage: "/images/blog-covers/plant7.png",
-    mainImage: "/images/blog-main/blogmain5.jpg",
+    coverImage: "/static/images/blog-covers/plant7.png",
+    mainImage: "/static/images/blog-main/blogmain5.jpg",
     slug: "ideal-temperature-houseplants-winter-summer",
     date: new Date("2024-04-20"),
     excerpt:
@@ -1513,7 +1513,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain6.jpg",
+          src: "/static/images/blog-main/blogmain6.jpg",
           alt: "دمای مناسب گیاهان",
           caption: "دمای ایده‌آل برای گیاهان در فصول مختلف",
         },
@@ -1541,8 +1541,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 12,
     title: "انتخاب گلدان مناسب پلاستیک، سفال یا سرامیک",
-    coverImage: "/images/blog-covers/plant8.png",
-    mainImage: "/images/blog-main/blogmain6.jpg",
+    coverImage: "/static/images/blog-covers/plant8.png",
+    mainImage: "/static/images/blog-main/blogmain6.jpg",
     slug: "choose-right-pot-plastic-terracotta-ceramic",
     date: new Date("2024-05-25"),
     excerpt:
@@ -1561,7 +1561,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain7.jpg",
+          src: "/static/images/blog-main/blogmain7.jpg",
           alt: "انواع گلدان",
           caption: "مقایسه گلدان سفالی، پلاستیکی و سرامیکی",
         },
@@ -1589,8 +1589,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 13,
     title: "تعادل pH خاک و اهمیت آن برای رشد گیاهان",
-    coverImage: "/images/blog-covers/plant13.png",
-    mainImage: "/images/blog-main/blogmain1.jpg",
+    coverImage: "/static/images/blog-covers/plant13.png",
+    mainImage: "/static/images/blog-main/blogmain1.jpg",
     slug: "soil-ph-balance-importance-for-plants",
     date: new Date("2024-06-28"),
     excerpt: "آموزش تنظیم pH خاک برای جذب بهتر مواد مغذی و رشد بهینه گیاهان.",
@@ -1608,7 +1608,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain2.jpg",
+          src: "/static/images/blog-main/blogmain2.jpg",
           alt: "pH خاک",
           caption: "اهمیت تعادل pH خاک برای جذب مواد مغذی",
         },
@@ -1636,8 +1636,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 14,
     title: "راهنمای سفر و مسافرت با گیاهان آپارتمانی",
-    coverImage: "/images/blog-covers/plant14.png",
-    mainImage: "/images/blog-main/blogmain2.jpg",
+    coverImage: "/static/images/blog-covers/plant14.png",
+    mainImage: "/static/images/blog-main/blogmain2.jpg",
     slug: "vacation-guide-houseplants-care",
     date: new Date("2024-07-30"),
     excerpt: "روش‌های نگهداری از گیاهان هنگام مسافرت و آبیاری خودکار خانگی.",
@@ -1655,7 +1655,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain3.jpg",
+          src: "/static/images/blog-main/blogmain3.jpg",
           alt: "آبیاری خودکار",
           caption: "روش‌های آبیاری گیاهان هنگام مسافرت",
         },
@@ -1683,8 +1683,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 15,
     title: "علت خم شدن و افتادگی ساقه گیاهان و درمان",
-    coverImage: "/images/blog-covers/plant15.png",
-    mainImage: "/images/blog-main/blogmain3.jpg",
+    coverImage: "/static/images/blog-covers/plant15.png",
+    mainImage: "/static/images/blog-main/blogmain3.jpg",
     slug: "cause-of-drooping-stems-plants",
     date: new Date("2024-08-15"),
     excerpt: "بررسی دلایل خم شدن و افتادگی ساقه و ارائه راهکارهای درمانی موثر.",
@@ -1702,7 +1702,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain4.jpg",
+          src: "/static/images/blog-main/blogmain4.jpg",
           alt: "افتادگی ساقه گیاه",
           caption: "علل خم شدن و افتادگی ساقه گیاهان",
         },
@@ -1730,8 +1730,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 16,
     title: "ضدعفونی خاک گلدان قبل از کاشت",
-    coverImage: "/images/blog-covers/plant16.png",
-    mainImage: "/images/blog-main/blogmain4.jpg",
+    coverImage: "/static/images/blog-covers/plant16.png",
+    mainImage: "/static/images/blog-main/blogmain4.jpg",
     slug: "soil-sterilization-before-planting",
     date: new Date("2024-09-18"),
     excerpt:
@@ -1750,7 +1750,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain5.jpg",
+          src: "/static/images/blog-main/blogmain5.jpg",
           alt: "ضدعفونی خاک",
           caption: "روش‌های صحیح ضدعفونی خاک گلدان",
         },
@@ -1778,8 +1778,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 17,
     title: "آشنایی با گیاهان هوازی و روش نگهداری",
-    coverImage: "/images/blog-covers/plant5.png",
-    mainImage: "/images/blog-main/blogmain5.jpg",
+    coverImage: "/static/images/blog-covers/plant5.png",
+    mainImage: "/static/images/blog-main/blogmain5.jpg",
     slug: "air-plants-care-guide-tillandsia",
     date: new Date("2024-10-25"),
     excerpt:
@@ -1798,7 +1798,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain6.jpg",
+          src: "/static/images/blog-main/blogmain6.jpg",
           alt: "گیاه هوازی",
           caption: "روش نگهداری از گیاهان هوازی تیلاندسیا",
         },
@@ -1826,8 +1826,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 18,
     title: "سمیت گیاهان آپارتمانی برای کودکان و حیوانات خانگی",
-    coverImage: "/images/blog-covers/plant6.png",
-    mainImage: "/images/blog-main/blogmain6.jpg",
+    coverImage: "/static/images/blog-covers/plant6.png",
+    mainImage: "/static/images/blog-main/blogmain6.jpg",
     slug: "toxic-houseplants-children-pets",
     date: new Date("2024-11-19"),
     excerpt:
@@ -1846,7 +1846,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain7.jpg",
+          src: "/static/images/blog-main/blogmain7.jpg",
           alt: "گیاهان سمی",
           caption: "گیاهان سمی و غیرسمی برای کودکان و حیوانات",
         },
@@ -1874,8 +1874,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 19,
     title: "بهترین مکان خانه برای قرار دادن هر گیاه",
-    coverImage: "/images/blog-covers/plant7.png",
-    mainImage: "/images/blog-main/blogmain1.jpg",
+    coverImage: "/static/images/blog-covers/plant7.png",
+    mainImage: "/static/images/blog-main/blogmain1.jpg",
     slug: "best-spot-in-home-for-each-plant",
     date: new Date("2024-12-30"),
     excerpt:
@@ -1894,7 +1894,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain2.jpg",
+          src: "/static/images/blog-main/blogmain2.jpg",
           alt: "چیدمان گیاهان در خانه",
           caption: "بهترین مکان‌های خانه برای قرار دادن گیاهان",
         },
@@ -1922,8 +1922,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 20,
     title: "تشخیص و رفع شوری بیش از حد خاک گلدان",
-    coverImage: "/images/blog-covers/plant8.png",
-    mainImage: "/images/blog-main/blogmain2.jpg",
+    coverImage: "/static/images/blog-covers/plant8.png",
+    mainImage: "/static/images/blog-main/blogmain2.jpg",
     slug: "detect-fix-soil-salinity",
     date: new Date("2025-01-25"),
     excerpt:
@@ -1942,7 +1942,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain3.jpg",
+          src: "/static/images/blog-main/blogmain3.jpg",
           alt: "شوری خاک",
           caption: "تشخیص و رفع شوری بیش از حد خاک گلدان",
         },
@@ -1971,8 +1971,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 21,
     title: "درمان کامل بیماری‌های قارچی گیاهان آپارتمانی",
-    coverImage: "/images/blog-covers/plant13.png",
-    mainImage: "/images/blog-main/blogmain3.jpg",
+    coverImage: "/static/images/blog-covers/plant13.png",
+    mainImage: "/static/images/blog-main/blogmain3.jpg",
     slug: "complete-fungal-diseases-treatment",
     date: new Date("2024-04-15"),
     excerpt:
@@ -1991,7 +1991,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain4.jpg",
+          src: "/static/images/blog-main/blogmain4.jpg",
           alt: "بیماری قارچی گیاهان",
           caption: "تشخیص و درمان بیماری‌های قارچی گیاهان آپارتمانی",
         },
@@ -2019,8 +2019,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 22,
     title: "علت زرد شدن برگ سانسوریا و راهکار فوری",
-    coverImage: "/images/blog-covers/plant14.png",
-    mainImage: "/images/blog-main/blogmain4.jpg",
+    coverImage: "/static/images/blog-covers/plant14.png",
+    mainImage: "/static/images/blog-main/blogmain4.jpg",
     slug: "sansevieria-yellow-leaves-cure",
     date: new Date("2024-05-08"),
     excerpt: "بررسی ۷ دلیل اصلی زردی برگ سانسوریا و روش‌های درمان سریع و موثر.",
@@ -2038,7 +2038,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain5.jpg",
+          src: "/static/images/blog-main/blogmain5.jpg",
           alt: "زردی برگ سانسوریا",
           caption: "علل زرد شدن برگ سانسوریا و روش‌های درمان",
         },
@@ -2066,8 +2066,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 23,
     title: "مبارزه اصولی با شپشک آردآلود روش‌های طبیعی و شیمیایی",
-    coverImage: "/images/blog-covers/plant15.png",
-    mainImage: "/images/blog-main/blogmain5.jpg",
+    coverImage: "/static/images/blog-covers/plant15.png",
+    mainImage: "/static/images/blog-main/blogmain5.jpg",
     slug: "control-mealybugs-natural-chemical",
     date: new Date("2024-06-12"),
     excerpt:
@@ -2086,7 +2086,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain6.jpg",
+          src: "/static/images/blog-main/blogmain6.jpg",
           alt: "شپشک آردآلود",
           caption: "روش‌های مبارزه با شپشک آردآلود در گیاهان",
         },
@@ -2114,8 +2114,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 24,
     title: "درمان قطعی پوسیدگی ریشه در خانه",
-    coverImage: "/images/blog-covers/plant16.png",
-    mainImage: "/images/blog-main/blogmain6.jpg",
+    coverImage: "/static/images/blog-covers/plant16.png",
+    mainImage: "/static/images/blog-main/blogmain6.jpg",
     slug: "definitive-root-rot-treatment",
     date: new Date("2024-07-17"),
     excerpt: "گام به گام نجات گیاه از پوسیدگی ریشه ناشی از آبیاری بیش از حد.",
@@ -2133,7 +2133,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain7.jpg",
+          src: "/static/images/blog-main/blogmain7.jpg",
           alt: "پوسیدگی ریشه",
           caption: "مراحل نجات گیاه از پوسیدگی ریشه در خانه",
         },
@@ -2161,8 +2161,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 25,
     title: "تشخیص ویروس در گیاهان آپارتمانی و اقدام لازم",
-    coverImage: "/images/blog-covers/plant5.png",
-    mainImage: "/images/blog-main/blogmain7.jpg",
+    coverImage: "/static/images/blog-covers/plant5.png",
+    mainImage: "/static/images/blog-main/blogmain7.jpg",
     slug: "detect-virus-houseplants-action",
     date: new Date("2024-08-21"),
     excerpt:
@@ -2181,7 +2181,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain1.jpg",
+          src: "/static/images/blog-main/blogmain1.jpg",
           alt: "ویروس گیاهی",
           caption: "تشخیص علائم ویروس در گیاهان آپارتمانی",
         },
@@ -2209,8 +2209,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 26,
     title: "کنترل و درمان کنه تارعنکبوتی راهنمای کامل",
-    coverImage: "/images/blog-covers/plant6.png",
-    mainImage: "/images/blog-main/blogmain1.jpg",
+    coverImage: "/static/images/blog-covers/plant6.png",
+    mainImage: "/static/images/blog-main/blogmain1.jpg",
     slug: "control-spider-mites-complete",
     date: new Date("2024-09-25"),
     excerpt: "روش‌های تشخیص و مبارزه با کنه تارعنکبوتی در گیاهان آپارتمانی.",
@@ -2228,7 +2228,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain2.jpg",
+          src: "/static/images/blog-main/blogmain2.jpg",
           alt: "کنه تارعنکبوتی",
           caption: "روش‌های کنترل و درمان کنه تارعنکبوتی",
         },
@@ -2256,8 +2256,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 27,
     title: "سموم مجاز و ایمن برای گیاهان خانگی",
-    coverImage: "/images/blog-covers/plant7.png",
-    mainImage: "/images/blog-main/blogmain2.jpg",
+    coverImage: "/static/images/blog-covers/plant7.png",
+    mainImage: "/static/images/blog-main/blogmain2.jpg",
     slug: "safe-pesticides-houseplants",
     date: new Date("2024-10-30"),
     excerpt: "راهنمای انتخاب و استفاده از سموم کم‌خطر و مجاز در محیط خانه.",
@@ -2275,7 +2275,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain3.jpg",
+          src: "/static/images/blog-main/blogmain3.jpg",
           alt: "سموم مجاز گیاهی",
           caption: "سموم ایمن و مجاز برای گیاهان آپارتمانی",
         },
@@ -2303,8 +2303,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 28,
     title: "درمان سفیدک پودری روی برگ‌ها روش‌های قطعی",
-    coverImage: "/images/blog-covers/plant8.png",
-    mainImage: "/images/blog-main/blogmain3.jpg",
+    coverImage: "/static/images/blog-covers/plant8.png",
+    mainImage: "/static/images/blog-main/blogmain3.jpg",
     slug: "treat-powdery-mildew-definitive",
     date: new Date("2024-12-04"),
     excerpt: "شناخت و درمان قارچ سفیدک پودری با روش‌های طبیعی و شیمیایی موثر.",
@@ -2322,7 +2322,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain4.jpg",
+          src: "/static/images/blog-main/blogmain4.jpg",
           alt: "سفیدک پودری",
           caption: "درمان قطعی سفیدک پودری روی برگ گیاهان",
         },
@@ -2350,8 +2350,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 29,
     title: "نشانه‌های کمبود آهن در گیاهان و درمان",
-    coverImage: "/images/blog-covers/plant13.png",
-    mainImage: "/images/blog-main/blogmain4.jpg",
+    coverImage: "/static/images/blog-covers/plant13.png",
+    mainImage: "/static/images/blog-main/blogmain4.jpg",
     slug: "iron-deficiency-signs-treatment",
     date: new Date("2025-01-20"),
     excerpt: "تشخیص و رفع کمبود آهن، یکی از شایع‌ترین مشکلات تغذیه‌ای گیاهان.",
@@ -2369,7 +2369,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain5.jpg",
+          src: "/static/images/blog-main/blogmain5.jpg",
           alt: "کمبود آهن",
           caption: "نشانه‌های کمبود آهن در گیاهان و روش درمان",
         },
@@ -2397,8 +2397,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 30,
     title: "رفع لکه‌های قهوه‌ای روی برگ گیاهان",
-    coverImage: "/images/blog-covers/plant14.png",
-    mainImage: "/images/blog-main/blogmain5.jpg",
+    coverImage: "/static/images/blog-covers/plant14.png",
+    mainImage: "/static/images/blog-main/blogmain5.jpg",
     slug: "remove-brown-spots-on-leaves",
     date: new Date("2025-02-14"),
     excerpt: "تشخیص علت لکه‌های قهوه‌ای روی برگ و درمان متناسب با هر علت.",
@@ -2416,7 +2416,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain6.jpg",
+          src: "/static/images/blog-main/blogmain6.jpg",
           alt: "لکه قهوه‌ای برگ",
           caption: "تشخیص و رفع لکه‌های قهوه‌ای روی برگ گیاهان",
         },
@@ -2444,8 +2444,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 31,
     title: "بیماری بلایت باکتریایی و روش کنترل در خانه",
-    coverImage: "/images/blog-covers/plant15.png",
-    mainImage: "/images/blog-main/blogmain6.jpg",
+    coverImage: "/static/images/blog-covers/plant15.png",
+    mainImage: "/static/images/blog-main/blogmain6.jpg",
     slug: "bacterial-blight-control-home",
     date: new Date("2024-05-05"),
     excerpt: "شناخت و درمان بیماری بلایت باکتریایی در گیاهان آپارتمانی.",
@@ -2463,7 +2463,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain7.jpg",
+          src: "/static/images/blog-main/blogmain7.jpg",
           alt: "بلایت باکتریایی",
           caption: "روش‌های کنترل بیماری بلایت باکتریایی در خانه",
         },
@@ -2491,8 +2491,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 32,
     title: "علت سوختگی نوک برگ گیاهان و راه حل فوری",
-    coverImage: "/images/blog-covers/plant16.png",
-    mainImage: "/images/blog-main/blogmain7.jpg",
+    coverImage: "/static/images/blog-covers/plant16.png",
+    mainImage: "/static/images/blog-main/blogmain7.jpg",
     slug: "leaf-tip-burn-causes-solutions",
     date: new Date("2024-06-20"),
     excerpt: "بررسی ۶ دلیل اصلی قهوه‌ای شدن نوک برگ و روش‌های رفع سریع مشکل.",
@@ -2510,7 +2510,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain1.jpg",
+          src: "/static/images/blog-main/blogmain1.jpg",
           alt: "سوختگی نوک برگ",
           caption: "علل و درمان سوختگی نوک برگ گیاهان",
         },
@@ -2538,8 +2538,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 33,
     title: "تشخیص و درمان بیماری آنتراکنوز در گیاهان",
-    coverImage: "/images/blog-covers/plant5.png",
-    mainImage: "/images/blog-main/blogmain1.jpg",
+    coverImage: "/static/images/blog-covers/plant5.png",
+    mainImage: "/static/images/blog-main/blogmain1.jpg",
     slug: "anthracnose-diagnosis-treatment",
     date: new Date("2024-07-22"),
     excerpt:
@@ -2558,7 +2558,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain2.jpg",
+          src: "/static/images/blog-main/blogmain2.jpg",
           alt: "آنتراکنوز",
           caption: "تشخیص و درمان بیماری آنتراکنوز در گیاهان",
         },
@@ -2586,8 +2586,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 34,
     title: "مبارزه با شته در گیاهان آپارتمانی روش‌های فوری",
-    coverImage: "/images/blog-covers/plant6.png",
-    mainImage: "/images/blog-main/blogmain2.jpg",
+    coverImage: "/static/images/blog-covers/plant6.png",
+    mainImage: "/static/images/blog-main/blogmain2.jpg",
     slug: "control-aphids-houseplants-urgent",
     date: new Date("2024-08-28"),
     excerpt:
@@ -2606,7 +2606,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain3.jpg",
+          src: "/static/images/blog-main/blogmain3.jpg",
           alt: "شته گیاهی",
           caption: "روش‌های فوری مبارزه با شته در گیاهان آپارتمانی",
         },
@@ -2634,8 +2634,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 35,
     title: "تشخیص و درمان پژمردگی فوزاریومی در خانه",
-    coverImage: "/images/blog-covers/plant7.png",
-    mainImage: "/images/blog-main/blogmain3.jpg",
+    coverImage: "/static/images/blog-covers/plant7.png",
+    mainImage: "/static/images/blog-main/blogmain3.jpg",
     slug: "fusarium-wilt-diagnosis-treatment-home",
     date: new Date("2024-09-18"),
     excerpt: "شناخت بیماری قارچی پژمردگی فوزاریومی و روش‌های کنترل در منزل.",
@@ -2653,7 +2653,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain4.jpg",
+          src: "/static/images/blog-main/blogmain4.jpg",
           alt: "پژمردگی فوزاریومی",
           caption: "تشخیص و درمان پژمردگی فوزاریومی گیاهان",
         },
@@ -2681,8 +2681,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 36,
     title: "علت چروکیده شدن برگ ساکولنت و کاکتوس",
-    coverImage: "/images/blog-covers/plant8.png",
-    mainImage: "/images/blog-main/blogmain4.jpg",
+    coverImage: "/static/images/blog-covers/plant8.png",
+    mainImage: "/static/images/blog-main/blogmain4.jpg",
     slug: "succulent-cactus-wrinkled-leaves",
     date: new Date("2024-10-23"),
     excerpt: "بررسی دلایل چروکیدگی و نرمی ساقه در ساکولنت‌ها و کاکتوس‌ها.",
@@ -2700,7 +2700,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain5.jpg",
+          src: "/static/images/blog-main/blogmain5.jpg",
           alt: "چروکیدگی ساکولنت",
           caption: "علل چروکیدگی برگ ساکولنت و کاکتوس و درمان",
         },
@@ -2728,8 +2728,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 37,
     title: "مقابله با پشه سیاه خاک گلدان روش‌های قطعی",
-    coverImage: "/images/blog-covers/plant13.png",
-    mainImage: "/images/blog-main/blogmain5.jpg",
+    coverImage: "/static/images/blog-covers/plant13.png",
+    mainImage: "/static/images/blog-main/blogmain5.jpg",
     slug: "control-fungus-gnats-definitive",
     date: new Date("2024-11-27"),
     excerpt: "روش‌های ریشه‌کن کردن پشه سیاه از خاک گلدان به صورت طبیعی و سریع.",
@@ -2747,7 +2747,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain6.jpg",
+          src: "/static/images/blog-main/blogmain6.jpg",
           alt: "پشه سیاه خاک",
           caption: "روش‌های قطعی مقابله با پشه سیاه در گلدان",
         },
@@ -2775,8 +2775,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 38,
     title: "بیماری لکه برگی سپتوریا و روش درمان خانگی",
-    coverImage: "/images/blog-covers/plant14.png",
-    mainImage: "/images/blog-main/blogmain6.jpg",
+    coverImage: "/static/images/blog-covers/plant14.png",
+    mainImage: "/static/images/blog-main/blogmain6.jpg",
     slug: "septoria-leaf-spot-home-treatment",
     date: new Date("2024-12-19"),
     excerpt:
@@ -2795,7 +2795,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain7.jpg",
+          src: "/static/images/blog-main/blogmain7.jpg",
           alt: "لکه برگی سپتوریا",
           caption: "درمان خانگی لکه برگی سپتوریا در گیاهان",
         },
@@ -2823,8 +2823,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 39,
     title: "علت بدشکلی و پیچیدگی برگ گیاهان و درمان",
-    coverImage: "/images/blog-covers/plant15.png",
-    mainImage: "/images/blog-main/blogmain7.jpg",
+    coverImage: "/static/images/blog-covers/plant15.png",
+    mainImage: "/static/images/blog-main/blogmain7.jpg",
     slug: "leaf-deformity-curling-causes-treatment",
     date: new Date("2025-01-09"),
     excerpt: "دلایل پیچ خوردگی و بدشکلی برگ و روش‌های رفع مشکل.",
@@ -2842,7 +2842,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain1.jpg",
+          src: "/static/images/blog-main/blogmain1.jpg",
           alt: "بدشکلی برگ",
           caption: "علل پیچیدگی و بدشکلی برگ گیاهان و درمان",
         },
@@ -2870,8 +2870,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 40,
     title: "درمان گیاهان سوخته از آفتاب و گرما",
-    coverImage: "/images/blog-covers/plant16.png",
-    mainImage: "/images/blog-main/blogmain1.jpg",
+    coverImage: "/static/images/blog-covers/plant16.png",
+    mainImage: "/static/images/blog-main/blogmain1.jpg",
     slug: "treat-sunburned-heat-stressed-plants",
     date: new Date("2025-02-22"),
     excerpt: "اقدامات فوری برای نجات گیاهانی که دچار آفتاب سوختگی شده‌اند.",
@@ -2889,7 +2889,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain2.jpg",
+          src: "/static/images/blog-main/blogmain2.jpg",
           alt: "آفتاب سوختگی گیاه",
           caption: "درمان گیاهان سوخته از آفتاب و گرما",
         },
@@ -2918,8 +2918,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 41,
     title: "آموزش قلمه زدن پتوس در آب گام به گام",
-    coverImage: "/images/blog-covers/plant5.png",
-    mainImage: "/images/blog-main/blogmain2.jpg",
+    coverImage: "/static/images/blog-covers/plant5.png",
+    mainImage: "/static/images/blog-main/blogmain2.jpg",
     slug: "pothos-propagation-in-water-guide",
     date: new Date("2024-04-10"),
     excerpt:
@@ -2938,7 +2938,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain3.jpg",
+          src: "/static/images/blog-main/blogmain3.jpg",
           alt: "قلمه زدن پتوس",
           caption: "مراحل قلمه زدن پتوس در آب",
         },
@@ -2966,8 +2966,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 42,
     title: "تکثیر سانسوریا با برگ روش آسان و کم هزینه",
-    coverImage: "/images/blog-covers/plant6.png",
-    mainImage: "/images/blog-main/blogmain3.jpg",
+    coverImage: "/static/images/blog-covers/plant6.png",
+    mainImage: "/static/images/blog-main/blogmain3.jpg",
     slug: "sansevieria-leaf-propagation-easy",
     date: new Date("2024-05-15"),
     excerpt:
@@ -2986,7 +2986,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain4.jpg",
+          src: "/static/images/blog-main/blogmain4.jpg",
           alt: "تکثیر سانسوریا",
           caption: "روش تکثیر سانسوریا با برگ",
         },
@@ -3014,8 +3014,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 43,
     title: "روش تقسیم بوته در گیاهان آپارتمانی سریع و آسان",
-    coverImage: "/images/blog-covers/plant7.png",
-    mainImage: "/images/blog-main/blogmain4.jpg",
+    coverImage: "/static/images/blog-covers/plant7.png",
+    mainImage: "/static/images/blog-main/blogmain4.jpg",
     slug: "plant-division-method-easy-fast",
     date: new Date("2024-06-19"),
     excerpt:
@@ -3034,7 +3034,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain5.jpg",
+          src: "/static/images/blog-main/blogmain5.jpg",
           alt: "تقسیم بوته",
           caption: "روش صحیح تقسیم بوته در گیاهان آپارتمانی",
         },
@@ -3062,8 +3062,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 44,
     title: "کاشت بذر گیاهان زینتی راهنمای کامل برای مبتدیان",
-    coverImage: "/images/blog-covers/plant8.png",
-    mainImage: "/images/blog-main/blogmain5.jpg",
+    coverImage: "/static/images/blog-covers/plant8.png",
+    mainImage: "/static/images/blog-main/blogmain5.jpg",
     slug: "sowing-ornamental-seeds-complete-guide",
     date: new Date("2024-07-24"),
     excerpt: "آموزش گام به گام کاشت بذر برای تولید گیاهان جدید در خانه.",
@@ -3081,7 +3081,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain6.jpg",
+          src: "/static/images/blog-main/blogmain6.jpg",
           alt: "کاشت بذر",
           caption: "مراحل کاشت بذر گیاهان زینتی در خانه",
         },
@@ -3109,8 +3109,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 45,
     title: "تکثیر فیکوس الاستیکا با قلمه ساقه روش حرفه‌ای",
-    coverImage: "/images/blog-covers/plant13.png",
-    mainImage: "/images/blog-main/blogmain6.jpg",
+    coverImage: "/static/images/blog-covers/plant13.png",
+    mainImage: "/static/images/blog-main/blogmain6.jpg",
     slug: "ficus-elastic-stem-cutting-professional",
     date: new Date("2024-08-28"),
     excerpt:
@@ -3129,7 +3129,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain7.jpg",
+          src: "/static/images/blog-main/blogmain7.jpg",
           alt: "تکثیر فیکوس",
           caption: "روش حرفه‌ای قلمه زدن فیکوس الاستیکا",
         },
@@ -3157,8 +3157,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 46,
     title: "روش خوابانیدن ساقه در گیاهان رونده آسان و مطمئن",
-    coverImage: "/images/blog-covers/plant14.png",
-    mainImage: "/images/blog-main/blogmain1.jpg",
+    coverImage: "/static/images/blog-covers/plant14.png",
+    mainImage: "/static/images/blog-main/blogmain1.jpg",
     slug: "layering-method-for-vines-easy",
     date: new Date("2024-10-02"),
     excerpt:
@@ -3177,7 +3177,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain2.jpg",
+          src: "/static/images/blog-main/blogmain2.jpg",
           alt: "خوابانیدن ساقه",
           caption: "روش خوابانیدن ساقه برای تکثیر گیاهان رونده",
         },
@@ -3205,8 +3205,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 47,
     title: "تکثیر آلوئه ورا از پاجوش ساده‌ترین روش",
-    coverImage: "/images/blog-covers/plant15.png",
-    mainImage: "/images/blog-main/blogmain2.jpg",
+    coverImage: "/static/images/blog-covers/plant15.png",
+    mainImage: "/static/images/blog-main/blogmain2.jpg",
     slug: "aloe-vera-offset-propagation-easiest",
     date: new Date("2024-11-06"),
     excerpt:
@@ -3225,7 +3225,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain3.jpg",
+          src: "/static/images/blog-main/blogmain3.jpg",
           alt: "تکثیر آلوئه ورا",
           caption: "روش جداسازی پاجوش آلوئه ورا",
         },
@@ -3253,8 +3253,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 48,
     title: "قلمه زدن یوکا در آب و خاک مقایسه روش‌ها",
-    coverImage: "/images/blog-covers/plant16.png",
-    mainImage: "/images/blog-main/blogmain3.jpg",
+    coverImage: "/static/images/blog-covers/plant16.png",
+    mainImage: "/static/images/blog-main/blogmain3.jpg",
     slug: "yucca-cutting-water-soil-comparison",
     date: new Date("2024-12-11"),
     excerpt:
@@ -3273,7 +3273,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain4.jpg",
+          src: "/static/images/blog-main/blogmain4.jpg",
           alt: "قلمه زدن یوکا",
           caption: "مقایسه روش قلمه زدن یوکا در آب و خاک",
         },
@@ -3301,8 +3301,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 49,
     title: "تکثیر زامیفولیا با برگ روش زمان‌بر اما جذاب",
-    coverImage: "/images/blog-covers/plant5.png",
-    mainImage: "/images/blog-main/blogmain4.jpg",
+    coverImage: "/static/images/blog-covers/plant5.png",
+    mainImage: "/static/images/blog-main/blogmain4.jpg",
     slug: "zz-plant-leaf-propagation-time-consuming",
     date: new Date("2025-01-16"),
     excerpt:
@@ -3321,7 +3321,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain5.jpg",
+          src: "/static/images/blog-main/blogmain5.jpg",
           alt: "تکثیر زامیفولیا",
           caption: "روش تکثیر زامیفولیا با برگ",
         },
@@ -3349,8 +3349,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 50,
     title: "قلمه زدن دراسنا در آب سریع و آسان",
-    coverImage: "/images/blog-covers/plant6.png",
-    mainImage: "/images/blog-main/blogmain5.jpg",
+    coverImage: "/static/images/blog-covers/plant6.png",
+    mainImage: "/static/images/blog-main/blogmain5.jpg",
     slug: "dracaena-cutting-water-fast-easy",
     date: new Date("2025-03-11"),
     excerpt:
@@ -3369,7 +3369,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain6.jpg",
+          src: "/static/images/blog-main/blogmain6.jpg",
           alt: "قلمه زدن دراسنا",
           caption: "روش سریع قلمه زدن دراسنا در آب",
         },
@@ -3397,8 +3397,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 51,
     title: "تکثیر پپرومیا با برگ روش‌های مختلف",
-    coverImage: "/images/blog-covers/plant7.png",
-    mainImage: "/images/blog-main/blogmain6.jpg",
+    coverImage: "/static/images/blog-covers/plant7.png",
+    mainImage: "/static/images/blog-main/blogmain6.jpg",
     slug: "peperomia-leaf-propagation-methods",
     date: new Date("2024-05-28"),
     excerpt:
@@ -3417,7 +3417,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain7.jpg",
+          src: "/static/images/blog-main/blogmain7.jpg",
           alt: "تکثیر پپرومیا",
           caption: "روش‌های مختلف تکثیر پپرومیا با برگ",
         },
@@ -3445,8 +3445,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 52,
     title: "تکثیر ساکولنت از برگ راهنمای گام به گام",
-    coverImage: "/images/blog-covers/plant8.png",
-    mainImage: "/images/blog-main/blogmain1.jpg",
+    coverImage: "/static/images/blog-covers/plant8.png",
+    mainImage: "/static/images/blog-main/blogmain1.jpg",
     slug: "succulent-leaf-propagation-step-by-step",
     date: new Date("2024-06-30"),
     excerpt:
@@ -3465,7 +3465,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain2.jpg",
+          src: "/static/images/blog-main/blogmain2.jpg",
           alt: "تکثیر ساکولنت",
           caption: "مراحل تکثیر ساکولنت از برگ",
         },
@@ -3493,8 +3493,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 53,
     title: "قلمه زدن شفلرا در آب روش حرفه‌ای",
-    coverImage: "/images/blog-covers/plant13.png",
-    mainImage: "/images/blog-main/blogmain2.jpg",
+    coverImage: "/static/images/blog-covers/plant13.png",
+    mainImage: "/static/images/blog-main/blogmain2.jpg",
     slug: "schefflera-cutting-water-professional",
     date: new Date("2024-07-28"),
     excerpt:
@@ -3513,7 +3513,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain3.jpg",
+          src: "/static/images/blog-main/blogmain3.jpg",
           alt: "قلمه زدن شفلرا",
           caption: "روش حرفه‌ای قلمه زدن شفلرا در آب",
         },
@@ -3541,8 +3541,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 54,
     title: "تکثیر بنفشه آفریقایی با برگ ساده‌ترین روش",
-    coverImage: "/images/blog-covers/plant14.png",
-    mainImage: "/images/blog-main/blogmain3.jpg",
+    coverImage: "/static/images/blog-covers/plant14.png",
+    mainImage: "/static/images/blog-main/blogmain3.jpg",
     slug: "african-violet-leaf-propagation-simplest",
     date: new Date("2024-08-31"),
     excerpt:
@@ -3561,7 +3561,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain4.jpg",
+          src: "/static/images/blog-main/blogmain4.jpg",
           alt: "تکثیر بنفشه آفریقایی",
           caption: "روش تکثیر بنفشه آفریقایی با برگ",
         },
@@ -3589,8 +3589,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 55,
     title: "قلمه زدن آگلونما در آب مخصوص مبتدیان",
-    coverImage: "/images/blog-covers/plant15.png",
-    mainImage: "/images/blog-main/blogmain4.jpg",
+    coverImage: "/static/images/blog-covers/plant15.png",
+    mainImage: "/static/images/blog-main/blogmain4.jpg",
     slug: "aglaonema-cutting-water-beginners",
     date: new Date("2024-09-29"),
     excerpt:
@@ -3609,7 +3609,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain5.jpg",
+          src: "/static/images/blog-main/blogmain5.jpg",
           alt: "قلمه زدن آگلونما",
           caption: "روش قلمه زدن آگلونما در آب برای مبتدیان",
         },
@@ -3637,8 +3637,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 56,
     title: "تکثیر مارانتا با قلمه گام به گام",
-    coverImage: "/images/blog-covers/plant16.png",
-    mainImage: "/images/blog-main/blogmain5.jpg",
+    coverImage: "/static/images/blog-covers/plant16.png",
+    mainImage: "/static/images/blog-main/blogmain5.jpg",
     slug: "maranta-propagation-cutting-step-by-step",
     date: new Date("2024-10-27"),
     excerpt:
@@ -3657,7 +3657,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain6.jpg",
+          src: "/static/images/blog-main/blogmain6.jpg",
           alt: "تکثیر مارانتا",
           caption: "مراحل تکثیر مارانتا با قلمه",
         },
@@ -3685,8 +3685,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 57,
     title: "تکثیر ترادسکانتیا گیاه اینچ در آب",
-    coverImage: "/images/blog-covers/plant5.png",
-    mainImage: "/images/blog-main/blogmain6.jpg",
+    coverImage: "/static/images/blog-covers/plant5.png",
+    mainImage: "/static/images/blog-main/blogmain6.jpg",
     slug: "tradescantia-propagation-water",
     date: new Date("2024-11-23"),
     excerpt:
@@ -3705,7 +3705,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain7.jpg",
+          src: "/static/images/blog-main/blogmain7.jpg",
           alt: "تکثیر ترادسکانتیا",
           caption: "روش تکثیر ترادسکانتیا در آب",
         },
@@ -3733,8 +3733,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 58,
     title: "قلمه زدن کراسولا اواتا درخت پول در آب",
-    coverImage: "/images/blog-covers/plant6.png",
-    mainImage: "/images/blog-main/blogmain7.jpg",
+    coverImage: "/static/images/blog-covers/plant6.png",
+    mainImage: "/static/images/blog-main/blogmain7.jpg",
     slug: "crassula-ovata-propagation-water",
     date: new Date("2024-12-28"),
     excerpt:
@@ -3753,7 +3753,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain1.jpg",
+          src: "/static/images/blog-main/blogmain1.jpg",
           alt: "تکثیر کراسولا",
           caption: "روش قلمه زدن کراسولا اواتا در آب",
         },
@@ -3781,8 +3781,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 59,
     title: "تکثیر اسپاتی فیلوم گل صلح با تقسیم بوته",
-    coverImage: "/images/blog-covers/plant7.png",
-    mainImage: "/images/blog-main/blogmain1.jpg",
+    coverImage: "/static/images/blog-covers/plant7.png",
+    mainImage: "/static/images/blog-main/blogmain1.jpg",
     slug: "spathiphyllum-division-peace-lily",
     date: new Date("2025-01-30"),
     excerpt: "بهترین روش تکثیر اسپاتی فیلوم، تقسیم بوته در زمان تعویض گلدان.",
@@ -3800,7 +3800,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain2.jpg",
+          src: "/static/images/blog-main/blogmain2.jpg",
           alt: "تکثیر اسپاتی فیلوم",
           caption: "روش تقسیم بوته اسپاتی فیلوم",
         },
@@ -3828,8 +3828,8 @@ export const blogPosts: BlogPostType[] = [
   {
     id: 60,
     title: "قلمه زدن فیلودندرون برگ‌قلبی در آب مخصوص مبتدیان",
-    coverImage: "/images/blog-covers/plant8.png",
-    mainImage: "/images/blog-main/blogmain2.jpg",
+    coverImage: "/static/images/blog-covers/plant8.png",
+    mainImage: "/static/images/blog-main/blogmain2.jpg",
     slug: "philodendron-hederaceum-propagation-water",
     date: new Date("2025-02-28"),
     excerpt:
@@ -3848,7 +3848,7 @@ export const blogPosts: BlogPostType[] = [
       {
         type: "image",
         data: {
-          src: "/images/blog-main/blogmain3.jpg",
+          src: "/static/images/blog-main/blogmain3.jpg",
           alt: "قلمه فیلودندرون",
           caption: "روش قلمه زدن فیلودندرون برگ‌قلبی در آب",
         },

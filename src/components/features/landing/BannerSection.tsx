@@ -10,7 +10,7 @@ const BannerSection = () => {
             alt="banner"
             width={600}
             height={240}
-            src="/images/banner1.png"
+            src="/static/images/banner1.png"
           />
         </Link>
       </div>
@@ -20,7 +20,7 @@ const BannerSection = () => {
             alt="banner"
             width={600}
             height={240}
-            src="/images/banner2.png"
+            src="/static/images/banner2.png"
           />
         </Link>
       </div>

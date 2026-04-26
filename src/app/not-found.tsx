@@ -31,7 +31,7 @@ export default function NotFound() {
         </div>
         <Image
           alt="404"
-          src="/images/404.png"
+          src="/static/images/404.png"
           width={500}
           height={500}
           className="aspect-square size-100 max-lg:size-100 max-md:size-80 max-sm:size-70"

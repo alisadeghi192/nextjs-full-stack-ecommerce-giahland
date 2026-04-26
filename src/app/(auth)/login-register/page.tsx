@@ -12,7 +12,7 @@ export default function AuthPage() {
       <div className="relative h-screen w-1/2 max-lg:w-1/3 max-sm:h-3/8 max-sm:w-full">
         <Image
           alt="login page pic"
-          src="/images/login-cover.png"
+          src="/static/images/login-cover.png"
           fill
           className="object-cover max-sm:mt-10"
         />
