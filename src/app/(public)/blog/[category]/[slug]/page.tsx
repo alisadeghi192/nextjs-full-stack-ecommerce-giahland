@@ -6,6 +6,7 @@ import PostHeader from "@/components/features/blog/PostHeader";
 import PostMeta from "@/components/features/blog/PostMeta";
 import CommentForm from "@/components/shared/ui/CommentForm";
 import CommentList from "@/components/shared/ui/CommentList";
+import BlogSlider from "@/components/features/blog/BlogSlider";
 
 interface BlogPostPageProps {
   params: {
@@ -25,6 +26,13 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
     notFound();
   }
 
+  const relatedPosts = blogPosts
+    .filter((p) => p.category === category && p.slug !== slug)
+    .sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime())
+    .slice(0, 4);
+
+  const categoryLink = `/blog?category=${category}&sort=newest`;
+
   return (
     <main className="container">
       <Breadcrumb title={post?.title} />
@@ -41,7 +49,13 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
 
         <CommentForm />
 
-        <CommentList  comments={post.comments}/>
+        <CommentList comments={post.comments} />
+
+        <BlogSlider
+          link={categoryLink}
+          title="مقالات مرتبط"
+          posts={relatedPosts}
+        />
       </div>
     </main>
   );
