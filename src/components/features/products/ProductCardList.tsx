@@ -11,6 +11,7 @@ interface ProductCardListProps {
   price: number;
   image: string;
   slug: string;
+  category:String;
   discount: number;
   potDimensions: {
     length: number;
@@ -25,7 +26,8 @@ export default function ProductCardList({
   name,
   price,
   image,
-  slug = "/",
+  category,
+  slug ,
   discount,
   potDimensions,
   stock,
@@ -63,7 +65,7 @@ export default function ProductCardList({
       {isOutOfStock ? (
         <div className="cursor-default">{Content()}</div>
       ) : (
-        <Link href={slug}>{Content()}</Link>
+        <Link href={`/products/${category}/${slug}`}>{Content()}</Link>
       )}
       {!isOutOfStock && (
         <LikeButton

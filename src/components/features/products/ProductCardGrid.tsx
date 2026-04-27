@@ -12,6 +12,7 @@ interface ProductCardGridProps {
   price: number;
   image: string;
   slug: string;
+  category : string;
   discount: number;
   potDimensions: {
     length: number;
@@ -26,6 +27,7 @@ export default function ProductCardGrid({
   name,
   price,
   image,
+  category,
   slug = "/",
   discount,
   potDimensions,
@@ -67,7 +69,7 @@ export default function ProductCardGrid({
       {isOutOfStock ? (
         <div className="cursor-default">{Content()}</div>
       ) : (
-        <Link href={slug}>{Content()}</Link>
+        <Link href={`/products/${category}/${slug}`}>{Content()}</Link>
       )}
       {!isOutOfStock && (
         <LikeButton
