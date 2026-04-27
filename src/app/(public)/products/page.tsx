@@ -9,6 +9,7 @@ import {
   paginateProducts,
   filterProductsByTab
 } from "@/features/products/utils/productHelpers";
+import { DEFAULT_TAB, DEFAULT_VIEW_MODE, DEFAULT_SORT } from "@/lib/constants";
 
 interface ProductsPageProps {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -19,9 +20,9 @@ export default async function ProductsPage({
 }: ProductsPageProps) {
   const params = await searchParams;
 
-  const activeTab = (params.category as string) || "all";
-  const viewMode = (params.view as string) || "grid";
-  const selectedSort = (params.sort as string) || "newest";
+  const activeTab = (params.category as string) || DEFAULT_TAB;
+  const viewMode = (params.view as string) || DEFAULT_VIEW_MODE;
+  const selectedSort = (params.sort as string) || DEFAULT_SORT;
   const currentPage = Number(params.page) || 1;
 
   const allProducts = getAllProducts();
@@ -36,7 +37,7 @@ export default async function ProductsPage({
       <Breadcrumb />
       <section>
         <ProductsHeader />
-        {viewMode === "grid" ? (
+        {viewMode === DEFAULT_VIEW_MODE ? (
           <ProductsGrid products={paginatedProducts} />
         ) : (
           <ProductsList products={paginatedProducts} />
