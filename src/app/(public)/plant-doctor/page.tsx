@@ -1,4 +1,5 @@
 import Breadcrumb from "@/components/shared/ui/Breadcrumb";
+import PrimaryButton from "@/components/shared/ui/PrimaryButton";
 import Image from "next/image";
 import React from "react";
 
@@ -20,9 +21,9 @@ export default function PlantDoctorPage() {
               گیاه پزشک آنلاین
             </h1>
             <p className="mt-4 mb-6 text-lg/8">عکس بفرست ، نسخه بگیر</p>
-            <button className="text-WHITE bg-primary hover:bg-shade2 m-auto flex h-10 w-34 cursor-pointer items-center justify-center rounded-lg transition-colors">
-              مشاره با پزشک
-            </button>
+            <PrimaryButton className="m-auto h-10 w-34 rounded-lg!">
+              مشاوره با پزشک
+            </PrimaryButton>
           </div>
         </div>
         <div className="mx-auto w-80/100 max-xl:w-full">
@@ -85,9 +86,9 @@ export default function PlantDoctorPage() {
             آگلونما و...) و شرایط محیطی (نور، خاک، دما و رطوبت)، علت را شناسایی
             کرده و نسخه درمانی متناسب ارائه می‌کند.
           </p>
-          <button className="text-WHITE bg-primary max-xs:mt-8 max-xs:w-full hover:bg-shade2 m-auto mt-10 flex h-10 w-52.5 cursor-pointer items-center justify-center rounded-lg transition-colors">
+          <PrimaryButton className="max-xs:mt-8 max-xs:w-full m-auto mt-10 h-10 w-52.5 rounded-lg!">
             شروع مشاوره
-          </button>
+          </PrimaryButton>
         </div>
       </section>
     </main>
