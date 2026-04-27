@@ -1,5 +1,4 @@
-import Link from "next/link";
-import PublicHeader from "@/components/layout/public/PublicHeader";
+import PublicHeader from "@/components/shared/layout/public/PublicHeader";
 import Image from "next/image";
 import PrimaryButton from "@/components/shared/ui/PrimaryButton";
 

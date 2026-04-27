@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { MdOutlineArrowBack } from "react-icons/md";
 import HeroStatsItem from "./HeroStatsItem";
-import Link from "next/link";
 import PrimaryButton from "@/components/shared/ui/PrimaryButton";
 import OutlineButton from "@/components/shared/ui/OutlineButton";
 

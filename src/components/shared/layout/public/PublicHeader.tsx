@@ -8,10 +8,10 @@ import {
   MdOutlineSearch,
   MdOutlineShoppingCart,
 } from "react-icons/md";
-import SearchBox from "../../shared/ui/SearchBox";
-import Logo from "../../shared/ui/Logo";
-import NavLinks from "../../shared/ui/NavLinks";
-import MobileMenu from "../../shared/ui/MobileMenu";
+import SearchBox from "../../ui/SearchBox";
+import Logo from "../../ui/Logo";
+import NavLinks from "../../ui/NavLinks";
+import MobileMenu from "../../ui/MobileMenu";
 import { useScroll } from "@/lib/hooks/useScroll";
 import Link from "next/link";
 import OutlineButton from "@/components/shared/ui/OutlineButton";
