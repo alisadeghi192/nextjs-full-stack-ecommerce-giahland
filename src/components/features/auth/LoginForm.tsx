@@ -1,5 +1,6 @@
 "use client";
 
+import PrimaryButton from "@/components/shared/ui/PrimaryButton";
 import FormField from "../../shared/ui/FormField";
 import PasswordField from "../../shared/ui/PasswordField";
 import { MdOutlineMobileFriendly } from "react-icons/md";
@@ -22,19 +23,13 @@ export default function LoginForm({ onToggle }: LoginFormProps) {
             name="login-phone"
             label="شماره موبایل"
           />
-          <PasswordField
-            name="login-password"
-            label="رمز عبور"
-          />
+          <PasswordField name="login-password" label="رمز عبور" />
           <p className="text-primary -mt-2 text-sm max-sm:-mt-1">
             بازیابی رمز عبور
           </p>
-          <button
-            type="submit"
-            className="bg-primary text-WHITE mt-2 flex h-14 items-center justify-center rounded-xl text-lg/10 max-sm:mt-1 max-sm:h-10 max-sm:text-sm/6.25"
-          >
+          <PrimaryButton className="mt-2 h-14 text-lg/10 max-sm:mt-1 max-sm:h-10 max-sm:text-sm/6.25">
             ورود
-          </button>
+          </PrimaryButton>
         </form>
         <p className="mt-3 text-center max-sm:text-sm">
           حساب کاربری ندارید؟
