@@ -4,20 +4,14 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { MdKeyboardArrowLeft, MdOutlineHome } from "react-icons/md";
 import { useEffect, useState } from "react";
+import { breadcrumbNameMap } from "@/lib/constants";
 
 interface BreadcrumbProps {
   title?: string;
 }
 
 export default function Breadcrumb({ title }: BreadcrumbProps) {
-  const nameMap: Record<string, string> = {
-    products: "محصولات",
-    "plant-doctor": "گیاه پزشک",
-    blog: "مجله گیاه لند",
-    intro: "معرفی",
-    care: "نگهداری",
-    health: "آفت‌ها و بیماری‌ها",
-  };
+
 
   const pathname = usePathname();
   const segments = pathname.split("/").filter(Boolean);
@@ -41,10 +35,10 @@ export default function Breadcrumb({ title }: BreadcrumbProps) {
     if (isLast && title) {
       return isMobile && title.length > 6 ? truncateText(title, 6) : title;
     }
-    if (isLast && (segment.includes("-") || segment.length > 25)) {
+    if (isLast && ( segment.length > 25)) {
       return "مشاهده";
     }
-    return nameMap[segment] || segment;
+    return breadcrumbNameMap[segment] || segment;
   };
 
   return (
