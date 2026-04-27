@@ -4,6 +4,7 @@ import Image from "next/image";
 import { MdOutlineArrowBack } from "react-icons/md";
 import HeroStatsItem from "./HeroStatsItem";
 import Link from "next/link";
+import PrimaryButton from "@/components/shared/ui/PrimaryButton";
 
 const HeroSection = () => {
   return (
@@ -18,16 +19,16 @@ const HeroSection = () => {
           بگیری.
         </p>
         <div className="mb-12 flex max-w-134.75 gap-x-5.5 max-lg:flex-col max-lg:gap-y-2 max-md:mb-10 max-md:flex-row max-md:gap-x-3">
-          <Link
+          <PrimaryButton
             href="/products?category=discounted&sort=newest&view=grid"
-            className="bg-primary text-WHITE hover:bg-shade2 flex flex-1 cursor-pointer items-center justify-center rounded-xl py-3 transition-colors max-md:basis-1/2 max-md:py-2"
+            className="flex-1 h-14 max-lg:basis-14  max-md:h-10 "
           >
-            <span className="text-lg/8 max-md:text-sm max-md:font-medium">
+            <span className="text-lg/8   max-md:text-sm/6.25 max-md:font-medium">
               گیاهان تخفیف دار
             </span>
-          </Link>
-          <button className="text-primary border-primary hover:border-shade2 hover:text-shade2 flex max-w-134.75 flex-1 cursor-pointer items-center justify-center gap-x-2 rounded-xl border border-dashed py-3 text-lg transition-colors max-md:basis-1/2 max-md:py-2">
-            <span className="text-lg/8 max-md:text-sm max-md:font-medium">
+          </PrimaryButton>
+          <button className="text-primary max-lg:basis-14 h-14 border-primary hover:border-shade2 hover:text-shade2 flex max-w-134.75 flex-1 cursor-pointer items-center justify-center gap-x-2 rounded-xl border border-dashed text-lg transition-colors max-md:h-10 ">
+            <span className="text-lg/8 max-md:text-sm/6.25 max-md:font-medium">
               مشاوره با گیاه پزشک
             </span>
             <MdOutlineArrowBack className="size-6 max-md:size-4" />
@@ -41,7 +42,10 @@ const HeroSection = () => {
       </div>
       <div className="basis-1/2">
         <picture>
-          <source media="(max-width: 768px)" srcSet="/static/images/hero-mobile.png" />
+          <source
+            media="(max-width: 768px)"
+            srcSet="/static/images/hero-mobile.png"
+          />
           <Image
             alt="giahland"
             src="/static/images/hero-desktop.png"
