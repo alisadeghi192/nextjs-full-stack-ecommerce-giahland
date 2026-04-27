@@ -7,6 +7,8 @@ import type { Swiper as SwiperType } from "swiper";
 import { Autoplay, Navigation } from "swiper/modules";
 import BlogCard from "./BlogCard";
 import { BlogPostType } from "@/features/blog/types/blog.types";
+import { BLOG_SWIPER_BREAKPOINTS, BLOG_SWIPER_AUTOPLAY_DELAY, BLOG_SWIPER_SPACE_BETWEEN } from "@/lib/constants";
+
 
 import "swiper/css";
 import { MdKeyboardArrowLeft } from "react-icons/md";
@@ -50,24 +52,13 @@ export default function BlogSlider({
           onMouseLeave={() => swiperRef.current?.autoplay?.start()}
           navigation={false}
           loop={true}
-          spaceBetween={20}
+          spaceBetween={BLOG_SWIPER_SPACE_BETWEEN}
           autoplay={{
-            delay: 3000,
+            delay: BLOG_SWIPER_AUTOPLAY_DELAY,
             disableOnInteraction: false,
             pauseOnMouseEnter: true,
           }}
-          breakpoints={{
-            0: { slidesPerView: 1.25, spaceBetween: 16 },
-            320: { slidesPerView: 1.25, spaceBetween: 16 },
-            350: { slidesPerView: 1.5, spaceBetween: 16 },
-            380: { slidesPerView: 1.5, spaceBetween: 16 },
-            400: { slidesPerView: 1.75, spaceBetween: 16 },
-            500: { slidesPerView: 2, spaceBetween: 16 },
-            600: { slidesPerView: 2.5, spaceBetween: 16 },
-            640: { slidesPerView: 2, spaceBetween: 16 },
-            768: { slidesPerView: 3, spaceBetween: 20 },
-            1024: { slidesPerView: 4, spaceBetween: 24 },
-          }}
+          breakpoints={BLOG_SWIPER_BREAKPOINTS}
           modules={[Navigation, Autoplay]}
           className="blogSwiper"
         >
