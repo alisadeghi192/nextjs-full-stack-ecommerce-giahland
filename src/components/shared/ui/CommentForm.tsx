@@ -3,6 +3,7 @@
 import FormField from "@/components/shared/ui/FormField";
 import TextareaField from "@/components/shared/ui/TextareaField";
 import { MdDriveFileRenameOutline } from "react-icons/md";
+import PrimaryButton from "./PrimaryButton";
 
 export default function CommentForm() {
   return (
@@ -29,12 +30,9 @@ export default function CommentForm() {
           label="متن دیدگاه"
           rows={3}
         />
-        <button
-          type="submit"
-          className="text-WHITE bg-primary max-xs:w-full hover:bg-shade2 flex h-10 w-47 cursor-pointer items-center justify-center justify-self-end rounded-lg transition-colors"
-        >
+        <PrimaryButton className="max-xs:w-full h-10 w-47 justify-self-end rounded-lg!">
           ارسال
-        </button>
+        </PrimaryButton>
       </form>
     </div>
   );
