@@ -1,5 +1,6 @@
 "use client";
 
+import PrimaryButton from "@/components/shared/ui/PrimaryButton";
 import FormField from "../../shared/ui/FormField";
 import PasswordField from "../../shared/ui/PasswordField";
 import { MdMailOutline, MdOutlineMobileFriendly } from "react-icons/md";
@@ -28,20 +29,11 @@ export default function RegisterForm({ onToggle }: RegisterFormProps) {
             name="email"
             label="ایمیل"
           />
-          <PasswordField
-            name="register-password"
-            label="رمز عبور"
-          />
-          <PasswordField
-            name="confirm-password"
-            label="تکرار رمز عبور"
-          />
-          <button
-            type="submit"
-            className="bg-primary text-WHITE mt-2 flex h-14 items-center justify-center rounded-xl text-lg/10 max-sm:h-10 max-sm:text-sm/6.25"
-          >
+          <PasswordField name="register-password" label="رمز عبور" />
+          <PasswordField name="confirm-password" label="تکرار رمز عبور" />
+          <PrimaryButton className="mt-2 h-14  text-lg/10 max-sm:mt-1 max-sm:h-10 max-sm:text-sm/6.25">
             ثبت نام
-          </button>
+          </PrimaryButton>
         </form>
         <p className="mt-3 text-center max-sm:text-sm">
           حساب کاربری دارید؟
