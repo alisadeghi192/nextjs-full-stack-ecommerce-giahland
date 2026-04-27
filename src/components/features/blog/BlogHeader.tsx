@@ -2,19 +2,7 @@
 import Tabs from "@/components/shared/ui/Tabs";
 import SortDropdownWrapper from "@/components/shared/ui/SortDropdownWrapper";
 import { usePageParams } from "@/lib/hooks/usePageParams";
-
-const blogTabs = [
-  { id: "all", label: "همه" },
-  { id: "intro", label: "معرفی" },
-  { id: "care", label: "نگهداری" },
-  { id: "health", label: "آفت‌ها و بیماری‌ها" },
-];
-
-const blogSortOptions = [
-  { value: "newest", label: "جدیدترین" },
-  { value: "oldest", label: "قدیمی‌ترین" },
-  { value: "most_viewed", label: "پربازدیدترین" },
-];
+import { blogTabs, blogSortOptions } from "@/lib/constants";
 
 export default function BlogHeader() {
   const { activeTab, selectedSort } = usePageParams();
