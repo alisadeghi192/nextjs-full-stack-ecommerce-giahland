@@ -3,14 +3,9 @@
 import { useState } from "react";
 import { MdOutlineMenu } from "react-icons/md";
 import NavLink from "./NavLink";
+import { navLinks } from "@/lib/constants";
 
-const navLinks = [
-  { text: "صفحه اصلی", href: "/" },
-  { text: "گیاه پزشک", href: "/plant-doctor" },
-  { text: "وبلاگ", href: "/blog" },
-  { text: "تماس با ما", href: "/contact-us" },
-  { text: "درباره ما", href: "/about-us" },
-];
+
 
 const MobileMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
