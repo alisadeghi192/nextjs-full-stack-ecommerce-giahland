@@ -3,6 +3,7 @@
 import { useState } from "react";
 import CommentItem from "./CommentItem";
 import { Comment } from "@/features/blog/types/blog.types";
+import OutlineButton from "./OutlineButton";
 
 const COMMENTS_PER_PAGE = 5;
 
@@ -31,18 +32,18 @@ export default function CommentList({ comments = [] }: CommentListProps) {
   const visibleComments = comments.slice(0, visibleCount);
 
   return (
-    <div className="flex flex-col space-y-4 ">
+    <div className="flex flex-col space-y-4">
       {visibleComments.map((comment) => (
         <CommentItem key={comment.id} {...comment} />
       ))}
 
       {hasMore && (
-        <button
+        <OutlineButton
           onClick={loadMore}
-          className="text-primary hover:text-shade2 hover:border-shade2 border-primary mx-auto max-xs:text-base max-xs:w-full cursor-pointer rounded-xl border px-4 py-2 text-lg transition-colors"
+          className="max-xs:w-full  max-xs:text-base mx-auto px-4 py-2 text-lg"
         >
           نمایش بیشتر ({comments.length - visibleCount})
-        </button>
+        </OutlineButton>
       )}
     </div>
   );

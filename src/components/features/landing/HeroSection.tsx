@@ -5,6 +5,7 @@ import { MdOutlineArrowBack } from "react-icons/md";
 import HeroStatsItem from "./HeroStatsItem";
 import Link from "next/link";
 import PrimaryButton from "@/components/shared/ui/PrimaryButton";
+import OutlineButton from "@/components/shared/ui/OutlineButton";
 
 const HeroSection = () => {
   return (
@@ -21,18 +22,18 @@ const HeroSection = () => {
         <div className="mb-12 flex max-w-134.75 gap-x-5.5 max-lg:flex-col max-lg:gap-y-2 max-md:mb-10 max-md:flex-row max-md:gap-x-3">
           <PrimaryButton
             href="/products?category=discounted&sort=newest&view=grid"
-            className="flex-1 h-14 max-lg:basis-14  max-md:h-10 "
+            className="h-14 flex-1 max-lg:basis-14 max-md:h-10"
           >
-            <span className="text-lg/8   max-md:text-sm/6.25 max-md:font-medium">
+            <span className="text-lg/8 max-md:text-sm/6.25 max-md:font-medium">
               گیاهان تخفیف دار
             </span>
           </PrimaryButton>
-          <button className="text-primary max-lg:basis-14 h-14 border-primary hover:border-shade2 hover:text-shade2 flex max-w-134.75 flex-1 cursor-pointer items-center justify-center gap-x-2 rounded-xl border border-dashed text-lg transition-colors max-md:h-10 ">
+          <OutlineButton className=" h-14 flex-1 gap-x-2 border-dashed text-lg max-lg:basis-14 max-md:h-10">
             <span className="text-lg/8 max-md:text-sm/6.25 max-md:font-medium">
               مشاوره با گیاه پزشک
             </span>
             <MdOutlineArrowBack className="size-6 max-md:size-4" />
-          </button>
+          </OutlineButton>
         </div>
         <div className="font-modam flex gap-x-12 max-md:gap-x-2">
           <HeroStatsItem end={943} label="گیاه خانگی" />

@@ -14,6 +14,7 @@ import NavLinks from "../../shared/ui/NavLinks";
 import MobileMenu from "../../shared/ui/MobileMenu";
 import { useScroll } from "@/lib/hooks/useScroll";
 import Link from "next/link";
+import OutlineButton from "@/components/shared/ui/OutlineButton";
 
 const isUserLogin = false;
 
@@ -59,18 +60,15 @@ const PublicHeader = ({ hasSearchInput = true }: PublicHeaderProps) => {
                 <span className="text-lg max-lg:hidden">سلام کاربر</span>
               </button>
             ) : (
-              <Link
+              <OutlineButton
                 href="/login-register"
-                className="border-primary group hover:border-shade2 transition-color flex h-12 cursor-pointer items-center justify-center gap-2 rounded-xl border px-4 max-lg:size-12 max-lg:gap-0 max-lg:px-3"
+                className=" h-12 gap-2 px-4 max-lg:size-12 max-lg:gap-0 max-lg:px-3"
               >
-                <MdOutlineLogin
-                  size={24}
-                  className="text-primary group-hover:text-shade2 transition-colors"
-                />
-                <span className="text-primary group-hover:text-shade2 text-lg/8.5 transition-colors max-lg:hidden">
+                <MdOutlineLogin size={24} className="transition-colors" />
+                <span className="text-lg/8.5 transition-colors max-lg:hidden">
                   ورود/ثبت نام
                 </span>
-              </Link>
+              </OutlineButton>
             )}
           </div>
         </div>
