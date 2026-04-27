@@ -1,6 +1,7 @@
 import Link from "next/link";
 import PublicHeader from "@/components/layout/public/PublicHeader";
 import Image from "next/image";
+import PrimaryButton from "@/components/shared/ui/PrimaryButton";
 
 export default function NotFound() {
   return (
@@ -20,14 +21,12 @@ export default function NotFound() {
             متأسفیم! صفحه‌ای که به دنبال آن هستید وجود ندارد یا ممکن است حذف شده
             باشد.
           </p>
-          <Link
+          <PrimaryButton
             href="/"
-            className="bg-primary text-WHITE mx-auto mt-5 flex w-9/10 flex-1 cursor-pointer items-center justify-center rounded-xl py-3 transition-colors hover:bg-shade2"
+            className="mx-auto mt-5 flex w-9/10 flex-1 py-3"
           >
-            <span className="text-lg/8 max-md:text-sm max-md:font-medium">
-              بازگشت به صفحه اصلی
-            </span>
-          </Link>
+            بازگشت به صفحه اصلی
+          </PrimaryButton>
         </div>
         <Image
           alt="404"
