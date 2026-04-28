@@ -4,8 +4,8 @@ import { useState } from "react";
 import CommentItem from "./CommentItem";
 import { Comment } from "@/features/blog/types/blog.types";
 import OutlineButton from "./OutlineButton";
+import { COMMENTS_PER_PAGE } from "@/lib/constants";
 
-const COMMENTS_PER_PAGE = 5;
 
 interface CommentListProps {
   comments?: Comment[];

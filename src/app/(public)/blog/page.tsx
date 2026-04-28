@@ -8,7 +8,7 @@ import {
   sortPosts,
   paginatePosts,
 } from "@/features/blog/utils/blogHelpers";
-import { DEFAULT_TAB, DEFAULT_SORT } from "@/lib/constants";
+import { DEFAULT_TAB, DEFAULT_SORT, BLOG_POSTS_PER_PAGE } from "@/lib/constants";
 
 interface BlogPageProps {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -20,7 +20,6 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
   const activeTab = (params.category as string) || DEFAULT_TAB;
   const selectedSort = (params.sort as string) || DEFAULT_SORT;
   const currentPage = Number(params.page) || 1;
-  const pageSize = 12;
 
   const allPosts = getAllPosts();
 
@@ -28,8 +27,8 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
 
   const sortedPosts = sortPosts(filteredPosts, selectedSort);
 
-  const paginatedPosts = paginatePosts(sortedPosts, currentPage, pageSize);
-  const totalPages = Math.ceil(sortedPosts.length / pageSize);
+  const paginatedPosts = paginatePosts(sortedPosts, currentPage, BLOG_POSTS_PER_PAGE);
+  const totalPages = Math.ceil(sortedPosts.length / BLOG_POSTS_PER_PAGE);
 
   const baseUrl = `?category=${activeTab}&sort=${selectedSort}`;
 
