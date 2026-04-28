@@ -16,6 +16,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import Link from "next/link";
+import { PRODUCT_SWIPER_AUTOPLAY_DELAY, PRODUCT_SWIPER_BREAKPOINTS, PRODUCT_SWIPER_SPACE_BETWEEN } from "@/lib/constants";
 
 interface ProductSliderProps {
   title: string;
@@ -56,24 +57,13 @@ export default function ProductSlider({
           onMouseLeave={() => swiperRef.current?.autoplay?.start()}
           navigation={false}
           loop={true}
-          spaceBetween={20}
+          spaceBetween={PRODUCT_SWIPER_SPACE_BETWEEN}
           autoplay={{
-            delay: 3000,
+            delay: PRODUCT_SWIPER_AUTOPLAY_DELAY,
             disableOnInteraction: false,
             pauseOnMouseEnter: true,
           }}
-          breakpoints={{
-            0: { slidesPerView: 1.25, spaceBetween: 16 },
-            320: { slidesPerView: 1.25, spaceBetween: 16 },
-            350: { slidesPerView: 1.5, spaceBetween: 16 },
-            380: { slidesPerView: 1.5, spaceBetween: 16 },
-            400: { slidesPerView: 1.75, spaceBetween: 16 },
-            500: { slidesPerView: 2.25, spaceBetween: 16 },
-            600: { slidesPerView: 2.5, spaceBetween: 16 },
-            640: { slidesPerView: 2, spaceBetween: 16 },
-            768: { slidesPerView: 3, spaceBetween: 20 },
-            1024: { slidesPerView: 4, spaceBetween: 24 },
-          }}
+          breakpoints={PRODUCT_SWIPER_BREAKPOINTS}
           modules={[Navigation, Autoplay]}
           className="mySwiper"
         >
