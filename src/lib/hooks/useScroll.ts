@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { HEADER_SCROLL_THRESHOLD } from "@/lib/constants";
 
-export function useScroll(Scrolled: number) {
+export function useScroll(Scrolled: number = HEADER_SCROLL_THRESHOLD) {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
