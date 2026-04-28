@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { formatDate } from "@/lib/utils/format";
+import { roleConfig } from "@/lib/constants";
 
 interface CommentItemProps {
   name: string;
@@ -14,11 +15,7 @@ interface CommentItemProps {
   };
 }
 
-const roleConfig = {
-  admin: { label: "ادمین", className: "bg-primary/10 text-primary" },
-  user: { label: "کاربر", className: "bg-neutral3 text-neutral9" },
-  "plant-doctor": { label: "گیاه پزشک", className: "bg-blue-50 text-blue-600" },
-};
+
 
 export default function CommentItem({ name, role, date, text, reply }: CommentItemProps) {
   return (
