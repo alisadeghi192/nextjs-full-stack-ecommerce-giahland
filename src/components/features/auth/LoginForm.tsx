@@ -11,7 +11,7 @@ interface LoginFormProps {
 
 export default function LoginForm({ onToggle }: LoginFormProps) {
   return (
-    <div className="bg-WHITE relative z-10 w-1/2 max-lg:w-2/3 max-sm:h-5/8 max-sm:w-full max-sm:rounded-t-[20px]">
+    <div className="bg-white relative z-10 w-1/2 max-lg:w-2/3 max-sm:h-5/8 max-sm:w-full max-sm:rounded-t-[20px]">
       <div className="mx-auto mb-4 w-72/100 max-md:w-90/100">
         <h5 className="mb-8 text-xl/7 font-semibold max-sm:mt-3.25 max-sm:mb-6 max-sm:text-center max-sm:text-lg/8 max-sm:font-normal">
           ورود

@@ -54,7 +54,7 @@ export default function ProductCardGrid({
             />
           ) : (
             <>
-              <AddToCartButton className="bg-neutral3 hover:bg-primary hover:*:text-WHITE flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-full transition-colors" />
+              <AddToCartButton className="bg-neutral3 hover:bg-primary hover:*:text-white flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-full transition-colors" />
               <PriceSection price={price} discount={discount} />
             </>
           )}
@@ -65,7 +65,7 @@ export default function ProductCardGrid({
   );
 
   return (
-    <div className="group border-neutral5 bg-WHITE relative flex h-full flex-col justify-between gap-y-2 justify-self-center overflow-hidden rounded-xl border p-4 max-xl:gap-y-4 max-sm:max-w-57">
+    <div className="group border-neutral5 bg-white relative flex h-full flex-col justify-between gap-y-2 justify-self-center overflow-hidden rounded-xl border p-4 max-xl:gap-y-4 max-sm:max-w-57">
       {isOutOfStock ? (
         <div className="cursor-default">{Content()}</div>
       ) : (

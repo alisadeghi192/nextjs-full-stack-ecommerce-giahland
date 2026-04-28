@@ -30,7 +30,7 @@ const PublicHeader = ({ hasSearchInput = true }: PublicHeaderProps) => {
       <nav className="border-neutral5 container border-b font-medium max-md:hidden">
         {/* navlinks */}
         <div
-          className={`bg-WHITE text-neutral12 flex items-center justify-between transition-all ${isScrolled ? "h-15" : "h-24"} `}
+          className={`bg-white text-neutral12 flex items-center justify-between transition-all ${isScrolled ? "h-15" : "h-24"} `}
         >
           <div className="flex gap-8 max-lg:gap-4">
             {/* logo */}
@@ -74,7 +74,7 @@ const PublicHeader = ({ hasSearchInput = true }: PublicHeaderProps) => {
         </div>
       </nav>
       {/* mobile header */}
-      <nav className="border-neutral3 bg-WHITE border-b py-3 md:hidden">
+      <nav className="border-neutral3 bg-white border-b py-3 md:hidden">
         <div
           className={`container flex flex-col gap-y-3 ${isScrolled ? "gap-y-2.5!" : ""}`}
         >

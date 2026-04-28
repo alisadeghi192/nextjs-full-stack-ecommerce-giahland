@@ -22,7 +22,7 @@ export default function BlogCard({
 }: BlogCardProps) {
   return (
     <>
-      <div className="text-WHITE justify-self-center overflow-hidden rounded-xl">
+      <div className="text-white justify-self-center overflow-hidden rounded-xl">
         <Link href={`/blog/${category}/${slug}`}>
           <div
             className="max-xs:h-80 relative flex h-94.5 max-w-72 flex-col justify-between overflow-hidden rounded-xl bg-cover bg-center p-4"
@@ -30,7 +30,7 @@ export default function BlogCard({
           >
             <div className="absolute inset-0 bg-black/60"></div>
             <div className="from-primary absolute inset-0 bg-linear-to-b to-[#75E59B] opacity-30"></div>
-            <div className="border-WHITE z-10 flex h-full flex-col justify-between border-b pb-4">
+            <div className="border-white z-10 flex h-full flex-col justify-between border-b pb-4">
               <h5 className="max-xs:line-clamp-3 line-clamp-4 text-xl/7 font-semibold max-sm:text-lg">
                 {title}
               </h5>
