@@ -5,4 +5,7 @@ export const breadcrumbNameMap: Record<string, string> = {
   intro: "معرفی",
   care: "نگهداری",
   health: "آفت‌ها و بیماری‌ها",
+  gift : "کادویی",
+  decoration : "تزئینی",
+  indoor : "آپارتمانی"
 };
