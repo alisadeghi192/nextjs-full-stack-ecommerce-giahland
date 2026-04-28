@@ -11,7 +11,7 @@ interface ProductCardListProps {
   price: number;
   image: string;
   slug: string;
-  category:String;
+  category: String;
   discount: number;
   potDimensions: {
     length: number;
@@ -21,13 +21,12 @@ interface ProductCardListProps {
   stock: number;
 }
 
-
 export default function ProductCardList({
   name,
   price,
   image,
   category,
-  slug ,
+  slug,
   discount,
   potDimensions,
   stock,
@@ -70,11 +69,11 @@ export default function ProductCardList({
       {!isOutOfStock && (
         <LikeButton
           mobileResponsive={true}
-          className="max-md:top-2 max-md:left-2 max-md:size-7 max-md:group-hover:left-2"
+          className="top-4 -left-9 group-hover:left-4 max-md:top-2 max-md:left-2 max-md:size-7 max-md:group-hover:left-2"
         />
       )}
       {!isOutOfStock && (
-        <AddToCartButton className="bg-neutral3 hover:bg-primary hover:*:text-white absolute top-14 -left-9 flex size-8 shrink-0 items-center justify-center rounded-full transition-all group-hover:left-4 max-md:top-10 max-md:left-2 max-md:size-7 max-md:group-hover:left-2" />
+        <AddToCartButton className="bg-neutral3 hover:bg-primary absolute top-14 -left-9 flex size-8 shrink-0 items-center justify-center rounded-full transition-all group-hover:left-4 hover:*:text-white max-md:top-10 max-md:left-2 max-md:size-7 max-md:group-hover:left-2" />
       )}
     </div>
   );

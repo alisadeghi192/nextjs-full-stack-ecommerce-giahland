@@ -12,7 +12,7 @@ interface ProductCardGridProps {
   price: number;
   image: string;
   slug: string;
-  category : string;
+  category: string;
   discount: number;
   potDimensions: {
     length: number;
@@ -21,7 +21,6 @@ interface ProductCardGridProps {
   };
   stock: number;
 }
-
 
 export default function ProductCardGrid({
   name,
@@ -39,7 +38,7 @@ export default function ProductCardGrid({
   const Content = () => (
     <div className="flex flex-col">
       <ProductImage image={image} view="grid" name={name} />
-      <div className="flex flex-col gap-y-4 max-sm:gap-y-2 mt-auto">
+      <div className="mt-auto flex flex-col gap-y-4 max-sm:gap-y-2">
         <ProductInfo
           name={name}
           potDimensions={potDimensions}
@@ -50,11 +49,11 @@ export default function ProductCardGrid({
           {isOutOfStock ? (
             <StockStatus
               stock={stock}
-              className="text-error max-xs:text-sm mr-auto  text-lg/8 max-sm:text-base/7.25"
+              className="text-error max-xs:text-sm mr-auto text-lg/8 max-sm:text-base/7.25"
             />
           ) : (
             <>
-              <AddToCartButton className="bg-neutral3 hover:bg-primary hover:*:text-white flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-full transition-colors" />
+              <AddToCartButton className="bg-neutral3 hover:bg-primary flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-full transition-colors hover:*:text-white" />
               <PriceSection price={price} discount={discount} />
             </>
           )}
@@ -65,7 +64,7 @@ export default function ProductCardGrid({
   );
 
   return (
-    <div className="group border-neutral5 bg-white relative flex h-full flex-col justify-between gap-y-2 justify-self-center overflow-hidden rounded-xl border p-4 max-xl:gap-y-4 max-sm:max-w-57">
+    <div className="group border-neutral5 relative flex h-full flex-col justify-between gap-y-2 justify-self-center overflow-hidden rounded-xl border bg-white p-4 max-xl:gap-y-4 max-sm:max-w-57">
       {isOutOfStock ? (
         <div className="cursor-default">{Content()}</div>
       ) : (
@@ -73,8 +72,7 @@ export default function ProductCardGrid({
       )}
       {!isOutOfStock && (
         <LikeButton
-          className="max-md:left-4!"
-          mobileResponsive={false}
+          className="top-4 -left-9 group-hover:left-4 max-md:left-4!"
         />
       )}
     </div>
