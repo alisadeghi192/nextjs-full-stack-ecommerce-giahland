@@ -27,7 +27,7 @@ const HeroSection = () => {
               گیاهان تخفیف دار
             </span>
           </PrimaryButton>
-          <OutlineButton className=" h-14 flex-1 gap-x-2 border-dashed text-lg max-lg:basis-14 max-md:h-10">
+          <OutlineButton className=" h-14 flex-1 gap-x-2 border-dashed text-lg max-lg:basis-14 max-md:h-10 max-[350px]:gap-x-0.5">
             <span className="text-lg/8 max-md:text-sm/6.25 max-md:font-medium">
               مشاوره با گیاه پزشک
             </span>
