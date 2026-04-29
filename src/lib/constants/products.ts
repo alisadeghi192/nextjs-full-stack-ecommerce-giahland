@@ -12,3 +12,9 @@ export const productSortOptions = [
   { value: "price_desc", label: "گران‌ترین" },
   { value: "popular", label: "محبوب‌ترین" },
 ];
+
+export const productDetailTabs = [
+  { id: "features", label: "ویژگی‌ها" },
+  { id: "cares", label: "مراقبت‌ها" },
+  { id: "comments", label: "دیدگاه‌ها" },
+];
