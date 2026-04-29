@@ -64,7 +64,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                   alt="babaadam"
                   className="aspect-square object-cover"
                 />
-              </div>{" "}
+              </div>
               <div className="border-neutral6 rounded-lg border p-1">
                 <Image
                   width={70}
@@ -73,7 +73,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                   alt="babaadam"
                   className="aspect-square object-cover"
                 />
-              </div>{" "}
+              </div>
               <div className="border-neutral6 rounded-lg border p-1">
                 <Image
                   width={70}
@@ -82,7 +82,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                   alt="babaadam"
                   className="aspect-square object-cover"
                 />
-              </div>{" "}
+              </div>
               <div className="border-neutral6 rounded-lg border p-1">
                 <Image
                   width={70}
@@ -179,17 +179,15 @@ export default async function ProductPage({ params }: ProductPageProps) {
         </div>
       </section>
       <section>
-          <ProductDetailTabs tabs={productDetailTabs} />
+        <ProductDetailTabs tabs={productDetailTabs} />
         <div
           id="features"
-          className="border-tint7 space-y-6 border-b border-dashed py-6 scroll-mt-25"
+          className="border-tint7 scroll-mt-25 space-y-6 border-b border-dashed py-6 text-justify leading-7.25"
         >
           <div className="space-y-4">
             <div className="space-y-2">
-              <h5 className="leading-7.25 font-bold">
-                معرفی کلی گیاه {product.name}
-              </h5>
-              <p className="text-neutral10 text-justify leading-7.25">
+              <h5 className="font-bold">معرفی کلی گیاه {product.name}</h5>
+              <p className="text-neutral10 max-xs:text-sm/6.25">
                 یوکا سرده‌ای از گیاهان همیشه‌سبز و شبیه به درختچه یا درخت است که
                 بومی مناطق گرم و خشک آمریکای شمالی، آمریکای مرکزی و کارائیب
                 می‌باشد. این گیاه عضوی از خانواده مارچوبگان (Asparagaceae) و
@@ -203,9 +201,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
               </p>
             </div>
             <div className="space-y-2">
-              <h5 className="leading-7.25 font-bold">ویژگی های ظاهری</h5>
-              <div className="text-neutral10 text-justify leading-7.25">
-                <ul className="text-neutral10 max-xs:text-sm/6.25 list-disc pr-6 text-justify leading-7.25">
+              <h5 className="font-bold">ویژگی های ظاهری</h5>
+              <div className="text-neutral10 max-xs:text-sm/6.25">
+                <ul className="list-disc pr-6">
                   <li>
                     ساقه:دارای ساقه‌ای چوبی و ضخیم (شبیه به پای فیل) که در برخی
                     گونه‌ها به ارتفاع چند متر می‌رسد.
@@ -228,9 +226,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
               </div>
             </div>
             <div className="space-y-2">
-              <h5 className="leading-7.25 font-bold">نکات ویژه و هشدارها</h5>
-              <div className="text-neutral10 text-justify leading-7.25">
-                <ol className="text-neutral10 max-xs:text-sm/6.25 list-decimal pr-6 text-justify leading-7.25">
+              <h5 className="font-bold">نکات ویژه و هشدارها</h5>
+              <div className="text-neutral10 max-xs:text-sm/6.25">
+                <ol className="list-decimal pr-6">
                   <li>
                     سمی بودن: یوکا برای گربه، سگ و اسب سمی است. ساپونین موجود در
                     گیاه می‌تواند باعث استفراغ، اسهال و ترشح بزاق در حیوانات
@@ -250,9 +248,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
               </div>
             </div>
             <div className="space-y-2">
-              <h5 className="leading-7.25 font-bold">تکثیر {product.name}</h5>
-              <div className="text-neutral10 text-justify leading-7.25">
-                <ol className="text-neutral10 max-xs:text-sm/6.25 list-decimal pr-6 text-justify leading-7.25">
+              <h5 className="font-bold">تکثیر {product.name}</h5>
+              <div className="text-neutral10 max-xs:text-sm/6.25">
+                <ol className="list-decimal pr-6">
                   <li>
                     قلمه ساقه:برش ۱۰-۲۰ سانتی‌متری از ساقه، خشک کردن سطح برش به
                     مدت ۲ روز، کاشت در ماسه مرطوب.
@@ -263,8 +261,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
               </div>
             </div>
             <div className="space-y-2">
-              <h5 className="leading-7.25 font-bold">جمع بندی</h5>
-              <p className="text-neutral10 text-justify leading-7.25">
+              <h5 className="font-bold">جمع بندی</h5>
+              <p className="text-neutral10 max-xs:text-sm/6.25">
                 یوکا گیاهی صبور، کم‌توقع و زیبا است که با ساقه ضخیم و تاجی از
                 برگ‌های شمشیری شکل، جلوهای مدرن و گرمسیری به خانه می‌بخشد. تنها
                 کلید موفقیت با آن، خشک نگه داشتن خاک بین دو آبیاری و نور کافی
@@ -284,7 +282,73 @@ export default async function ProductPage({ params }: ProductPageProps) {
             </div>
           </div>
         </div>
-        <div id="cares"></div>
+        <div
+          id="cares"
+          className="border-tint7 scroll-mt-25 space-y-2 border-b border-dashed py-6 text-justify leading-7.25"
+        >
+          <h5 className="font-bold">شرایط نگهداری (مخصوص آپارتمان)</h5>
+          <div className="text-neutral10 max-xs:text-sm/6.25">
+            <ol className="list-decimal pr-6">
+              <li>
+                نور
+                <ul className="list-disc pr-6">
+                  <li>نیاز: نور غیرمستقیم و روشن تا آفتاب مستقیم.</li>
+                  <li>بهترین مکان: کنار پنجره جنوبی یا غربی.</li>
+                  <li>
+                    توجه: کمبود نور باعث کشیدگی ساقه (اتولاسیون)، رنگ پریدگی و
+                    ریزش برگ‌های پایینی می‌شود.
+                  </li>
+                </ul>
+              </li>
+              <li>
+                آبیاری
+                <ul className="list-disc pr-6">
+                  <li>نیاز: نور غیرمستقیم و روشن تا آفتاب مستقیم.</li>
+                  <li>بهترین مکان: کنار پنجره جنوبی یا غربی.</li>
+                  <li>
+                    توجه: کمبود نور باعث کشیدگی ساقه (اتولاسیون)، رنگ پریدگی و
+                    ریزش برگ‌های پایینی می‌شود.
+                  </li>
+                </ul>
+              </li>
+              <li>
+                خاک
+                <ul className="list-disc pr-6">
+                  <li>ترکیب مناسب: خاک سبک با زهکشی عالی</li>
+                  <li>
+                    ۲ قسمت خاک باغچه + ۱ قسمت ماسه شسته + ۱ قسمت پرلیت یا پوکه
+                  </li>
+                  <li>یا استفاده از خاک کاکتوس و ساکولنت آماده</li>
+                  <li>گلدان: حتماً دارای زهکشی (سوراخ کف) باشد.</li>
+                </ul>
+              </li>
+              <li>
+                دما و رطوبت
+                <ul className="list-disc pr-6">
+                  <li>دمای ایده‌آل: ۱۸ تا ۲۶ درجه سانتی‌گراد</li>
+                  <li>
+                    حداکثر تحمل سرما: برخی گونه‌ها تا ۱۰- درجه (در فضای باز)،
+                    اما گونه آپارتمانی زیر ۱۰ درجه آسیب می‌بیند.
+                  </li>
+                  <li>
+                    رطوبت: نیاز به رطوبت بالا ندارد؛ هوای خشک منزل را تحمل
+                    می‌کند. غبارپاشی گاهی برای تمیزی برگ‌ها کافیست.
+                  </li>
+                </ul>
+              </li>{" "}
+              <li>
+                کوددهی
+                <ul className="list-disc pr-6">
+                  <li>زمان: در فصل رشد (بهار و تابستان)، هر ۴-۶ هفته یک بار</li>
+                  <li>
+                    نوع کود: کود متعادل مخصوص گیاهان آپارتمانی (۲۰-۲۰-۲۰) یا کود
+                    مخصوص کاکتوس، نصف غلظت توصیه شده.
+                  </li>
+                </ul>
+              </li>
+            </ol>
+          </div>
+        </div>
       </section>
     </main>
   );
