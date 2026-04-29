@@ -25,7 +25,7 @@ interface PublicHeaderProps {
 const PublicHeader = ({ hasSearchInput = true }: PublicHeaderProps) => {
   const isScrolled = useScroll(80);
   return (
-    <header className="sticky top-0 right-0 left-0 z-20 h-24">
+    <header className={`sticky top-0 right-0 left-0 z-20 ${isScrolled ? 'h-15' : 'h-24'} `}>
       {/* desktop header */}
       <nav className="border-neutral5 container border-b font-medium max-md:hidden">
         {/* navlinks */}
