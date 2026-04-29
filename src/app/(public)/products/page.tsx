@@ -7,9 +7,14 @@ import {
   getAllProducts,
   sortProducts,
   paginateProducts,
-  filterProductsByTab
+  filterProductsByTab,
 } from "@/features/products/utils/productHelpers";
-import { DEFAULT_TAB, DEFAULT_VIEW_MODE, DEFAULT_SORT, PRODUCTS_PER_PAGE } from "@/lib/constants";
+import {
+  DEFAULT_TAB,
+  DEFAULT_VIEW_MODE,
+  DEFAULT_SORT,
+  PRODUCTS_PER_PAGE,
+} from "@/lib/constants";
 
 interface ProductsPageProps {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -28,7 +33,11 @@ export default async function ProductsPage({
   const allProducts = getAllProducts();
   const filteredProducts = filterProductsByTab(allProducts, activeTab);
   const sortedProducts = sortProducts(filteredProducts, selectedSort);
-  const paginatedProducts = paginateProducts(sortedProducts, currentPage, PRODUCTS_PER_PAGE);
+  const paginatedProducts = paginateProducts(
+    sortedProducts,
+    currentPage,
+    PRODUCTS_PER_PAGE,
+  );
   const totalPages = Math.ceil(sortedProducts.length / PRODUCTS_PER_PAGE);
   const baseUrl = `?category=${activeTab}&view=${viewMode}&sort=${selectedSort}`;
 
@@ -36,7 +45,11 @@ export default async function ProductsPage({
     <main className="container">
       <Breadcrumb />
       <section>
-        <ProductsHeader />
+        <ProductsHeader
+          activeTab={activeTab}
+          selectedSort={selectedSort}
+          viewMode={viewMode}
+        />
         {viewMode === DEFAULT_VIEW_MODE ? (
           <ProductsGrid products={paginatedProducts} />
         ) : (
