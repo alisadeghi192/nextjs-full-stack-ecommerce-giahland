@@ -1,196 +1,129 @@
-import { CareItem } from '@/features/products/types/product.types'
-import { ProductCare } from '@/features/products/types/product.types'
-import { ProductType } from '@/features/products/types/product.types'
-import { Comment } from '@/types/comment.types'
+import { CareItem } from "@/features/products/types/product.types";
+import { ProductCare } from "@/features/products/types/product.types";
+import { ProductType } from "@/features/products/types/product.types";
+import { Comment } from "@/types/comment.types";
 
 export const fakeProducts: ProductType[] = [
-  {
-    id: "indoor-1",
-    name: "بابا آدم",
-    price: 1850000,
-    image: "/static/images/HousePlant/BabaAdam.png",
-    slug: "baba-adam",
-    category: "indoor",
-    createdAt: new Date("2024-01-15"),
-    liked: 128,
-    discount: 0,
-    stock: 12,
+{
+  id: "indoor-1",
+  name: "بابا آدم",
+  price: 1850000,
+  image: "/static/images/HousePlant/BabaAdam.png",
+  slug: "baba-adam",
+  category: "indoor",
+  createdAt: new Date("2024-01-15"),
+  liked: 128,
+  discount: 0,
+  stock: 12,
 
-    potMaterial: "پلاستیکی",
-    soilType: "سبک و غنی",
-    weight: 2100,
-    potDimensions: { length: 22, width: 22, height: 24 },
-    sunlight: "نور غیرمستقیم",
-    images: ["/static/images/HousePlant/BabaAdam.png", "/static/images/HousePlant/eighthFlower.png", "/static/images/HousePlant/eleventhFlower.png", "/static/images/HousePlant/fifteenthFlower.png"],
+  potMaterial: "پلاستیکی سنگین",
+  soilType: "سبک و زهکش‌دار",
+  weight: 2100,
+  potDimensions: { length: 22, width: 22, height: 24 },
+  sunlight: "نور غیرمستقیم روشن",
+  images: ["/static/images/HousePlant/BabaAdam.png", "/static/images/HousePlant/eighthFlower.png", "/static/images/HousePlant/eleventhFlower.png", "/static/images/HousePlant/fifteenthFlower.png"],
 
-    features: {
-      overview: [
-        "بابا آدم با نام علمی Alocasia amazonica، گیاهی است گرمسیری با برگ‌های بزرگ، پهن و قلبی شکل که رگبرگ‌های برجسته و سفیدرنگی دارند.",
-        "این گیاه بومی جنگل‌های بارانی جنوب شرقی آسیا است و در محیطی گرم و مرطوب به بهترین شکل رشد می‌کند."
-      ],
-      appearance: [
-        "برگ‌ها: قلبی یا پیکانی شکل با رگبرگ‌های سفید.",
-        "ساقه: بلند و محکم.",
-        "اندازه: تا ۹۰ سانتی‌متر.",
-        "گل: در آپارتمان نادر است."
-      ],
-      warnings: [
-        "سمی بودن: برای انسان و حیوانات سمی است.",
-        "حساسیت به آبیاری: غرقابی باعث پوسیدگی ریشه می‌شود.",
-        "حساسیت به دما: دمای زیر ۱۵ درجه آسیب می‌زند."
-      ],
-      propagation: [
-        "تقسیم بوته: بهترین روش در بهار.",
-        "قلمه ساقه: کاشت در خاک سبک و مرطوب."
-      ],
-      summary: [
-        "بابا آدم با برگ‌های هنرمندانه‌اش، یک انتخاب عالی برای دکوراسیون داخلی است.",
-        "با نور غیرمستقیم و آبیاری اصولی، سال‌ها طراوت را به خانه شما هدیه می‌دهد."
-      ]
-    },
-
-    cares: {
-      light: [
-        { title: "نیاز نوری", description: "نور غیرمستقیم و روشن، دور از نور مستقیم آفتاب." }
-      ],
-      watering: [
-        { title: "آبیاری", description: "خاک همیشه مرطوب باشد، اما خیس نه. اجازه دهید سطح خاک خشک شود." }
-      ],
-      soil: [
-        { title: "خاک مناسب", description: "خاک سبک، غنی و دارای زهکشی عالی." }
-      ],
-      temperature: [
-        { title: "دما و رطوبت", description: "۱۸ تا ۲۷ درجه، رطوبت بالا را ترجیح می‌دهد." }
-      ],
-      fertilization: [
-        { title: "کوددهی", description: "هر ماه یک بار در فصل رشد، نصف غلظت توصیه شده." }
-      ]
-    }
+  features: {  // بدون تغییر، قبلاً خوب بود
+    overview: [
+      "بابا آدم با نام علمی Alocasia amazonica، گیاهی است گرمسیری با برگ‌های بزرگ، پهن و قلبی شکل که رگبرگ‌های برجسته و سفیدرنگی دارند.",
+      "این گیاه بومی جنگل‌های بارانی جنوب شرقی آسیا است و در محیطی گرم و مرطوب به بهترین شکل رشد می‌کند."
+    ],
+    appearance: [
+      "برگ‌ها: قلبی یا پیکانی شکل با رگبرگ‌های سفید.",
+      "ساقه: بلند و محکم.",
+      "اندازه: تا ۹۰ سانتی‌متر.",
+      "گل: در آپارتمان نادر است."
+    ],
+    warnings: [
+      "سمی بودن: برای انسان و حیوانات سمی است.",
+      "حساسیت به آبیاری: غرقابی باعث پوسیدگی ریشه می‌شود.",
+      "حساسیت به دما: دمای زیر ۱۵ درجه آسیب می‌زند."
+    ],
+    propagation: [  // ← اصلاح شده با توضیحات بیشتر
+      "تقسیم بوته: بهترین روش در بهار همزمان با تعویض گلدان. گیاه را از گلدان خارج کرده، ریزوم‌ها را با دقت از هم جدا کنید. هر بخش باید حداقل یک برگ و مقداری ریشه داشته باشد.",
+      "قلمه ساقه: یک قلمه ۱۰ تا ۱۵ سانتی‌متری از ساقه هوایی تهیه کنید. انتهای قلمه را به مدت یک روز در هوای خشک قرار دهید تا زخم‌ها ترمیم شوند. سپس در خاک سبک و مرطوب بکارید و در جای گرم با نور غیرمستقیم قرار دهید.",
+      "قلمه ریزوم: تکه‌های کوچک ریزوم (ساقه زیرزمینی) را در یک گلدان با خاک سبک و مرطوب بکارید. ریشه‌زایی چند ماه طول می‌کشد، اما روشی مطمئن برای تکثیر انبوه است."
+    ],
+    summary: [
+      "بابا آدم با برگ‌های هنرمندانه‌اش، یک انتخاب عالی برای دکوراسیون داخلی است.",
+      "با نور غیرمستقیم و آبیاری اصولی، سال‌ها طراوت را به خانه شما هدیه می‌دهد."
+    ]
   },
-  {
-    id: "indoor-2",
-    name: "یوکا",
-    price: 3240000,
-    image: "/static/images/HousePlant/secondFlower.png",
-    slug: "yucca",
-    category: "indoor",
-    createdAt: new Date("2024-02-20"),
-    liked: 95,
-    discount: 0,
-    stock: 8,
 
-    potMaterial: "پلاستیکی یا سفالی",
-    soilType: "ماسه و پرلیت",
-    weight: 4500,
-    potDimensions: { length: 28, width: 28, height: 30 },
-    sunlight: "نور زیاد تا مستقیم",
-    images: ["/static/images/HousePlant/BabaAdam.png", "/static/images/HousePlant/eighthFlower.png", "/static/images/HousePlant/eleventhFlower.png", "/static/images/HousePlant/fifteenthFlower.png"],
-
-    features: {
-      overview: [
-        "یوکا با نام علمی Yucca elephantipes، گیاهی است چوبی و شبیه به درختچه که ظاهری مجسمه‌ای مدرن به دکور می‌بخشد.",
-        "یوکا گیاهی بسیار مقاوم و کم‌توقع است و برای افراد پرمشغله گزینه‌ای ایده‌آل است."
-      ],
-      appearance: [
-        "برگ‌ها: شمشیری، سخت، کشیده و نوک‌تیز.",
-        "ساقه: چوبی و ضخیم.",
-        "گل: در آپارتمان بسیار نادر است.",
-        "رشد: کند و تدریجی."
-      ],
-      warnings: [
-        "نوک برگ‌ها تیز است: هنگام جابجایی احتیاط کنید.",
-        "آبیاری زیاد: مهم‌ترین خطر، پوسیدگی ریشه است."
-      ],
-      propagation: [
-        "قلمه ساقه: در بهار یا اوایل تابستان.",
-        "پاجوش: جدا کردن ساقه‌های فرعی."
-      ],
-      summary: [
-        "اگر به دنبال گیاهی مقاوم با ظاهری امروزی هستید، یوکا گزینه‌ای عالی است.",
-        "با نور کافی و آبیاری محدود، سال‌ها ماندگار است."
-      ]
-    },
-
-    cares: {
-      light: [
-        { title: "نیاز نوری", description: "نور زیاد و غیرمستقیم تا مستقیم، نزدیک پنجره جنوبی." }
-      ],
-      watering: [
-        { title: "آبیاری", description: "اجازه دهید خاک کاملاً خشک شود، سپس آبیاری کنید." }
-      ],
-      soil: [
-        { title: "خاک", description: "خاک سبک با زهکشی عالی، مخصوص کاکتوس." }
-      ],
-      temperature: [
-        { title: "دما و رطوبت", description: "۱۵ تا ۲۷ درجه، هوای خشک را تحمل می‌کند." }
-      ],
-      fertilization: [
-        { title: "کوددهی", description: "ماهی یک بار در بهار و تابستان، نصف غلظت." }
-      ]
-    }
+  // ==================== تب مراقبت‌ها (هر بخش ۳ آیتم) ====================
+  cares: {
+    light: [
+      { title: "نیاز نوری", description: "نور روشن و غیرمستقیم؛ بهترین گزینه پشت پنجره شرقی یا شمالی است." },
+      { title: "بهترین مکان", description: "فاصله یک تا دو متری از پنجره جنوبی با پرده نازک، یا نزدیک پنجره شرقی." },
+      { title: "نکته مهم", description: "نور مستقیم آفتاب ظهر باعث سوختگی و لکه‌های قهوه‌ای روی برگ‌ها می‌شود." }
+    ],
+    watering: [
+      { title: "قانون طلایی", description: "خاک باید همیشه مرطوب باشد، اما خیس نه. بین دو آبیاری اجازه دهید سطح خاک (۲ سانتی‌متر) خشک شود." },
+      { title: "برنامه منظم", description: "در بهار و تابستان هفته‌ای ۱ تا ۲ بار، در پاییز و زمستان هر ۱۰ تا ۱۴ روز یک بار." },
+      { title: "هشدار مهم", description: "آبیاری بیش از حد و ماندن آب در زیرگلدانی، علت اصلی زرد شدن برگ‌ها و پوسیدگی ریشه است." }
+    ],
+    soil: [
+      { title: "ترکیب عالی", description: "۲ قسمت خاک برگ + ۱ قسمت پیت ماس + ۱ قسمت پرلیت یا پوکه + یک مشت کوکوپیت." },
+      { title: "زهکشی حیاتی", description: "حتماً از گلدان با سوراخ زهکشی استفاده کنید. یک لایه شن یا هیدروتون کف گلدان بریزید." },
+      { title: "تعویض گلدان", description: "هر دو سال یک بار در بهار، گلدان را یک سایز بزرگتر کنید و خاک تازه با همان ترکیب بریزید." }
+    ],
+    temperature: [
+      { title: "دمای ایده‌آل", description: "بین ۱۸ تا ۲۷ درجه سانتی‌گراد؛ هیچگاه از ۱۵ درجه پایین‌تر نرود." },
+      { title: "رطوبت مورد نیاز", description: "رطوبت بالا (۶۰ تا ۸۰ درصد) را دوست دارد. غبارپاشی روزانه یا دستگاه بخور مفید است." },
+      { title: "نکته فصلی", description: "در زمستان از نزدیکی شوفاژ و بخاری پرهیز کنید. جریان هوای سرد پشت پنجره هم آسیب‌زا است." }
+    ],
+    fertilization: [
+      { title: "زمان کوددهی", description: "از اوایل بهار تا اوایل پاییز (فصل رشد)." },
+      { title: "نوع و غلظت", description: "کود مایع متعادل (۲۰-۲۰-۲۰). همیشه نصف یا یک‌چهارم غلظت توصیه شده روی بسته را استفاده کنید." },
+      { title: "بسامد مناسب", description: "هر ۳ تا ۴ هفته یک بار. در پاییز و زمستان کوددهی را کاملاً متوقف کنید." }
+    ]
   },
-  {
-    id: "indoor-3",
-    name: "سانسوریا",
-    price: 750000,
-    image: "/static/images/HousePlant/thirdFlower.png",
-    slug: "sansevieria",
-    category: "indoor",
-    createdAt: new Date("2024-03-10"),
-    liked: 210,
-    discount: 10,
-    stock: 0,
 
-    potMaterial: "پلاستیکی یا سفالی",
-    soilType: "مخصوص کاکتوس",
-    weight: 1100,
-    potDimensions: { length: 15, width: 15, height: 18 },
-    sunlight: "نور غیرمستقیم تا سایه",
-    images: ["/static/images/HousePlant/BabaAdam.png", "/static/images/HousePlant/eighthFlower.png", "/static/images/HousePlant/eleventhFlower.png", "/static/images/HousePlant/fifteenthFlower.png"],
+  // ۱۰ کامنت قبلی (بدون تغییر)
+  comments: [
+    // ۳ کامنت بدون پاسخ
+    { id: 1, name: "علی رضایی", role: "user", date: new Date("2025-04-20"), text: "بابا آدم رو از کجا تهیه کنم؟ خیلی خوشگله." },
+    { id: 2, name: "سارا محمدی", role: "user", date: new Date("2025-04-18"), text: "برگهای بابا آدم من زرد شده، چیکار کنم؟" },
+    { id: 3, name: "رضا کریمی", role: "user", date: new Date("2025-04-15"), text: "آیا این گیاه برای نگهداری در اتاق خواب مناسبه؟" },
 
-    features: {
-      overview: [
-        "سانسوریا با نام علمی Sansevieria trifasciata، گیاهی فوق‌العاده مقاوم با برگ‌های کشیده و شمشیری شکل است.",
-        "شب‌ها اکسیژن آزاد می‌کند و یکی از بهترین تصفیه‌کننده‌های طبیعی هوا است."
-      ],
-      appearance: [
-        "برگ‌ها: ضخیم، گوشتی و شمشیری‌شکل.",
-        "ساقه: ساقه هوایی ندارد.",
-        "رشد: متوسط تا کند.",
-        "گل: در آپارتمان نادر است."
-      ],
-      warnings: [
-        "سمی بودن: در صورت بلعیدن، باعث تهوع می‌شود.",
-        "آبیاری بیش از حد: باعث پوسیدگی ریشه می‌شود.",
-        "نوک تیز برگ‌ها: هنگام جابجایی دقت کنید."
-      ],
-      propagation: [
-        "تقسیم بوته: بهترین روش در بهار.",
-        "قلمه برگ: زمان‌بر، واریته ابلق سبز می‌شود.",
-        "پاجوش: جدا کردن پاجوش در بهار."
-      ],
-      summary: [
-        "سانسوریا یک گیاه بی‌آزار و بی‌ادعا است، مخصوص مبتدیان و افراد پرمشغله.",
-        "با کم‌ترین مراقبت، سال‌ها زینت‌بخش فضا خواهد بود."
-      ]
+    // ۳ کامنت با پاسخ گیاه پزشک
+    { 
+      id: 4, name: "نازنین احمدی", role: "user", date: new Date("2025-04-19"), 
+      text: "لکه های قهوه ای روی برگهاش ظاهر شده، علتش چیه؟",
+      reply: { name: "دکتر محمدی", role: "plant-doctor", date: new Date("2025-04-20"), text: "آفتاب سوختگی یا آبیاری با آب سرد. نور غیرمستقیم و آب ولرم استفاده کنید." } 
+    },
+    { 
+      id: 5, name: "حمید حسینی", role: "user", date: new Date("2025-04-17"), 
+      text: "گلدون بابا آدمم کوچیک شده، چه خاکی براش خوبه؟",
+      reply: { name: "دکتر کریمی", role: "plant-doctor", date: new Date("2025-04-18"), text: "خاک سبک با زهکش عالی مثل پیت ماس + پرلیت + پوکه." } 
+    },
+    { 
+      id: 6, name: "فاطمه موسوی", role: "user", date: new Date("2025-04-14"), 
+      text: "چند وقت یه بار باید کود بدم؟",
+      reply: { name: "دکتر محمدی", role: "plant-doctor", date: new Date("2025-04-15"), text: "هر ۲۰ روز یکبار در بهار و تابستان، کود مایع نصف غلظت." } 
     },
 
-    cares: {
-      light: [
-        { title: "نور", description: "از نور کم تا نور غیرمستقیم روشن، فقط نور مستقیم شدید مضر است." }
-      ],
-      watering: [
-        { title: "آبیاری", description: "اجازه دهید خاک کاملاً خشک شود، در زمستان بسیار کم." }
-      ],
-      soil: [
-        { title: "خاک", description: "خاک سبک با زهکشی عالی، مخصوص کاکتوس." }
-      ],
-      temperature: [
-        { title: "دما و رطوبت", description: "۱۵ تا ۲۵ درجه، هوای خشک را تحمل می‌کند." }
-      ],
-      fertilization: [
-        { title: "کوددهی", description: "در بهار و تابستان ماهی یک بار، نصف غلظت." }
-      ]
+    // ۴ کامنت با پاسخ ادمین
+    { 
+      id: 7, name: "زهرا رحیمی", role: "user", date: new Date("2025-04-16"), 
+      text: "این گیاه رو دارید؟ چند روزه تحویل می‌دین؟",
+      reply: { name: "پشتیبانی", role: "admin", date: new Date("2025-04-17"), text: "بله موجود است، سفارش امروز فردا ارسال می‌شه." } 
+    },
+    { 
+      id: 8, name: "مهدی قاسمی", role: "user", date: new Date("2025-04-13"), 
+      text: "آیا برای گربه ضرر داره؟",
+      reply: { name: "پشتیبانی", role: "admin", date: new Date("2025-04-14"), text: "بله، تمام بخش‌ها سمی است. دور از دسترس حیوانات نگهداری شود." } 
+    },
+    { 
+      id: 9, name: "مریم جعفری", role: "user", date: new Date("2025-04-11"), 
+      text: "ارتفاع این گیاه چقدر میشه؟",
+      reply: { name: "پشتیبانی", role: "admin", date: new Date("2025-04-12"), text: "تا حدود ۹۰ سانتیمتر، رشد متوسط سریع." } 
+    },
+    { 
+      id: 10, name: "حسین نوروزی", role: "user", date: new Date("2025-04-10"), 
+      text: "قیمت مناسبی داره؟ ممنونم",
+      reply: { name: "پشتیبانی", role: "admin", date: new Date("2025-04-11"), text: "کیفیت بالایی داره، تو سایت مقایسه کنید." } 
     }
-  }
-]
+  ]
+}
+];
