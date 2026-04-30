@@ -1,3 +1,5 @@
+import { Comment } from "@/types/comment.types";
+
 export interface ProductType {
   id: string;
   name: string;
@@ -14,4 +16,5 @@ export interface ProductType {
     height: number;
   };
   stock: number;
+  comments?: Comment[];   
 }
