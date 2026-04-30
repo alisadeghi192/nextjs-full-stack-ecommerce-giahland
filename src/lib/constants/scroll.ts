@@ -1,2 +1,3 @@
 export const HEADER_SCROLL_THRESHOLD = 80;
+export const HEADER_EXPAND_THRESHOLD = 20;
 export const SCROLL_TO_TOP_THRESHOLD = 200;
