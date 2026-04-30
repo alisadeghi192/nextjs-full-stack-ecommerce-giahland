@@ -13,6 +13,9 @@ import PrimaryButton from "@/components/shared/ui/PrimaryButton";
 import ProductDetailTabs from "@/components/features/products/ProductDetailTabs";
 import { productDetailTabs } from "@/lib/constants";
 import Link from "next/link";
+import CommentForm from "@/components/shared/ui/CommentForm";
+import CommentList from "@/components/shared/ui/CommentList";
+import { Comment } from "@/types/comment.types";
 
 interface ProductPageProps {
   params: Promise<{
@@ -20,6 +23,210 @@ interface ProductPageProps {
     slug: string;
   }>;
 }
+
+const comments : Comment[] = [
+  {
+    id: 1,
+    name: "سارا محمدی",
+    role: "user",
+    date: new Date("2025-04-20"),
+    text: "بسیار عالی. من همیشه در آبیاری زیاده‌روی می‌کردم و گیاهام پوسیده می‌شد. با خوندن این مقاله فهمیدم مشکل کجاست. ممنون.",
+    reply: {
+      name: "مریم احمدی",
+      role: "admin",
+      date: new Date("2025-04-20"),
+      text: "خوشحالم که براتون مفید بوده. امیدوارم گیاهانتون همیشه شاداب باشن 🌱",
+    },
+  },
+  {
+    id: 2,
+    name: "رضا کریمی",
+    role: "user",
+    date: new Date("2025-04-19"),
+    text: "آیا گیاه سانسوریا هم به همین روش آبیاری نیاز داره؟ چون شنیدم مقاومه.",
+    reply: {
+      name: "دکتر محمدی",
+      role: "plant-doctor",
+      date: new Date("2025-04-19"),
+      text: "سانسوریا به خشکی مقاومه. بین دو آبیاری حتماً بذارید خاک کاملاً خشک بشه. معمولاً هر ۲-۳ هفته یکبار کافیه.",
+    },
+  },
+  {
+    id: 3,
+    name: "نرگس احمدی",
+    role: "user",
+    date: new Date("2025-04-18"),
+    text: "دمای آب چقدر باید باشه؟",
+    reply: {
+      name: "مریم احمدی",
+      role: "admin",
+      date: new Date("2025-04-18"),
+      text: "دمای اتاق (۲۰-۲۵ درجه). آب سرد باعث شوک به ریشه میشه.",
+    },
+  },
+  {
+    id: 4,
+    name: "علی رضایی",
+    role: "user",
+    date: new Date("2025-04-17"),
+    text: "برای گیاه پتوس چقدر آبیاری کافیه؟",
+    reply: {
+      name: "دکتر محمدی",
+      role: "plant-doctor",
+      date: new Date("2025-04-17"),
+      text: "پتوس当 سطح خاک خشک شد آبیاری کنید. معمولاً هفته‌ای ۱-۲ بار.",
+    },
+  },
+  {
+    id: 5,
+    name: "زهرا موسوی",
+    role: "user",
+    date: new Date("2025-04-16"),
+    text: "آیا میشه گیاه رو با آب جوشیده خنک شده آبیاری کرد؟",
+    reply: {
+      name: "مریم احمدی",
+      role: "admin",
+      date: new Date("2025-04-16"),
+      text: "بله عالیه. آب جوشیده کلر و املاح اضافی نداره.",
+    },
+  },
+  {
+    id: 6,
+    name: "مجید حسینی",
+    role: "user",
+    date: new Date("2025-04-15"),
+    text: "آبیاری شب بهتره یا صبح؟",
+    reply: {
+      name: "دکتر محمدی",
+      role: "plant-doctor",
+      date: new Date("2025-04-15"),
+      text: "صبح بهترین زمانه. برگها تا شب خشک میشن و خطر قارچ کمتره.",
+    },
+  },
+  {
+    id: 7,
+    name: "فاطمه نوری",
+    role: "user",
+    date: new Date("2025-04-14"),
+    text: "بسیار عالی. همیشه فکر میکردم هرچه بیشتر آب بدم بهتره.",
+    reply: {
+      name: "مریم احمدی",
+      role: "admin",
+      date: new Date("2025-04-14"),
+      text: "بله، این یه باور غلطه. آبیاری بیش از حد عامل اصلی مرگ گیاهانه.",
+    },
+  },
+  {
+    id: 8,
+    name: "حسین رستمی",
+    role: "user",
+    date: new Date("2025-04-13"),
+    text: "برای کاکتوس هم همینطوره؟",
+    reply: {
+      name: "دکتر محمدی",
+      role: "plant-doctor",
+      date: new Date("2025-04-13"),
+      text: "کاکتوس به آبیاری خیلی کم نیاز داره. در زمستان تا ۲ ماه یکبار کافیه.",
+    },
+  },
+  {
+    id: 9,
+    name: "لیلا صادقی",
+    role: "user",
+    date: new Date("2025-04-12"),
+    text: "آب تصفیه شده بهتره یا آب معمولی؟",
+    reply: {
+      name: "مریم احمدی",
+      role: "admin",
+      date: new Date("2025-04-12"),
+      text: "آب تصفیه شده یا آب باران بهترین گزینه هستن.",
+    },
+  },
+  {
+    id: 10,
+    name: "امیر قاسمی",
+    role: "user",
+    date: new Date("2025-04-11"),
+    text: "چه علائمی نشون دهنده تشنگی گیاهه؟",
+    reply: {
+      name: "دکتر محمدی",
+      role: "plant-doctor",
+      date: new Date("2025-04-11"),
+      text: "پژمردگی برگها، خاک خشک و گلدون سبک از علائم تشنگی هستند.",
+    },
+  },
+  // ۱۰ کامنت بدون پاسخ
+  {
+    id: 11,
+    name: "نگار کاظمی",
+    role: "user",
+    date: new Date("2025-04-10"),
+    text: "ممنون از اطلاعات عالیتون. همیشه دنبال چنین مقاله‌ای بودم.",
+  },
+  {
+    id: 12,
+    name: "پویا نوروزی",
+    role: "user",
+    date: new Date("2025-04-09"),
+    text: "مقاله خوبی بود. کاش زودتر خونده بودم.",
+  },
+  {
+    id: 13,
+    name: "شیدا رحیمی",
+    role: "user",
+    date: new Date("2025-04-08"),
+    text: "دمای آب چقدر باید باشه؟ تو مقاله اشاره کردین ولی عدد دقیقشو بگید.",
+  },
+  {
+    id: 14,
+    name: "مهدی کمالی",
+    role: "user",
+    date: new Date("2025-04-07"),
+    text: "آیا میتونم گیاه رو با آب استخر آبیاری کنم؟",
+  },
+  {
+    id: 15,
+    name: "سارا جعفری",
+    role: "user",
+    date: new Date("2025-04-06"),
+    text: "مقاله‌تون رو برای دوستام میفرستم. خیلی مفید بود.",
+  },
+  {
+    id: 16,
+    name: "حمید عزیزی",
+    role: "user",
+    date: new Date("2025-04-05"),
+    text: "برای بونسای هم همین روش مناسبه؟",
+  },
+  {
+    id: 17,
+    name: "مریم شکوری",
+    role: "user",
+    date: new Date("2025-04-04"),
+    text: "مفید بود. ممنون از وقتی که گذاشتید.",
+  },
+  {
+    id: 18,
+    name: "علیرضا نادری",
+    role: "user",
+    date: new Date("2025-04-03"),
+    text: "آبیاری با آب ولرم بهتره یا آب سرد؟",
+  },
+  {
+    id: 19,
+    name: "زهرا احمدی",
+    role: "user",
+    date: new Date("2025-04-02"),
+    text: "خیلی عالی. نکات جدیدی یاد گرفتم.",
+  },
+  {
+    id: 20,
+    name: "رضا علیپور",
+    role: "user",
+    date: new Date("2025-04-01"),
+    text: "کاش در مورد آبیاری گیاهان گلدار هم مطلب می‌نوشتید.",
+  },
+];
 
 export default async function ProductPage({ params }: ProductPageProps) {
   const { category, slug } = await params;
@@ -40,7 +247,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
     <main className="container">
       <Breadcrumb title={product.name} />
 
-      <section className="mb-10 flex items-end justify-between max-xl:flex-wrap max-xl:items-center max-xl:justify-around max-lg:justify-between max-sm:mb-8 max-sm:flex-col">
+      <section className="mb-10 flex items-end justify-between max-xl:flex-wrap max-xl:items-center max-xl:justify-around max-lg:justify-between max-sm:mb-8 max-md:items-end max-sm:flex-col">
         {/* header */}
         <div className="border-neutral7 mb-7 hidden w-full flex-col gap-y-4 border-b pb-4 max-xl:flex max-sm:mb-8 max-sm:gap-y-2 max-sm:pb-2">
           <span className="text-primary leading-5.5 font-medium max-sm:text-sm/5">
@@ -163,7 +370,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
           </div>
         </div>
         {/* card */}
-        <div className="border-neutral7 max-xs:w-full w-78 rounded-2xl border px-6 py-7.75 max-xl:mt-9 max-sm:mt-8">
+        <div className="border-neutral7 max-xs:w-full max-sm:self-center w-78 rounded-2xl border px-6 py-7.75 max-xl:mt-9 max-sm:mt-8">
           <div className="space-y-2 border-b pb-6">
             <div className="bg-neutral3 flex items-center gap-x-3 rounded-xl p-3">
               <MdOutlineChangeCircle className="text-shade1 size-7.5" />
@@ -200,7 +407,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         <ProductDetailTabs tabs={productDetailTabs} />
         <div
           id="features"
-          className="border-tint7 scroll-mt-28 space-y-6 border-b border-dashed py-6 text-justify leading-7.25"
+          className="border-tint7 scroll-mt-35 max-xl:scroll-mt-25 max-md:scroll-mt-37 space-y-6 border-b border-dashed py-6 text-justify leading-7.25"
         >
           <div className="space-y-4">
             <div className="space-y-2">
@@ -302,7 +509,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         </div>
         <div
           id="cares"
-          className="border-tint7 scroll-mt-25 space-y-2 border-b border-dashed py-6 text-justify leading-7.25"
+          className="border-tint7 scroll-mt-25 max-md:scroll-mt-37 max-sm:scroll-mt-35 space-y-2 border-b border-dashed py-6 text-justify leading-7.25"
         >
           <h5 className="font-bold">شرایط نگهداری (مخصوص آپارتمان)</h5>
           <div className="text-neutral10 max-xs:text-sm/6.25">
@@ -325,10 +532,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
                     قانون طلایی: اجازه دهید خاک بین دو آبیاری کاملاً خشک شود.
                   </li>
                   <li>
-                   دفعات: در بهار و تابستان هر ۱۰-۱۴ روز یک بار، در پاییز و زمستان هر ۳-۴ هفته یک بار.
+                    دفعات: در بهار و تابستان هر ۱۰-۱۴ روز یک بار، در پاییز و
+                    زمستان هر ۳-۴ هفته یک بار.
                   </li>
                   <li>
-                   نکته مهم: یوکا به غرقابی بسیار حساس است و سریع دچار پوسیدگی ریشه می‌شود.
+                    نکته مهم: یوکا به غرقابی بسیار حساس است و سریع دچار پوسیدگی
+                    ریشه می‌شود.
                   </li>
                 </ul>
               </li>
@@ -371,6 +580,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
           </div>
         </div>
       </section>
+      <CommentForm />
+      <CommentList comments={comments} />
     </main>
   );
 }
