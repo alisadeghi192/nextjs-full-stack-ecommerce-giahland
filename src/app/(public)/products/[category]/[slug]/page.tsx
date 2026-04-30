@@ -12,6 +12,7 @@ import { formatPrice } from "@/lib/utils/format";
 import PrimaryButton from "@/components/shared/ui/PrimaryButton";
 import ProductDetailTabs from "@/components/features/products/ProductDetailTabs";
 import { productDetailTabs } from "@/lib/constants";
+import Link from "next/link";
 
 interface ProductPageProps {
   params: Promise<{
@@ -39,114 +40,130 @@ export default async function ProductPage({ params }: ProductPageProps) {
     <main className="container">
       <Breadcrumb title={product.name} />
 
-      <section className="mb-10 flex items-end gap-x-8">
-        <div className="flex basis-220 items-end justify-center gap-x-6">
-          {/* gallery */}
-          <div className="flex max-h-124 basis-89 flex-col items-center justify-center gap-y-4">
-            {/* big pic */}
-            <div className="relative aspect-square w-full cursor-pointer overflow-hidden rounded-lg">
+      <section className="mb-10 flex items-end justify-between max-xl:flex-wrap max-xl:items-center max-xl:justify-around max-lg:justify-between max-sm:mb-8 max-sm:flex-col">
+        {/* header */}
+        <div className="border-neutral7 mb-7 hidden w-full flex-col gap-y-4 border-b pb-4 max-xl:flex max-sm:mb-8 max-sm:gap-y-2 max-sm:pb-2">
+          <span className="text-primary leading-5.5 font-medium max-sm:text-sm/5">
+            نهال و گیاهان {categoryName}
+          </span>
+          <h2 className="text-neutral12 text-xl font-semibold max-sm:text-base/5.5">
+            گیاه طبیعی {product.name}
+          </h2>
+        </div>
+        {/* gallery */}
+        <div className="flex w-89 flex-col items-center justify-center gap-y-4 max-xl:mx-20 max-xl:basis-40/100 max-lg:mx-auto max-sm:w-full">
+          {/* big pic */}
+          <div className="relative aspect-square w-full cursor-pointer overflow-hidden rounded-lg">
+            <Image
+              src={product.image}
+              alt={product.name}
+              fill
+              className="object-contain"
+              priority
+            />
+            <LikeButton className="top-4 right-4" />
+          </div>
+          {/* thumbnails */}
+          <div className="flex justify-between gap-x-3 *:cursor-pointer max-[400px]:gap-x-2">
+            <div className="border-neutral6 size-20 rounded-lg border p-1 max-[400px]:size-17.5">
               <Image
+                width={70}
+                height={70}
                 src={product.image}
-                alt={product.name}
-                fill
-                className="object-contain"
-                priority
+                alt="babaadam"
+                className="aspect-square object-cover"
               />
-              <LikeButton className="top-4 right-4" />
             </div>
-            {/* thumbnails */}
-            <div className="flex justify-between gap-x-3 *:cursor-pointer">
-              <div className="border-neutral6 rounded-lg border p-1">
-                <Image
-                  width={70}
-                  height={70}
-                  src={product.image}
-                  alt="babaadam"
-                  className="aspect-square object-cover"
-                />
-              </div>
-              <div className="border-neutral6 rounded-lg border p-1">
-                <Image
-                  width={70}
-                  height={70}
-                  src={product.image}
-                  alt="babaadam"
-                  className="aspect-square object-cover"
-                />
-              </div>
-              <div className="border-neutral6 rounded-lg border p-1">
-                <Image
-                  width={70}
-                  height={70}
-                  src={product.image}
-                  alt="babaadam"
-                  className="aspect-square object-cover"
-                />
-              </div>
-              <div className="border-neutral6 rounded-lg border p-1">
-                <Image
-                  width={70}
-                  height={70}
-                  src={product.image}
-                  alt="babaadam"
-                  className="aspect-square object-cover"
-                />
-              </div>
+            <div className="border-neutral6 size-20 rounded-lg border p-1 max-[400px]:size-17.5">
+              <Image
+                width={70}
+                height={70}
+                src={product.image}
+                alt="babaadam"
+                className="aspect-square object-cover"
+              />
+            </div>
+            <div className="border-neutral6 size-20 rounded-lg border p-1 max-[400px]:size-17.5">
+              <Image
+                width={70}
+                height={70}
+                src={product.image}
+                alt="babaadam"
+                className="aspect-square object-cover"
+              />
+            </div>
+            <div className="border-neutral6 size-20 rounded-lg border p-1 max-[400px]:size-17.5">
+              <Image
+                width={70}
+                height={70}
+                src={product.image}
+                alt="babaadam"
+                className="aspect-square object-cover"
+              />
             </div>
           </div>
-          {/* details */}
-          <div className="flex basis-125 flex-col">
-            {/* header */}
-            <div className="border-neutral7 mb-7 flex flex-col gap-y-4 border-b pb-4">
-              <span className="text-primary leading-5.5 font-medium">
-                نهال و گیاهان {categoryName}
-              </span>
-              <h2 className="text-neutral12 text-xl font-semibold">
-                گیاه طبیعی {product.name}
-              </h2>
-            </div>
-            {/* infos */}
-            <div>
-              <span className="mb-4 inline-block text-lg/8 font-semibold">
-                ویژگی ها
-              </span>
-              <div className="grid grid-cols-2 gap-x-6 gap-y-10">
-                <div className="bg-neutral3 flex basis-9/5 flex-col gap-y-1 rounded-lg px-3 py-1.5">
-                  <span className="text-neutral9 text-sm/6.25">جنس گلدان</span>
-                  <span className="text-BLACK leading-7.25">پلاستیکی</span>
-                </div>
-                <div className="bg-neutral3 flex basis-9/5 flex-col gap-y-1 rounded-lg px-3 py-1.5">
-                  <span className="text-neutral9 text-sm/6.25">خاک گیاه</span>
-                  <span className="text-BLACK leading-7.25">
-                    خاک گلدانی شنی و غنی
-                  </span>
-                </div>
-                <div className="bg-neutral3 flex basis-9/5 flex-col gap-y-1 rounded-lg px-3 py-1.5">
-                  <span className="text-neutral9 text-sm/6.25">وزن</span>
-                  <span className="text-BLACK leading-7.25">4000 گرم</span>
-                </div>
-                <div className="bg-neutral3 flex basis-9/5 flex-col gap-y-1 rounded-lg px-3 py-1.5">
-                  <span className="text-neutral9 text-sm/6.25">ابعاد</span>
-                  <span className="text-BLACK leading-7.25">۲۵x۲۵x۸۰</span>
-                </div>
-                <div className="bg-neutral3 flex basis-9/5 flex-col gap-y-1 rounded-lg px-3 py-1.5">
-                  <span className="text-neutral9 text-sm/6.25">
-                    وضعیت نسبت به آفتاب
-                  </span>
-                  <span className="text-BLACK leading-7.25">آفتاب دوست</span>
-                </div>
-                <div className="text-primary mx-auto flex h-10 cursor-pointer items-center gap-x-2 self-end">
-                  <span className="text-sm/6.25 font-medium">
-                    مشاهده همه ویژگی ها
-                  </span>
-                  <MdKeyboardArrowDown className="size-6" />
-                </div>
+        </div>
+        {/* details */}
+        <div className="flex w-125 flex-col max-xl:mt-9 max-lg:w-100 max-md:w-65 max-sm:mt-6 max-sm:w-full">
+          {/* header */}
+          <div className="border-neutral7 mb-7 flex flex-col gap-y-4 border-b pb-4 max-xl:hidden">
+            <span className="text-primary leading-5.5 font-medium">
+              نهال و گیاهان {categoryName}
+            </span>
+            <h2 className="text-neutral12 text-xl font-semibold">
+              گیاه طبیعی {product.name}
+            </h2>
+          </div>
+          {/* infos */}
+          <div>
+            <span className="mb-4 inline-block text-lg/8 font-semibold max-sm:mb-2 max-sm:text-base/7.25">
+              ویژگی ها
+            </span>
+            {/* detail boxes */}
+            <div className="border-neutral6 grid grid-cols-2 gap-x-6 gap-y-10 max-md:grid-cols-1 max-md:gap-y-2.25 max-sm:gap-y-2 max-sm:border-b max-sm:pb-4">
+              <div className="border-tint2 flex flex-col gap-y-1 rounded-lg border border-dashed bg-white px-3 py-1.5">
+                <span className="text-neutral9 text-sm/6.25">جنس گلدان</span>
+                <span className="text-BLACK leading-7.25 max-sm:text-sm/6.25">
+                  پلاستیکی
+                </span>
+              </div>
+              <div className="border-tint2 flex flex-col gap-y-1 rounded-lg border border-dashed bg-white px-3 py-1.5">
+                <span className="text-neutral9 text-sm/6.25">خاک گیاه</span>
+                <span className="text-BLACK leading-7.25 max-sm:text-sm/6.25">
+                  خاک گلدانی شنی و غنی
+                </span>
+              </div>
+              <div className="border-tint2 flex flex-col gap-y-1 rounded-lg border border-dashed bg-white px-3 py-1.5">
+                <span className="text-neutral9 text-sm/6.25">وزن</span>
+                <span className="text-BLACK leading-7.25 max-sm:text-sm/6.25">
+                  4000 گرم
+                </span>
+              </div>
+              <div className="border-tint2 flex flex-col gap-y-1 rounded-lg border border-dashed bg-white px-3 py-1.5">
+                <span className="text-neutral9 text-sm/6.25">ابعاد</span>
+                <span className="text-BLACK leading-7.25 max-sm:text-sm/6.25">
+                  ۲۵x۲۵x۸۰
+                </span>
+              </div>
+              <div className="border-tint2 flex flex-col gap-y-1 rounded-lg border border-dashed bg-white px-3 py-1.5">
+                <span className="text-neutral9 text-sm/6.25">
+                  وضعیت نسبت به آفتاب
+                </span>
+                <span className="text-BLACK leading-7.25 max-sm:text-sm/6.25">
+                  آفتاب دوست
+                </span>
+              </div>
+              <div className="text-primary mx-auto flex h-10 cursor-pointer items-center gap-x-2 self-end max-md:hidden max-sm:flex">
+                <Link href={"#features"} className="text-sm/6.25 font-medium">
+                  مشاهده همه ویژگی ها
+                </Link>
+                <MdKeyboardArrowDown className="size-6" />
               </div>
             </div>
           </div>
         </div>
         {/* card */}
-        <div className="border-neutral7 basis-78 rounded-2xl border px-6 py-7.75">
+        <div className="border-neutral7 max-xs:w-full w-78 rounded-2xl border px-6 py-7.75 max-xl:mt-9 max-sm:mt-8">
           <div className="space-y-2 border-b pb-6">
             <div className="bg-neutral3 flex items-center gap-x-3 rounded-xl p-3">
               <MdOutlineChangeCircle className="text-shade1 size-7.5" />
@@ -178,11 +195,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
           </PrimaryButton>
         </div>
       </section>
+
       <section>
         <ProductDetailTabs tabs={productDetailTabs} />
         <div
           id="features"
-          className="border-tint7 scroll-mt-25 space-y-6 border-b border-dashed py-6 text-justify leading-7.25"
+          className="border-tint7 scroll-mt-28 space-y-6 border-b border-dashed py-6 text-justify leading-7.25"
         >
           <div className="space-y-4">
             <div className="space-y-2">
@@ -303,11 +321,14 @@ export default async function ProductPage({ params }: ProductPageProps) {
               <li>
                 آبیاری
                 <ul className="list-disc pr-6">
-                  <li>نیاز: نور غیرمستقیم و روشن تا آفتاب مستقیم.</li>
-                  <li>بهترین مکان: کنار پنجره جنوبی یا غربی.</li>
                   <li>
-                    توجه: کمبود نور باعث کشیدگی ساقه (اتولاسیون)، رنگ پریدگی و
-                    ریزش برگ‌های پایینی می‌شود.
+                    قانون طلایی: اجازه دهید خاک بین دو آبیاری کاملاً خشک شود.
+                  </li>
+                  <li>
+                   دفعات: در بهار و تابستان هر ۱۰-۱۴ روز یک بار، در پاییز و زمستان هر ۳-۴ هفته یک بار.
+                  </li>
+                  <li>
+                   نکته مهم: یوکا به غرقابی بسیار حساس است و سریع دچار پوسیدگی ریشه می‌شود.
                   </li>
                 </ul>
               </li>
