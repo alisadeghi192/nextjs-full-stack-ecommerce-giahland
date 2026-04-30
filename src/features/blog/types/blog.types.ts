@@ -1,3 +1,4 @@
+import { Comment } from "@/types/comment.types";
 
 export type ContentBlock =
   | {
@@ -33,21 +34,6 @@ export type ContentBlock =
         items: string[];
       };
     };
-
-
-export interface Comment {
-  id: number;
-  name: string;
-  role: "admin" | "user" | "plant-doctor";
-  date: Date;
-  text: string;
-  reply?: {
-    name: string;
-    role: "admin" | "user" | "plant-doctor";
-    date: Date;
-    text: string;
-  };
-}
 
 export interface BlogPostType {
   id: number;
