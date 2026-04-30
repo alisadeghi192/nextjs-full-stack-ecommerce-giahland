@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import CommentItem from "./CommentItem";
-import { Comment } from "@/features/blog/types/blog.types";
+import { Comment } from "@/types/comment.types";
 import OutlineButton from "./OutlineButton";
 import { COMMENTS_PER_PAGE } from "@/lib/constants";
 
