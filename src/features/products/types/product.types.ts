@@ -1,5 +1,4 @@
-// src/features/products/types/product.types.ts
-
+import { Comment } from "@/types/comment.types";
 export interface CareItem {
   title: string;
   description: string;
@@ -45,4 +44,5 @@ export interface ProductType {
   };
 
   cares: ProductCare;
+  comments : Comment[]
 }
