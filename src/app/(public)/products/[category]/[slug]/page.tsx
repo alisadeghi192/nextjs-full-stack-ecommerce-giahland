@@ -68,7 +68,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
             sunlight={product.sunlight}
           />
         </div>
-        <ProductPurchaseCard price={product.price} />
+        <ProductPurchaseCard price={product.price} discount={product.discount} />
       </section>
 
       <section>

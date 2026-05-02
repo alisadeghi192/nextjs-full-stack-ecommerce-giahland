@@ -13,7 +13,7 @@ export const fakeProducts: ProductType[] = [
   category: "indoor",
   createdAt: new Date("2024-01-15"),
   liked: 128,
-  discount: 0,
+  discount: 25,
   stock: 12,
 
   potMaterial: "پلاستیکی سنگین",
