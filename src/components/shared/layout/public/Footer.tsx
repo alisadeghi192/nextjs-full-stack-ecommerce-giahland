@@ -70,7 +70,7 @@ export default function Footer() {
           </div>
           <div className="flex basis-46 flex-col gap-y-2 max-xl:basis-40 max-sm:w-1/3">
             <h5 className="text-neutral10 border-Border max-xs:text-[12px] border-b pb-2 text-xl/7 font-semibold max-md:text-base">
-              تزئینی
+              دکوراتیو
             </h5>
             <div className="flex flex-col gap-y-2">
               <Link

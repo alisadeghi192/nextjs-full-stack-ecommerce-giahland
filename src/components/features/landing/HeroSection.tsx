@@ -36,7 +36,7 @@ const HeroSection = () => {
         </div>
         <div className="font-modam flex gap-x-12 max-md:gap-x-2">
           <HeroStatsItem end={943} label="گیاه خانگی" />
-          <HeroStatsItem end={234} label="گیاه تزئینی" />
+          <HeroStatsItem end={234} label="گیاه دکوراتیو" />
           <HeroStatsItem end={128} label="گیاه کادویی" />
         </div>
       </div>

@@ -1,7 +1,7 @@
 export const productTabs = [
   { id: "all", label: "همه" },
   { id: "indoor", label: "آپارتمانی" },
-  { id: "decoration", label: "تزئینی" },
+  { id: "decoration", label: "دکوراتیو" },
   { id: "gift", label: "کادویی" },
   { id: "discounted", label: "تخفیف دار" },
 ];

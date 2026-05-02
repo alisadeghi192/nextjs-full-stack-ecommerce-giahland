@@ -40,7 +40,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
       <Breadcrumb title={product.name} />
 
       <section className="mb-10 flex items-end justify-between max-xl:flex-wrap max-xl:items-center max-xl:justify-around max-lg:justify-between max-md:items-end max-sm:mb-8 max-sm:flex-col">
-        {/* header */}
         <ProductTitleHeader
           categoryName={categoryName}
           productName={product.name}
@@ -48,17 +47,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
           spanClassName="max-sm:text-sm/5"
           titleClassName="max-sm:text-base/5.5"
         />
-
-        {/* gallery */}
         <ProductGallery
           mainImage={product.image}
           productName={product.name}
           images={product.images}
         />
-        {/* details */}
         <div className="flex w-125 flex-col max-xl:mt-9 max-lg:w-100 max-md:w-65 max-sm:mt-6 max-sm:w-full">
-          {/* header */}
-
           <ProductTitleHeader
             categoryName={categoryName}
             productName={product.name}
@@ -66,8 +60,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
             spanClassName=""
             titleClassName=""
           />
-
-          {/* infos */}
           <ProductSpecs
             potMaterial={product.potMaterial}
             soilType={product.soilType}
@@ -76,7 +68,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
             sunlight={product.sunlight}
           />
         </div>
-        {/* card */}
         <ProductPurchaseCard price={product.price} />
       </section>
 

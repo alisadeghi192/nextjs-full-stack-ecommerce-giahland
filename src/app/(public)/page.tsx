@@ -24,7 +24,7 @@ export default function Home() {
       <ProductSlider title="گیاهان آپارتمانی" products={indoorLatest} link="/products?category=indoor&sort=newest&view=grid"/>
       <BlogSlider posts={latestPosts} title="آخرین مقالات" link="/blog" />
       <PlantDoctorServices />
-      <ProductSlider title="گیاهان تزئینی" products={decorationLatest} link="/products?category=decoration&sort=newest&view=grid" />
+      <ProductSlider title="گیاهان دکوراتیو" products={decorationLatest} link="/products?category=decoration&sort=newest&view=grid" />
       <BlogSlider posts={mostViewedPosts} title="پربازدید ترین مقالات" link="/blog?sort=most_viewed&page=1"/>
       <ProductSlider title="گیاهان کادویی" products={giftLatest} link="/products?category=gift&sort=newest&view=grid"/>
     </main>
