@@ -37,7 +37,7 @@ export default function ProductDetailTabs({ tabs }: ProductDetailTabsProps) {
   }, [tabs]);
 
   return (
-    <div className="border-neutral5 sticky top-15 max-md:top-26.5 max-sm:top-24.5 flex w-full items-center border-b bg-white">
+    <div className="border-neutral5 z-20 sticky top-15 max-md:top-26.5 max-sm:top-24.5 flex w-full items-center border-b bg-white">
       {tabs.map((tab) => (
         <Link
           key={tab.id}
