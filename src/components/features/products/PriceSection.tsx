@@ -18,7 +18,7 @@ export default function PriceSection({
 
   if (variant === "purchase-card") {
     return (
-      <div className={`${hasDiscount ? 'mb-3 pt-3 mt-6' : 'my-6 pt-6'} border-t border-neutral7`}>
+      <div className={`${hasDiscount ? 'mb-3 pt-3 mt-6' : 'my-6 pt-6'} border-t border-neutral7 max-md:hidden`}>
         {hasDiscount && (
           <div className="flex items-center gap-x-2 justify-self-end">
             <span className="text-error relative text-sm/6.25">

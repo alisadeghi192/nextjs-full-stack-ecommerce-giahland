@@ -47,7 +47,7 @@ export default function ProductPurchaseCard({
 
       <PriceSection price={price} discount={discount} variant="purchase-card"/>
 
-      <PrimaryButton onClick={onAddToCart} className="h-12 w-full text-lg/8">
+      <PrimaryButton onClick={onAddToCart} className="h-12 w-full text-lg/8 max-md:hidden">
         افزودن به سبد خرید
       </PrimaryButton>
     </div>
