@@ -73,36 +73,27 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
       <section>
         <ProductDetailTabs tabs={productDetailTabs} />
-        <div
-          id="features"
-          className="border-tint7 scroll-mt-35 space-y-6 border-b border-dashed py-6 text-justify leading-7.25 max-xl:scroll-mt-25 max-md:scroll-mt-37"
-        >
-          <ProductFeaturesRenderer
-            overview={product.features.overview}
-            appearance={product.features.appearance}
-            warnings={product.features.warnings}
-            propagation={product.features.propagation}
-            summary={product.features.summary}
-            productName={product.name}
-            productImage={product.image}
-          />
-        </div>
-        <div
-          id="cares"
-          className="border-tint7 scroll-mt-25 space-y-2 border-b border-dashed py-6 text-justify leading-7.25 max-md:scroll-mt-37 max-sm:scroll-mt-35"
-        >
-          <h5 className="font-bold">شرایط نگهداری (مخصوص آپارتمان)</h5>
-          <ProductCaresRenderer
-            light={product.cares.light}
-            watering={product.cares.watering}
-            soil={product.cares.soil}
-            temperature={product.cares.temperature}
-            fertilization={product.cares.fertilization}
-          />
-        </div>
+
+        <ProductFeaturesRenderer
+          overview={product.features.overview}
+          appearance={product.features.appearance}
+          warnings={product.features.warnings}
+          propagation={product.features.propagation}
+          summary={product.features.summary}
+          productName={product.name}
+          productImage={product.image}
+        />
+
+        <ProductCaresRenderer
+          light={product.cares.light}
+          watering={product.cares.watering}
+          soil={product.cares.soil}
+          temperature={product.cares.temperature}
+          fertilization={product.cares.fertilization}
+        />
       </section>
       <CommentForm />
-      <CommentList comments={product.comments}/>
+      <CommentList comments={product.comments} />
     </main>
   );
 }
