@@ -2,13 +2,14 @@ import { toPersianNumber } from "@/lib/utils/format";
 
 interface DiscountBadgeProps {
   discount: number;
+  className? : string
 }
 
-export default function DiscountBadge({ discount }: DiscountBadgeProps) {
+export default function DiscountBadge({ discount , className }: DiscountBadgeProps) {
   if (discount <= 0) return null;
 
   return (
-    <span className="bg-bg-error text-error absolute top-5 right-5 rounded-xl px-1 text-xs/5.5 font-bold">
+    <span className={`bg-bg-error text-error  rounded-xl px-1 text-xs/5.5 font-bold ${className}`}>
       {toPersianNumber(discount)}%
     </span>
   );
