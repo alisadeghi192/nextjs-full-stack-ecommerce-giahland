@@ -54,7 +54,7 @@ export default function ProductCardGrid({
           ) : (
             <>
               <AddToCartButton className="bg-neutral3 hover:bg-primary flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-full transition-colors hover:*:text-white" />
-              <PriceSection price={price} discount={discount} />
+              <PriceSection price={price} discount={discount} variant="product-card"/>
             </>
           )}
         </div>

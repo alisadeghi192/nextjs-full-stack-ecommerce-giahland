@@ -51,7 +51,7 @@ export default function ProductCardList({
               className="text-error mr-auto text-lg/8 max-md:text-base"
             />
           ) : (
-            <PriceSection price={price} discount={discount} />
+            <PriceSection price={price} discount={discount} variant="product-card"/>
           )}
         </div>
         {hasDiscount && !isOutOfStock && <DiscountBadge discount={discount} className="absolute top-5 right-5" />}
