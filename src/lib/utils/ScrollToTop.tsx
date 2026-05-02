@@ -4,11 +4,13 @@ import { useEffect, useState } from "react";
 import { useScroll } from "../hooks/useScroll";
 import { SCROLL_TO_TOP_THRESHOLD } from "@/lib/constants";
 import { usePathname } from "next/navigation";
+import { useFooterVisibility } from "../hooks/useFooterVisibility";
 
 const ScrollToTop = () => {
   const isScrolled = useScroll(SCROLL_TO_TOP_THRESHOLD);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [windowWidth, setWindowWidth] = useState<number>(0);
+  const isFooterVisible = useFooterVisibility();
   const pathname = usePathname();
   const isSingleProductPage =
     pathname?.startsWith("/products/") && pathname?.split("/").length === 4;
@@ -37,13 +39,15 @@ const ScrollToTop = () => {
   const isMobile = windowWidth < 640;
   const shouldAdjust = isSingleProductPage && isMobile;
 
+  const bottomPosition = shouldAdjust ? isFooterVisible ? "bottom-6" : "bottom-24" : "bottom-6";
+
   const radius = 19;
   const circumference = 2 * Math.PI * radius;
   const offset = circumference - (scrollProgress / 100) * circumference;
 
   return (
     <button
-      className={`${isScrolled ? "opacity-100!" : ""} text-primary fixed bottom-6 left-6 z-50 flex size-10 cursor-pointer items-center justify-center rounded-full bg-white text-3xl opacity-0 shadow transition-opacity ${shouldAdjust ? "bottom-24" : ""}`}
+      className={`${isScrolled ? "opacity-100!" : ""} text-primary fixed bottom-6 left-6 z-50 flex size-10 cursor-pointer items-center justify-center rounded-full bg-white text-3xl opacity-0 shadow transition-all ${bottomPosition}`}
       onClick={() => {
         window.scrollTo({
           top: 0,
