@@ -23,7 +23,7 @@ interface PublicHeaderProps {
 }
 
 const PublicHeader = ({ hasSearchInput = true }: PublicHeaderProps) => {
-  const isScrolled = useScroll(80);
+  const isScrolled = useScroll();
   return (
     <header className={`sticky top-0 right-0 left-0 z-20 ${isScrolled ? 'h-15' : 'h-24'} `}>
       {/* desktop header */}
