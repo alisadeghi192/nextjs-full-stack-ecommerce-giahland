@@ -54,7 +54,7 @@ export default function ProductCardList({
             <PriceSection price={price} discount={discount} />
           )}
         </div>
-        {hasDiscount && !isOutOfStock && <DiscountBadge discount={discount} />}
+        {hasDiscount && !isOutOfStock && <DiscountBadge discount={discount} className="absolute top-5 right-5" />}
       </div>
     </div>
   );

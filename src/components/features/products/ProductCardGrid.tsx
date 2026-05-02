@@ -59,7 +59,7 @@ export default function ProductCardGrid({
           )}
         </div>
       </div>
-      {hasDiscount && !isOutOfStock && <DiscountBadge discount={discount} />}
+      {hasDiscount && !isOutOfStock && <DiscountBadge discount={discount} className="absolute top-5 right-5" />}
     </div>
   );
 
