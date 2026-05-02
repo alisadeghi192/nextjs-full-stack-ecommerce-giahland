@@ -12,6 +12,10 @@ import ProductSpecs from "@/components/features/products/ProductSpecs";
 import ProductPurchaseCard from "@/components/features/products/ProductPurchaseCard";
 import ProductFeaturesRenderer from "@/components/features/products/ProductFeaturesRenderer";
 import ProductCaresRenderer from "@/components/features/products/ProductCaresRenderer";
+import PrimaryButton from "@/components/shared/ui/PrimaryButton";
+import PriceSection from "@/components/features/products/PriceSection";
+import { getDiscountedPrice } from "@/features/products/utils/productHelpers";
+import MobileStickyCart from "@/components/features/products/MobileStickyCart";
 
 interface ProductPageProps {
   params: Promise<{
@@ -34,9 +38,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
   const categoryName = productTabs.find((p) => p.id == category)?.label || "";
 
   const hasDiscount = product.discount > 0;
+  const finalPrice = getDiscountedPrice(product.price, product.discount);
 
   return (
-    <main className="container">
+    <main className="relative container">
       <Breadcrumb title={product.name} />
 
       <section className="mb-10 flex items-end justify-between max-xl:flex-wrap max-xl:items-center max-xl:justify-around max-lg:justify-between max-md:items-end max-sm:mb-8 max-sm:flex-col">
@@ -68,7 +73,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
             sunlight={product.sunlight}
           />
         </div>
-        <ProductPurchaseCard price={product.price} discount={product.discount} />
+        <ProductPurchaseCard
+          price={product.price}
+          discount={product.discount}
+        />
       </section>
 
       <section>
@@ -91,9 +99,11 @@ export default async function ProductPage({ params }: ProductPageProps) {
           temperature={product.cares.temperature}
           fertilization={product.cares.fertilization}
         />
+        <CommentForm />
+        <CommentList comments={product.comments} />
       </section>
-      <CommentForm />
-      <CommentList comments={product.comments} />
+
+      <MobileStickyCart discount={product.discount} price={product.price} />
     </main>
   );
 }
