@@ -12,10 +12,9 @@ import ProductSpecs from "@/components/features/products/ProductSpecs";
 import ProductPurchaseCard from "@/components/features/products/ProductPurchaseCard";
 import ProductFeaturesRenderer from "@/components/features/products/ProductFeaturesRenderer";
 import ProductCaresRenderer from "@/components/features/products/ProductCaresRenderer";
-import PrimaryButton from "@/components/shared/ui/PrimaryButton";
-import PriceSection from "@/components/features/products/PriceSection";
-import { getDiscountedPrice } from "@/features/products/utils/productHelpers";
+
 import MobileStickyCart from "@/components/features/products/MobileStickyCart";
+import ProductSlider from "@/components/features/products/ProductSlider";
 
 interface ProductPageProps {
   params: Promise<{
@@ -37,8 +36,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
   const categoryName = productTabs.find((p) => p.id == category)?.label || "";
 
-  const hasDiscount = product.discount > 0;
-  const finalPrice = getDiscountedPrice(product.price, product.discount);
+  const relatedProducts = fakeProducts
+    .filter((p) => p.category === category && p.slug !== slug)
+    .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
+    .slice(0, 4);
+
+  const categoryLink = `/products?category=${category}&sort=newest`;
 
   return (
     <main className="relative container">
@@ -102,6 +105,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
         <CommentForm />
         <CommentList comments={product.comments} />
       </section>
+
+      <ProductSlider
+        link={categoryLink}
+        products={relatedProducts}
+        title="گیاه های مشابه"
+      />
 
       <MobileStickyCart discount={product.discount} price={product.price} />
     </main>
