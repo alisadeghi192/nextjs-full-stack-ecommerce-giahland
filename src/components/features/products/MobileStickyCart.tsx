@@ -23,7 +23,7 @@ export default function MobileStickyCart({
   return (
     <>
       <div
-        className={`shadow-top border-neutral4 max-xs:gap-x-8 fixed right-0 bottom-0 left-0 z-40 flex h-20 items-center justify-center gap-x-15 border-t bg-white px-4 transition-all duration-300 max-[400px]:gap-x-2! sm:hidden ${isFooterVisible ? "pointer-events-none translate-y-full opacity-0" : "translate-y-0 opacity-100"}`}
+        className={`shadow-top border-neutral4 max-xs:gap-x-8 fixed right-0 bottom-0 left-0 z-40 flex h-20 items-center justify-center gap-x-15 border-t bg-white px-4 max-[400px]:justify-between transition-all duration-300 max-[400px]:gap-x-2! sm:hidden ${isFooterVisible ? "pointer-events-none translate-y-full opacity-0" : "translate-y-0 opacity-100"}`}
       >
         <PrimaryButton
           onClick={onAddToCart}
