@@ -20,7 +20,7 @@ export default function DesktopNav({ isScrolled }: DesktopNavProps) {
             <NavLinks />
           </div>
         </div>
-        <HeaderActions />
+        <HeaderActions isScrolled = {isScrolled}/>
       </div>
     </nav>
   );
