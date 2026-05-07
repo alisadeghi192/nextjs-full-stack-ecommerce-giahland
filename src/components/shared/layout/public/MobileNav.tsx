@@ -10,6 +10,7 @@ import {
 import Link from "next/link";
 import { useState } from "react";
 import CartModal from "@/components/features/cart/CartModal";
+import Overlay from "../../ui/Overlay";
 
 interface MobileNavProps {
   isScrolled: boolean;
@@ -55,13 +56,12 @@ export default function MobileNav({
           </div>
         </div>
       </div>
-      {isCartOpen && (
-        <div
-          className="fixed inset-0 z-30 bg-black/60 transition-all duration-200"
-          onClick={() => setIsCartOpen(false)}
-          style={{ top: `${headerHeight}px` }}
+        <Overlay
+          isOpen={isCartOpen}
+          zIndex={30}
+          onClose={() => setIsCartOpen(false)}
+          topOffset={headerHeight}
         />
-      )}
     </nav>
   );
 }
