@@ -26,7 +26,7 @@ export default function ProductCaresRenderer({
   return (
     <div
       id="cares"
-      className="border-tint7 scroll-mt-25 space-y-2 border-b border-dashed py-6 text-justify leading-7.25 max-md:scroll-mt-37 max-sm:scroll-mt-35"
+      className="border-tint7 scroll-mt-25 space-y-2 border-b border-dashed py-6 text-justify leading-7.25 max-md:scroll-mt-35 max-sm:scroll-mt-35"
     >
       <h5 className="font-bold">شرایط نگهداری (مخصوص آپارتمان)</h5>
 

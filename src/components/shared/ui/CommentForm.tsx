@@ -7,7 +7,7 @@ import PrimaryButton from "./PrimaryButton";
 
 export default function CommentForm() {
   return (
-    <div id="comments" className="border-neutral3 scroll-mt-25.5 mb-4 max-md:scroll-mt-36 max-sm:scroll-mt-35 flex flex-col space-y-4 rounded-xl border p-6">
+    <div id="comments" className="border-neutral3 scroll-mt-25.5 mb-4 max-md:scroll-mt-35 max-sm:scroll-mt-35 flex flex-col space-y-4 rounded-xl border p-6">
       <h3 className="font-bold">دیدگاه خود را ثبت کنید.</h3>
       <form className="space-y-4">
         <div className="flex items-center justify-between gap-x-4 gap-y-4 *:w-full max-[576px]:flex-col">
