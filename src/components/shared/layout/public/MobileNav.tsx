@@ -11,18 +11,25 @@ interface MobileNavProps {
   hasSearchInput: boolean;
 }
 
-export default function MobileNav({ isScrolled, hasSearchInput }: MobileNavProps) {
+export default function MobileNav({
+  isScrolled,
+  hasSearchInput,
+}: MobileNavProps) {
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const headerHeight = isScrolled ? 107 : 117;
+  const headerHeight = isScrolled ? 98 : 108;
 
   const toggleCart = () => setIsCartOpen((prev) => !prev);
   const closeCart = () => setIsCartOpen(false);
 
   return (
-    <nav className="border-neutral3 border-b bg-white py-3 md:hidden">
-      <div className={`container flex flex-col gap-y-3 ${isScrolled ? "gap-y-2.5!" : ""}`}>
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
+    <nav
+      className={`border-neutral3 h-27 border-b bg-white ${isScrolled ? "h-24.5!" : ""} flex items-center md:hidden transition-all`}
+    >
+      <div className="container flex flex-col">
+        <div
+          className={`mb-3 flex items-center justify-between ${isScrolled ? "mb-2.5!" : ""} transition-all`}
+        >
+          <div className="flex items-center gap-x-3">
             <MobileMenu />
             <Logo pageSize="mobile" />
           </div>
@@ -34,7 +41,12 @@ export default function MobileNav({ isScrolled, hasSearchInput }: MobileNavProps
         <MobileCartModal isOpen={isCartOpen} onClose={closeCart} />
       </div>
 
-      <Overlay isOpen={isCartOpen} onClose={closeCart} topOffset={headerHeight} zIndex={30} />
+      <Overlay
+        isOpen={isCartOpen}
+        onClose={closeCart}
+        topOffset={headerHeight}
+        zIndex={30}
+      />
     </nav>
   );
 }
