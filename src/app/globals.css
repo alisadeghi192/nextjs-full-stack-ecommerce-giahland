@@ -42,7 +42,7 @@
   ol {
     list-style-type: persian;
   }
-  
+
   .custom-scroll::-webkit-scrollbar {
     width: 7px;
   }
@@ -52,8 +52,9 @@
   .custom-scroll::-webkit-scrollbar-thumb {
     background-color: #417f56;
     border-radius: 9999px;
+    padding-left: 20px;
   }
-  
+
   .custom-scroll-mobile::-webkit-scrollbar {
     width: 4px;
   }
@@ -67,22 +68,22 @@
 }
 
 @utility container {
-  @media (width >= 30rem) {
+  @media (width >= 30rem) /* 480px */ {
     max-width: 100%;
   }
-  @media (width >= 40rem) {
+  @media (width >= 40rem) /* 640px */ {
     max-width: 40rem;
   }
-  @media (width >= 48rem) {
+  @media (width >= 48rem) /* 768px */ {
     max-width: 48rem;
   }
-  @media (width >= 64rem) {
+  @media (width >= 64rem) /* 1024px */ {
     max-width: 64rem;
   }
-  @media (width >= 80rem) {
+  @media (width >= 80rem) /* 1280px */ {
     max-width: 80rem;
   }
-  @media (width >= 90rem) {
+  @media (width >= 90rem) /* 1440px */ {
     max-width: 90rem;
   }
 
