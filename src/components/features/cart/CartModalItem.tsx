@@ -32,7 +32,7 @@ export default function CartModalItem({
 
   return (
     <div className="bg-neutral2 rtl border-neutral5 mr-1.5 flex gap-x-6 rounded-xl border p-4">
-      <div className="size-25 shrink-0 overflow-hidden rounded-lg">
+      <div className="size-25 shrink-0 overflow-hidden rounded-lg self-center">
         <Image
           alt={productName}
           src={imageSrc}
@@ -41,15 +41,15 @@ export default function CartModalItem({
           className="size-25 rounded-lg object-cover object-center"
         />
       </div>
-      <div className="w-full space-y-1.75">
+      <div className="w-full  flex flex-col gap-y-2 max-md:justify-between">
         <div className="flex flex-col gap-y-1">
-          <span className="text-lg/8">{productName}</span>
+          <span className="text-lg/8 max-xs:text-base">{productName}</span>
           <span className="text-neutral9 text-sm/6.25">
             ابعاد: {formatDimensions(dimensions)}
           </span>
         </div>
-        <div className="flex items-center justify-between">
-          <div className="flex items-center">
+        <div className="flex items-center justify-between max-md:flex-wrap-reverse gap-y-2">
+          <div className="flex items-center max-md:mr-auto">
             <button
               onClick={onIncrease}
               className="text-primary hover:text-shade2 hover:border-shade2 border-primary flex size-6 cursor-pointer items-center justify-center rounded-sm border bg-white transition-colors"
@@ -70,7 +70,7 @@ export default function CartModalItem({
               )}
             </button>
           </div>
-          <div>{discountedPrice}</div>
+          <div className="max-md:mr-auto">{discountedPrice}</div>
         </div>
       </div>
     </div>
