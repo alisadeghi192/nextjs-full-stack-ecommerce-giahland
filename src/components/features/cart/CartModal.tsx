@@ -34,8 +34,8 @@ export default function CartModal({ onClose }: CartModalProps) {
   ];
 
   return (
-    <div className="border-neutral3 rounded-xl border bg-white p-3 pr-1.5" onClick={(e) => e.stopPropagation()}>
-      <div className="mr-1.5 mb-2 flex w-115 items-center justify-between">
+    <div className="border-neutral3 w-115 max-md:w-full rounded-xl border bg-white p-3 pr-1.5" onClick={(e) => e.stopPropagation()}>
+      <div className="mr-1.5 mb-2 flex items-center justify-between">
         <div className="flex gap-x-1 leading-7.25 font-medium">
           <span>سبد خرید</span>
           <span className="text-neutral8">({toPersianNumber(numberOfProducts)} کالا)</span>
@@ -43,7 +43,7 @@ export default function CartModal({ onClose }: CartModalProps) {
         <IoClose className="size-5 cursor-pointer" onClick={onClose} />
       </div>
 
-      <div className="custom-scroll ltr flex max-h-68.75 flex-col space-y-2 overflow-y-auto">
+      <div className="custom-scroll ltr flex max-h-68.75 max-md:max-h-77 flex-col space-y-2 overflow-y-auto">
         {items.map((item) => (
           <CartModalItem
             key={item.id}
@@ -63,7 +63,7 @@ export default function CartModal({ onClose }: CartModalProps) {
       <div className="mt-4 mr-1.5 space-y-2">
         <div className="flex items-center justify-between gap-x-3 gap-y-2">
           <span className="text-neutral9 leading-7.25 font-medium">جمع مبلغ:</span>
-          <PriceSection discount={0} price={finalPrice} variant="product-card" />
+          <PriceSection discount={0} price={finalPrice} variant="product-card" bold />
         </div>
         <PrimaryButton className="mt-2 w-full py-2 text-lg">ثبت سفارش</PrimaryButton>
       </div>
