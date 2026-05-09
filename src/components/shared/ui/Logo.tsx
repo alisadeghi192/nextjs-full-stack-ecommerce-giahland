@@ -1,26 +1,22 @@
+import Image from "next/image";
 import Link from "next/link";
 
-interface LogoProps {
-  pageSize: "desktop" | "mobile";
-}
-
-const Logo = ({ pageSize }: LogoProps) => {
-  if (pageSize == "desktop") {
-    return (
-      <Link href="/">
-        <h4 className="text-primary hover:text-shade3 text-2xl/8.5 font-bold transition-colors">
-          گیاه لند
-        </h4>
-      </Link>
-    );
-  }
-
+const Logo = () => {
   return (
-    <Link href="/">
-      <h6 className="text-primary leading-5.5 font-medium sm:text-xl">
+    <Link href="/" className="group flex items-center gap-x-1">
+      <Image
+        alt="giahland logo"
+        src={"/static/images/logo.png"}
+        width={38}
+        height={38}
+        className="max-lg:size-8"
+      />
+
+      <span className="text-primary text-nowrap group-hover:text-shade3 text-2xl/8.5 max-lg:text-xl font-bold transition-colors max-sm:text-lg">
         گیاه لند
-      </h6>
+      </span>
     </Link>
   );
 };
+
 export default Logo;
