@@ -22,7 +22,7 @@ export default function ProductFeaturesRenderer({
   return (
     <div
       id="features"
-      className="border-tint7 scroll-mt-35 space-y-6 border-b border-dashed py-6 text-justify leading-7.25 max-xl:scroll-mt-25 max-md:scroll-mt-37"
+      className="border-tint7 scroll-mt-35 space-y-6 border-b border-dashed py-6 text-justify leading-7.25 max-xl:scroll-mt-25 max-md:scroll-mt-33"
     >
       <div className="space-y-4">
         <div className="space-y-2">

@@ -9,7 +9,8 @@ const NavLinks = () => {
         <NavLink
           key={link.href}
           href={link.href}
-          className="hover:text-primary text-lg/8.5 transition-colors max-lg:text-base/8.5"
+          className="hover:text-primary text-nowrap text-lg/8.5 transition-colors max-lg:text-base/8.5"
+          submenu={link.submenu}
         >
           {link.text}
         </NavLink>

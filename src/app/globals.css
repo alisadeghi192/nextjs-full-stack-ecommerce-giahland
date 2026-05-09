@@ -1,4 +1,5 @@
 @import "tailwindcss";
+
 @theme {
   --breakpoint-xs: 30rem;
   --font-modam: var(--font-modam), sans-serif;
@@ -37,37 +38,60 @@
   --shadow-top: 0px -4px 9px 0px rgba(0, 0, 0, 0.13);
 }
 
+@layer base {
+  ol {
+    list-style-type: persian;
+  }
+
+  .custom-scroll::-webkit-scrollbar {
+    width: 7px;
+  }
+  .custom-scroll::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  .custom-scroll::-webkit-scrollbar-thumb {
+    background-color: #417f56;
+    border-radius: 9999px;
+  }
+
+}
+
 @utility container {
-  @media (width >= 30rem /* 480px */) {
-    max-width: 100% /* 480 */;
+  @media (width >= 30rem) /* 480px */ {
+    max-width: 100%;
   }
-  @media (width >= 40rem /* 640px */) {
-    max-width: 40rem /* 640px */;
+  @media (width >= 40rem) /* 640px */ {
+    max-width: 40rem;
   }
-  @media (width >= 48rem /* 768px */) {
-    max-width: 48rem /* 768px */;
+  @media (width >= 48rem) /* 768px */ {
+    max-width: 48rem;
   }
-  @media (width >= 64rem /* 1024px */) {
-    max-width: 64rem /* 1024px */;
+  @media (width >= 64rem) /* 1024px */ {
+    max-width: 64rem;
   }
-  @media (width >= 80rem /* 1280px */) {
-    max-width: 80rem /* 1280px */;
+  @media (width >= 80rem) /* 1280px */ {
+    max-width: 80rem;
   }
-  @media (width >= 90rem /* 1440px */) {
-    max-width: 90rem; /* 1440px */
+  @media (width >= 90rem) /* 1440px */ {
+    max-width: 90rem;
   }
 
   @apply mx-auto w-full px-4 md:px-2.5 2xl:max-w-7xl;
 }
 
-.swiper-slide {
-  height: auto !important;
+@utility ltr {
+  direction: ltr;
 }
 
-.swiper-wrapper {
-  align-items: stretch !important;
+@utility rtl {
+  direction: rtl;
 }
 
-ol {
-  list-style-type: persian;
+@layer components {
+  .swiper-slide {
+    height: auto !important;
+  }
+  .swiper-wrapper {
+    align-items: stretch !important;
+  }
 }

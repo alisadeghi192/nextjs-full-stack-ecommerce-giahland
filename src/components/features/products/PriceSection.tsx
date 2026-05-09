@@ -5,12 +5,14 @@ import DiscountBadge from "./DiscountBadge";
 interface PriceSectionProps {
   price: number;
   discount: number;
+  bold? : boolean ;
   variant: "product-card" | "purchase-card" | "sticky-footer";
 }
 
 export default function PriceSection({
   price,
   discount = 0,
+  bold = false,
   variant = "product-card",
 }: PriceSectionProps) {
   const finalPrice = getDiscountedPrice(price, discount);
@@ -63,7 +65,7 @@ export default function PriceSection({
           <span className="bg-error mr-0-auto absolute top-1/2 block h-px w-full"></span>
         </span>
       )}
-      <span className="mr-auto text-lg/8 max-sm:text-base/7.25">
+      <span className={`mr-auto text-lg/8 max-sm:text-base/7.25 ${bold && 'font-bold' }`}>
         {formatPrice(finalPrice)}
       </span>
     </div>
