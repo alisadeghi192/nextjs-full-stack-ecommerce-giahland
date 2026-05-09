@@ -14,7 +14,7 @@ export default function AuthButtons() {
           alt="user"
           width={48}
           height={48}
-          className="rounded-full"
+          className="rounded-full max-lg:size-10"
         />
         <span className="text-lg max-lg:hidden">سلام کاربر</span>
       </button>
@@ -24,10 +24,10 @@ export default function AuthButtons() {
   return (
     <OutlineButton
       href="/login-register"
-      className="h-12 gap-2 px-4 max-lg:size-12 max-lg:gap-0 max-lg:px-3"
+      className="h-12 gap-x-2 px-4 max-lg:size-10 max-lg:gap-0 max-lg:px-0"
     >
       <MdOutlineLogin size={24} className="transition-colors" />
-      <span className="text-lg/8.5 transition-colors max-lg:hidden">
+      <span className="text-lg/8.5 transition-colors max-lg:hidden text-nowrap">
         ورود/ثبت نام
       </span>
     </OutlineButton>

@@ -13,7 +13,7 @@ interface MobileActionsProps {
   onCartClick: () => void;
 }
 
-const isUserLogin = true;
+const isUserLogin = false;
 
 export default function MobileActions({ onCartClick }: MobileActionsProps) {
   return (
