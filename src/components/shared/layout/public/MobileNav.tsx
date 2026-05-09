@@ -31,7 +31,7 @@ export default function MobileNav({
         >
           <div className="flex items-center gap-x-3">
             <MobileMenu />
-            <Logo pageSize="mobile" />
+            <Logo  />
           </div>
           <MobileActions onCartClick={toggleCart} />
         </div>

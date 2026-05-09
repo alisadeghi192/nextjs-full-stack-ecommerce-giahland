@@ -10,17 +10,17 @@ export default function DesktopNav({ isScrolled }: DesktopNavProps) {
   return (
     <nav className="border-neutral5 container border-b font-medium max-md:hidden">
       <div
-        className={`bg-white text-neutral12 flex items-center justify-between transition-all ${
+        className={`text-neutral12 flex items-center justify-between bg-white transition-all ${
           isScrolled ? "h-15" : "h-24"
         }`}
       >
-        <div className="flex gap-8 max-lg:gap-4">
-          <Logo pageSize="desktop" />
-          <div className="flex gap-6 max-lg:gap-3">
+        <div className="flex items-center gap-x-6 max-xl:gap-x-4 max-lg:gap-x-2">
+          <Logo />
+          <div className="flex gap-x-8 max-xl:gap-x-4 max-lg:gap-x-3">
             <NavLinks />
           </div>
         </div>
-        <HeaderActions isScrolled = {isScrolled}/>
+        <HeaderActions isScrolled={isScrolled} />
       </div>
     </nav>
   );

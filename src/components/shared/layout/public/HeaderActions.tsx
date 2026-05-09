@@ -22,7 +22,7 @@ export default function HeaderActions({ isScrolled }: HeaderActionsProps) {
   const closeCart = () => setIsCartOpen(false);
 
   return (
-    <div className="relative flex gap-4 max-xl:gap-2">
+    <div className="relative flex gap-x-4 max-xl:gap-x-1">
       <IconButton icon={<MdOutlineDarkMode size={24} />} />
       <IconButton icon={<MdOutlineSearch size={24} />} />
       
