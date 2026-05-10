@@ -38,14 +38,14 @@ export default function Accordion({
           <div
             key={item.id}
             onClick={() => toggleItem(item.id)}
-            className="bg-neutral2 border-neutral4 flex w-full cursor-pointer flex-col rounded-xl border p-4"
+            className="bg-neutral2 group border-neutral4 flex w-full cursor-pointer flex-col rounded-xl border p-4"
           >
-            <div className="flex items-center justify-between">
-              <span className="font-bold">
+            <div className="flex items-start justify-between">
+              <span className="font-bold transition-colors group-hover:text-primary">
                 {toPersianNumber(+item.id)}. {item.title}
               </span>
               <MdKeyboardArrowDown
-                className={`size-6 shrink-0 transition-transform duration-200 ${isOpen && "rotate-180"}`}
+                className={`size-6 shrink-0  group-hover:text-primary transition-transform duration-200 ${isOpen && "rotate-180"}`}
               />
             </div>
             <div
