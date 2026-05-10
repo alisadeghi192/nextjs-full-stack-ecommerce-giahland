@@ -1,10 +1,9 @@
-"use client";
+import AboutStatsItem from "@/components/features/about/AbloutStatsItems";
 import Accordion from "@/components/shared/ui/Accordion";
 import Breadcrumb from "@/components/shared/ui/Breadcrumb";
 import PrimaryButton from "@/components/shared/ui/PrimaryButton";
 import Image from "next/image";
 import React from "react";
-import CountUp from "react-countup";
 import { FaUserDoctor } from "react-icons/fa6";
 import { MdLocalShipping, MdPestControl } from "react-icons/md";
 import { RiPlantFill } from "react-icons/ri";
@@ -92,58 +91,10 @@ function page() {
       </section>
       <section className="bg-shade3 max-xs:px-6 max-xs:h-130 mt-10 h-35 rounded-xl px-11.25 max-lg:h-69 max-sm:h-138">
         <div className="max-xs:translate-y-6 grid translate-y-11.25 grid-cols-4 gap-3 max-lg:grid-cols-2 max-sm:grid-cols-1">
-          <div className="flex h-31.5 flex-col items-center justify-center rounded-lg bg-white p-4 shadow-xl">
-            <span className="text-shade3 text-[32px]/11.25 font-medium">
-              <CountUp
-                start={0}
-                end={943}
-                duration={1.5}
-                formattingFn={(value) => value.toLocaleString("fa-IR")}
-              />
-              +
-            </span>
-            <span className="text-shade4 leading-7.25">
-              گیاهان نجات داده شده
-            </span>
-          </div>
-          <div className="flex h-31.5 flex-col items-center justify-center rounded-lg bg-white p-4 shadow-xl">
-            <span className="text-shade3 text-[32px]/11.25 font-medium">
-              <CountUp
-                start={0}
-                end={1234}
-                duration={1.5}
-                formattingFn={(value) => value.toLocaleString("fa-IR")}
-              />
-              +
-            </span>
-            <span className="text-shade4 leading-7.25">مشاوره های موفق</span>
-          </div>
-          <div className="flex h-31.5 flex-col items-center justify-center rounded-lg bg-white p-4 shadow-xl">
-            <span className="text-shade3 text-[32px]/11.25 font-medium">
-              <CountUp
-                start={0}
-                end={4943}
-                duration={1.5}
-                formattingFn={(value) => value.toLocaleString("fa-IR")}
-              />
-              +
-            </span>
-            <span className="text-shade4 leading-7.25">
-              سفارش های ارسال شده
-            </span>
-          </div>
-          <div className="flex h-31.5 flex-col items-center justify-center rounded-lg bg-white p-4 shadow-xl">
-            <span className="text-shade3 text-[32px]/11.25 font-medium">
-              <CountUp
-                start={0}
-                end={9}
-                duration={1.5}
-                formattingFn={(value) => value.toLocaleString("fa-IR")}
-              />
-              +
-            </span>
-            <span className="text-shade4 leading-7.25">سال سابقه تخصصی ما</span>
-          </div>
+          <AboutStatsItem end={943} label="گیاهان نجات داده شده" />
+          <AboutStatsItem end={1234} label="مشاوره های موفق" />
+          <AboutStatsItem end={4943} label="سفارش هاس ارسال شده" />
+          <AboutStatsItem end={9} label="سال سابفه تخصصی تیم ما" />
         </div>
       </section>
       <section className="mt-20">
@@ -183,7 +134,7 @@ function page() {
       </div>
       <section className="mt-10 max-sm:mt-6">
         <h4 className="mb-4 text-lg font-bold">خدمات ما</h4>
-        <div className="service-grid grid grid-cols-4 max-lg:grid-cols-3 max-md:grid-cols-2 max-[510px]:flex max-[510px]:flex-col gap-4 ">
+        <div className="service-grid grid grid-cols-4 gap-4 max-[510px]:flex max-[510px]:flex-col max-lg:grid-cols-3 max-md:grid-cols-2">
           <div className="flex flex-col gap-y-4 rounded-xl bg-[#E3F7EA] py-6 text-center shadow-lg">
             <FaUserDoctor className="text-primary mx-auto size-8" />
             <span className="text-neutral10 font-medium">
@@ -210,11 +161,13 @@ function page() {
           </div>
         </div>
       </section>
-      <div className="mt-10 max-sm:mt-6 mx-auto ">
-        <h5 className="font-bold text-lg text-center mb-4">همین حالا گیاهت رو معاینه کن!</h5>
-       <PrimaryButton className="text-lg h-12 w-72.5 mx-auto max-xs:w-full">
-        مشاوره با گیاه‌پزشک
-       </PrimaryButton>
+      <div className="mx-auto mt-10 max-sm:mt-6">
+        <h5 className="mb-4 text-center text-lg font-bold">
+          همین حالا گیاهت رو معاینه کن!
+        </h5>
+        <PrimaryButton className="max-xs:w-full mx-auto h-12 w-72.5 text-lg">
+          مشاوره با گیاه‌پزشک
+        </PrimaryButton>
       </div>
     </main>
   );
