@@ -16,7 +16,7 @@ export default function CartButton({ isOpen, onToggle, onClose }: CartButtonProp
       <IconButton icon={<MdOutlineShoppingCart size={24} />} />
 
       <div
-        className={`absolute top-13.5 left-0 z-40 transition-all duration-200 ${
+        className={`absolute top-13.5 max-lg:top-12.5 left-0 z-40 transition-all duration-200 ${
           isOpen
             ? "visible translate-y-0 opacity-100"
             : "invisible translate-y-2 opacity-0"
