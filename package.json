@@ -14,7 +14,8 @@
     "react-countup": "^6.5.3",
     "react-dom": "19.1.0",
     "react-icons": "^5.5.0",
-    "swiper": "^12.1.2"
+    "swiper": "^12.1.2",
+    "yet-another-react-lightbox": "^3.32.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^0.1.0",
