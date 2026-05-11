@@ -44,7 +44,6 @@ export default async function ProductsPage({
   return (
     <main className="container">
       <Breadcrumb />
-      <section>
         <ProductsHeader
           activeTab={activeTab}
           selectedSort={selectedSort}
@@ -60,7 +59,6 @@ export default async function ProductsPage({
           totalPages={totalPages}
           baseUrl={baseUrl}
         />
-      </section>
     </main>
   );
 }

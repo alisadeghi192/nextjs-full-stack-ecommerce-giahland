@@ -38,7 +38,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
       <section>
         <BlogHeader activeTab={activeTab} selectedSort={selectedSort} />
 
-        <div className="max-xs:grid-cols-1 grid grid-cols-4 gap-6 max-xl:grid-cols-4 max-lg:grid-cols-3 max-md:grid-cols-2 max-md:gap-4">
+        <div className="max-xs:grid-cols-1 grid grid-cols-4 gap-6 max-lg:grid-cols-3 max-md:grid-cols-2 max-md:gap-4">
           {paginatedPosts.map((post) => (
             <BlogCard key={post.id} {...post} />
           ))}

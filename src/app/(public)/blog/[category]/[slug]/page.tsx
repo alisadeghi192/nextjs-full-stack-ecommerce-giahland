@@ -35,7 +35,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <main className="container">
-      <Breadcrumb title={post?.title} />
+      <Breadcrumb title={post.title} />
       <div className="mx-auto mt-10 w-80/100 max-lg:w-full max-md:mt-8 max-sm:mt-4">
         <PostHeader title={post.title} views={post.views} />
         <PostMeta

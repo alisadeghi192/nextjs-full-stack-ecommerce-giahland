@@ -103,7 +103,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
           fertilization={product.cares.fertilization}
         />
         <CommentForm />
-        <CommentList comments={product.comments} />
+        <CommentList comments={product.comments || []}  />
       </section>
 
       <ProductSlider

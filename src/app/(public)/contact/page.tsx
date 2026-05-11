@@ -113,7 +113,7 @@ export default function page() {
                   href={"https://maps.app.goo.gl/ufHFJ7L2YUCvU9mr9"}
                   className="hover:text-primary max-w-57.5 transition-colors"
                 >
-                  <span className="text-neutral10 hover:text-primary clear-start transition-colors">
+                  <span className="text-neutral10 hover:text-primary  transition-colors">
                     آدرس: تهران ، بزرگراه محلاتی، نبرد جنوبی، خیابان زمزم، بازار
                     گل محلاتی
                   </span>
