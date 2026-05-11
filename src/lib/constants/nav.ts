@@ -1,5 +1,4 @@
 export const navLinks = [
-  { text: "صفحه اصلی", href: "/" },
   {
     text: "محصولات",
     href: "/products",
