@@ -19,6 +19,6 @@ export const navLinks = [
       { href: "/blog?category=health", text: "آفت‌ها و بیماری‌ها" },
     ],
   },
-  { text: "تماس با ما", href: "/contact-us" },
-  { text: "درباره ما", href: "/about-us" },
+  { text: "تماس با ما", href: "/contact" },
+  { text: "درباره ما", href: "/about" },
 ];

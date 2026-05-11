@@ -8,6 +8,6 @@ export const breadcrumbNameMap: Record<string, string> = {
   gift : "کادویی",
   decoration : "دکوراتیو",
   indoor : "آپارتمانی",
-  "contact-us" : "تماس با ما",
-  "about-us" : "درباره ما"
+  "contact" : "تماس با ما",
+  "about" : "درباره ما"
 };
