@@ -7,7 +7,7 @@ interface ProductDetailTabsProps {
 }
 
 export default function ProductDetailTabs({ tabs }: ProductDetailTabsProps) {
-  const [activeTab, setActiveTab] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState<string | null>(tabs[0].id);
 
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
