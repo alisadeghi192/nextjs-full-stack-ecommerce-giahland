@@ -82,7 +82,7 @@ export default function ProductFeaturesRenderer({
             src={productImage}
             width={360}
             height={360}
-            className="object-contain"
+            className="object-cover"
           />
         </div>
       </div>

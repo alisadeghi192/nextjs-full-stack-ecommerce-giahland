@@ -1,5 +1,4 @@
 "use client";
-import { useEffect, useState } from "react";
 import PriceSection from "./PriceSection";
 import PrimaryButton from "@/components/shared/ui/PrimaryButton";
 import { useFooterVisibility } from "@/lib/hooks/useFooterVisibility";
@@ -15,7 +14,6 @@ export default function MobileStickyCart({
   discount,
   onAddToCart,
 }: MobileStickyCartProps) {
-  const [hide, setHide] = useState(false);
   const isFooterVisible = useFooterVisibility()
 
   

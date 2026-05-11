@@ -41,7 +41,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
     .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
     .slice(0, 4);
 
-  const categoryLink = `/products?category=${category}&sort=newest`;
+  const categoryLink = `/products?category=${category}`;
 
   return (
     <main className="relative container">
