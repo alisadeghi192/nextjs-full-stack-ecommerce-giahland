@@ -9,6 +9,7 @@ import {
 import AuthButtons from "./AuthButtons";
 import CartButton from "./CartButton";
 import Overlay from "./Overlay";
+import { HEADER_DESKTOP_DEFAULT, HEADER_DESKTOP_SCROLLED } from "@/lib/constants";
 
 interface HeaderActionsProps {
   isScrolled: boolean;
@@ -16,7 +17,7 @@ interface HeaderActionsProps {
 
 export default function HeaderActions({ isScrolled }: HeaderActionsProps) {
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const headerHeight = isScrolled ? 60 : 96;
+  const headerHeight = isScrolled ? HEADER_DESKTOP_SCROLLED : HEADER_DESKTOP_DEFAULT;
 
   const toggleCart = () => setIsCartOpen((prev) => !prev);
   const closeCart = () => setIsCartOpen(false);

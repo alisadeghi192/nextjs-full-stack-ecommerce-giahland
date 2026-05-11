@@ -8,3 +8,4 @@ export * from "./products";
 export * from "./productSwiper";
 export * from "./roles";
 export * from "./scroll";
+export * from "./header"

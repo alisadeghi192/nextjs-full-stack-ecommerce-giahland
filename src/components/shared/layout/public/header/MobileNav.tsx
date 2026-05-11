@@ -5,6 +5,7 @@ import { useState } from "react";
 import Overlay from "./Overlay";
 import MobileActions from "./MobileActions";
 import MobileCartModal from "@/components/features/cart/MobileCartModal";
+import { HEADER_MOBILE_DEFAULT, HEADER_MOBILE_SCROLLED } from "@/lib/constants";
 
 interface MobileNavProps {
   isScrolled: boolean;
@@ -17,7 +18,7 @@ export default function MobileNav({
 }: MobileNavProps) {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const headerHeight = isScrolled ? 98 : 108;
+  const headerHeight = isScrolled ? HEADER_MOBILE_SCROLLED : HEADER_MOBILE_DEFAULT;
 
   const closeCart = () => setIsCartOpen(false);
   const closeMenu = () => setIsMenuOpen(false);
