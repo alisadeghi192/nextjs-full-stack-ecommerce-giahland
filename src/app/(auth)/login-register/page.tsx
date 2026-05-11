@@ -1,5 +1,5 @@
 import Image from "next/image";
-import PublicHeader from "@/components/shared/layout/public/PublicHeader";
+import PublicHeader from "@/components/shared/layout/public/header/PublicHeader";
 import AuthToggle from "@/components/features/auth/AuthToggle";
 
 export default function AuthPage() {

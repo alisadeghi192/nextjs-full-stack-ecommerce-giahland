@@ -1,4 +1,4 @@
-import PublicHeader from "@/components/shared/layout/public/PublicHeader";
+import PublicHeader from "@/components/shared/layout/public/header/PublicHeader";
 import Image from "next/image";
 import PrimaryButton from "@/components/shared/ui/PrimaryButton";
 
