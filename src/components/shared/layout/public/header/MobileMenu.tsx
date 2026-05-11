@@ -36,7 +36,9 @@ const MobileMenu = ({ isOpen, onClose, toggleMenu }: MobileMenuProps) => {
         <div className="flex h-full flex-col">
           <div className="mb-4 flex items-center justify-between">
             <Logo />
-            <IoClose className="size-6" onClick={onClose} />
+            <div onClick={onClose}>
+              <IoClose className="size-6" />
+            </div>
           </div>
           <div className="divide-neutral3 flex flex-col divide-y overflow-y-auto">
             {navLinks.map((link) => (

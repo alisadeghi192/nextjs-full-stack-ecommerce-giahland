@@ -35,7 +35,8 @@ export default function ProductCardGrid({
   const isOutOfStock = stock === 0;
   const hasDiscount = discount > 0;
 
-  const Content = () => (
+
+  const contentElement = (
     <div className="flex flex-col">
       <ProductImage image={image} view="grid" name={name} />
       <div className="mt-auto flex flex-col gap-y-4 max-sm:gap-y-2">
@@ -54,26 +55,30 @@ export default function ProductCardGrid({
           ) : (
             <>
               <AddToCartButton className="bg-neutral3 hover:bg-primary flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-full transition-colors hover:*:text-white" />
-              <PriceSection price={price} discount={discount} variant="product-card"/>
+              <PriceSection
+                price={price}
+                discount={discount}
+                variant="product-card"
+              />
             </>
           )}
         </div>
       </div>
-      {hasDiscount && !isOutOfStock && <DiscountBadge discount={discount} className="absolute top-5 right-5" />}
+      {hasDiscount && !isOutOfStock && (
+        <DiscountBadge discount={discount} className="absolute top-5 right-5" />
+      )}
     </div>
   );
 
   return (
     <div className="group border-neutral5 relative flex h-full flex-col justify-between gap-y-2 justify-self-center overflow-hidden rounded-xl border bg-white p-4 max-xl:gap-y-4 max-sm:max-w-57">
       {isOutOfStock ? (
-        <div className="cursor-default">{Content()}</div>
+        <div className="cursor-default">{contentElement}</div>
       ) : (
-        <Link href={`/products/${category}/${slug}`}>{Content()}</Link>
+        <Link href={`/products/${category}/${slug}`}>{contentElement}</Link>
       )}
       {!isOutOfStock && (
-        <LikeButton
-          className="top-4 -left-9 group-hover:left-4 max-md:left-4!"
-        />
+        <LikeButton className="top-4 -left-9 group-hover:left-4 max-md:left-4!" />
       )}
     </div>
   );
