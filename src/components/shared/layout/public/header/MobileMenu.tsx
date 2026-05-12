@@ -53,26 +53,29 @@ const MobileMenu = ({ isOpen, onClose, toggleMenu }: MobileMenuProps) => {
               </MobileNavLink>
             ))}
           </div>
-
-          {isUserLogin ? (
-            <Link
-              className="text-error bg-neutral2 mt-auto flex h-14 w-full items-center justify-between rounded-lg px-4"
-              href="/"
-            >
-              <span className="leading-7.25 font-medium">
-                خروج از حساب کاربری
-              </span>
-              <TbLogout2 className="size-6" />
-            </Link>
-          ) : (
-            <Link
-              className="text-primary bg-neutral2 mt-auto flex h-14 w-full items-center justify-between rounded-lg px-4"
-              href="/login-register"
-            >
-              <span className="leading-7.25 font-medium">ورود/ثبت نام</span>
-              <TbLogin2 className="size-6" />
-            </Link>
-          )}
+          <div className="bg-neutral2 mt-auto w-full rounded-lg ">
+            {isUserLogin ? (
+              <Link
+                className="text-error flex h-14 items-center justify-between px-4"
+                href="/"
+                onClick={onClose}
+              >
+                <span className="leading-7.25 font-medium">
+                  خروج از حساب کاربری
+                </span>
+                <TbLogout2 className="size-6" />
+              </Link>
+            ) : (
+              <Link
+                className="text-primary h-14 flex items-center justify-between px-4"
+                href="/login-register"
+                onClick={onClose}
+              >
+                <span className="leading-7.25 font-medium">ورود/ثبت نام</span>
+                <TbLogin2 className="size-6" />
+              </Link>
+            )}
+          </div>
         </div>
       </div>
     </>
