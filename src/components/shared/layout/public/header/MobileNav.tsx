@@ -1,3 +1,4 @@
+'use client'
 import Logo from "./Logo";
 import MobileMenu from "./MobileMenu";
 import SearchBox from "./SearchBox";
@@ -10,11 +11,13 @@ import { HEADER_MOBILE_DEFAULT, HEADER_MOBILE_SCROLLED } from "@/lib/constants";
 interface MobileNavProps {
   isScrolled: boolean;
   hasSearchInput: boolean;
+  useInLoginPage? : boolean
 }
 
 export default function MobileNav({
   isScrolled,
   hasSearchInput,
+  useInLoginPage = false
 }: MobileNavProps) {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -38,11 +41,11 @@ export default function MobileNav({
 
   return (
     <nav
-      className={`border-neutral3 h-27 border-b bg-white ${isScrolled ? "h-24.5!" : ""} flex items-center transition-all md:hidden`}
+      className={`border-neutral3  border-b bg-white ${useInLoginPage ? "h-12" : isScrolled ? "h-24.5" : "h-27"} flex items-center transition-all md:hidden`}
     >
       <div className="container flex flex-col">
         <div
-          className={`mb-3 flex items-center justify-between ${isScrolled ? "mb-2.5!" : ""} transition-all`}
+          className={`flex items-center justify-between ${useInLoginPage ? "mb-0" : isScrolled ? "mb-2.5!" : "mb-3"} transition-all`}
         >
           <div className="flex items-center gap-x-3">
             <MobileMenu
@@ -63,7 +66,7 @@ export default function MobileNav({
           closeCart();
           closeMenu();
         }}
-        topOffset={headerHeight}
+        topOffset={useInLoginPage ? 48 : headerHeight}
         zIndex={30}
       />
     </nav>
