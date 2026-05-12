@@ -1,13 +1,6 @@
 import mongoose from "mongoose";
-
-export interface IUser {
-  mobile: string;
-  email: string;
-  password: string;
-  role: "admin" | "user" | "plant-doctor";
-  createdAt: Date;
-  updatedAt: Date;
-}
+import { IUser } from "@/features/user/types/user.types";
+import { USER_ROLES } from "@/lib/constants/roles";
 
 const UserSchema = new mongoose.Schema<IUser>(
   {
@@ -37,13 +30,13 @@ const UserSchema = new mongoose.Schema<IUser>(
     },
     role: {
       type: String,
-      enum: ["user", "admin","plant-doctor"],
+      enum: USER_ROLES,
       default: "user",
     },
   },
   {
     timestamps: true,
-  },
+  }
 );
 
 const User = mongoose.models.User || mongoose.model<IUser>("User", UserSchema);
