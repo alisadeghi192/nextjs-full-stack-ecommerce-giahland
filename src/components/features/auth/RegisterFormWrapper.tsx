@@ -34,6 +34,15 @@ export default function RegisterFormWrapper({
 
   const isLoading = isSubmitting || isPending;
 
+  useEffect(() => {
+    if (state?.success) {
+      toast.success(state.message || "ثبت‌نام با موفقیت انجام شد");
+      reset();
+    } else if (state?.success === false && state?.message) {
+      toast.error(state.message);
+    }
+  }, [state, reset]);
+
   const sendDataToServer = (data: IRegisterInput) => {
     const formData = new FormData();
     formData.append("mobile", data.mobile);
@@ -45,15 +54,6 @@ export default function RegisterFormWrapper({
       formAction(formData);
     });
   };
-
-  useEffect(() => {
-    if (state?.success) {
-      toast.success(state.message || "ثبت‌نام با موفقیت انجام شد");
-      reset();
-    } else if (state?.success === false && state?.message) {
-      toast.error(state.message);
-    }
-  }, [state, reset]);
 
   return (
     <RegisterForm
