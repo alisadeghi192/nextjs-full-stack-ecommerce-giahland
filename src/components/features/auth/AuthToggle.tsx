@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
-import LoginForm from "./LoginForm";
 import RegisterFormWrapper from "./RegisterFormWrapper";
+import LoginFormWrapper from "./LoginFormWrapper";
 
 export default function AuthToggle() {
   const [authType, setAuthType] = useState<"login" | "register">("login");
@@ -11,7 +11,7 @@ export default function AuthToggle() {
       {authType === "register" ? (
         <RegisterFormWrapper onToggle={() => setAuthType("login")} />
       ) : (
-        <LoginForm onToggle={() => setAuthType("register")} />
+        <LoginFormWrapper onToggle={() => setAuthType("register")} />
       )}
     </>
   );
