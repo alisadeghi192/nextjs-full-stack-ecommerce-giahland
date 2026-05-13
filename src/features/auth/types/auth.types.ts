@@ -1,6 +1,7 @@
 // src/features/auth/types/auth.types.ts
 
 import { IUser } from "../../user/types/user.types";
+import { UserRole } from "@/lib/constants";
 
 export interface ISignupActionResult {
   success: boolean;
@@ -19,11 +20,12 @@ export interface ISigninActionResult {
 }
 
 export interface IAuthState {
-  user: Omit<IUser, "password"> | null;
+  user: (Omit<IUser, "password"> & { _id: string }) | null;
   isLoading: boolean;
   isAuthenticated: boolean;
-  setUser: (user: IUser | null) => void;
+  setUser: (user: (Omit<IUser, "password"> & { _id: string }) | null) => void;
   logout: () => void;
+  checkAuth: () => Promise<void>;
 }
 
 export interface IAuthResponse {
@@ -37,7 +39,7 @@ export interface IGetMeResponse {
     _id: string;
     mobile: string;
     email: string;
-    role: string;
+    role: UserRole;
     createdAt: Date;
     updatedAt: Date;
   } | null;
