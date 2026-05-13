@@ -28,8 +28,8 @@ export const RegisterSchema = z.object({
 export const LoginSchema = z.object({
   mobile: z
     .string()
-    .regex(mobileRegex, "شماره موبایل معتبر نیست (مثال: 09123456789)"),
-  password: z.string().min(1, "رمز عبور الزامی است"),
+    .regex(mobileRegex, "شماره موبایل معتبر نیست. (مثال: 09123456789)"),
+  password: z.string().min(1, "رمز عبور الزامی است."),
 });
 
 
