@@ -2,6 +2,22 @@
 
 import { IUser } from "../../user/types/user.types";
 
+export interface ISignupActionResult {
+  success: boolean;
+  message?: string;
+  errors?: {
+    mobile?: string[];
+    email?: string[];
+    password?: string[];
+    confirmPassword?: string[];
+  };
+}
+
+export interface ISigninActionResult {
+  success: boolean;
+  message?: string;
+}
+
 export interface IAuthState {
   user: Omit<IUser, "password"> | null;
   isLoading: boolean;
@@ -18,20 +34,4 @@ export interface IAuthResponse {
 
 export interface IGetMeResponse {
   user: Omit<IUser, "password"> | null;
-}
-
-export interface ISignupActionResult {
-  success: boolean;
-  message?: string;
-  errors?: {
-    mobile?: string[];
-    email?: string[];
-    password?: string[];
-    confirmPassword?: string[];
-  };
-}
-
-export interface ISigninActionResult {
-  success: boolean;
-  message?: string;
 }

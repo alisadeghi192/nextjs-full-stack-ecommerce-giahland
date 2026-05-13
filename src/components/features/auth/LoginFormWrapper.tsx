@@ -33,13 +33,13 @@ export default function LoginFormWrapper({ onToggle }: LoginFormWrapperProps) {
 
   useEffect(() => {
     if (state?.success) {
-      toast.success(state.message || "ورود با موفقیت انجام شد");
+      toast.success(state.message || "ورود با موفقیت انجام شد" , {position : "top-left" ,style:{maxWidth: "fit-content" , boxShadow: 'shadow-lg'}} );
       reset();
       setTimeout(() => {
         router.push("/");
       }, 1000);
     } else if (state?.success === false && state?.message) {
-      toast.error(state.message);
+      toast.error(state.message , {position : "top-left" ,style:{maxWidth: "fit-content" , boxShadow: 'shadow-lg'}});
     }
   }, [state, reset, router]);
 

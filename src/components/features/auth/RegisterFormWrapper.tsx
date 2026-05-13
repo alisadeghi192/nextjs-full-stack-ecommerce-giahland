@@ -36,10 +36,10 @@ export default function RegisterFormWrapper({
 
   useEffect(() => {
     if (state?.success) {
-      toast.success(state.message || "ثبت‌نام با موفقیت انجام شد");
+      toast.success(state.message || "ثبت‌نام با موفقیت انجام شد " , {position : "top-left" ,style:{maxWidth: "fit-content" ,  boxShadow: 'shadow-lg'}});
       reset();
     } else if (state?.success === false && state?.message) {
-      toast.error(state.message);
+      toast.error(state.message , {position : "top-left" ,style:{maxWidth: "fit-content" ,  boxShadow: 'shadow-lg'}});
     }
   }, [state, reset]);
 

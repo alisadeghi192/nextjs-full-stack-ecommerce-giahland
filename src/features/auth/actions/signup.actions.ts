@@ -13,7 +13,7 @@ import { RegisterSchema } from "@/features/auth/schemas/auth.schema";
 import { ISignupActionResult } from "@/features/auth/types/auth.types";
 
 export async function signupAction(
-    prevState: ISignupActionResult | null,
+  prevState: ISignupActionResult | null,
   formData: FormData,
 ): Promise<ISignupActionResult> {
   // 1. extract data from FormData
