@@ -27,6 +27,12 @@ const ScrollToTop = () => {
       //    scrollable height = all page content height - veiwport height
       const totalHeight =
         document.documentElement.scrollHeight - window.innerHeight;
+
+      if (totalHeight <= 0) {
+        setScrollProgress(0);
+        return;
+      }
+
       const progress = (window.scrollY / totalHeight) * 100;
       setScrollProgress(progress);
     };
@@ -39,7 +45,11 @@ const ScrollToTop = () => {
   const isMobile = windowWidth < 640;
   const shouldAdjust = isSingleProductPage && isMobile;
 
-  const bottomPosition = shouldAdjust ? isFooterVisible ? "bottom-6" : "bottom-24" : "bottom-6";
+  const bottomPosition = shouldAdjust
+    ? isFooterVisible
+      ? "bottom-6"
+      : "bottom-24"
+    : "bottom-6";
 
   const radius = 19;
   const circumference = 2 * Math.PI * radius;
