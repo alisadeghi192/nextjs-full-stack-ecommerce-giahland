@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import ScrollToTop from "@/lib/utils/ScrollToTop";
+import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -62,6 +63,7 @@ export default function RootLayout({
           {children}
         </div>
         <ScrollToTop />
+        <Toaster position="top-center"/>
       </body>
     </html>
   );
