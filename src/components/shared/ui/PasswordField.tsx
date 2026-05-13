@@ -63,7 +63,7 @@ const PasswordField = forwardRef<HTMLInputElement, PasswordFieldProps>(
             )}
           </button>
         </div>
-        {error && <p className=" text-error text-sm">{error}</p>}
+        {error && <p className="relative top-1 text-error text-sm">{error}</p>}
       </div>
     );
   },
