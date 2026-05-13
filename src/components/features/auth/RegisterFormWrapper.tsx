@@ -1,8 +1,9 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useEffect, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import toast from "react-hot-toast";
 import RegisterForm from "./RegisterForm";
 import { signupAction } from "@/features/auth/actions/signup.actions";
 import {
@@ -18,35 +19,49 @@ export default function RegisterFormWrapper({
   onToggle,
 }: RegisterFormWrapperProps) {
   const [state, formAction] = useActionState(signupAction, null);
+  const [isPending, startTransition] = useTransition();
 
   const {
     register,
-    handleSubmit,
+    handleSubmit: validateForm,
     formState: { errors, isSubmitting },
+    reset,
   } = useForm<IRegisterInput>({
     resolver: zodResolver(RegisterSchema),
     mode: "onBlur",
     reValidateMode: "onChange",
   });
 
-  const onSubmit = (data: IRegisterInput) => {
+  const isLoading = isSubmitting || isPending;
+
+  const sendDataToServer = (data: IRegisterInput) => {
     const formData = new FormData();
     formData.append("mobile", data.mobile);
     formData.append("email", data.email);
     formData.append("password", data.password);
     formData.append("confirmPassword", data.confirmPassword);
-    formAction(formData);
+
+    startTransition(() => {
+      formAction(formData);
+    });
   };
+
+  useEffect(() => {
+    if (state?.success) {
+      toast.success(state.message || "ثبت‌نام با موفقیت انجام شد");
+      reset();
+    } else if (state?.success === false && state?.message) {
+      toast.error(state.message);
+    }
+  }, [state, reset]);
 
   return (
     <RegisterForm
       onToggle={onToggle}
       register={register}
       errors={errors}
-      isSubmitting={isSubmitting}
-      onSubmit={handleSubmit(onSubmit)}
-      serverError={state?.success === false ? state.message : undefined}
-      serverSuccess={state?.success === true ? state.message : undefined}
+      isSubmitting={isLoading}
+      onSubmit={validateForm(sendDataToServer)}
     />
   );
 }
