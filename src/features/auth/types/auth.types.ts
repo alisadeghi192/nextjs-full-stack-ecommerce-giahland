@@ -33,5 +33,12 @@ export interface IAuthResponse {
 }
 
 export interface IGetMeResponse {
-  user: Omit<IUser, "password"> | null;
+  user: {
+    _id: string;
+    mobile: string;
+    email: string;
+    role: string;
+    createdAt: Date;
+    updatedAt: Date;
+  } | null;
 }

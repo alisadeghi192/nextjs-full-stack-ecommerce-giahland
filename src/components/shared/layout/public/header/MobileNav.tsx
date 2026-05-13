@@ -52,6 +52,7 @@ export default function MobileNav({
               isOpen={isMenuOpen}
               onClose={closeMenu}
               toggleMenu={toggleMenu}
+              isUserLogin={true}
             />
             <Logo />
           </div>

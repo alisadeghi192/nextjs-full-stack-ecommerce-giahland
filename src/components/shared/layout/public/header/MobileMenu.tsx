@@ -8,16 +8,31 @@ import { IoClose } from "react-icons/io5";
 import MobileNavLink from "./MobileNavLink";
 import Link from "next/link";
 import { TbLogin2, TbLogout2 } from "react-icons/tb";
+import { signoutAction } from "@/features/auth/actions/signout.actions";
+import { useRouter } from "next/navigation";
 
 interface MobileMenuProps {
   isOpen: boolean;
   onClose: () => void;
   toggleMenu: () => void;
+  isUserLogin?: boolean;
 }
 
-const isUserLogin = false;
 
-const MobileMenu = ({ isOpen, onClose, toggleMenu }: MobileMenuProps) => {
+const MobileMenu = ({
+  isOpen,
+  onClose,
+  toggleMenu,
+  isUserLogin,
+}: MobileMenuProps) => {
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    await signoutAction();
+    onClose();
+    router.refresh();
+  };
+
   return (
     <>
       <button
@@ -53,21 +68,20 @@ const MobileMenu = ({ isOpen, onClose, toggleMenu }: MobileMenuProps) => {
               </MobileNavLink>
             ))}
           </div>
-          <div className="bg-neutral2 mt-auto w-full rounded-lg ">
+          <div className="bg-neutral2 mt-auto w-full rounded-lg">
             {isUserLogin ? (
-              <Link
-                className="text-error flex h-14 items-center justify-between px-4"
-                href="/"
-                onClick={onClose}
+              <button
+                className="text-error w-full flex h-14 items-center justify-between px-4"
+                onClick={handleLogout}
               >
                 <span className="leading-7.25 font-medium">
                   خروج از حساب کاربری
                 </span>
                 <TbLogout2 className="size-6" />
-              </Link>
+              </button>
             ) : (
               <Link
-                className="text-primary h-14 flex items-center justify-between px-4"
+                className="text-primary flex h-14 items-center justify-between px-4"
                 href="/login-register"
                 onClick={onClose}
               >
