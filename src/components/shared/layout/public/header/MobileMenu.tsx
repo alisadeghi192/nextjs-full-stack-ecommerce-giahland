@@ -11,7 +11,7 @@ import { TbLogin2, TbLogout2 } from "react-icons/tb";
 import {
   useIsAuthenticated,
   useAuthActions,
-} from "@/features/auth/selectors/auth.selector";
+} from "@/features/auth/selectors/auth.selectors";
 
 interface MobileMenuProps {
   isOpen: boolean;

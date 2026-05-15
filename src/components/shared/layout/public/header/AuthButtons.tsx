@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { MdOutlineLogin } from "react-icons/md";
 import OutlineButton from "@/components/shared/ui/OutlineButton";
-import { useIsAuthenticated, useAuthActions } from "@/features/auth/selectors/auth.selector";
+import { useIsAuthenticated, useAuthActions } from "@/features/auth/selectors/auth.selectors";
 
 export default function AuthButtons() {
  const isAuthenticated = useIsAuthenticated();
