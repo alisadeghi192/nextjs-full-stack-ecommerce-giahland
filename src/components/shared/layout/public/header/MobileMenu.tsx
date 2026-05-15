@@ -8,29 +8,24 @@ import { IoClose } from "react-icons/io5";
 import MobileNavLink from "./MobileNavLink";
 import Link from "next/link";
 import { TbLogin2, TbLogout2 } from "react-icons/tb";
-import { signoutAction } from "@/features/auth/actions/signout.actions";
-import { useRouter } from "next/navigation";
+import {
+  useIsAuthenticated,
+  useAuthActions,
+} from "@/features/auth/selectors/auth.selector";
 
 interface MobileMenuProps {
   isOpen: boolean;
   onClose: () => void;
   toggleMenu: () => void;
-  isUserLogin?: boolean;
 }
 
-
-const MobileMenu = ({
-  isOpen,
-  onClose,
-  toggleMenu,
-  isUserLogin,
-}: MobileMenuProps) => {
-  const router = useRouter();
+const MobileMenu = ({ isOpen, onClose, toggleMenu }: MobileMenuProps) => {
+  const isAuthenticated = useIsAuthenticated();
+  const { logout } = useAuthActions();
 
   const handleLogout = async () => {
-    await signoutAction();
     onClose();
-    router.refresh();
+    logout();
   };
 
   return (
@@ -69,9 +64,9 @@ const MobileMenu = ({
             ))}
           </div>
           <div className="bg-neutral2 mt-auto w-full rounded-lg">
-            {isUserLogin ? (
+            {isAuthenticated ? (
               <button
-                className="text-error w-full flex h-14 items-center justify-between px-4"
+                className="text-error flex h-14 w-full items-center justify-between px-4"
                 onClick={handleLogout}
               >
                 <span className="leading-7.25 font-medium">
