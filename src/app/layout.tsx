@@ -3,6 +3,8 @@ import localFont from "next/font/local";
 import "./globals.css";
 import ScrollToTop from "@/lib/utils/ScrollToTop";
 import { Toaster } from "react-hot-toast";
+import { getMeAction } from "@/features/auth/actions/me.actions";
+import GeneralProvider from "@/components/providers/GeneralProvider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -51,19 +53,27 @@ const modamFont = localFont({
   display: "swap",
 });
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const { user: initialUser } = await getMeAction();
   return (
-    <html lang="fa" dir="rtl" data-scroll-behavior="smooth" className={`${modamFont.variable} scroll-smooth`}>
+    <html
+      lang="fa"
+      dir="rtl"
+      data-scroll-behavior="smooth"
+      className={`${modamFont.variable} scroll-smooth`}
+    >
       <body className="font-modam text-BLACK antialiased">
-        <div className="flex min-h-dvh flex-col justify-between">
-          {children}
-        </div>
+        <GeneralProvider initialUser={initialUser}>
+          <div className="flex min-h-dvh flex-col justify-between">
+            {children}
+          </div>
+        </GeneralProvider>
         <ScrollToTop />
-        <Toaster position="top-center"/>
+        <Toaster position="top-center" />
       </body>
     </html>
   );
