@@ -88,7 +88,7 @@ function page() {
       <div className="border-neutral6 mx-auto mt-10 w-8/10 overflow-hidden rounded-xl border max-lg:w-full max-sm:mt-4">
         <Image
           alt="about-us-pic"
-          src={"/test/66.png"}
+          src={"/static/images/about-us2.png"}
           width={766}
           height={405}
           className="h-full w-full object-cover"
