@@ -24,7 +24,7 @@ export interface IAuthState {
   isLoading: boolean;
   isAuthenticated: boolean;
   setUser: (user: (Omit<IUser, "password"> ) | null) => void;
-  logout: () => void;
+  logout: () => Promise<void>;
   checkAuth: () => Promise<void>;
 }
 
