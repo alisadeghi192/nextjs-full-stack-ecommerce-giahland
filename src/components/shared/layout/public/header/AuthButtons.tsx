@@ -1,11 +1,18 @@
 import Image from "next/image";
 import { MdOutlineLogin } from "react-icons/md";
 import OutlineButton from "@/components/shared/ui/OutlineButton";
-
-const isUserLogin = false;
+import { useIsAuthenticated, useAuthActions } from "@/features/auth/selectors/auth.selector";
 
 export default function AuthButtons() {
-  if (isUserLogin) {
+ const isAuthenticated = useIsAuthenticated();
+   const { logout } = useAuthActions();
+
+  const handleLogout = () => {
+    logout();
+  };
+
+
+  if (isAuthenticated) {
     return (
       <button className="flex items-center gap-2">
         <Image
