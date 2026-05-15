@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { IAuthState } from "@/features/auth/types/auth.types";
 import { getMeAction } from "@/features/auth/actions/me.actions";
+import { signoutAction } from "@/features/auth/actions/signout.actions";
 
 export const useAuthStore = create<IAuthState>((set) => ({
   user: null,
@@ -14,12 +15,14 @@ export const useAuthStore = create<IAuthState>((set) => ({
       isLoading: false,
     }),
 
-  logout: () =>
+ logout: async () => {  
+    await signoutAction();  
     set({
       user: null,
       isAuthenticated: false,
       isLoading: false,
-    }),
+    });
+  },
 
   checkAuth: async () => {
     try {
