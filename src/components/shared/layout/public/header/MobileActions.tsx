@@ -8,14 +8,14 @@ import {
 } from "react-icons/md";
 import Link from "next/link";
 import Image from "next/image";
-
+import { useIsAuthenticated } from "@/features/auth/selectors/auth.selectors";
 interface MobileActionsProps {
   onCartClick: () => void;
 }
 
-const isUserLogin = false;
 
 export default function MobileActions({ onCartClick }: MobileActionsProps) {
+  const isAuthenticated = useIsAuthenticated();
   return (
     <div className="flex items-center gap-2">
       <IconButton icon={<MdOutlineDarkMode size={20} />} />
@@ -24,7 +24,7 @@ export default function MobileActions({ onCartClick }: MobileActionsProps) {
         onClick={onCartClick}
       />
 
-      {isUserLogin ? (
+      {isAuthenticated ? (
         <Image
           src="/static/images/default-user.jpg"
           alt="user profile"
