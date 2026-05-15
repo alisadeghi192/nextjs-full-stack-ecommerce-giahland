@@ -20,10 +20,10 @@ export interface ISigninActionResult {
 }
 
 export interface IAuthState {
-  user: (Omit<IUser, "password"> & { _id: string }) | null;
+  user: (Omit<IUser, "password"> ) | null;
   isLoading: boolean;
   isAuthenticated: boolean;
-  setUser: (user: (Omit<IUser, "password"> & { _id: string }) | null) => void;
+  setUser: (user: (Omit<IUser, "password"> ) | null) => void;
   logout: () => void;
   checkAuth: () => Promise<void>;
 }
