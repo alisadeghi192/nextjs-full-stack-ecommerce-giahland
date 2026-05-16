@@ -72,11 +72,9 @@
   @media (width >= 80rem) /* 1280px */ {
     max-width: 80rem;
   }
-  @media (width >= 90rem) /* 1440px */ {
-    max-width: 90rem;
-  }
+ 
 
-  @apply mx-auto w-full px-4 md:px-2.5 2xl:max-w-7xl;
+  @apply mx-auto w-full px-4 md:px-2.5 ;
 }
 
 @utility ltr {
