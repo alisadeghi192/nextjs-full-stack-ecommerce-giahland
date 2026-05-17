@@ -7,6 +7,7 @@ const BannerSection = () => {
     <section className="mt-20 flex items-center justify-between gap-x-6 max-lg:mt-16 max-lg:gap-x-4 max-md:flex-col-reverse max-md:gap-y-4 max-sm:mt-10">
       {BANNERS.map((banner) => (
         <div
+          key={banner.id}
           className="group relative w-full overflow-hidden rounded-2xl bg-cover bg-center p-6 font-bold text-white md:h-38 lg:h-51"
           style={{ backgroundImage: `url(${banner.background})` }}
         >
