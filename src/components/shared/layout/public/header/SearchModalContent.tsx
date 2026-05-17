@@ -94,7 +94,7 @@ export default function SearchModalContent({ onClose, isOpen }: SearchModalConte
       )}
       {query && results.length === 0 && (
         <p className="text-neutral9 mt-2 px-3 py-2 text-sm">
-          محصولی یافت نشد
+          محصولی یافت نشد.
         </p>
       )}
     </div>
