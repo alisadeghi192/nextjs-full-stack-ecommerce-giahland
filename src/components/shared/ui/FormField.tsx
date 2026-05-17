@@ -55,7 +55,7 @@ const FormField = forwardRef<HTMLInputElement, FormFieldProps>(
           />
           <label
             htmlFor={id}
-            className={`absolute right-10.25 rounded-2xl bg-white px-1 transition-all duration-300 peer-focus:right-4 ${useInSearchButtun ? "peer-focus:-translate-y-5.5 peer-[:not(:placeholder-shown)]:-translate-y-5.5" : "peer-focus:-translate-y-7 peer-[:not(:placeholder-shown)]:-translate-y-7"} peer-[:not(:placeholder-shown)]:right-4 max-sm:peer-focus:text-sm max-sm:peer-[:not(:placeholder-shown)]:text-sm ${hasError ? "text-error peer-focus:text-error peer-[:not(:placeholder-shown)]:text-error" : "text-neutral9 peer-focus:text-primary peer-[:not(:placeholder-shown)]:text-primary"}`}
+            className={`absolute pointer-events-none right-10.25 rounded-2xl bg-white px-1 transition-all duration-300 peer-focus:right-4 ${useInSearchButtun ? "peer-focus:-translate-y-5.5 peer-[:not(:placeholder-shown)]:-translate-y-5.5" : "peer-focus:-translate-y-7 peer-[:not(:placeholder-shown)]:-translate-y-7"} peer-[:not(:placeholder-shown)]:right-4 max-sm:peer-focus:text-sm max-sm:peer-[:not(:placeholder-shown)]:text-sm ${hasError ? "text-error peer-focus:text-error peer-[:not(:placeholder-shown)]:text-error" : "text-neutral9 peer-focus:text-primary peer-[:not(:placeholder-shown)]:text-primary"}`}
           >
             {label}
           </label>
