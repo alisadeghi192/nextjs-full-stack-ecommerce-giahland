@@ -6,7 +6,7 @@ const SearchBox = () => {
   const isScroll = useScroll(80);
   return (
     <div
-      className={`bg-neutral3 flex h-10 w-full items-center gap-x-2 rounded-xl px-3 py-2.5 transition-all ${isScroll ? "h-8!" : ""}`}
+      className={`${isScroll ? "h-8" : "h-10"} bg-neutral3 flex w-full items-center gap-x-2 rounded-xl px-3 py-2.5 transition-all`}
     >
       <MdOutlineSearch className="text-neutral9 size-5" />
       <input
