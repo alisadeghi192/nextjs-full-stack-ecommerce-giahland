@@ -79,6 +79,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         <ProductPurchaseCard
           price={product.price}
           discount={product.discount}
+          stock={product.stock}
         />
       </section>
 
@@ -112,7 +113,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         title="گیاه های مشابه"
       />
 
-      <MobileStickyCart discount={product.discount} price={product.price} />
+      <MobileStickyCart discount={product.discount} price={product.price} stock={product.stock} />
     </main>
   );
 }

@@ -4,23 +4,25 @@ import { BiSupport } from "react-icons/bi";
 import { AiOutlineDollarCircle } from "react-icons/ai";
 import PrimaryButton from "@/components/shared/ui/PrimaryButton";
 import PriceSection from "./PriceSection";
+import StockStatus from "./StockStatus";
 
 interface ProductPurchaseCardProps {
   price: number;
   discount: number;
   onAddToCart?: () => void;
+  stock: number;
 }
 
 export default function ProductPurchaseCard({
   price,
   onAddToCart,
   discount,
+  stock,
 }: ProductPurchaseCardProps) {
-
-
+  const isOutOfStock = stock === 0;
 
   return (
-    <div className="border-neutral7 max-sm:w-full w-78 rounded-2xl border px-6 py-7.75 max-xl:mt-9 max-sm:mt-8 max-sm:self-center">
+    <div className="border-neutral7 w-78 rounded-2xl border px-6 py-7.75 max-xl:mt-9 max-sm:mt-8 max-sm:w-full max-sm:self-center">
       <div className="space-y-2">
         <div className="bg-neutral3 flex items-center gap-x-3 rounded-xl p-3">
           <MdOutlineChangeCircle className="text-shade1 size-7.5" />
@@ -42,13 +44,26 @@ export default function ProductPurchaseCard({
         </div>
       </div>
 
-      <PriceSection price={price} discount={discount} variant="purchase-card"/>
+      {isOutOfStock ? (
+        <StockStatus
+          stock={stock}
+          className="text-error max-sm:hidden font-medium text-lg block py-6"
+        />
+      ) : (
+        <PriceSection
+          price={price}
+          discount={discount}
+          variant="purchase-card"
+        />
+      )}
 
-      <PrimaryButton onClick={onAddToCart} className="h-12 w-full text-lg/8 max-sm:hidden">
+      <PrimaryButton
+        onClick={onAddToCart}
+        className="h-12 w-full  text-lg/8 max-sm:hidden"
+        disabled={isOutOfStock}
+      >
         افزودن به سبد خرید
       </PrimaryButton>
-      
-      
     </div>
   );
 }

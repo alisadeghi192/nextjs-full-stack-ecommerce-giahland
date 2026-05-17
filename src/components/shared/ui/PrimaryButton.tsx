@@ -20,7 +20,7 @@ export default function PrimaryButton({
 }: PrimaryButtonProps) {
   const baseClasses =
     "bg-primary text-white hover:bg-shade2 rounded-xl transition-colors cursor-pointer flex items-center justify-center";
-    const disabledClasses = "bg-neutral7! cursor-not-allowed";
+    const disabledClasses = "bg-neutral7! cursor-default!";
 
   const combinedClassName = `${baseClasses} ${disabled ? disabledClasses : ""} ${className}`;
 
