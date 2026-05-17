@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import Logo from "./Logo";
 import MobileMenu from "./MobileMenu";
 import SearchBox from "./SearchBox";
@@ -11,20 +11,26 @@ import { HEADER_MOBILE_DEFAULT, HEADER_MOBILE_SCROLLED } from "@/lib/constants";
 interface MobileNavProps {
   isScrolled: boolean;
   hasSearchInput: boolean;
-  useInLoginPage? : boolean
+  useInLoginPage?: boolean;
 }
 
 export default function MobileNav({
   isScrolled,
   hasSearchInput,
-  useInLoginPage = false
+  useInLoginPage = false,
 }: MobileNavProps) {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const headerHeight = isScrolled ? HEADER_MOBILE_SCROLLED : HEADER_MOBILE_DEFAULT;
+  const headerHeight = isScrolled
+    ? HEADER_MOBILE_SCROLLED
+    : HEADER_MOBILE_DEFAULT;
 
   const closeCart = () => setIsCartOpen(false);
   const closeMenu = () => setIsMenuOpen(false);
+  const closeAll = () => {
+    closeCart();
+    closeMenu();
+  };
 
   const toggleMenu = () => {
     if (isCartOpen) {
@@ -41,7 +47,7 @@ export default function MobileNav({
 
   return (
     <nav
-      className={`border-neutral3  border-b bg-white ${useInLoginPage ? "h-12" : isScrolled ? "h-24.5" : "h-27"} flex items-center transition-all md:hidden`}
+      className={`border-neutral3 border-b bg-white ${useInLoginPage ? "h-12" : isScrolled ? "h-24.5" : "h-27"} flex items-center transition-all md:hidden`}
     >
       <div className="container flex flex-col">
         <div
@@ -62,10 +68,7 @@ export default function MobileNav({
       </div>
       <Overlay
         isOpen={isCartOpen || isMenuOpen}
-        onClose={() => {
-          closeCart();
-          closeMenu();
-        }}
+        onClose={closeAll}
         topOffset={useInLoginPage ? 48 : headerHeight}
         zIndex={30}
       />
