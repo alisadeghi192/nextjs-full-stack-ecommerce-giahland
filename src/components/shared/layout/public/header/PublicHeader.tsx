@@ -5,18 +5,16 @@ import DesktopNav from "./DesktopNav";
 import MobileNav from "./MobileNav";
 
 
-interface PublicHeaderProps {
-  hasSearchInput?: boolean;
-}
 
-const PublicHeader = ({ hasSearchInput = true }: PublicHeaderProps) => {
+
+const PublicHeader = () => {
   const isScrolled = useScroll();
   return (
     <header
       className="sticky top-0 right-0 left-0 z-50"
     >
       <DesktopNav isScrolled={isScrolled} />
-      <MobileNav hasSearchInput={hasSearchInput} isScrolled={isScrolled} />
+      <MobileNav  isScrolled={isScrolled} />
     </header>
   );
 };

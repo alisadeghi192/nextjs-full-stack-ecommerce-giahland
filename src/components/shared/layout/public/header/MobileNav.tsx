@@ -17,13 +17,13 @@ import {
 
 interface MobileNavProps {
   isScrolled: boolean;
-  hasSearchInput: boolean;
+  hasSearchInput?: boolean;
   useInLoginPage?: boolean;
 }
 
 export default function MobileNav({
   isScrolled,
-  hasSearchInput,
+  hasSearchInput = true,
   useInLoginPage = false,
 }: MobileNavProps) {
   const isCartOpen = useIsCartOpen();
