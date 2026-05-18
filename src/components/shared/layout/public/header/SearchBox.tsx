@@ -57,8 +57,6 @@ const SearchBox = ({ isScrolled }: SearchBoxProps) => {
 
   const handleSelect = () => {
     closeSearch();
-    setQuery("");
-    setResults([]);
   };
 
   return (

@@ -33,15 +33,15 @@ const MobileNavLink = ({
 }: MobileNavLinkProps) => {
   const pathname = usePathname();
   const openSubmenu = useOpenSubmenu();
-  const setOpenSubmenu  = useSetOpenSubmenu();
+  const setOpenSubmenu = useSetOpenSubmenu();
   const isActive = pathname === href;
   const isSubmenuOpen = openSubmenu === href;
 
   useEffect(() => {
-    if (!menuOpen && isSubmenuOpen) {
+    if (!menuOpen) {
       setOpenSubmenu(null);
     }
-  }, [menuOpen, isSubmenuOpen, setOpenSubmenu]);
+  }, [menuOpen, setOpenSubmenu]);
 
   const toggleSubMenu = () => {
     if (isSubmenuOpen) {

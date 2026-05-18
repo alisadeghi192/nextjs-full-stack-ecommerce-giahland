@@ -1,7 +1,7 @@
 "use client";
 
 import IconButton from "../../../ui/IconButton";
-import { MdOutlineDarkMode, MdOutlineSearch } from "react-icons/md";
+import { MdOutlineDarkMode } from "react-icons/md";
 import AuthButtons from "./AuthButtons";
 import CartButton from "./CartButton";
 import Overlay from "./Overlay";

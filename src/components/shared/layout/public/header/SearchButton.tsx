@@ -20,7 +20,7 @@ export default function SearchButton() {
             : "invisible translate-y-2 opacity-0"
         }`}
       >
-        <SearchModalContent   onClose={closeSearch} isOpen={isSearchOpen} />
+        <SearchModalContent  onClose={closeSearch} isOpen={isSearchOpen} />
       </div>
     </div>
   );
