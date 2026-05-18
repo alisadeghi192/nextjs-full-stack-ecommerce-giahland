@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import IconButton from "../../../ui/IconButton";
 import { MdOutlineDarkMode, MdOutlineSearch } from "react-icons/md";
 import AuthButtons from "./AuthButtons";
@@ -11,54 +10,39 @@ import {
   HEADER_DESKTOP_SCROLLED,
 } from "@/lib/constants";
 import SearchButton from "./SearchButton";
+import {
+  useIsCartOpen,
+  useIsSearchOpen,
+  useCartActions,
+  useSearchActions,
+} from "@/stores/selectors/ui.selectors";
 
 interface HeaderActionsProps {
   isScrolled: boolean;
 }
 
 export default function HeaderActions({ isScrolled }: HeaderActionsProps) {
-  const [isCartOpen, setIsCartOpen] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const isCartOpen = useIsCartOpen();
+  const isSearchOpen = useIsSearchOpen();
+  const { closeCart } = useCartActions();
+  const { closeSearch } = useSearchActions();
 
   const headerHeight = isScrolled
     ? HEADER_DESKTOP_SCROLLED
     : HEADER_DESKTOP_DEFAULT;
 
-  const closeCart = () => setIsCartOpen(false);
-  const closeSearch = () => setIsSearchOpen(false);
   const closeAll = () => {
     closeCart();
     closeSearch();
-  };
-
-  const toggleSearch = () => {
-    if (isCartOpen) {
-      closeCart();
-    }
-    setIsSearchOpen((prev) => !prev);
-  };
-  const toggleCart = () => {
-    if (isSearchOpen) {
-      closeSearch();
-    }
-    setIsCartOpen((prev) => !prev);
   };
 
   return (
     <div className="relative flex gap-x-4 max-xl:gap-x-1">
       <IconButton icon={<MdOutlineDarkMode size={24} />} />
 
-      <SearchButton
-        isOpen={isSearchOpen}
-        onToggle={toggleSearch}
-        onClose={closeSearch}
-      />
+      <SearchButton />
 
-      <CartButton
-        isOpen={isCartOpen}
-        onToggle={toggleCart}
-        onClose={closeCart}
-      />
+      <CartButton />
 
       <AuthButtons />
 
