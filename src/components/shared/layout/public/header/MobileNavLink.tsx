@@ -4,6 +4,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { MdKeyboardArrowDown } from "react-icons/md";
+import {
+  useOpenSubmenu,
+  useSetOpenSubmenu,
+} from "@/stores/selectors/ui.selectors";
 
 interface SubMenuItem {
   href: string;
@@ -16,7 +20,7 @@ interface MobileNavLinkProps {
   className?: string;
   submenu?: SubMenuItem[];
   onLinkClick?: () => void;
-  menuOpen?: boolean;  
+  menuOpen?: boolean;
 }
 
 const MobileNavLink = ({
@@ -28,21 +32,27 @@ const MobileNavLink = ({
   menuOpen,
 }: MobileNavLinkProps) => {
   const pathname = usePathname();
-  const [isSubmenuOpen, setIsSubmenuOpen] = useState(false);
+  const openSubmenu = useOpenSubmenu();
+  const setOpenSubmenu  = useSetOpenSubmenu();
   const isActive = pathname === href;
+  const isSubmenuOpen = openSubmenu === href;
 
   useEffect(() => {
-    if (!menuOpen) {
-      setIsSubmenuOpen(false);
+    if (!menuOpen && isSubmenuOpen) {
+      setOpenSubmenu(null);
     }
-  }, [menuOpen]);
+  }, [menuOpen, isSubmenuOpen, setOpenSubmenu]);
 
   const toggleSubMenu = () => {
-    setIsSubmenuOpen((prev) => !prev);
+    if (isSubmenuOpen) {
+      setOpenSubmenu(null);
+    } else {
+      setOpenSubmenu(href);
+    }
   };
 
   const handleClick = () => {
-    setIsSubmenuOpen(false);
+    setOpenSubmenu(null);
     onLinkClick?.();
   };
 
@@ -50,7 +60,7 @@ const MobileNavLink = ({
     return (
       <div>
         <div
-          className="flex items-center justify-between cursor-pointer"
+          className="flex cursor-pointer items-center justify-between"
           onClick={toggleSubMenu}
         >
           <Link
@@ -69,7 +79,7 @@ const MobileNavLink = ({
         </div>
 
         <div
-          className={`transition-all duration-300 overflow-hidden ${
+          className={`overflow-hidden transition-all duration-300 ${
             isSubmenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
           }`}
         >
