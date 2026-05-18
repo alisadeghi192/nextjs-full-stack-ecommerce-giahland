@@ -5,6 +5,7 @@ interface UIState {
   isSearchOpen: boolean;
   isMenuOpen: boolean;
   activeNavHover: string | null;
+  openSubmenu: string | null;
 
   openCart: () => void;
   closeCart: () => void;
@@ -19,6 +20,7 @@ interface UIState {
   toggleMenu: () => void;
 
   setActiveNavHover: (href: string | null) => void;
+  setOpenSubmenu: (href: string | null) => void;
   closeAll: () => void;
 }
 
@@ -27,6 +29,7 @@ export const useUIStore = create<UIState>((set, get) => ({
   isSearchOpen: false,
   isMenuOpen: false,
   activeNavHover: null,
+  openSubmenu: null,
 
   openCart: () =>
     set({
@@ -34,12 +37,20 @@ export const useUIStore = create<UIState>((set, get) => ({
       isSearchOpen: false,
       isMenuOpen: false,
       activeNavHover: null,
+      openSubmenu: null,
     }),
+
   closeCart: () => set({ isCartOpen: false }),
+
   toggleCart: () => {
     if (!get().isCartOpen) {
-      get().closeAll();
-      set({ isCartOpen: true });
+      set({
+        isCartOpen: true,
+        isSearchOpen: false,
+        isMenuOpen: false,
+        activeNavHover: null,
+        openSubmenu: null,
+      });
     } else {
       set({ isCartOpen: false });
     }
@@ -51,12 +62,20 @@ export const useUIStore = create<UIState>((set, get) => ({
       isCartOpen: false,
       isMenuOpen: false,
       activeNavHover: null,
+      openSubmenu: null,
     }),
+
   closeSearch: () => set({ isSearchOpen: false }),
+
   toggleSearch: () => {
     if (!get().isSearchOpen) {
-      get().closeAll();
-      set({ isSearchOpen: true });
+      set({
+        isSearchOpen: true,
+        isCartOpen: false,
+        isMenuOpen: false,
+        activeNavHover: null,
+        openSubmenu: null,
+      });
     } else {
       set({ isSearchOpen: false });
     }
@@ -68,23 +87,43 @@ export const useUIStore = create<UIState>((set, get) => ({
       isCartOpen: false,
       isSearchOpen: false,
       activeNavHover: null,
+      openSubmenu: null,
     }),
+
   closeMenu: () => set({ isMenuOpen: false }),
+
   toggleMenu: () => {
     if (!get().isMenuOpen) {
-      get().closeAll();
-      set({ isMenuOpen: true });
+      set({
+        isMenuOpen: true,
+        isCartOpen: false,
+        isSearchOpen: false,
+        activeNavHover: null,
+        openSubmenu: null,
+      });
     } else {
       set({ isMenuOpen: false });
     }
   },
 
-  setActiveNavHover: (href) => set({ activeNavHover: href }),
+  setActiveNavHover: (href) =>
+    set({
+      activeNavHover: href,
+      isCartOpen: false,
+      isSearchOpen: false,
+    }),
+
+  setOpenSubmenu: (href) =>
+    set((state) => ({
+      openSubmenu: state.openSubmenu === href ? null : href,
+    })),
+
   closeAll: () =>
     set({
       isCartOpen: false,
       isSearchOpen: false,
       isMenuOpen: false,
       activeNavHover: null,
+      openSubmenu: null,
     }),
 }));
