@@ -29,9 +29,9 @@ export default function MobileNav({
   const isCartOpen = useIsCartOpen();
   const isMenuOpen = useIsMenuOpen();
   const isSearchOpen = useIsSearchOpen();
-  const { closeCart, toggleCart } = useCartActions();
-  const { closeMenu, toggleMenu } = useMenuActions();
-  const { closeSearch, toggleSearch } = useSearchActions();
+  const { closeCart } = useCartActions();
+  const { closeMenu } = useMenuActions();
+  const { closeSearch } = useSearchActions();
 
   const headerHeight = isScrolled
     ? HEADER_MOBILE_SCROLLED
@@ -52,25 +52,17 @@ export default function MobileNav({
           className={`flex items-center justify-between ${useInLoginPage ? "mb-0" : isScrolled ? "mb-2.5!" : "mb-3"} transition-all`}
         >
           <div className="flex items-center gap-x-3">
-            <MobileMenu
-              isOpen={isMenuOpen}
-              onClose={closeMenu}
-              toggleMenu={toggleMenu}
-            />
+            <MobileMenu/>
             <Logo />
           </div>
-          <MobileActions onCartClick={toggleCart} />
+          <MobileActions  />
         </div>
         {hasSearchInput && (
           <SearchBox
-            key={isSearchOpen ? "search-open" : "search-closed"}
-            isOpen={isSearchOpen}
             isScrolled={isScrolled}
-            onClose={closeSearch}
-            onOpen={toggleSearch}
           />
         )}
-        <MobileCartModal isOpen={isCartOpen} onClose={closeCart} />
+        <MobileCartModal  />
       </div>
       <Overlay
         isOpen={isCartOpen || isMenuOpen || isSearchOpen}
