@@ -41,7 +41,7 @@ export default function LoginFormWrapper({ onToggle }: LoginFormWrapperProps) {
     } else if (state?.success === false && state?.message) {
       toast.error(state.message , {position : "top-left" ,style:{maxWidth: "fit-content" , boxShadow: 'shadow-lg'}});
     }
-  }, [state, reset, router]);
+  }, [state, reset]);
 
   const sendDataToServer = (data: ILoginInput) => {
     const formData = new FormData();
