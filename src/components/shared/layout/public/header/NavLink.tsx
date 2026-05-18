@@ -2,8 +2,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useRef } from "react";
+import { useRef } from "react";
 import { MdKeyboardArrowDown, MdKeyboardArrowLeft } from "react-icons/md";
+import {
+  useActiveNavHover,
+  useSetActiveNavHover,
+} from "@/stores/selectors/ui.selectors";
 
 interface SubMenuItem {
   href: string;
@@ -19,21 +23,41 @@ interface NavLinkProps {
 
 const NavLink = ({ href, children, className, submenu }: NavLinkProps) => {
   const pathname = usePathname();
-  const [isOpen, setIsOpen] = useState(false);
+  const activeNavHover = useActiveNavHover();
+  const setActiveNavHover = useSetActiveNavHover();
   const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const openTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const isActive = pathname === href;
+  const isOpen = activeNavHover === href;
+
+  const clearCloseTimeout = () => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+  };
+
+  const clearOpenTimeout = () => {
+    if (openTimeoutRef.current) {
+      clearTimeout(openTimeoutRef.current);
+      openTimeoutRef.current = null;
+    }
+  };
 
   const handleMouseEnter = () => {
-    if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
-    setIsOpen(true);
+    clearCloseTimeout();
+    clearOpenTimeout();
+    openTimeoutRef.current = setTimeout(() => setActiveNavHover(href), 100);
   };
 
   const handleMouseLeave = () => {
-    closeTimeoutRef.current = setTimeout(() => setIsOpen(false), 75);
+    clearOpenTimeout();
+    closeTimeoutRef.current = setTimeout(() => setActiveNavHover(null), 75);
   };
+
   const closeSubmenu = () => {
-    setIsOpen(false)
-  }
+    setActiveNavHover(null);
+  };
 
   if (submenu) {
     return (
@@ -51,13 +75,22 @@ const NavLink = ({ href, children, className, submenu }: NavLinkProps) => {
             className={`size-4 transition-transform ${isOpen ? "rotate-180" : ""}`}
           />
         </Link>
-        {isOpen && (
-          <div className="border-neutral3 divide-y divide-neutral3 absolute top-9.5 right-0 z-50 w-53.5 overflow-hidden rounded-xl border bg-white shadow-lg">
+
+        <div
+          className={`absolute top-9.5 right-0 z-50 transition-all duration-200 ${
+            isOpen
+              ? "visible translate-y-0 opacity-100"
+              : "invisible -translate-y-2 opacity-0"
+          }`}
+          onMouseEnter={clearCloseTimeout}
+          onMouseLeave={handleMouseLeave}
+        >
+          <div className="border-neutral3 divide-neutral3 w-53.5 overflow-hidden rounded-xl border bg-white shadow-lg divide-y">
             {submenu.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`hover:text-primary text-neutral10 flex items-center justify-between px-3 py-3 text-sm/6.25 transition-colors`}
+                className="text-neutral10 hover:text-primary flex items-center justify-between px-3 py-3 text-sm/6.25 transition-colors"
                 onClick={closeSubmenu}
               >
                 {item.text}
@@ -65,7 +98,7 @@ const NavLink = ({ href, children, className, submenu }: NavLinkProps) => {
               </Link>
             ))}
           </div>
-        )}
+        </div>
       </div>
     );
   }
