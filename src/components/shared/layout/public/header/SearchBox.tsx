@@ -1,15 +1,11 @@
 "use client";
-import { useScroll } from "@/lib/hooks/useScroll";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { MdOutlineSearch } from "react-icons/md";
-
-interface SearchBoxProps {
-  isOpen: boolean;
-  onClose: () => void;
-  onOpen: () => void;
-  isScrolled : boolean
-}
+import {
+  useIsSearchOpen,
+  useSearchActions,
+} from "@/stores/selectors/ui.selectors";
 
 const fakeData = [
   { id: "1", name: "بابا آدم" },
@@ -24,20 +20,25 @@ const fakeData = [
   { id: "10", name: "توس ابلق" },
 ];
 
-const SearchBox = ({ isOpen, onClose, onOpen , isScrolled}: SearchBoxProps) => {
+interface SearchBoxProps {
+  isScrolled: boolean;
+}
+
+const SearchBox = ({ isScrolled }: SearchBoxProps) => {
+  const isSearchOpen = useIsSearchOpen();
+  const { openSearch, closeSearch } = useSearchActions();
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<typeof fakeData>([]);
   const inputRef = useRef<HTMLInputElement>(null);
 
-   useEffect(() => {
-    if (isOpen) {
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
+  useEffect(() => {
+    if (isSearchOpen) {
           inputRef.current?.focus();
-        });
-      });
+    } else {
+      setQuery("");
+      setResults([]);
     }
-  }, [isOpen]);
+  }, [isSearchOpen]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -55,7 +56,7 @@ const SearchBox = ({ isOpen, onClose, onOpen , isScrolled}: SearchBoxProps) => {
   };
 
   const handleSelect = () => {
-    onClose();
+    closeSearch();
     setQuery("");
     setResults([]);
   };
@@ -70,14 +71,14 @@ const SearchBox = ({ isOpen, onClose, onOpen , isScrolled}: SearchBoxProps) => {
         placeholder="جستجوی گیاه"
         className="text-neutral11 placeholder:text-neutral9 w-full border-0 outline-0"
         onFocus={() => {
-          if (!isOpen) onOpen(); 
+          if (!isSearchOpen) openSearch();
         }}
         ref={inputRef}
         value={query}
         onChange={handleChange}
       />
 
-      {isOpen && query && (
+      {isSearchOpen && query && (
         <div className="border-neutral3 absolute top-full right-0 left-0 z-40 mt-1 rounded-xl border bg-white p-3 pr-1.5 shadow-lg">
           {results.length > 0 ? (
             <div className="custom-scroll ltr max-h-64 space-y-1 overflow-y-auto">
@@ -86,7 +87,7 @@ const SearchBox = ({ isOpen, onClose, onOpen , isScrolled}: SearchBoxProps) => {
                   key={item.id}
                   href={`/`}
                   onClick={handleSelect}
-                  className="text-neutral9 rtl block rounded-lg px-4 py-2 leading-7.25 "
+                  className="text-neutral9 rtl block rounded-lg px-4 py-2 leading-7.25"
                 >
                   {item.name}
                 </Link>
