@@ -1,21 +1,21 @@
-import NavLink from "./NavLink";
+"use client";
+
 import { navLinks } from "@/lib/constants";
+import NavLink from "./NavLink";
 
-
-const NavLinks = () => {
+export default function NavLinks() {
   return (
-    <div className="flex gap-x-8 max-xl:gap-x-4 ">
+    <ul className="flex gap-x-6">
       {navLinks.map((link) => (
         <NavLink
           key={link.href}
           href={link.href}
-          className="hover:text-primary text-nowrap text-lg/8.5 transition-colors "
           submenu={link.submenu}
+          className="text-lg/8 font-medium transition-colors hover:text-primary max-xl:text-base"
         >
           {link.text}
         </NavLink>
       ))}
-    </div>
+    </ul>
   );
-};
-export default NavLinks;
+}
