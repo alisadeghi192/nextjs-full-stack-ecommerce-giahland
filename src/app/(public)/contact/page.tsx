@@ -30,18 +30,21 @@ export default function page() {
               icon={<MdDriveFileRenameOutline size={22} />}
               type="text"
               name="contact-name"
+              id="contact-name"
               label="نام و نام خانوادگی"
             />
             <FormField
               icon={<MdDriveFileRenameOutline size={22} />}
               type="text"
               name="contact-phone"
+              id="contact-phone"
               label="شماره موبایل"
             />
             <FormField
               icon={<MdDriveFileRenameOutline size={22} />}
               type="text"
               name="contact-subject"
+              id="contact-subject"
               label="موضوع"
             />
             <TextareaField
@@ -115,7 +118,7 @@ export default function page() {
                 >
                   <span className="text-neutral10 hover:text-primary  transition-colors">
                     آدرس: تهران ، بزرگراه محلاتی، نبرد جنوبی، خیابان زمزم، بازار
-                    گل محلاتی
+                    گل محلاتی ، گیاه لند
                   </span>
                 </Link>
               </div>

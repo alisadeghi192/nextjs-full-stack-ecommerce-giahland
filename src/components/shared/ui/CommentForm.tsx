@@ -14,6 +14,7 @@ export default function CommentForm() {
           <FormField
             icon={<MdDriveFileRenameOutline size={22} />}
             type="text"
+            id="comment-name"
             name="comment-name"
             label="نام و نام خانوادگی"
           />
@@ -21,6 +22,7 @@ export default function CommentForm() {
             icon={<MdDriveFileRenameOutline size={22} />}
             type="email"
             name="comment-email"
+            id="comment-email"
             label="ایمیل"
           />
         </div>

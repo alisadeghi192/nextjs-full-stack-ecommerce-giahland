@@ -30,11 +30,10 @@ export default function SearchModalContent({ onClose, isOpen }: SearchModalConte
 
   useEffect(() => {
     if (isOpen) {
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          inputRef.current?.focus();
-        });
-      });
+      const timeout = setTimeout(() => {
+        inputRef.current?.focus();
+      }, 50);
+      return () => clearTimeout(timeout);
     } else {
       setQuery("");
       setResults([]);
@@ -58,13 +57,11 @@ export default function SearchModalContent({ onClose, isOpen }: SearchModalConte
 
   const handleSelect = () => {
     onClose();
-    setQuery("");
-    setResults([]);
   };
 
   return (
     <div
-      className="border-neutral3 w-115 rounded-xl border bg-white p-3 pt-4 pr-1.5 shadow-lg max-md:w-full"
+      className="border-neutral3 w-115 rounded-xl border bg-white p-3 pt-4 pr-1.5 shadow-lg max-md:hidden"
       onClick={(e) => e.stopPropagation()}
     >
       <FormField
@@ -78,7 +75,10 @@ export default function SearchModalContent({ onClose, isOpen }: SearchModalConte
         onChange={handleChange}
         useInSearchButtun={true}
       />
+      <div>
+
       {results.length > 0 && (
+        
         <div className="mt-2 max-h-64 overflow-y-auto custom-scroll ltr space-y-2">
           {results.map((item) => (
             <Link
@@ -97,6 +97,8 @@ export default function SearchModalContent({ onClose, isOpen }: SearchModalConte
           محصولی یافت نشد.
         </p>
       )}
+      </div>
+
     </div>
   );
 }
