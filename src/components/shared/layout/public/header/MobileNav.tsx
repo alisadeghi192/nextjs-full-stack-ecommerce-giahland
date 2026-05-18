@@ -2,11 +2,18 @@
 import Logo from "./Logo";
 import MobileMenu from "./MobileMenu";
 import SearchBox from "./SearchBox";
-import { useState } from "react";
 import Overlay from "./Overlay";
 import MobileActions from "./MobileActions";
 import MobileCartModal from "@/components/features/cart/MobileCartModal";
 import { HEADER_MOBILE_DEFAULT, HEADER_MOBILE_SCROLLED } from "@/lib/constants";
+import {
+  useIsCartOpen,
+  useIsMenuOpen,
+  useIsSearchOpen,
+  useCartActions,
+  useMenuActions,
+  useSearchActions,
+} from "@/stores/selectors/ui.selectors";
 
 interface MobileNavProps {
   isScrolled: boolean;
@@ -19,41 +26,22 @@ export default function MobileNav({
   hasSearchInput,
   useInLoginPage = false,
 }: MobileNavProps) {
-  const [isCartOpen, setIsCartOpen] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isSearchOpen , setIsSearchOpen] = useState(false)
+  const isCartOpen = useIsCartOpen();
+  const isMenuOpen = useIsMenuOpen();
+  const isSearchOpen = useIsSearchOpen();
+  const { closeCart, toggleCart } = useCartActions();
+  const { closeMenu, toggleMenu } = useMenuActions();
+  const { closeSearch, toggleSearch } = useSearchActions();
+
   const headerHeight = isScrolled
     ? HEADER_MOBILE_SCROLLED
     : HEADER_MOBILE_DEFAULT;
 
-  const closeCart = () => setIsCartOpen(false);
-  const closeMenu = () => setIsMenuOpen(false);
-  const closeSearch = () => setIsSearchOpen(false);
   const closeAll = () => {
     closeCart();
     closeMenu();
-    closeSearch()
+    closeSearch();
   };
-
-  const toggleMenu = () => {
-    if (isCartOpen) {
-      closeCart();
-    }
-    setIsMenuOpen((prev) => !prev);
-  };
-  const toggleCart = () => {
-    if (isMenuOpen) {
-      closeMenu();
-    }
-    setIsCartOpen((prev) => !prev);
-  };
-const toggleSearch = () => {
-  if (!isSearchOpen) {
-    if (isCartOpen) closeCart();
-    if (isMenuOpen) closeMenu();
-  }
-  setIsSearchOpen((prev) => !prev);
-};
 
   return (
     <nav
@@ -73,9 +61,15 @@ const toggleSearch = () => {
           </div>
           <MobileActions onCartClick={toggleCart} />
         </div>
-        {hasSearchInput && <SearchBox key={isSearchOpen ? "search-open" : "search-closed"} isOpen={isSearchOpen} 
-        isScrolled = {isScrolled}
-         onClose={closeSearch} onOpen={toggleSearch} />}
+        {hasSearchInput && (
+          <SearchBox
+            key={isSearchOpen ? "search-open" : "search-closed"}
+            isOpen={isSearchOpen}
+            isScrolled={isScrolled}
+            onClose={closeSearch}
+            onOpen={toggleSearch}
+          />
+        )}
         <MobileCartModal isOpen={isCartOpen} onClose={closeCart} />
       </div>
       <Overlay
