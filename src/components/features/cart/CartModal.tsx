@@ -61,7 +61,6 @@ export default function CartModal({ onClose }: CartModalProps) {
   return (
     <div
       className="border-neutral3 w-115 rounded-xl border bg-white p-3 pr-1.5 shadow-lg max-md:w-full"
-      onClick={(e) => e.stopPropagation()}
     >
       <div className="mr-1.5 mb-2 flex items-center justify-between">
         <div className="flex gap-x-1 leading-7.25 font-medium">

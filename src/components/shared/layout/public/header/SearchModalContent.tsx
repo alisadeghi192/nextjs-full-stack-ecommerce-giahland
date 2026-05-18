@@ -62,7 +62,6 @@ export default function SearchModalContent({ onClose, isOpen }: SearchModalConte
   return (
     <div
       className="border-neutral3 w-115 rounded-xl border bg-white p-3 pt-4 pr-1.5 shadow-lg max-md:hidden"
-      onClick={(e) => e.stopPropagation()}
     >
       <FormField
         icon={<IoMdSearch size={22} />}
