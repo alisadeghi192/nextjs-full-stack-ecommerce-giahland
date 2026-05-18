@@ -10,7 +10,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { useIsAuthenticated } from "@/features/auth/selectors/auth.selectors";
 import { useCartActions } from "@/stores/selectors/ui.selectors";
+import { toPersianNumber } from "@/lib/utils/format";
 
+const totalItems = 2;
 
 export default function MobileActions() {
   const isAuthenticated = useIsAuthenticated();
@@ -18,10 +20,17 @@ export default function MobileActions() {
   return (
     <div className="flex items-center gap-2">
       <IconButton icon={<MdOutlineDarkMode size={20} />} />
-      <IconButton
-        icon={<MdOutlineShoppingCart size={20} />}
-        onClick={toggleCart}
-      />
+      <div className="relative">
+        <IconButton
+          icon={<MdOutlineShoppingCart size={20} />}
+          onClick={toggleCart}
+        />
+        {totalItems > 0 && (
+          <span className="bg-error absolute -top-1.75 -right-1.5 flex size-4.5 items-center justify-center rounded-full text-[10px] font-medium text-white">
+            {toPersianNumber(totalItems)}
+          </span>
+        )}
+      </div>
 
       {isAuthenticated ? (
         <Image
