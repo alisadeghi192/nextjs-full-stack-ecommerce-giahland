@@ -16,6 +16,7 @@ interface MobileMenuProps {
   isOpen: boolean;
   onClose: () => void;
   toggleMenu: () => void;
+  
 }
 
 const MobileMenu = ({ isOpen, onClose, toggleMenu }: MobileMenuProps) => {
@@ -36,25 +37,28 @@ const MobileMenu = ({ isOpen, onClose, toggleMenu }: MobileMenuProps) => {
         <MdOutlineMenu className="size-5 sm:size-6" />
       </button>
       <div
-        className={`border-neutral3 fixed top-0 -right-82 z-40 h-dvh w-82 rounded-tl-xl rounded-bl-xl border bg-white p-4 shadow-lg transition-all duration-200 ${
+        className={`border-neutral3 fixed top-0 -right-82 z-40 h-dvh w-82 rounded-tl-xl  rounded-bl-xl border bg-white p-4 shadow-lg transition-all duration-200 ${
           isOpen
             ? "visible -translate-x-82 opacity-100"
             : "invisible translate-x-82 opacity-0"
         }`}
       >
         <div className="flex h-full flex-col">
+
           <div className="mb-4 flex items-center justify-between">
             <Logo />
             <button onClick={onClose}>
               <IoClose className="size-6" />
             </button>
           </div>
-          <div className="divide-neutral3 flex flex-col divide-y overflow-y-auto">
+
+          <div className="divide-neutral3 flex flex-col divide-y overflow-y-auto overflow-x-hidden">
             {navLinks.map((link) => (
               <MobileNavLink
                 key={link.href}
                 href={link.href}
                 submenu={link.submenu}
+                menuOpen={isOpen}
                 onLinkClick={onClose}
                 className="text-neutral10 flex h-14 items-center justify-between"
               >
@@ -62,6 +66,9 @@ const MobileMenu = ({ isOpen, onClose, toggleMenu }: MobileMenuProps) => {
               </MobileNavLink>
             ))}
           </div>
+
+
+
           <div className="bg-neutral2 mt-auto w-full rounded-lg">
             {isAuthenticated ? (
               <button

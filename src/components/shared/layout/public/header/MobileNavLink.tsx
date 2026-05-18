@@ -16,6 +16,7 @@ interface MobileNavLinkProps {
   className?: string;
   submenu?: SubMenuItem[];
   onLinkClick?: () => void;
+  menuOpen?: boolean;  
 }
 
 const MobileNavLink = ({
@@ -24,16 +25,21 @@ const MobileNavLink = ({
   className,
   submenu,
   onLinkClick,
+  menuOpen,
 }: MobileNavLinkProps) => {
   const pathname = usePathname();
   const [isSubmenuOpen, setIsSubmenuOpen] = useState(false);
   const isActive = pathname === href;
 
-  const toggleSubMenu = () => setIsSubmenuOpen((prev) => !prev);
-
   useEffect(() => {
-    setIsSubmenuOpen(false);
-  }, [onLinkClick]);
+    if (!menuOpen) {
+      setIsSubmenuOpen(false);
+    }
+  }, [menuOpen]);
+
+  const toggleSubMenu = () => {
+    setIsSubmenuOpen((prev) => !prev);
+  };
 
   const handleClick = () => {
     setIsSubmenuOpen(false);
@@ -43,35 +49,43 @@ const MobileNavLink = ({
   if (submenu) {
     return (
       <div>
-        <div className="flex items-center justify-between">
+        <div
+          className="flex items-center justify-between cursor-pointer"
+          onClick={toggleSubMenu}
+        >
           <Link
             href={href}
             className={`font-medium ${className} ${isActive ? "text-primary" : ""}`}
-            onClick={handleClick}
+            onClick={(e) => {
+              e.stopPropagation();
+              handleClick();
+            }}
           >
             {children}
           </Link>
           <MdKeyboardArrowDown
             className={`text-neutral8 size-6 transition-transform ${isSubmenuOpen ? "rotate-180" : ""}`}
-            onClick={toggleSubMenu}
           />
         </div>
-        {isSubmenuOpen && (
-          <div
-            className={`mb-3.5 flex flex-col ${isSubmenuOpen ? "visible" : "hidden"}`}
-          >
+
+        <div
+          className={`transition-all duration-300 overflow-hidden ${
+            isSubmenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+          }`}
+        >
+          <div className="mb-3.5 flex flex-col">
             {submenu.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`text-neutral10 px-3 py-2 text-sm/6.25`}
+                className="text-neutral10 px-3 py-2 text-sm/6.25"
                 onClick={handleClick}
               >
                 {item.text}
               </Link>
             ))}
           </div>
-        )}
+        </div>
       </div>
     );
   }
