@@ -21,15 +21,18 @@ export default function MobileNav({
 }: MobileNavProps) {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSearchOpen , setIsSearchOpen] = useState(false)
   const headerHeight = isScrolled
     ? HEADER_MOBILE_SCROLLED
     : HEADER_MOBILE_DEFAULT;
 
   const closeCart = () => setIsCartOpen(false);
   const closeMenu = () => setIsMenuOpen(false);
+  const closeSearch = () => setIsSearchOpen(false);
   const closeAll = () => {
     closeCart();
     closeMenu();
+    closeSearch()
   };
 
   const toggleMenu = () => {
@@ -44,6 +47,13 @@ export default function MobileNav({
     }
     setIsCartOpen((prev) => !prev);
   };
+const toggleSearch = () => {
+  if (!isSearchOpen) {
+    if (isCartOpen) closeCart();
+    if (isMenuOpen) closeMenu();
+  }
+  setIsSearchOpen((prev) => !prev);
+};
 
   return (
     <nav
@@ -63,11 +73,13 @@ export default function MobileNav({
           </div>
           <MobileActions onCartClick={toggleCart} />
         </div>
-        {hasSearchInput && <SearchBox />}
+        {hasSearchInput && <SearchBox key={isSearchOpen ? "search-open" : "search-closed"} isOpen={isSearchOpen} 
+        isScrolled = {isScrolled}
+         onClose={closeSearch} onOpen={toggleSearch} />}
         <MobileCartModal isOpen={isCartOpen} onClose={closeCart} />
       </div>
       <Overlay
-        isOpen={isCartOpen || isMenuOpen}
+        isOpen={isCartOpen || isMenuOpen || isSearchOpen}
         onClose={closeAll}
         topOffset={useInLoginPage ? 48 : headerHeight}
         zIndex={30}
