@@ -9,19 +9,18 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import { useIsAuthenticated } from "@/features/auth/selectors/auth.selectors";
-interface MobileActionsProps {
-  onCartClick: () => void;
-}
+import { useCartActions } from "@/stores/selectors/ui.selectors";
 
 
-export default function MobileActions({ onCartClick }: MobileActionsProps) {
+export default function MobileActions() {
   const isAuthenticated = useIsAuthenticated();
+  const { toggleCart } = useCartActions();
   return (
     <div className="flex items-center gap-2">
       <IconButton icon={<MdOutlineDarkMode size={20} />} />
       <IconButton
         icon={<MdOutlineShoppingCart size={20} />}
-        onClick={onCartClick}
+        onClick={toggleCart}
       />
 
       {isAuthenticated ? (
