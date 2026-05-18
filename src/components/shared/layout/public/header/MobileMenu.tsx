@@ -11,20 +11,18 @@ import {
   useIsAuthenticated,
   useAuthActions,
 } from "@/features/auth/selectors/auth.selectors";
+import { useIsMenuOpen, useMenuActions } from "@/stores/selectors/ui.selectors";
 
-interface MobileMenuProps {
-  isOpen: boolean;
-  onClose: () => void;
-  toggleMenu: () => void;
-  
-}
 
-const MobileMenu = ({ isOpen, onClose, toggleMenu }: MobileMenuProps) => {
+
+const MobileMenu = () => {
   const isAuthenticated = useIsAuthenticated();
   const { logout } = useAuthActions();
+  const isMenuOpen = useIsMenuOpen();
+  const { closeMenu, toggleMenu } = useMenuActions();
 
   const handleLogout = async () => {
-    onClose();
+    closeMenu();
     logout();
   };
 
@@ -38,7 +36,7 @@ const MobileMenu = ({ isOpen, onClose, toggleMenu }: MobileMenuProps) => {
       </button>
       <div
         className={`border-neutral3 fixed top-0 -right-82 z-40 h-dvh w-82 rounded-tl-xl  rounded-bl-xl border bg-white p-4 shadow-lg transition-all duration-200 ${
-          isOpen
+          isMenuOpen
             ? "visible -translate-x-82 opacity-100"
             : "invisible translate-x-82 opacity-0"
         }`}
@@ -47,7 +45,7 @@ const MobileMenu = ({ isOpen, onClose, toggleMenu }: MobileMenuProps) => {
 
           <div className="mb-4 flex items-center justify-between">
             <Logo />
-            <button onClick={onClose}>
+            <button onClick={closeMenu}>
               <IoClose className="size-6" />
             </button>
           </div>
@@ -58,8 +56,8 @@ const MobileMenu = ({ isOpen, onClose, toggleMenu }: MobileMenuProps) => {
                 key={link.href}
                 href={link.href}
                 submenu={link.submenu}
-                menuOpen={isOpen}
-                onLinkClick={onClose}
+                menuOpen={isMenuOpen}
+                onLinkClick={closeMenu}
                 className="text-neutral10 flex h-14 items-center justify-between"
               >
                 {link.text}
@@ -84,7 +82,7 @@ const MobileMenu = ({ isOpen, onClose, toggleMenu }: MobileMenuProps) => {
               <Link
                 className="text-primary flex h-14 items-center gap-x-4 px-4"
                 href="/login-register"
-                onClick={onClose}
+                onClick={closeMenu}
                 >
                 <MdOutlineLogin className="size-6" />
                 <span className="leading-7.25 font-medium">ورود/ثبت نام</span>
