@@ -11,6 +11,7 @@ import {
   useAuthActions,
 } from "@/features/auth/selectors/auth.selectors";
 import { useIsMenuOpen, useMenuActions } from "@/stores/selectors/ui.selectors";
+import { HiOutlineLogout } from "react-icons/hi";
 
 
 
@@ -72,7 +73,7 @@ const MobileMenu = () => {
                 className="text-error flex h-14 w-full items-center gap-x-4 px-4"
                 onClick={handleLogout}
               >
-                <MdOutlineLogout className="size-6" />
+                <HiOutlineLogout  className="size-6" />
                 <span className="leading-7.25 font-medium">
                   خروج از حساب کاربری
                 </span>
