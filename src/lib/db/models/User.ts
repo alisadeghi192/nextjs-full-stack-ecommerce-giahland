@@ -33,10 +33,31 @@ const UserSchema = new mongoose.Schema<IUser>(
       enum: USER_ROLES,
       default: "user",
     },
+    firstName: {
+      type: String,
+      default: "",
+    },
+    lastName: {
+      type: String,
+      default: "",
+    },
+    avatar: {
+      type: String,
+      default: "/static/images/default-user.jpg",
+    },
+    postalCode: {
+      type: String,
+      default: "",
+      match: [/^[0-9]{10}$/, "کد پستی باید ۱۰ رقم باشد"],
+    },
+    address: {
+      type: String,
+      default: "",
+    },
   },
   {
     timestamps: true,
-  }
+  },
 );
 
 const User = mongoose.models.User || mongoose.model<IUser>("User", UserSchema);
