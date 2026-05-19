@@ -1,12 +1,10 @@
-import Logo from "./Logo";
-import NavLinks from "./NavLinks";
-import HeaderActions from "./HeaderActions";
+import { DesktopNav, DesktopActions, Logo } from "..";
 
-interface DesktopNavProps {
+interface DesktopHeaderProps {
   isScrolled: boolean;
 }
 
-export default function DesktopNav({ isScrolled }: DesktopNavProps) {
+export default function DesktopHeader({ isScrolled }: DesktopHeaderProps) {
   return (
     <nav className="border-neutral5 container border-b font-medium max-md:hidden">
       <div
@@ -16,9 +14,9 @@ export default function DesktopNav({ isScrolled }: DesktopNavProps) {
       >
         <div className="flex items-center gap-x-6">
           <Logo />
-          <NavLinks />
+          <DesktopNav />
         </div>
-        <HeaderActions isScrolled={isScrolled} />
+        <DesktopActions isScrolled={isScrolled} />
       </div>
     </nav>
   );

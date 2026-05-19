@@ -2,7 +2,7 @@
 
 import IconButton from "@/components/shared/ui/IconButton";
 import { MdOutlineSearch } from "react-icons/md";
-import SearchModalContent from "./SearchModalContent";
+import {SearchModalContent} from "..";
 import { useIsSearchOpen, useSearchActions } from "@/stores/selectors/ui.selectors";
 
 

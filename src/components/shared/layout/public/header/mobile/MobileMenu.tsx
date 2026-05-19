@@ -3,9 +3,8 @@
 import React from "react";
 import { MdOutlineLogin, MdOutlineLogout, MdOutlineMenu } from "react-icons/md";
 import { navLinks } from "@/lib/constants";
-import Logo from "./Logo";
+import {Logo , MobileNavLink } from "..";
 import { IoClose } from "react-icons/io5";
-import MobileNavLink from "./MobileNavLink";
 import Link from "next/link";
 import {
   useIsAuthenticated,

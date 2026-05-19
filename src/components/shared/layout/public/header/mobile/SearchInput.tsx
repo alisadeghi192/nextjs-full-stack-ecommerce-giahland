@@ -20,11 +20,11 @@ const fakeData = [
   { id: "10", name: "توس ابلق" },
 ];
 
-interface SearchBoxProps {
+interface SearchInputProps {
   isScrolled: boolean;
 }
 
-const SearchBox = ({ isScrolled }: SearchBoxProps) => {
+const SearchInput = ({ isScrolled }: SearchInputProps) => {
   const isSearchOpen = useIsSearchOpen();
   const { openSearch, closeSearch } = useSearchActions();
   const [query, setQuery] = useState("");
@@ -100,4 +100,4 @@ const SearchBox = ({ isScrolled }: SearchBoxProps) => {
   );
 };
 
-export default SearchBox;
+export default SearchInput;

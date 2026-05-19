@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import {
   useOpenSubmenu,

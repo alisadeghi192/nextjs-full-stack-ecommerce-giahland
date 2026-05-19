@@ -1,9 +1,5 @@
 "use client";
-import Logo from "./Logo";
-import MobileMenu from "./MobileMenu";
-import SearchBox from "./SearchBox";
-import Overlay from "./Overlay";
-import MobileActions from "./MobileActions";
+import {MobileMenu , SearchInput , Overlay , MobileActions , Logo} from ".."
 import MobileCartModal from "@/components/features/cart/MobileCartModal";
 import { HEADER_MOBILE_DEFAULT, HEADER_MOBILE_SCROLLED } from "@/lib/constants";
 import {
@@ -15,17 +11,17 @@ import {
   useSearchActions,
 } from "@/stores/selectors/ui.selectors";
 
-interface MobileNavProps {
+interface MobileHeaderProps {
   isScrolled: boolean;
   hasSearchInput?: boolean;
   useInLoginPage?: boolean;
 }
 
-export default function MobileNav({
+export default function MobileHeader({
   isScrolled,
   hasSearchInput = true,
   useInLoginPage = false,
-}: MobileNavProps) {
+}: MobileHeaderProps) {
   const isCartOpen = useIsCartOpen();
   const isMenuOpen = useIsMenuOpen();
   const isSearchOpen = useIsSearchOpen();
@@ -58,7 +54,7 @@ export default function MobileNav({
           <MobileActions  />
         </div>
         {hasSearchInput && (
-          <SearchBox
+          <SearchInput
             isScrolled={isScrolled}
           />
         )}

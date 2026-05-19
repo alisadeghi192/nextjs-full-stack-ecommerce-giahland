@@ -14,14 +14,19 @@ interface SubMenuItem {
   text: string;
 }
 
-interface NavLinkProps {
+interface DesktopNavLinkProps {
   href: string;
   children: React.ReactNode;
   className?: string;
   submenu?: SubMenuItem[];
 }
 
-const NavLink = ({ href, children, className, submenu }: NavLinkProps) => {
+const DesktopNavLink = ({
+  href,
+  children,
+  className,
+  submenu,
+}: DesktopNavLinkProps) => {
   const pathname = usePathname();
   const activeNavHover = useActiveNavHover();
   const setActiveNavHover = useSetActiveNavHover();
@@ -85,7 +90,7 @@ const NavLink = ({ href, children, className, submenu }: NavLinkProps) => {
           onMouseEnter={clearCloseTimeout}
           onMouseLeave={handleMouseLeave}
         >
-          <div className="border-neutral3 divide-neutral3 w-53.5 overflow-hidden rounded-xl border bg-white shadow-lg divide-y">
+          <div className="border-neutral3 divide-neutral3 w-53.5 divide-y overflow-hidden rounded-xl border bg-white shadow-lg">
             {submenu.map((item) => (
               <Link
                 key={item.href}
@@ -113,4 +118,4 @@ const NavLink = ({ href, children, className, submenu }: NavLinkProps) => {
   );
 };
 
-export default NavLink;
+export default DesktopNavLink;

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import AuthToggle from "@/components/features/auth/AuthToggle";
-import MobileNav from "@/components/shared/layout/public/header/MobileNav";
+import MobileNav from "@/components/shared/layout/public/header/mobile/MobileHeader";
 
 export default function AuthPage() {
   return (

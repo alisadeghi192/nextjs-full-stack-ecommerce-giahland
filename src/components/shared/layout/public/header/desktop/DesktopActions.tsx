@@ -1,15 +1,12 @@
 "use client";
 
-import IconButton from "../../../ui/IconButton";
+import IconButton from "@/components/shared/ui/IconButton";
 import { MdOutlineDarkMode } from "react-icons/md";
-import AuthButtons from "./AuthButtons";
-import CartButton from "./CartButton";
-import Overlay from "./Overlay";
+import {AuthButtons,CartButton,Overlay ,SearchButton} from ".."
 import {
   HEADER_DESKTOP_DEFAULT,
   HEADER_DESKTOP_SCROLLED,
 } from "@/lib/constants";
-import SearchButton from "./SearchButton";
 import {
   useIsCartOpen,
   useIsSearchOpen,
@@ -17,11 +14,11 @@ import {
   useSearchActions,
 } from "@/stores/selectors/ui.selectors";
 
-interface HeaderActionsProps {
+interface DesktopActionsProps {
   isScrolled: boolean;
 }
 
-export default function HeaderActions({ isScrolled }: HeaderActionsProps) {
+export default function DesktopActions({ isScrolled }: DesktopActionsProps) {
   const isCartOpen = useIsCartOpen();
   const isSearchOpen = useIsSearchOpen();
   const { closeCart } = useCartActions();
