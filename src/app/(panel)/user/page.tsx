@@ -6,7 +6,7 @@ import {
   TbLayoutSidebarLeftExpandFilled,
   TbLayoutSidebarRightExpandFilled,
 } from "react-icons/tb";
-import { MdOutlineLocalPharmacy } from "react-icons/md";
+import { MdOutlineDarkMode, MdOutlineLocalPharmacy } from "react-icons/md";
 import Link from "next/link";
 import Image from "next/image";
 import { FaRegUser } from "react-icons/fa6";
@@ -14,6 +14,7 @@ import { BsHeart, BsTruck } from "react-icons/bs";
 import { LuNotebookPen } from "react-icons/lu";
 import { HiOutlineLogout } from "react-icons/hi";
 import { usePathname } from "next/navigation";
+import IconButton from "@/components/shared/ui/IconButton";
 
 const links = [
   { href: "/user", icon: <FaRegUser size={24} />, label: "مشخصات کاربری" },
@@ -28,7 +29,11 @@ const links = [
     label: "تیکت ها",
   },
   { href: "/user/wishlist", icon: <BsHeart size={24} />, label: "علاقمندی ها" },
-  { href: "/user/orders", icon: <BsTruck  size={24} />, label: "تاریخچه سفارش ها" },
+  {
+    href: "/user/orders",
+    icon: <BsTruck size={24} />,
+    label: "تاریخچه سفارش ها",
+  },
 ];
 
 export default function PanelPage() {
@@ -47,17 +52,32 @@ export default function PanelPage() {
               isScrolled ? "h-15" : "h-24"
             }`}
           >
-            <div
-              className="text-primary hover:text-shade2 cursor-pointer"
-              onClick={toggleSidebar}
-            >
-              {isPanelOpen ? (
-                <TbLayoutSidebarLeftExpandFilled className="size-10" />
-              ) : (
-                <TbLayoutSidebarRightExpandFilled className="size-10" />
-              )}
+            <div className="flex items-center gap-x-4">
+              <div
+                className="text-primary hover:text-shade2 cursor-pointer"
+                onClick={toggleSidebar}
+              >
+                {isPanelOpen ? (
+                  <TbLayoutSidebarLeftExpandFilled className="size-10" />
+                ) : (
+                  <TbLayoutSidebarRightExpandFilled className="size-10" />
+                )}
+              </div>
+              <Logo />
             </div>
-            <Logo />
+            <div className="flex items-center gap-x-4">
+              <IconButton icon={<MdOutlineDarkMode size={24} />} />
+              <button className="flex items-center gap-2">
+                <Image
+                  src="/static/images/default-user.jpg"
+                  alt="user"
+                  width={48}
+                  height={48}
+                  className="rounded-full max-lg:size-10"
+                />
+                <span className="text-lg max-lg:hidden">سلام کاربر</span>
+              </button>
+            </div>
           </div>
         </nav>
       </header>
@@ -71,7 +91,7 @@ export default function PanelPage() {
           }}
         >
           {/* sidebar content */}
-          <div className="flex h-full overflow-y-auto flex-col py-6">
+          <div className="custom-scroll flex h-full flex-col overflow-x-hidden ltr *:rtl pr-1 overflow-y-auto py-6">
             <div>
               <div className="flex items-center gap-x-2">
                 <Image
@@ -90,14 +110,12 @@ export default function PanelPage() {
               </div>
             </div>
 
-            <div className="mt-6 flex flex-1 flex-col gap-y-2.5">
+            <div className="mt-6 flex flex-1 flex-col gap-y-1.5">
               {links.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={` text-neutral10 rounded-r-lg transition-colors hover:text-primary flex h-14.5 items-center gap-x-3 pr-4
-                    ${pathname === link.href ? "bg-[#F3FDFA] text-primary border-l-4 border-primary" : ""}
-                    `}
+                  className={`text-neutral10 hover:text-primary flex h-12.5 items-center gap-x-3 rounded-r-lg pr-4 transition-colors ${pathname === link.href ? "text-primary border-primary border-l-4 bg-[#F3FDFA]" : ""} `}
                 >
                   <span className="flex w-6 shrink-0 items-center justify-center">
                     {link.icon}
@@ -109,7 +127,7 @@ export default function PanelPage() {
               ))}
             </div>
 
-            <button className="text-error bg-neutral2 border-error hover:bg-error/10 mt-auto flex h-14 cursor-pointer items-center gap-x-3 rounded-r-lg border-l-4 px-4 transition-colors">
+            <button className="text-error bg-neutral2 border-error hover:bg-error/10 mt-auto flex h-14 shrink-0 cursor-pointer items-center gap-x-3 rounded-r-lg border-l-4 px-4 transition-colors">
               <span className="flex w-6 shrink-0 items-center justify-center">
                 <HiOutlineLogout className="size-6" />
               </span>
@@ -121,6 +139,7 @@ export default function PanelPage() {
             </button>
           </div>
         </div>
+        <div className="h-1500"></div>
       </div>
     </main>
   );
