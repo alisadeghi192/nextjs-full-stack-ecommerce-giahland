@@ -85,7 +85,7 @@ export default function AuthButtons() {
           <span className="text-lg max-lg:hidden">سلام کاربر</span>
         </Link>
         <div
-          className={`bg-neutral2 absolute top-full right-0 z-50 flex w-55 flex-col gap-y-2 rounded-lg p-2 shadow-lg transition-all duration-200 ${
+          className={`bg-neutral2 absolute top-full left-0 z-50 flex w-55 flex-col gap-y-2 rounded-lg p-2 shadow-lg transition-all duration-200 ${
             isProfileDropdownOpen
               ? "visible translate-y-0 opacity-100"
               : "invisible -translate-y-2 opacity-0"
