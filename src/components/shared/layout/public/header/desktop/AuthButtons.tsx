@@ -15,7 +15,9 @@ import Link from "next/link";
 import { useRef } from "react";
 import { FaRegUser } from "react-icons/fa6";
 import { HiOutlineLogout } from "react-icons/hi";
-import { usePathname } from "next/navigation";
+import { toPersianNumber } from "@/lib/utils/format";
+
+const notifications = 5;
 
 export default function AuthButtons() {
   const isLoading = useIsLoading();
@@ -26,7 +28,6 @@ export default function AuthButtons() {
     useProfileDropdownActions();
   const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const openTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-
 
   const clearCloseTimeout = () => {
     if (closeTimeoutRef.current) {
@@ -54,7 +55,7 @@ export default function AuthButtons() {
   };
 
   const handleLogout = () => {
-    closeProfileDropdown()
+    closeProfileDropdown();
     logout();
   };
 
@@ -80,8 +81,13 @@ export default function AuthButtons() {
             alt="user"
             width={48}
             height={48}
-            className="size-12 rounded-full object-cover object-center max-lg:size-10"
+            className="relative size-12 rounded-full object-cover object-center max-lg:size-10"
           />
+          {notifications > 0 && (
+            <span className="bg-error absolute -top-1.25 -right-1.25 flex size-5.5 items-center justify-center rounded-full text-[10px] font-medium text-white">
+              {toPersianNumber(notifications)}
+            </span>
+          )}
           <span className="text-lg max-lg:hidden">سلام کاربر</span>
         </Link>
         <div
@@ -96,10 +102,15 @@ export default function AuthButtons() {
           <Link
             href="/user"
             onClick={closeProfileDropdown}
-            className="text-neutral10 hover:text-primary flex h-14 w-full cursor-pointer items-center gap-x-3 rounded-lg bg-white px-4 transition-colors"
+            className="text-neutral10 relative hover:text-primary flex h-14 w-full cursor-pointer items-center gap-x-3 rounded-lg bg-white px-4 transition-colors"
           >
             <FaRegUser className="size-6" />
             <span className="font-medium">حساب کاربری</span>
+            {notifications > 0 && (
+              <span className="bg-error absolute left-2 top-4.25 flex size-5.5 items-center justify-center rounded-full text-[10px] font-medium text-white">
+                {toPersianNumber(notifications)}
+              </span>
+            )}
           </Link>
           <button
             onClick={handleLogout}
