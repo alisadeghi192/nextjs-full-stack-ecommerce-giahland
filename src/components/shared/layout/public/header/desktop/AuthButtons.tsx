@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import { MdOutlineLogin } from "react-icons/md";
 import OutlineButton from "@/components/shared/ui/OutlineButton";
@@ -6,14 +7,54 @@ import {
   useAuthActions,
   useIsLoading,
 } from "@/features/auth/selectors/auth.selectors";
+import {
+  useIsProfileDropdownOpen,
+  useProfileDropdownActions,
+} from "@/stores/selectors/ui.selectors";
 import Link from "next/link";
+import { useRef } from "react";
+import { FaRegUser } from "react-icons/fa6";
+import { HiOutlineLogout } from "react-icons/hi";
+import { usePathname } from "next/navigation";
 
 export default function AuthButtons() {
   const isLoading = useIsLoading();
   const isAuthenticated = useIsAuthenticated();
   const { logout } = useAuthActions();
+  const isProfileDropdownOpen = useIsProfileDropdownOpen();
+  const { closeProfileDropdown, openProfileDropdown } =
+    useProfileDropdownActions();
+  const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const openTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+
+  const clearCloseTimeout = () => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+  };
+
+  const clearOpenTimeout = () => {
+    if (openTimeoutRef.current) {
+      clearTimeout(openTimeoutRef.current);
+      openTimeoutRef.current = null;
+    }
+  };
+
+  const handleMouseEnter = () => {
+    clearCloseTimeout();
+    clearOpenTimeout();
+    openTimeoutRef.current = setTimeout(() => openProfileDropdown(), 100);
+  };
+
+  const handleMouseLeave = () => {
+    clearOpenTimeout();
+    closeTimeoutRef.current = setTimeout(() => closeProfileDropdown(), 75);
+  };
 
   const handleLogout = () => {
+    closeProfileDropdown()
     logout();
   };
 
@@ -26,19 +67,49 @@ export default function AuthButtons() {
     );
   }
 
-
   if (isAuthenticated) {
     return (
-      <Link href="/user" className="flex cursor-pointer items-center gap-2">
-        <Image
-          src="/static/images/default-user.jpg"
-          alt="user"
-          width={48}
-          height={48}
-          className="size-12 rounded-full object-cover object-center max-lg:size-10"
-        />
-        <span className="text-lg max-lg:hidden">سلام کاربر</span>
-      </Link>
+      <div
+        className="relative"
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        <Link href="/user" className="flex cursor-pointer items-center gap-2">
+          <Image
+            src="/static/images/default-user.jpg"
+            alt="user"
+            width={48}
+            height={48}
+            className="size-12 rounded-full object-cover object-center max-lg:size-10"
+          />
+          <span className="text-lg max-lg:hidden">سلام کاربر</span>
+        </Link>
+        <div
+          className={`bg-neutral2 absolute top-full right-0 z-50 flex w-55 flex-col gap-y-2 rounded-lg p-2 shadow-lg transition-all duration-200 ${
+            isProfileDropdownOpen
+              ? "visible translate-y-0 opacity-100"
+              : "invisible -translate-y-2 opacity-0"
+          }`}
+          onMouseEnter={clearCloseTimeout}
+          onMouseLeave={handleMouseLeave}
+        >
+          <Link
+            href="/user"
+            onClick={closeProfileDropdown}
+            className="text-neutral10 hover:text-primary flex h-14 w-full cursor-pointer items-center gap-x-3 rounded-lg bg-white px-4 transition-colors"
+          >
+            <FaRegUser className="size-6" />
+            <span className="font-medium">حساب کاربری</span>
+          </Link>
+          <button
+            onClick={handleLogout}
+            className="text-error hover:bg-bg-error flex h-14 w-full cursor-pointer items-center gap-x-3 rounded-lg bg-white px-4 transition-colors"
+          >
+            <HiOutlineLogout className="size-6" />
+            <span className="font-medium text-nowrap">خروج از حساب کاربری</span>
+          </button>
+        </div>
+      </div>
     );
   }
 
