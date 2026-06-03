@@ -41,6 +41,7 @@ export interface IGetMeResponse {
     firstName?: string;
     lastName?: string;
     address? : string;
+    postalCode? : string;
     avatar?: string;
     createdAt: Date;
     updatedAt: Date;

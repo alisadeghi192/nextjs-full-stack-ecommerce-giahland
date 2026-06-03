@@ -31,9 +31,9 @@ export default function PanelSidebar({
   const displayName = firstName || "کاربر";
   const persianMobile = mobile?.replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[+d]) || "";
   return (
-    <div className="flex h-full flex-col overflow-y-auto py-6">
-      <div className="shrink-0 px-4">
-        <div className="flex items-center gap-x-2">
+    <div className="custom-scroll flex h-full flex-col overflow-x-hidden ltr *:rtl pr-1 overflow-y-auto py-6">
+      <div >
+        <div className="flex items-center shrink-0 gap-x-2">
           <Image
             src={avatar || "/static/images/default-user.jpg"}
             alt="user"

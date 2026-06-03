@@ -20,7 +20,7 @@ export default function PanelHeader({
   toggleSidebar,
 }: PanelHeaderProps) {
   return (
-    <header className="sticky top-0 right-0 left-0 z-50">
+    <header className="sticky top-0 right-0 left-0 z-50 bg-white">
       <nav className="border-neutral5 container border-b font-medium max-md:hidden">
         <div
           className={`text-neutral12 flex items-center justify-between bg-white transition-all duration-200 ${

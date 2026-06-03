@@ -41,6 +41,7 @@ export async function getMeAction(): Promise<IGetMeResponse> {
       lastName: user.lastName || "",
       avatar: user.avatar || "/static/images/default-user.jpg",
       address: user.address || "",
+      postalCode : user.postalCode || "" ,
       createdAt: user.createdAt,
       updatedAt: user.updatedAt,
     },

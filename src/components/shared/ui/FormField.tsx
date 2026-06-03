@@ -8,6 +8,7 @@ interface FormFieldProps {
   name: string;
   id: string;
   label: string;
+  disabled?: boolean;
   error?: string;
   value?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -25,6 +26,7 @@ const FormField = forwardRef<HTMLInputElement, FormFieldProps>(
       label,
       error,
       value,
+      disabled = false,
       onChange,
       onBlur,
       useInSearchButtun,
@@ -52,6 +54,7 @@ const FormField = forwardRef<HTMLInputElement, FormFieldProps>(
             value={value}
             onChange={onChange}
             onBlur={onBlur}
+            disabled={disabled}
           />
           <label
             htmlFor={id}
