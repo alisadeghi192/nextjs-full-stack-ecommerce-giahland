@@ -11,3 +11,4 @@ export * from "./scroll";
 export * from "./header"
 export * from "./faq"
 export * from "./banners"
+export * from "./panelLinks"
