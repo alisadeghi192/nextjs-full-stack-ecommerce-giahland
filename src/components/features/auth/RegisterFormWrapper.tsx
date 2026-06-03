@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import toast from "react-hot-toast";
 import RegisterForm from "./RegisterForm";
+import { useRouter } from "next/navigation";
 import { signupAction } from "@/features/auth/actions/signup.actions";
 import {
   RegisterSchema,
@@ -20,6 +21,7 @@ export default function RegisterFormWrapper({
 }: RegisterFormWrapperProps) {
   const [state, formAction] = useActionState(signupAction, null);
   const [isPending, startTransition] = useTransition();
+  const router = useRouter();
 
   const {
     register,
@@ -36,10 +38,19 @@ export default function RegisterFormWrapper({
 
   useEffect(() => {
     if (state?.success) {
-      toast.success(state.message || "ثبت‌نام با موفقیت انجام شد " , {position : "top-left" ,style:{maxWidth: "fit-content" ,  boxShadow: 'shadow-lg'}});
+      toast.success(state.message || "ثبت‌نام با موفقیت انجام شد ", {
+        position: "top-left",
+        style: { maxWidth: "fit-content", boxShadow: "shadow-lg" },
+      });
       reset();
+      setTimeout(() => {
+        router.push("/");
+      }, 1000);
     } else if (state?.success === false && state?.message) {
-      toast.error(state.message , {position : "top-left" ,style:{maxWidth: "fit-content" ,  boxShadow: 'shadow-lg'}});
+      toast.error(state.message, {
+        position: "top-left",
+        style: { maxWidth: "fit-content", boxShadow: "shadow-lg" },
+      });
     }
   }, [state, reset]);
 
