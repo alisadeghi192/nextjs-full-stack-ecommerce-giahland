@@ -1,6 +1,6 @@
 "use client";
-import FormField from "@/components/shared/ui/FormField";
-import PrimaryButton from "@/components/shared/ui/PrimaryButton";
+import { useActionState, useEffect } from "react";
+import { updateProfileAction } from "@/features/user/actions/updateProfile.actions";
 import {
   useUserFirstName,
   useUserLastName,
@@ -9,29 +9,42 @@ import {
   useUserAddress,
   useUserPostalCode,
   useUserAvatar,
+  useCheckAuth,
 } from "@/features/auth/selectors/auth.selectors";
+import FormField from "@/components/shared/ui/FormField";
+import PrimaryButton from "@/components/shared/ui/PrimaryButton";
 import Image from "next/image";
-import { useState } from "react";
 import { BsSignpost } from "react-icons/bs";
 import { GoHome } from "react-icons/go";
 import { IoPhonePortraitOutline } from "react-icons/io5";
 import { MdAlternateEmail, MdDriveFileRenameOutline } from "react-icons/md";
 import { TbEdit, TbTrash } from "react-icons/tb";
+import toast from "react-hot-toast";
 
 export default function ProfileInfoForm() {
-  const initialFirstName = useUserFirstName() || "";
-  const initialLastName = useUserLastName() || "";
-  const initialEmail = useUserEmail() || "";
-  const initialAddress = useUserAddress() || "";
-  const initialPostalCode = useUserPostalCode() || "";
+  const [state, formAction , isPending] = useActionState(updateProfileAction, null);
+
+  const checkAuth = useCheckAuth();
+
+  const firstName = useUserFirstName() || "";
+  const lastName = useUserLastName() || "";
+  const email = useUserEmail() || "";
+  const address = useUserAddress() || "";
+  const postalCode = useUserPostalCode() || "";
   const mobile = useUserMobile() || "";
   const avatar = useUserAvatar() || "/static/images/default-user.jpg";
 
-  const [firstName, setFirstName] = useState(initialFirstName);
-  const [lastName, setLastName] = useState(initialLastName);
-  const [email, setEmail] = useState(initialEmail);
-  const [address, setAddress] = useState(initialAddress);
-  const [postalCode, setPostalCode] = useState(initialPostalCode);
+  useEffect(() => {
+    if (state?.success && state?.message) {
+      toast.success(state.message);
+      checkAuth();
+    } else if (state?.errors) {
+      const firstError = Object.values(state.errors)[0]?.[0];
+      if (firstError) toast.error(firstError);
+    } else if (state?.message) {
+      toast.error(state.message);
+    }
+  }, [state]);
 
   return (
     <div className="border-neutral3 rounded-2xl border p-6 shadow-lg">
@@ -53,7 +66,7 @@ export default function ProfileInfoForm() {
         </button>
       </div>
 
-      <form>
+      <form action={formAction}>
         <div className="grid grid-cols-2 gap-4">
           <FormField
             icon={<MdDriveFileRenameOutline size={20} />}
@@ -61,8 +74,7 @@ export default function ProfileInfoForm() {
             name="firstName"
             label="نام"
             type="text"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
+            defaultValue={firstName}
           />
           <FormField
             icon={<MdDriveFileRenameOutline size={20} />}
@@ -70,8 +82,7 @@ export default function ProfileInfoForm() {
             name="lastName"
             label="نام خانوادگی"
             type="text"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
+            defaultValue={lastName}
           />
           <FormField
             icon={<IoPhonePortraitOutline size={20} />}
@@ -79,7 +90,7 @@ export default function ProfileInfoForm() {
             name="mobile"
             label="شماره موبایل"
             type="text"
-            value={mobile}
+            defaultValue={mobile}
             disabled
           />
           <FormField
@@ -88,8 +99,7 @@ export default function ProfileInfoForm() {
             name="postalCode"
             label="کد پستی"
             type="text"
-            value={postalCode}
-            onChange={(e) => setPostalCode(e.target.value)}
+            defaultValue={postalCode}
           />
           <FormField
             icon={<MdAlternateEmail size={20} />}
@@ -97,8 +107,7 @@ export default function ProfileInfoForm() {
             name="email"
             label="ایمیل"
             type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            defaultValue={email}
           />
           <FormField
             icon={<GoHome size={20} />}
@@ -106,11 +115,15 @@ export default function ProfileInfoForm() {
             name="address"
             label="آدرس"
             type="text"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
+            defaultValue={address}
           />
         </div>
-        <PrimaryButton className="mt-4 mr-auto h-12 w-43 text-lg">ذخیره</PrimaryButton>
+      <PrimaryButton
+          disabled={isPending}
+          className="mt-4 mr-auto h-12 w-43 text-lg"
+        >
+          {isPending ? "در حال ذخیره..." : "ذخیره"}
+        </PrimaryButton>
       </form>
     </div>
   );

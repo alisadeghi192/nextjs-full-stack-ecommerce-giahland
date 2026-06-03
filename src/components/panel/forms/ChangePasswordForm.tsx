@@ -1,40 +1,53 @@
 "use client";
+import { useActionState, useEffect } from "react";
+import { changePasswordAction } from "@/features/user/actions/changePassword.actions";
 import PasswordField from "@/components/shared/ui/PasswordField";
 import PrimaryButton from "@/components/shared/ui/PrimaryButton";
-import { useState } from "react";
+import toast from "react-hot-toast";
 
 export default function ChangePasswordForm() {
-  const [oldPassword, setOldPassword] = useState("");
-  const [newPassword, setNewPassword] = useState("");
-  const [confirmNewPassword, setConfirmNewPassword] = useState("");
+  const [state, formAction, isPending] = useActionState(
+    changePasswordAction,
+    null,
+  );
+
+  useEffect(() => {
+    if (state?.success && state?.message) {
+      toast.success(state.message);
+    } else if (state?.errors) {
+      const firstError = Object.values(state.errors)[0]?.[0];
+      if (firstError) toast.error(firstError);
+    } else if (state?.message) {
+      toast.error(state.message);
+    }
+  }, [state]);
 
   return (
     <div className="border-neutral3 rounded-2xl border p-6 shadow-lg">
-      <form>
+      <form action={formAction}>
         <div className="grid grid-cols-2 gap-4 [&>*:first-child]:col-span-2">
           <PasswordField
             id="oldPassword"
-            label="رمز عبور فعلی"
             name="oldPassword"
-            value={oldPassword}
-            onChange={(e) => setOldPassword(e.target.value)}
+            label="رمز عبور فعلی"
           />
           <PasswordField
             id="newPassword"
-            label="رمز عبور جدید"
             name="newPassword"
-            value={newPassword}
-            onChange={(e) => setNewPassword(e.target.value)}
+            label="رمز عبور جدید"
           />
           <PasswordField
             id="confirmNewPassword"
-            label="تکرار رمز عبور جدید"
             name="confirmNewPassword"
-            value={confirmNewPassword}
-            onChange={(e) => setConfirmNewPassword(e.target.value)}
+            label="تکرار رمز عبور جدید"
           />
         </div>
-        <PrimaryButton className="mt-4 mr-auto h-12 w-43 text-lg">ذخیره</PrimaryButton>
+        <PrimaryButton
+          disabled={isPending}
+          className="mt-4 mr-auto h-12 w-43 text-lg"
+        >
+          {isPending ? "در حال ذخیره..." : "ذخیره"}
+        </PrimaryButton>
       </form>
     </div>
   );

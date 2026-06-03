@@ -3,6 +3,7 @@ import { Logo } from "@/components/shared/layout/public/header";
 import IconButton from "@/components/shared/ui/IconButton";
 import { MdOutlineDarkMode } from "react-icons/md";
 import Image from "next/image";
+import { useUserFirstName } from "@/features/auth/selectors/auth.selectors";
 import {
   TbLayoutSidebarLeftExpandFilled,
   TbLayoutSidebarRightExpandFilled,
@@ -19,6 +20,7 @@ export default function PanelHeader({
   isSidebarOpen,
   toggleSidebar,
 }: PanelHeaderProps) {
+  const userFirstName = useUserFirstName()
   return (
     <header className="sticky top-0 right-0 left-0 z-50 bg-white">
       <nav className="border-neutral5 container border-b font-medium max-md:hidden">
@@ -50,7 +52,7 @@ export default function PanelHeader({
                 height={48}
                 className="rounded-full max-lg:size-10"
               />
-              <span className="text-lg max-lg:hidden">سلام کاربر</span>
+              <span className="text-lg max-lg:hidden">سلام {userFirstName}</span>
             </button>
           </div>
         </div>

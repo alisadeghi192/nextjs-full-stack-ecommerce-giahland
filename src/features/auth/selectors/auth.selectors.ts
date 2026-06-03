@@ -13,6 +13,8 @@ const useUserAvatar = () => useAuthStore((s) => s.user?.avatar);
 const useUserAddress = () => useAuthStore((s) => s.user?.address);
 const useUserPostalCode = () => useAuthStore((s) => s.user?.postalCode);
 
+const useCheckAuth = () => useAuthStore((s) => s.checkAuth);
+
 const useIsAdmin = () => useAuthStore((s) => s.user?.role === "admin");
 const useIsPlantDoctor = () =>
   useAuthStore((s) => s.user?.role === "plant-doctor");
@@ -70,4 +72,5 @@ export {
   useUserBasicInfo,
   useUserProfile,
   useAuthActions,
+  useCheckAuth,
 };

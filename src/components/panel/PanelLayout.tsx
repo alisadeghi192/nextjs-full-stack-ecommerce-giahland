@@ -31,7 +31,7 @@ export default function PanelLayout({ links, children }: PanelLayoutProps) {
           <PanelSidebar links={links} isPanelOpen={isPanelOpen} />
         </div>
 
-        <div className="flex-1 p-6">{children}</div>
+        <div className="flex-1 p-6 pl-0">{children}</div>
       </div>
     </main>
   );

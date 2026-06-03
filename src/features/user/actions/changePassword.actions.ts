@@ -6,7 +6,7 @@ import User from "@/lib/db/models/User";
 import { ChangePasswordSchema } from "@/features/user/schemas/profile.schema";
 import { verifyPassword, hashPassword } from "@/lib/auth/auth.helpers";
 
-export async function changePasswordAction(formData: FormData) {
+export async function changePasswordAction(prevState: any,formData: FormData) {
   const { user } = await getMeAction();
   if (!user) throw new Error("Unauthorized");
 

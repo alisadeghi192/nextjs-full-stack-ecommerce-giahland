@@ -11,6 +11,7 @@ interface FormFieldProps {
   disabled?: boolean;
   error?: string;
   value?: string;
+  defaultValue?: string; 
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
   useInSearchButtun?: boolean;
@@ -29,6 +30,7 @@ const FormField = forwardRef<HTMLInputElement, FormFieldProps>(
       disabled = false,
       onChange,
       onBlur,
+      defaultValue,
       useInSearchButtun,
     },
     ref,
@@ -55,6 +57,7 @@ const FormField = forwardRef<HTMLInputElement, FormFieldProps>(
             onChange={onChange}
             onBlur={onBlur}
             disabled={disabled}
+            defaultValue={defaultValue}
           />
           <label
             htmlFor={id}
