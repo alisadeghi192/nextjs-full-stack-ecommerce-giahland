@@ -6,6 +6,8 @@ import {
   useIsAuthenticated,
   useAuthActions,
   useIsLoading,
+  useUserFirstName,
+  useUserAvatar,
 } from "@/features/auth/selectors/auth.selectors";
 import {
   useIsProfileDropdownOpen,
@@ -22,6 +24,8 @@ const notifications = 5;
 export default function AuthButtons() {
   const isLoading = useIsLoading();
   const isAuthenticated = useIsAuthenticated();
+  const userFirstName = useUserFirstName();
+  const avatar = useUserAvatar() || "/static/images/default-user.jpg";
   const { logout } = useAuthActions();
   const isProfileDropdownOpen = useIsProfileDropdownOpen();
   const { closeProfileDropdown, openProfileDropdown } =
@@ -77,7 +81,7 @@ export default function AuthButtons() {
       >
         <Link href="/user" className="flex cursor-pointer items-center gap-2">
           <Image
-            src="/static/images/default-user.jpg"
+            src={avatar || "/static/images/default-user.jpg"}
             alt="user"
             width={48}
             height={48}
@@ -88,7 +92,7 @@ export default function AuthButtons() {
               {toPersianNumber(notifications)}
             </span>
           )}
-          <span className="text-lg max-lg:hidden">سلام کاربر</span>
+          <span className="text-lg max-lg:hidden">سلام {userFirstName}</span>
         </Link>
         <div
           className={`bg-neutral2 absolute top-full left-0 z-50 flex w-55 flex-col gap-y-2 rounded-lg p-2 shadow-lg transition-all duration-200 ${
@@ -102,12 +106,12 @@ export default function AuthButtons() {
           <Link
             href="/user"
             onClick={closeProfileDropdown}
-            className="text-neutral10 relative hover:text-primary flex h-14 w-full cursor-pointer items-center gap-x-3 rounded-lg bg-white px-4 transition-colors"
+            className="text-neutral10 hover:text-primary relative flex h-14 w-full cursor-pointer items-center gap-x-3 rounded-lg bg-white px-4 transition-colors"
           >
             <FaRegUser className="size-6" />
             <span className="font-medium">حساب کاربری</span>
             {notifications > 0 && (
-              <span className="bg-error absolute left-2 top-4.25 flex size-5.5 items-center justify-center rounded-full text-[10px] font-medium text-white">
+              <span className="bg-error absolute top-4.25 left-2 flex size-5.5 items-center justify-center rounded-full text-[10px] font-medium text-white">
                 {toPersianNumber(notifications)}
               </span>
             )}
