@@ -1,5 +1,3 @@
-// src/features/auth/types/auth.types.ts
-
 import { IUser } from "../../user/types/user.types";
 import { UserRole } from "@/lib/constants";
 
@@ -40,6 +38,10 @@ export interface IGetMeResponse {
     mobile: string;
     email: string;
     role: UserRole;
+    firstName?: string;
+    lastName?: string;
+    address? : string;
+    avatar?: string;
     createdAt: Date;
     updatedAt: Date;
   } | null;
