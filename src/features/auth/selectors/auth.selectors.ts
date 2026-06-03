@@ -7,9 +7,14 @@ const useUserRole = () => useAuthStore((s) => s.user?.role);
 const useUserId = () => useAuthStore((s) => s.user?._id);
 const useUserMobile = () => useAuthStore((s) => s.user?.mobile);
 const useUserEmail = () => useAuthStore((s) => s.user?.email);
+const useUserFirstName = () => useAuthStore((s) => s.user?.firstName);
+const useUserLastName = () => useAuthStore((s) => s.user?.lastName);
+const useUserAvatar = () => useAuthStore((s) => s.user?.avatar);
+const useUserAddress = () => useAuthStore((s) => s.user?.address);
 
 const useIsAdmin = () => useAuthStore((s) => s.user?.role === "admin");
-const useIsPlantDoctor = () => useAuthStore((s) => s.user?.role === "plant-doctor");
+const useIsPlantDoctor = () =>
+  useAuthStore((s) => s.user?.role === "plant-doctor");
 
 const useUserBasicInfo = () =>
   useAuthStore(
@@ -18,8 +23,25 @@ const useUserBasicInfo = () =>
       role: s.user?.role,
       mobile: s.user?.mobile,
       email: s.user?.email,
+      firstName: s.user?.firstName,
+      lastName: s.user?.lastName,
+      avatar: s.user?.avatar,
+      address: s.user?.address,
       isAuthenticated: s.isAuthenticated,
-    }))
+    })),
+  );
+
+const useUserProfile = () =>
+  useAuthStore(
+    useShallow((s) => ({
+      firstName: s.user?.firstName,
+      lastName: s.user?.lastName,
+      mobile: s.user?.mobile,
+      email: s.user?.email,
+      avatar: s.user?.avatar,
+      address: s.user?.address,
+      role: s.user?.role,
+    })),
   );
 
 const useAuthActions = () =>
@@ -27,7 +49,7 @@ const useAuthActions = () =>
     useShallow((s) => ({
       setUser: s.setUser,
       logout: s.logout,
-    }))
+    })),
   );
 
 export {
@@ -37,8 +59,13 @@ export {
   useUserId,
   useUserMobile,
   useUserEmail,
+  useUserFirstName,
+  useUserLastName,
+  useUserAvatar,
+  useUserAddress,
   useIsAdmin,
   useIsPlantDoctor,
   useUserBasicInfo,
+  useUserProfile,
   useAuthActions,
 };
