@@ -11,6 +11,7 @@ import {
 } from "@/features/auth/selectors/auth.selectors";
 import { HiOutlineLogout } from "react-icons/hi";
 import { PanelLink } from "@/lib/constants/panelLinks";
+import ConfirmDialog from "../shared/ui/ConfirmDialog";
 
 interface PanelSidebarProps {
   links: PanelLink[];
@@ -31,9 +32,9 @@ export default function PanelSidebar({
   const displayName = firstName || "کاربر";
   const persianMobile = mobile?.replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[+d]) || "";
   return (
-    <div className="custom-scroll flex h-full flex-col overflow-x-hidden ltr *:rtl pr-1 overflow-y-auto py-6">
-      <div >
-        <div className="flex items-center shrink-0 gap-x-2">
+    <div className="custom-scroll ltr *:rtl flex h-full flex-col overflow-x-hidden overflow-y-auto py-6 pr-1">
+      <div>
+        <div className="flex shrink-0 items-center gap-x-2">
           <Image
             src={avatar || "/static/images/default-user.jpg"}
             alt="user"
@@ -71,10 +72,12 @@ export default function PanelSidebar({
         ))}
       </div>
 
-      {/* Logout */}
-      <button
-        onClick={logout}
-        className="text-error bg-neutral2 border-error hover:bg-error/10 mt-auto flex h-14 shrink-0 cursor-pointer items-center gap-x-3 rounded-r-lg border-l-4 px-4 transition-colors"
+      <ConfirmDialog
+        onConfirm={logout}
+        title="آیا مایل به خروج از حساب کاربری هستید؟"
+        confirmText="بله، خروج"
+        cancelText="خیر"
+        className="text-error bg-neutral2 border-error hover:bg-error/10 mt-auto flex h-14 w-full shrink-0 cursor-pointer items-center gap-x-3 rounded-r-lg border-l-4 px-4 transition-colors"
       >
         <span className="flex w-6 shrink-0 items-center justify-center">
           <HiOutlineLogout className="size-6" />
@@ -82,7 +85,7 @@ export default function PanelSidebar({
         {isPanelOpen && (
           <span className="font-medium text-nowrap">خروج از حساب کاربری</span>
         )}
-      </button>
+      </ConfirmDialog>
     </div>
   );
 }
