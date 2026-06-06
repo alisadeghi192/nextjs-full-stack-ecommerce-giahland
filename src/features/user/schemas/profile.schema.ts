@@ -4,16 +4,18 @@ export const ProfileFormSchema = z.object({
   firstName: z
     .string()
     .max(10, "نام حداکثر ۱۰ کاراکتر می‌تواند باشد")
+    .or(z.literal(""))
     .optional()
     .nullable()
-    .transform((val) => (val === "" ? null : val)),
+    .transform((val) => (val === "" || val === null ? null : val)),
 
   lastName: z
     .string()
     .max(12, "نام خانوادگی حداکثر ۱۲ کاراکتر می‌تواند باشد")
+    .or(z.literal(""))
     .optional()
     .nullable()
-    .transform((val) => (val === "" ? null : val)),
+    .transform((val) => (val === "" || val === null ? null : val)),
 
   email: z
     .string()
@@ -25,16 +27,18 @@ export const ProfileFormSchema = z.object({
   address: z
     .string()
     .max(200, "آدرس حداکثر ۲۰۰ کاراکتر می‌تواند باشد")
+    .or(z.literal(""))
     .optional()
     .nullable()
-    .transform((val) => (val === "" ? null : val)),
+    .transform((val) => (val === "" || val === null ? null : val)),
 
   postalCode: z
     .string()
     .regex(/^[0-9]{10}$/, "کد پستی باید ۱۰ رقم باشد")
+    .or(z.literal(""))
     .optional()
     .nullable()
-    .transform((val) => (val === "" ? null : val)),
+    .transform((val) => (val === "" || val === null ? null : val)),
 });
 
 export type IProfileFormInput = z.infer<typeof ProfileFormSchema>;
