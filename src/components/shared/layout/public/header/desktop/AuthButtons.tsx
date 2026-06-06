@@ -18,6 +18,7 @@ import { useRef } from "react";
 import { FaRegUser } from "react-icons/fa6";
 import { HiOutlineLogout } from "react-icons/hi";
 import { toPersianNumber } from "@/lib/utils/format";
+import ConfirmDialog from "@/components/shared/ui/ConfirmDialog";
 
 const notifications = 5;
 
@@ -116,13 +117,16 @@ export default function AuthButtons() {
               </span>
             )}
           </Link>
-          <button
-            onClick={handleLogout}
+          <ConfirmDialog
+            onConfirm={handleLogout}
+            title="آیا مایل به خروج از حساب کاربری هستید؟"
+            confirmText="بله، خروج"
+            cancelText="خیر"
             className="text-error hover:bg-bg-error flex h-14 w-full cursor-pointer items-center gap-x-3 rounded-lg bg-white px-4 transition-colors"
           >
             <HiOutlineLogout className="size-6" />
             <span className="font-medium text-nowrap">خروج از حساب کاربری</span>
-          </button>
+          </ConfirmDialog>
         </div>
       </div>
     );
