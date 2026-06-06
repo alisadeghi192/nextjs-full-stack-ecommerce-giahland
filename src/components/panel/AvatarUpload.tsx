@@ -10,10 +10,10 @@ import {
 import { uploadAvatarAction } from "@/features/user/actions/uploadAvatar.actions";
 import { deleteAvatarAction } from "@/features/user/actions/deleteAvatar.actions";
 import toast from "react-hot-toast";
+import ConfirmDialog from "../shared/ui/ConfirmDialog";
 
 export default function AvatarUpload() {
   const [isLoading, setIsLoading] = useState(false);
-  const [isDeleteConfirmOpen, setIsDeleteConfirmOpen] = useState(false);
   const userAvatar = useUserAvatar() || "/static/images/default-user.jpg";
   const isDefaultAvatar = userAvatar === "/static/images/default-user.jpg";
   const firstName = useUserFirstName() || "";
@@ -57,41 +57,6 @@ export default function AvatarUpload() {
     setIsLoading(false);
   };
 
-  const handleDelete = () => {
-    if (isDeleteConfirmOpen) {
-      return;
-    }
-    setIsDeleteConfirmOpen(true);
-    toast(
-      (t) => (
-        <div className="flex flex-col gap-3">
-          <p className="font-medium">آیا از حذف عکس پروفایل مطمئن هستید؟</p>
-          <div className="mt-3 flex justify-start gap-4">
-            <button
-              onClick={() => {
-                confirmDelete();
-                toast.dismiss(t.id);
-                setIsDeleteConfirmOpen(false);
-              }}
-              className="bg-error cursor-pointer rounded-lg px-3 py-1 text-white"
-            >
-              حذف
-            </button>
-            <button
-              onClick={() => {
-                toast.dismiss(t.id);
-                setIsDeleteConfirmOpen(false);
-              }}
-              className="bg-neutral3 cursor-pointer rounded-lg px-3 py-1"
-            >
-              انصراف
-            </button>
-          </div>
-        </div>
-      ),
-      { duration: 6000 },
-    );
-  };
 
   return (
     <div className="mb-4 flex items-center gap-x-4">
@@ -119,14 +84,16 @@ export default function AvatarUpload() {
       >
         <TbEdit className="size-6" />
       </button>
-      <button
-        onClick={handleDelete}
+      <ConfirmDialog
+        onConfirm={confirmDelete}
         disabled={isLoading || isDefaultAvatar}
-        className="text-error flex size-9 cursor-pointer items-center justify-center rounded-lg border transition-colors hover:bg-red-50 disabled:opacity-50 disabled:cursor-default"
+        title="آیا از حذف عکس پروفایل مطمئن هستید؟"
+        confirmText="بله، حذف شود"
+        cancelText="انصراف"
+        className="text-error flex size-9 cursor-pointer items-center justify-center rounded-lg border transition-colors hover:bg-red-50 disabled:cursor-default disabled:opacity-50"
       >
         <TbTrash className="size-6" />
-      </button>
-
+      </ConfirmDialog>
     </div>
   );
 }
