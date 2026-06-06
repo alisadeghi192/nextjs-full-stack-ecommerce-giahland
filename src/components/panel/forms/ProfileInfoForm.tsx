@@ -51,7 +51,7 @@ export default function ProfileInfoForm() {
       <AvatarUpload />
 
       <form action={formAction}>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 max-lg:grid-cols-1 gap-4">
           <FormField
             icon={<MdDriveFileRenameOutline size={20} />}
             id="firstName"
