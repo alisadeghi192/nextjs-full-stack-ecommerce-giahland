@@ -39,7 +39,7 @@ export default function PanelSidebar({
             alt="user"
             width={60}
             height={60}
-            className="size-15 rounded-full"
+            className="size-15 rounded-full object-cover object-center"
           />
           {isPanelOpen && (
             <div className="flex flex-col gap-y-1 text-sm/6.25">
