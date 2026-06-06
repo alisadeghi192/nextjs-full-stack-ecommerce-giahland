@@ -11,6 +11,7 @@ import Image from "next/image";
 import {
   useIsAuthenticated,
   useIsLoading,
+  useUserAvatar
 } from "@/features/auth/selectors/auth.selectors";
 import { useCartActions } from "@/stores/selectors/ui.selectors";
 import { toPersianNumber } from "@/lib/utils/format";
@@ -21,6 +22,7 @@ const notifications = 2;
 export default function MobileActions() {
   const isLoading = useIsLoading();
   const isAuthenticated = useIsAuthenticated();
+  const avatar = useUserAvatar()
   const { toggleCart } = useCartActions();
 
   return (
@@ -43,7 +45,7 @@ export default function MobileActions() {
       ) : isAuthenticated ? (
         <Link href="/user" className="relative">
           <Image
-            src="/static/images/default-user.jpg"
+            src={avatar || "/static/images/default-user.jpg"}
             alt="user profile"
             width={48}
             height={48}
