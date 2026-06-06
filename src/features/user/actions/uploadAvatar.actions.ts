@@ -3,7 +3,7 @@
 import { getMeAction } from "@/features/auth/actions/me.actions";
 import connectToDB from "@/lib/db/connect";
 import User from "@/lib/db/models/User";
-import { writeFile } from "fs/promises";
+import { writeFile, mkdir ,readdir, unlink} from "fs/promises";
 import path from "path";
 
 export async function uploadAvatarAction(formData: FormData) {
@@ -25,10 +25,21 @@ export async function uploadAvatarAction(formData: FormData) {
   }
 
   const buffer = Buffer.from(await file.arrayBuffer());
-  const filePath = path.join("public/uploads/users", user._id, "avatar.jpg");
+  const userDir = path.join("public/uploads/users", user._id);
+  await mkdir(userDir, { recursive: true });
+
+  const existingFiles = await readdir(userDir).catch(() => []);
+  for (const f of existingFiles) {
+    if (f.includes("avatar")) {
+      await unlink(path.join(userDir, f));
+    }
+  }
+
+  const fileName = `${Date.now()}-avatar.jpg`;
+  const filePath = path.join(userDir, fileName);
   await writeFile(filePath, buffer);
 
-  const avatarPath = `/uploads/users/${user._id}/avatar.jpg`;
+  const avatarPath = `/uploads/users/${user._id}/${fileName}`;
 
   await connectToDB();
   await User.findByIdAndUpdate(user._id, { avatar: avatarPath });
