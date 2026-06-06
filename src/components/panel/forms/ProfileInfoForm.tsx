@@ -17,7 +17,7 @@ import { GoHome } from "react-icons/go";
 import { IoPhonePortraitOutline } from "react-icons/io5";
 import { MdAlternateEmail, MdDriveFileRenameOutline } from "react-icons/md";
 import toast from "react-hot-toast";
-import AvatarUpload from "./AvatarUpload";
+import AvatarUpload from "../AvatarUpload";
 
 export default function ProfileInfoForm() {
   const [state, formAction, isPending] = useActionState(
