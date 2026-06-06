@@ -8,21 +8,22 @@ import {
   useUserEmail,
   useUserAddress,
   useUserPostalCode,
-  useUserAvatar,
   useCheckAuth,
 } from "@/features/auth/selectors/auth.selectors";
 import FormField from "@/components/shared/ui/FormField";
 import PrimaryButton from "@/components/shared/ui/PrimaryButton";
-import Image from "next/image";
 import { BsSignpost } from "react-icons/bs";
 import { GoHome } from "react-icons/go";
 import { IoPhonePortraitOutline } from "react-icons/io5";
 import { MdAlternateEmail, MdDriveFileRenameOutline } from "react-icons/md";
-import { TbEdit, TbTrash } from "react-icons/tb";
 import toast from "react-hot-toast";
+import AvatarUpload from "./AvatarUpload";
 
 export default function ProfileInfoForm() {
-  const [state, formAction , isPending] = useActionState(updateProfileAction, null);
+  const [state, formAction, isPending] = useActionState(
+    updateProfileAction,
+    null,
+  );
 
   const checkAuth = useCheckAuth();
 
@@ -32,7 +33,6 @@ export default function ProfileInfoForm() {
   const address = useUserAddress() || "";
   const postalCode = useUserPostalCode() || "";
   const mobile = useUserMobile() || "";
-  const avatar = useUserAvatar() || "/static/images/default-user.jpg";
 
   useEffect(() => {
     if (state?.success && state?.message) {
@@ -48,23 +48,7 @@ export default function ProfileInfoForm() {
 
   return (
     <div className="border-neutral3 rounded-2xl border p-6 shadow-lg">
-      <div className="mb-4 flex items-center gap-x-4">
-        <div className="size-20 overflow-hidden rounded-full">
-          <Image
-            alt={firstName || "user profile"}
-            src={avatar}
-            width={80}
-            height={80}
-            className="object-cover object-center"
-          />
-        </div>
-        <button className="flex size-9 cursor-pointer items-center justify-center rounded-lg border text-[#00BBFF]">
-          <TbEdit className="size-6" />
-        </button>
-        <button className="text-error flex size-9 cursor-pointer items-center justify-center rounded-lg border">
-          <TbTrash className="size-6" />
-        </button>
-      </div>
+      <AvatarUpload />
 
       <form action={formAction}>
         <div className="grid grid-cols-2 gap-4">
@@ -118,7 +102,7 @@ export default function ProfileInfoForm() {
             defaultValue={address}
           />
         </div>
-      <PrimaryButton
+        <PrimaryButton
           disabled={isPending}
           className="mt-4 mr-auto h-12 w-43 text-lg"
         >
