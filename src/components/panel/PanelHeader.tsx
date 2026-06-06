@@ -11,6 +11,7 @@ import {
   TbLayoutSidebarLeftExpandFilled,
   TbLayoutSidebarRightExpandFilled,
 } from "react-icons/tb";
+import { toPersianNumber } from "@/lib/utils/format";
 
 interface PanelHeaderProps {
   isScrolled: boolean;
@@ -60,6 +61,34 @@ export default function PanelHeader({
                 سلام {userFirstName}
               </span>
             </button>
+          </div>
+        </div>
+      </nav>
+      <nav className="border-neutral3 flex h-14 items-center border-b bg-white md:hidden">
+        <div className="container flex w-full items-center justify-between">
+          <div className="flex w-full items-center gap-x-3">
+            <div
+              className="text-primary hover:text-shade2 cursor-pointer"
+              onClick={toggleSidebar}
+            >
+              {isSidebarOpen ? (
+                <TbLayoutSidebarLeftExpandFilled className="size-8" />
+              ) : (
+                <TbLayoutSidebarRightExpandFilled className="size-8" />
+              )}
+            </div>
+            <Logo />
+          </div>
+          <div className="flex shrink-0 items-center gap-x-2">
+            <IconButton icon={<MdOutlineDarkMode size={20} />} />
+
+            <Image
+              src={userAvatar || "/static/images/default-user.jpg"}
+              alt="user profile"
+              width={48}
+              height={48}
+              className="rounded-full max-md:size-10 max-sm:size-8"
+            />
           </div>
         </div>
       </nav>
