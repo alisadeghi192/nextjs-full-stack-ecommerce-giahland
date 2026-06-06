@@ -16,6 +16,7 @@ import { useCartActions } from "@/stores/selectors/ui.selectors";
 import { toPersianNumber } from "@/lib/utils/format";
 
 const totalItems = 2;
+const notifications = 2;
 
 export default function MobileActions() {
   const isLoading = useIsLoading();
@@ -40,7 +41,7 @@ export default function MobileActions() {
       {isLoading ? (
         <div className="size-8 animate-pulse rounded-full bg-gray-200 max-md:size-10 max-sm:size-8" />
       ) : isAuthenticated ? (
-        <Link href="/user">
+        <Link href="/user" className="relative">
           <Image
             src="/static/images/default-user.jpg"
             alt="user profile"
@@ -48,6 +49,9 @@ export default function MobileActions() {
             height={48}
             className="rounded-full max-md:size-10 max-sm:size-8"
           />
+          <span className="bg-error absolute -top-1.75 -right-1.5 flex size-4.5 items-center justify-center rounded-full text-[10px] font-medium text-white">
+            {toPersianNumber(notifications)}
+          </span>
         </Link>
       ) : (
         <Link href="/login-register">
