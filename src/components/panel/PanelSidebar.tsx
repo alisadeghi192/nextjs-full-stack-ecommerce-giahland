@@ -32,7 +32,7 @@ export default function PanelSidebar({
   const displayName = firstName || "کاربر";
   const persianMobile = mobile?.replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[+d]) || "";
   return (
-    <div className="custom-scroll ltr *:rtl flex h-full flex-col overflow-x-hidden overflow-y-auto py-6 pr-1">
+    <div className="custom-scroll ltr *:rtl flex h-full flex-col  overflow-x-hidden overflow-y-auto py-6 max-md:py-0 pr-1">
       <div>
         <div className="flex shrink-0 items-center gap-x-2">
           <Image
@@ -56,7 +56,7 @@ export default function PanelSidebar({
           <Link
             key={link.href}
             href={link.href}
-            className={`text-neutral10 hover:text-primary flex h-14.5 items-center gap-x-3 rounded-r-lg pr-4 transition-colors ${
+            className={`text-neutral10 hover:text-primary flex h-14 max-md:h-12 items-center gap-x-3 rounded-r-lg pr-4 transition-colors ${
               pathname === link.href
                 ? "text-primary border-primary border-l-4 bg-[#F3FDFA]"
                 : ""
@@ -66,7 +66,7 @@ export default function PanelSidebar({
               {link.icon}
             </span>
             {isPanelOpen && (
-              <span className="text-lg/8 text-nowrap">{link.label}</span>
+              <span className="text-lg/8 max-md:text-base/7.25 text-nowrap">{link.label}</span>
             )}
           </Link>
         ))}
@@ -77,7 +77,7 @@ export default function PanelSidebar({
         title="آیا مایل به خروج از حساب کاربری هستید؟"
         confirmText="بله، خروج"
         cancelText="خیر"
-        className="text-error bg-neutral2 border-error hover:bg-error/10 mt-auto flex h-14 w-full shrink-0 cursor-pointer items-center gap-x-3 rounded-r-lg border-l-4 px-4 transition-colors"
+        className="text-error bg-neutral2 border-error hover:bg-error/10 mt-auto flex h-14 max-md:h-12 w-full shrink-0 cursor-pointer items-center gap-x-3 rounded-r-lg border-l-4 px-4 transition-colors"
       >
         <span className="flex w-6 shrink-0 items-center justify-center">
           <HiOutlineLogout className="size-6" />
