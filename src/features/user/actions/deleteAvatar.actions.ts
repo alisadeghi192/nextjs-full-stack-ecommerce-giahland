@@ -20,7 +20,7 @@ export async function deleteAvatarAction() {
   }
 
   await connectToDB();
-  await User.findByIdAndUpdate(user._id, { avatar: null });
+  await User.findByIdAndUpdate(user._id, { avatar: "/static/images/default-user.jpg" });
 
   return { success: true, message: "عکس پروفایل با موفقیت حذف شد." };
 }
