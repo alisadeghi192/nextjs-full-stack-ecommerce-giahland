@@ -25,7 +25,7 @@ export default function ChangePasswordForm() {
   return (
     <div className="border-neutral3 rounded-2xl border p-6 shadow-lg">
       <form action={formAction}>
-        <div className="grid grid-cols-2 gap-4 [&>*:first-child]:col-span-2">
+        <div className="grid grid-cols-2 max-lg:grid-cols-1  gap-4 lg:[&>*:first-child]:col-span-2">
           <PasswordField
             id="oldPassword"
             name="oldPassword"
