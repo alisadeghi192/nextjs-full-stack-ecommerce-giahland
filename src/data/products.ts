@@ -1,11 +1,8 @@
-import { CareItem } from "@/features/products/types/product.types";
-import { ProductCare } from "@/features/products/types/product.types";
 import { ProductType } from "@/features/products/types/product.types";
-import { Comment } from "@/types/comment.types";
 
 export const fakeProducts: ProductType[] = [
 {
-  id: "indoor-1",
+  _id: "indoor-1",
   name: "بابا آدم",
   price: 1850000,
   image: "/static/images/HousePlant/BabaAdam.png",
@@ -23,7 +20,7 @@ export const fakeProducts: ProductType[] = [
   sunlight: "نور غیرمستقیم روشن",
   images: ["/static/images/HousePlant/BabaAdam.png", "/static/images/HousePlant/eighthFlower.png", "/static/images/HousePlant/eleventhFlower.png", "/static/images/HousePlant/fifteenthFlower.png"],
 
-  features: {  // بدون تغییر، قبلاً خوب بود
+  features: {  
     overview: [
       "بابا آدم با نام علمی Alocasia amazonica، گیاهی است گرمسیری با برگ‌های بزرگ، پهن و قلبی شکل که رگبرگ‌های برجسته و سفیدرنگی دارند.",
       "این گیاه بومی جنگل‌های بارانی جنوب شرقی آسیا است و در محیطی گرم و مرطوب به بهترین شکل رشد می‌کند."
@@ -81,49 +78,105 @@ export const fakeProducts: ProductType[] = [
 
   // ۱۰ کامنت قبلی (بدون تغییر)
   comments: [
-    // ۳ کامنت بدون پاسخ
-    { id: 1, name: "علی رضایی", role: "user", date: new Date("2025-04-20"), text: "بابا آدم رو از کجا تهیه کنم؟ خیلی خوشگله." },
-    { id: 2, name: "سارا محمدی", role: "user", date: new Date("2025-04-18"), text: "برگهای بابا آدم من زرد شده، چیکار کنم؟" },
-    { id: 3, name: "رضا کریمی", role: "user", date: new Date("2025-04-15"), text: "آیا این گیاه برای نگهداری در اتاق خواب مناسبه؟" },
+ {
+  _id: "comment-indoor-1-1",
+  user: { _id: "user-1", name: "علی رضایی", role: "user" },
+  date: new Date("2025-04-20"),
+  text: "بابا آدم رو از کجا تهیه کنم؟ خیلی خوشگله."
+},
+{
+  _id: "comment-indoor-1-2",
+  user: { _id: "user-2", name: "سارا محمدی", role: "user" },
+  date: new Date("2025-04-18"),
+  text: "برگهای بابا آدم من زرد شده، چیکار کنم؟"
+},
+{
+  _id: "comment-indoor-1-3",
+  user: { _id: "user-3", name: "رضا کریمی", role: "user" },
+  date: new Date("2025-04-15"),
+  text: "آیا این گیاه برای نگهداری در اتاق خواب مناسبه؟"
+},
 
-    // ۳ کامنت با پاسخ گیاه پزشک
-    { 
-      id: 4, name: "نازنین احمدی", role: "user", date: new Date("2025-04-19"), 
-      text: "لکه های قهوه ای روی برگهاش ظاهر شده، علتش چیه؟",
-      reply: { name: "دکتر محمدی", role: "plant-doctor", date: new Date("2025-04-20"), text: "آفتاب سوختگی یا آبیاری با آب سرد. نور غیرمستقیم و آب ولرم استفاده کنید." } 
-    },
-    { 
-      id: 5, name: "حمید حسینی", role: "user", date: new Date("2025-04-17"), 
-      text: "گلدون بابا آدمم کوچیک شده، چه خاکی براش خوبه؟",
-      reply: { name: "دکتر کریمی", role: "plant-doctor", date: new Date("2025-04-18"), text: "خاک سبک با زهکش عالی مثل پیت ماس + پرلیت + پوکه." } 
-    },
-    { 
-      id: 6, name: "فاطمه موسوی", role: "user", date: new Date("2025-04-14"), 
-      text: "چند وقت یه بار باید کود بدم؟",
-      reply: { name: "دکتر محمدی", role: "plant-doctor", date: new Date("2025-04-15"), text: "هر ۲۰ روز یکبار در بهار و تابستان، کود مایع نصف غلظت." } 
-    },
+// ۳ کامنت با پاسخ گیاه پزشک
+{
+  _id: "comment-indoor-1-4",
+  user: { _id: "user-4", name: "نازنین احمدی", role: "user" },
+  date: new Date("2025-04-19"),
+  text: "لکه های قهوه ای روی برگهاش ظاهر شده، علتش چیه؟",
+  reply: {
+    user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+    date: new Date("2025-04-20"),
+    text: "آفتاب سوختگی یا آبیاری با آب سرد. نور غیرمستقیم و آب ولرم استفاده کنید."
+  }
+},
+{
+  _id: "comment-indoor-1-5",
+  user: { _id: "user-5", name: "حمید حسینی", role: "user" },
+  date: new Date("2025-04-17"),
+  text: "گلدون بابا آدمم کوچیک شده، چه خاکی براش خوبه؟",
+  reply: {
+    user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+    date: new Date("2025-04-18"),
+    text: "خاک سبک با زهکش عالی مثل پیت ماس + پرلیت + پوکه."
+  }
+},
+{
+  _id: "comment-indoor-1-6",
+  user: { _id: "user-6", name: "فاطمه موسوی", role: "user" },
+  date: new Date("2025-04-14"),
+  text: "چند وقت یه بار باید کود بدم؟",
+  reply: {
+    user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+    date: new Date("2025-04-15"),
+    text: "هر ۲۰ روز یکبار در بهار و تابستان، کود مایع نصف غلظت."
+  }
+},
 
-    // ۴ کامنت با پاسخ ادمین
-    { 
-      id: 7, name: "زهرا رحیمی", role: "user", date: new Date("2025-04-16"), 
-      text: "این گیاه رو دارید؟ چند روزه تحویل می‌دین؟",
-      reply: { name: "پشتیبانی", role: "admin", date: new Date("2025-04-17"), text: "بله موجود است، سفارش امروز فردا ارسال می‌شه." } 
-    },
-    { 
-      id: 8, name: "مهدی قاسمی", role: "user", date: new Date("2025-04-13"), 
-      text: "آیا برای گربه ضرر داره؟",
-      reply: { name: "پشتیبانی", role: "admin", date: new Date("2025-04-14"), text: "بله، تمام بخش‌ها سمی است. دور از دسترس حیوانات نگهداری شود." } 
-    },
-    { 
-      id: 9, name: "مریم جعفری", role: "user", date: new Date("2025-04-11"), 
-      text: "ارتفاع این گیاه چقدر میشه؟",
-      reply: { name: "پشتیبانی", role: "admin", date: new Date("2025-04-12"), text: "تا حدود ۹۰ سانتیمتر، رشد متوسط سریع." } 
-    },
-    { 
-      id: 10, name: "حسین نوروزی", role: "user", date: new Date("2025-04-10"), 
-      text: "قیمت مناسبی داره؟ ممنونم",
-      reply: { name: "پشتیبانی", role: "admin", date: new Date("2025-04-11"), text: "کیفیت بالایی داره، تو سایت مقایسه کنید." } 
-    }
-  ]
+{
+  _id: "comment-indoor-1-7",
+  user: { _id: "user-7", name: "زهرا رحیمی", role: "user" },
+  date: new Date("2025-04-16"),
+  text: "این گیاه رو دارید؟ چند روزه تحویل می‌دین؟",
+  reply: {
+    user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+    date: new Date("2025-04-17"),
+    text: "بله موجود است، سفارش امروز فردا ارسال می‌شه."
+  }
+},
+{
+  _id: "comment-indoor-1-8",
+  user: { _id: "user-8", name: "مهدی قاسمی", role: "user" },
+  date: new Date("2025-04-13"),
+  text: "آیا برای گربه ضرر داره؟",
+  reply: {
+    user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+    date: new Date("2025-04-14"),
+    text: "بله، تمام بخش‌ها سمی است. دور از دسترس حیوانات نگهداری شود."
+  }
+},
+{
+  _id: "comment-indoor-1-9",
+  user: { _id: "user-9", name: "مریم جعفری", role: "user" },
+  date: new Date("2025-04-11"),
+  text: "ارتفاع این گیاه چقدر میشه؟",
+  reply: {
+    user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+    date: new Date("2025-04-12"),
+    text: "تا حدود ۹۰ سانتیمتر، رشد متوسط سریع."
+  }
+},
+{
+  _id: "comment-indoor-1-10",
+  user: { _id: "user-10", name: "حسین نوروزی", role: "user" },
+  date: new Date("2025-04-10"),
+  text: "قیمت مناسبی داره؟ ممنونم",
+  reply: {
+    user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+    date: new Date("2025-04-11"),
+    text: "کیفیت بالایی داره، تو سایت مقایسه کنید."
+  }
 }
+  ]
+},
+
 ];
