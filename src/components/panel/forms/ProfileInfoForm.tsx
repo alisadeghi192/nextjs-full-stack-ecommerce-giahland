@@ -47,11 +47,11 @@ export default function ProfileInfoForm() {
   }, [state]);
 
   return (
-    <div className="border-neutral3 rounded-2xl border p-6 shadow-lg">
+    <div className="border-neutral3 rounded-2xl border p-6 max-md:p-3.5 shadow-lg">
       <AvatarUpload />
 
       <form action={formAction}>
-        <div className="grid grid-cols-2 max-lg:grid-cols-1 gap-4">
+        <div className="grid grid-cols-2 max-lg:grid-cols-1 gap-4 max-md:gap-3.5">
           <FormField
             icon={<MdDriveFileRenameOutline size={20} />}
             id="firstName"
@@ -104,7 +104,7 @@ export default function ProfileInfoForm() {
         </div>
         <PrimaryButton
           disabled={isPending}
-          className="mt-4 mr-auto h-12 w-43 text-lg"
+          className="mt-4 max-md:mt-3.5 max-md:w-full mr-auto h-12 w-43 text-lg"
         >
           {isPending ? "در حال ذخیره..." : "ذخیره"}
         </PrimaryButton>
