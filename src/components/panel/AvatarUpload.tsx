@@ -60,7 +60,7 @@ export default function AvatarUpload() {
 
   return (
     <div className="mb-4 flex items-center gap-x-4">
-      <div className="size-20 overflow-hidden rounded-full">
+      <div className="size-20 max-md:size-15 overflow-hidden rounded-full">
         <Image
           alt={firstName || "user profile"}
           src={userAvatar}
