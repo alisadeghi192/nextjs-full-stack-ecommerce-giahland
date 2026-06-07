@@ -34,7 +34,7 @@ export default function CommentList({ comments = [] }: CommentListProps) {
   return (
     <div className="flex flex-col space-y-4">
       {visibleComments.map((comment) => (
-        <CommentItem key={comment.id} {...comment} />
+        <CommentItem key={comment._id} {...comment} />
       ))}
 
       {hasMore && (
