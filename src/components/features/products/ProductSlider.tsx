@@ -67,8 +67,8 @@ export default function ProductSlider({
           modules={[Navigation, Autoplay]}
           className="mySwiper"
         >
-          {products.map((product, index) => (
-            <SwiperSlide key={index} className="h-auto">
+          {products.map((product) => (
+            <SwiperSlide key={product._id} className="h-auto">
               <ProductCardGrid {...product} />
             </SwiperSlide>
           ))}
