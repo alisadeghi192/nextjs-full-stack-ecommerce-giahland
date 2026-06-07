@@ -1,4 +1,6 @@
-import { Comment } from "@/types/comment.types";
+
+import { Comment } from "@/types/comment.types"; 
+
 export interface CareItem {
   title: string;
   description: string;
@@ -11,9 +13,16 @@ export interface ProductCare {
   temperature: CareItem[];
   fertilization: CareItem[];
 }
+export interface ProductFeatures {
+  overview: string[];
+  appearance: string[];
+  warnings: string[];
+  propagation: string[];
+  summary: string[];
+}
 
 export interface ProductType {
-  id: string;
+  _id: string;
   name: string;
   price: number;
   image: string;
@@ -33,16 +42,10 @@ export interface ProductType {
     height: number;
   };
   sunlight: string;
-  images?: string[];
+  images: string[];
 
-  features: {
-    overview: string[];
-    appearance: string[];
-    warnings: string[];
-    propagation: string[];
-    summary: string[];
-  };
-
+  features: ProductFeatures;
   cares: ProductCare;
-  comments : Comment[]
+
+  comments: string[] | Comment[]
 }

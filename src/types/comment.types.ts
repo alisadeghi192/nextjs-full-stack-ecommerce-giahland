@@ -1,14 +1,19 @@
-export interface Comment {
-  id?: number;
+
+export interface CommentAuthor {
+  _id: string;
   name: string;
+  avatar?: string;
   role: "admin" | "user" | "plant-doctor";
-  date: Date;
+}
+
+export interface Comment {
+  _id: string;
+  user: CommentAuthor;
   text: string;
+  date: Date;
   reply?: {
-    id?: number;
-    name: string;
-    role: "admin" | "user" | "plant-doctor";
-    date: Date;
+    user: CommentAuthor;
     text: string;
+    date: Date;
   };
 }
