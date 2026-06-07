@@ -23,9 +23,9 @@ export default function ChangePasswordForm() {
   }, [state]);
 
   return (
-    <div className="border-neutral3 rounded-2xl border p-6 shadow-lg">
+    <div className="border-neutral3 rounded-2xl border p-6 max-md:p-3.5 shadow-lg">
       <form action={formAction}>
-        <div className="grid grid-cols-2 max-lg:grid-cols-1  gap-4 lg:[&>*:first-child]:col-span-2">
+        <div className="grid grid-cols-2 gap-4 max-lg:grid-cols-1 max-md:gap-3.5 lg:[&>*:first-child]:col-span-2">
           <PasswordField
             id="oldPassword"
             name="oldPassword"
@@ -44,7 +44,7 @@ export default function ChangePasswordForm() {
         </div>
         <PrimaryButton
           disabled={isPending}
-          className="mt-4 mr-auto h-12 w-43 text-lg"
+          className="mt-4 mr-auto h-12 w-43 text-lg max-md:mt-3.5 max-md:w-full"
         >
           {isPending ? "در حال ذخیره..." : "ذخیره"}
         </PrimaryButton>
