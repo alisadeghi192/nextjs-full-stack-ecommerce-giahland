@@ -4,8 +4,6 @@ import { useScroll } from "@/lib/hooks/useScroll";
 import PanelHeader from "./PanelHeader";
 import { PanelLink } from "@/lib/constants/panelLinks";
 import DesktopSidebar from "./DesktopSidebar";
-import PanelSidebar from "./PanelSidebar";
-import { Overlay } from "../shared/layout/public/header";
 import MobileSidebar from "./MobileSidebar";
 
 interface PanelLayoutProps {
@@ -15,7 +13,7 @@ interface PanelLayoutProps {
 
 export default function PanelLayout({ links, children }: PanelLayoutProps) {
   const isScrolled = useScroll();
-  const [isPanelOpen, setIsPanelOpen] = useState(true);
+  const [isPanelOpen, setIsPanelOpen] = useState(false);
   const toggleSidebar = () => setIsPanelOpen((prev) => !prev);
 
   return (
@@ -39,7 +37,7 @@ export default function PanelLayout({ links, children }: PanelLayoutProps) {
           onClose={toggleSidebar}
         />
 
-        <div className="flex-1 p-6 pl-0 max-md:p-0 max-md:pt-4">{children}</div>
+        <div className="flex-1 p-6 pl-0 max-md:p-0 max-md:pt-4 max-md:pb-7">{children}</div>
       </div>
     </main>
   );
