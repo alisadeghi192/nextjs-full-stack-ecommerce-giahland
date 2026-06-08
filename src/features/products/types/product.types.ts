@@ -29,6 +29,7 @@ export interface ProductType {
   slug: string;
   category: "indoor" | "decoration" | "gift";
   createdAt: Date;
+  updatedAt: Date; 
   liked: number;
   discount: number;
   stock: number;
@@ -47,5 +48,5 @@ export interface ProductType {
   features: ProductFeatures;
   cares: ProductCare;
 
-  comments: string[] | Comment[]
+  comments?: string[] | Comment[]
 }
