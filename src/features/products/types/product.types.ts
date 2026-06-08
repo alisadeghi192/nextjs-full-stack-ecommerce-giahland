@@ -21,6 +21,13 @@ export interface ProductFeatures {
   summary: string[];
 }
 
+export interface ProductSEO {
+  title: string;
+  description: string;
+  keywords?: string[];
+  ogImage?: string;
+}
+
 export interface ProductType {
   _id: string;
   name: string;
@@ -48,5 +55,6 @@ export interface ProductType {
   features: ProductFeatures;
   cares: ProductCare;
 
+  seo?: ProductSEO;
   comments?: string[] | Comment[]
 }

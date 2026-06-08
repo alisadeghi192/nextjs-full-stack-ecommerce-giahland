@@ -1,5 +1,10 @@
 import mongoose, { Schema, Model } from "mongoose";
-import { ProductType, ProductFeatures, CareItem } from "@/features/products/types/product.types";
+import { 
+  ProductType, 
+  ProductFeatures, 
+  CareItem,
+  ProductSEO 
+} from "@/features/products/types/product.types";
 
 const CareItemSchema = new Schema<CareItem>(
   {
@@ -20,6 +25,16 @@ const FeaturesSchema = new Schema<ProductFeatures>(
   { _id: false }
 );
 
+const SEOSchema = new Schema<ProductSEO>(
+  {
+    title: { type: String, required: true },
+    description: { type: String, required: true },
+    keywords: { type: [String], default: [] },
+    ogImage: { type: String, default: "" },
+  },
+  { _id: false }
+);
+
 const ProductSchema = new Schema<ProductType>(
   {
     name: { type: String, required: true },
@@ -31,7 +46,6 @@ const ProductSchema = new Schema<ProductType>(
       enum: ["indoor", "decoration", "gift"],
       required: true,
     },
-    createdAt: { type: Date, default: Date.now },
     liked: { type: Number, default: 0 },
     discount: { type: Number, default: 0 },
     stock: { type: Number, required: true },
@@ -55,6 +69,8 @@ const ProductSchema = new Schema<ProductType>(
       temperature: { type: [CareItemSchema], default: [] },
       fertilization: { type: [CareItemSchema], default: [] },
     },
+
+    seo: { type: SEOSchema, default: null },
 
     comments: [{ type: Schema.Types.ObjectId, ref: "Comment", default: [] }],
   },
