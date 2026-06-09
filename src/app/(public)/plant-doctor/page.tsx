@@ -10,7 +10,7 @@ export default function PlantDoctorPage() {
       <section className="border-neutral4 m-auto flex w-80/100 items-center justify-center gap-x-20 rounded-2xl border max-xl:w-full max-lg:gap-x-10 max-md:flex-col max-md:p-4">
         <Image
           alt="plant-doctor"
-          src={"/static/images/plantDoctor.png"}
+          src={"/static/images/plantDoctor.webp"}
           width={600}
           height={380}
           className="max-lg:w-100"
@@ -56,7 +56,7 @@ export default function PlantDoctorPage() {
       <section className="border-neutral4 mx-auto mt-10 w-5/10 overflow-hidden rounded-2xl border max-sm:w-full">
         <Image
           alt="plant-doctor"
-          src="/static/images/plantDoctor2.jpg"
+          src="/static/images/plantDoctor2.webp"
           width={735}
           height={549}
           className="w-full"

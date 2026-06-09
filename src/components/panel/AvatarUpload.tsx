@@ -14,8 +14,8 @@ import ConfirmDialog from "../shared/ui/ConfirmDialog";
 
 export default function AvatarUpload() {
   const [isLoading, setIsLoading] = useState(false);
-  const userAvatar = useUserAvatar() || "/static/images/default-user.jpg";
-  const isDefaultAvatar = userAvatar === "/static/images/default-user.jpg";
+  const userAvatar = useUserAvatar() || "/static/images/default-user.webp";
+  const isDefaultAvatar = userAvatar === "/static/images/default-user.webp";
   const firstName = useUserFirstName() || "";
   const checkAuth = useCheckAuth();
   const fileInputRef = useRef<HTMLInputElement>(null);

@@ -39,7 +39,7 @@ export async function getMeAction(): Promise<IGetMeResponse> {
       role: user.role,
       firstName: user.firstName || "",
       lastName: user.lastName || "",
-      avatar: user.avatar || "/static/images/default-user.jpg",
+      avatar: user.avatar || "/static/images/default-user.webp",
       address: user.address || "",
       postalCode : user.postalCode || "" ,
       createdAt: user.createdAt,

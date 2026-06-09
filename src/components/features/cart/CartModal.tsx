@@ -115,7 +115,7 @@ export default function CartModal({ onClose }: CartModalProps) {
             <div className="mx-auto mb-3 w-fit">
               <Image
                 alt="empty-cart"
-                src={"/static/images/empty-cart.png"}
+                src={"/static/images/empty-cart.webp"}
                 width={124}
                 height={76}
               />

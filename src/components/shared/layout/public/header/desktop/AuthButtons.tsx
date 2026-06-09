@@ -26,7 +26,7 @@ export default function AuthButtons() {
   const isLoading = useIsLoading();
   const isAuthenticated = useIsAuthenticated();
   const userFirstName = useUserFirstName();
-  const avatar = useUserAvatar() || "/static/images/default-user.jpg";
+  const avatar = useUserAvatar() || "/static/images/default-user.webp";
   const { logout } = useAuthActions();
   const isProfileDropdownOpen = useIsProfileDropdownOpen();
   const { closeProfileDropdown, openProfileDropdown } =
@@ -82,7 +82,7 @@ export default function AuthButtons() {
       >
         <Link href="/user" className="flex cursor-pointer items-center gap-2">
           <Image
-            src={avatar || "/static/images/default-user.jpg"}
+            src={avatar || "/static/images/default-user.webp"}
             alt="user"
             width={48}
             height={48}

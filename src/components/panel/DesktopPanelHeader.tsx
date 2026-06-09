@@ -50,7 +50,7 @@ export default function DesktopPanelHeader({
           <IconButton icon={<MdOutlineDarkMode size={24} />} />
           <button className="flex items-center gap-2">
             <Image
-              src={userAvatar || "/static/images/default-user.jpg"}
+              src={userAvatar || "/static/images/default-user.webp"}
               alt="user"
               width={48}
               height={48}

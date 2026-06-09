@@ -38,7 +38,7 @@ export default function MobilePanelHeader({
         <div className="flex shrink-0 items-center gap-x-2">
           <IconButton icon={<MdOutlineDarkMode size={20} />} />
           <Image
-            src={userAvatar || "/static/images/default-user.jpg"}
+            src={userAvatar || "/static/images/default-user.webp"}
             alt="user profile"
             width={48}
             height={48}

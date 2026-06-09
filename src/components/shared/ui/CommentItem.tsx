@@ -21,7 +21,7 @@ export default function CommentItem({ user, date, text, reply }: CommentItemProp
         <div className="border-neutral5 flex items-center gap-x-2 border-b pb-2">
           <div className="shrink-0">
             <Image
-              src={user.avatar || "/static/images/default-user.jpg"}
+              src={user.avatar || "/static/images/default-user.webp"}
               alt={user.name}
               width={44}
               height={44}
@@ -47,7 +47,7 @@ export default function CommentItem({ user, date, text, reply }: CommentItemProp
             <div className="border-neutral5 flex items-center gap-x-2 border-b pb-2">
               <div className="shrink-0">
                 <Image
-                  src={reply.user.avatar || "/static/images/default-user.jpg"}
+                  src={reply.user.avatar || "/static/images/default-user.webp"}
                   alt={reply.user.name}
                   width={44}
                   height={44}

@@ -35,7 +35,7 @@ export default function Footer() {
             </div>
             <Image
               alt="license"
-              src="/static/images/license1.png"
+              src="/static/images/license1.webp"
               height={76}
               width={76}
               className="cursor-pointer"

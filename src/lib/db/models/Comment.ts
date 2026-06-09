@@ -7,7 +7,7 @@ const CommentSchema = new Schema<Comment>(
       type: {
         _id: { type: String, required: true },
         name: { type: String, required: true },
-        avatar: { type: String, default: "/static/images/default-user.jpg" },
+        avatar: { type: String, default: "/static/images/default-user.webp" },
         role: {
           type: String,
           enum: ["admin", "user", "plant-doctor"],
@@ -22,7 +22,7 @@ const CommentSchema = new Schema<Comment>(
       user: {
         _id: { type: String, required: true },
         name: { type: String, required: true },
-        avatar: { type: String, default: "/static/images/default-user.jpg" },
+        avatar: { type: String, default: "/static/images/default-user.webp" },
         role: {
           type: String,
           enum: ["admin", "user", "plant-doctor"],

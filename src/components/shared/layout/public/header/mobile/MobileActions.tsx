@@ -45,7 +45,7 @@ export default function MobileActions() {
       ) : isAuthenticated ? (
         <Link href="/user" className="relative">
           <Image
-            src={avatar || "/static/images/default-user.jpg"}
+            src={avatar || "/static/images/default-user.webp"}
             alt="user profile"
             width={48}
             height={48}

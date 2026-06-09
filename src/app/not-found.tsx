@@ -6,7 +6,7 @@ export default function NotFound() {
   return (
     <main className="font-modam min-h-dvh">
       <div className="absolute top-0 right-0 left-0">
-        <PublicHeader hasSearchInput={false} />
+        <PublicHeader />
       </div>
       <div className="flex min-h-dvh basis-1/2 items-center justify-center px-4 text-center max-sm:flex-col-reverse">
         <div>
@@ -29,7 +29,7 @@ export default function NotFound() {
         </div>
         <Image
           alt="404"
-          src="/static/images/404.png"
+          src="/static/images/404.webp"
           width={500}
           height={500}
           className="aspect-square size-100 max-lg:size-100 max-md:size-80 max-sm:size-70"

@@ -49,7 +49,7 @@ const ProductSchema = new Schema<ProductType>(
     liked: { type: Number, default: 0 },
     discount: { type: Number, default: 0 },
     stock: { type: Number, required: true },
-
+    
     potMaterial: { type: String, default: "" },
     soilType: { type: String, default: "" },
     weight: { type: Number, default: 0 },
@@ -60,24 +60,25 @@ const ProductSchema = new Schema<ProductType>(
     },
     sunlight: { type: String, default: "" },
     images: { type: [String], default: [] },
-
+    
     features: { type: FeaturesSchema, default: {} },
     cares: {
-      light: { type: [CareItemSchema], default: [] },
+      light:
+      { type: [CareItemSchema], default: [] },
       watering: { type: [CareItemSchema], default: [] },
       soil: { type: [CareItemSchema], default: [] },
       temperature: { type: [CareItemSchema], default: [] },
       fertilization: { type: [CareItemSchema], default: [] },
-    },
-
+    }  ,
+    
     seo: { type: SEOSchema, default: null },
-
+    
     comments: [{ type: Schema.Types.ObjectId, ref: "Comment", default: [] }],
   },
   { timestamps: true }
 );
 
 const Product: Model<ProductType> =
-  mongoose.models.Product || mongoose.model<ProductType>("Product", ProductSchema);
+mongoose.models.Product || mongoose.model<ProductType>("Product", ProductSchema);
 
 export default Product;

@@ -44,11 +44,11 @@ const HeroSection = () => {
         <picture>
           <source
             media="(max-width: 768px)"
-            srcSet="/static/images/hero-mobile.png"
+            srcSet="/static/images/hero-mobile.webp"
           />
           <Image
             alt="giahland"
-            src="/static/images/hero-desktop.png"
+            src="/static/images/hero-desktop.webp"
             width={574}
             height={558}
             className="justify-self-end"

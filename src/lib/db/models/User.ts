@@ -43,7 +43,7 @@ const UserSchema = new mongoose.Schema<IUser>(
     },
     avatar: {
       type: String,
-      default: "/static/images/default-user.jpg",
+      default: "/static/images/default-user.webp",
     },
     postalCode: {
       type: String,

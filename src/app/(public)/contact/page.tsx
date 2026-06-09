@@ -63,7 +63,7 @@ export default function page() {
                 </div>
                 <Image
                   alt="recaptcha"
-                  src={"/static/images/recaptcha.png"}
+                  src={"/static/images/recaptcha.webp"}
                   width={44}
                   height={44}
                 />

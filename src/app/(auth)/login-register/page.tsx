@@ -12,7 +12,7 @@ export default function AuthPage() {
       <div className="relative h-dvh w-1/2 max-lg:w-1/3 max-sm:h-3/8 max-sm:w-full ">
         <Image
           alt="login page pic"
-          src="/static/images/login-cover.png"
+          src="/static/images/login-cover.webp"
           fill
           className="object-cover  max-sm:mt-12"
         />

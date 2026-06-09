@@ -6,7 +6,7 @@ const Logo = () => {
     <Link href="/" className="group flex items-center gap-x-1">
       <Image
         alt="giahland logo"
-        src={"/static/images/logo.png"}
+        src={"/static/images/logo.webp"}
         width={38}
         height={38}
         className="max-lg:size-8"

@@ -43,7 +43,7 @@ function page() {
           <div className="w-full overflow-hidden rounded-xl shadow-[-16px_-16px_0px_0px_rgba(227,247,234)]">
             <Image
               alt="plants"
-              src={"/static/images/about-us1.jpg"}
+              src={"/static/images/about-us1.webp"}
               width={372}
               height={405}
               className="aspect-372/405 w-full object-cover"
@@ -88,7 +88,7 @@ function page() {
       <div className="border-neutral6 mx-auto mt-10 w-8/10 overflow-hidden rounded-xl border max-lg:w-full max-sm:mt-4">
         <Image
           alt="about-us-pic"
-          src={"/static/images/about-us2.png"}
+          src={"/static/images/about-us2.webp"}
           width={766}
           height={405}
           className="h-full w-full object-cover"
