@@ -18,13 +18,39 @@ export async function getLatestProductsByCategory(
   return products.map((p) => ({ ...p, _id: p._id.toString()})) as ProductCardData[];
 }
 
-export async function getProductsByCategory(
-  category: "indoor" | "decoration" | "gift"
-): Promise<ProductType[]> {
+export async function getRelatedProducts(
+  category: "indoor" | "decoration" | "gift",
+  currentSlug: string,
+  limit: number = 8
+): Promise<ProductCardData[]> {
   await connectToDB();
-  const products = await Product.find({ category }).lean();
-  return products.map((product) => ({ ...product, _id: product._id.toString() })) as ProductType[];
+  const products = await Product.find({ 
+    category, 
+    slug: { $ne: currentSlug } 
+  })
+    .sort({ createdAt: -1 })
+    .limit(limit)
+    .select("name price image slug category discount potDimensions stock liked createdAt")
+    .lean();
+  return products.map((p) => ({ ...p, _id: p._id.toString() })) as ProductCardData[];
+}
 
+export async function getProductsCardByCategory(
+  category: "indoor" | "decoration" | "gift"
+): Promise<ProductCardData[]> {
+  await connectToDB();
+  const products = await Product.find({ category })
+    .select("name price image slug category discount potDimensions stock")
+    .lean();
+  return products.map((p) => ({ ...p, _id: p._id.toString() })) as ProductCardData[];
+}
+
+export async function getAllProductsCard(): Promise<ProductCardData[]> {
+  await connectToDB();
+  const products = await Product.find({})
+    .select("name price image slug category discount potDimensions stock liked createdAt")
+    .lean();
+  return products.map((p) => ({ ...p, _id: p._id.toString() })) as ProductCardData[];
 }
 
 export async function getProductBySlug(slug: string): Promise<ProductType | null> {
