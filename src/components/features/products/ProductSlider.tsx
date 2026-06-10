@@ -9,7 +9,7 @@ import {
   MdNavigateBefore,
   MdOutlineNavigateNext,
 } from "react-icons/md";
-import { ProductType } from "@/features/products/types/product.types";
+import { ProductCardData } from "@/features/products/types/product.types";
 import ProductCardGrid from "./ProductCardGrid";
 
 import "swiper/css";
@@ -20,7 +20,7 @@ import { PRODUCT_SWIPER_AUTOPLAY_DELAY, PRODUCT_SWIPER_BREAKPOINTS, PRODUCT_SWIP
 
 interface ProductSliderProps {
   title: string;
-  products: ProductType[];
+  products: ProductCardData[];
   link: string;
 }
 

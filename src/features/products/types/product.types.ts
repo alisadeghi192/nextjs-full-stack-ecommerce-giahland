@@ -1,6 +1,5 @@
 
 import { IComment } from "@/types/comment.types"; 
-
 export interface CareItem {
   title: string;
   description: string;
@@ -57,4 +56,16 @@ export interface ProductType {
 
   seo?: ProductSEO;
   comments?: string[] | IComment[]
+}
+
+export interface ProductCardData {
+  _id: string;
+  name: string;
+  price: number;
+  image: string;
+  slug: string;
+  category: string;
+  discount: number;
+  potDimensions: { length: number; width: number; height: number };
+  stock: number;
 }

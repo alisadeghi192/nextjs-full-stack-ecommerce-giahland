@@ -4,16 +4,17 @@ import BannerSection from "@/components/features/landing/BannerSection";
 import ProductSlider from "@/components/features/products/ProductSlider";
 import BlogSlider from "@/components/features/blog/BlogSlider";
 import PlantDoctorServices from "@/components/features/landing/PlantDoctorServices";
-import { fakeProducts } from "@/data/products";
-import { getLatestProducts } from "@/features/products/utils/productHelpers";
+import { getLatestProductsByCategory } from "@/features/products/actions/product.actions";
 import { getLatestPosts, getMostViewedPosts } from "@/features/blog/utils/blogHelpers";
 
 
 
-export default function Home() {
-  const indoorLatest = getLatestProducts(fakeProducts, "indoor", 8);
-  const decorationLatest = getLatestProducts(fakeProducts, "decoration", 8);
-  const giftLatest = getLatestProducts(fakeProducts, "gift", 8);
+export default async function Home() {
+    const [indoorLatest, decorationLatest, giftLatest] = await Promise.all([
+    getLatestProductsByCategory("indoor", 8),
+    getLatestProductsByCategory("decoration", 8),
+    getLatestProductsByCategory("gift", 8),
+  ]);
   const latestPosts = getLatestPosts(4)
   const mostViewedPosts = getMostViewedPosts(4)
   return (
