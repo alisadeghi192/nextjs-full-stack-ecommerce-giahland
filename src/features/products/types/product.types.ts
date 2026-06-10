@@ -1,5 +1,4 @@
-
-import { IComment } from "@/types/comment.types"; 
+import { IComment } from "@/types/comment.types";
 export interface CareItem {
   title: string;
   description: string;
@@ -35,7 +34,7 @@ export interface ProductType {
   slug: string;
   category: "indoor" | "decoration" | "gift";
   createdAt: Date;
-  updatedAt: Date; 
+  updatedAt: Date;
   liked: number;
   discount: number;
   stock: number;
@@ -55,7 +54,7 @@ export interface ProductType {
   cares: ProductCare;
 
   seo?: ProductSEO;
-  comments?: string[] | IComment[]
+  comments?:  IComment[];
 }
 
 export interface ProductCardData {
@@ -68,4 +67,6 @@ export interface ProductCardData {
   discount: number;
   potDimensions: { length: number; width: number; height: number };
   stock: number;
+  liked: number;
+  createdAt: Date;
 }
