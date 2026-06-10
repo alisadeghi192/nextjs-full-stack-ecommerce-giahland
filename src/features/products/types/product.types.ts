@@ -1,5 +1,5 @@
 
-import { Comment } from "@/types/comment.types"; 
+import { IComment } from "@/types/comment.types"; 
 
 export interface CareItem {
   title: string;

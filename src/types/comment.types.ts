@@ -6,8 +6,10 @@ export interface CommentAuthor {
   role: "admin" | "user" | "plant-doctor";
 }
 
-export interface Comment {
+export interface IComment {
   _id: string;
+  targetType: "product" | "blog";
+  targetId: string;  
   user: CommentAuthor;
   text: string;
   date: Date;
@@ -16,4 +18,6 @@ export interface Comment {
     text: string;
     date: Date;
   };
+  createdAt: Date;
+  updatedAt: Date;
 }
