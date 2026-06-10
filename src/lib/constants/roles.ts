@@ -5,4 +5,4 @@ export const roleConfig = {
 };
 
 export const USER_ROLES = ['admin', 'user', 'plant-doctor'] as const;
-export type UserRole = typeof USER_ROLES[number];
+export type UserRole = "admin" | "user" | "plant-doctor";
