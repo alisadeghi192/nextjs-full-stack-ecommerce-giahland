@@ -1,4 +1,4 @@
-// src/lib/auth/auth.helpers.ts
+
 import { hash, compare } from "bcryptjs";
 import { sign, verify } from "jsonwebtoken";
 import { cookies } from "next/headers";

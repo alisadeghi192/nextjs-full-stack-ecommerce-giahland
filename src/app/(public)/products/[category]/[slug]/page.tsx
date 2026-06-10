@@ -1,9 +1,8 @@
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import Breadcrumb from "@/components/shared/ui/Breadcrumb";
-import { fakeProducts } from "@/data/products";
-import { productTabs } from "@/lib/constants";
+import { productTabs, productDetailTabs } from "@/lib/constants";
 import ProductDetailTabs from "@/components/features/products/ProductDetailTabs";
-import { productDetailTabs } from "@/lib/constants";
 import CommentForm from "@/components/shared/ui/CommentForm";
 import CommentList from "@/components/shared/ui/CommentList";
 import ProductTitleHeader from "@/components/features/products/ProductTitleHeader";
@@ -12,10 +11,12 @@ import ProductSpecs from "@/components/features/products/ProductSpecs";
 import ProductPurchaseCard from "@/components/features/products/ProductPurchaseCard";
 import ProductFeaturesRenderer from "@/components/features/products/ProductFeaturesRenderer";
 import ProductCaresRenderer from "@/components/features/products/ProductCaresRenderer";
-
 import MobileStickyCart from "@/components/features/products/MobileStickyCart";
 import ProductSlider from "@/components/features/products/ProductSlider";
-
+import {
+  getProductBySlug,
+  getRelatedProducts,
+} from "@/features/products/actions/product.actions";
 interface ProductPageProps {
   params: Promise<{
     category: string;
@@ -23,23 +24,43 @@ interface ProductPageProps {
   }>;
 }
 
+// ========== SEO ==========
+export async function generateMetadata({
+  params,
+}: ProductPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const product = await getProductBySlug(slug);
+
+  if (!product) {
+    return { title: "محصول یافت نشد" };
+  }
+
+  return {
+    title: product.seo?.title || `${product.name} | گیاه‌لند`,
+    description:
+      product.seo?.description || `خرید گیاه ${product.name} با قیمت مناسب`,
+    keywords: product.seo?.keywords,
+    openGraph: {
+      title: product.seo?.title || product.name,
+      description: product.seo?.description || `خرید گیاه ${product.name}`,
+      images: product.seo?.ogImage || product.image,
+    },
+  };
+}
+
 export default async function ProductPage({ params }: ProductPageProps) {
   const { category, slug } = await params;
 
-  const product = fakeProducts.find(
-    (p) => p.category === category && p.slug === slug,
-  );
+  const product = await getProductBySlug(slug);
 
-  if (!product) {
+  if (!product || product.category !== category) {
     notFound();
   }
 
-  const categoryName = productTabs.find((p) => p.id == category)?.label || "";
+  const categoryName =
+    productTabs.find((product) => product.id == category)?.label || "";
 
-  const relatedProducts = fakeProducts
-    .filter((p) => p.category === category && p.slug !== slug)
-    .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
-    .slice(0, 4);
+  const relatedProducts = await getRelatedProducts(product.category, slug, 8);
 
   const categoryLink = `/products?category=${category}`;
 
@@ -104,7 +125,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
           fertilization={product.cares.fertilization}
         />
         <CommentForm />
-        <CommentList comments={product.comments || []}  />
+        <CommentList comments={product.comments || []} />
       </section>
 
       <ProductSlider
@@ -113,7 +134,11 @@ export default async function ProductPage({ params }: ProductPageProps) {
         title="گیاه های مشابه"
       />
 
-      <MobileStickyCart discount={product.discount} price={product.price} stock={product.stock} />
+      <MobileStickyCart
+        discount={product.discount}
+        price={product.price}
+        stock={product.stock}
+      />
     </main>
   );
 }
