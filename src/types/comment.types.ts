@@ -8,8 +8,8 @@ export interface CommentAuthor {
 
 export interface IComment {
   _id: string;
-  targetType: "product" | "blog";
-  targetId: string;  
+  targetType?: "product" | "blog";
+  targetId?: string;  
   user: CommentAuthor;
   text: string;
   date: Date;
@@ -18,6 +18,6 @@ export interface IComment {
     text: string;
     date: Date;
   };
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
 }

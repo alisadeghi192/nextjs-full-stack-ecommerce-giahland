@@ -2,13 +2,13 @@
 
 import { useState } from "react";
 import CommentItem from "./CommentItem";
-import { Comment } from "@/types/comment.types";
+import { IComment } from "@/types/comment.types";
 import OutlineButton from "./OutlineButton";
 import { COMMENTS_PER_PAGE } from "@/lib/constants";
 
 
 interface CommentListProps {
-  comments?: Comment[];
+  comments?: IComment[];
 }
 
 export default function CommentList({ comments = [] }: CommentListProps) {

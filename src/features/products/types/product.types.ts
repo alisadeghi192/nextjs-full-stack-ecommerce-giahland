@@ -56,5 +56,5 @@ export interface ProductType {
   cares: ProductCare;
 
   seo?: ProductSEO;
-  comments?: string[] | Comment[]
+  comments?: string[] | IComment[]
 }

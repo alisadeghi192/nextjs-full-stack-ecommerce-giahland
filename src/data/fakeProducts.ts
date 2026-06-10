@@ -1,6 +1,8 @@
+import { ProductType } from "@/features/products/types/product.types";
 
-export const fakeProducts = [
+export const fakeProducts: ProductType[] = [
   {
+    _id: "indoor-1",
     name: "بابا آدم",
     price: 1850000,
     slug: "baba-adam",
@@ -138,7 +140,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-indoor-1-1",
+        user: { _id: "user-1", name: "علی رضایی", role: "user" },
+        date: new Date("2025-04-20"),
+        text: "بابا آدم رو از کجا تهیه کنم؟ خیلی خوشگله.",
+      },
+      {
+        _id: "comment-indoor-1-2",
+        user: { _id: "user-2", name: "سارا محمدی", role: "user" },
+        date: new Date("2025-04-18"),
+        text: "برگهای بابا آدم من زرد شده، چیکار کنم؟",
+      },
+      {
+        _id: "comment-indoor-1-3",
+        user: { _id: "user-3", name: "رضا کریمی", role: "user" },
+        date: new Date("2025-04-15"),
+        text: "آیا این گیاه برای نگهداری در اتاق خواب مناسبه؟",
+      },
+      {
+        _id: "comment-indoor-1-4",
+        user: { _id: "user-4", name: "نازنین احمدی", role: "user" },
+        date: new Date("2025-04-19"),
+        text: "لکه های قهوه ای روی برگهاش ظاهر شده، علتش چیه؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-04-20"),
+          text: "آفتاب سوختگی یا آبیاری با آب سرد. نور غیرمستقیم و آب ولرم استفاده کنید.",
+        },
+      },
+      {
+        _id: "comment-indoor-1-5",
+        user: { _id: "user-5", name: "حمید حسینی", role: "user" },
+        date: new Date("2025-04-17"),
+        text: "گلدون بابا آدمم کوچیک شده، چه خاکی براش خوبه؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-04-18"),
+          text: "خاک سبک با زهکش عالی مثل پیت ماس + پرلیت + پوکه.",
+        },
+      },
+      {
+        _id: "comment-indoor-1-6",
+        user: { _id: "user-6", name: "فاطمه موسوی", role: "user" },
+        date: new Date("2025-04-14"),
+        text: "چند وقت یه بار باید کود بدم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-04-15"),
+          text: "هر ۲۰ روز یکبار در بهار و تابستان، کود مایع نصف غلظت.",
+        },
+      },
+      {
+        _id: "comment-indoor-1-7",
+        user: { _id: "user-7", name: "زهرا رحیمی", role: "user" },
+        date: new Date("2025-04-16"),
+        text: "این گیاه رو دارید؟ چند روزه تحویل می‌دین؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-04-17"),
+          text: "بله موجود است، سفارش امروز فردا ارسال می‌شه.",
+        },
+      },
+      {
+        _id: "comment-indoor-1-8",
+        user: { _id: "user-8", name: "مهدی قاسمی", role: "user" },
+        date: new Date("2025-04-13"),
+        text: "آیا برای گربه ضرر داره؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-04-14"),
+          text: "بله، تمام بخش‌ها سمی است. دور از دسترس حیوانات نگهداری شود.",
+        },
+      },
+      {
+        _id: "comment-indoor-1-9",
+        user: { _id: "user-9", name: "مریم جعفری", role: "user" },
+        date: new Date("2025-04-11"),
+        text: "ارتفاع این گیاه چقدر میشه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-04-12"),
+          text: "تا حدود ۹۰ سانتیمتر، رشد متوسط سریع.",
+        },
+      },
+      {
+        _id: "comment-indoor-1-10",
+        user: { _id: "user-10", name: "حسین نوروزی", role: "user" },
+        date: new Date("2025-04-10"),
+        text: "قیمت مناسبی داره؟ ممنونم",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-04-11"),
+          text: "کیفیت بالایی داره، تو سایت مقایسه کنید.",
+        },
+      },
+    ],
 
     seo: {
       title: "بابا آدم | خرید گیاه آپارتمانی بابا آدم | گیاه‌لند",
@@ -149,6 +247,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "indoor-sansevieria-1",
     name: "سانسوریا",
     price: 1650000,
     slug: "sansevieria",
@@ -285,7 +384,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-sans-1",
+        user: { _id: "user-201", name: "سارا محمدی", role: "user" },
+        date: new Date("2025-05-12"),
+        text: "سانسوریا رو تو اتاق خواب نگه دارم ضرر نداره؟",
+      },
+      {
+        _id: "comment-sans-2",
+        user: { _id: "user-202", name: "علی کریمی", role: "user" },
+        date: new Date("2025-05-10"),
+        text: "برگ سانسوریام خشک شده از نوک، چرا؟",
+      },
+      {
+        _id: "comment-sans-3",
+        user: { _id: "user-203", name: "مریم نوری", role: "user" },
+        date: new Date("2025-05-08"),
+        text: "قیمت ۸۹۰ تومن برای این سایز مناسبه؟",
+      },
+      {
+        _id: "comment-sans-4",
+        user: { _id: "user-204", name: "حمیدرضا حسینی", role: "user" },
+        date: new Date("2025-05-09"),
+        text: "سانسوریا آبیاری زیاد رو چطور تشخیص بدم؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-05-10"),
+          text: "برگ‌های زرد، نرم و لزج در پایین گیاه. سریعاً آبیاری را قطع کرده و خاک را عوض کنید.",
+        },
+      },
+      {
+        _id: "comment-sans-5",
+        user: { _id: "user-205", name: "فاطمه زارع", role: "user" },
+        date: new Date("2025-05-06"),
+        text: "چطور سانسوریا رو تکثیر کنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-05-07"),
+          text: "تقسیم بوته در بهار ساده‌ترین روش است. برگ را هم می‌توانید قلمه بزنید ولی ابلقی از بین می‌رود.",
+        },
+      },
+      {
+        _id: "comment-sans-6",
+        user: { _id: "user-206", name: "نرگس احمدی", role: "user" },
+        date: new Date("2025-05-04"),
+        text: "برای گربه ضرر دارد؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-05-05"),
+          text: "بله سمی است. اگر گربه برگ را بجود باعث استفراغ و ترشح بزاق می‌شود. دور از دسترس نگهداری کنید.",
+        },
+      },
+      {
+        _id: "comment-sans-7",
+        user: { _id: "user-207", name: "زهرا موسوی", role: "user" },
+        date: new Date("2025-05-11"),
+        text: "گلدون سانسوریا چه سایزی مناسبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-12"),
+          text: "گلدان ۱۸ سانت برای سانسوریای متوسط مناسب است. ۲ سال بعد به گلدان ۲۲ تعویض کنید.",
+        },
+      },
+      {
+        _id: "comment-sans-8",
+        user: { _id: "user-208", name: "مهدی رحمانی", role: "user" },
+        date: new Date("2025-05-07"),
+        text: "ارسال به تهران چنده؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-08"),
+          text: "ارسال به تهران ۳۰ هزار تومان، سفارش بالای ۵۰۰ هزار رایگان است.",
+        },
+      },
+      {
+        _id: "comment-sans-9",
+        user: { _id: "user-209", name: "سمیه کاظمی", role: "user" },
+        date: new Date("2025-05-05"),
+        text: "آیا سانسوریا تصفیه کننده هواست؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-06"),
+          text: "بله، طبق تحقیق ناسا یکی از بهترین تصفیه‌کننده‌های طبیعی است، مخصوصاً برای فرمالدئید و بنزن.",
+        },
+      },
+      {
+        _id: "comment-sans-10",
+        user: { _id: "user-210", name: "پویا صادقی", role: "user" },
+        date: new Date("2025-05-03"),
+        text: "برگام لکه قهوه‌ای داره، آفت زده؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-04"),
+          text: "احتمال قارچ آنتراکنوز. برگ‌های آلوده را جدا کرده و از قارچکش استفاده کنید. آبیاری را کمتر کنید.",
+        },
+      },
+    ],
 
     seo: {
       title: "سانسوریا | خرید گیاه سانسوریا (شفلرا) | گیاه‌لند",
@@ -302,6 +497,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "indoor-yucca-1",
     name: "یوکا",
     price: 2350000,
     slug: "yucca",
@@ -437,7 +633,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-yucca-1",
+        user: { _id: "user-101", name: "مریم زمانی", role: "user" },
+        date: new Date("2025-05-10"),
+        text: "یوکا رو میشه روی تراس نگهداری کرد؟",
+      },
+      {
+        _id: "comment-yucca-2",
+        user: { _id: "user-102", name: "رضا احمدی", role: "user" },
+        date: new Date("2025-05-08"),
+        text: "برگهای یوکام خشک و قهوه‌ای شدن، چرا؟",
+      },
+      {
+        _id: "comment-yucca-3",
+        user: { _id: "user-103", name: "سارا ملکی", role: "user" },
+        date: new Date("2025-05-05"),
+        text: "قیمتش نسبت به سایز گلدون مناسبه؟",
+      },
+      {
+        _id: "comment-yucca-4",
+        user: { _id: "user-104", name: "ناصر کریمی", role: "user" },
+        date: new Date("2025-05-07"),
+        text: "ساقه یوکام نرم شده، چیکار کنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-05-08"),
+          text: "پوسیدگی ساقه به دلیل آبیاری زیاد. فوراً آبیاری را قطع کنید. اگر قسمت نرم گسترده شده، گیاه قابل نجات نیست.",
+        },
+      },
+      {
+        _id: "comment-yucca-5",
+        user: { _id: "user-105", name: "فائزه حسینی", role: "user" },
+        date: new Date("2025-05-03"),
+        text: "برگهای یوکا زرد و افتاده؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-05-04"),
+          text: "زردی برگ‌های پایینی طبیعی است. اگر برگ‌های بالایی زرد شده، یا کم‌آبی یا غرقابی. وضعیت خاک را بررسی کنید.",
+        },
+      },
+      {
+        _id: "comment-yucca-6",
+        user: { _id: "user-106", name: "محمدرضا صادقی", role: "user" },
+        date: new Date("2025-05-01"),
+        text: "چگونه یوکا را قلمه بزنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-05-02"),
+          text: "بهترین روش قلمه ساقه است. تکه ۱۰ سانتی از تنه را ببرید، ۲ روز خشک کنید، سپس در خاک کاکتوس بکارید.",
+        },
+      },
+      {
+        _id: "comment-yucca-7",
+        user: { _id: "user-107", name: "زهرا علیزاده", role: "user" },
+        date: new Date("2025-05-06"),
+        text: "ارسال به شهرستان چقدر طول میکشه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-07"),
+          text: "سفارش امروز فردا ارسال، ۲ تا ۴ روز کاری در شهرستان.",
+        },
+      },
+      {
+        _id: "comment-yucca-8",
+        user: { _id: "user-108", name: "امیرحسین نوری", role: "user" },
+        date: new Date("2025-05-04"),
+        text: "آیا یوکا برای سگ ضرر داره؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-05"),
+          text: "بله، سمی است. دور از دسترس حیوانات خانگی نگهداری شود.",
+        },
+      },
+      {
+        _id: "comment-yucca-9",
+        user: { _id: "user-109", name: "شهرام رستمی", role: "user" },
+        date: new Date("2025-05-02"),
+        text: "قد یوکا هنگام ارسال چقدر است؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-03"),
+          text: "بین ۷۰ تا ۹۰ سانتیمتر، در گلدان ۲۸ سانتی.",
+        },
+      },
+      {
+        _id: "comment-yucca-10",
+        user: { _id: "user-110", name: "لیلا کرمی", role: "user" },
+        date: new Date("2025-04-30"),
+        text: "آیا یوکا در سایه رشد میکند؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-01"),
+          text: "خیر، سایه باعث ضعف و ریزش برگ میشود. حتماً به نور زیاد نیاز دارد.",
+        },
+      },
+    ],
 
     seo: {
       title: "یوکا | خرید گیاه یوکا (شمشیری) | گیاه‌لند",
@@ -454,6 +746,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "indoor-pothos-1",
     name: "پتوس",
     price: 500000,
     slug: "pothos",
@@ -591,7 +884,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-pothos-1",
+        user: { _id: "user-p1", name: "ملیکا حسینی", role: "user" },
+        date: new Date("2025-05-15"),
+        text: "پتوس رو تو آب نگهداری کنم بهتره یا خاک؟",
+      },
+      {
+        _id: "comment-pothos-2",
+        user: { _id: "user-p2", name: "امیرحسین نادری", role: "user" },
+        date: new Date("2025-05-13"),
+        text: "برگای پتوس من سبز شدن بدون ابلقی، چرا؟",
+      },
+      {
+        _id: "comment-pothos-3",
+        user: { _id: "user-p3", name: "زهرا کمالی", role: "user" },
+        date: new Date("2025-05-10"),
+        text: "پتوس چند روز یک بار آب میخواد؟",
+      },
+      {
+        _id: "comment-pothos-4",
+        user: { _id: "user-p4", name: "رضا احمدی", role: "user" },
+        date: new Date("2025-05-12"),
+        text: "قلمه پتوس توی آب پوسید، چیکار کنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-05-13"),
+          text: "گره باید بالای آب باشد و هر ۳-۴ روز آب تعویض شود. برگ‌های زیر آب را حذف کنید.",
+        },
+      },
+      {
+        _id: "comment-pothos-5",
+        user: { _id: "user-p5", name: "سارا کریمی", role: "user" },
+        date: new Date("2025-05-08"),
+        text: "آیا پتوس برای سگ ضرر داره؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-05-09"),
+          text: "بله سمی است. باعث تحریک دهان، استفراغ و مشکل در بلع می‌شود.",
+        },
+      },
+      {
+        _id: "comment-pothos-6",
+        user: { _id: "user-p6", name: "نازنین زارع", role: "user" },
+        date: new Date("2025-05-06"),
+        text: "چرا پتوس من رشد نمیکنه؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-05-07"),
+          text: "کمبود نور یا کود. پتوس به نور غیرمستقیم روشن نیاز دارد. بهار و تابستان کود بدهید.",
+        },
+      },
+      {
+        _id: "comment-pothos-7",
+        user: { _id: "user-p7", name: "حسین محمودی", role: "user" },
+        date: new Date("2025-05-11"),
+        text: "ارسال به کرج چند روزه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-12"),
+          text: "سفارش امروز فردا ارسال، ۱ تا ۲ روز کاری در کرج.",
+        },
+      },
+      {
+        _id: "comment-pothos-8",
+        user: { _id: "user-p8", name: "فاطمه موسوی", role: "user" },
+        date: new Date("2025-05-09"),
+        text: "قیمت پتوس با گلدون چنده؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-10"),
+          text: "۴۵۰ هزار تومان با گلدان پلاستیکی. گلدان سرامیکی جداگانه محاسبه می‌شود.",
+        },
+      },
+      {
+        _id: "comment-pothos-9",
+        user: { _id: "user-p9", name: "علی رضایی", role: "user" },
+        date: new Date("2025-05-07"),
+        text: "آیا پتوس تو راهرو با نور کم زنده میمونه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-08"),
+          text: "زنده می‌ماند ولی رشد کند می‌شود و ابلقی از بین می‌رود. بهتر است هر چند وقت به نور ببرید.",
+        },
+      },
+      {
+        _id: "comment-pothos-10",
+        user: { _id: "user-p10", name: "سمیه مرادی", role: "user" },
+        date: new Date("2025-05-05"),
+        text: "میشه پتوس رو تو آب دائمی نگهداشت؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-06"),
+          text: "بله، ولی نیاز به کود مایع هر ماه دارد. خاک برای رشد بهتر و پایدارتر توصیه می‌شود.",
+        },
+      },
+    ],
 
     seo: {
       title: "پتوس | خرید گیاه پتوس (پیچک شیپوری) | گیاه‌لند",
@@ -608,6 +997,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "indoor-zz-1",
     name: "زاموفیلیا",
     price: 3290000,
     slug: "zz-plant",
@@ -745,7 +1135,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-zz-1",
+        user: { _id: "user-z1", name: "مهسا احمدی", role: "user" },
+        date: new Date("2025-05-18"),
+        text: "زاموفیلیا رو دو ماه پیش خریدم، هنوز آب ندادم برگاش شادابه!",
+      },
+      {
+        _id: "comment-zz-2",
+        user: { _id: "user-z2", name: "بهنام صادقی", role: "user" },
+        date: new Date("2025-05-16"),
+        text: "چرا برگ جدید زاموفیلیا کوچیک درمیاد؟",
+      },
+      {
+        _id: "comment-zz-3",
+        user: { _id: "user-z3", name: "الناز کریمی", role: "user" },
+        date: new Date("2025-05-14"),
+        text: "آیا زاموفیلیا تصفیه کننده هواست؟",
+      },
+      {
+        _id: "comment-zz-4",
+        user: { _id: "user-z4", name: "پوریا نظری", role: "user" },
+        date: new Date("2025-05-15"),
+        text: "ساقه‌هام افتاده و چروک شده، چه کنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-05-16"),
+          text: "کم‌آبی شدید. آبیاری عمیق انجام بدید و خاک رو مرطوب (نه خیس) نگه دارید تا ساقه‌ها برگردند.",
+        },
+      },
+      {
+        _id: "comment-zz-5",
+        user: { _id: "user-z5", name: "غزل رضوان", role: "user" },
+        date: new Date("2025-05-12"),
+        text: "آیا میتونم تو نور مصنوعی اداره نگه دارم؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-05-13"),
+          text: "بله، عالی عمل می‌کنه. حتی زیر لامپ فلورسنت ۱۲ ساعت در روز رشد خوبی داره.",
+        },
+      },
+      {
+        _id: "comment-zz-6",
+        user: { _id: "user-z6", name: "سودابه مقدم", role: "user" },
+        date: new Date("2025-05-10"),
+        text: "زمستان چقدر آب بدم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-05-11"),
+          text: "هر ۶ تا ۸ هفته یک بار، یا حتی وقتی خاک کاملاً خشک شد. زیاده‌روی نکنید.",
+        },
+      },
+      {
+        _id: "comment-zz-7",
+        user: { _id: "user-z7", name: "امیرحسین محمدی", role: "user" },
+        date: new Date("2025-05-13"),
+        text: "قیمت ۱.۲۹۰.۰۰۰ مناسب است؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-14"),
+          text: "با تخفیف ۵٪ حدود ۱.۲۲۵.۰۰۰ تومان. نسبت به کیفیت و سایز گلدان، قیمت رقابتی داریم.",
+        },
+      },
+      {
+        _id: "comment-zz-8",
+        user: { _id: "user-z8", name: "فرزاد ملکی", role: "user" },
+        date: new Date("2025-05-11"),
+        text: "برگام لکه‌های سفید داره، آفت زده؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-12"),
+          text: "اگر لکه‌ها پودری و قابل پاک شدن نیستند، احتمالاً آفتاب سوختگی. گیاه را دور از نور مستقیم ببرید.",
+        },
+      },
+      {
+        _id: "comment-zz-9",
+        user: { _id: "user-z9", name: "نگار حسینی", role: "user" },
+        date: new Date("2025-05-09"),
+        text: "آیا تکثیر زاموفیلیا سخته؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-10"),
+          text: "تقسیم غده ساده است. قلمه برگ زمانبر (۶-۹ ماه) ولی امکان‌پذیر است.",
+        },
+      },
+      {
+        _id: "comment-zz-10",
+        user: { _id: "user-z10", name: "علیرضا کاظمی", role: "user" },
+        date: new Date("2025-05-07"),
+        text: "گلدونش از کف ریشه بیرون زده، تعویض کنم؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-08"),
+          text: "بله، زمان تعویض رسیده. در بهار گلدان یک سایز بزرگتر با خاک تازه.",
+        },
+      },
+    ],
 
     seo: {
       title: "زاموفیلیا | خرید گیاه زاموفیلیا (ZZ Plant) | گیاه‌لند",
@@ -762,6 +1248,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "indoor-monstera-1",
     name: "مونسترا",
     price: 4800000,
     slug: "monstera",
@@ -777,13 +1264,13 @@ export const fakeProducts = [
     weight: 3200,
     potDimensions: { length: 30, width: 30, height: 90 },
     sunlight: "نور غیرمستقیم روشن",
-    image: "/static/images/products/indoor/monstera/main.webp",
-    images: [
-      "/static/images/products/indoor/monstera/main.webp",
-      "/static/images/products/indoor/monstera/1.webp",
-      "/static/images/products/indoor/monstera/2.webp",
-      "/static/images/products/indoor/monstera/3.webp",
-    ],
+image: "/static/images/products/indoor/monstera/main.webp",
+images: [
+  "/static/images/products/indoor/monstera/main.webp",
+  "/static/images/products/indoor/monstera/1.webp",
+  "/static/images/products/indoor/monstera/2.webp",
+  "/static/images/products/indoor/monstera/3.webp",
+],
 
     features: {
       overview: [
@@ -898,7 +1385,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-monstera-1",
+        user: { _id: "user-m1", name: "سحر رضایی", role: "user" },
+        date: new Date("2025-05-20"),
+        text: "برگ مونسترای من شکاف نداره، چیکار کنم؟",
+      },
+      {
+        _id: "comment-monstera-2",
+        user: { _id: "user-m2", name: "امیر علیپور", role: "user" },
+        date: new Date("2025-05-18"),
+        text: "مونسترا رو چند وقت یکبار کود بدم؟",
+      },
+      {
+        _id: "comment-monstera-3",
+        user: { _id: "user-m3", name: "فاطمه کرمی", role: "user" },
+        date: new Date("2025-05-15"),
+        text: "آیا مونسترا به قیم نیاز دارد؟",
+      },
+      {
+        _id: "comment-monstera-4",
+        user: { _id: "user-m4", name: "حسین صادقی", role: "user" },
+        date: new Date("2025-05-17"),
+        text: "برگام لکه قهوه‌ای داره، چرا؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-05-18"),
+          text: "آفتاب مستقیم یا آبیاری با آب سرد. نور غیرمستقیم و آب ولرم استفاده کنید.",
+        },
+      },
+      {
+        _id: "comment-monstera-5",
+        user: { _id: "user-m5", name: "نگار حسینی", role: "user" },
+        date: new Date("2025-05-14"),
+        text: "چطور مونسترا رو قلمه بزنم؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-05-15"),
+          text: "قلمه ساقه با یک گره و ۲ برگ بزنید، در آب یا خاک مرطوب قرار دهید. ریشه‌زایی ۳-۴ هفته.",
+        },
+      },
+      {
+        _id: "comment-monstera-6",
+        user: { _id: "user-m6", name: "پریسا محمدی", role: "user" },
+        date: new Date("2025-05-12"),
+        text: "برای گربه ضرر دارد؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-05-13"),
+          text: "بله سمی است. دور از دسترس حیوانات خانگی نگهداری کنید.",
+        },
+      },
+      {
+        _id: "comment-monstera-7",
+        user: { _id: "user-m7", name: "مهدی رحمانی", role: "user" },
+        date: new Date("2025-05-16"),
+        text: "ارسال مونسترا به اصفهان چنده؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-17"),
+          text: "۴۵ هزار تومان. سفارش بالای ۷۰۰ هزار رایگان است.",
+        },
+      },
+      {
+        _id: "comment-monstera-8",
+        user: { _id: "user-m8", name: "زهرا موسوی", role: "user" },
+        date: new Date("2025-05-13"),
+        text: "قیمت مونسترا با تخفیف چقدر میشه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-14"),
+          text: "با ۱۰٪ تخفیف، ۱.۶۶۵.۰۰۰ تومان.",
+        },
+      },
+      {
+        _id: "comment-monstera-9",
+        user: { _id: "user-m9", name: "علیرضا نادری", role: "user" },
+        date: new Date("2025-05-11"),
+        text: "آیا مونسترا تو سایه رشد میکنه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-12"),
+          text: "در سایه برگها شکافدار نمیشن و رشد کند میشه. نور غیرمستقیم روشن لازم داره.",
+        },
+      },
+      {
+        _id: "comment-monstera-10",
+        user: { _id: "user-m10", name: "سعید احمدی", role: "user" },
+        date: new Date("2025-05-09"),
+        text: "چه خاکی برای مونسترا مناسبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-10"),
+          text: "خاک برگ + پیت ماس + پرلیت + کوکوپیت. ترکیب سبک با زهکش عالی.",
+        },
+      },
+    ],
 
     seo: {
       title: "مونسترا | خرید گیاه مونسترا (برگ انجیری) | گیاه‌لند",
@@ -915,6 +1498,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "indoor-ficus-1",
     name: "فیکوس الاستیکا",
     price: 2650000,
     slug: "ficus-elastic",
@@ -930,13 +1514,13 @@ export const fakeProducts = [
     weight: 3800,
     potDimensions: { length: 30, width: 30, height: 100 },
     sunlight: "نور غیرمستقیم روشن",
-    image: "/static/images/products/indoor/ficus-elastic/main.webp",
-    images: [
-      "/static/images/products/indoor/ficus-elastic/main.webp",
-      "/static/images/products/indoor/ficus-elastic/1.webp",
-      "/static/images/products/indoor/ficus-elastic/2.webp",
-      "/static/images/products/indoor/ficus-elastic/3.webp",
-    ],
+image: "/static/images/products/indoor/ficus-elastic/main.webp",
+images: [
+  "/static/images/products/indoor/ficus-elastic/main.webp",
+  "/static/images/products/indoor/ficus-elastic/1.webp",
+  "/static/images/products/indoor/ficus-elastic/2.webp",
+  "/static/images/products/indoor/ficus-elastic/3.webp",
+],
 
     features: {
       overview: [
@@ -1051,7 +1635,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-ficus-1",
+        user: { _id: "user-f1", name: "سارا محمدی", role: "user" },
+        date: new Date("2025-05-22"),
+        text: "فیکوس من برگ میریزه، چیکار کنم؟",
+      },
+      {
+        _id: "comment-ficus-2",
+        user: { _id: "user-f2", name: "رضا کریمی", role: "user" },
+        date: new Date("2025-05-20"),
+        text: "آیا فیکوس به نور زیادی نیاز داره؟",
+      },
+      {
+        _id: "comment-ficus-3",
+        user: { _id: "user-f3", name: "مریم احمدی", role: "user" },
+        date: new Date("2025-05-18"),
+        text: "برگام لکه قهوه‌ای داره، چرا؟",
+      },
+      {
+        _id: "comment-ficus-4",
+        user: { _id: "user-f4", name: "امیر حسینی", role: "user" },
+        date: new Date("2025-05-19"),
+        text: "چطور فیکوس رو تکثیر کنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-05-20"),
+          text: "قلمه ساقه در بهار. شیرابه را بشویید، سپس در هورمون ریشه‌زایی و خاک سبک بکارید.",
+        },
+      },
+      {
+        _id: "comment-ficus-5",
+        user: { _id: "user-f5", name: "نازنین زارع", role: "user" },
+        date: new Date("2025-05-16"),
+        text: "آیا فیکوس برای سگ ضرر داره؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-05-17"),
+          text: "بله، شیرابه سمی است. دور از دسترس حیوانات نگهداری شود.",
+        },
+      },
+      {
+        _id: "comment-ficus-6",
+        user: { _id: "user-f6", name: "فاطمه موسوی", role: "user" },
+        date: new Date("2025-05-14"),
+        text: "چرا برگ پایینی فیکوس زرد میشه؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-05-15"),
+          text: "زردی برگ‌های پایینی طبیعی است. اگر زیاد شد، احتمال کم‌آبی یا زیادی نور است.",
+        },
+      },
+      {
+        _id: "comment-ficus-7",
+        user: { _id: "user-f7", name: "حسن نادری", role: "user" },
+        date: new Date("2025-05-17"),
+        text: "ارسال فیکوس به شیراز چنده؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-18"),
+          text: "۵۰ هزار تومان، سفارش بالای ۷۰۰ هزار رایگان است.",
+        },
+      },
+      {
+        _id: "comment-ficus-8",
+        user: { _id: "user-f8", name: "زهرا رضایی", role: "user" },
+        date: new Date("2025-05-15"),
+        text: "قیمت فیکوس الاستیکا با گلدون چنده؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-16"),
+          text: "۱.۶۵۰.۰۰۰ تومان با گلدان پلاستیکی.",
+        },
+      },
+      {
+        _id: "comment-ficus-9",
+        user: { _id: "user-f9", name: "علیرضا کرمی", role: "user" },
+        date: new Date("2025-05-13"),
+        text: "آیا فیکوس تو راهرو با نور کم زنده میمونه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-14"),
+          text: "زنده می‌ماند ولی رشد کند می‌شود و ابلقی از بین می‌رود. بهتر است در نور غیرمستقیم روشن باشد.",
+        },
+      },
+      {
+        _id: "comment-ficus-10",
+        user: { _id: "user-f10", name: "سمیه مرادی", role: "user" },
+        date: new Date("2025-05-11"),
+        text: "چه خاکی برای فیکوس مناسبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-12"),
+          text: "خاک برگ + پیت ماس + پرلیت + کوکوپیت. زهکش خوب ضروری است.",
+        },
+      },
+    ],
 
     seo: {
       title: "فیکوس الاستیکا | خرید گیاه فیکوس (بنیامین) | گیاه‌لند",
@@ -1068,6 +1748,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "indoor-aglaonema-1",
     name: "آگلونما",
     price: 2750000,
     slug: "aglaonema",
@@ -1083,13 +1764,13 @@ export const fakeProducts = [
     weight: 2600,
     potDimensions: { length: 40, width: 40, height: 75 },
     sunlight: "نور کم تا متوسط",
-    image: "/static/images/products/indoor/aglaonema/main.webp",
-    images: [
-      "/static/images/products/indoor/aglaonema/main.webp",
-      "/static/images/products/indoor/aglaonema/1.webp",
-      "/static/images/products/indoor/aglaonema/2.webp",
-      "/static/images/products/indoor/aglaonema/3.webp",
-    ],
+image: "/static/images/products/indoor/aglaonema/main.webp",
+images: [
+  "/static/images/products/indoor/aglaonema/main.webp",
+  "/static/images/products/indoor/aglaonema/1.webp",
+  "/static/images/products/indoor/aglaonema/2.webp",
+  "/static/images/products/indoor/aglaonema/3.webp",
+],
 
     features: {
       overview: [
@@ -1203,7 +1884,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-aglao-1",
+        user: { _id: "user-a1", name: "زهرا کمالی", role: "user" },
+        date: new Date("2025-05-24"),
+        text: "آگلونما من برگاش قهوه‌ای میشه، چرا؟",
+      },
+      {
+        _id: "comment-aglao-2",
+        user: { _id: "user-a2", name: "محسن رضایی", role: "user" },
+        date: new Date("2025-05-22"),
+        text: "آیا آگلونما تو نور کم زنده میمونه؟",
+      },
+      {
+        _id: "comment-aglao-3",
+        user: { _id: "user-a3", name: "فاطمه حسینی", role: "user" },
+        date: new Date("2025-05-20"),
+        text: "چند وقت یکبار آب بدم؟",
+      },
+      {
+        _id: "comment-aglao-4",
+        user: { _id: "user-a4", name: "علی نادری", role: "user" },
+        date: new Date("2025-05-21"),
+        text: "برگام لکه زرد داره، چیکار کنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-05-22"),
+          text: "احتمال آبیاری زیاد یا قارچ. آبیاری را قطع کنید و از قارچکش استفاده کنید.",
+        },
+      },
+      {
+        _id: "comment-aglao-5",
+        user: { _id: "user-a5", name: "نرگس سلیمانی", role: "user" },
+        date: new Date("2025-05-18"),
+        text: "آیا آگلونما برای گربه ضرر داره؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-05-19"),
+          text: "بله سمی است و باعث تحریک دهان و استفراغ می‌شود. دور از دسترس نگهداری کنید.",
+        },
+      },
+      {
+        _id: "comment-aglao-6",
+        user: { _id: "user-a6", name: "سارا احمدی", role: "user" },
+        date: new Date("2025-05-16"),
+        text: "چطور آگلونما رو تکثیر کنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-05-17"),
+          text: "تقسیم بوته در بهار ساده‌ترین روش است. قلمه ساقه هم جواب می‌دهد.",
+        },
+      },
+      {
+        _id: "comment-aglao-7",
+        user: { _id: "user-a7", name: "حمید رستمی", role: "user" },
+        date: new Date("2025-05-19"),
+        text: "ارسال آگلونما به مشهد چنده؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-20"),
+          text: "۴۵ هزار تومان، سفارش بالای ۷۰۰ هزار رایگان.",
+        },
+      },
+      {
+        _id: "comment-aglao-8",
+        user: { _id: "user-a8", name: "ملیکا زارع", role: "user" },
+        date: new Date("2025-05-17"),
+        text: "قیمت آگلونما با گلدون مناسبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-18"),
+          text: "۷۵۰ هزار تومان با گلدان پلاستیکی، کاملاً رقابتی است.",
+        },
+      },
+      {
+        _id: "comment-aglao-9",
+        user: { _id: "user-a9", name: "رضا کرمی", role: "user" },
+        date: new Date("2025-05-15"),
+        text: "آیا آگلونما به کود نیاز داره؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-16"),
+          text: "در بهار و تابستان هر ۶-۸ هفته یک بار کود مایع نصف غلظت کافی است.",
+        },
+      },
+      {
+        _id: "comment-aglao-10",
+        user: { _id: "user-a10", name: "سعید محمدی", role: "user" },
+        date: new Date("2025-05-13"),
+        text: "چه خاکی برای آگلونما مناسبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-14"),
+          text: "خاک برگ + پیت ماس + پرلیت + کوکوپیت. زهکش خوب ضروری است.",
+        },
+      },
+    ],
 
     seo: {
       title: "آگلونما | خرید گیاه آگلونما (پتوس چینی) | گیاه‌لند",
@@ -1220,6 +1997,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "indoor-spathiphyllum-1",
     name: "اسپاتی فیلوم",
     price: 2890000,
     slug: "spathiphyllum",
@@ -1235,13 +2013,14 @@ export const fakeProducts = [
     weight: 2000,
     potDimensions: { length: 30, width: 30, height: 60 },
     sunlight: "نور غیرمستقیم متوسط تا کم",
-    image: "/static/images/products/indoor/spathiphyllum/main.webp",
-    images: [
-      "/static/images/products/indoor/spathiphyllum/main.webp",
-      "/static/images/products/indoor/spathiphyllum/1.webp",
-      "/static/images/products/indoor/spathiphyllum/2.webp",
-      "/static/images/products/indoor/spathiphyllum/3.webp",
-    ],
+  image: "/static/images/products/indoor/spathiphyllum/main.webp",
+images: [
+  "/static/images/products/indoor/spathiphyllum/main.webp",
+  "/static/images/products/indoor/spathiphyllum/1.webp",
+  "/static/images/products/indoor/spathiphyllum/2.webp",
+  "/static/images/products/indoor/spathiphyllum/3.webp",
+],
+
 
     features: {
       overview: [
@@ -1355,7 +2134,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-spath-1",
+        user: { _id: "user-s1", name: "زهرا موسوی", role: "user" },
+        date: new Date("2025-05-26"),
+        text: "اسپاتی فیلوم من گل نمیده، چرا؟",
+      },
+      {
+        _id: "comment-spath-2",
+        user: { _id: "user-s2", name: "رضا احمدی", role: "user" },
+        date: new Date("2025-05-24"),
+        text: "برگام قهوه‌ای شده، چیکار کنم؟",
+      },
+      {
+        _id: "comment-spath-3",
+        user: { _id: "user-s3", name: "سارا کریمی", role: "user" },
+        date: new Date("2025-05-22"),
+        text: "آیا اسپاتی فیلوم تصفیه کننده هواست؟",
+      },
+      {
+        _id: "comment-spath-4",
+        user: { _id: "user-s4", name: "امیر حسینی", role: "user" },
+        date: new Date("2025-05-23"),
+        text: "چند وقت یکبار آب بدم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-05-24"),
+          text: "خاک را مرطوب نگه دارید، وقتی سطح خاک خشک شد آبیاری کنید. هفته‌ای ۱-۲ بار در تابستان.",
+        },
+      },
+      {
+        _id: "comment-spath-5",
+        user: { _id: "user-s5", name: "نازنین زارع", role: "user" },
+        date: new Date("2025-05-20"),
+        text: "برای گربه ضرر داره؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-05-21"),
+          text: "بله، سمی است و باعث تحریک دهان و استفراغ می‌شود. دور از دسترس نگهداری کنید.",
+        },
+      },
+      {
+        _id: "comment-spath-6",
+        user: { _id: "user-s6", name: "محمد صادقی", role: "user" },
+        date: new Date("2025-05-18"),
+        text: "چطور اسپاتی فیلوم رو تکثیر کنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-05-19"),
+          text: "تقسیم بوته در بهار ساده‌ترین روش است. هر بخش باید ریشه و برگ کافی داشته باشد.",
+        },
+      },
+      {
+        _id: "comment-spath-7",
+        user: { _id: "user-s7", name: "فاطمه رضایی", role: "user" },
+        date: new Date("2025-05-21"),
+        text: "ارسال به تبریز چقدر طول میکشه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-22"),
+          text: "۲ تا ۳ روز کاری، هزینه ۴۵ هزار تومان.",
+        },
+      },
+      {
+        _id: "comment-spath-8",
+        user: { _id: "user-s8", name: "مهدی کرمی", role: "user" },
+        date: new Date("2025-05-19"),
+        text: "قیمت اسپاتی فیلوم مناسب است؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-20"),
+          text: "۸۹۰ هزار تومان با گلدان، نسبت به کیفیت بسیار مناسب است.",
+        },
+      },
+      {
+        _id: "comment-spath-9",
+        user: { _id: "user-s9", name: "زینب محمدی", role: "user" },
+        date: new Date("2025-05-17"),
+        text: "آیا اسپاتی فیلوم به نور مستقیم نیاز دارد؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-18"),
+          text: "خیر، نور غیرمستقیم یا سایه روشن کافی است. نور مستقیم برگ‌ها را می‌سوزاند.",
+        },
+      },
+      {
+        _id: "comment-spath-10",
+        user: { _id: "user-s10", name: "علی نوری", role: "user" },
+        date: new Date("2025-05-15"),
+        text: "چه خاکی برای اسپاتی فیلوم خوبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-16"),
+          text: "خاک برگ + پیت ماس + پرلیت + کوکوپیت. زهکش خوب بسیار مهم است.",
+        },
+      },
+    ],
 
     seo: {
       title: "اسپاتی فیلوم | خرید گیاه اسپاتی فیلوم (گل صلح) | گیاه‌لند",
@@ -1372,6 +2247,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "indoor-dracaena-1",
     name: "دراسنا",
     price: 2980000,
     slug: "dracaena",
@@ -1387,13 +2263,13 @@ export const fakeProducts = [
     weight: 2400,
     potDimensions: { length: 30, width: 30, height: 100 },
     sunlight: "نور غیرمستقیم روشن تا متوسط",
-    image: "/static/images/products/indoor/dracaena/main.webp",
-    images: [
-      "/static/images/products/indoor/dracaena/main.webp",
-      "/static/images/products/indoor/dracaena/1.webp",
-      "/static/images/products/indoor/dracaena/2.webp",
-      "/static/images/products/indoor/dracaena/3.webp",
-    ],
+ image: "/static/images/products/indoor/dracaena/main.webp",
+images: [
+  "/static/images/products/indoor/dracaena/main.webp",
+  "/static/images/products/indoor/dracaena/1.webp",
+  "/static/images/products/indoor/dracaena/2.webp",
+  "/static/images/products/indoor/dracaena/3.webp",
+],
     features: {
       overview: [
         "دراسنا با نام علمی Dracaena marginata، درختچه‌ای همیشه‌سبز با برگ‌های باریک، کشیده و نوک‌تیز به رنگ سبز با حاشیه قرمز است.",
@@ -1507,7 +2383,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-drac-1",
+        user: { _id: "user-d1", name: "ملیکا حسینی", role: "user" },
+        date: new Date("2025-05-28"),
+        text: "نوک برگ دراسنای من قهوه‌ای شده، چرا؟",
+      },
+      {
+        _id: "comment-drac-2",
+        user: { _id: "user-d2", name: "امیرعلی نادری", role: "user" },
+        date: new Date("2025-05-26"),
+        text: "آیا دراسنا به نور زیاد نیاز دارد؟",
+      },
+      {
+        _id: "comment-drac-3",
+        user: { _id: "user-d3", name: "زهرا رضایی", role: "user" },
+        date: new Date("2025-05-24"),
+        text: "برگ پایینی دراسنا زرد شده، طبیعی است؟",
+      },
+      {
+        _id: "comment-drac-4",
+        user: { _id: "user-d4", name: "سعید محمدی", role: "user" },
+        date: new Date("2025-05-25"),
+        text: "چطور دراسنا رو تکثیر کنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-05-26"),
+          text: "قلمه سرشاخه در آب یا خاک بهترین روش است. تکه‌های تنه هم قابل تکثیر هستند.",
+        },
+      },
+      {
+        _id: "comment-drac-5",
+        user: { _id: "user-d5", name: "فاطمه کریمی", role: "user" },
+        date: new Date("2025-05-22"),
+        text: "برای گربه ضرر دارد؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-05-23"),
+          text: "بله، سمی است و باعث استفراغ و ترشح بزاق می‌شود. دور از دسترس نگهداری کنید.",
+        },
+      },
+      {
+        _id: "comment-drac-6",
+        user: { _id: "user-d6", name: "حسین رحمانی", role: "user" },
+        date: new Date("2025-05-20"),
+        text: "چند وقت یکبار آب بدم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-05-21"),
+          text: "وقتی سطح خاک خشک شد. در تابستان هفته‌ای یک بار، در زمستان هر دو هفته یک بار کافی است.",
+        },
+      },
+      {
+        _id: "comment-drac-7",
+        user: { _id: "user-d7", name: "مریم زمانی", role: "user" },
+        date: new Date("2025-05-23"),
+        text: "ارسال به اصفهان چقدر طول میکشه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-24"),
+          text: "۲ روز کاری، هزینه ۴۵ هزار تومان.",
+        },
+      },
+      {
+        _id: "comment-drac-8",
+        user: { _id: "user-d8", name: "علی احمدی", role: "user" },
+        date: new Date("2025-05-21"),
+        text: "قیمت دراسنا با تخفیف چقدر میشه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-22"),
+          text: "با ۱۰٪ تخفیف، ۸۸۲ هزار تومان.",
+        },
+      },
+      {
+        _id: "comment-drac-9",
+        user: { _id: "user-d9", name: "سارا کمالی", role: "user" },
+        date: new Date("2025-05-19"),
+        text: "آیا دراسنا تصفیه کننده هواست؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-20"),
+          text: "بله، طبق تحقیق ناسا ترکیباتی مثل بنزن و فرمالدئید را جذب می‌کند.",
+        },
+      },
+      {
+        _id: "comment-drac-10",
+        user: { _id: "user-d10", name: "رضا نوری", role: "user" },
+        date: new Date("2025-05-17"),
+        text: "چه خاکی برای دراسنا خوبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-18"),
+          text: "خاک گلدان سبک با پرلیت و ماسه. زهکش بسیار مهم است.",
+        },
+      },
+    ],
 
     seo: {
       title: "دراسنا | خرید گیاه دراسنا (خون اژدها) | گیاه‌لند",
@@ -1524,6 +2496,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "indoor-calathea-1",
     name: "کالاتیا",
     price: 1550000,
     slug: "calathea",
@@ -1539,13 +2512,13 @@ export const fakeProducts = [
     weight: 1900,
     potDimensions: { length: 20, width: 20, height: 65 },
     sunlight: "نور غیرمستقیم متوسط تا کم",
-    image: "/static/images/products/indoor/calathea/main.webp",
-    images: [
-      "/static/images/products/indoor/calathea/main.webp",
-      "/static/images/products/indoor/calathea/1.webp",
-      "/static/images/products/indoor/calathea/2.webp",
-      "/static/images/products/indoor/calathea/3.webp",
-    ],
+image: "/static/images/products/indoor/calathea/main.webp",
+images: [
+  "/static/images/products/indoor/calathea/main.webp",
+  "/static/images/products/indoor/calathea/1.webp",
+  "/static/images/products/indoor/calathea/2.webp",
+  "/static/images/products/indoor/calathea/3.webp",
+],
 
     features: {
       overview: [
@@ -1661,7 +2634,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-calathea-1",
+        user: { _id: "user-c1", name: "نرگس احمدی", role: "user" },
+        date: new Date("2025-05-30"),
+        text: "برگ کالاتیام جمع شده، چرا؟",
+      },
+      {
+        _id: "comment-calathea-2",
+        user: { _id: "user-c2", name: "سحر رضایی", role: "user" },
+        date: new Date("2025-05-28"),
+        text: "لبه برگام قهوه‌ای شده، چیکار کنم؟",
+      },
+      {
+        _id: "comment-calathea-3",
+        user: { _id: "user-c3", name: "امیرحسین کرمی", role: "user" },
+        date: new Date("2025-05-26"),
+        text: "کالاتیا به چه رطوبتی نیاز دارد؟",
+      },
+      {
+        _id: "comment-calathea-4",
+        user: { _id: "user-c4", name: "فاطمه زارع", role: "user" },
+        date: new Date("2025-05-27"),
+        text: "چطور کالاتیا رو تکثیر کنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-05-28"),
+          text: "تقسیم بوته در بهار بهترین روش است. مراقب باشید ریشه‌ها آسیب نبینند.",
+        },
+      },
+      {
+        _id: "comment-calathea-5",
+        user: { _id: "user-c5", name: "زهرا موسوی", role: "user" },
+        date: new Date("2025-05-24"),
+        text: "آیا کالاتیا برای گربه ضرر دارد؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-05-25"),
+          text: "خیر، کالاتیا غیرسمی و برای حیوانات خانگی ایمن است.",
+        },
+      },
+      {
+        _id: "comment-calathea-6",
+        user: { _id: "user-c6", name: "محمد صادقی", role: "user" },
+        date: new Date("2025-05-22"),
+        text: "چند وقت یکبار آب بدم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-05-23"),
+          text: "خاک را مرطوب نگه دارید، زمانی که سطح خاک کمی خشک شد آبیاری کنید. از آب ولرم بدون کلر استفاده کنید.",
+        },
+      },
+      {
+        _id: "comment-calathea-7",
+        user: { _id: "user-c7", name: "سارا کمالی", role: "user" },
+        date: new Date("2025-05-25"),
+        text: "ارسال به کرج چند روزه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-26"),
+          text: "۱ تا ۲ روز کاری، هزینه ۳۰ هزار تومان.",
+        },
+      },
+      {
+        _id: "comment-calathea-8",
+        user: { _id: "user-c8", name: "رضا نوری", role: "user" },
+        date: new Date("2025-05-23"),
+        text: "قیمت کالاتیا کمی بالاست، چرا؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-24"),
+          text: "نگهداری و تکثیر کالاتیا دشوارتر است و تنوع رنگی خاصی دارد، به همین دلیل قیمت بالاتری دارد.",
+        },
+      },
+      {
+        _id: "comment-calathea-9",
+        user: { _id: "user-c9", name: "زینب محمدی", role: "user" },
+        date: new Date("2025-05-21"),
+        text: "آیا کالاتیا به نور مستقیم نیاز دارد؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-22"),
+          text: "خیر، نور غیرمستقیم ملایم بهترین است. نور مستقیم برگ‌ها را می‌سوزاند.",
+        },
+      },
+      {
+        _id: "comment-calathea-10",
+        user: { _id: "user-c10", name: "علی احمدی", role: "user" },
+        date: new Date("2025-05-19"),
+        text: "چه خاکی برای کالاتیا مناسب است؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-20"),
+          text: "پیت ماس + پرلیت + کوکوپیت + خاک برگ. خاک باید سبک و مرطوب‌نگه‌دار باشد.",
+        },
+      },
+    ],
 
     seo: {
       title: "کالاتیا | خرید گیاه کالاتیا (گیاه نمازگزار) | گیاه‌لند",
@@ -1678,6 +2747,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "indoor-maranta-1",
     name: "مارانتا",
     price: 4800000,
     slug: "maranta",
@@ -1693,13 +2763,13 @@ export const fakeProducts = [
     weight: 1400,
     potDimensions: { length: 20, width: 20, height: 65 },
     sunlight: "نور غیرمستقیم متوسط تا کم",
-    image: "/static/images/products/indoor/maranta/main.webp",
-    images: [
-      "/static/images/products/indoor/maranta/main.webp",
-      "/static/images/products/indoor/maranta/1.webp",
-      "/static/images/products/indoor/maranta/2.webp",
-      "/static/images/products/indoor/maranta/3.webp",
-    ],
+image: "/static/images/products/indoor/maranta/main.webp",
+images: [
+  "/static/images/products/indoor/maranta/main.webp",
+  "/static/images/products/indoor/maranta/1.webp",
+  "/static/images/products/indoor/maranta/2.webp",
+  "/static/images/products/indoor/maranta/3.webp",
+],
 
     features: {
       overview: [
@@ -1813,7 +2883,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-maranta-1",
+        user: { _id: "user-m1", name: "مریم حسینی", role: "user" },
+        date: new Date("2025-06-01"),
+        text: "برگ مارانتام جمع شده، چرا؟",
+      },
+      {
+        _id: "comment-maranta-2",
+        user: { _id: "user-m2", name: "سعید رضایی", role: "user" },
+        date: new Date("2025-05-30"),
+        text: "لبه برگام قهوه‌ای شده، رطوبت کمه؟",
+      },
+      {
+        _id: "comment-maranta-3",
+        user: { _id: "user-m3", name: "فاطمه کرمی", role: "user" },
+        date: new Date("2025-05-28"),
+        text: "آیا مارانتا حرکت برگ دارد؟",
+      },
+      {
+        _id: "comment-maranta-4",
+        user: { _id: "user-m4", name: "امیر حسینی", role: "user" },
+        date: new Date("2025-05-29"),
+        text: "چطور مارانتا رو تکثیر کنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-05-30"),
+          text: "تقسیم بوته در بهار ساده‌ترین روش. قلمه ساقه در آب هم جواب می‌دهد.",
+        },
+      },
+      {
+        _id: "comment-maranta-5",
+        user: { _id: "user-m5", name: "زهرا نادری", role: "user" },
+        date: new Date("2025-05-26"),
+        text: "آیا مارانتا برای گربه ضرر دارد؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-05-27"),
+          text: "خیر، مارانتا غیرسمی و برای حیوانات خانگی کاملاً ایمن است.",
+        },
+      },
+      {
+        _id: "comment-maranta-6",
+        user: { _id: "user-m6", name: "سارا محمدی", role: "user" },
+        date: new Date("2025-05-24"),
+        text: "چند وقت یکبار آب بدم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-05-25"),
+          text: "خاک را مرطوب نگه دارید، زمانی که سطح خاک کمی خشک شد آبیاری کنید. از آب ولرم استفاده کنید.",
+        },
+      },
+      {
+        _id: "comment-maranta-7",
+        user: { _id: "user-m7", name: "رضا احمدی", role: "user" },
+        date: new Date("2025-05-27"),
+        text: "ارسال به شیراز چقدر طول میکشه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-28"),
+          text: "۲ تا ۳ روز کاری، هزینه ۴۵ هزار تومان.",
+        },
+      },
+      {
+        _id: "comment-maranta-8",
+        user: { _id: "user-m8", name: "ملیکا زارع", role: "user" },
+        date: new Date("2025-05-25"),
+        text: "قیمت مارانتا مناسبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-26"),
+          text: "۶۸۰ هزار تومان با گلدان، نسبت به تنوع رنگی و خاص بودنش قیمت خوبی است.",
+        },
+      },
+      {
+        _id: "comment-maranta-9",
+        user: { _id: "user-m9", name: "علی نوری", role: "user" },
+        date: new Date("2025-05-23"),
+        text: "آیا مارانتا به نور مستقیم نیاز دارد؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-24"),
+          text: "خیر، نور غیرمستقیم ملایم بهترین است. نور مستقیم برگ‌ها را می‌سوزاند.",
+        },
+      },
+      {
+        _id: "comment-maranta-10",
+        user: { _id: "user-m10", name: "زینب کرمی", role: "user" },
+        date: new Date("2025-05-21"),
+        text: "چه خاکی برای مارانتا خوبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-22"),
+          text: "پیت ماس + پرلیت + کوکوپیت + خاک برگ. خاک باید سبک و مرطوب‌نگه‌دار باشد.",
+        },
+      },
+    ],
 
     seo: {
       title: "مارانتا | خرید گیاه مارانتا (گیاه دعا) | گیاه‌لند",
@@ -1830,6 +2996,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "indoor-peperomia-1",
     name: "پپرومیا",
     price: 3990000,
     slug: "peperomia",
@@ -1845,13 +3012,13 @@ export const fakeProducts = [
     weight: 1100,
     potDimensions: { length: 20, width: 20, height: 65 },
     sunlight: "نور غیرمستقیم متوسط تا کم",
-    image: "/static/images/products/indoor/peperomia/main.webp",
-    images: [
-      "/static/images/products/indoor/peperomia/main.webp",
-      "/static/images/products/indoor/peperomia/1.webp",
-      "/static/images/products/indoor/peperomia/2.webp",
-      "/static/images/products/indoor/peperomia/3.webp",
-    ],
+  image: "/static/images/products/indoor/peperomia/main.webp",
+images: [
+  "/static/images/products/indoor/peperomia/main.webp",
+  "/static/images/products/indoor/peperomia/1.webp",
+  "/static/images/products/indoor/peperomia/2.webp",
+  "/static/images/products/indoor/peperomia/3.webp",
+],
 
     features: {
       overview: [
@@ -1965,7 +3132,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-peperomia-1",
+        user: { _id: "user-p1", name: "سارا رضایی", role: "user" },
+        date: new Date("2025-06-03"),
+        text: "برگ پپرومیام ریخته، چرا؟",
+      },
+      {
+        _id: "comment-peperomia-2",
+        user: { _id: "user-p2", name: "امیرحسین نوری", role: "user" },
+        date: new Date("2025-06-01"),
+        text: "پپرومیا به چه نوری نیاز دارد؟",
+      },
+      {
+        _id: "comment-peperomia-3",
+        user: { _id: "user-p3", name: "فاطمه کریمی", role: "user" },
+        date: new Date("2025-05-30"),
+        text: "چند وقت یکبار آب بدم؟",
+      },
+      {
+        _id: "comment-peperomia-4",
+        user: { _id: "user-p4", name: "علی احمدی", role: "user" },
+        date: new Date("2025-05-31"),
+        text: "چطور پپرومیا رو تکثیر کنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-06-01"),
+          text: "قلمه برگ یا ساقه در بهار جواب می‌دهد. برگ را در پرلیت مرطوب بکارید تا ریشه بزند.",
+        },
+      },
+      {
+        _id: "comment-peperomia-5",
+        user: { _id: "user-p5", name: "نرگس زارع", role: "user" },
+        date: new Date("2025-05-28"),
+        text: "آیا پپرومیا برای گربه ضرر دارد؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-05-29"),
+          text: "خیر، پپرومیا غیرسمی و برای حیوانات خانگی ایمن است.",
+        },
+      },
+      {
+        _id: "comment-peperomia-6",
+        user: { _id: "user-p6", name: "زهرا محمدی", role: "user" },
+        date: new Date("2025-05-26"),
+        text: "برگام لکه قهوه‌ای دارد، چیکار کنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-05-27"),
+          text: "احتمال آبیاری با آب سرد یا غرقابی. از آب ولرم استفاده کنید و بین دو آبیاری اجازه دهید خاک خشک شود.",
+        },
+      },
+      {
+        _id: "comment-peperomia-7",
+        user: { _id: "user-p7", name: "مهدی رحمانی", role: "user" },
+        date: new Date("2025-05-29"),
+        text: "ارسال به مشهد چنده؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-30"),
+          text: "۴۵ هزار تومان، سفارش بالای ۵۰۰ هزار رایگان است.",
+        },
+      },
+      {
+        _id: "comment-peperomia-8",
+        user: { _id: "user-p8", name: "مریم حسینی", role: "user" },
+        date: new Date("2025-05-27"),
+        text: "قیمت پپرومیا مناسب است؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-28"),
+          text: "۵۲۰ هزار تومان با گلدان، قیمت بسیار رقابتی برای این گیاه خاص است.",
+        },
+      },
+      {
+        _id: "comment-peperomia-9",
+        user: { _id: "user-p9", name: "رضا کرمی", role: "user" },
+        date: new Date("2025-05-25"),
+        text: "آیا پپرومیا در سایه رشد میکند؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-26"),
+          text: "در سایه روشن رشد می‌کند ولی ابلقی کم می‌شود. نور غیرمستقیم متوسط بهترین است.",
+        },
+      },
+      {
+        _id: "comment-peperomia-10",
+        user: { _id: "user-p10", name: "سعید نادری", role: "user" },
+        date: new Date("2025-05-23"),
+        text: "چه خاکی برای پپرومیا مناسبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-24"),
+          text: "خاک کاکتوس + پرلیت + پیت ماس. خاک باید سبک و زهکش‌دار باشد.",
+        },
+      },
+    ],
 
     seo: {
       title: "پپرومیا | خرید گیاه پپرومیا (نقره‌ای) | گیاه‌لند",
@@ -1982,6 +3245,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "indoor-alocasia-1",
     name: "آلوکازیا",
     price: 1650000,
     slug: "alocasia",
@@ -1997,13 +3261,13 @@ export const fakeProducts = [
     weight: 2900,
     potDimensions: { length: 20, width: 20, height: 65 },
     sunlight: "نور غیرمستقیم روشن",
-    image: "/static/images/products/indoor/alocasia/main.webp",
-    images: [
-      "/static/images/products/indoor/alocasia/main.webp",
-      "/static/images/products/indoor/alocasia/1.webp",
-      "/static/images/products/indoor/alocasia/2.webp",
-      "/static/images/products/indoor/alocasia/3.webp",
-    ],
+image: "/static/images/products/indoor/alocasia/main.webp",
+images: [
+  "/static/images/products/indoor/alocasia/main.webp",
+  "/static/images/products/indoor/alocasia/1.webp",
+  "/static/images/products/indoor/alocasia/2.webp",
+  "/static/images/products/indoor/alocasia/3.webp",
+],
     features: {
       overview: [
         "آلوکازیا با نام علمی Alocasia amazonica، گیاهی گرمسیری با برگ‌های بزرگ، پیکانی و رگبرگ‌های برجسته سفید است.",
@@ -2118,7 +3382,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-alocasia-1",
+        user: { _id: "user-a1", name: "زهرا رضایی", role: "user" },
+        date: new Date("2025-06-05"),
+        text: "آلوکازیام برگاش زرد شده، چیکار کنم؟",
+      },
+      {
+        _id: "comment-alocasia-2",
+        user: { _id: "user-a2", name: "علی کریمی", role: "user" },
+        date: new Date("2025-06-03"),
+        text: "آیا آلوکازیا به رطوبت بالا نیاز دارد؟",
+      },
+      {
+        _id: "comment-alocasia-3",
+        user: { _id: "user-a3", name: "سارا احمدی", role: "user" },
+        date: new Date("2025-06-01"),
+        text: "قیمت آلوکازیا کمی بالاست، ارزش دارد؟",
+      },
+      {
+        _id: "comment-alocasia-4",
+        user: { _id: "user-a4", name: "مهدی نادری", role: "user" },
+        date: new Date("2025-06-02"),
+        text: "چطور آلوکازیا رو تکثیر کنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-06-03"),
+          text: "تقسیم ریزوم در بهار بهترین روش است. دقت کنید هر بخش برگ و ریشه کافی داشته باشد.",
+        },
+      },
+      {
+        _id: "comment-alocasia-5",
+        user: { _id: "user-a5", name: "نرگس حسینی", role: "user" },
+        date: new Date("2025-05-30"),
+        text: "برای گربه ضرر دارد؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-05-31"),
+          text: "بله، بسیار سمی. دور از دسترس حیوانات خانگی نگهداری شود.",
+        },
+      },
+      {
+        _id: "comment-alocasia-6",
+        user: { _id: "user-a6", name: "فاطمه زمانی", role: "user" },
+        date: new Date("2025-05-28"),
+        text: "برگام لکه قهوه‌ای دارد، چرا؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-05-29"),
+          text: "آفتاب سوختگی یا آبیاری با آب سرد. نور غیرمستقیم و آب ولرم استفاده کنید.",
+        },
+      },
+      {
+        _id: "comment-alocasia-7",
+        user: { _id: "user-a7", name: "رضا نوری", role: "user" },
+        date: new Date("2025-05-31"),
+        text: "ارسال به تهران چنده؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-06-01"),
+          text: "۳۰ هزار تومان، سفارش بالای ۷۰۰ هزار رایگان است.",
+        },
+      },
+      {
+        _id: "comment-alocasia-8",
+        user: { _id: "user-a8", name: "مریم کرمی", role: "user" },
+        date: new Date("2025-05-29"),
+        text: "قیمت با تخفیف چقدر میشه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-30"),
+          text: "با ۱۰٪ تخفیف، ۲.۰۲۵.۰۰۰ تومان.",
+        },
+      },
+      {
+        _id: "comment-alocasia-9",
+        user: { _id: "user-a9", name: "امیرحسین صادقی", role: "user" },
+        date: new Date("2025-05-27"),
+        text: "آیا آلوکازیا در سایه رشد میکند؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-28"),
+          text: "در سایه رشد نمی‌کند، به نور غیرمستقیم روشن نیاز دارد.",
+        },
+      },
+      {
+        _id: "comment-alocasia-10",
+        user: { _id: "user-a10", name: "سعید محمدی", role: "user" },
+        date: new Date("2025-05-25"),
+        text: "چه خاکی برای آلوکازیا خوبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-26"),
+          text: "خاک برگ + پیت ماس + پرلیت + کوکوپیت. زهکش بسیار مهم است.",
+        },
+      },
+    ],
 
     seo: {
       title: "آلوکازیا | خرید گیاه آلوکازیا (گوش فیل) | گیاه‌لند",
@@ -2135,6 +3495,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "indoor-crassula-1",
     name: "کراسولا",
     price: 5900000,
     slug: "crassula",
@@ -2150,13 +3511,13 @@ export const fakeProducts = [
     weight: 3300,
     potDimensions: { length: 30, width: 30, height: 100 },
     sunlight: "نور غیرمستقیم روشن تا ملایم",
-    image: "/static/images/products/indoor/crassula/main.webp",
-    images: [
-      "/static/images/products/indoor/crassula/main.webp",
-      "/static/images/products/indoor/crassula/1.webp",
-      "/static/images/products/indoor/crassula/2.webp",
-      "/static/images/products/indoor/crassula/3.webp",
-    ],
+  image: "/static/images/products/indoor/crassula/main.webp",
+images: [
+  "/static/images/products/indoor/crassula/main.webp",
+  "/static/images/products/indoor/crassula/1.webp",
+  "/static/images/products/indoor/crassula/2.webp",
+  "/static/images/products/indoor/crassula/3.webp",
+],
     features: {
       overview: [
         "کراسولا با نام علمی Crassula ovata، گیاهی آبدار و درختچه‌ای با برگ‌های ضخیم، بیضی و سبز براق است.",
@@ -2270,7 +3631,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-crassula-1",
+        user: { _id: "user-c1", name: "سارا مظلومی", role: "user" },
+        date: new Date("2025-06-07"),
+        text: "برگ کراسولام چروک شده، آب بدم؟",
+      },
+      {
+        _id: "comment-crassula-2",
+        user: { _id: "user-c2", name: "امیرحسین رضایی", role: "user" },
+        date: new Date("2025-06-05"),
+        text: "چرا برگ پایینی کراسولا میریزه؟",
+      },
+      {
+        _id: "comment-crassula-3",
+        user: { _id: "user-c3", name: "فاطمه کاظمی", role: "user" },
+        date: new Date("2025-06-03"),
+        text: "آیا کراسولا برای فنگ شویی خوب است؟",
+      },
+      {
+        _id: "comment-crassula-4",
+        user: { _id: "user-c4", name: "حسین نادری", role: "user" },
+        date: new Date("2025-06-04"),
+        text: "چطور کراسولا رو قلمه بزنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-06-05"),
+          text: "قلمه برگ یا ساقه. برگ را روی خاک مرطوب قرار دهید، ساقه را بعد از خشک شدن در خاک کاکتوس بکارید.",
+        },
+      },
+      {
+        _id: "comment-crassula-5",
+        user: { _id: "user-c5", name: "نرگس احمدی", role: "user" },
+        date: new Date("2025-06-01"),
+        text: "برای گربه ضرر دارد؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-06-02"),
+          text: "بله، سمی ملایم است و باعث استفراغ و اسهال می‌شود. دور از دسترس نگهداری کنید.",
+        },
+      },
+      {
+        _id: "comment-crassula-6",
+        user: { _id: "user-c6", name: "مهدی کریمی", role: "user" },
+        date: new Date("2025-05-30"),
+        text: "چند وقت یکبار آب بدم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-05-31"),
+          text: "وقتی خاک کاملاً خشک شد. در تابستان هر ۱۰-۱۴ روز، در زمستان ماهی یک بار کافی است.",
+        },
+      },
+      {
+        _id: "comment-crassula-7",
+        user: { _id: "user-c7", name: "زهرا زمانی", role: "user" },
+        date: new Date("2025-06-02"),
+        text: "ارسال به اصفهان چنده؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-06-03"),
+          text: "۴۵ هزار تومان، سفارش بالای ۵۰۰ هزار رایگان است.",
+        },
+      },
+      {
+        _id: "comment-crassula-8",
+        user: { _id: "user-c8", name: "رضا محمدی", role: "user" },
+        date: new Date("2025-05-31"),
+        text: "قیمت کراسولا مناسب است؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-06-01"),
+          text: "۵۹۰ هزار تومان با گلدان، قیمت عالی برای گیاهی با این زیبایی و دوام.",
+        },
+      },
+      {
+        _id: "comment-crassula-9",
+        user: { _id: "user-c9", name: "علی سلیمانی", role: "user" },
+        date: new Date("2025-05-29"),
+        text: "آیا کراسولا در سایه رشد میکند؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-30"),
+          text: "در سایه کشیده می‌شود و برگ می‌ریزد. به نور زیاد نیاز دارد.",
+        },
+      },
+      {
+        _id: "comment-crassula-10",
+        user: { _id: "user-c10", name: "مریم حسینی", role: "user" },
+        date: new Date("2025-05-27"),
+        text: "چه خاکی برای کراسولا خوبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-28"),
+          text: "خاک کاکتوس + پرلیت + ماسه. زهکش بسیار مهم است.",
+        },
+      },
+    ],
 
     seo: {
       title: "کراسولا | خرید گیاه کراسولا (یشم، پول‌سازی) | گیاه‌لند",
@@ -2288,6 +3745,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "indoor-haworthia-1",
     name: "هاورتیا",
     price: 1990000,
     slug: "haworthia",
@@ -2303,13 +3761,13 @@ export const fakeProducts = [
     weight: 800,
     potDimensions: { length: 25, width: 25, height: 55 },
     sunlight: "نور غیرمستقیم روشن تا ملایم",
-    image: "/static/images/products/indoor/haworthia/main.webp",
-    images: [
-      "/static/images/products/indoor/haworthia/main.webp",
-      "/static/images/products/indoor/haworthia/1.webp",
-      "/static/images/products/indoor/haworthia/2.webp",
-      "/static/images/products/indoor/haworthia/3.webp",
-    ],
+image: "/static/images/products/indoor/haworthia/main.webp",
+images: [
+  "/static/images/products/indoor/haworthia/main.webp",
+  "/static/images/products/indoor/haworthia/1.webp",
+  "/static/images/products/indoor/haworthia/2.webp",
+  "/static/images/products/indoor/haworthia/3.webp",
+],
     features: {
       overview: [
         "هاورتیا با نام علمی Haworthia fasciata، گیاهی آبدار و کوچک با برگ‌های ضخیم، مثلثی و نوارهای سفید برجسته است.",
@@ -2421,7 +3879,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-haworthia-1",
+        user: { _id: "user-h1", name: "زهرا رضایی", role: "user" },
+        date: new Date("2025-06-08"),
+        text: "برگ هاورتیام نرم شده، چیکار کنم؟",
+      },
+      {
+        _id: "comment-haworthia-2",
+        user: { _id: "user-h2", name: "علی محمدی", role: "user" },
+        date: new Date("2025-06-06"),
+        text: "چند وقت یکبار آب بدم؟",
+      },
+      {
+        _id: "comment-haworthia-3",
+        user: { _id: "user-h3", name: "سارا کریمی", role: "user" },
+        date: new Date("2025-06-04"),
+        text: "آیا هاورتیا به نور مستقیم نیاز دارد؟",
+      },
+      {
+        _id: "comment-haworthia-4",
+        user: { _id: "user-h4", name: "امیر نادری", role: "user" },
+        date: new Date("2025-06-05"),
+        text: "چطور هاورتیا رو تکثیر کنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-06-06"),
+          text: "پاجوش را جدا کنید، ۲ روز خشک کنید، سپس در خاک کاکتوس بکارید. بسیار ساده است.",
+        },
+      },
+      {
+        _id: "comment-haworthia-5",
+        user: { _id: "user-h5", name: "فاطمه حسینی", role: "user" },
+        date: new Date("2025-06-02"),
+        text: "برای گربه ضرر دارد؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-06-03"),
+          text: "خیر، هاورتیا غیرسمی و برای حیوانات خانگی ایمن است.",
+        },
+      },
+      {
+        _id: "comment-haworthia-6",
+        user: { _id: "user-h6", name: "مهدی رحمانی", role: "user" },
+        date: new Date("2025-05-31"),
+        text: "چرا برگام قهوه‌ای شده؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-06-01"),
+          text: "احتمال آفتاب سوختگی یا تنش آبی. گیاه را به نور ملایم‌تر ببرید و آبیاری را تنظیم کنید.",
+        },
+      },
+      {
+        _id: "comment-haworthia-7",
+        user: { _id: "user-h7", name: "نرگس زارع", role: "user" },
+        date: new Date("2025-06-03"),
+        text: "ارسال به شیراز چنده؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-06-04"),
+          text: "۴۵ هزار تومان، سفارش بالای ۵۰۰ هزار رایگان است.",
+        },
+      },
+      {
+        _id: "comment-haworthia-8",
+        user: { _id: "user-h8", name: "رضا کاظمی", role: "user" },
+        date: new Date("2025-06-01"),
+        text: "قیمت هاورتیا مناسب است؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-06-02"),
+          text: "۳۹۰ هزار تومان با گلدان، قیمت عالی برای یک ساکولنت خاص.",
+        },
+      },
+      {
+        _id: "comment-haworthia-9",
+        user: { _id: "user-h9", name: "سعید احمدی", role: "user" },
+        date: new Date("2025-05-30"),
+        text: "آیا هاورتیا در سایه رشد می‌کند؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-31"),
+          text: "در سایه کشیده می‌شود و نقش‌های سفید کم رنگ می‌شوند. نور غیرمستقیم روشن لازم دارد.",
+        },
+      },
+      {
+        _id: "comment-haworthia-10",
+        user: { _id: "user-h10", name: "مریم زمانی", role: "user" },
+        date: new Date("2025-05-28"),
+        text: "چه خاکی برای هاورتیا خوبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-29"),
+          text: "خاک کاکتوس + پرلیت + ماسه. زهکش بسیار مهم است.",
+        },
+      },
+    ],
 
     seo: {
       title: "هاورتیا | خرید گیاه هاورتیا (گورخری) | گیاه‌لند",
@@ -2439,6 +3993,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "indoor-fittonia-1",
     name: "فیتونیا",
     price: 2800000,
     slug: "fittonia",
@@ -2454,13 +4009,13 @@ export const fakeProducts = [
     weight: 1200,
     potDimensions: { length: 25, width: 25, height: 55 },
     sunlight: "نور غیرمستقیم متوسط تا کم",
-    image: "/static/images/products/indoor/fittonia/main.webp",
-    images: [
-      "/static/images/products/indoor/fittonia/main.webp",
-      "/static/images/products/indoor/fittonia/1.webp",
-      "/static/images/products/indoor/fittonia/2.webp",
-      "/static/images/products/indoor/fittonia/3.webp",
-    ],
+image: "/static/images/products/indoor/fittonia/main.webp",
+images: [
+  "/static/images/products/indoor/fittonia/main.webp",
+  "/static/images/products/indoor/fittonia/1.webp",
+  "/static/images/products/indoor/fittonia/2.webp",
+  "/static/images/products/indoor/fittonia/3.webp",
+],
 
     features: {
       overview: [
@@ -2573,7 +4128,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-fittonia-1",
+        user: { _id: "user-f1", name: "مریم رضایی", role: "user" },
+        date: new Date("2025-06-10"),
+        text: "فیتونیام افتاده، آب بدم؟",
+      },
+      {
+        _id: "comment-fittonia-2",
+        user: { _id: "user-f2", name: "سعید نوری", role: "user" },
+        date: new Date("2025-06-08"),
+        text: "لبه برگام قهوه‌ای شده، رطوبت کمه؟",
+      },
+      {
+        _id: "comment-fittonia-3",
+        user: { _id: "user-f3", name: "زهرا کرمی", role: "user" },
+        date: new Date("2025-06-06"),
+        text: "آیا فیتونیا برای تراریوم مناسبه؟",
+      },
+      {
+        _id: "comment-fittonia-4",
+        user: { _id: "user-f4", name: "امیرحسین احمدی", role: "user" },
+        date: new Date("2025-06-07"),
+        text: "چطور فیتونیا رو تکثیر کنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-06-08"),
+          text: "قلمه ساقه در آب یا خاک بهترین روش است. ریشه‌زایی سریعی دارد.",
+        },
+      },
+      {
+        _id: "comment-fittonia-5",
+        user: { _id: "user-f5", name: "نرگس حسینی", role: "user" },
+        date: new Date("2025-06-04"),
+        text: "برای گربه ضرر دارد؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-06-05"),
+          text: "خیر، فیتونیا غیرسمی و برای حیوانات خانگی ایمن است.",
+        },
+      },
+      {
+        _id: "comment-fittonia-6",
+        user: { _id: "user-f6", name: "مهدی رحمانی", role: "user" },
+        date: new Date("2025-06-02"),
+        text: "چند وقت یکبار آب بدم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-06-03"),
+          text: "خاک را همیشه مرطوب نگه دارید. در تابستان هفته‌ای ۲-۳ بار، در زمستان هر ۷-۱۰ روز.",
+        },
+      },
+      {
+        _id: "comment-fittonia-7",
+        user: { _id: "user-f7", name: "سارا زمانی", role: "user" },
+        date: new Date("2025-06-05"),
+        text: "ارسال به کرج چنده؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-06-06"),
+          text: "۳۰ هزار تومان، سفارش بالای ۵۰۰ هزار رایگان است.",
+        },
+      },
+      {
+        _id: "comment-fittonia-8",
+        user: { _id: "user-f8", name: "علی محمدپور", role: "user" },
+        date: new Date("2025-06-03"),
+        text: "قیمت فیتونیا مناسب است؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-06-04"),
+          text: "۴۸۰ هزار تومان با گلدان، قیمت عالی برای گیاهی با این زیبایی.",
+        },
+      },
+      {
+        _id: "comment-fittonia-9",
+        user: { _id: "user-f9", name: "فاطمه سلیمانی", role: "user" },
+        date: new Date("2025-06-01"),
+        text: "آیا فیتونیا در سایه رشد میکند؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-06-02"),
+          text: "در سایه روشن رشد می‌کند ولی رنگ رگبرگ‌ها کمرنگ می‌شود. نور غیرمستقیم متوسط بهترین است.",
+        },
+      },
+      {
+        _id: "comment-fittonia-10",
+        user: { _id: "user-f10", name: "زینب کاظمی", role: "user" },
+        date: new Date("2025-05-30"),
+        text: "چه خاکی برای فیتونیا خوبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-05-31"),
+          text: "پیت ماس + پرلیت + کوکوپیت + خاک برگ. خاک باید سبک و مرطوب‌نگه‌دار باشد.",
+        },
+      },
+    ],
 
     seo: {
       title: "فیتونیا | خرید گیاه فیتونیا (موزاییکی) | گیاه‌لند",
@@ -2591,6 +4242,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "indoor-pilea-1",
     name: "پیله آ",
     price: 2720000,
     slug: "pilea",
@@ -2606,13 +4258,13 @@ export const fakeProducts = [
     weight: 2100,
     potDimensions: { length: 20, width: 20, height: 35 },
     sunlight: "نور غیرمستقیم روشن تا متوسط",
-    image: "/static/images/products/indoor/pilea/main.webp",
-    images: [
-      "/static/images/products/indoor/pilea/main.webp",
-      "/static/images/products/indoor/pilea/1.webp",
-      "/static/images/products/indoor/pilea/2.webp",
-      "/static/images/products/indoor/pilea/3.webp",
-    ],
+image: "/static/images/products/indoor/pilea/main.webp",
+images: [
+  "/static/images/products/indoor/pilea/main.webp",
+  "/static/images/products/indoor/pilea/1.webp",
+  "/static/images/products/indoor/pilea/2.webp",
+  "/static/images/products/indoor/pilea/3.webp",
+],
 
     features: {
       overview: [
@@ -2725,7 +4377,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-pilea-1",
+        user: { _id: "user-p1", name: "مریم زارع", role: "user" },
+        date: new Date("2025-06-12"),
+        text: "برگ پایینی پیله آم زرد شده، چرا؟",
+      },
+      {
+        _id: "comment-pilea-2",
+        user: { _id: "user-p2", name: "سعید رضایی", role: "user" },
+        date: new Date("2025-06-10"),
+        text: "پیله آ پاجوش نمیده، چیکار کنم؟",
+      },
+      {
+        _id: "comment-pilea-3",
+        user: { _id: "user-p3", name: "زهرا کریمی", role: "user" },
+        date: new Date("2025-06-08"),
+        text: "چند وقت یکبار آب بدم؟",
+      },
+      {
+        _id: "comment-pilea-4",
+        user: { _id: "user-p4", name: "امیر نادری", role: "user" },
+        date: new Date("2025-06-09"),
+        text: "چطور پیله آ رو تکثیر کنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-06-10"),
+          text: "پاجوش را جدا کرده و در گلدان جداگانه بکارید. ساده‌ترین روش است.",
+        },
+      },
+      {
+        _id: "comment-pilea-5",
+        user: { _id: "user-p5", name: "نرگس حسینی", role: "user" },
+        date: new Date("2025-06-06"),
+        text: "برای گربه ضرر دارد؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-06-07"),
+          text: "خیر، پیله آ غیرسمی و برای حیوانات خانگی ایمن است.",
+        },
+      },
+      {
+        _id: "comment-pilea-6",
+        user: { _id: "user-p6", name: "مهدی رحمانی", role: "user" },
+        date: new Date("2025-06-04"),
+        text: "برگام لکه سفید دارد، چرا؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-06-05"),
+          text: "احتمال آفتاب سوختگی یا آب سخت. گیاه را به نور ملایم‌تر ببرید.",
+        },
+      },
+      {
+        _id: "comment-pilea-7",
+        user: { _id: "user-p7", name: "سارا زمانی", role: "user" },
+        date: new Date("2025-06-07"),
+        text: "ارسال به مشهد چنده؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-06-08"),
+          text: "۴۵ هزار تومان، سفارش بالای ۵۰۰ هزار رایگان است.",
+        },
+      },
+      {
+        _id: "comment-pilea-8",
+        user: { _id: "user-p8", name: "علی محمدپور", role: "user" },
+        date: new Date("2025-06-05"),
+        text: "قیمت پیله آ مناسب است؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-06-06"),
+          text: "۵۶۰ هزار تومان با گلدان، قیمت عالی برای گیاهی با تولید پاجوش زیاد.",
+        },
+      },
+      {
+        _id: "comment-pilea-9",
+        user: { _id: "user-p9", name: "فاطمه سلیمانی", role: "user" },
+        date: new Date("2025-06-03"),
+        text: "آیا پیله آ در سایه رشد میکند؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-06-04"),
+          text: "در سایه کشیده می‌شود و برگ‌ها کوچک می‌شوند. نور غیرمستقیم روشن نیاز دارد.",
+        },
+      },
+      {
+        _id: "comment-pilea-10",
+        user: { _id: "user-p10", name: "زینب کاظمی", role: "user" },
+        date: new Date("2025-06-01"),
+        text: "چه خاکی برای پیله آ خوبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-06-02"),
+          text: "خاک برگ + پیت ماس + پرلیت + کوکوپیت. زهکش خوب ضروری است.",
+        },
+      },
+    ],
 
     seo: {
       title: "پیله آ | خرید گیاه پیله آ (پول چینی، آبشاری) | گیاه‌لند",
@@ -2743,6 +4491,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "indoor-schefflera-1",
     name: "شفلرا",
     price: 3890000,
     slug: "schefflera",
@@ -2758,13 +4507,13 @@ export const fakeProducts = [
     weight: 2200,
     potDimensions: { length: 30, width: 30, height: 110 },
     sunlight: "نور غیرمستقیم روشن",
-    image: "/static/images/products/indoor/schefflera/main.webp",
-    images: [
-      "/static/images/products/indoor/schefflera/main.webp",
-      "/static/images/products/indoor/schefflera/1.webp",
-      "/static/images/products/indoor/schefflera/2.webp",
-      "/static/images/products/indoor/schefflera/3.webp",
-    ],
+image: "/static/images/products/indoor/schefflera/main.webp",
+images: [
+  "/static/images/products/indoor/schefflera/main.webp",
+  "/static/images/products/indoor/schefflera/1.webp",
+  "/static/images/products/indoor/schefflera/2.webp",
+  "/static/images/products/indoor/schefflera/3.webp",
+],
 
     features: {
       overview: [
@@ -2877,7 +4626,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-schefflera-1",
+        user: { _id: "user-s1", name: "ملیکا حسینی", role: "user" },
+        date: new Date("2025-06-14"),
+        text: "شفلرا برگ میریزه، چیکار کنم؟",
+      },
+      {
+        _id: "comment-schefflera-2",
+        user: { _id: "user-s2", name: "امیرعلی نادری", role: "user" },
+        date: new Date("2025-06-12"),
+        text: "آیا شفلرا به نور زیادی نیاز دارد؟",
+      },
+      {
+        _id: "comment-schefflera-3",
+        user: { _id: "user-s3", name: "زهرا رضایی", role: "user" },
+        date: new Date("2025-06-10"),
+        text: "چند وقت یکبار آب بدم؟",
+      },
+      {
+        _id: "comment-schefflera-4",
+        user: { _id: "user-s4", name: "سعید محمدی", role: "user" },
+        date: new Date("2025-06-11"),
+        text: "چطور شفلرا رو تکثیر کنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-06-12"),
+          text: "قلمه ساقه نیمه‌چوبی در بهار بهترین روش است. از هورمون ریشه‌زایی استفاده کنید.",
+        },
+      },
+      {
+        _id: "comment-schefflera-5",
+        user: { _id: "user-s5", name: "فاطمه کریمی", role: "user" },
+        date: new Date("2025-06-08"),
+        text: "برای گربه ضرر دارد؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-06-09"),
+          text: "بله، سمی ملایم است. دور از دسترس حیوانات نگهداری شود.",
+        },
+      },
+      {
+        _id: "comment-schefflera-6",
+        user: { _id: "user-s6", name: "حسین رحمانی", role: "user" },
+        date: new Date("2025-06-06"),
+        text: "برگام لکه قهوه‌ای دارد، چرا؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-06-07"),
+          text: "احتمال آفتاب سوختگی یا آبیاری با آب سرد. نور غیرمستقیم و آب ولرم استفاده کنید.",
+        },
+      },
+      {
+        _id: "comment-schefflera-7",
+        user: { _id: "user-s7", name: "مریم زمانی", role: "user" },
+        date: new Date("2025-06-09"),
+        text: "ارسال به اصفهان چنده؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-06-10"),
+          text: "۴۵ هزار تومان، سفارش بالای ۷۰۰ هزار رایگان است.",
+        },
+      },
+      {
+        _id: "comment-schefflera-8",
+        user: { _id: "user-s8", name: "علی احمدی", role: "user" },
+        date: new Date("2025-06-07"),
+        text: "قیمت شفلرا مناسب است؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-06-08"),
+          text: "۸۹۰ هزار تومان با گلدان، قیمت عالی برای درختچه‌ای با این زیبایی.",
+        },
+      },
+      {
+        _id: "comment-schefflera-9",
+        user: { _id: "user-s9", name: "سارا کمالی", role: "user" },
+        date: new Date("2025-06-05"),
+        text: "آیا شفلرا تصفیه کننده هواست؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-06-06"),
+          text: "بله، طبق تحقیق ناسا ترکیباتی مثل بنزن را جذب می‌کند.",
+        },
+      },
+      {
+        _id: "comment-schefflera-10",
+        user: { _id: "user-s10", name: "رضا نوری", role: "user" },
+        date: new Date("2025-06-03"),
+        text: "چه خاکی برای شفلرا خوبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-06-04"),
+          text: "خاک برگ + پیت ماس + پرلیت + کوکوپیت. زهکش خوب ضروری است.",
+        },
+      },
+    ],
 
     seo: {
       title: "شفلرا | خرید گیاه شفلرا (چتری) | گیاه‌لند",
@@ -2894,6 +4739,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "indoor-philodendron-1",
     name: "فیلودندرون",
     price: 1720000,
     slug: "philodendron",
@@ -2909,13 +4755,13 @@ export const fakeProducts = [
     weight: 1300,
     potDimensions: { length: 25, width: 25, height: 50 },
     sunlight: "نور غیرمستقیم روشن",
-    image: "/static/images/products/indoor/philodendron/main.webp",
-    images: [
-      "/static/images/products/indoor/philodendron/main.webp",
-      "/static/images/products/indoor/philodendron/1.webp",
-      "/static/images/products/indoor/philodendron/2.webp",
-      "/static/images/products/indoor/philodendron/3.webp",
-    ],
+ image: "/static/images/products/indoor/philodendron/main.webp",
+images: [
+  "/static/images/products/indoor/philodendron/main.webp",
+  "/static/images/products/indoor/philodendron/1.webp",
+  "/static/images/products/indoor/philodendron/2.webp",
+  "/static/images/products/indoor/philodendron/3.webp",
+],
 
     features: {
       overview: [
@@ -3027,7 +4873,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-philo-1",
+        user: { _id: "user-ph1", name: "سارا رضایی", role: "user" },
+        date: new Date("2025-06-16"),
+        text: "فیلودندرون من برگاش زرد شده، چرا؟",
+      },
+      {
+        _id: "comment-philo-2",
+        user: { _id: "user-ph2", name: "علی کریمی", role: "user" },
+        date: new Date("2025-06-14"),
+        text: "چند وقت یکبار آب بدم؟",
+      },
+      {
+        _id: "comment-philo-3",
+        user: { _id: "user-ph3", name: "مریم حسینی", role: "user" },
+        date: new Date("2025-06-12"),
+        text: "آیا فیلودندرون رونده است؟",
+      },
+      {
+        _id: "comment-philo-4",
+        user: { _id: "user-ph4", name: "امیرحسین نادری", role: "user" },
+        date: new Date("2025-06-13"),
+        text: "چطور فیلودندرون رو تکثیر کنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-06-14"),
+          text: "قلمه در آب ساده‌ترین روش است. قلمه با یک گره در آب بگذارید تا ریشه بزند.",
+        },
+      },
+      {
+        _id: "comment-philo-5",
+        user: { _id: "user-ph5", name: "نرگس زارع", role: "user" },
+        date: new Date("2025-06-10"),
+        text: "برای گربه ضرر دارد؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-06-11"),
+          text: "بله سمی است. دور از دسترس حیوانات خانگی نگهداری شود.",
+        },
+      },
+      {
+        _id: "comment-philo-6",
+        user: { _id: "user-ph6", name: "مهدی رحمانی", role: "user" },
+        date: new Date("2025-06-08"),
+        text: "برگام لکه قهوه‌ای دارد، چرا؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-06-09"),
+          text: "احتمال آفتاب سوختگی یا کمبود رطوبت. به نور غیرمستقیم ببرید و غبارپاشی کنید.",
+        },
+      },
+      {
+        _id: "comment-philo-7",
+        user: { _id: "user-ph7", name: "زهرا زمانی", role: "user" },
+        date: new Date("2025-06-11"),
+        text: "ارسال به کرج چنده؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-06-12"),
+          text: "۳۰ هزار تومان، سفارش بالای ۵۰۰ هزار رایگان است.",
+        },
+      },
+      {
+        _id: "comment-philo-8",
+        user: { _id: "user-ph8", name: "رضا محمدی", role: "user" },
+        date: new Date("2025-06-09"),
+        text: "قیمت فیلودندرون مناسب است؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-06-10"),
+          text: "۷۲۰ هزار تومان با گلدان، قیمت عالی برای گیاهی با رشد سریع و زیبایی.",
+        },
+      },
+      {
+        _id: "comment-philo-9",
+        user: { _id: "user-ph9", name: "فاطمه سلیمانی", role: "user" },
+        date: new Date("2025-06-07"),
+        text: "آیا فیلودندرون در سایه رشد میکند؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-06-08"),
+          text: "در سایه روشن زنده می‌ماند ولی رشد کند می‌شود. نور غیرمستقیم روشن بهترین است.",
+        },
+      },
+      {
+        _id: "comment-philo-10",
+        user: { _id: "user-ph10", name: "زینب کاظمی", role: "user" },
+        date: new Date("2025-06-05"),
+        text: "چه خاکی برای فیلودندرون خوبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-06-06"),
+          text: "خاک برگ + پیت ماس + پرلیت + کوکوپیت. زهکش خوب ضروری است.",
+        },
+      },
+    ],
 
     seo: {
       title: "فیلودندرون | خرید گیاه فیلودندرون (صورتی قلب) | گیاه‌لند",
@@ -3046,6 +4988,7 @@ export const fakeProducts = [
   },
 
   {
+    _id: "decoration-bonsai-ficus-1",
     name: "بونسای فیکوس گینسنگ",
     price: 12850000,
     slug: "bonsai-ficus-ginseng",
@@ -3061,13 +5004,13 @@ export const fakeProducts = [
     weight: 3200,
     potDimensions: { length: 30, width: 30, height: 50 },
     sunlight: "نور غیرمستقیم روشن تا ملایم",
-    image: "/static/images/products/decoration/bonsai-ficus-ginseng/main.webp",
-    images: [
-      "/static/images/products/decoration/bonsai-ficus-ginseng/main.webp",
-      "/static/images/products/decoration/bonsai-ficus-ginseng/1.webp",
-      "/static/images/products/decoration/bonsai-ficus-ginseng/2.webp",
-      "/static/images/products/decoration/bonsai-ficus-ginseng/3.webp",
-    ],
+  image: "/static/images/products/decoration/bonsai-ficus-ginseng/main.webp",
+images: [
+  "/static/images/products/decoration/bonsai-ficus-ginseng/main.webp",
+  "/static/images/products/decoration/bonsai-ficus-ginseng/1.webp",
+  "/static/images/products/decoration/bonsai-ficus-ginseng/2.webp",
+  "/static/images/products/decoration/bonsai-ficus-ginseng/3.webp",
+],
     features: {
       overview: [
         "بونسای فیکوس گینسنگ با نام علمی Ficus microcarpa 'Ginseng'، درخچه‌ای همیشه‌سبز با ریشه‌های هوایی ضخیم و تنه پیچ‌خورده شبیه به ساقه زنجبیل است.",
@@ -3179,7 +5122,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-bonsai-1",
+        user: { _id: "user-b1", name: "آرش کریمی", role: "user" },
+        date: new Date("2025-06-18"),
+        text: "برگ بونسایم زرد شده، چرا؟",
+      },
+      {
+        _id: "comment-bonsai-2",
+        user: { _id: "user-b2", name: "سحر رضایی", role: "user" },
+        date: new Date("2025-06-16"),
+        text: "چند وقت یکبار بونسای رو هرس کنم؟",
+      },
+      {
+        _id: "comment-bonsai-3",
+        user: { _id: "user-b3", name: "پوریا حسینی", role: "user" },
+        date: new Date("2025-06-14"),
+        text: "آیا بونسای فیکوس برای بونسای مبتدی مناسبه؟",
+      },
+      {
+        _id: "comment-bonsai-4",
+        user: { _id: "user-b4", name: "زهرا نادری", role: "user" },
+        date: new Date("2025-06-15"),
+        text: "تنه بونسام چروک شده، چیکار کنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-06-16"),
+          text: "کم‌آبی شدید. بونسای را در یک لگن آب ولرم به مدت ۲۰ دقیقه قرار دهید تا خاک کاملاً آب جذب کند.",
+        },
+      },
+      {
+        _id: "comment-bonsai-5",
+        user: { _id: "user-b5", name: "امیر موسوی", role: "user" },
+        date: new Date("2025-06-12"),
+        text: "برای گربه ضرر دارد؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-06-13"),
+          text: "بله، شیرابه سمی است. دور از دسترس حیوانات نگهداری کنید.",
+        },
+      },
+      {
+        _id: "comment-bonsai-6",
+        user: { _id: "user-b6", name: "نرگس کاظمی", role: "user" },
+        date: new Date("2025-06-10"),
+        text: "چطور بونسای فیکوس رو شکل بدم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-06-11"),
+          text: "با سیم مخصوص بونسای شاخه‌ها را در بهار هدایت کنید. هرس منظم برای حفظ فرم ضروری است.",
+        },
+      },
+      {
+        _id: "comment-bonsai-7",
+        user: { _id: "user-b7", name: "علی صادقی", role: "user" },
+        date: new Date("2025-06-13"),
+        text: "ارسال به اصفهان با گلدان سرامیک؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-06-14"),
+          text: "بله، بسته‌بندی ویژه داریم. هزینه پست ۶۵ هزار تومان.",
+        },
+      },
+      {
+        _id: "comment-bonsai-8",
+        user: { _id: "user-b8", name: "مریم زمانی", role: "user" },
+        date: new Date("2025-06-11"),
+        text: "قیمت ۲.۸۵۰.۰۰۰ مناسبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-06-12"),
+          text: "بونسای ۵ ساله با گلدان سرامیک دست‌ساز، قیمت کاملاً رقابتی است.",
+        },
+      },
+      {
+        _id: "comment-bonsai-9",
+        user: { _id: "user-b9", name: "حسین رحمانی", role: "user" },
+        date: new Date("2025-06-09"),
+        text: "آیا بونسای نیاز به نور مستقیم دارد؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-06-10"),
+          text: "نور غیرمستقیم روشن کافی است. نور مستقیم ظهر برگ‌ها را می‌سوزاند.",
+        },
+      },
+      {
+        _id: "comment-bonsai-10",
+        user: { _id: "user-b10", name: "سعید نوری", role: "user" },
+        date: new Date("2025-06-07"),
+        text: "چه خاکی برای بونسای فیکوس مناسبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-06-08"),
+          text: "آکاداما + کیریوزونا + پوکه. خاک‌های مخصوص بونسای را از ما تهیه کنید.",
+        },
+      },
+    ],
 
     seo: {
       title:
@@ -3198,6 +5237,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "decoration-pachira-1",
     name: "پاچیرا",
     price: 2550000,
     slug: "pachira-aquatica",
@@ -3213,13 +5253,13 @@ export const fakeProducts = [
     weight: 2800,
     potDimensions: { length: 25, width: 25, height: 80 },
     sunlight: "نور غیرمستقیم روشن",
-    image: "/static/images/products/decoration/pachira-aquatica/main.webp",
-    images: [
-      "/static/images/products/decoration/pachira-aquatica/main.webp",
-      "/static/images/products/decoration/pachira-aquatica/1.webp",
-      "/static/images/products/decoration/pachira-aquatica/2.webp",
-      "/static/images/products/decoration/pachira-aquatica/3.webp",
-    ],
+image: "/static/images/products/decoration/pachira-aquatica/main.webp",
+images: [
+  "/static/images/products/decoration/pachira-aquatica/main.webp",
+  "/static/images/products/decoration/pachira-aquatica/1.webp",
+  "/static/images/products/decoration/pachira-aquatica/2.webp",
+  "/static/images/products/decoration/pachira-aquatica/3.webp",
+],
 
     features: {
       overview: [
@@ -3332,7 +5372,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-pachira-1",
+        user: { _id: "user-pc1", name: "سارا احمدی", role: "user" },
+        date: new Date("2025-06-20"),
+        text: "آیا پاچیرا واقعاً شانس میاره؟",
+      },
+      {
+        _id: "comment-pachira-2",
+        user: { _id: "user-pc2", name: "رضا کریمی", role: "user" },
+        date: new Date("2025-06-18"),
+        text: "برگام زرد شده، چرا؟",
+      },
+      {
+        _id: "comment-pachira-3",
+        user: { _id: "user-pc3", name: "زهرا رضایی", role: "user" },
+        date: new Date("2025-06-16"),
+        text: "چند وقت یکبار آب بدم؟",
+      },
+      {
+        _id: "comment-pachira-4",
+        user: { _id: "user-pc4", name: "امیرحسین نادری", role: "user" },
+        date: new Date("2025-06-17"),
+        text: "چطور پاچیرا رو تکثیر کنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-06-18"),
+          text: "قلمه ساقه در آب یا خاک به راحتی ریشه می‌زند. بذر هم گزینه خوبی است.",
+        },
+      },
+      {
+        _id: "comment-pachira-5",
+        user: { _id: "user-pc5", name: "نرگس حسینی", role: "user" },
+        date: new Date("2025-06-14"),
+        text: "برای گربه ضرر دارد؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-06-15"),
+          text: "خیر، پاچیرا غیرسمی و برای حیوانات خانگی ایمن است.",
+        },
+      },
+      {
+        _id: "comment-pachira-6",
+        user: { _id: "user-pc6", name: "مهدی رحمانی", role: "user" },
+        date: new Date("2025-06-12"),
+        text: "تنه بافته شده خودبه خود باز میشه؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-06-13"),
+          text: "اگر از کودکی بافته شده باشد، با رشد تنه به هم جوش می‌خورد و باز نمی‌شود.",
+        },
+      },
+      {
+        _id: "comment-pachira-7",
+        user: { _id: "user-pc7", name: "علی صادقی", role: "user" },
+        date: new Date("2025-06-15"),
+        text: "ارسال به تهران چنده؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-06-16"),
+          text: "۳۰ هزار تومان، سفارش بالای ۷۰۰ هزار رایگان است.",
+        },
+      },
+      {
+        _id: "comment-pachira-8",
+        user: { _id: "user-pc8", name: "مریم زمانی", role: "user" },
+        date: new Date("2025-06-13"),
+        text: "قیمت ۱.۹۵۰.۰۰۰ مناسبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-06-14"),
+          text: "با گلدان سرامیک و تنه بافته ۳ شاخه، قیمت رقابتی است.",
+        },
+      },
+      {
+        _id: "comment-pachira-9",
+        user: { _id: "user-pc9", name: "فاطمه سلیمانی", role: "user" },
+        date: new Date("2025-06-11"),
+        text: "آیا پاچیرا در سایه رشد میکند؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-06-12"),
+          text: "در سایه روشن رشد می‌کند ولی بهتر است نور غیرمستقیم داشته باشد.",
+        },
+      },
+      {
+        _id: "comment-pachira-10",
+        user: { _id: "user-pc10", name: "سعید نوری", role: "user" },
+        date: new Date("2025-06-09"),
+        text: "چه خاکی برای پاچیرا خوبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-06-10"),
+          text: "خاک برگ + پیت ماس + پرلیت + کوکوپیت. زهکش خوب ضروری است.",
+        },
+      },
+    ],
 
     seo: {
       title: "پاچیرا | خرید درخت پول با تنه بافته شده | گیاه‌لند",
@@ -3350,6 +5486,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "decoration-bonsai-maple-1",
     name: "بونسای افرای ژاپنی",
     price: 38000000,
     slug: "bonsai-japanese-maple",
@@ -3365,13 +5502,13 @@ export const fakeProducts = [
     weight: 3800,
     potDimensions: { length: 30, width: 30, height: 110 },
     sunlight: "نور غیرمستقیم روشن تا مستقیم ملایم صبحگاهی",
-    image: "/static/images/products/decoration/bonsai-japanese-maple/main.webp",
-    images: [
-      "/static/images/products/decoration/bonsai-japanese-maple/main.webp",
-      "/static/images/products/decoration/bonsai-japanese-maple/1.webp",
-      "/static/images/products/decoration/bonsai-japanese-maple/2.webp",
-      "/static/images/products/decoration/bonsai-japanese-maple/3.webp",
-    ],
+image: "/static/images/products/decoration/bonsai-japanese-maple/main.webp",
+images: [
+  "/static/images/products/decoration/bonsai-japanese-maple/main.webp",
+  "/static/images/products/decoration/bonsai-japanese-maple/1.webp",
+  "/static/images/products/decoration/bonsai-japanese-maple/2.webp",
+  "/static/images/products/decoration/bonsai-japanese-maple/3.webp",
+],
 
     features: {
       overview: [
@@ -3487,7 +5624,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-maple-1",
+        user: { _id: "user-m1", name: "شادی رضایی", role: "user" },
+        date: new Date("2025-06-22"),
+        text: "چرا برگ بونسای افرام سبز مونده و قرمز نشده؟",
+      },
+      {
+        _id: "comment-maple-2",
+        user: { _id: "user-m2", name: "آرش کریمی", role: "user" },
+        date: new Date("2025-06-20"),
+        text: "آیا بونسای افرا رو میشه تو آپارتمان نگهداری کرد؟",
+      },
+      {
+        _id: "comment-maple-3",
+        user: { _id: "user-m3", name: "سارا حسینی", role: "user" },
+        date: new Date("2025-06-18"),
+        text: "برگام لکه قهوه‌ای داره، چرا؟",
+      },
+      {
+        _id: "comment-maple-4",
+        user: { _id: "user-m4", name: "پوریا نادری", role: "user" },
+        date: new Date("2025-06-19"),
+        text: "چطور بونسای افرا رو هرس کنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-06-20"),
+          text: "هرس ساختاری در زمستان (دوره خواب). هرس نگهداری در تابستان برای حفظ فرم.",
+        },
+      },
+      {
+        _id: "comment-maple-5",
+        user: { _id: "user-m5", name: "نرگس کرمی", role: "user" },
+        date: new Date("2025-06-16"),
+        text: "آیا برای گربه ضرر دارد؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-06-17"),
+          text: "غیرسمی است، اما برگ‌های آن برای گربه جذاب است. بهتر است دور از دسترس باشد.",
+        },
+      },
+      {
+        _id: "comment-maple-6",
+        user: { _id: "user-m6", name: "حسین رحمانی", role: "user" },
+        date: new Date("2025-06-14"),
+        text: "زمستان برگاش ریخت، دوباره درمیاد؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-06-15"),
+          text: "بله، افرا خزان‌کننده است. در بهار جوانه‌های جدید می‌زند. در زمستان به خنکی و نور کم نیاز دارد.",
+        },
+      },
+      {
+        _id: "comment-maple-7",
+        user: { _id: "user-m7", name: "علی صادقی", role: "user" },
+        date: new Date("2025-06-17"),
+        text: "ارسال به شیراز با گلدان سرامیک؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-06-18"),
+          text: "بله، بسته‌بندی ویژه. هزینه پست ۷۵ هزار تومان.",
+        },
+      },
+      {
+        _id: "comment-maple-8",
+        user: { _id: "user-m8", name: "مریم زمانی", role: "user" },
+        date: new Date("2025-06-15"),
+        text: "قیمت ۴.۲۰۰.۰۰۰ خیلی بالاست!",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-06-16"),
+          text: "این بونسای ۸ ساله با گلدان دست‌ساز ژاپنی است. ارزش هنری بالایی دارد.",
+        },
+      },
+      {
+        _id: "comment-maple-9",
+        user: { _id: "user-m9", name: "فاطمه سلیمانی", role: "user" },
+        date: new Date("2025-06-13"),
+        text: "آیا بونسای افرا به نور مستقیم نیاز دارد؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-06-14"),
+          text: "آفتاب ملایم صبح خوب است، اما نور مستقیم ظهر برگ‌ها را می‌سوزاند.",
+        },
+      },
+      {
+        _id: "comment-maple-10",
+        user: { _id: "user-m10", name: "سعید نوری", role: "user" },
+        date: new Date("2025-06-11"),
+        text: "چه خاکی برای بونسای افرا مناسبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-06-12"),
+          text: "آکاداما + کیریوزونا + پوکه. از خاک معمولی استفاده نکنید.",
+        },
+      },
+    ],
 
     seo: {
       title: "بونسای افرای ژاپنی | خرید درخت مینیاتوری افرا | گیاه‌لند",
@@ -3505,6 +5738,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "decoration-bonsai-juniper-1",
     name: "بونسای سرو خمره‌ای",
     price: 17000000,
     slug: "bonsai-juniper",
@@ -3520,13 +5754,13 @@ export const fakeProducts = [
     weight: 3100,
     potDimensions: { length: 30, width: 30, height: 110 },
     sunlight: "نور غیرمستقیم روشن تا آفتاب مستقیم صبحگاهی",
-    image: "/static/images/products/decoration/bonsai-juniper/main.webp",
-    images: [
-      "/static/images/products/decoration/bonsai-juniper/main.webp",
-      "/static/images/products/decoration/bonsai-juniper/1.webp",
-      "/static/images/products/decoration/bonsai-juniper/2.webp",
-      "/static/images/products/decoration/bonsai-juniper/3.webp",
-    ],
+image: "/static/images/products/decoration/bonsai-juniper/main.webp",
+images: [
+  "/static/images/products/decoration/bonsai-juniper/main.webp",
+  "/static/images/products/decoration/bonsai-juniper/1.webp",
+  "/static/images/products/decoration/bonsai-juniper/2.webp",
+  "/static/images/products/decoration/bonsai-juniper/3.webp",
+],
     features: {
       overview: [
         "بونسای سرو خمره‌ای با نام علمی Juniperus chinensis، درختچه‌ای سوزنی‌برگ و همیشه‌سبز با شاخه‌های پیچ‌خورده و ظاهر کهنسال است.",
@@ -3640,7 +5874,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-juniper-1",
+        user: { _id: "user-j1", name: "پویا احمدی", role: "user" },
+        date: new Date("2025-06-24"),
+        text: "سوزن بونسای سرو زرد شده، چرا؟",
+      },
+      {
+        _id: "comment-juniper-2",
+        user: { _id: "user-j2", name: "سحر حسینی", role: "user" },
+        date: new Date("2025-06-22"),
+        text: "آیا بونسای سرو داخل آپارتمان خوب زنده میمونه؟",
+      },
+      {
+        _id: "comment-juniper-3",
+        user: { _id: "user-j3", name: "رضا کریمی", role: "user" },
+        date: new Date("2025-06-20"),
+        text: "چطور فرم بادگیر بدهم به بونسای سرو؟",
+      },
+      {
+        _id: "comment-juniper-4",
+        user: { _id: "user-j4", name: "زهرا نادری", role: "user" },
+        date: new Date("2025-06-21"),
+        text: "چند وقت یکبار سیم کشی بونسای رو عوض کنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-06-22"),
+          text: "سیم را قبل از اینکه به پوست فشار بیاورد (بعد از ۲-۳ ماه) بردارید. حداکثر ۶ ماه نگه ندارید.",
+        },
+      },
+      {
+        _id: "comment-juniper-5",
+        user: { _id: "user-j5", name: "نرگس کرمی", role: "user" },
+        date: new Date("2025-06-18"),
+        text: "برای گربه ضرر دارد؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-06-19"),
+          text: "مصرف زیاد برگ‌ها می‌تواند باعث استفراغ شود. بهتر است دور از دسترس حیوانات قرار گیرد.",
+        },
+      },
+      {
+        _id: "comment-juniper-6",
+        user: { _id: "user-j6", name: "امیرحسین صادقی", role: "user" },
+        date: new Date("2025-06-16"),
+        text: "آیا بونسای سرو به سرمای زمستان نیاز دارد؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-06-17"),
+          text: "بله، سرو به یک دوره استراحت سرد (۳-۴ ماه در دمای ۰-۱۰ درجه) برای حفظ سلامت نیاز دارد.",
+        },
+      },
+      {
+        _id: "comment-juniper-7",
+        user: { _id: "user-j7", name: "علی رحمانی", role: "user" },
+        date: new Date("2025-06-19"),
+        text: "ارسال به اصفهان با گلدان سفالی؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-06-20"),
+          text: "بله، بسته‌بندی ضدضربه. هزینه پست ۶۵ هزار تومان.",
+        },
+      },
+      {
+        _id: "comment-juniper-8",
+        user: { _id: "user-j8", name: "مریم زمانی", role: "user" },
+        date: new Date("2025-06-17"),
+        text: "قیمت ۳.۵۰۰.۰۰۰ عادلانه است؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-06-18"),
+          text: "این بونسای ۷ ساله با فرم‌دهی حرفه‌ای و گلدان سفالین، ارزش هنری بالایی دارد.",
+        },
+      },
+      {
+        _id: "comment-juniper-9",
+        user: { _id: "user-j9", name: "فاطمه سلیمانی", role: "user" },
+        date: new Date("2025-06-15"),
+        text: "آیا بونسای سرو به نور مستقیم نیاز دارد؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-06-16"),
+          text: "بله، نور بسیار روشن (حتی آفتاب صبح) لازم دارد. در غیر این صورت ضعیف می‌شود.",
+        },
+      },
+      {
+        _id: "comment-juniper-10",
+        user: { _id: "user-j10", name: "سعید نوری", role: "user" },
+        date: new Date("2025-06-13"),
+        text: "چه خاکی برای بونسای سرو خوبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-06-14"),
+          text: "آکاداما + پوکه + ماسه. از خاک معمولی استفاده نکنید.",
+        },
+      },
+    ],
 
     seo: {
       title: "بونسای سرو خمره‌ای | خرید بونسای ژونيپر کلاسیک | گیاه‌لند",
@@ -3658,6 +5988,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "decoration-bonsai-olive-1",
     name: "بونسای زیتون وحشی",
     price: 35800000,
     slug: "bonsai-olive",
@@ -3673,13 +6004,13 @@ export const fakeProducts = [
     weight: 4600,
     potDimensions: { length: 30, width: 30, height: 100 },
     sunlight: "نور مستقیم آفتاب (حداقل ۶ ساعت در روز)",
-    image: "/static/images/products/decoration/bonsai-olive/main.webp",
-    images: [
-      "/static/images/products/decoration/bonsai-olive/main.webp",
-      "/static/images/products/decoration/bonsai-olive/1.webp",
-      "/static/images/products/decoration/bonsai-olive/2.webp",
-      "/static/images/products/decoration/bonsai-olive/3.webp",
-    ],
+ image: "/static/images/products/decoration/bonsai-olive/main.webp",
+images: [
+  "/static/images/products/decoration/bonsai-olive/main.webp",
+  "/static/images/products/decoration/bonsai-olive/1.webp",
+  "/static/images/products/decoration/bonsai-olive/2.webp",
+  "/static/images/products/decoration/bonsai-olive/3.webp",
+],
 
     features: {
       overview: [
@@ -3794,7 +6125,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-olive-1",
+        user: { _id: "user-o1", name: "پریسا رضایی", role: "user" },
+        date: new Date("2025-06-26"),
+        text: "بونسای زیتون من برگ میریزه، نور کم داره؟",
+      },
+      {
+        _id: "comment-olive-2",
+        user: { _id: "user-o2", name: "آرش کریمی", role: "user" },
+        date: new Date("2025-06-24"),
+        text: "آیا زیتون بونسای میوه میده؟",
+      },
+      {
+        _id: "comment-olive-3",
+        user: { _id: "user-o3", name: "سارا حسینی", role: "user" },
+        date: new Date("2025-06-22"),
+        text: "چند وقت یکبار هرس کنم؟",
+      },
+      {
+        _id: "comment-olive-4",
+        user: { _id: "user-o4", name: "حمید نادری", role: "user" },
+        date: new Date("2025-06-23"),
+        text: "چطور تنه ضخیم در بونسای زیتون ایجاد کنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-06-24"),
+          text: "با هرس شاخه‌های بلند و اجازه رشد آزاد به شاخه‌های اصلی و تغذیه مناسب، تنه به مرور ضخیم می‌شود (سال‌ها طول می‌کشد).",
+        },
+      },
+      {
+        _id: "comment-olive-5",
+        user: { _id: "user-o5", name: "نرگس کرمی", role: "user" },
+        date: new Date("2025-06-20"),
+        text: "برای گربه ضرر دارد؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-06-21"),
+          text: "خیر، زیتون غیرسمی است. حتی برگ و میوه آن برای گربه خطری ندارد.",
+        },
+      },
+      {
+        _id: "comment-olive-6",
+        user: { _id: "user-o6", name: "سعید رحمانی", role: "user" },
+        date: new Date("2025-06-18"),
+        text: "آیا زیتون به سرما مقاوم است؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-06-19"),
+          text: "تا -۵ درجه را تحمل می‌کند. در آپارتمان نیازی به نگرانی نیست، اما هوای خنک زمستان (۱۰ درجه) برای استراحت مفید است.",
+        },
+      },
+      {
+        _id: "comment-olive-7",
+        user: { _id: "user-o7", name: "علی صادقی", role: "user" },
+        date: new Date("2025-06-21"),
+        text: "ارسال به تبریز با گلدان سفال؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-06-22"),
+          text: "بله، بسته‌بندی مخصوص. هزینه پست ۷۵ هزار تومان.",
+        },
+      },
+      {
+        _id: "comment-olive-8",
+        user: { _id: "user-o8", name: "مریم زمانی", role: "user" },
+        date: new Date("2025-06-19"),
+        text: "قیمت ۴.۹۰۰.۰۰۰ خیلی بالاست؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-06-20"),
+          text: "این بونسای ۱۲ ساله با تنه بسیار ضخیم و گلدان دست‌ساز است. یک اثر هنری منحصربه‌فرد.",
+        },
+      },
+      {
+        _id: "comment-olive-9",
+        user: { _id: "user-o9", name: "فاطمه سلیمانی", role: "user" },
+        date: new Date("2025-06-17"),
+        text: "آیا زیتون بونسای نیاز به گرده افشانی دارد؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-06-18"),
+          text: "برای میوه دادن به گرده افشان نیاز دارد. در آپارتمان معمولاً میوه نمی‌دهد.",
+        },
+      },
+      {
+        _id: "comment-olive-10",
+        user: { _id: "user-o10", name: "زهرا نوری", role: "user" },
+        date: new Date("2025-06-15"),
+        text: "چه خاکی برای بونسای زیتون خوبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-06-16"),
+          text: "آکاداما + پوکه + شن درشت. خاک باید بسیار زهکش‌دار باشد.",
+        },
+      },
+    ],
 
     seo: {
       title: "بونسای زیتون وحشی | خرید درخت کهنسال زیتون مینیاتوری | گیاه‌لند",
@@ -3812,6 +6239,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "decoration-dracaena-tricolor-1",
     name: "درخت اژدها",
     price: 3650000,
     slug: "dracaena-tricolor",
@@ -3827,13 +6255,13 @@ export const fakeProducts = [
     weight: 3200,
     potDimensions: { length: 30, width: 30, height: 95 },
     sunlight: "نور غیرمستقیم روشن تا متوسط",
-    image: "/static/images/products/decoration/dracaena-tricolor/main.webp",
-    images: [
-      "/static/images/products/decoration/dracaena-tricolor/main.webp",
-      "/static/images/products/decoration/dracaena-tricolor/1.webp",
-      "/static/images/products/decoration/dracaena-tricolor/2.webp",
-      "/static/images/products/decoration/dracaena-tricolor/3.webp",
-    ],
+image: "/static/images/products/decoration/dracaena-tricolor/main.webp",
+images: [
+  "/static/images/products/decoration/dracaena-tricolor/main.webp",
+  "/static/images/products/decoration/dracaena-tricolor/1.webp",
+  "/static/images/products/decoration/dracaena-tricolor/2.webp",
+  "/static/images/products/decoration/dracaena-tricolor/3.webp",
+],
 
     features: {
       overview: [
@@ -3947,7 +6375,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-drac-tricolor-1",
+        user: { _id: "user-dt1", name: "نگار احمدی", role: "user" },
+        date: new Date("2025-06-28"),
+        text: "نوک برگ درخت اژدها قهوه‌ای شده، چرا؟",
+      },
+      {
+        _id: "comment-drac-tricolor-2",
+        user: { _id: "user-dt2", name: "رضا کریمی", role: "user" },
+        date: new Date("2025-06-26"),
+        text: "آیا دراسنا تریکالر به نور زیادی نیاز دارد؟",
+      },
+      {
+        _id: "comment-drac-tricolor-3",
+        user: { _id: "user-dt3", name: "سارا حسینی", role: "user" },
+        date: new Date("2025-06-24"),
+        text: "چند وقت یکبار آب بدم؟",
+      },
+      {
+        _id: "comment-drac-tricolor-4",
+        user: { _id: "user-dt4", name: "امیر نادری", role: "user" },
+        date: new Date("2025-06-25"),
+        text: "چطور دراسنا رو تکثیر کنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-06-26"),
+          text: "قلمه تنه (تکه‌های ۵ سانتی) در خاک مرطوب بهترین روش است. سرشاخه را هم می‌توانید در آب ریشه بزنید.",
+        },
+      },
+      {
+        _id: "comment-drac-tricolor-5",
+        user: { _id: "user-dt5", name: "نرگس کرمی", role: "user" },
+        date: new Date("2025-06-22"),
+        text: "برای گربه ضرر دارد؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-06-23"),
+          text: "بله، سمی است. دور از دسترس حیوانات خانگی نگهداری شود.",
+        },
+      },
+      {
+        _id: "comment-drac-tricolor-6",
+        user: { _id: "user-dt6", name: "مهدی رحمانی", role: "user" },
+        date: new Date("2025-06-20"),
+        text: "برگام لکه قهوه‌ای داره، چرا؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-06-21"),
+          text: "احتمال آفتاب سوختگی یا آبیاری با آب سرد. نور غیرمستقیم و آب بدون کلر استفاده کنید.",
+        },
+      },
+      {
+        _id: "comment-drac-tricolor-7",
+        user: { _id: "user-dt7", name: "علی صادقی", role: "user" },
+        date: new Date("2025-06-23"),
+        text: "ارسال به اصفهان با گلدان سرامیک؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-06-24"),
+          text: "بله، هزینه پست ۴۵ هزار تومان. سفارش بالای ۷۰۰ هزار رایگان است.",
+        },
+      },
+      {
+        _id: "comment-drac-tricolor-8",
+        user: { _id: "user-dt8", name: "مریم زمانی", role: "user" },
+        date: new Date("2025-06-21"),
+        text: "قیمت ۱.۶۵۰.۰۰۰ مناسبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-06-22"),
+          text: "با گلدان سرامیک سفید و ارتفاع ۹۰ سانت، قیمت رقابتی است.",
+        },
+      },
+      {
+        _id: "comment-drac-tricolor-9",
+        user: { _id: "user-dt9", name: "فاطمه سلیمانی", role: "user" },
+        date: new Date("2025-06-19"),
+        text: "آیا درخت اژدها تصفیه کننده هواست؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-06-20"),
+          text: "بله، طبق تحقیق ناسا ترکیباتی مثل بنزن و فرمالدئید را جذب می‌کند.",
+        },
+      },
+      {
+        _id: "comment-drac-tricolor-10",
+        user: { _id: "user-dt10", name: "زهرا نوری", role: "user" },
+        date: new Date("2025-06-17"),
+        text: "چه خاکی برای دراسنا خوبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-06-18"),
+          text: "خاک گلدان معمولی + پرلیت + پیت ماس. زهکش خوب مهم است.",
+        },
+      },
+    ],
 
     seo: {
       title: "درخت اژدها (Dracaena Tricolor) | گیاه دکوری مدرن | گیاه‌لند",
@@ -3964,6 +6488,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "decoration-orchid-phalaenopsis-1",
     name: "ارکیده فالنوپسیس",
     price: 1450000,
     slug: "phalaenopsis-orchid",
@@ -3979,13 +6504,13 @@ export const fakeProducts = [
     weight: 1500,
     potDimensions: { length: 20, width: 20, height: 35 },
     sunlight: "نور غیرمستقیم روشن",
-    image: "/static/images/products/decoration/phalaenopsis-orchid/main.webp",
-    images: [
-      "/static/images/products/decoration/phalaenopsis-orchid/main.webp",
-      "/static/images/products/decoration/phalaenopsis-orchid/1.webp",
-      "/static/images/products/decoration/phalaenopsis-orchid/2.webp",
-      "/static/images/products/decoration/phalaenopsis-orchid/3.webp",
-    ],
+image: "/static/images/products/decoration/phalaenopsis-orchid/main.webp",
+images: [
+  "/static/images/products/decoration/phalaenopsis-orchid/main.webp",
+  "/static/images/products/decoration/phalaenopsis-orchid/1.webp",
+  "/static/images/products/decoration/phalaenopsis-orchid/2.webp",
+  "/static/images/products/decoration/phalaenopsis-orchid/3.webp",
+],
 
     features: {
       overview: [
@@ -4102,7 +6627,104 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-phal-1",
+        user: { _id: "user-ph1", name: "مریم رضایی", role: "user" },
+        date: new Date("2025-07-02"),
+        text: "ارکیده من بعد از گلدهی چیکار کنم؟",
+      },
+      {
+        _id: "comment-phal-2",
+        user: { _id: "user-ph2", name: "سعید کریمی", role: "user" },
+        date: new Date("2025-06-30"),
+        text: "ریشه‌های ارکیده از گلدان بیرون زده، طبیعی است؟",
+      },
+      {
+        _id: "comment-phal-3",
+        user: { _id: "user-ph3", name: "زهرا حسینی", role: "user" },
+        date: new Date("2025-06-28"),
+        text: "گلهای ارکیده زود ریختند، چرا؟",
+      },
+      {
+        _id: "comment-phal-4",
+        user: { _id: "user-ph4", name: "امیر نادری", role: "user" },
+        date: new Date("2025-06-29"),
+        text: "چطور ارکیده رو دوباره گل بدم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-06-30"),
+          text: "پس از اتمام گلدهی، ساقه را تا نزدیک گره دوم هرس کنید. سپس با کاهش دمای شب (۱۵-۱۸ درجه) به مدت ۲-۳ هفته جوانه گل تحریک می‌شود.",
+        },
+      },
+      {
+        _id: "comment-phal-5",
+        user: { _id: "user-ph5", name: "نرگس کرمی", role: "user" },
+        date: new Date("2025-06-26"),
+        text: "برای گربه ضرر دارد؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-06-27"),
+          text: "خیر، ارکیده فالنوپسیس برای گربه و سگ غیرسمی و ایمن است.",
+        },
+      },
+      {
+        _id: "comment-phal-6",
+        user: { _id: "user-ph6", name: "مهدی رحمانی", role: "user" },
+        date: new Date("2025-06-24"),
+        text: "آبیاری با تکه یخ؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-06-25"),
+          text: "روش تکه یخ محبوب است اما آب سرد به ریشه ارکیده آسیب می‌زند. از آب ولرم (۲۰-۲۵ درجه) استفاده کنید.",
+        },
+      },
+      {
+        _id: "comment-phal-7",
+        user: { _id: "user-ph7", name: "علی صادقی", role: "user" },
+        date: new Date("2025-06-27"),
+        text: "ارسال به شیراز با گلدان شیشه‌ای؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-06-28"),
+          text: "بسته‌بندی مخصوص ارکیده. هزینه پست ۵۵ هزار تومان.",
+        },
+      },
+      {
+        _id: "comment-phal-8",
+        user: { _id: "user-ph8", name: "مریم زمانی", role: "user" },
+        date: new Date("2025-06-25"),
+        text: "قیمت ۱.۴۵۰.۰۰۰ با گلدان مناسبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-06-26"),
+          text: "شامل گلدان شیشه‌ای + گلدان سفالی و گیاه با ساقه دو شاخه گل (حداقل ۶ گل باز). قیمت رقابتی است.",
+        },
+      },
+      {
+        _id: "comment-phal-9",
+        user: { _id: "user-ph9", name: "فاطمه سلیمانی", role: "user" },
+        date: new Date("2025-06-23"),
+        text: "آیا ارکیده به نور مستقیم نیاز دارد؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-06-24"),
+          text: "خیر، نور غیرمستقیم روشن کافی است. نور مستقیم برگ‌ها را می‌سوزاند.",
+        },
+      },
+      {
+        _id: "comment-phal-10",
+        user: { _id: "user-ph10", name: "زهرا نوری", role: "user" },
+        date: new Date("2025-06-21"),
+        text: "چه خاکی برای ارکیده مناسبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-06-22"),
+          text: "پوست درخت کاج + پرلیت + اسفاگنوم. از خاک معمولی استفاده نکنید.",
+        },
+      },
+    ],
+
     seo: {
       title:
         "ارکیده فالنوپسیس | خرید ارکیده پروانه‌ای با گلدان شیشه‌ای | گیاه‌لند",
@@ -4120,6 +6742,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "decoration-saguaro-cactus-1",
     name: "کاکتوس ساگوارو",
     price: 7200000,
     slug: "saguaro-cactus",
@@ -4135,13 +6758,13 @@ export const fakeProducts = [
     weight: 6500,
     potDimensions: { length: 20, width: 20, height: 130 },
     sunlight: "نور مستقیم آفتاب (حداقل ۶ ساعت در روز)",
-    image: "/static/images/products/decoration/saguaro-cactus/main.webp",
-    images: [
-      "/static/images/products/decoration/saguaro-cactus/main.webp",
-      "/static/images/products/decoration/saguaro-cactus/1.webp",
-      "/static/images/products/decoration/saguaro-cactus/2.webp",
-      "/static/images/products/decoration/saguaro-cactus/3.webp",
-    ],
+ image: "/static/images/products/decoration/saguaro-cactus/main.webp",
+images: [
+  "/static/images/products/decoration/saguaro-cactus/main.webp",
+  "/static/images/products/decoration/saguaro-cactus/1.webp",
+  "/static/images/products/decoration/saguaro-cactus/2.webp",
+  "/static/images/products/decoration/saguaro-cactus/3.webp",
+],
 
     features: {
       overview: [
@@ -4257,7 +6880,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-saguaro-1",
+        user: { _id: "user-s1", name: "آرش رضایی", role: "user" },
+        date: new Date("2025-07-06"),
+        text: "کاکتوس ساگوارو چند ساله تا بازو بزنه؟",
+      },
+      {
+        _id: "comment-saguaro-2",
+        user: { _id: "user-s2", name: "سارا حسینی", role: "user" },
+        date: new Date("2025-07-04"),
+        text: "چند وقت یکبار آب بدم؟",
+      },
+      {
+        _id: "comment-saguaro-3",
+        user: { _id: "user-s3", name: "زهرا کریمی", role: "user" },
+        date: new Date("2025-07-02"),
+        text: "آیا ساگوارو در سایه رشد میکند؟",
+      },
+      {
+        _id: "comment-saguaro-4",
+        user: { _id: "user-s4", name: "امیر نادری", role: "user" },
+        date: new Date("2025-07-03"),
+        text: "چطور کاکتوس ساگوارو رو تکثیر کنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-07-04"),
+          text: "تکثیر فقط از طریق بذر عملی است. رشد بسیار کند دارد. قلمه پاجوش به ندرت موفق می‌شود.",
+        },
+      },
+      {
+        _id: "comment-saguaro-5",
+        user: { _id: "user-s5", name: "نرگس کرمی", role: "user" },
+        date: new Date("2025-06-30"),
+        text: "برای گربه ضرر دارد؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-07-01"),
+          text: "خارها خطر فیزیکی دارند. خود گیاه غیرسمی است اما بهتر است دور از دسترس باشد.",
+        },
+      },
+      {
+        _id: "comment-saguaro-6",
+        user: { _id: "user-s6", name: "مهدی رحمانی", role: "user" },
+        date: new Date("2025-06-28"),
+        text: "تنم نرم شده، چرا؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-06-29"),
+          text: "احتمال پوسیدگی ریشه به دلیل آبیاری زیاد. فوراً آبیاری را قطع کنید. اگر نرمی گسترده باشد، گیاه قابل نجات نیست.",
+        },
+      },
+      {
+        _id: "comment-saguaro-7",
+        user: { _id: "user-s7", name: "علی صادقی", role: "user" },
+        date: new Date("2025-07-01"),
+        text: "ارسال به تهران با گلدان بزرگ؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-07-02"),
+          text: "بله، حمل توسط تیم ویژه. هزینه پست ۹۰ هزار تومان.",
+        },
+      },
+      {
+        _id: "comment-saguaro-8",
+        user: { _id: "user-s8", name: "مریم زمانی", role: "user" },
+        date: new Date("2025-06-29"),
+        text: "قیمت ۳.۲۰۰.۰۰۰ مناسبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-06-30"),
+          text: "کاکتوس ۱۵ ساله با ارتفاع ۸۰ سانت و گلدان سفالی، قیمت رقابتی است.",
+        },
+      },
+      {
+        _id: "comment-saguaro-9",
+        user: { _id: "user-s9", name: "فاطمه سلیمانی", role: "user" },
+        date: new Date("2025-06-27"),
+        text: "آیا ساگوارو به سرما مقاوم است؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-06-28"),
+          text: "فقط تا ۵ درجه را تحمل می‌کند. در زمستان از یخبندان محافظت کنید.",
+        },
+      },
+      {
+        _id: "comment-saguaro-10",
+        user: { _id: "user-s10", name: "سعید نوری", role: "user" },
+        date: new Date("2025-06-25"),
+        text: "چه خاکی برای ساگوارو خوبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-06-26"),
+          text: "ماسه درشت + پرلیت + کمی خاک برگ. زهکش فوق‌العاده ضروری است.",
+        },
+      },
+    ],
 
     seo: {
       title: "کاکتوس ساگوارو | خرید کاکتوس ستونی بزرگ | گیاه‌لند",
@@ -4275,6 +6994,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "decoration-yucca-rostrata-1",
     name: "یوکا روستراتا",
     price: 5400000,
     slug: "yucca-rostrata",
@@ -4290,13 +7010,13 @@ export const fakeProducts = [
     weight: 12500,
     potDimensions: { length: 40, width: 40, height: 70 },
     sunlight: "نور مستقیم آفتاب (حداقل ۶ ساعت در روز)",
-    image: "/static/images/products/decoration/yucca-rostrata/main.webp",
-    images: [
-      "/static/images/products/decoration/yucca-rostrata/main.webp",
-      "/static/images/products/decoration/yucca-rostrata/1.webp",
-      "/static/images/products/decoration/yucca-rostrata/2.webp",
-      "/static/images/products/decoration/yucca-rostrata/3.webp",
-    ],
+ image: "/static/images/products/decoration/yucca-rostrata/main.webp",
+images: [
+  "/static/images/products/decoration/yucca-rostrata/main.webp",
+  "/static/images/products/decoration/yucca-rostrata/1.webp",
+  "/static/images/products/decoration/yucca-rostrata/2.webp",
+  "/static/images/products/decoration/yucca-rostrata/3.webp",
+],
 
     features: {
       overview: [
@@ -4411,7 +7131,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-yucca-rostrata-1",
+        user: { _id: "user-yr1", name: "پیمان احمدی", role: "user" },
+        date: new Date("2025-07-12"),
+        text: "نوک برگهای یوکا روستراتا قهوه‌ای شده، چرا؟",
+      },
+      {
+        _id: "comment-yucca-rostrata-2",
+        user: { _id: "user-yr2", name: "سارا رضایی", role: "user" },
+        date: new Date("2025-07-10"),
+        text: "آیا یوکا روستراتا داخل آپارتمان خوب رشد میکند؟",
+      },
+      {
+        _id: "comment-yucca-rostrata-3",
+        user: { _id: "user-yr3", name: "زهرا کریمی", role: "user" },
+        date: new Date("2025-07-08"),
+        text: "چند وقت یکبار آب بدم؟",
+      },
+      {
+        _id: "comment-yucca-rostrata-4",
+        user: { _id: "user-yr4", name: "امیر نادری", role: "user" },
+        date: new Date("2025-07-09"),
+        text: "چطور یوکا روستراتا رو تکثیر کنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-07-10"),
+          text: "پاجوش‌های اطراف گیاه را جدا کنید. پس از خشک شدن در خاک ماسه‌ای بکارید. بذر هم گزینه است.",
+        },
+      },
+      {
+        _id: "comment-yucca-rostrata-5",
+        user: { _id: "user-yr5", name: "نرگس کرمی", role: "user" },
+        date: new Date("2025-07-06"),
+        text: "برای گربه ضرر دارد؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-07-07"),
+          text: "گیاه غیرسمی است اما نوک تیز برگ‌ها خطر فیزیکی دارد. دور از دسترس نگهداری شود.",
+        },
+      },
+      {
+        _id: "comment-yucca-rostrata-6",
+        user: { _id: "user-yr6", name: "مهدی رحمانی", role: "user" },
+        date: new Date("2025-07-04"),
+        text: "آیا یوکا روستراتا به سرما مقاوم است؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-07-05"),
+          text: "تا -۱۰ درجه را تحمل می‌کند اما در آپارتمان بهتر است از یخبندان محافظت شود.",
+        },
+      },
+      {
+        _id: "comment-yucca-rostrata-7",
+        user: { _id: "user-yr7", name: "علی صادقی", role: "user" },
+        date: new Date("2025-07-07"),
+        text: "ارسال به اصفهان با گلدان بتنی؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-07-08"),
+          text: "بله، حمل با پیک مخصوص. هزینه ۱۰۰ هزار تومان.",
+        },
+      },
+      {
+        _id: "comment-yucca-rostrata-8",
+        user: { _id: "user-yr8", name: "مریم زمانی", role: "user" },
+        date: new Date("2025-07-05"),
+        text: "قیمت ۵.۴۰۰.۰۰۰ بالاست؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-07-06"),
+          text: "گیاه ۱۰ ساله با ارتفاع ۱۱۰ سانت و گلدان بتنی، یک اثر هنری منحصربه‌فرد است.",
+        },
+      },
+      {
+        _id: "comment-yucca-rostrata-9",
+        user: { _id: "user-yr9", name: "فاطمه سلیمانی", role: "user" },
+        date: new Date("2025-07-03"),
+        text: "آیا یوکا روستراتا به نور مستقیم نیاز دارد؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-07-04"),
+          text: "بله، حتماً به نور مستقیم آفتاب نیاز دارد. در غیر این صورت ضعیف می‌شود.",
+        },
+      },
+      {
+        _id: "comment-yucca-rostrata-10",
+        user: { _id: "user-yr10", name: "سعید نوری", role: "user" },
+        date: new Date("2025-07-01"),
+        text: "چه خاکی برای یوکا روستراتا خوبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-07-02"),
+          text: "ماسه درشت + پرلیت + کمی خاک برگ. زهکش بسیار مهم است.",
+        },
+      },
+    ],
 
     seo: {
       title:
@@ -4430,6 +7246,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "decoration-agave-victoriae-1",
     name: "آگاو ویکتوریا",
     price: 2800000,
     slug: "agave-victoriae-reginae",
@@ -4445,14 +7262,13 @@ export const fakeProducts = [
     weight: 4500,
     potDimensions: { length: 30, width: 30, height: 65 },
     sunlight: "نور مستقیم آفتاب تا نیم‌سایه ",
-    image:
-      "/static/images/products/decoration/agave-victoriae-reginae/main.webp",
-    images: [
-      "/static/images/products/decoration/agave-victoriae-reginae/main.webp",
-      "/static/images/products/decoration/agave-victoriae-reginae/1.webp",
-      "/static/images/products/decoration/agave-victoriae-reginae/2.webp",
-      "/static/images/products/decoration/agave-victoriae-reginae/3.webp",
-    ],
+  image: "/static/images/products/decoration/agave-victoriae-reginae/main.webp",
+images: [
+  "/static/images/products/decoration/agave-victoriae-reginae/main.webp",
+  "/static/images/products/decoration/agave-victoriae-reginae/1.webp",
+  "/static/images/products/decoration/agave-victoriae-reginae/2.webp",
+  "/static/images/products/decoration/agave-victoriae-reginae/3.webp",
+],
 
     features: {
       overview: [
@@ -4568,7 +7384,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-agave-1",
+        user: { _id: "user-ag1", name: "نازنین احمدی", role: "user" },
+        date: new Date("2025-07-18"),
+        text: "آگاو ویکتوریا چند ساله به این اندازه میرسه؟",
+      },
+      {
+        _id: "comment-agave-2",
+        user: { _id: "user-ag2", name: "رضا کریمی", role: "user" },
+        date: new Date("2025-07-16"),
+        text: "آیا آگاو ویکتوریا در سایه رشد میکند؟",
+      },
+      {
+        _id: "comment-agave-3",
+        user: { _id: "user-ag3", name: "سارا حسینی", role: "user" },
+        date: new Date("2025-07-14"),
+        text: "چند وقت یکبار آب بدم؟",
+      },
+      {
+        _id: "comment-agave-4",
+        user: { _id: "user-ag4", name: "امیر نادری", role: "user" },
+        date: new Date("2025-07-15"),
+        text: "چطور آگاو رو تکثیر کنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-07-16"),
+          text: "پاجوش را جدا کنید، ۲ روز خشک کنید، سپس در خاک ماسه‌ای بکارید. روش ساده و مطمئن است.",
+        },
+      },
+      {
+        _id: "comment-agave-5",
+        user: { _id: "user-ag5", name: "نرگس کرمی", role: "user" },
+        date: new Date("2025-07-12"),
+        text: "برای گربه ضرر دارد؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-07-13"),
+          text: "سمی ملایم است و نوک تیز برگ‌ها خطر فیزیکی دارد. بهتر است دور از دسترس باشد.",
+        },
+      },
+      {
+        _id: "comment-agave-6",
+        user: { _id: "user-ag6", name: "مهدی رحمانی", role: "user" },
+        date: new Date("2025-07-10"),
+        text: "برگام نرم شده، چرا؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-07-11"),
+          text: "آبیاری زیاد یا خاک خیلی مرطوب. فوراً آبیاری را قطع کنید. گیاه را به خاک خشک و زهکش‌دار منتقل کنید.",
+        },
+      },
+      {
+        _id: "comment-agave-7",
+        user: { _id: "user-ag7", name: "علی صادقی", role: "user" },
+        date: new Date("2025-07-13"),
+        text: "ارسال به کرج با گلدان بتنی؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-07-14"),
+          text: "بله، بسته‌بندی ویژه. هزینه پست ۵۰ هزار تومان.",
+        },
+      },
+      {
+        _id: "comment-agave-8",
+        user: { _id: "user-ag8", name: "مریم زمانی", role: "user" },
+        date: new Date("2025-07-11"),
+        text: "قیمت ۲.۸۰۰.۰۰۰ مناسبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-07-12"),
+          text: "آگاو ۸ ساله با گلدان بتنی، قیمت رقابتی برای این گیاه خاص.",
+        },
+      },
+      {
+        _id: "comment-agave-9",
+        user: { _id: "user-ag9", name: "فاطمه سلیمانی", role: "user" },
+        date: new Date("2025-07-09"),
+        text: "آیا آگاو به نور مستقیم نیاز دارد؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-07-10"),
+          text: "بله، نور مستقیم تا نیم‌سایه روشن. در سایه رشد نمی‌کند.",
+        },
+      },
+      {
+        _id: "comment-agave-10",
+        user: { _id: "user-ag10", name: "زهرا نوری", role: "user" },
+        date: new Date("2025-07-07"),
+        text: "چه خاکی برای آگاو ویکتوریا خوبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-07-08"),
+          text: "ماسه درشت + پرلیت + پوکه. خاک باید کاملاً معدنی و زهکش‌دار باشد.",
+        },
+      },
+    ],
 
     seo: {
       title: "آگاو ویکتوریا | خرید آگاو هندسی با گلدان بتنی | گیاه‌لند",
@@ -4586,6 +7498,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "decoration-echeveria-1",
     name: "ساکولنت رز سنگی",
     price: 920000,
     slug: "echeveria-elegans",
@@ -4601,13 +7514,13 @@ export const fakeProducts = [
     weight: 900,
     potDimensions: { length: 20, width: 20, height: 20 },
     sunlight: "نور غیرمستقیم روشن تا ملایم",
-    image: "/static/images/products/decoration/echeveria-elegans/main.webp",
-    images: [
-      "/static/images/products/decoration/echeveria-elegans/main.webp",
-      "/static/images/products/decoration/echeveria-elegans/1.webp",
-      "/static/images/products/decoration/echeveria-elegans/2.webp",
-      "/static/images/products/decoration/echeveria-elegans/3.webp",
-    ],
+image: "/static/images/products/decoration/echeveria-elegans/main.webp",
+images: [
+  "/static/images/products/decoration/echeveria-elegans/main.webp",
+  "/static/images/products/decoration/echeveria-elegans/1.webp",
+  "/static/images/products/decoration/echeveria-elegans/2.webp",
+  "/static/images/products/decoration/echeveria-elegans/3.webp",
+],
 
     features: {
       overview: [
@@ -4722,7 +7635,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-echeveria-1",
+        user: { _id: "user-ec1", name: "سارا محمدی", role: "user" },
+        date: new Date("2025-07-22"),
+        text: "برگ پایینی ساکولنتم چروک شده، آب بدم؟",
+      },
+      {
+        _id: "comment-echeveria-2",
+        user: { _id: "user-ec2", name: "رضا کریمی", role: "user" },
+        date: new Date("2025-07-20"),
+        text: "چطور اکوریا رو تکثیر کنم؟",
+      },
+      {
+        _id: "comment-echeveria-3",
+        user: { _id: "user-ec3", name: "زهرا حسینی", role: "user" },
+        date: new Date("2025-07-18"),
+        text: "آیا اکوریا در سایه رشد میکند؟",
+      },
+      {
+        _id: "comment-echeveria-4",
+        user: { _id: "user-ec4", name: "امیر نادری", role: "user" },
+        date: new Date("2025-07-19"),
+        text: "روزت باز شده، چرا؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-07-20"),
+          text: "کمبود نور. گیاه را به جای پرنورتر منتقل کنید. آبیاری را کاهش دهید.",
+        },
+      },
+      {
+        _id: "comment-echeveria-5",
+        user: { _id: "user-ec5", name: "نرگس کرمی", role: "user" },
+        date: new Date("2025-07-16"),
+        text: "برای گربه ضرر دارد؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-07-17"),
+          text: "خیر، اکوریا برای گربه و سگ غیرسمی و ایمن است.",
+        },
+      },
+      {
+        _id: "comment-echeveria-6",
+        user: { _id: "user-ec6", name: "مهدی رحمانی", role: "user" },
+        date: new Date("2025-07-14"),
+        text: "چند وقت یکبار آب بدم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-07-15"),
+          text: "وقتی خاک کاملاً خشک شد. در تابستان هر ۱۰-۱۴ روز، در زمستان ماهی یک بار کافی است.",
+        },
+      },
+      {
+        _id: "comment-echeveria-7",
+        user: { _id: "user-ec7", name: "علی صادقی", role: "user" },
+        date: new Date("2025-07-17"),
+        text: "ارسال به تهران با گلدان سرامیک؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-07-18"),
+          text: "بله، هزینه پست ۳۰ هزار تومان. سفارش بالای ۵۰۰ هزار رایگان است.",
+        },
+      },
+      {
+        _id: "comment-echeveria-8",
+        user: { _id: "user-ec8", name: "مریم زمانی", role: "user" },
+        date: new Date("2025-07-15"),
+        text: "قیمت ۴۲۰.۰۰۰ مناسبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-07-16"),
+          text: "با گلدان سرامیک و گیاه ۳ ساله، قیمت رقابتی است.",
+        },
+      },
+      {
+        _id: "comment-echeveria-9",
+        user: { _id: "user-ec9", name: "فاطمه سلیمانی", role: "user" },
+        date: new Date("2025-07-13"),
+        text: "آیا اکوریا به نور مستقیم نیاز دارد؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-07-14"),
+          text: "نور غیرمستقیم روشن بهترین است. نور مستقیم ظهر باعث سوختگی می‌شود.",
+        },
+      },
+      {
+        _id: "comment-echeveria-10",
+        user: { _id: "user-ec10", name: "زهرا نوری", role: "user" },
+        date: new Date("2025-07-11"),
+        text: "چه خاکی برای اکوریا خوبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-07-12"),
+          text: "ماسه + پرلیت + پیت ماس. خاک باید سبک و زهکش‌دار باشد.",
+        },
+      },
+    ],
 
     seo: {
       title: "ساکولنت رز سنگی | خرید اکوریا با گلدان سرامیک | گیاه‌لند",
@@ -4740,6 +7749,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "decoration-lithops-1",
     name: "لیتوپس",
     price: 1500000,
     slug: "lithops-living-stones",
@@ -4755,13 +7765,13 @@ export const fakeProducts = [
     weight: 400,
     potDimensions: { length: 20, width: 20, height: 20 },
     sunlight: "نور مستقیم آفتاب تا بسیار روشن",
-    image: "/static/images/products/decoration/lithops-living-stones/main.webp",
-    images: [
-      "/static/images/products/decoration/lithops-living-stones/main.webp",
-      "/static/images/products/decoration/lithops-living-stones/1.webp",
-      "/static/images/products/decoration/lithops-living-stones/2.webp",
-      "/static/images/products/decoration/lithops-living-stones/3.webp",
-    ],
+image: "/static/images/products/decoration/lithops-living-stones/main.webp",
+images: [
+  "/static/images/products/decoration/lithops-living-stones/main.webp",
+  "/static/images/products/decoration/lithops-living-stones/1.webp",
+  "/static/images/products/decoration/lithops-living-stones/2.webp",
+  "/static/images/products/decoration/lithops-living-stones/3.webp",
+],
 
     features: {
       overview: [
@@ -4877,7 +7887,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-lithops-1",
+        user: { _id: "user-li1", name: "سعید نوری", role: "user" },
+        date: new Date("2025-07-26"),
+        text: "لیتوپس من چروک شده، آب بدم؟",
+      },
+      {
+        _id: "comment-lithops-2",
+        user: { _id: "user-li2", name: "سارا حسینی", role: "user" },
+        date: new Date("2025-07-24"),
+        text: "چرا لیتوپس من پوست می‌اندازه؟",
+      },
+      {
+        _id: "comment-lithops-3",
+        user: { _id: "user-li3", name: "زهرا کریمی", role: "user" },
+        date: new Date("2025-07-22"),
+        text: "چند وقت یکبار آب بدم؟",
+      },
+      {
+        _id: "comment-lithops-4",
+        user: { _id: "user-li4", name: "امیر نادری", role: "user" },
+        date: new Date("2025-07-23"),
+        text: "لیتوپس من ترک خورده، چرا؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-07-24"),
+          text: "آبیاری بیش از حد یا کوددهی زیاد. در زمان پوست‌اندازی هرگز آبیاری نکنید. گیاه را به خاک خشک منتقل کنید و آبیاری را قطع کنید.",
+        },
+      },
+      {
+        _id: "comment-lithops-5",
+        user: { _id: "user-li5", name: "نرگس کرمی", role: "user" },
+        date: new Date("2025-07-20"),
+        text: "برای گربه ضرر دارد؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-07-21"),
+          text: "خیر، لیتوپس برای حیوانات غیرسمی است.",
+        },
+      },
+      {
+        _id: "comment-lithops-6",
+        user: { _id: "user-li6", name: "مهدی رحمانی", role: "user" },
+        date: new Date("2025-07-18"),
+        text: "آیا لیتوپس گل میدهد؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-07-19"),
+          text: "بله، در اواخر تابستان تا پاییز گل‌های زرد یا سفید شبیه دیزی از شکاف بیرون می‌زند. گلها بعد از ظهر باز می‌شوند.",
+        },
+      },
+      {
+        _id: "comment-lithops-7",
+        user: { _id: "user-li7", name: "علی صادقی", role: "user" },
+        date: new Date("2025-07-21"),
+        text: "ارسال به شیراز با گلدان سفالی؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-07-22"),
+          text: "بله، بسته‌بندی ویژه. هزینه پست ۳۵ هزار تومان.",
+        },
+      },
+      {
+        _id: "comment-lithops-8",
+        user: { _id: "user-li8", name: "مریم زمانی", role: "user" },
+        date: new Date("2025-07-19"),
+        text: "قیمت ۳۵۰.۰۰۰ برای سه سنگ؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-07-20"),
+          text: "ست سه عدد لیتوپس با رنگ‌های مختلف در گلدان سفالی، قیمت عالی برای کلکسیونرها.",
+        },
+      },
+      {
+        _id: "comment-lithops-9",
+        user: { _id: "user-li9", name: "فاطمه سلیمانی", role: "user" },
+        date: new Date("2025-07-17"),
+        text: "آیا لیتوپس به نور مستقیم نیاز دارد؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-07-18"),
+          text: "بله، نور مستقیم آفتاب یا بسیار روشن ضروری است. در غیر این صورت شکل سنگی خود را از دست می‌دهد.",
+        },
+      },
+      {
+        _id: "comment-lithops-10",
+        user: { _id: "user-li10", name: "زهرا نوری", role: "user" },
+        date: new Date("2025-07-15"),
+        text: "چه خاکی برای لیتوپس خوبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-07-16"),
+          text: "خاک معدنی (ماسه، پرلیت، پوکه، گرانیت). خاک معمولی اصلاً مناسب نیست.",
+        },
+      },
+    ],
 
     seo: {
       title:
@@ -4896,6 +8002,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "decoration-senecio-1",
     name: "سنسیو روئلی",
     price: 1800000,
     slug: "senecio-radicans",
@@ -4911,13 +8018,13 @@ export const fakeProducts = [
     weight: 1200,
     potDimensions: { length: 20, width: 20, height: 50 },
     sunlight: "نور غیرمستقیم روشن تا آفتاب مستقیم صبحگاهی",
-    image: "/static/images/products/decoration/senecio-radicans/main.webp",
-    images: [
-      "/static/images/products/decoration/senecio-radicans/main.webp",
-      "/static/images/products/decoration/senecio-radicans/1.webp",
-      "/static/images/products/decoration/senecio-radicans/2.webp",
-      "/static/images/products/decoration/senecio-radicans/3.webp",
-    ],
+ image: "/static/images/products/decoration/senecio-radicans/main.webp",
+images: [
+  "/static/images/products/decoration/senecio-radicans/main.webp",
+  "/static/images/products/decoration/senecio-radicans/1.webp",
+  "/static/images/products/decoration/senecio-radicans/2.webp",
+  "/static/images/products/decoration/senecio-radicans/3.webp",
+],
     features: {
       overview: [
         "سنسیو روئلی با نام علمی Senecio radicans، گیاهی آبدار و خزنده با ساقه‌های آویز و برگ‌های گوشتی شبیه به موز کوچک است.",
@@ -5029,7 +8136,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-senecio-1",
+        user: { _id: "user-se1", name: "مریم رضایی", role: "user" },
+        date: new Date("2025-08-02"),
+        text: "برگ زنجیره موزم چروک شده، آب بدم؟",
+      },
+      {
+        _id: "comment-senecio-2",
+        user: { _id: "user-se2", name: "سعید کریمی", role: "user" },
+        date: new Date("2025-07-31"),
+        text: "چطور سنسیو رو تکثیر کنم؟",
+      },
+      {
+        _id: "comment-senecio-3",
+        user: { _id: "user-se3", name: "زهرا حسینی", role: "user" },
+        date: new Date("2025-07-29"),
+        text: "آیا زنجیره موز به نور زیادی نیاز دارد؟",
+      },
+      {
+        _id: "comment-senecio-4",
+        user: { _id: "user-se4", name: "امیر نادری", role: "user" },
+        date: new Date("2025-07-30"),
+        text: "ساقه‌م خشک شده، چرا؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-07-31"),
+          text: "کم‌آبی شدید یا پوسیدگی ریشه. بررسی کنید که آیا خاک خیس است یا خشک. آبیاری منظم اما با فاصله خشک شدن خاک انجام دهید.",
+        },
+      },
+      {
+        _id: "comment-senecio-5",
+        user: { _id: "user-se5", name: "نرگس کرمی", role: "user" },
+        date: new Date("2025-07-27"),
+        text: "برای گربه ضرر دارد؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-07-28"),
+          text: "بله، بلع برگ‌ها می‌تواند باعث ناراحتی معده شود. دور از دسترس حیوانات نگهداری کنید.",
+        },
+      },
+      {
+        _id: "comment-senecio-6",
+        user: { _id: "user-se6", name: "مهدی رحمانی", role: "user" },
+        date: new Date("2025-07-25"),
+        text: "چرا برگام می‌ریزه؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-07-26"),
+          text: "آبیاری زیاد یا نور کم. اجازه دهید خاک خشک شود و گیاه را به جای پرنورتر منتقل کنید.",
+        },
+      },
+      {
+        _id: "comment-senecio-7",
+        user: { _id: "user-se7", name: "علی صادقی", role: "user" },
+        date: new Date("2025-07-28"),
+        text: "ارسال به اصفهان با گلدان آویز؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-07-29"),
+          text: "بله، بسته‌بندی مخصوص. هزینه پست ۴۰ هزار تومان.",
+        },
+      },
+      {
+        _id: "comment-senecio-8",
+        user: { _id: "user-se8", name: "مریم زمانی", role: "user" },
+        date: new Date("2025-07-26"),
+        text: "قیمت ۴۸۰.۰۰۰ مناسبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-07-27"),
+          text: "با گلدان آویز سفالی و طول زنجیره ۴۰ سانت، قیمت عالی است.",
+        },
+      },
+      {
+        _id: "comment-senecio-9",
+        user: { _id: "user-se9", name: "فاطمه سلیمانی", role: "user" },
+        date: new Date("2025-07-24"),
+        text: "آیا زنجیره موز در سایه رشد میکند؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-07-25"),
+          text: "در سایه کشیده می‌شود و برگ‌ها فاصله می‌افتند. نور غیرمستقیم روشن لازم دارد.",
+        },
+      },
+      {
+        _id: "comment-senecio-10",
+        user: { _id: "user-se10", name: "زهرا نوری", role: "user" },
+        date: new Date("2025-07-22"),
+        text: "چه خاکی برای سنسیو خوبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-07-23"),
+          text: "خاک کاکتوس + پرلیت + ماسه. زهکش خوب ضروری است.",
+        },
+      },
+    ],
 
     seo: {
       title:
@@ -5048,6 +8251,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "decoration-plectranthus-1",
     name: "ساق‌عطری",
     price: 1290000,
     slug: "plectranthus-swedish-ivy",
@@ -5063,14 +8267,13 @@ export const fakeProducts = [
     weight: 1100,
     potDimensions: { length: 20, width: 20, height: 30 },
     sunlight: "نور غیرمستقیم روشن تا متوسط",
-    image:
-      "/static/images/products/decoration/plectranthus-swedish-ivy/main.webp",
-    images: [
-      "/static/images/products/decoration/plectranthus-swedish-ivy/main.webp",
-      "/static/images/products/decoration/plectranthus-swedish-ivy/1.webp",
-      "/static/images/products/decoration/plectranthus-swedish-ivy/2.webp",
-      "/static/images/products/decoration/plectranthus-swedish-ivy/3.webp",
-    ],
+image: "/static/images/products/decoration/plectranthus-swedish-ivy/main.webp",
+images: [
+  "/static/images/products/decoration/plectranthus-swedish-ivy/main.webp",
+  "/static/images/products/decoration/plectranthus-swedish-ivy/1.webp",
+  "/static/images/products/decoration/plectranthus-swedish-ivy/2.webp",
+  "/static/images/products/decoration/plectranthus-swedish-ivy/3.webp",
+],
 
     features: {
       overview: [
@@ -5183,7 +8386,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-plectranthus-1",
+        user: { _id: "user-pl1", name: "پریسا احمدی", role: "user" },
+        date: new Date("2025-08-07"),
+        text: "برگ ساق‌عطری لکه قهوه‌ای دارد، چرا؟",
+      },
+      {
+        _id: "comment-plectranthus-2",
+        user: { _id: "user-pl2", name: "رضا کریمی", role: "user" },
+        date: new Date("2025-08-05"),
+        text: "آیا ساق‌عطری برای سبد آویز خوب است؟",
+      },
+      {
+        _id: "comment-plectranthus-3",
+        user: { _id: "user-pl3", name: "زهرا حسینی", role: "user" },
+        date: new Date("2025-08-03"),
+        text: "چند وقت یکبار آب بدم؟",
+      },
+      {
+        _id: "comment-plectranthus-4",
+        user: { _id: "user-pl4", name: "امیر نادری", role: "user" },
+        date: new Date("2025-08-04"),
+        text: "چطور ساق‌عطری رو تکثیر کنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-08-05"),
+          text: "قلمه در آب یا خاک خیلی ساده است. ظرف ۱-۲ هفته ریشه می‌زند.",
+        },
+      },
+      {
+        _id: "comment-plectranthus-5",
+        user: { _id: "user-pl5", name: "نرگس کرمی", role: "user" },
+        date: new Date("2025-08-01"),
+        text: "برای گربه ضرر دارد؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-08-02"),
+          text: "خیر، ساق‌عطری برای گربه و سگ غیرسمی است.",
+        },
+      },
+      {
+        _id: "comment-plectranthus-6",
+        user: { _id: "user-pl6", name: "مهدی رحمانی", role: "user" },
+        date: new Date("2025-07-30"),
+        text: "چرا برگام زرد شده؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-07-31"),
+          text: "آبیاری زیاد یا کمبود نور. اجازه دهید خاک کمی خشک شود و گیاه را به جای روشن‌تر ببرید.",
+        },
+      },
+      {
+        _id: "comment-plectranthus-7",
+        user: { _id: "user-pl7", name: "علی صادقی", role: "user" },
+        date: new Date("2025-08-02"),
+        text: "ارسال به مشهد با گلدان آویز؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-08-03"),
+          text: "بله، بسته‌بندی مخصوص. هزینه پست ۴۰ هزار تومان.",
+        },
+      },
+      {
+        _id: "comment-plectranthus-8",
+        user: { _id: "user-pl8", name: "مریم زمانی", role: "user" },
+        date: new Date("2025-07-31"),
+        text: "قیمت ۳۹۰.۰۰۰ مناسب است؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-08-01"),
+          text: "با گلدان آویز و گیاه پرپشت، قیمت عالی است.",
+        },
+      },
+      {
+        _id: "comment-plectranthus-9",
+        user: { _id: "user-pl9", name: "فاطمه سلیمانی", role: "user" },
+        date: new Date("2025-07-29"),
+        text: "آیا ساق‌عطری به نور مستقیم نیاز دارد؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-07-30"),
+          text: "نور غیرمستقیم کافی است. نور مستقیم برگ‌ها را می‌سوزاند.",
+        },
+      },
+      {
+        _id: "comment-plectranthus-10",
+        user: { _id: "user-pl10", name: "زهرا نوری", role: "user" },
+        date: new Date("2025-07-27"),
+        text: "چه خاکی برای ساق‌عطری خوبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-07-28"),
+          text: "خاک برگ + پرلیت + پیت ماس. زهکش خوب مهم است.",
+        },
+      },
+    ],
 
     seo: {
       title:
@@ -5202,6 +8501,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "decoration-terrarium-1",
     name: "تراریوم بسته",
     price: 1250000,
     slug: "closed-terrarium",
@@ -5217,13 +8517,13 @@ export const fakeProducts = [
     weight: 1200,
     potDimensions: { length: 20, width: 20, height: 35 },
     sunlight: "نور غیرمستقیم روشن تا متوسط",
-    image: "/static/images/products/decoration/closed-terrarium/main.webp",
-    images: [
-      "/static/images/products/decoration/closed-terrarium/main.webp",
-      "/static/images/products/decoration/closed-terrarium/1.webp",
-      "/static/images/products/decoration/closed-terrarium/2.webp",
-      "/static/images/products/decoration/closed-terrarium/3.webp",
-    ],
+image: "/static/images/products/decoration/closed-terrarium/main.webp",
+images: [
+  "/static/images/products/decoration/closed-terrarium/main.webp",
+  "/static/images/products/decoration/closed-terrarium/1.webp",
+  "/static/images/products/decoration/closed-terrarium/2.webp",
+  "/static/images/products/decoration/closed-terrarium/3.webp",
+],
     features: {
       overview: [
         "تراریوم بسته، یک اکوسیستم مینیاتوری و خودکفا در ظرف شیشه‌ای است که شامل گیاهان رطوبت‌دوست (فیتونیا، مارانتا، پپرومیا، خزه) و لایه‌های زهکشی می‌باشد.",
@@ -5339,7 +8639,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-terrarium-1",
+        user: { _id: "user-t1", name: "شادی رضایی", role: "user" },
+        date: new Date("2025-08-12"),
+        text: "داخل تراریومم کپک زده، چیکار کنم؟",
+      },
+      {
+        _id: "comment-terrarium-2",
+        user: { _id: "user-t2", name: "رضا کریمی", role: "user" },
+        date: new Date("2025-08-10"),
+        text: "چند وقت یکبار آب بدم؟",
+      },
+      {
+        _id: "comment-terrarium-3",
+        user: { _id: "user-t3", name: "زهرا حسینی", role: "user" },
+        date: new Date("2025-08-08"),
+        text: "آیا تراریوم به نور مستقیم نیاز دارد؟",
+      },
+      {
+        _id: "comment-terrarium-4",
+        user: { _id: "user-t4", name: "امیر نادری", role: "user" },
+        date: new Date("2025-08-09"),
+        text: "چرا برگام زرد شده داخل تراریوم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-08-10"),
+          text: "رطوبت بیش از حد یا کمبود نور. درب را نیمه باز کنید تا رطوبت کم شود و به جای پرنورتر (بدون آفتاب مستقیم) منتقل کنید.",
+        },
+      },
+      {
+        _id: "comment-terrarium-5",
+        user: { _id: "user-t5", name: "نرگس کرمی", role: "user" },
+        date: new Date("2025-08-06"),
+        text: "برای گربه ضرر دارد؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-08-07"),
+          text: "خیر، گیاهان داخل تراریوم غیرسمی انتخاب شده‌اند.",
+        },
+      },
+      {
+        _id: "comment-terrarium-6",
+        user: { _id: "user-t6", name: "مهدی رحمانی", role: "user" },
+        date: new Date("2025-08-04"),
+        text: "آیا تراریوم نیاز به تهویه دارد؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-08-05"),
+          text: "معمولاً نه، اما اگر کپک زد یا مه بیش از حد داشت، درب را نیمه باز بگذارید تا رطوبت کم شود.",
+        },
+      },
+      {
+        _id: "comment-terrarium-7",
+        user: { _id: "user-t7", name: "علی صادقی", role: "user" },
+        date: new Date("2025-08-07"),
+        text: "ارسال به کرج با ظرف شیشه‌ای؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-08-08"),
+          text: "بله، بسته‌بندی ضدضربه ویژه. هزینه پست ۵۰ هزار تومان.",
+        },
+      },
+      {
+        _id: "comment-terrarium-8",
+        user: { _id: "user-t8", name: "مریم زمانی", role: "user" },
+        date: new Date("2025-08-05"),
+        text: "قیمت ۱.۲۵۰.۰۰۰ مناسب است؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-08-06"),
+          text: "شامل ظرف شیشه‌ای با کیفیت، ۵ نوع گیاه، لایه‌بندی حرفه‌ای و دکوراسیون. قیمت عالی است.",
+        },
+      },
+      {
+        _id: "comment-terrarium-9",
+        user: { _id: "user-t9", name: "فاطمه سلیمانی", role: "user" },
+        date: new Date("2025-08-03"),
+        text: "آیا تراریوم نیاز به آبیاری دارد؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-08-04"),
+          text: "در حالت عادی ماه‌ها نیاز به آبیاری ندارد. فقط اگر خاک خشک شد و مه روی شیشه نبود، کمی آب اضافه کنید.",
+        },
+      },
+      {
+        _id: "comment-terrarium-10",
+        user: { _id: "user-t10", name: "زهرا نوری", role: "user" },
+        date: new Date("2025-08-01"),
+        text: "چه گیاهانی داخل تراریوم هست؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-08-02"),
+          text: "فیتونیا، خزه، پپرومیا، سلیژینلا و گاهی پیله آ. همه غیرسمی و مناسب تراریوم بسته.",
+        },
+      },
+    ],
 
     seo: {
       title:
@@ -5358,6 +8754,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "decoration-azalea-bonsai-1",
     name: "بونسای آزالیا",
     price: 38500000,
     slug: "azalea-bonsai",
@@ -5373,13 +8770,13 @@ export const fakeProducts = [
     weight: 2300,
     potDimensions: { length: 25, width: 25, height: 85 },
     sunlight: "نور غیرمستقیم روشن تا آفتاب ملایم صبحگاهی",
-    image: "/static/images/products/decoration/azalea-bonsai/main.webp",
-    images: [
-      "/static/images/products/decoration/azalea-bonsai/main.webp",
-      "/static/images/products/decoration/azalea-bonsai/1.webp",
-      "/static/images/products/decoration/azalea-bonsai/2.webp",
-      "/static/images/products/decoration/azalea-bonsai/3.webp",
-    ],
+image: "/static/images/products/decoration/azalea-bonsai/main.webp",
+images: [
+  "/static/images/products/decoration/azalea-bonsai/main.webp",
+  "/static/images/products/decoration/azalea-bonsai/1.webp",
+  "/static/images/products/decoration/azalea-bonsai/2.webp",
+  "/static/images/products/decoration/azalea-bonsai/3.webp",
+],
     features: {
       overview: [
         "بونسای آزالیا با نام علمی Rhododendron simsii، درختچه‌ای خزان‌کننده (یا همیشه‌سبز) با گل‌های ابریشمی و پرپشت در رنگ‌های صورتی، قرمز، سفید و بنفش است.",
@@ -5493,7 +8890,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-azalea-1",
+        user: { _id: "user-az1", name: "پریسا احمدی", role: "user" },
+        date: new Date("2025-08-22"),
+        text: "گل بونسای آزالیام ریخت، چرا؟",
+      },
+      {
+        _id: "comment-azalea-2",
+        user: { _id: "user-az2", name: "رضا کریمی", role: "user" },
+        date: new Date("2025-08-20"),
+        text: "چه زمانی آزالیا رو هرس کنم؟",
+      },
+      {
+        _id: "comment-azalea-3",
+        user: { _id: "user-az3", name: "زهرا حسینی", role: "user" },
+        date: new Date("2025-08-18"),
+        text: "برگام زرد شده، آبم سخته؟",
+      },
+      {
+        _id: "comment-azalea-4",
+        user: { _id: "user-az4", name: "امیر نادری", role: "user" },
+        date: new Date("2025-08-19"),
+        text: "چطور بونسای آزالیا رو تکثیر کنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-08-20"),
+          text: "قلمه نیمه‌چوبی در اوایل تابستان بهترین روش است. از هورمون ریشه‌زایی استفاده کنید.",
+        },
+      },
+      {
+        _id: "comment-azalea-5",
+        user: { _id: "user-az5", name: "نرگس کرمی", role: "user" },
+        date: new Date("2025-08-16"),
+        text: "برای گربه ضرر دارد؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-08-17"),
+          text: "بله، آزالیا برای حیوانات خانگی سمی است. دور از دسترس نگهداری کنید.",
+        },
+      },
+      {
+        _id: "comment-azalea-6",
+        user: { _id: "user-az6", name: "مهدی رحمانی", role: "user" },
+        date: new Date("2025-08-14"),
+        text: "چرا آزالیام امسال گل نداد؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-08-15"),
+          text: "دوره استراحت زمستانی در جای خنک (۵-۱۰ درجه) ضروری است. همچنین هرس دیر هنگام پس از تابستان جوانه گل را حذف می‌کند.",
+        },
+      },
+      {
+        _id: "comment-azalea-7",
+        user: { _id: "user-az7", name: "علی صادقی", role: "user" },
+        date: new Date("2025-08-17"),
+        text: "ارسال به تبریز با گلدان سرامیک؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-08-18"),
+          text: "بله، بسته‌بندی ویژه. هزینه پست ۷۰ هزار تومان.",
+        },
+      },
+      {
+        _id: "comment-azalea-8",
+        user: { _id: "user-az8", name: "مریم زمانی", role: "user" },
+        date: new Date("2025-08-15"),
+        text: "قیمت ۳.۸۵۰.۰۰۰ مناسبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-08-16"),
+          text: "بونسای ۶ ساله با گلدان ژاپنی، آماده گلدهی. قیمت رقابتی است.",
+        },
+      },
+      {
+        _id: "comment-azalea-9",
+        user: { _id: "user-az9", name: "فاطمه سلیمانی", role: "user" },
+        date: new Date("2025-08-13"),
+        text: "آیا آزالیا به نور مستقیم نیاز دارد؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-08-14"),
+          text: "نور غیرمستقیم روشن یا آفتاب ملایم صبح کافی است. از نور مستقیم ظهر پرهیز کنید.",
+        },
+      },
+      {
+        _id: "comment-azalea-10",
+        user: { _id: "user-az10", name: "زهرا نوری", role: "user" },
+        date: new Date("2025-08-11"),
+        text: "چه خاکی برای آزالیا خوبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-08-12"),
+          text: "خاک اسیدی مخصوص آزالیا (کانوما + پیت ماس). هرگز از خاک معمولی استفاده نکنید.",
+        },
+      },
+    ],
 
     seo: {
       title: "بونسای آزالیا | خرید درختچه گلدار ژاپنی | گیاه‌لند",
@@ -5511,6 +9004,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "decoration-echinopsis-1",
     name: "کاکتوس اچینوپسیس",
     price: 520000,
     slug: "echinopsis-cactus",
@@ -5526,13 +9020,14 @@ export const fakeProducts = [
     weight: 1100,
     potDimensions: { length: 20, width: 20, height: 20 },
     sunlight: "نور مستقیم آفتاب تا بسیار روشن",
-    image: "/static/images/products/decoration/echinopsis-cactus/main.webp",
-    images: [
-      "/static/images/products/decoration/echinopsis-cactus/main.webp",
-      "/static/images/products/decoration/echinopsis-cactus/1.webp",
-      "/static/images/products/decoration/echinopsis-cactus/2.webp",
-      "/static/images/products/decoration/echinopsis-cactus/3.webp",
-    ],
+  image: "/static/images/products/decoration/echinopsis-cactus/main.webp",
+images: [
+  "/static/images/products/decoration/echinopsis-cactus/main.webp",
+  "/static/images/products/decoration/echinopsis-cactus/1.webp",
+  "/static/images/products/decoration/echinopsis-cactus/2.webp",
+  "/static/images/products/decoration/echinopsis-cactus/3.webp",
+],
+
 
     features: {
       overview: [
@@ -5648,7 +9143,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-echinopsis-1",
+        user: { _id: "user-ec1", name: "سارا رضایی", role: "user" },
+        date: new Date("2025-08-27"),
+        text: "کاکتوس من چند ساله تا گل بده؟",
+      },
+      {
+        _id: "comment-echinopsis-2",
+        user: { _id: "user-ec2", name: "رضا کریمی", role: "user" },
+        date: new Date("2025-08-25"),
+        text: "گل اچینوپسیس چقدر دوام داره؟",
+      },
+      {
+        _id: "comment-echinopsis-3",
+        user: { _id: "user-ec3", name: "زهرا حسینی", role: "user" },
+        date: new Date("2025-08-23"),
+        text: "چرا کاکتوس من گل نمیده؟",
+      },
+      {
+        _id: "comment-echinopsis-4",
+        user: { _id: "user-ec4", name: "امیر نادری", role: "user" },
+        date: new Date("2025-08-24"),
+        text: "چطور اچینوپسیس رو تکثیر کنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-08-25"),
+          text: "پاجوش‌های اطراف را جدا کرده و پس از خشک شدن در خاک ماسه‌ای بکارید.",
+        },
+      },
+      {
+        _id: "comment-echinopsis-5",
+        user: { _id: "user-ec5", name: "نرگس کرمی", role: "user" },
+        date: new Date("2025-08-21"),
+        text: "برای گربه ضرر دارد؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-08-22"),
+          text: "خیر، این کاکتوس غیرسمی است اما خارهای کوچک دارد.",
+        },
+      },
+      {
+        _id: "comment-echinopsis-6",
+        user: { _id: "user-ec6", name: "مهدی رحمانی", role: "user" },
+        date: new Date("2025-08-19"),
+        text: "کاکتوسم نرم شده، چرا؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-08-20"),
+          text: "آبیاری زیاد یا پوسیدگی ریشه. فوراً آبیاری را قطع کنید. اگر نرمی گسترده باشد، گیاه قابل نجات نیست.",
+        },
+      },
+      {
+        _id: "comment-echinopsis-7",
+        user: { _id: "user-ec7", name: "علی صادقی", role: "user" },
+        date: new Date("2025-08-22"),
+        text: "ارسال به اصفهان با گلدان سفالی؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-08-23"),
+          text: "بله، هزینه پست ۳۵ هزار تومان.",
+        },
+      },
+      {
+        _id: "comment-echinopsis-8",
+        user: { _id: "user-ec8", name: "مریم زمانی", role: "user" },
+        date: new Date("2025-08-20"),
+        text: "قیمت ۵۲۰.۰۰۰ مناسبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-08-21"),
+          text: "کاکتوس ۴ ساله آماده گلدهی با گلدان سفالی، قیمت عالی است.",
+        },
+      },
+      {
+        _id: "comment-echinopsis-9",
+        user: { _id: "user-ec9", name: "فاطمه سلیمانی", role: "user" },
+        date: new Date("2025-08-18"),
+        text: "آیا اچینوپسیس به سرمای زمستان نیاز دارد؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-08-19"),
+          text: "بله، برای گلدهی به یک دوره استراحت خنک (۵-۱۰ درجه) نیاز دارد. در جای خنک و خشک نگهداری کنید.",
+        },
+      },
+      {
+        _id: "comment-echinopsis-10",
+        user: { _id: "user-ec10", name: "زهرا نوری", role: "user" },
+        date: new Date("2025-08-16"),
+        text: "چه خاکی برای اچینوپسیس خوبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-08-17"),
+          text: "ماسه درشت + پرلیت + کمی خاک برگ. زهکش فوق‌العاده ضروری است.",
+        },
+      },
+    ],
 
     seo: {
       title: "کاکتوس اچینوپسیس (شب‌شکوفا) | خرید کاکتوس گلدار معطر | گیاه‌لند",
@@ -5666,6 +9257,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "decoration-ficus-lyrata-1",
     name: "فیکوس لیراتا",
     price: 2450000,
     slug: "ficus-lyrata",
@@ -5681,13 +9273,13 @@ export const fakeProducts = [
     weight: 5800,
     potDimensions: { length: 28, width: 28, height: 80 },
     sunlight: "نور غیرمستقیم روشن",
-    image: "/static/images/products/decoration/ficus-lyrata/main.webp",
-    images: [
-      "/static/images/products/decoration/ficus-lyrata/main.webp",
-      "/static/images/products/decoration/ficus-lyrata/1.webp",
-      "/static/images/products/decoration/ficus-lyrata/2.webp",
-      "/static/images/products/decoration/ficus-lyrata/3.webp",
-    ],
+image: "/static/images/products/decoration/ficus-lyrata/main.webp",
+images: [
+  "/static/images/products/decoration/ficus-lyrata/main.webp",
+  "/static/images/products/decoration/ficus-lyrata/1.webp",
+  "/static/images/products/decoration/ficus-lyrata/2.webp",
+  "/static/images/products/decoration/ficus-lyrata/3.webp",
+],
 
     features: {
       overview: [
@@ -5802,7 +9394,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-lyrata-1",
+        user: { _id: "user-fl1", name: "سارا رضایی", role: "user" },
+        date: new Date("2025-09-02"),
+        text: "برگ فیکوس لیراتام لکه قهوه‌ای داره، چرا؟",
+      },
+      {
+        _id: "comment-lyrata-2",
+        user: { _id: "user-fl2", name: "رضا کریمی", role: "user" },
+        date: new Date("2025-08-31"),
+        text: "چرا برگ پایینی فیکوس لیراتا میریزه؟",
+      },
+      {
+        _id: "comment-lyrata-3",
+        user: { _id: "user-fl3", name: "زهرا حسینی", role: "user" },
+        date: new Date("2025-08-29"),
+        text: "چند وقت یکبار آب بدم؟",
+      },
+      {
+        _id: "comment-lyrata-4",
+        user: { _id: "user-fl4", name: "امیر نادری", role: "user" },
+        date: new Date("2025-08-30"),
+        text: "چطور فیکوس لیراتا رو تکثیر کنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-08-31"),
+          text: "قلمه ساقه در آب یا خاک. شیرابه را بشویید و از هورمون ریشه‌زایی استفاده کنید.",
+        },
+      },
+      {
+        _id: "comment-lyrata-5",
+        user: { _id: "user-fl5", name: "نرگس کرمی", role: "user" },
+        date: new Date("2025-08-27"),
+        text: "برای گربه ضرر دارد؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-08-28"),
+          text: "بله، شیرابه سمی است. دور از دسترس حیوانات نگهداری شود.",
+        },
+      },
+      {
+        _id: "comment-lyrata-6",
+        user: { _id: "user-fl6", name: "مهدی رحمانی", role: "user" },
+        date: new Date("2025-08-25"),
+        text: "چرا برگام زرد شده؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-08-26"),
+          text: "آبیاری زیاد یا کمبود نور. اجازه دهید خاک خشک شود و به جای پرنورتر (بدون آفتاب مستقیم) منتقل کنید.",
+        },
+      },
+      {
+        _id: "comment-lyrata-7",
+        user: { _id: "user-fl7", name: "علی صادقی", role: "user" },
+        date: new Date("2025-08-28"),
+        text: "ارسال به تهران با گلدان حصیری؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-08-29"),
+          text: "بله، بسته‌بندی ویژه. هزینه پست ۵۰ هزار تومان.",
+        },
+      },
+      {
+        _id: "comment-lyrata-8",
+        user: { _id: "user-fl8", name: "مریم زمانی", role: "user" },
+        date: new Date("2025-08-26"),
+        text: "قیمت ۲.۴۵۰.۰۰۰ مناسبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-08-27"),
+          text: "با گلدان حصیری و ارتفاع ۱۲۰ سانت، قیمت رقابتی است.",
+        },
+      },
+      {
+        _id: "comment-lyrata-9",
+        user: { _id: "user-fl9", name: "فاطمه سلیمانی", role: "user" },
+        date: new Date("2025-08-24"),
+        text: "آیا فیکوس لیراتا به نور مستقیم نیاز دارد؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-08-25"),
+          text: "خیر، نور غیرمستقیم روشن کافی است. نور مستقیم برگ‌ها را می‌سوزاند.",
+        },
+      },
+      {
+        _id: "comment-lyrata-10",
+        user: { _id: "user-fl10", name: "زهرا نوری", role: "user" },
+        date: new Date("2025-08-22"),
+        text: "چه خاکی برای فیکوس لیراتا خوبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-08-23"),
+          text: "خاک برگ + پرلیت + پیت ماس + کوکوپیت. زهکش خوب مهم است.",
+        },
+      },
+    ],
 
     seo: {
       title:
@@ -5821,6 +9509,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "decoration-strelitzia-1",
     name: "استرولیتسا",
     price: 3200000,
     slug: "strelitzia-reginae",
@@ -5836,13 +9525,13 @@ export const fakeProducts = [
     weight: 8500,
     potDimensions: { length: 35, width: 35, height: 40 },
     sunlight: "نور مستقیم آفتاب تا بسیار روشن",
-    image: "/static/images/products/decoration/strelitzia-reginae/main.webp",
-    images: [
-      "/static/images/products/decoration/strelitzia-reginae/main.webp",
-      "/static/images/products/decoration/strelitzia-reginae/1.webp",
-      "/static/images/products/decoration/strelitzia-reginae/2.webp",
-      "/static/images/products/decoration/strelitzia-reginae/3.webp",
-    ],
+image: "/static/images/products/decoration/strelitzia-reginae/main.webp",
+images: [
+  "/static/images/products/decoration/strelitzia-reginae/main.webp",
+  "/static/images/products/decoration/strelitzia-reginae/1.webp",
+  "/static/images/products/decoration/strelitzia-reginae/2.webp",
+  "/static/images/products/decoration/strelitzia-reginae/3.webp",
+],
     features: {
       overview: [
         "استرولیتسا با نام علمی Strelitzia reginae، گیاهی همیشه‌سبز و بزرگ با برگ‌های شبیه به موز و گل‌های منحصربه‌فرد شبیه پرنده بهشتی (تاج پرندگان) است.",
@@ -5955,7 +9644,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-strelitzia-1",
+        user: { _id: "user-st1", name: "پریسا رضایی", role: "user" },
+        date: new Date("2025-09-07"),
+        text: "چرا استرولیتسای من گل نمیده؟",
+      },
+      {
+        _id: "comment-strelitzia-2",
+        user: { _id: "user-st2", name: "رضا کریمی", role: "user" },
+        date: new Date("2025-09-05"),
+        text: "گل بهشت چند ساله تا گل بده؟",
+      },
+      {
+        _id: "comment-strelitzia-3",
+        user: { _id: "user-st3", name: "زهرا حسینی", role: "user" },
+        date: new Date("2025-09-03"),
+        text: "برگام شکافته، چرا؟",
+      },
+      {
+        _id: "comment-strelitzia-4",
+        user: { _id: "user-st4", name: "امیر نادری", role: "user" },
+        date: new Date("2025-09-04"),
+        text: "چطور استرولیتسا رو تکثیر کنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-09-05"),
+          text: "تقسیم بوته در بهار برای گیاهان بالغ (حداقل ۳ سال) بهترین روش است. هر بخش باید ۲-۳ ساقه داشته باشد.",
+        },
+      },
+      {
+        _id: "comment-strelitzia-5",
+        user: { _id: "user-st5", name: "نرگس کرمی", role: "user" },
+        date: new Date("2025-09-01"),
+        text: "برای گربه ضرر دارد؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-09-02"),
+          text: "غیرسمی است، اما برگ‌هایش برای گربه جذابیت دارد و خوردن زیاد ممکن است ناراحتی خفیف معده ایجاد کند.",
+        },
+      },
+      {
+        _id: "comment-strelitzia-6",
+        user: { _id: "user-st6", name: "مهدی رحمانی", role: "user" },
+        date: new Date("2025-08-30"),
+        text: "نوک برگام قهوه‌ای شده، چرا؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-08-31"),
+          text: "کمبود رطوبت یا آبیاری با آب کلردار. غبارپاشی کنید و از آب بدون کلر استفاده کنید.",
+        },
+      },
+      {
+        _id: "comment-strelitzia-7",
+        user: { _id: "user-st7", name: "علی صادقی", role: "user" },
+        date: new Date("2025-09-02"),
+        text: "ارسال به اصفهان با گلدان بتنی؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-09-03"),
+          text: "بله، حمل با پیک مخصوص. هزینه پست ۸۰ هزار تومان.",
+        },
+      },
+      {
+        _id: "comment-strelitzia-8",
+        user: { _id: "user-st8", name: "مریم زمانی", role: "user" },
+        date: new Date("2025-08-31"),
+        text: "قیمت ۳.۲۰۰.۰۰۰ مناسب است؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-09-01"),
+          text: "با گلدان بتنی و ارتفاع ۱۰۰ سانت، گیاه ۴ ساله آماده گلدهی، قیمت عالی است.",
+        },
+      },
+      {
+        _id: "comment-strelitzia-9",
+        user: { _id: "user-st9", name: "فاطمه سلیمانی", role: "user" },
+        date: new Date("2025-08-29"),
+        text: "آیا استرولیتسا به نور مستقیم نیاز دارد؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-08-30"),
+          text: "بله، برای گلدهی به نور مستقیم حداقل ۴-۶ ساعت نیاز دارد. در غیر این صورت فقط برگ تولید می‌کند.",
+        },
+      },
+      {
+        _id: "comment-strelitzia-10",
+        user: { _id: "user-st10", name: "زهرا نوری", role: "user" },
+        date: new Date("2025-08-27"),
+        text: "چه خاکی برای استرولیتسا خوبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-08-28"),
+          text: "خاک برگ + پرلیت + پیت ماس + ماسه. زهکش خوب ضروری است.",
+        },
+      },
+    ],
 
     seo: {
       title: "استرولیتسا (گل بهشت) | خرید پرنده بهشتی با گلدان بتنی | گیاه‌لند",
@@ -5973,6 +9758,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "decoration-airplant-1",
     name: "هوایی روی چوب دریفت",
     price: 8885000,
     slug: "airplant-driftwood",
@@ -5988,13 +9774,13 @@ export const fakeProducts = [
     weight: 500,
     potDimensions: { length: 40, width: 60, height: 50 },
     sunlight: "نور غیرمستقیم روشن",
-    image: "/static/images/products/decoration/airplant-driftwood/main.webp",
-    images: [
-      "/static/images/products/decoration/airplant-driftwood/main.webp",
-      "/static/images/products/decoration/airplant-driftwood/1.webp",
-      "/static/images/products/decoration/airplant-driftwood/2.webp",
-      "/static/images/products/decoration/airplant-driftwood/3.webp",
-    ],
+image: "/static/images/products/decoration/airplant-driftwood/main.webp",
+images: [
+  "/static/images/products/decoration/airplant-driftwood/main.webp",
+  "/static/images/products/decoration/airplant-driftwood/1.webp",
+  "/static/images/products/decoration/airplant-driftwood/2.webp",
+  "/static/images/products/decoration/airplant-driftwood/3.webp",
+],
 
     features: {
       overview: [
@@ -6109,7 +9895,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-airplant-1",
+        user: { _id: "user-ap1", name: "سارا احمدی", role: "user" },
+        date: new Date("2025-08-18"),
+        text: "نوک برگ تیلاندسیام قهوه‌ای شده، چرا؟",
+      },
+      {
+        _id: "comment-airplant-2",
+        user: { _id: "user-ap2", name: "رضا کریمی", role: "user" },
+        date: new Date("2025-08-16"),
+        text: "چند وقت یکبار آب بدم؟",
+      },
+      {
+        _id: "comment-airplant-3",
+        user: { _id: "user-ap3", name: "زهرا حسینی", role: "user" },
+        date: new Date("2025-08-14"),
+        text: "آیا تیلاندسیا به خاک نیاز دارد؟",
+      },
+      {
+        _id: "comment-airplant-4",
+        user: { _id: "user-ap4", name: "امیر نادری", role: "user" },
+        date: new Date("2025-08-15"),
+        text: "چطور تیلاندسیا رو تکثیر کنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-08-16"),
+          text: "پس از گلدهی، پاجوش‌ها را جدا کنید. صبر کنید تا به اندازه کافی بزرگ شوند (حداقل ۱/۳ اندازه مادری).",
+        },
+      },
+      {
+        _id: "comment-airplant-5",
+        user: { _id: "user-ap5", name: "نرگس کرمی", role: "user" },
+        date: new Date("2025-08-12"),
+        text: "برای گربه ضرر دارد؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-08-13"),
+          text: "خیر، تیلاندسیا برای حیوانات خانگی غیرسمی است.",
+        },
+      },
+      {
+        _id: "comment-airplant-6",
+        user: { _id: "user-ap6", name: "مهدی رحمانی", role: "user" },
+        date: new Date("2025-08-10"),
+        text: "گیاهم گل نارنجی داده، سمی است؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-08-11"),
+          text: "گل تیلاندسیا بنفش است. احتمالاً گونه دیگری دارید. ولی همه تیلاندسیاها غیرسمی هستند.",
+        },
+      },
+      {
+        _id: "comment-airplant-7",
+        user: { _id: "user-ap7", name: "علی صادقی", role: "user" },
+        date: new Date("2025-08-13"),
+        text: "ارسال به شیراز با چوب دریفت؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-08-14"),
+          text: "بله، بسته‌بندی ایمن. هزینه پست ۴۰ هزار تومان.",
+        },
+      },
+      {
+        _id: "comment-airplant-8",
+        user: { _id: "user-ap8", name: "مریم زمانی", role: "user" },
+        date: new Date("2025-08-11"),
+        text: "قیمت ۶۸۰.۰۰۰ مناسبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-08-12"),
+          text: "شامل چوب دریفت طبیعی، ۳ بوته تیلاندسیا و نخ نصب. قیمت عالی برای این اثر هنری زنده.",
+        },
+      },
+      {
+        _id: "comment-airplant-9",
+        user: { _id: "user-ap9", name: "فاطمه سلیمانی", role: "user" },
+        date: new Date("2025-08-09"),
+        text: "آیا تیلاندسیا به نور مستقیم نیاز دارد؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-08-10"),
+          text: "خیر، نور غیرمستقیم روشن کافی است. نور مستقیم باعث سوختگی می‌شود.",
+        },
+      },
+      {
+        _id: "comment-airplant-10",
+        user: { _id: "user-ap10", name: "زهرا نوری", role: "user" },
+        date: new Date("2025-08-07"),
+        text: "چطور تیلاندسیا رو تمیز کنم؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-08-08"),
+          text: "با غبارپاشی یا غوطه‌وری در آب تمیز می‌شود. هرگز از مواد شیمیایی استفاده نکنید.",
+        },
+      },
+    ],
 
     seo: {
       title: "گیاه هوایی روی چوب دریفت | تیلاندسیا بدون خاک | گیاه‌لند",
@@ -6128,6 +10010,7 @@ export const fakeProducts = [
   },
 
   {
+    _id: "gift-anthurium-1",
     name: "آنتوریوم",
     price: 890000,
     slug: "anthurium",
@@ -6143,13 +10026,13 @@ export const fakeProducts = [
     weight: 1500,
     potDimensions: { length: 25, width: 25, height: 70 },
     sunlight: "نور غیرمستقیم روشن",
-    image: "/static/images/products/gift/anthurium/main.webp",
-    images: [
-      "/static/images/products/gift/anthurium/main.webp",
-      "/static/images/products/gift/anthurium/1.webp",
-      "/static/images/products/gift/anthurium/2.webp",
-      "/static/images/products/gift/anthurium/3.webp",
-    ],
+   image: "/static/images/products/gift/anthurium/main.webp",
+images: [
+  "/static/images/products/gift/anthurium/main.webp",
+  "/static/images/products/gift/anthurium/1.webp",
+  "/static/images/products/gift/anthurium/2.webp",
+  "/static/images/products/gift/anthurium/3.webp",
+],
 
     features: {
       overview: [
@@ -6261,7 +10144,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-anthurium-1",
+        user: { _id: "user-g1", name: "مریم رضایی", role: "user" },
+        date: new Date("2025-09-12"),
+        text: "گل آنتوریومم سبز شده، چرا؟",
+      },
+      {
+        _id: "comment-anthurium-2",
+        user: { _id: "user-g2", name: "سعید کریمی", role: "user" },
+        date: new Date("2025-09-10"),
+        text: "آیا آنتوریوم برای هدیه مناسبه؟",
+      },
+      {
+        _id: "comment-anthurium-3",
+        user: { _id: "user-g3", name: "زهرا حسینی", role: "user" },
+        date: new Date("2025-09-08"),
+        text: "چند وقت یکبار آب بدم؟",
+      },
+      {
+        _id: "comment-anthurium-4",
+        user: { _id: "user-g4", name: "امیر نادری", role: "user" },
+        date: new Date("2025-09-09"),
+        text: "چطور آنتوریوم رو تکثیر کنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-09-10"),
+          text: "تقسیم بوته در بهار بهترین روش است. هر بخش باید ریشه و برگ کافی داشته باشد.",
+        },
+      },
+      {
+        _id: "comment-anthurium-5",
+        user: { _id: "user-g5", name: "نرگس کرمی", role: "user" },
+        date: new Date("2025-09-06"),
+        text: "برای گربه ضرر دارد؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-09-07"),
+          text: "بله، سمی است. دور از دسترس حیوانات خانگی نگهداری کنید.",
+        },
+      },
+      {
+        _id: "comment-anthurium-6",
+        user: { _id: "user-g6", name: "مهدی رحمانی", role: "user" },
+        date: new Date("2025-09-04"),
+        text: "گل آنتوریومم قهوه‌ای شده، چرا؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-09-05"),
+          text: "قطره آب روی گل در نور باعث سوختگی نقطه‌ای می‌شود. از خیس شدن گلها خودداری کنید.",
+        },
+      },
+      {
+        _id: "comment-anthurium-7",
+        user: { _id: "user-g7", name: "علی صادقی", role: "user" },
+        date: new Date("2025-09-07"),
+        text: "ارسال به تهران با گلدان سرامیک؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-09-08"),
+          text: "بله، هزینه پست ۳۰ هزار تومان. سفارش بالای ۵۰۰ هزار رایگان.",
+        },
+      },
+      {
+        _id: "comment-anthurium-8",
+        user: { _id: "user-g8", name: "مریم زمانی", role: "user" },
+        date: new Date("2025-09-05"),
+        text: "قیمت ۸۹۰.۰۰۰ مناسبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-09-06"),
+          text: "با گلدان سرامیک و گیاه با ۳ گل قرمز، قیمت عالی برای هدیه لاکچری است.",
+        },
+      },
+      {
+        _id: "comment-anthurium-9",
+        user: { _id: "user-g9", name: "فاطمه سلیمانی", role: "user" },
+        date: new Date("2025-09-03"),
+        text: "آیا آنتوریوم به نور مستقیم نیاز دارد؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-09-04"),
+          text: "خیر، نور غیرمستقیم روشن کافی است. نور مستقیم گلها را می‌سوزاند.",
+        },
+      },
+      {
+        _id: "comment-anthurium-10",
+        user: { _id: "user-g10", name: "زهرا نوری", role: "user" },
+        date: new Date("2025-09-01"),
+        text: "چه خاکی برای آنتوریوم خوبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-09-02"),
+          text: "پیت ماس + پرلیت + پوست درخت کاج. خاک باید سبک و هواگیر باشد.",
+        },
+      },
+    ],
 
     seo: {
       title: "آنتوریوم قرمز | خرید آنتوریوم قلب عشق با گلدان سرامیک | گیاه‌لند",
@@ -6279,6 +10258,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "gift-poinsettia-1",
     name: "بنت قنسول",
     price: 5500000,
     slug: "poinsettia",
@@ -6294,13 +10274,13 @@ export const fakeProducts = [
     weight: 1800,
     potDimensions: { length: 30, width: 30, height: 80 },
     sunlight: "نور غیرمستقیم روشن",
-    image: "/static/images/products/gift/poinsettia/main.webp",
-    images: [
-      "/static/images/products/gift/poinsettia/main.webp",
-      "/static/images/products/gift/poinsettia/1.webp",
-      "/static/images/products/gift/poinsettia/2.webp",
-      "/static/images/products/gift/poinsettia/3.webp",
-    ],
+image: "/static/images/products/gift/poinsettia/main.webp",
+images: [
+  "/static/images/products/gift/poinsettia/main.webp",
+  "/static/images/products/gift/poinsettia/1.webp",
+  "/static/images/products/gift/poinsettia/2.webp",
+  "/static/images/products/gift/poinsettia/3.webp",
+],
 
     features: {
       overview: [
@@ -6412,7 +10392,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-poinsettia-1",
+        user: { _id: "user-p1", name: "سارا رضایی", role: "user" },
+        date: new Date("2025-09-17"),
+        text: "بنت قنسول من برگاش ریخت، چرا؟",
+      },
+      {
+        _id: "comment-poinsettia-2",
+        user: { _id: "user-p2", name: "رضا کریمی", role: "user" },
+        date: new Date("2025-09-15"),
+        text: "آیا بنت قنسول برای هدیه کریسمس مناسبه؟",
+      },
+      {
+        _id: "comment-poinsettia-3",
+        user: { _id: "user-p3", name: "زهرا حسینی", role: "user" },
+        date: new Date("2025-09-13"),
+        text: "چند وقت یکبار آب بدم؟",
+      },
+      {
+        _id: "comment-poinsettia-4",
+        user: { _id: "user-p4", name: "امیر نادری", role: "user" },
+        date: new Date("2025-09-14"),
+        text: "چطور بنت قنسول رو برای سال بعد نگهداری کنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-09-15"),
+          text: "پس از ریزش برگ‌ها، آبیاری را کم کنید. در بهار هرس کرده و گلدان را عوض کنید. از تابستان با تاریکی شبانه، گلدهی مجدد را تحریک کنید.",
+        },
+      },
+      {
+        _id: "comment-poinsettia-5",
+        user: { _id: "user-p5", name: "نرگس کرمی", role: "user" },
+        date: new Date("2025-09-11"),
+        text: "برای گربه ضرر دارد؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-09-12"),
+          text: "بله، شیرابه سمی ملایم است. دور از دسترس حیوانات نگهداری شود.",
+        },
+      },
+      {
+        _id: "comment-poinsettia-6",
+        user: { _id: "user-p6", name: "مهدی رحمانی", role: "user" },
+        date: new Date("2025-09-09"),
+        text: "چرا براکته قرمز کمرنگ شده؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-09-10"),
+          text: "نور کافی یا تاریکی شبانه کافی نیست. در زمستان باید ۱۴ ساعت تاریکی مطلق داشته باشد.",
+        },
+      },
+      {
+        _id: "comment-poinsettia-7",
+        user: { _id: "user-p7", name: "علی صادقی", role: "user" },
+        date: new Date("2025-09-12"),
+        text: "ارسال به مشهد با گلدان فویل؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-09-13"),
+          text: "بله، بسته‌بندی کادویی. هزینه پست ۳۵ هزار تومان.",
+        },
+      },
+      {
+        _id: "comment-poinsettia-8",
+        user: { _id: "user-p8", name: "مریم زمانی", role: "user" },
+        date: new Date("2025-09-10"),
+        text: "قیمت ۳۵۰.۰۰۰ مناسبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-09-11"),
+          text: "با گلدان فویل طلایی و گیاه پربراکته، قیمت عالی برای هدیه کریسمس.",
+        },
+      },
+      {
+        _id: "comment-poinsettia-9",
+        user: { _id: "user-p9", name: "فاطمه سلیمانی", role: "user" },
+        date: new Date("2025-09-08"),
+        text: "آیا بنت قنسول به نور مستقیم نیاز دارد؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-09-09"),
+          text: "نور غیرمستقیم روشن کافی است. نور مستقیم برگ‌ها را می‌سوزاند.",
+        },
+      },
+      {
+        _id: "comment-poinsettia-10",
+        user: { _id: "user-p10", name: "زهرا نوری", role: "user" },
+        date: new Date("2025-09-06"),
+        text: "چه خاکی برای بنت قنسول خوبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-09-07"),
+          text: "خاک برگ + پرلیت + پیت ماس. زهکش خوب مهم است.",
+        },
+      },
+    ],
 
     seo: {
       title: "بنت قنسول قرمز | خرید گل کریسمس با گلدان کادویی | گیاه‌لند",
@@ -6430,6 +10506,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "gift-hoya-kerrii-1",
     name: "هویا کرتی",
     price: 1200000,
     slug: "hoya-kerrii",
@@ -6445,13 +10522,13 @@ export const fakeProducts = [
     weight: 400,
     potDimensions: { length: 15, width: 15, height: 20 },
     sunlight: "نور غیرمستقیم روشن",
-    image: "/static/images/products/gift/hoya-kerrii/main.webp",
-    images: [
-      "/static/images/products/gift/hoya-kerrii/main.webp",
-      "/static/images/products/gift/hoya-kerrii/1.webp",
-      "/static/images/products/gift/hoya-kerrii/2.webp",
-      "/static/images/products/gift/hoya-kerrii/3.webp",
-    ],
+   image: "/static/images/products/gift/hoya-kerrii/main.webp",
+images: [
+  "/static/images/products/gift/hoya-kerrii/main.webp",
+  "/static/images/products/gift/hoya-kerrii/1.webp",
+  "/static/images/products/gift/hoya-kerrii/2.webp",
+  "/static/images/products/gift/hoya-kerrii/3.webp",
+],
 
     features: {
       overview: [
@@ -6563,7 +10640,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-hoya-1",
+        user: { _id: "user-h1", name: "لیلا احمدی", role: "user" },
+        date: new Date("2025-09-22"),
+        text: "هویا قلب من چرا بزرگ نمیشه؟",
+      },
+      {
+        _id: "comment-hoya-2",
+        user: { _id: "user-h2", name: "رضا کریمی", role: "user" },
+        date: new Date("2025-09-20"),
+        text: "آیا هویا کرتی فقط یک برگ میمونه؟",
+      },
+      {
+        _id: "comment-hoya-3",
+        user: { _id: "user-h3", name: "زهرا حسینی", role: "user" },
+        date: new Date("2025-09-18"),
+        text: "چند وقت یکبار آب بدم؟",
+      },
+      {
+        _id: "comment-hoya-4",
+        user: { _id: "user-h4", name: "امیر نادری", role: "user" },
+        date: new Date("2025-09-19"),
+        text: "چطور هویا کرتی رو تکثیر کنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-09-20"),
+          text: "با قلمه ساقه (نه برگ تنها) می‌توانید گیاه جدید با چند برگ داشته باشید. برگ تنها ریشه می‌زند ولی رشد نمی‌کند.",
+        },
+      },
+      {
+        _id: "comment-hoya-5",
+        user: { _id: "user-h5", name: "نرگس کرمی", role: "user" },
+        date: new Date("2025-09-16"),
+        text: "برای گربه ضرر دارد؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-09-17"),
+          text: "خیر، هویا کرتی برای حیوانات خانگی غیرسمی و ایمن است.",
+        },
+      },
+      {
+        _id: "comment-hoya-6",
+        user: { _id: "user-h6", name: "مهدی رحمانی", role: "user" },
+        date: new Date("2025-09-14"),
+        text: "برگم نرم شده، چرا؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-09-15"),
+          text: "آبیاری زیاد. فوراً آبیاری را قطع کنید. برگ نرم و شفاف نشانه پوسیدگی است.",
+        },
+      },
+      {
+        _id: "comment-hoya-7",
+        user: { _id: "user-h7", name: "علی صادقی", role: "user" },
+        date: new Date("2025-09-17"),
+        text: "ارسال به کرج با گلدان قلب شکل؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-09-18"),
+          text: "بله، بسته‌بندی کادویی. هزینه پست ۳۰ هزار تومان.",
+        },
+      },
+      {
+        _id: "comment-hoya-8",
+        user: { _id: "user-h8", name: "مریم زمانی", role: "user" },
+        date: new Date("2025-09-15"),
+        text: "قیمت ۴۲۰.۰۰۰ مناسبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-09-16"),
+          text: "با گلدان سرامیک قلب شکل و گیاه در بسته‌بندی ولنتاین، قیمت عالی برای هدیه عاشقانه است.",
+        },
+      },
+      {
+        _id: "comment-hoya-9",
+        user: { _id: "user-h9", name: "فاطمه سلیمانی", role: "user" },
+        date: new Date("2025-09-13"),
+        text: "آیا هویا کرتی به نور مستقیم نیاز دارد؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-09-14"),
+          text: "نور غیرمستقیم روشن کافی است. نور مستقیم برگ را می‌سوزاند.",
+        },
+      },
+      {
+        _id: "comment-hoya-10",
+        user: { _id: "user-h10", name: "زهرا نوری", role: "user" },
+        date: new Date("2025-09-11"),
+        text: "چه خاکی برای هویا کرتی خوبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-09-12"),
+          text: "خاک کاکتوس + پرلیت + ماسه. زهکش فوق‌العاده ضروری است.",
+        },
+      },
+    ],
 
     seo: {
       title:
@@ -6582,6 +10755,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "gift-lucky-bamboo-1",
     name: "بامبوی خوش یُمن",
     price: 3380000,
     slug: "lucky-bamboo",
@@ -6597,13 +10771,13 @@ export const fakeProducts = [
     weight: 1600,
     potDimensions: { length: 10, width: 10, height: 70 },
     sunlight: "نور غیرمستقیم روشن تا متوسط",
-    image: "/static/images/products/gift/lucky-bamboo/main.webp",
-    images: [
-      "/static/images/products/gift/lucky-bamboo/main.webp",
-      "/static/images/products/gift/lucky-bamboo/1.webp",
-      "/static/images/products/gift/lucky-bamboo/2.webp",
-      "/static/images/products/gift/lucky-bamboo/3.webp",
-    ],
+ image: "/static/images/products/gift/lucky-bamboo/main.webp",
+images: [
+  "/static/images/products/gift/lucky-bamboo/main.webp",
+  "/static/images/products/gift/lucky-bamboo/1.webp",
+  "/static/images/products/gift/lucky-bamboo/2.webp",
+  "/static/images/products/gift/lucky-bamboo/3.webp",
+],
     features: {
       overview: [
         "بامبوی خوش یُمن با نام علمی Dracaena sanderiana، گیاهی همیشه‌سبز با ساقه‌های باریک و برگ‌های باریک سبز است که به راحتی در آب رشد می‌کند.",
@@ -6718,7 +10892,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-bamboo-1",
+        user: { _id: "user-b1", name: "سارا رضایی", role: "user" },
+        date: new Date("2025-09-27"),
+        text: "برگ بامبوی خوش یُمن زرد شده، چرا؟",
+      },
+      {
+        _id: "comment-bamboo-2",
+        user: { _id: "user-b2", name: "رضا کریمی", role: "user" },
+        date: new Date("2025-09-25"),
+        text: "چند ساقه بامبو برای خوش شانسی خوبه؟",
+      },
+      {
+        _id: "comment-bamboo-3",
+        user: { _id: "user-b3", name: "زهرا حسینی", role: "user" },
+        date: new Date("2025-09-23"),
+        text: "آیا بامبو در خاک هم رشد میکند؟",
+      },
+      {
+        _id: "comment-bamboo-4",
+        user: { _id: "user-b4", name: "امیر نادری", role: "user" },
+        date: new Date("2025-09-24"),
+        text: "چطور بامبو رو تکثیر کنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-09-25"),
+          text: "قلمه ساقه در آب بسیار ساده است. هر تکه ساقه با یک گره در آب ریشه می‌زند.",
+        },
+      },
+      {
+        _id: "comment-bamboo-5",
+        user: { _id: "user-b5", name: "نرگس کرمی", role: "user" },
+        date: new Date("2025-09-21"),
+        text: "برای گربه ضرر دارد؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-09-22"),
+          text: "غیرسمی است، اما خوردن برگ‌ها می‌تواند ناراحتی خفیف معده ایجاد کند.",
+        },
+      },
+      {
+        _id: "comment-bamboo-6",
+        user: { _id: "user-b6", name: "مهدی رحمانی", role: "user" },
+        date: new Date("2025-09-19"),
+        text: "چرا ساقه بامبو نرم و قهوه‌ای شده؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-09-20"),
+          text: "پوسیدگی ریشه و ساقه به دلیل آب آلوده. قسمت سالم را قلمه بزنید و آب را تعویض کنید.",
+        },
+      },
+      {
+        _id: "comment-bamboo-7",
+        user: { _id: "user-b7", name: "علی صادقی", role: "user" },
+        date: new Date("2025-09-22"),
+        text: "ارسال به اصفهان با گلدان شیشه‌ای؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-09-23"),
+          text: "بله، بسته‌بندی ضدضربه. هزینه پست ۳۵ هزار تومان.",
+        },
+      },
+      {
+        _id: "comment-bamboo-8",
+        user: { _id: "user-b8", name: "مریم زمانی", role: "user" },
+        date: new Date("2025-09-20"),
+        text: "قیمت ۳۸۰.۰۰۰ مناسبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-09-21"),
+          text: "شامل گلدان شیشه‌ای، سنگریزه سفید و ۳ ساقه مارپیچ (۵ طبقه). قیمت عالی برای هدیه شانسی است.",
+        },
+      },
+      {
+        _id: "comment-bamboo-9",
+        user: { _id: "user-b9", name: "فاطمه سلیمانی", role: "user" },
+        date: new Date("2025-09-18"),
+        text: "آیا بامبو به نور مستقیم نیاز دارد؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-09-19"),
+          text: "خیر، نور غیرمستقیم کافی است. نور مستقیم برگ‌ها را می‌سوزاند.",
+        },
+      },
+      {
+        _id: "comment-bamboo-10",
+        user: { _id: "user-b10", name: "زهرا نوری", role: "user" },
+        date: new Date("2025-09-16"),
+        text: "چند وقت یکبار آب عوض کنم؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-09-17"),
+          text: "هر ۷-۱۰ روز یکبار آب را عوض کنید. از آب بدون کلر استفاده کنید.",
+        },
+      },
+    ],
 
     seo: {
       title:
@@ -6737,6 +11007,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "gift-beaucarnea-1",
     name: "لیندا",
     price: 4680000,
     slug: "ponytail-palm",
@@ -6752,13 +11023,13 @@ export const fakeProducts = [
     weight: 3800,
     potDimensions: { length: 25, width: 25, height: 80 },
     sunlight: "نور غیرمستقیم روشن تا مستقیم ملایم",
-    image: "/static/images/products/gift/ponytail-palm/main.webp",
-    images: [
-      "/static/images/products/gift/ponytail-palm/main.webp",
-      "/static/images/products/gift/ponytail-palm/1.webp",
-      "/static/images/products/gift/ponytail-palm/2.webp",
-      "/static/images/products/gift/ponytail-palm/3.webp",
-    ],
+ image: "/static/images/products/gift/ponytail-palm/main.webp",
+images: [
+  "/static/images/products/gift/ponytail-palm/main.webp",
+  "/static/images/products/gift/ponytail-palm/1.webp",
+  "/static/images/products/gift/ponytail-palm/2.webp",
+  "/static/images/products/gift/ponytail-palm/3.webp",
+],
 
     features: {
       overview: [
@@ -6873,7 +11144,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-beaucarnea-1",
+        user: { _id: "user-l1", name: "مریم نوری", role: "user" },
+        date: new Date("2025-09-30"),
+        text: "تنه لیندا نرم شده، چرا؟",
+      },
+      {
+        _id: "comment-beaucarnea-2",
+        user: { _id: "user-l2", name: "رضا کریمی", role: "user" },
+        date: new Date("2025-09-28"),
+        text: "چند وقت یکبار لیندا رو آب بدم؟",
+      },
+      {
+        _id: "comment-beaucarnea-3",
+        user: { _id: "user-l3", name: "زهرا حسینی", role: "user" },
+        date: new Date("2025-09-26"),
+        text: "آیا لیندا برای هدیه به مبتدیان خوبه؟",
+      },
+      {
+        _id: "comment-beaucarnea-4",
+        user: { _id: "user-l4", name: "امیر نادری", role: "user" },
+        date: new Date("2025-09-27"),
+        text: "چطور لیندا رو تکثیر کنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-09-28"),
+          text: "تکثیر از طریق بذر و در نهالستان‌ها انجام می‌شود. در خانه تقسیم بوته اگر چند ساقه داشتید.",
+        },
+      },
+      {
+        _id: "comment-beaucarnea-5",
+        user: { _id: "user-l5", name: "نرگس کرمی", role: "user" },
+        date: new Date("2025-09-24"),
+        text: "برای گربه ضرر دارد؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-09-25"),
+          text: "خیر، لیندا برای حیوانات غیرسمی است.",
+        },
+      },
+      {
+        _id: "comment-beaucarnea-6",
+        user: { _id: "user-l6", name: "مهدی رحمانی", role: "user" },
+        date: new Date("2025-09-22"),
+        text: "برگام شل و افتاده، چرا؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-09-23"),
+          text: "کمبود نور یا آبیاری بیش از حد. نور کافی بدهید و اجازه دهید خاک خشک شود.",
+        },
+      },
+      {
+        _id: "comment-beaucarnea-7",
+        user: { _id: "user-l7", name: "علی صادقی", role: "user" },
+        date: new Date("2025-09-25"),
+        text: "ارسال به شیراز با گلدان بتنی؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-09-26"),
+          text: "بله، هزینه پست ۴۵ هزار تومان.",
+        },
+      },
+      {
+        _id: "comment-beaucarnea-8",
+        user: { _id: "user-l8", name: "مریم زمانی", role: "user" },
+        date: new Date("2025-09-23"),
+        text: "قیمت ۶۸۰.۰۰۰ مناسبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-09-24"),
+          text: "با گلدان بتنی و تنه بادمجانی ۴ ساله، قیمت عالی برای هدیه بامزه است.",
+        },
+      },
+      {
+        _id: "comment-beaucarnea-9",
+        user: { _id: "user-l9", name: "فاطمه سلیمانی", role: "user" },
+        date: new Date("2025-09-21"),
+        text: "آیا لیندا به نور مستقیم نیاز دارد؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-09-22"),
+          text: "نور غیرمستقیم روشن کافی است. نور مستقیم ظهر برگ‌ها را می‌سوزاند.",
+        },
+      },
+      {
+        _id: "comment-beaucarnea-10",
+        user: { _id: "user-l10", name: "زهرا نوری", role: "user" },
+        date: new Date("2025-09-19"),
+        text: "چه خاکی برای لیندا خوبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-09-20"),
+          text: "خاک کاکتوس + پرلیت + ماسه. زهکش فوق‌العاده ضروری است.",
+        },
+      },
+    ],
 
     seo: {
       title:
@@ -6892,6 +11259,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "gift-caladium-1",
     name: "کالادیوم",
     price: 2520000,
     slug: "caladium",
@@ -6907,13 +11275,13 @@ export const fakeProducts = [
     weight: 1900,
     potDimensions: { length: 20, width: 20, height: 65 },
     sunlight: "نور غیرمستقیم روشن",
-    image: "/static/images/products/gift/caladium/main.webp",
-    images: [
-      "/static/images/products/gift/caladium/main.webp",
-      "/static/images/products/gift/caladium/1.webp",
-      "/static/images/products/gift/caladium/2.webp",
-      "/static/images/products/gift/caladium/3.webp",
-    ],
+   image: "/static/images/products/gift/caladium/main.webp",
+images: [
+  "/static/images/products/gift/caladium/main.webp",
+  "/static/images/products/gift/caladium/1.webp",
+  "/static/images/products/gift/caladium/2.webp",
+  "/static/images/products/gift/caladium/3.webp",
+],
 
     features: {
       overview: [
@@ -7027,7 +11395,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-caladium-1",
+        user: { _id: "user-c1", name: "سارا احمدی", role: "user" },
+        date: new Date("2025-10-03"),
+        text: "برگ کالادیومم رنگ پریده شده، چرا؟",
+      },
+      {
+        _id: "comment-caladium-2",
+        user: { _id: "user-c2", name: "رضا کریمی", role: "user" },
+        date: new Date("2025-10-01"),
+        text: "چند وقت یکبار آب بدم؟",
+      },
+      {
+        _id: "comment-caladium-3",
+        user: { _id: "user-c3", name: "زهرا حسینی", role: "user" },
+        date: new Date("2025-09-29"),
+        text: "آیا کالادیوم برای هدیه مناسب است؟",
+      },
+      {
+        _id: "comment-caladium-4",
+        user: { _id: "user-c4", name: "امیر نادری", role: "user" },
+        date: new Date("2025-09-30"),
+        text: "چطور کالادیوم رو تکثیر کنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-10-01"),
+          text: "تقسیم غده در بهار. هر تکه باید یک جوانه داشته باشد. پس از خشک شدن بکارید.",
+        },
+      },
+      {
+        _id: "comment-caladium-5",
+        user: { _id: "user-c5", name: "نرگس کرمی", role: "user" },
+        date: new Date("2025-09-27"),
+        text: "برای گربه ضرر دارد؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-09-28"),
+          text: "بله، سمی است. دور از دسترس حیوانات خانگی نگهداری کنید.",
+        },
+      },
+      {
+        _id: "comment-caladium-6",
+        user: { _id: "user-c6", name: "مهدی رحمانی", role: "user" },
+        date: new Date("2025-09-25"),
+        text: "کالادیوم من برگاش افتاده، چرا؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-09-26"),
+          text: "کم‌آبی یا ورود به دوره خواب. اگر پاییز است، طبیعی است. اگر نه، آبیاری منظم انجام دهید.",
+        },
+      },
+      {
+        _id: "comment-caladium-7",
+        user: { _id: "user-c7", name: "علی صادقی", role: "user" },
+        date: new Date("2025-09-28"),
+        text: "ارسال به تهران با گلدان سفالی؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-09-29"),
+          text: "بله، هزینه پست ۳۰ هزار تومان.",
+        },
+      },
+      {
+        _id: "comment-caladium-8",
+        user: { _id: "user-c8", name: "مریم زمانی", role: "user" },
+        date: new Date("2025-09-26"),
+        text: "قیمت ۵۲۰.۰۰۰ مناسبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-09-27"),
+          text: "با گلدان سفالی و گیاه با ۴ برگ رنگارنگ، قیمت عالی برای هدیه لاکچری و شاد است.",
+        },
+      },
+      {
+        _id: "comment-caladium-9",
+        user: { _id: "user-c9", name: "فاطمه سلیمانی", role: "user" },
+        date: new Date("2025-09-24"),
+        text: "آیا کالادیوم به نور مستقیم نیاز دارد؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-09-25"),
+          text: "نور غیرمستقیم روشن کافی است. نور مستقیم برگ‌ها را می‌سوزاند.",
+        },
+      },
+      {
+        _id: "comment-caladium-10",
+        user: { _id: "user-c10", name: "زهرا نوری", role: "user" },
+        date: new Date("2025-09-22"),
+        text: "چه خاکی برای کالادیوم خوبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-09-23"),
+          text: "خاک برگ + پرلیت + پیت ماس. زهکش خوب مهم است.",
+        },
+      },
+    ],
 
     seo: {
       title: "کالادیوم | خرید گیاه برگ قلبی رنگارنگ با گلدان سفالی | گیاه‌لند",
@@ -7045,6 +11509,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "gift-african-violet-1",
     name: "بنفشه آفریقایی",
     price: 1350000,
     slug: "african-violet",
@@ -7060,13 +11525,13 @@ export const fakeProducts = [
     weight: 500,
     potDimensions: { length: 20, width: 20, height: 35 },
     sunlight: "نور غیرمستقیم روشن تا متوسط",
-    image: "/static/images/products/gift/african-violet/main.webp",
-    images: [
-      "/static/images/products/gift/african-violet/main.webp",
-      "/static/images/products/gift/african-violet/1.webp",
-      "/static/images/products/gift/african-violet/2.webp",
-      "/static/images/products/gift/african-violet/3.webp",
-    ],
+ image: "/static/images/products/gift/african-violet/main.webp",
+images: [
+  "/static/images/products/gift/african-violet/main.webp",
+  "/static/images/products/gift/african-violet/1.webp",
+  "/static/images/products/gift/african-violet/2.webp",
+  "/static/images/products/gift/african-violet/3.webp",
+],
 
     features: {
       overview: [
@@ -7182,7 +11647,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-aviolet-1",
+        user: { _id: "user-v1", name: "لیلا محمدی", role: "user" },
+        date: new Date("2025-10-07"),
+        text: "برگ بنفشه آفریقایی لکه سفید دارد، چرا؟",
+      },
+      {
+        _id: "comment-aviolet-2",
+        user: { _id: "user-v2", name: "رضا کریمی", role: "user" },
+        date: new Date("2025-10-05"),
+        text: "چرا بنفشه من گل نمیده؟",
+      },
+      {
+        _id: "comment-aviolet-3",
+        user: { _id: "user-v3", name: "زهرا حسینی", role: "user" },
+        date: new Date("2025-10-03"),
+        text: "چند وقت یکبار بنفشه رو آب بدم؟",
+      },
+      {
+        _id: "comment-aviolet-4",
+        user: { _id: "user-v4", name: "امیر نادری", role: "user" },
+        date: new Date("2025-10-04"),
+        text: "چطور بنفشه آفریقایی رو تکثیر کنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-10-05"),
+          text: "قلمه برگ ساده‌ترین روش است. برگ را با دمبرگ جدا کنید، دمبرگ را در آب یا خاک مرطوب قرار دهید. پس از چند هفته گیاهچه کوچک می‌زند.",
+        },
+      },
+      {
+        _id: "comment-aviolet-5",
+        user: { _id: "user-v5", name: "نرگس کرمی", role: "user" },
+        date: new Date("2025-10-01"),
+        text: "برای گربه ضرر دارد؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-10-02"),
+          text: "خیر، بنفشه آفریقایی غیرسمی است.",
+        },
+      },
+      {
+        _id: "comment-aviolet-6",
+        user: { _id: "user-v6", name: "مهدی رحمانی", role: "user" },
+        date: new Date("2025-09-29"),
+        text: "گلهایم کوچک و کم شده، چرا؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-09-30"),
+          text: "کمبود نور یا نیاز به تعویض گلدان. نور بیشتری بدهید و گلدان را یک سایز بزرگتر کنید.",
+        },
+      },
+      {
+        _id: "comment-aviolet-7",
+        user: { _id: "user-v7", name: "علی صادقی", role: "user" },
+        date: new Date("2025-10-02"),
+        text: "ارسال به اصفهان با گلدان خودآبیار؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-10-03"),
+          text: "بله، هزینه پست ۳۰ هزار تومان.",
+        },
+      },
+      {
+        _id: "comment-aviolet-8",
+        user: { _id: "user-v8", name: "مریم زمانی", role: "user" },
+        date: new Date("2025-09-30"),
+        text: "قیمت ۳۵۰.۰۰۰ مناسبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-10-01"),
+          text: "با گلدان خودآبیار و گیاه گلدار، قیمت عالی برای هدیه میز کار است.",
+        },
+      },
+      {
+        _id: "comment-aviolet-9",
+        user: { _id: "user-v9", name: "فاطمه سلیمانی", role: "user" },
+        date: new Date("2025-09-28"),
+        text: "آیا بنفشه به نور مستقیم نیاز دارد؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-09-29"),
+          text: "نور غیرمستقیم روشن کافی است. نور مستقیم برگ‌ها را می‌سوزاند.",
+        },
+      },
+      {
+        _id: "comment-aviolet-10",
+        user: { _id: "user-v10", name: "زهرا نوری", role: "user" },
+        date: new Date("2025-09-26"),
+        text: "چه خاکی برای بنفشه آفریقایی خوبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-09-27"),
+          text: "پیت ماس + پرلیت + ورمیکولیت. خاک سبک و زهکش‌دار مخصوص بنفشه.",
+        },
+      },
+    ],
 
     seo: {
       title:
@@ -7201,6 +11762,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "gift-portulacaria-1",
     name: "بونسای زالزالک ژاپنی",
     price: 15600000,
     slug: "dwarf-jade-bonsai",
@@ -7216,13 +11778,13 @@ export const fakeProducts = [
     weight: 5200,
     potDimensions: { length: 30, width: 30, height: 70 },
     sunlight: "نور غیرمستقیم روشن تا آفتاب ملایم صبحگاهی",
-    image: "/static/images/products/gift/dwarf-jade-bonsai/main.webp",
-    images: [
-      "/static/images/products/gift/dwarf-jade-bonsai/main.webp",
-      "/static/images/products/gift/dwarf-jade-bonsai/1.webp",
-      "/static/images/products/gift/dwarf-jade-bonsai/2.webp",
-      "/static/images/products/gift/dwarf-jade-bonsai/3.webp",
-    ],
+ image: "/static/images/products/gift/dwarf-jade-bonsai/main.webp",
+images: [
+  "/static/images/products/gift/dwarf-jade-bonsai/main.webp",
+  "/static/images/products/gift/dwarf-jade-bonsai/1.webp",
+  "/static/images/products/gift/dwarf-jade-bonsai/2.webp",
+  "/static/images/products/gift/dwarf-jade-bonsai/3.webp",
+],
 
     features: {
       overview: [
@@ -7337,7 +11899,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-port-1",
+        user: { _id: "user-pf1", name: "سارا رضایی", role: "user" },
+        date: new Date("2025-10-10"),
+        text: "برگ زالزالک ژاپنی ریخته، چرا؟",
+      },
+      {
+        _id: "comment-port-2",
+        user: { _id: "user-pf2", name: "رضا کریمی", role: "user" },
+        date: new Date("2025-10-08"),
+        text: "چطور زالزالک مینی رو هرس کنم؟",
+      },
+      {
+        _id: "comment-port-3",
+        user: { _id: "user-pf3", name: "زهرا حسینی", role: "user" },
+        date: new Date("2025-10-06"),
+        text: "آیا این گیاه بونسای است؟",
+      },
+      {
+        _id: "comment-port-4",
+        user: { _id: "user-pf4", name: "امیر نادری", role: "user" },
+        date: new Date("2025-10-07"),
+        text: "چطور تکثیرش کنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-10-08"),
+          text: "قلمه ساقه بسیار آسان است. قلمه را یک روز خشک کنید بعد در خاک ماسه‌ای بکارید.",
+        },
+      },
+      {
+        _id: "comment-port-5",
+        user: { _id: "user-pf5", name: "نرگس کرمی", role: "user" },
+        date: new Date("2025-10-04"),
+        text: "برای گربه ضرر دارد؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-10-05"),
+          text: "خیر، این گیاه غیرسمی است.",
+        },
+      },
+      {
+        _id: "comment-port-6",
+        user: { _id: "user-pf6", name: "مهدی رحمانی", role: "user" },
+        date: new Date("2025-10-02"),
+        text: "چرا برگام فاصله افتاده؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-10-03"),
+          text: "کمبود نور یا آبیاری زیاد. گیاه را به جای پرنورتر ببرید و آبیاری را کاهش دهید.",
+        },
+      },
+      {
+        _id: "comment-port-7",
+        user: { _id: "user-pf7", name: "علی صادقی", role: "user" },
+        date: new Date("2025-10-05"),
+        text: "ارسال به کرج با گلدان سرامیک؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-10-06"),
+          text: "بله، هزینه پست ۳۵ هزار تومان.",
+        },
+      },
+      {
+        _id: "comment-port-8",
+        user: { _id: "user-pf8", name: "مریم زمانی", role: "user" },
+        date: new Date("2025-10-03"),
+        text: "قیمت ۵۶۰.۰۰۰ مناسبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-10-04"),
+          text: "با گلدان بونسای و فرم‌دهی اولیه، قیمت عالی برای هدیه خاص و متفاوت است.",
+        },
+      },
+      {
+        _id: "comment-port-9",
+        user: { _id: "user-pf9", name: "فاطمه سلیمانی", role: "user" },
+        date: new Date("2025-10-01"),
+        text: "آیا به نور مستقیم نیاز دارد؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-10-02"),
+          text: "نور غیرمستقیم روشن کافی است. نور مستقیم ظهر برگ‌ها را می‌سوزاند.",
+        },
+      },
+      {
+        _id: "comment-port-10",
+        user: { _id: "user-pf10", name: "زهرا نوری", role: "user" },
+        date: new Date("2025-09-29"),
+        text: "چه خاکی برای این گیاه خوبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-09-30"),
+          text: "خاک کاکتوس + پرلیت + ماسه. زهکش فوق‌العاده ضروری است.",
+        },
+      },
+    ],
 
     seo: {
       title: "زالزالک ژاپنی مینی | خرید بونسای مینیاتوری ساکولنت | گیاه‌لند",
@@ -7355,6 +12013,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "gift-pedilanthus-1",
     name: "پدیلانتوس",
     price: 1490000,
     slug: "pedilanthus",
@@ -7370,13 +12029,13 @@ export const fakeProducts = [
     weight: 2100,
     potDimensions: { length: 20, width: 20, height: 40 },
     sunlight: "نور غیرمستقیم روشن تا مستقیم ملایم",
-    image: "/static/images/products/gift/pedilanthus/main.webp",
-    images: [
-      "/static/images/products/gift/pedilanthus/main.webp",
-      "/static/images/products/gift/pedilanthus/1.webp",
-      "/static/images/products/gift/pedilanthus/2.webp",
-      "/static/images/products/gift/pedilanthus/3.webp",
-    ],
+image: "/static/images/products/gift/pedilanthus/main.webp",
+images: [
+  "/static/images/products/gift/pedilanthus/main.webp",
+  "/static/images/products/gift/pedilanthus/1.webp",
+  "/static/images/products/gift/pedilanthus/2.webp",
+  "/static/images/products/gift/pedilanthus/3.webp",
+],
     features: {
       overview: [
         "پدیلانتوس با نام علمی Pedilanthus tithymaloides، گیاهی آبدار و درختچه‌ای با ساقه‌های ضخیم و زیگزاگی و برگ‌های ابلق سبز و سفید-صورتی است.",
@@ -7488,7 +12147,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-ped-1",
+        user: { _id: "user-pe1", name: "آرش کریمی", role: "user" },
+        date: new Date("2025-10-14"),
+        text: "برگ پدیلانتوس ریخته، چرا؟",
+      },
+      {
+        _id: "comment-ped-2",
+        user: { _id: "user-pe2", name: "سارا حسینی", role: "user" },
+        date: new Date("2025-10-12"),
+        text: "آیا پدیلانتوس برای تراس مناسبه؟",
+      },
+      {
+        _id: "comment-ped-3",
+        user: { _id: "user-pe3", name: "زهرا رضایی", role: "user" },
+        date: new Date("2025-10-10"),
+        text: "چرا ساقه گیاه من زیگزاگ نیست؟",
+      },
+      {
+        _id: "comment-ped-4",
+        user: { _id: "user-pe4", name: "امیر نادری", role: "user" },
+        date: new Date("2025-10-11"),
+        text: "چطور پدیلانتوس رو تکثیر کنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-10-12"),
+          text: "قلمه ساقه. شیرابه را بشویید، ۲ روز خشک کنید، سپس در خاک ماسه‌ای بکارید.",
+        },
+      },
+      {
+        _id: "comment-ped-5",
+        user: { _id: "user-pe5", name: "نرگس کرمی", role: "user" },
+        date: new Date("2025-10-08"),
+        text: "برای گربه ضرر دارد؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-10-09"),
+          text: "بله، شیرابه سمی است. دور از دسترس حیوانات نگهداری شود.",
+        },
+      },
+      {
+        _id: "comment-ped-6",
+        user: { _id: "user-pe6", name: "مهدی رحمانی", role: "user" },
+        date: new Date("2025-10-06"),
+        text: "برگام رنگ پریده شده، چرا؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-10-07"),
+          text: "نور کافی نیست. گیاه را به جای پرنورتر منتقل کنید.",
+        },
+      },
+      {
+        _id: "comment-ped-7",
+        user: { _id: "user-pe7", name: "علی صادقی", role: "user" },
+        date: new Date("2025-10-09"),
+        text: "ارسال به مشهد با گلدان رزینی؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-10-10"),
+          text: "بله، هزینه پست ۴۰ هزار تومان.",
+        },
+      },
+      {
+        _id: "comment-ped-8",
+        user: { _id: "user-pe8", name: "مریم زمانی", role: "user" },
+        date: new Date("2025-10-07"),
+        text: "قیمت ۴۹۰.۰۰۰ مناسبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-10-08"),
+          text: "با گلدان مدرن و گیاه فرم‌دار، قیمت عالی برای هدیه خاص است.",
+        },
+      },
+      {
+        _id: "comment-ped-9",
+        user: { _id: "user-pe9", name: "فاطمه سلیمانی", role: "user" },
+        date: new Date("2025-10-05"),
+        text: "آیا پدیلانتوس به نور مستقیم نیاز دارد؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-10-06"),
+          text: "نور غیرمستقیم روشن کافی است. نور مستقیم ظهر برگ‌ها را می‌سوزاند.",
+        },
+      },
+      {
+        _id: "comment-ped-10",
+        user: { _id: "user-pe10", name: "زهرا نوری", role: "user" },
+        date: new Date("2025-10-03"),
+        text: "چه خاکی برای پدیلانتوس خوبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-10-04"),
+          text: "خاک کاکتوس + پرلیت + ماسه. زهکش عالی لازم است.",
+        },
+      },
+    ],
 
     seo: {
       title:
@@ -7507,6 +12262,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "gift-syngonium-1",
     name: "سینگونیوم",
     price: 1420000,
     slug: "syngonium",
@@ -7522,13 +12278,13 @@ export const fakeProducts = [
     weight: 1200,
     potDimensions: { length: 20, width: 20, height: 40 },
     sunlight: "نور غیرمستقیم روشن تا متوسط",
-    image: "/static/images/products/gift/syngonium/main.webp",
-    images: [
-      "/static/images/products/gift/syngonium/main.webp",
-      "/static/images/products/gift/syngonium/1.webp",
-      "/static/images/products/gift/syngonium/2.webp",
-      "/static/images/products/gift/syngonium/3.webp",
-    ],
+ image: "/static/images/products/gift/syngonium/main.webp",
+images: [
+  "/static/images/products/gift/syngonium/main.webp",
+  "/static/images/products/gift/syngonium/1.webp",
+  "/static/images/products/gift/syngonium/2.webp",
+  "/static/images/products/gift/syngonium/3.webp",
+],
 
     features: {
       overview: [
@@ -7642,7 +12398,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-syngonium-1",
+        user: { _id: "user-sy1", name: "ملیکا حسینی", role: "user" },
+        date: new Date("2025-10-17"),
+        text: "برگ سینگونیوم من سبز شده بدون ابلقی، چرا؟",
+      },
+      {
+        _id: "comment-syngonium-2",
+        user: { _id: "user-sy2", name: "رضا کریمی", role: "user" },
+        date: new Date("2025-10-15"),
+        text: "چند وقت یکبار آب بدم؟",
+      },
+      {
+        _id: "comment-syngonium-3",
+        user: { _id: "user-sy3", name: "زهرا حسینی", role: "user" },
+        date: new Date("2025-10-13"),
+        text: "آیا سینگونیوم برای مبتدیان خوبه؟",
+      },
+      {
+        _id: "comment-syngonium-4",
+        user: { _id: "user-sy4", name: "امیر نادری", role: "user" },
+        date: new Date("2025-10-14"),
+        text: "چطور سینگونیوم رو تکثیر کنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-10-15"),
+          text: "قلمه ساقه در آب یا خاک خیلی سریع ریشه می‌زند. ظرف ۱-۲ هفته ریشه‌دار می‌شود.",
+        },
+      },
+      {
+        _id: "comment-syngonium-5",
+        user: { _id: "user-sy5", name: "نرگس کرمی", role: "user" },
+        date: new Date("2025-10-11"),
+        text: "برای گربه ضرر دارد؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-10-12"),
+          text: "بله، سمی است. دور از دسترس حیوانات خانگی نگهداری کنید.",
+        },
+      },
+      {
+        _id: "comment-syngonium-6",
+        user: { _id: "user-sy6", name: "مهدی رحمانی", role: "user" },
+        date: new Date("2025-10-09"),
+        text: "برگام لکه قهوه‌ای داره، چرا؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-10-10"),
+          text: "آفتاب مستقیم یا آبیاری با آب سرد. نور غیرمستقیم و آب ولرم استفاده کنید.",
+        },
+      },
+      {
+        _id: "comment-syngonium-7",
+        user: { _id: "user-sy7", name: "علی صادقی", role: "user" },
+        date: new Date("2025-10-12"),
+        text: "ارسال به تهران با گلدان رزینی؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-10-13"),
+          text: "بله، هزینه پست ۳۰ هزار تومان.",
+        },
+      },
+      {
+        _id: "comment-syngonium-8",
+        user: { _id: "user-sy8", name: "مریم زمانی", role: "user" },
+        date: new Date("2025-10-10"),
+        text: "قیمت ۴۲۰.۰۰۰ مناسبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-10-11"),
+          text: "با گلدان مدرن و گیاهی با ۳ رنگ (صورتی، سبز، کرم)، قیمت عالی است.",
+        },
+      },
+      {
+        _id: "comment-syngonium-9",
+        user: { _id: "user-sy9", name: "فاطمه سلیمانی", role: "user" },
+        date: new Date("2025-10-08"),
+        text: "آیا سینگونیوم به نور مستقیم نیاز دارد؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-10-09"),
+          text: "نور غیرمستقیم روشن کافی است. نور مستقیم برگ‌ها را می‌سوزاند.",
+        },
+      },
+      {
+        _id: "comment-syngonium-10",
+        user: { _id: "user-sy10", name: "زهرا نوری", role: "user" },
+        date: new Date("2025-10-06"),
+        text: "چه خاکی برای سینگونیوم خوبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-10-07"),
+          text: "خاک برگ + پرلیت + پیت ماس. زهکش خوب ضروری است.",
+        },
+      },
+    ],
 
     seo: {
       title: "سینگونیوم | خرید گیاه پیکانی رنگارنگ با گلدان مدرن | گیاه‌لند",
@@ -7660,6 +12512,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "gift-dendrobium-1",
     name: "ارکیده دندروبیوم",
     price: 980000,
     slug: "dendrobium-orchid",
@@ -7675,13 +12528,13 @@ export const fakeProducts = [
     weight: 1200,
     potDimensions: { length: 20, width: 20, height: 60 },
     sunlight: "نور غیرمستقیم روشن",
-    image: "/static/images/products/gift/dendrobium-orchid/main.webp",
-    images: [
-      "/static/images/products/gift/dendrobium-orchid/main.webp",
-      "/static/images/products/gift/dendrobium-orchid/1.webp",
-      "/static/images/products/gift/dendrobium-orchid/2.webp",
-      "/static/images/products/gift/dendrobium-orchid/3.webp",
-    ],
+image: "/static/images/products/gift/dendrobium-orchid/main.webp",
+images: [
+  "/static/images/products/gift/dendrobium-orchid/main.webp",
+  "/static/images/products/gift/dendrobium-orchid/1.webp",
+  "/static/images/products/gift/dendrobium-orchid/2.webp",
+  "/static/images/products/gift/dendrobium-orchid/3.webp",
+],
 
     features: {
       overview: [
@@ -7796,7 +12649,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-dendro-1",
+        user: { _id: "user-de1", name: "سارا رضایی", role: "user" },
+        date: new Date("2025-10-20"),
+        text: "ارکیده دندروبیوم من برگش زرد شده، چرا؟",
+      },
+      {
+        _id: "comment-dendro-2",
+        user: { _id: "user-de2", name: "رضا کریمی", role: "user" },
+        date: new Date("2025-10-18"),
+        text: "چند وقت یکبار آب بدم؟",
+      },
+      {
+        _id: "comment-dendro-3",
+        user: { _id: "user-de3", name: "زهرا حسینی", role: "user" },
+        date: new Date("2025-10-16"),
+        text: "آیا دندروبیوم برای هدیه مناسبه؟",
+      },
+      {
+        _id: "comment-dendro-4",
+        user: { _id: "user-de4", name: "امیر نادری", role: "user" },
+        date: new Date("2025-10-17"),
+        text: "چطور دندروبیوم رو تکثیر کنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-10-18"),
+          text: "صبر کنید تا Keiki (گیاهچه) روی ساقه رشد کند. وقتی ریشه‌های آن ۵ سانت شد، جدا کرده و بکارید.",
+        },
+      },
+      {
+        _id: "comment-dendro-5",
+        user: { _id: "user-de5", name: "نرگس کرمی", role: "user" },
+        date: new Date("2025-10-14"),
+        text: "برای گربه ضرر دارد؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-10-15"),
+          text: "خیر، ارکیده دندروبیوم برای حیوانات غیرسمی است.",
+        },
+      },
+      {
+        _id: "comment-dendro-6",
+        user: { _id: "user-de6", name: "مهدی رحمانی", role: "user" },
+        date: new Date("2025-10-12"),
+        text: "چرا ارکیده من گل نمیده؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-10-13"),
+          text: "نیاز به دوره استراحت زمستانی با دمای شب ۱۰-۱۵ درجه دارد. همچنین نور کافی و تفاوت دمای روز و شب ضروری است.",
+        },
+      },
+      {
+        _id: "comment-dendro-7",
+        user: { _id: "user-de7", name: "علی صادقی", role: "user" },
+        date: new Date("2025-10-15"),
+        text: "ارسال به شیراز با گلدان سفالی؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-10-16"),
+          text: "بله، بسته‌بندی ویژه. هزینه پست ۵۰ هزار تومان.",
+        },
+      },
+      {
+        _id: "comment-dendro-8",
+        user: { _id: "user-de8", name: "مریم زمانی", role: "user" },
+        date: new Date("2025-10-13"),
+        text: "قیمت ۹۸۰.۰۰۰ مناسبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-10-14"),
+          text: "با گلدان مخصوص و گیاه با ۳ شاخه گلدهنده، قیمت عالی برای هدیه لاکچری است.",
+        },
+      },
+      {
+        _id: "comment-dendro-9",
+        user: { _id: "user-de9", name: "فاطمه سلیمانی", role: "user" },
+        date: new Date("2025-10-11"),
+        text: "آیا دندروبیوم به نور مستقیم نیاز دارد؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-10-12"),
+          text: "نور غیرمستقیم روشن کافی است. نور مستقیم برگ‌ها را می‌سوزاند.",
+        },
+      },
+      {
+        _id: "comment-dendro-10",
+        user: { _id: "user-de10", name: "زهرا نوری", role: "user" },
+        date: new Date("2025-10-09"),
+        text: "چه خاکی برای دندروبیوم خوبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-10-10"),
+          text: "پوست درخت کاج + پرلیت + زغال. از خاک معمولی استفاده نکنید.",
+        },
+      },
+    ],
 
     seo: {
       title:
@@ -7815,6 +12764,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "gift-sansevieria-cylindrica-1",
     name: "سنسویریا سیلندر بافته",
     price: 1780000,
     slug: "braided-snake-plant",
@@ -7830,13 +12780,13 @@ export const fakeProducts = [
     weight: 1800,
     potDimensions: { length: 20, width: 20, height: 40 },
     sunlight: "نور غیرمستقیم روشن تا مستقیم ملایم",
-    image: "/static/images/products/gift/braided-snake-plant/main.webp",
-    images: [
-      "/static/images/products/gift/braided-snake-plant/main.webp",
-      "/static/images/products/gift/braided-snake-plant/1.webp",
-      "/static/images/products/gift/braided-snake-plant/2.webp",
-      "/static/images/products/gift/braided-snake-plant/3.webp",
-    ],
+image: "/static/images/products/gift/braided-snake-plant/main.webp",
+images: [
+  "/static/images/products/gift/braided-snake-plant/main.webp",
+  "/static/images/products/gift/braided-snake-plant/1.webp",
+  "/static/images/products/gift/braided-snake-plant/2.webp",
+  "/static/images/products/gift/braided-snake-plant/3.webp",
+],
     features: {
       overview: [
         "سنسویریا سیلندر بافته، گونه‌ای خاص از سانسوریا با برگ‌های استوانه‌ای و سفت است که به صورت بافته شده عرضه می‌شود و ظاهری بسیار مدرن و مجسمه‌ای دارد.",
@@ -7949,7 +12899,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-scyl-1",
+        user: { _id: "user-sc1", name: "نازنین احمدی", role: "user" },
+        date: new Date("2025-10-22"),
+        text: "برگ سنسویریا سیلندر من نرم شده، چرا؟",
+      },
+      {
+        _id: "comment-scyl-2",
+        user: { _id: "user-sc2", name: "رضا کریمی", role: "user" },
+        date: new Date("2025-10-20"),
+        text: "چند وقت یکبار آب بدم؟",
+      },
+      {
+        _id: "comment-scyl-3",
+        user: { _id: "user-sc3", name: "زهرا حسینی", role: "user" },
+        date: new Date("2025-10-18"),
+        text: "آیا بافت برگها باز میشه؟",
+      },
+      {
+        _id: "comment-scyl-4",
+        user: { _id: "user-sc4", name: "امیر نادری", role: "user" },
+        date: new Date("2025-10-19"),
+        text: "چطور تکثیرش کنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-10-20"),
+          text: "تقسیم ریزوم در بهار بهترین روش است. قلمه برگ هم جواب می‌دهد اما بافت از بین می‌رود.",
+        },
+      },
+      {
+        _id: "comment-scyl-5",
+        user: { _id: "user-sc5", name: "نرگس کرمی", role: "user" },
+        date: new Date("2025-10-16"),
+        text: "برای گربه ضرر دارد؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-10-17"),
+          text: "سمی ملایم است، در صورت بلع زیاد باعث استفراغ می‌شود. دور از دسترس حیوانات نگهداری شود.",
+        },
+      },
+      {
+        _id: "comment-scyl-6",
+        user: { _id: "user-sc6", name: "مهدی رحمانی", role: "user" },
+        date: new Date("2025-10-14"),
+        text: "برگام نوک قهوه‌ای شده، چرا؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-10-15"),
+          text: "آبیاری با آب کلردار یا نور مستقیم زیاد. از آب تصفیه‌شده استفاده کنید و به نور ملایم‌تر ببرید.",
+        },
+      },
+      {
+        _id: "comment-scyl-7",
+        user: { _id: "user-sc7", name: "علی صادقی", role: "user" },
+        date: new Date("2025-10-17"),
+        text: "ارسال به اصفهان با گلدان سرامیک؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-10-18"),
+          text: "بله، هزینه پست ۴۰ هزار تومان.",
+        },
+      },
+      {
+        _id: "comment-scyl-8",
+        user: { _id: "user-sc8", name: "مریم زمانی", role: "user" },
+        date: new Date("2025-10-15"),
+        text: "قیمت ۷۸۰.۰۰۰ مناسبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-10-16"),
+          text: "با گلدان سرامیک و بافت حرفه‌ای ۷ شاخه، قیمت عالی برای هدیه مدرن است.",
+        },
+      },
+      {
+        _id: "comment-scyl-9",
+        user: { _id: "user-sc9", name: "فاطمه سلیمانی", role: "user" },
+        date: new Date("2025-10-13"),
+        text: "آیا به نور مستقیم نیاز دارد؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-10-14"),
+          text: "خیر، نور غیرمستقیم کافی است. در سایه هم زنده می‌ماند.",
+        },
+      },
+      {
+        _id: "comment-scyl-10",
+        user: { _id: "user-sc10", name: "زهرا نوری", role: "user" },
+        date: new Date("2025-10-11"),
+        text: "چه خاکی برای این گیاه خوبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-10-12"),
+          text: "خاک کاکتوس + پرلیت + ماسه. زهکش فوق‌العاده مهم است.",
+        },
+      },
+    ],
 
     seo: {
       title:
@@ -7968,6 +13014,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "gift-mini-rose-1",
     name: "رز مینیاتوری",
     price: 1490000,
     slug: "miniature-rose",
@@ -7983,13 +13030,13 @@ export const fakeProducts = [
     weight: 800,
     potDimensions: { length: 15, width: 15, height: 25 },
     sunlight: "نور مستقیم آفتاب (حداقل ۴-۶ ساعت در روز)",
-    image: "/static/images/products/gift/miniature-rose/main.webp",
-    images: [
-      "/static/images/products/gift/miniature-rose/main.webp",
-      "/static/images/products/gift/miniature-rose/1.webp",
-      "/static/images/products/gift/miniature-rose/2.webp",
-      "/static/images/products/gift/miniature-rose/3.webp",
-    ],
+  image: "/static/images/products/gift/miniature-rose/main.webp",
+images: [
+  "/static/images/products/gift/miniature-rose/main.webp",
+  "/static/images/products/gift/miniature-rose/1.webp",
+  "/static/images/products/gift/miniature-rose/2.webp",
+  "/static/images/products/gift/miniature-rose/3.webp",
+],
 
     features: {
       overview: [
@@ -8102,7 +13149,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-rose-1",
+        user: { _id: "user-ro1", name: "سارا محمدی", role: "user" },
+        date: new Date("2025-10-25"),
+        text: "گل رز مینیاتوری من پژمرده شده، چرا؟",
+      },
+      {
+        _id: "comment-rose-2",
+        user: { _id: "user-ro2", name: "رضا کریمی", role: "user" },
+        date: new Date("2025-10-23"),
+        text: "چند وقت یکبار آب بدم؟",
+      },
+      {
+        _id: "comment-rose-3",
+        user: { _id: "user-ro3", name: "زهرا حسینی", role: "user" },
+        date: new Date("2025-10-21"),
+        text: "آیا رز مینیاتوری برای هدیه روز مادر خوب است؟",
+      },
+      {
+        _id: "comment-rose-4",
+        user: { _id: "user-ro4", name: "امیر نادری", role: "user" },
+        date: new Date("2025-10-22"),
+        text: "چطور رز مینیاتوری رو تکثیر کنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-10-23"),
+          text: "قلمه ساقه در بهار با استفاده از هورمون ریشه‌زایی. زیر پلاستیک رطوبت را حفظ کنید.",
+        },
+      },
+      {
+        _id: "comment-rose-5",
+        user: { _id: "user-ro5", name: "نرگس کرمی", role: "user" },
+        date: new Date("2025-10-19"),
+        text: "برای گربه ضرر دارد؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-10-20"),
+          text: "غیرسمی است، اما خارها خطر فیزیکی دارند.",
+        },
+      },
+      {
+        _id: "comment-rose-6",
+        user: { _id: "user-ro6", name: "مهدی رحمانی", role: "user" },
+        date: new Date("2025-10-17"),
+        text: "برگام لکه زرد دارد، چرا؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-10-18"),
+          text: "آبیاری زیاد یا کمبود مواد مغذی. اجازه دهید خاک کمی خشک شود و کود بدهید.",
+        },
+      },
+      {
+        _id: "comment-rose-7",
+        user: { _id: "user-ro7", name: "علی صادقی", role: "user" },
+        date: new Date("2025-10-20"),
+        text: "ارسال به کرج با گلدان رزینی؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-10-21"),
+          text: "بله، هزینه پست ۳۵ هزار تومان.",
+        },
+      },
+      {
+        _id: "comment-rose-8",
+        user: { _id: "user-ro8", name: "مریم زمانی", role: "user" },
+        date: new Date("2025-10-18"),
+        text: "قیمت ۴۹۰.۰۰۰ مناسبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-10-19"),
+          text: "با گلدان میناکاری شده و گیاه پرگل، قیمت عالی برای هدیه عاشقانه است.",
+        },
+      },
+      {
+        _id: "comment-rose-9",
+        user: { _id: "user-ro9", name: "فاطمه سلیمانی", role: "user" },
+        date: new Date("2025-10-16"),
+        text: "آیا رز مینیاتوری به نور مستقیم نیاز دارد؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-10-17"),
+          text: "بله، حداقل ۴-۶ ساعت نور مستقیم برای گلدهی ضروری است.",
+        },
+      },
+      {
+        _id: "comment-rose-10",
+        user: { _id: "user-ro10", name: "زهرا نوری", role: "user" },
+        date: new Date("2025-10-14"),
+        text: "چه خاکی برای رز مینیاتوری خوبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-10-15"),
+          text: "خاک برگ + پیت ماس + پرلیت + کود دامی. خاک باید غنی و زهکش‌دار باشد.",
+        },
+      },
+    ],
 
     seo: {
       title:
@@ -8120,6 +13263,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "gift-amaryllis-1",
     name: "آماریلیس",
     price: 1620000,
     slug: "amaryllis",
@@ -8134,14 +13278,15 @@ export const fakeProducts = [
     soilType: "خاک برگ + پیت ماس + پرلیت + ماسه",
     weight: 1800,
     potDimensions: { length: 20, width: 20, height: 70 },
-    sunlight: "غیرمستقیم روشن (زمان گلدهی) مستقیم ملایم (پس از گلدهی)",
-    image: "/static/images/products/gift/amaryllis/main.webp",
-    images: [
-      "/static/images/products/gift/amaryllis/main.webp",
-      "/static/images/products/gift/amaryllis/1.webp",
-      "/static/images/products/gift/amaryllis/2.webp",
-      "/static/images/products/gift/amaryllis/3.webp",
-    ],
+    sunlight:
+      "غیرمستقیم روشن (زمان گلدهی) مستقیم ملایم (پس از گلدهی)",
+ image: "/static/images/products/gift/amaryllis/main.webp",
+images: [
+  "/static/images/products/gift/amaryllis/main.webp",
+  "/static/images/products/gift/amaryllis/1.webp",
+  "/static/images/products/gift/amaryllis/2.webp",
+  "/static/images/products/gift/amaryllis/3.webp",
+],
 
     features: {
       overview: [
@@ -8256,7 +13401,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-amaryllis-1",
+        user: { _id: "user-am1", name: "سارا رضایی", role: "user" },
+        date: new Date("2025-10-28"),
+        text: "پیاز آماریلیس من پوسید، چرا؟",
+      },
+      {
+        _id: "comment-amaryllis-2",
+        user: { _id: "user-am2", name: "رضا کریمی", role: "user" },
+        date: new Date("2025-10-26"),
+        text: "چند وقت یکبار آب بدم؟",
+      },
+      {
+        _id: "comment-amaryllis-3",
+        user: { _id: "user-am3", name: "زهرا حسینی", role: "user" },
+        date: new Date("2025-10-24"),
+        text: "آیا آماریلیس هر سال گل میدهد؟",
+      },
+      {
+        _id: "comment-amaryllis-4",
+        user: { _id: "user-am4", name: "امیر نادری", role: "user" },
+        date: new Date("2025-10-25"),
+        text: "چطور آماریلیس رو دوباره گل بدم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-10-26"),
+          text: "پس از زرد شدن برگ‌ها، پیاز را در جای خنک و تاریک (۱۰-۱۵ درجه) به مدت ۸-۱۰ هفته استراحت دهید. سپس دوباره بکارید و آبیاری کنید.",
+        },
+      },
+      {
+        _id: "comment-amaryllis-5",
+        user: { _id: "user-am5", name: "نرگس کرمی", role: "user" },
+        date: new Date("2025-10-22"),
+        text: "برای گربه ضرر دارد؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-10-23"),
+          text: "بله، پیاز و برگ‌ها سمی هستند. دور از دسترس حیوانات نگهداری کنید.",
+        },
+      },
+      {
+        _id: "comment-amaryllis-6",
+        user: { _id: "user-am6", name: "مهدی رحمانی", role: "user" },
+        date: new Date("2025-10-20"),
+        text: "ساقه گل کوتاه موند، چرا؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-10-21"),
+          text: "دمای خیلی بالا در زمان رشد ساقه. ساقه در جای خنک‌تر (۱۵-۱۸ درجه) بلندتر می‌شود.",
+        },
+      },
+      {
+        _id: "comment-amaryllis-7",
+        user: { _id: "user-am7", name: "علی صادقی", role: "user" },
+        date: new Date("2025-10-23"),
+        text: "ارسال به مشهد با گلدان سفالی؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-10-24"),
+          text: "بله، هزینه پست ۴۰ هزار تومان.",
+        },
+      },
+      {
+        _id: "comment-amaryllis-8",
+        user: { _id: "user-am8", name: "مریم زمانی", role: "user" },
+        date: new Date("2025-10-21"),
+        text: "قیمت ۶۲۰.۰۰۰ مناسبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-10-22"),
+          text: "شامل گلدان سفالی و پیاز درشت آماده گلدهی (گارانتی گل ۲-۳ شاخه). قیمت عالی برای هدیه کریسمس است.",
+        },
+      },
+      {
+        _id: "comment-amaryllis-9",
+        user: { _id: "user-am9", name: "فاطمه سلیمانی", role: "user" },
+        date: new Date("2025-10-19"),
+        text: "آیا آماریلیس به نور مستقیم نیاز دارد؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-10-20"),
+          text: "در زمان گلدهی نور غیرمستقیم روشن کافی است. بعد از گلدهی برای تقویت پیاز نور مستقیم لازم دارد.",
+        },
+      },
+      {
+        _id: "comment-amaryllis-10",
+        user: { _id: "user-am10", name: "زهرا نوری", role: "user" },
+        date: new Date("2025-10-17"),
+        text: "چه خاکی برای آماریلیس خوبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-10-18"),
+          text: "خاک برگ + پیت ماس + پرلیت + ماسه. زهکش عالی واجب است.",
+        },
+      },
+    ],
 
     seo: {
       title: "آماریلیس | خرید پیاز گلدار درشت کریسمس با گلدان سفالی | گیاه‌لند",
@@ -8274,6 +13515,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "gift-euphorbia-obesa-1",
     name: "ساکولنت فرفیون",
     price: 520000,
     slug: "euphorbia-obesa",
@@ -8289,13 +13531,14 @@ export const fakeProducts = [
     weight: 600,
     potDimensions: { length: 15, width: 15, height: 25 },
     sunlight: "نور مستقیم آفتاب تا بسیار روشن",
-    image: "/static/images/products/gift/euphorbia-obesa/main.webp",
-    images: [
-      "/static/images/products/gift/euphorbia-obesa/main.webp",
-      "/static/images/products/gift/euphorbia-obesa/1.webp",
-      "/static/images/products/gift/euphorbia-obesa/2.webp",
-      "/static/images/products/gift/euphorbia-obesa/3.webp",
-    ],
+  image: "/static/images/products/gift/euphorbia-obesa/main.webp",
+images: [
+  "/static/images/products/gift/euphorbia-obesa/main.webp",
+  "/static/images/products/gift/euphorbia-obesa/1.webp",
+  "/static/images/products/gift/euphorbia-obesa/2.webp",
+  "/static/images/products/gift/euphorbia-obesa/3.webp",
+],
+
 
     features: {
       overview: [
@@ -8410,7 +13653,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-euphorbia-1",
+        user: { _id: "user-eu1", name: "پویا احمدی", role: "user" },
+        date: new Date("2025-10-31"),
+        text: "فرفیون من نرم شده، چرا؟",
+      },
+      {
+        _id: "comment-euphorbia-2",
+        user: { _id: "user-eu2", name: "سارا حسینی", role: "user" },
+        date: new Date("2025-10-29"),
+        text: "چند وقت یکبار آب بدم؟",
+      },
+      {
+        _id: "comment-euphorbia-3",
+        user: { _id: "user-eu3", name: "زهرا رضایی", role: "user" },
+        date: new Date("2025-10-27"),
+        text: "آیا فرفیون گل میدهد؟",
+      },
+      {
+        _id: "comment-euphorbia-4",
+        user: { _id: "user-eu4", name: "امیر نادری", role: "user" },
+        date: new Date("2025-10-28"),
+        text: "چطور فرفیون رو تکثیر کنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-10-29"),
+          text: "از طریق بذر. گیاه نر و ماده جداگانه هستند، برای تولید بذر به هر دو نیاز دارید. رشد از بذر کند است اما ممکن است.",
+        },
+      },
+      {
+        _id: "comment-euphorbia-5",
+        user: { _id: "user-eu5", name: "نرگس کرمی", role: "user" },
+        date: new Date("2025-10-25"),
+        text: "برای گربه ضرر دارد؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-10-26"),
+          text: "بله، شیرابه بسیار سمی است. دور از دسترس حیوانات و کودکان نگهداری شود.",
+        },
+      },
+      {
+        _id: "comment-euphorbia-6",
+        user: { _id: "user-eu6", name: "مهدی رحمانی", role: "user" },
+        date: new Date("2025-10-23"),
+        text: "شکل گیاه کشیده شده، چرا؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-10-24"),
+          text: "کمبود نور. گیاه را به جای بسیار پرنورتر منتقل کنید. آبیاری را کاهش دهید.",
+        },
+      },
+      {
+        _id: "comment-euphorbia-7",
+        user: { _id: "user-eu7", name: "علی صادقی", role: "user" },
+        date: new Date("2025-10-26"),
+        text: "ارسال به تهران با گلدان سفالی؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-10-27"),
+          text: "بله، بسته‌بندی ویژه. هزینه پست ۳۰ هزار تومان.",
+        },
+      },
+      {
+        _id: "comment-euphorbia-8",
+        user: { _id: "user-eu8", name: "مریم زمانی", role: "user" },
+        date: new Date("2025-10-24"),
+        text: "قیمت ۵۲۰.۰۰۰ مناسبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-10-25"),
+          text: "گیاه ۴ ساله با قطر ۸ سانت و گلدان سفالی، قیمت عالی برای کلکسیونرها.",
+        },
+      },
+      {
+        _id: "comment-euphorbia-9",
+        user: { _id: "user-eu9", name: "فاطمه سلیمانی", role: "user" },
+        date: new Date("2025-10-22"),
+        text: "آیا فرفیون به نور مستقیم نیاز دارد؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-10-23"),
+          text: "بله، نور مستقیم آفتاب برای حفظ فرم کروی ضروری است.",
+        },
+      },
+      {
+        _id: "comment-euphorbia-10",
+        user: { _id: "user-eu10", name: "زهرا نوری", role: "user" },
+        date: new Date("2025-10-20"),
+        text: "چه خاکی برای فرفیون خوبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-10-21"),
+          text: "خاک معدنی (۷۰٪ ماسه و پرلیت) + خاک کاکتوس. زهکش فوق‌العاده ضروری است.",
+        },
+      },
+    ],
 
     seo: {
       title:
@@ -8429,6 +13768,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "gift-peperomia-prostrata-1",
     name: "تاکای برگ لاک‌پشتی",
     price: 580000,
     slug: "string-of-turtles",
@@ -8444,13 +13784,13 @@ export const fakeProducts = [
     weight: 700,
     potDimensions: { length: 10, width: 10, height: 25 },
     sunlight: "نور غیرمستقیم روشن تا متوسط",
-    image: "/static/images/products/gift/string-of-turtles/main.webp",
-    images: [
-      "/static/images/products/gift/string-of-turtles/main.webp",
-      "/static/images/products/gift/string-of-turtles/1.webp",
-      "/static/images/products/gift/string-of-turtles/2.webp",
-      "/static/images/products/gift/string-of-turtles/3.webp",
-    ],
+ image: "/static/images/products/gift/string-of-turtles/main.webp",
+images: [
+  "/static/images/products/gift/string-of-turtles/main.webp",
+  "/static/images/products/gift/string-of-turtles/1.webp",
+  "/static/images/products/gift/string-of-turtles/2.webp",
+  "/static/images/products/gift/string-of-turtles/3.webp",
+],
 
     features: {
       overview: [
@@ -8562,7 +13902,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-turtle-1",
+        user: { _id: "user-tu1", name: "سارا رضایی", role: "user" },
+        date: new Date("2025-11-04"),
+        text: "برگ تاکای لاک پشتی ریخته، چرا؟",
+      },
+      {
+        _id: "comment-turtle-2",
+        user: { _id: "user-tu2", name: "رضا کریمی", role: "user" },
+        date: new Date("2025-11-02"),
+        text: "چند وقت یکبار آب بدم؟",
+      },
+      {
+        _id: "comment-turtle-3",
+        user: { _id: "user-tu3", name: "زهرا حسینی", role: "user" },
+        date: new Date("2025-10-31"),
+        text: "آیا تاکای لاک پشتی برای سبد آویز خوبه؟",
+      },
+      {
+        _id: "comment-turtle-4",
+        user: { _id: "user-tu4", name: "امیر نادری", role: "user" },
+        date: new Date("2025-11-01"),
+        text: "چطور تکثیرش کنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-11-02"),
+          text: "قلمه ساقه در آب یا خاک خیلی ساده است. ظرف ۲-۳ هفته ریشه می‌زند.",
+        },
+      },
+      {
+        _id: "comment-turtle-5",
+        user: { _id: "user-tu5", name: "نرگس کرمی", role: "user" },
+        date: new Date("2025-10-29"),
+        text: "برای گربه ضرر دارد؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-10-30"),
+          text: "خیر، این گیاه غیرسمی است.",
+        },
+      },
+      {
+        _id: "comment-turtle-6",
+        user: { _id: "user-tu6", name: "مهدی رحمانی", role: "user" },
+        date: new Date("2025-10-27"),
+        text: "برگام نقشش کم شده، چرا؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-10-28"),
+          text: "نور ناکافی. گیاه را به جای پرنورتر (بدون آفتاب مستقیم) منتقل کنید.",
+        },
+      },
+      {
+        _id: "comment-turtle-7",
+        user: { _id: "user-tu7", name: "علی صادقی", role: "user" },
+        date: new Date("2025-10-30"),
+        text: "ارسال به اصفهان با گلدان آویز؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-10-31"),
+          text: "بله، هزینه پست ۳۵ هزار تومان.",
+        },
+      },
+      {
+        _id: "comment-turtle-8",
+        user: { _id: "user-tu8", name: "مریم زمانی", role: "user" },
+        date: new Date("2025-10-28"),
+        text: "قیمت ۴۸۰.۰۰۰ مناسبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-10-29"),
+          text: "با گلدان آویز و گیاه با ۵ شاخه ۲۰ سانتی، قیمت عالی برای هدیه ظریف است.",
+        },
+      },
+      {
+        _id: "comment-turtle-9",
+        user: { _id: "user-tu9", name: "فاطمه سلیمانی", role: "user" },
+        date: new Date("2025-10-26"),
+        text: "آیا به نور مستقیم نیاز دارد؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-10-27"),
+          text: "خیر، نور غیرمستقیم روشن کافی است. نور مستقیم برگ‌ها را می‌سوزاند.",
+        },
+      },
+      {
+        _id: "comment-turtle-10",
+        user: { _id: "user-tu10", name: "زهرا نوری", role: "user" },
+        date: new Date("2025-10-24"),
+        text: "چه خاکی برای این گیاه خوبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-10-25"),
+          text: "خاک برگ + پرلیت + پیت ماس. زهکش خوب ضروری است.",
+        },
+      },
+    ],
 
     seo: {
       title:
@@ -8581,6 +14017,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "gift-hedychium-1",
     name: "هدیچیوم",
     price: 650000,
     slug: "ginger-lily",
@@ -8596,13 +14033,14 @@ export const fakeProducts = [
     weight: 2500,
     potDimensions: { length: 25, width: 25, height: 45 },
     sunlight: "نور غیرمستقیم روشن تا آفتاب ملایم صبحگاهی",
-    image: "/static/images/products/gift/ginger-lily/main.webp",
-    images: [
-      "/static/images/products/gift/ginger-lily/main.webp",
-      "/static/images/products/gift/ginger-lily/1.webp",
-      "/static/images/products/gift/ginger-lily/2.webp",
-      "/static/images/products/gift/ginger-lily/3.webp",
-    ],
+image: "/static/images/products/gift/ginger-lily/main.webp",
+images: [
+  "/static/images/products/gift/ginger-lily/main.webp",
+  "/static/images/products/gift/ginger-lily/1.webp",
+  "/static/images/products/gift/ginger-lily/2.webp",
+  "/static/images/products/gift/ginger-lily/3.webp",
+],
+
 
     features: {
       overview: [
@@ -8717,7 +14155,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-hedychium-1",
+        user: { _id: "user-hed1", name: "ملیکا احمدی", role: "user" },
+        date: new Date("2025-11-07"),
+        text: "گل هدیچیوم من عطر نمیده، چرا؟",
+      },
+      {
+        _id: "comment-hedychium-2",
+        user: { _id: "user-hed2", name: "رضا کریمی", role: "user" },
+        date: new Date("2025-11-05"),
+        text: "چند وقت یکبار آب بدم؟",
+      },
+      {
+        _id: "comment-hedychium-3",
+        user: { _id: "user-hed3", name: "زهرا حسینی", role: "user" },
+        date: new Date("2025-11-03"),
+        text: "آیا هدیچیوم برای هدیه روز مادر خوب است؟",
+      },
+      {
+        _id: "comment-hedychium-4",
+        user: { _id: "user-hed4", name: "امیر نادری", role: "user" },
+        date: new Date("2025-11-04"),
+        text: "چطور هدیچیوم رو تکثیر کنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-11-05"),
+          text: "تقسیم ریزوم در بهار ساده‌ترین روش است. هر قطعه باید ۲-۳ جوانه داشته باشد.",
+        },
+      },
+      {
+        _id: "comment-hedychium-5",
+        user: { _id: "user-hed5", name: "نرگس کرمی", role: "user" },
+        date: new Date("2025-11-01"),
+        text: "برای گربه ضرر دارد؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-11-02"),
+          text: "خیر، هدیچیوم غیرسمی است.",
+        },
+      },
+      {
+        _id: "comment-hedychium-6",
+        user: { _id: "user-hed6", name: "مهدی رحمانی", role: "user" },
+        date: new Date("2025-10-30"),
+        text: "برگام زرد شده، چرا؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-10-31"),
+          text: "آبیاری زیاد یا کمبود نور. اجازه دهید خاک خشک شود و به جای پرنورتر منتقل کنید.",
+        },
+      },
+      {
+        _id: "comment-hedychium-7",
+        user: { _id: "user-hed7", name: "علی صادقی", role: "user" },
+        date: new Date("2025-11-02"),
+        text: "ارسال به شیراز با گلدان سفالی؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-11-03"),
+          text: "بله، هزینه پست ۴۵ هزار تومان.",
+        },
+      },
+      {
+        _id: "comment-hedychium-8",
+        user: { _id: "user-hed8", name: "مریم زمانی", role: "user" },
+        date: new Date("2025-10-31"),
+        text: "قیمت ۶۵۰.۰۰۰ مناسبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-11-01"),
+          text: "با گلدان سفالی و ریزوم آماده گلدهی، قیمت عالی برای هدیه معطر است.",
+        },
+      },
+      {
+        _id: "comment-hedychium-9",
+        user: { _id: "user-hed9", name: "فاطمه سلیمانی", role: "user" },
+        date: new Date("2025-10-29"),
+        text: "آیا هدیچیوم به نور مستقیم نیاز دارد؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-10-30"),
+          text: "نور غیرمستقیم روشن کافی است. نور مستقیم برگ‌ها را می‌سوزاند.",
+        },
+      },
+      {
+        _id: "comment-hedychium-10",
+        user: { _id: "user-hed10", name: "زهرا نوری", role: "user" },
+        date: new Date("2025-10-27"),
+        text: "چه خاکی برای هدیچیوم خوبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-10-28"),
+          text: "خاک برگ + پیت ماس + پرلیت + کود دامی. خاک غنی و زهکش‌دار.",
+        },
+      },
+    ],
 
     seo: {
       title:
@@ -8736,6 +14270,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "gift-nephrolepis-1",
     name: "نفرولپیس",
     price: 1450000,
     slug: "boston-fern",
@@ -8751,13 +14286,13 @@ export const fakeProducts = [
     weight: 1300,
     potDimensions: { length: 30, width: 30, height: 30 },
     sunlight: "نور غیرمستقیم روشن تا متوسط",
-    image: "/static/images/products/gift/boston-fern/main.webp",
-    images: [
-      "/static/images/products/gift/boston-fern/main.webp",
-      "/static/images/products/gift/boston-fern/1.webp",
-      "/static/images/products/gift/boston-fern/2.webp",
-      "/static/images/products/gift/boston-fern/3.webp",
-    ],
+image: "/static/images/products/gift/boston-fern/main.webp",
+images: [
+  "/static/images/products/gift/boston-fern/main.webp",
+  "/static/images/products/gift/boston-fern/1.webp",
+  "/static/images/products/gift/boston-fern/2.webp",
+  "/static/images/products/gift/boston-fern/3.webp",
+],
 
     features: {
       overview: [
@@ -8870,7 +14405,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-fern-1",
+        user: { _id: "user-fe1", name: "سارا رضایی", role: "user" },
+        date: new Date("2025-11-10"),
+        text: "برگ سرخسم قهوه‌ای شده، چرا؟",
+      },
+      {
+        _id: "comment-fern-2",
+        user: { _id: "user-fe2", name: "رضا کریمی", role: "user" },
+        date: new Date("2025-11-08"),
+        text: "چند وقت یکبار آب بدم؟",
+      },
+      {
+        _id: "comment-fern-3",
+        user: { _id: "user-fe3", name: "زهرا حسینی", role: "user" },
+        date: new Date("2025-11-06"),
+        text: "آیا نفرولپیس برای حمام مناسبه؟",
+      },
+      {
+        _id: "comment-fern-4",
+        user: { _id: "user-fe4", name: "امیر نادری", role: "user" },
+        date: new Date("2025-11-07"),
+        text: "چطور سرخس رو تکثیر کنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-11-08"),
+          text: "تقسیم بوته در بهار ساده‌ترین روش است. هر بخش باید ریشه و برگ کافی داشته باشد.",
+        },
+      },
+      {
+        _id: "comment-fern-5",
+        user: { _id: "user-fe5", name: "نرگس کرمی", role: "user" },
+        date: new Date("2025-11-04"),
+        text: "برای گربه ضرر دارد؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-11-05"),
+          text: "خیر، سرخس برای حیوانات غیرسمی است.",
+        },
+      },
+      {
+        _id: "comment-fern-6",
+        user: { _id: "user-fe6", name: "مهدی رحمانی", role: "user" },
+        date: new Date("2025-11-02"),
+        text: "برگام خشک و شکننده شده، چرا؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-11-03"),
+          text: "رطوبت ناکافی. غبارپاشی روزانه و استفاده از دستگاه بخور توصیه می‌شود.",
+        },
+      },
+      {
+        _id: "comment-fern-7",
+        user: { _id: "user-fe7", name: "علی صادقی", role: "user" },
+        date: new Date("2025-11-05"),
+        text: "ارسال به تهران با گلدان آویز حصیری؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-11-06"),
+          text: "بله، هزینه پست ۳۵ هزار تومان.",
+        },
+      },
+      {
+        _id: "comment-fern-8",
+        user: { _id: "user-fe8", name: "مریم زمانی", role: "user" },
+        date: new Date("2025-11-03"),
+        text: "قیمت ۴۵۰.۰۰۰ مناسبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-11-04"),
+          text: "با گلدان حصیری و گیاه پرپشت، قیمت عالی برای هدیه شاداب است.",
+        },
+      },
+      {
+        _id: "comment-fern-9",
+        user: { _id: "user-fe9", name: "فاطمه سلیمانی", role: "user" },
+        date: new Date("2025-11-01"),
+        text: "آیا سرخس به نور مستقیم نیاز دارد؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-11-02"),
+          text: "خیر، نور غیرمستقیم کافی است. نور مستقیم برگ‌ها را می‌سوزاند.",
+        },
+      },
+      {
+        _id: "comment-fern-10",
+        user: { _id: "user-fe10", name: "زهرا نوری", role: "user" },
+        date: new Date("2025-10-30"),
+        text: "چه خاکی برای سرخس خوبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-10-31"),
+          text: "پیت ماس + پرلیت + خاک برگ. خاک باید سبک و مرطوب‌نگه‌دار باشد.",
+        },
+      },
+    ],
 
     seo: {
       title:
@@ -8889,6 +14520,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "gift-kalanchoe-1",
     name: "کالانکوئه",
     price: 1380000,
     slug: "kalanchoe-blossfeldiana",
@@ -8904,13 +14536,13 @@ export const fakeProducts = [
     weight: 600,
     potDimensions: { length: 20, width: 20, height: 25 },
     sunlight: "نور غیرمستقیم روشن تا  ملایم",
-    image: "/static/images/products/gift/kalanchoe-blossfeldiana/main.webp",
-    images: [
-      "/static/images/products/gift/kalanchoe-blossfeldiana/main.webp",
-      "/static/images/products/gift/kalanchoe-blossfeldiana/1.webp",
-      "/static/images/products/gift/kalanchoe-blossfeldiana/2.webp",
-      "/static/images/products/gift/kalanchoe-blossfeldiana/3.webp",
-    ],
+image: "/static/images/products/gift/kalanchoe-blossfeldiana/main.webp",
+images: [
+  "/static/images/products/gift/kalanchoe-blossfeldiana/main.webp",
+  "/static/images/products/gift/kalanchoe-blossfeldiana/1.webp",
+  "/static/images/products/gift/kalanchoe-blossfeldiana/2.webp",
+  "/static/images/products/gift/kalanchoe-blossfeldiana/3.webp",
+],
     features: {
       overview: [
         "کالانکوئه با نام علمی Kalanchoe blossfeldiana، گیاهی آبدار و فشرده با برگ‌های ضخیم، سبز تیره و گل‌های چهارگلبرگی رنگارنگ (قرمز، صورتی، زرد، نارنجی، سفید) است.",
@@ -9020,7 +14652,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-kala-1",
+        user: { _id: "user-kl1", name: "سارا رضایی", role: "user" },
+        date: new Date("2025-11-16"),
+        text: "کالانکوئه من گل نمیده، چرا؟",
+      },
+      {
+        _id: "comment-kala-2",
+        user: { _id: "user-kl2", name: "رضا کریمی", role: "user" },
+        date: new Date("2025-11-14"),
+        text: "چند وقت یکبار آب بدم؟",
+      },
+      {
+        _id: "comment-kala-3",
+        user: { _id: "user-kl3", name: "زهرا حسینی", role: "user" },
+        date: new Date("2025-11-12"),
+        text: "آیا کالانکوئه برای هدیه روز مادر خوب است؟",
+      },
+      {
+        _id: "comment-kala-4",
+        user: { _id: "user-kl4", name: "امیر نادری", role: "user" },
+        date: new Date("2025-11-13"),
+        text: "چطور کالانکوئه رو تکثیر کنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-11-14"),
+          text: "قلمه برگ یا ساقه در بهار ساده‌ترین است. قلمه را یک روز خشک کنید بعد بکارید.",
+        },
+      },
+      {
+        _id: "comment-kala-5",
+        user: { _id: "user-kl5", name: "نرگس کرمی", role: "user" },
+        date: new Date("2025-11-10"),
+        text: "برای گربه ضرر دارد؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-11-11"),
+          text: "خیر، کالانکوئه غیرسمی است.",
+        },
+      },
+      {
+        _id: "comment-kala-6",
+        user: { _id: "user-kl6", name: "مهدی رحمانی", role: "user" },
+        date: new Date("2025-11-08"),
+        text: "برگام نرم شده، چرا؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-11-09"),
+          text: "آبیاری زیاد. خاک را خشک کنید و آبیاری را کاهش دهید.",
+        },
+      },
+      {
+        _id: "comment-kala-7",
+        user: { _id: "user-kl7", name: "علی صادقی", role: "user" },
+        date: new Date("2025-11-11"),
+        text: "ارسال به اصفهان با گلدان رزینی؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-11-12"),
+          text: "بله، هزینه پست ۳۰ هزار تومان.",
+        },
+      },
+      {
+        _id: "comment-kala-8",
+        user: { _id: "user-kl8", name: "مریم زمانی", role: "user" },
+        date: new Date("2025-11-09"),
+        text: "قیمت ۳۸۰.۰۰۰ مناسبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-11-10"),
+          text: "با گلدان و گیاه گلدار قرمز، قیمت عالی برای هدیه شاد است.",
+        },
+      },
+      {
+        _id: "comment-kala-9",
+        user: { _id: "user-kl9", name: "فاطمه سلیمانی", role: "user" },
+        date: new Date("2025-11-07"),
+        text: "آیا کالانکوئه به نور مستقیم نیاز دارد؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-11-08"),
+          text: "نور غیرمستقیم روشن کافی است. نور مستقیم ظهر برگ‌ها را می‌سوزاند.",
+        },
+      },
+      {
+        _id: "comment-kala-10",
+        user: { _id: "user-kl10", name: "زهرا نوری", role: "user" },
+        date: new Date("2025-11-05"),
+        text: "چه خاکی برای کالانکوئه خوبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-11-06"),
+          text: "خاک کاکتوس + پرلیت + ماسه. زهکش عالی ضروری است.",
+        },
+      },
+    ],
 
     seo: {
       title: "کالانکوئه گلدار | خرید گیاه آپارتمانی شاد و ماندگار | گیاه‌لند",
@@ -9038,6 +14766,7 @@ export const fakeProducts = [
     },
   },
   {
+    _id: "gift-euphorbia-cristata-1",
     name: "آیوری پلانت",
     price: 990000,
     slug: "crested-euphorbia",
@@ -9053,13 +14782,13 @@ export const fakeProducts = [
     weight: 2200,
     potDimensions: { length: 20, width: 20, height: 20 },
     sunlight: "نور مستقیم آفتاب تا بسیار روشن",
-    image: "/static/images/products/gift/crested-euphorbia/main.webp",
-    images: [
-      "/static/images/products/gift/crested-euphorbia/main.webp",
-      "/static/images/products/gift/crested-euphorbia/1.webp",
-      "/static/images/products/gift/crested-euphorbia/2.webp",
-      "/static/images/products/gift/crested-euphorbia/3.webp",
-    ],
+  image: "/static/images/products/gift/crested-euphorbia/main.webp",
+images: [
+  "/static/images/products/gift/crested-euphorbia/main.webp",
+  "/static/images/products/gift/crested-euphorbia/1.webp",
+  "/static/images/products/gift/crested-euphorbia/2.webp",
+  "/static/images/products/gift/crested-euphorbia/3.webp",
+],
 
     features: {
       overview: [
@@ -9172,7 +14901,103 @@ export const fakeProducts = [
       ],
     },
 
-    comments: [],
+    comments: [
+      {
+        _id: "comment-crest-1",
+        user: { _id: "user-cr1", name: "پیمان احمدی", role: "user" },
+        date: new Date("2025-11-14"),
+        text: "آیوری پلانتم نرم شده، چرا؟",
+      },
+      {
+        _id: "comment-crest-2",
+        user: { _id: "user-cr2", name: "سارا حسینی", role: "user" },
+        date: new Date("2025-11-12"),
+        text: "چند وقت یکبار آب بدم؟",
+      },
+      {
+        _id: "comment-crest-3",
+        user: { _id: "user-cr3", name: "زهرا رضایی", role: "user" },
+        date: new Date("2025-11-10"),
+        text: "آیا آیوری پلانت کمیاب است؟",
+      },
+      {
+        _id: "comment-crest-4",
+        user: { _id: "user-cr4", name: "امیر نادری", role: "user" },
+        date: new Date("2025-11-11"),
+        text: "چطور تکثیرش کنم؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-11-12"),
+          text: "قلمه زدن سخت است و به خشکی طولانی نیاز دارد. روش پیوند تخصصی است. برای مبتدیان تکثیر توصیه نمی‌شود.",
+        },
+      },
+      {
+        _id: "comment-crest-5",
+        user: { _id: "user-cr5", name: "نرگس کرمی", role: "user" },
+        date: new Date("2025-11-08"),
+        text: "برای گربه ضرر دارد؟",
+        reply: {
+          user: { _id: "doctor-2", name: "دکتر کریمی", role: "plant-doctor" },
+          date: new Date("2025-11-09"),
+          text: "بله، شیرابه بسیار سمی است. دور از دسترس حیوانات و کودکان نگهداری شود.",
+        },
+      },
+      {
+        _id: "comment-crest-6",
+        user: { _id: "user-cr6", name: "مهدی رحمانی", role: "user" },
+        date: new Date("2025-11-06"),
+        text: "فرم گیاه باز شده، چرا؟",
+        reply: {
+          user: { _id: "doctor-1", name: "دکتر محمدی", role: "plant-doctor" },
+          date: new Date("2025-11-07"),
+          text: "کمبود نور یا آبیاری زیاد. نور مستقیم بیشتر و آبیاری را کاهش دهید.",
+        },
+      },
+      {
+        _id: "comment-crest-7",
+        user: { _id: "user-cr7", name: "علی صادقی", role: "user" },
+        date: new Date("2025-11-09"),
+        text: "ارسال به اصفهان با گلدان سرامیک؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-11-10"),
+          text: "بله، بسته‌بندی ویژه. هزینه پست ۴۵ هزار تومان.",
+        },
+      },
+      {
+        _id: "comment-crest-8",
+        user: { _id: "user-cr8", name: "مریم زمانی", role: "user" },
+        date: new Date("2025-11-07"),
+        text: "قیمت ۸۹۰.۰۰۰ مناسبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-11-08"),
+          text: "گیاه نادر ۵ ساله با فرم کریستات کامل، قیمت عالی برای کلکسیونرها.",
+        },
+      },
+      {
+        _id: "comment-crest-9",
+        user: { _id: "user-cr9", name: "فاطمه سلیمانی", role: "user" },
+        date: new Date("2025-11-05"),
+        text: "آیا به نور مستقیم نیاز دارد؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-11-06"),
+          text: "بله، نور مستقیم آفتاب برای حفظ فرم ضروری است.",
+        },
+      },
+      {
+        _id: "comment-crest-10",
+        user: { _id: "user-cr10", name: "زهرا نوری", role: "user" },
+        date: new Date("2025-11-03"),
+        text: "چه خاکی برای آیوری پلانت خوبه؟",
+        reply: {
+          user: { _id: "admin-1", name: "پشتیبانی", role: "admin" },
+          date: new Date("2025-11-04"),
+          text: "خاک معدنی (ماسه، پرلیت، پوکه) + کمی خاک کاکتوس. زهکش فوق‌العاده ضروری است.",
+        },
+      },
+    ],
 
     seo: {
       title: "آیوری پلانت (عاج فیل) | خرید گیاه کریستات نادر و عجیب | گیاه‌لند",
