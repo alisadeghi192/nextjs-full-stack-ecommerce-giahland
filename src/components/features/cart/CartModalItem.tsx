@@ -3,7 +3,8 @@ import Image from "next/image";
 import { FaMinus, FaPlus } from "react-icons/fa6";
 import { AiOutlineDelete } from "react-icons/ai";
 import { toPersianNumber, formatDimensions, formatPrice } from "@/lib/utils/format";
-import { getDiscountedPrice } from "@/features/products/utils/productHelpers";
+import { getDiscountedPrice } from "@/lib/utils/price";
+
 
 interface CartModalItemProps {
   productName: string;

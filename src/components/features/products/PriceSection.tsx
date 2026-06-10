@@ -1,5 +1,6 @@
 import { formatPrice } from "@/lib/utils/format";
-import { getDiscountedPrice } from "@/features/products/utils/productHelpers";
+import { getDiscountedPrice } from "@/lib/utils/price";
+
 import DiscountBadge from "./DiscountBadge";
 
 interface PriceSectionProps {
