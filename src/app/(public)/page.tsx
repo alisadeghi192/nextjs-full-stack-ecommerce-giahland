@@ -1,11 +1,11 @@
-import ServicesSection from "@/components/features/landing/ServicesSection";
-import HeroSection from "@/components/features/landing/HeroSection";
-import BannerSection from "@/components/features/landing/BannerSection";
-import ProductSlider from "@/components/features/products/ProductSlider";
 import BlogSlider from "@/components/features/blog/BlogSlider";
+import BannerSection from "@/components/features/landing/BannerSection";
+import HeroSection from "@/components/features/landing/HeroSection";
 import PlantDoctorServices from "@/components/features/landing/PlantDoctorServices";
-import { getLatestProductsByCategory } from "@/features/products/actions/product.actions";
+import ServicesSection from "@/components/features/landing/ServicesSection";
+import ProductSlider from "@/components/features/products/ProductSlider";
 import { getLatestPosts, getMostViewedPosts } from "@/features/blog/utils/blogHelpers";
+import { getLatestProductsByCategory } from "@/features/products/actions/product.actions";
 
 
 
