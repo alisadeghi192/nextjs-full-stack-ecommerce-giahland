@@ -1,22 +1,23 @@
-import { notFound } from "next/navigation";
-import type { Metadata } from "next";
-import Breadcrumb from "@/components/shared/ui/Breadcrumb";
-import { productTabs, productDetailTabs } from "@/lib/constants";
+import MobileStickyCart from "@/components/features/products/MobileStickyCart";
+import ProductCaresRenderer from "@/components/features/products/ProductCaresRenderer";
 import ProductDetailTabs from "@/components/features/products/ProductDetailTabs";
+import ProductFeaturesRenderer from "@/components/features/products/ProductFeaturesRenderer";
+import ProductGallery from "@/components/features/products/ProductGallery";
+import ProductPurchaseCard from "@/components/features/products/ProductPurchaseCard";
+import ProductSlider from "@/components/features/products/ProductSlider";
+import ProductSpecs from "@/components/features/products/ProductSpecs";
+import ProductTitleHeader from "@/components/features/products/ProductTitleHeader";
+import Breadcrumb from "@/components/shared/ui/Breadcrumb";
 import CommentForm from "@/components/shared/ui/CommentForm";
 import CommentList from "@/components/shared/ui/CommentList";
-import ProductTitleHeader from "@/components/features/products/ProductTitleHeader";
-import ProductGallery from "@/components/features/products/ProductGallery";
-import ProductSpecs from "@/components/features/products/ProductSpecs";
-import ProductPurchaseCard from "@/components/features/products/ProductPurchaseCard";
-import ProductFeaturesRenderer from "@/components/features/products/ProductFeaturesRenderer";
-import ProductCaresRenderer from "@/components/features/products/ProductCaresRenderer";
-import MobileStickyCart from "@/components/features/products/MobileStickyCart";
-import ProductSlider from "@/components/features/products/ProductSlider";
 import {
   getProductBySlug,
   getRelatedProducts,
 } from "@/features/products/actions/product.actions";
+import { getBulkLikeStatus } from "@/features/user/actions/wishlist.actions";
+import { productDetailTabs, productTabs } from "@/lib/constants";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 interface ProductPageProps {
   params: Promise<{
     category: string;
@@ -61,7 +62,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
     productTabs.find((product) => product.id == category)?.label || "";
 
   const relatedProducts = await getRelatedProducts(product.category, slug, 8);
-
+const relatedIds = relatedProducts.map((p) => p._id);
+  const relatedLikeStatuses = await getBulkLikeStatus(relatedIds);
   const categoryLink = `/products?category=${category}`;
 
   return (
@@ -132,6 +134,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         link={categoryLink}
         products={relatedProducts}
         title="گیاه های مشابه"
+        likeStatuses={relatedLikeStatuses}
       />
 
       <MobileStickyCart
