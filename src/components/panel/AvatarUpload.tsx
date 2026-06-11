@@ -1,15 +1,15 @@
 "use client";
-import Image from "next/image";
-import { useRef, useState } from "react";
-import { TbEdit, TbTrash } from "react-icons/tb";
 import {
+  useCheckAuth,
   useUserAvatar,
   useUserFirstName,
-  useCheckAuth,
 } from "@/features/auth/selectors/auth.selectors";
-import { uploadAvatarAction } from "@/features/user/actions/uploadAvatar.actions";
 import { deleteAvatarAction } from "@/features/user/actions/deleteAvatar.actions";
+import { uploadAvatarAction } from "@/features/user/actions/uploadAvatar.actions";
+import Image from "next/image";
+import { useRef, useState } from "react";
 import toast from "react-hot-toast";
+import { TbEdit, TbTrash } from "react-icons/tb";
 import ConfirmDialog from "../shared/ui/ConfirmDialog";
 
 export default function AvatarUpload() {
