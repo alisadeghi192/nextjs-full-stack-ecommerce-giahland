@@ -5,6 +5,7 @@ import { ReactNode } from "react";
 interface TextareaFieldProps {
   icon: ReactNode;
   name: string;
+  id:string;
   label: string;
   value?: string;
   onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
@@ -14,6 +15,7 @@ interface TextareaFieldProps {
 export default function TextareaField({
   icon,
   name,
+  id,
   label,
   value,
   onChange,
@@ -27,7 +29,7 @@ export default function TextareaField({
       <textarea
         className="peer text-neutral11 flex-1 resize-none border-0 outline-0"
         name={name}
-        id={name}
+        id={id}
         placeholder=" "
         value={value}
         onChange={onChange}
