@@ -1,26 +1,32 @@
-import Breadcrumb from "@/components/shared/ui/Breadcrumb";
+import ProductsGrid from "@/components/features/products/ProductsGrid";
 import ProductsHeader from "@/components/features/products/ProductsHeader";
 import ProductsList from "@/components/features/products/ProductsList";
-import ProductsGrid from "@/components/features/products/ProductsGrid";
+import Breadcrumb from "@/components/shared/ui/Breadcrumb";
 import Pagination from "@/components/shared/ui/pagination";
 import {
-  DEFAULT_TAB,
-  DEFAULT_VIEW_MODE,
-  DEFAULT_SORT,
-  PRODUCTS_PER_PAGE,
-} from "@/lib/constants";
-import {
-  getProductsCardByCategory,
   getAllProductsCard,
+  getProductsCardByCategory,
 } from "@/features/products/actions/product.actions";
 import { ProductCardData } from "@/features/products/types/product.types";
-import { filterProductsByTab, paginateProducts, sortProducts } from "@/features/products/utils/productHelpers";
+import {
+  filterProductsByTab,
+  paginateProducts,
+  sortProducts,
+} from "@/features/products/utils/productHelpers";
+import {
+  DEFAULT_SORT,
+  DEFAULT_TAB,
+  DEFAULT_VIEW_MODE,
+  PRODUCTS_PER_PAGE,
+} from "@/lib/constants";
 
 interface ProductsPageProps {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
-export default async function ProductsPage({ searchParams }: ProductsPageProps) {
+export default async function ProductsPage({
+  searchParams,
+}: ProductsPageProps) {
   const params = await searchParams;
 
   const activeTab = (params.category as string) || DEFAULT_TAB;
@@ -29,16 +35,22 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
   const currentPage = Number(params.page) || 1;
 
   let allProducts: ProductCardData[] = [];
-  
+
   if (activeTab === "all" || activeTab === "discounted") {
     allProducts = await getAllProductsCard();
   } else {
-    allProducts = await getProductsCardByCategory(activeTab as "indoor" | "decoration" | "gift");
+    allProducts = await getProductsCardByCategory(
+      activeTab as "indoor" | "decoration" | "gift",
+    );
   }
 
   const filteredProducts = filterProductsByTab(allProducts, activeTab);
   const sortedProducts = sortProducts(filteredProducts, selectedSort);
-  const paginatedProducts = paginateProducts(sortedProducts, currentPage, PRODUCTS_PER_PAGE);
+  const paginatedProducts = paginateProducts(
+    sortedProducts,
+    currentPage,
+    PRODUCTS_PER_PAGE,
+  );
   const totalPages = Math.ceil(sortedProducts.length / PRODUCTS_PER_PAGE);
   const baseUrl = `?category=${activeTab}&view=${viewMode}&sort=${selectedSort}`;
 
