@@ -11,6 +11,7 @@ export interface IUser {
   avatar?: string;
   postalCode?: string;
   address?: string;
+  wishlist?: string[];
   createdAt: Date;
   updatedAt: Date;
 }

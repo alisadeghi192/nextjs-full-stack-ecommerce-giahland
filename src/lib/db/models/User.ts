@@ -1,6 +1,6 @@
-import mongoose from "mongoose";
 import { IUser } from "@/features/user/types/user.types";
 import { USER_ROLES } from "@/lib/constants/roles";
+import mongoose from "mongoose";
 
 const UserSchema = new mongoose.Schema<IUser>(
   {
@@ -54,6 +54,9 @@ const UserSchema = new mongoose.Schema<IUser>(
       type: String,
       default: "",
     },
+    wishlist: [
+      { type: mongoose.Schema.Types.ObjectId, ref: "Product", default: [] },
+    ],
   },
   {
     timestamps: true,
