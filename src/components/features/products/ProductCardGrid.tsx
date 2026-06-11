@@ -1,13 +1,14 @@
 import Link from "next/link";
-import LikeButton from "./LikeButton";
 import AddToCartButton from "./AddToCartButton";
+import DiscountBadge from "./DiscountBadge";
+import LikeButton from "./LikeButton";
 import PriceSection from "./PriceSection";
+import ProductImage from "./ProductImage";
 import ProductInfo from "./ProductInfo";
 import StockStatus from "./StockStatus";
-import DiscountBadge from "./DiscountBadge";
-import ProductImage from "./ProductImage";
 
 interface ProductCardGridProps {
+  _id: string;
   name: string;
   price: number;
   image: string;
@@ -20,9 +21,11 @@ interface ProductCardGridProps {
     height: number;
   };
   stock: number;
+  isLiked?: boolean;
 }
 
 export default function ProductCardGrid({
+  _id,
   name,
   price,
   image,
@@ -31,10 +34,10 @@ export default function ProductCardGrid({
   discount,
   potDimensions,
   stock,
+  isLiked = false,
 }: ProductCardGridProps) {
   const isOutOfStock = stock === 0;
   const hasDiscount = discount > 0;
-
 
   const contentElement = (
     <div className="flex flex-col">
@@ -78,7 +81,11 @@ export default function ProductCardGrid({
         <Link href={`/products/${category}/${slug}`}>{contentElement}</Link>
       )}
       {!isOutOfStock && (
-        <LikeButton className="top-4 -left-9 group-hover:left-4 max-md:left-4!" />
+        <LikeButton
+          className="top-4 -left-9 group-hover:left-4 max-md:left-4!"
+          productId={_id}
+          initialLiked={isLiked}
+        />
       )}
     </div>
   );
