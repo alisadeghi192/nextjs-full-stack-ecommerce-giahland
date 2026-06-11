@@ -1,33 +1,35 @@
 "use client";
 
+import { ProductCardData } from "@/features/products/types/product.types";
 import { useRef } from "react";
-import type { Swiper as SwiperType } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation } from "swiper/modules";
 import {
   MdKeyboardArrowLeft,
   MdNavigateBefore,
   MdOutlineNavigateNext,
 } from "react-icons/md";
-import { ProductCardData } from "@/features/products/types/product.types";
+import type { Swiper as SwiperType } from "swiper";
+import { Autoplay, Navigation } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 import ProductCardGrid from "./ProductCardGrid";
 
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import Link from "next/link";
 import { PRODUCT_SWIPER_AUTOPLAY_DELAY, PRODUCT_SWIPER_BREAKPOINTS, PRODUCT_SWIPER_SPACE_BETWEEN } from "@/lib/constants";
+import Link from "next/link";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 interface ProductSliderProps {
   title: string;
   products: ProductCardData[];
   link: string;
+   likeStatuses?: Record<string, boolean>;
 }
 
 export default function ProductSlider({
   title,
   products,
   link,
+  likeStatuses,
 }: ProductSliderProps) {
   const swiperRef = useRef<SwiperType | null>(null);
 
@@ -69,7 +71,7 @@ export default function ProductSlider({
         >
           {products.map((product) => (
             <SwiperSlide key={product._id} className="h-auto">
-              <ProductCardGrid {...product} />
+              <ProductCardGrid {...product} isLiked={likeStatuses?.[product._id]}/>
             </SwiperSlide>
           ))}
         </Swiper>
