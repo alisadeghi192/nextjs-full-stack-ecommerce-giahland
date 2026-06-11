@@ -1,12 +1,13 @@
 import Link from "next/link";
-import LikeButton from "./LikeButton";
 import AddToCartButton from "./AddToCartButton";
+import DiscountBadge from "./DiscountBadge";
+import LikeButton from "./LikeButton";
 import PriceSection from "./PriceSection";
+import ProductImage from "./ProductImage";
 import ProductInfo from "./ProductInfo";
 import StockStatus from "./StockStatus";
-import DiscountBadge from "./DiscountBadge";
-import ProductImage from "./ProductImage";
 interface ProductCardListProps {
+  _id : string
   name: string;
   price: number;
   image: string;
@@ -19,9 +20,11 @@ interface ProductCardListProps {
     height: number;
   };
   stock: number;
+  isLiked?: boolean;
 }
 
 export default function ProductCardList({
+  _id,
   name,
   price,
   image,
@@ -30,6 +33,7 @@ export default function ProductCardList({
   discount,
   potDimensions,
   stock,
+  isLiked = false,
 }: ProductCardListProps) {
   const isOutOfStock = stock === 0;
   const hasDiscount = discount > 0;
@@ -68,6 +72,8 @@ export default function ProductCardList({
       )}
       {!isOutOfStock && (
         <LikeButton
+        productId={_id}
+        initialLiked={isLiked}
           mobileResponsive={true}
           className="top-4 -left-9 group-hover:left-4 max-md:top-2 max-md:left-2 max-md:size-7 max-md:group-hover:left-2"
         />
