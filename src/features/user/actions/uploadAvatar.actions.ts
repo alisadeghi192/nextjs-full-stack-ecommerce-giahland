@@ -3,7 +3,7 @@
 import { getMeAction } from "@/features/auth/actions/me.actions";
 import connectToDB from "@/lib/db/connect";
 import User from "@/lib/db/models/User";
-import { writeFile, mkdir ,readdir, unlink} from "fs/promises";
+import { mkdir, readdir, unlink, writeFile } from "fs/promises";
 import path from "path";
 
 export async function uploadAvatarAction(formData: FormData) {
@@ -15,8 +15,8 @@ export async function uploadAvatarAction(formData: FormData) {
     return { success: false, message: "لطفاً یک عکس انتخاب کنید." };
   }
 
-  if (file.size > 2 * 1024 * 1024) {
-    return { success: false, message: "حجم عکس نباید بیشتر از ۲ مگابایت باشد." };
+  if (file.size > 4 * 1024 * 1024) {
+    return { success: false, message: "حجم عکس نباید بیشتر از ۴ مگابایت باشد." };
   }
 
   const allowedTypes = ["image/jpeg", "image/png", "image/webp"];

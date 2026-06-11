@@ -24,7 +24,7 @@ export default function TicketList({ tickets }: TicketListProps) {
   }
 
   return (
-    <div className="mt-8">
+    <div className="mt-8 max-md:mt-4">
       <SectionTitle title="تیکت های شما" />
       <div className="flex flex-col gap-y-4">
         {tickets.map((ticket) => (

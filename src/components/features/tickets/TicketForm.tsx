@@ -29,14 +29,22 @@ export default function TicketForm() {
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (!file) return;
+    if (!file) {
+      return;
+    }
+    if (file.size > 4 * 1024 * 1024) {
+      toast.error("حجم فایل نباید بیشتر از ۴ مگابایت باشد.");
+      if (fileInputRef.current) fileInputRef.current.value = "";
+      return;
+    }
+    toast.success("عکس با موفقیت بارگذاری شد.");
   };
 
   return (
     <div className="border-neutral3 rounded-2xl border p-6 shadow-lg max-md:p-3.5">
-      <form ref={formRef} action={formAction} className="flex flex-col gap-4">
-        <div className="flex items-end gap-x-4">
-          <div className="grid w-3/4 grid-cols-2 gap-3 [&>*:last-child]:col-span-2">
+      <form ref={formRef} action={formAction} className="flex flex-col gap-4" noValidate>
+        <div className="flex items-end gap-4 max-lg:flex-col max-lg:items-center">
+          <div className="grid w-3/4 grid-cols-2 gap-3 max-lg:w-full max-lg:grid-cols-1 lg:[&>*:last-child]:col-span-2">
             <FormField
               icon={<MdDriveFileRenameOutline size={20} />}
               id="subject"
@@ -56,7 +64,7 @@ export default function TicketForm() {
                 id="department"
                 className="peer text-neutral11 invalid:text-neutral9 flex-1 cursor-pointer appearance-none border-0 bg-transparent outline-0"
               >
-                <option value="" disabled  className="text-neutral9">
+                <option value="" disabled className="text-neutral9">
                   دپارتمان مورد نظر
                 </option>
                 {TICKET_DEPARTMENTS.map((department) => (
@@ -81,7 +89,7 @@ export default function TicketForm() {
             />
           </div>
 
-          <div className="flex w-1/4 items-center gap-x-4">
+          <div className="flex w-1/4 items-center gap-x-4 max-lg:w-full">
             <input
               ref={fileInputRef}
               type="file"
@@ -95,11 +103,11 @@ export default function TicketForm() {
               type="button"
               onClick={handleFileClick}
               disabled={isPending}
-              className="flex h-12 w-14 shrink-0 cursor-pointer items-center justify-center rounded-xl border border-neutral4 text-primary transition-colors hover:border-primary disabled:opacity-50"
+              className="border-neutral4 text-primary hover:border-primary flex h-12 w-14 shrink-0 cursor-pointer items-center justify-center rounded-xl border transition-colors disabled:opacity-50"
             >
               <ImAttachment className="size-6" />
             </button>
-            <PrimaryButton  disabled={isPending} className="h-12 w-full">
+            <PrimaryButton disabled={isPending} className="h-12 w-full">
               {isPending ? "در حال ثبت..." : "ثبت"}
             </PrimaryButton>
           </div>

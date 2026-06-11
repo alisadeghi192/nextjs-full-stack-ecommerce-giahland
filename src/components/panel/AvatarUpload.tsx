@@ -26,7 +26,17 @@ export default function AvatarUpload() {
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (!file) return;
+    if (!file) {
+      return;
+    }
+
+    if (file.size > 4 * 1024 * 1024) {
+      toast.error("حجم عکس نباید بیشتر از ۴ مگابایت باشد.");
+      if (fileInputRef.current) {
+        fileInputRef.current.value = "";
+      }
+      return;
+    }
 
     setIsLoading(true);
     const formData = new FormData();
@@ -57,10 +67,9 @@ export default function AvatarUpload() {
     setIsLoading(false);
   };
 
-
   return (
     <div className="mb-4 flex items-center gap-x-4">
-      <div className="size-20 max-md:size-15 overflow-hidden rounded-full">
+      <div className="size-20 overflow-hidden rounded-full max-md:size-15">
         <Image
           alt={firstName || "user profile"}
           src={userAvatar}

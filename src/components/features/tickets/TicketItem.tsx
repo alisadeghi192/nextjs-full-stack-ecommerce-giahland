@@ -13,7 +13,11 @@ interface TicketItemProps {
   onToggle: () => void;
 }
 
-export default function TicketItem({ ticket, isOpen, onToggle }: TicketItemProps) {
+export default function TicketItem({
+  ticket,
+  isOpen,
+  onToggle,
+}: TicketItemProps) {
   const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
 
   const getDepartmentLabel = (value: string) => {
@@ -23,7 +27,7 @@ export default function TicketItem({ ticket, isOpen, onToggle }: TicketItemProps
   return (
     <>
       <div
-        className={`group ${ticket.status === "pending" ? "bg-red-200" : "bg-green-200"} border-neutral4 flex w-full flex-col rounded-xl border p-4`}
+        className={`group ${ticket.status === "pending" ? "bg-red-200" : "bg-green-200"} border-neutral4 flex w-full flex-col rounded-xl border p-4 max-md:p-2`}
       >
         <div className="flex items-center justify-between">
           <div className="flex flex-wrap items-center gap-4">
@@ -36,8 +40,13 @@ export default function TicketItem({ ticket, isOpen, onToggle }: TicketItemProps
             <span className="bg-primary inline-block h-5 w-0.5 rounded-xs" />
             {new Date(ticket.createdAt).toLocaleDateString("fa-IR")}
           </div>
-          <div className="flex cursor-pointer items-center gap-x-2" onClick={onToggle}>
-            <span>مشاهده جزئیات</span>
+          <div
+            className="flex cursor-pointer items-center gap-x-2"
+            onClick={onToggle}
+          >
+            <span className="text-shade2 hover:text-primary font-medium transition-colors max-md:hidden">
+              مشاهده جزئیات
+            </span>
             <MdKeyboardArrowDown
               className={`group-hover:text-primary size-6 shrink-0 transition-transform duration-200 ${
                 isOpen && "rotate-180"
@@ -55,11 +64,13 @@ export default function TicketItem({ ticket, isOpen, onToggle }: TicketItemProps
         >
           <div className="overflow-hidden">
             <div className="space-y-3">
-              <div className="flex items-start gap-x-3">
+              <div className="flex items-start gap-x-3 max-md:gap-x-1">
                 {ticket.attachment && (
                   <div
                     className="border-primary relative size-30 cursor-pointer overflow-hidden rounded-lg border border-dashed"
-                    onClick={() => ticket.attachment && setLightboxSrc(ticket.attachment!)}
+                    onClick={() =>
+                      ticket.attachment && setLightboxSrc(ticket.attachment!)
+                    }
                   >
                     <Image
                       alt="attachment"
@@ -70,15 +81,18 @@ export default function TicketItem({ ticket, isOpen, onToggle }: TicketItemProps
                   </div>
                 )}
                 <div className="custom-scroll border-primary bg-neutral2 flex h-30 w-full flex-col overflow-y-auto rounded-lg border-r-4 px-3 py-4">
-                  <div className="flex items-center justify-between">
-                    <div className="mb-2 flex items-center gap-x-2">
-                      <span className="font-medium">موضوع: {ticket.subject}</span>
-                      <span className="bg-primary inline-block h-5 w-0.5 rounded-xs" />
-                      <span className="font-medium">
-                        دپارتمان: {getDepartmentLabel(ticket.department)}
+                  <div className="flex items-center justify-between max-md:items-start">
+                    <div className="mb-2 flex items-center gap-x-2 max-md:flex-col max-md:items-start">
+                      <span className="font-medium max-md:font-normal">
+                        <span className="max-md:hidden">موضوع:</span> {ticket.subject}
+                      </span>
+                      <span className="bg-primary inline-block h-5 w-0.5 rounded-xs max-md:hidden" />
+                      <span className="font-medium max-md:mt-1 max-md:font-normal">
+                        <span className="max-md:hidden">دپارتمان:</span>{" "}
+                        {getDepartmentLabel(ticket.department)}
                       </span>
                     </div>
-                    <div className="ltr text-neutral11">
+                    <div className="ltr text-neutral11 max-md:text-sm">
                       {new Date(ticket.createdAt).toLocaleDateString("fa-IR", {
                         year: "numeric",
                         month: "2-digit",
@@ -88,24 +102,29 @@ export default function TicketItem({ ticket, isOpen, onToggle }: TicketItemProps
                       })}
                     </div>
                   </div>
-                  <p className="text-neutral10 whitespace-pre-wrap">{ticket.message}</p>
+                  <p className="text-neutral10 max-md:text-sm whitespace-pre-wrap">
+                    {ticket.message}
+                  </p>
                 </div>
               </div>
               {ticket.adminReply && (
                 <div className="border-primary rounded-lg border-r-4 bg-white p-4">
                   <div className="flex items-center justify-between">
                     <div className="mb-1 font-medium">پاسخ ادمین:</div>
-                    <div className="ltr text-neutral11">
-                      {new Date(ticket.adminReply.createdAt).toLocaleDateString("fa-IR", {
-                        year: "numeric",
-                        month: "2-digit",
-                        day: "2-digit",
-                        hour: "2-digit",
-                        minute: "2-digit",
-                      })}
+                    <div className="ltr text-neutral11 max-md:text-sm">
+                      {new Date(ticket.adminReply.createdAt).toLocaleDateString(
+                        "fa-IR",
+                        {
+                          year: "numeric",
+                          month: "2-digit",
+                          day: "2-digit",
+                          hour: "2-digit",
+                          minute: "2-digit",
+                        },
+                      )}
                     </div>
                   </div>
-                  <p className="whitespace-pre-wrap text-gray-700">
+                  <p className="whitespace-pre-wrap text-gray-700 mt-2 max-md:text-sm">
                     {ticket.adminReply.message}
                   </p>
                 </div>
