@@ -52,10 +52,11 @@ export default function TicketForm() {
               <select
                 required
                 name="department"
+                defaultValue=""
                 id="department"
                 className="peer text-neutral11 invalid:text-neutral9 flex-1 cursor-pointer appearance-none border-0 bg-transparent outline-0"
               >
-                <option value="" disabled selected className="text-neutral9">
+                <option value="" disabled  className="text-neutral9">
                   دپارتمان مورد نظر
                 </option>
                 {TICKET_DEPARTMENTS.map((department) => (
