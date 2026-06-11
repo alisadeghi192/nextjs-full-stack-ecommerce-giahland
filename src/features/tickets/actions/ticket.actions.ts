@@ -1,11 +1,13 @@
 "use server";
 
-import connectToDB from "@/lib/db/connect";
-import Ticket from "@/lib/db/models/Ticket";
 import { getMeAction } from "@/features/auth/actions/me.actions";
 import { ITicket } from "@/features/tickets/types/ticket.types";
-import { revalidatePath } from "next/cache";
 import { TicketDepartment } from "@/lib/constants";
+import connectToDB from "@/lib/db/connect";
+import Ticket from "@/lib/db/models/Ticket";
+import { revalidatePath } from "next/cache";
+import { TicketSchema } from "../schemas/ticket.schema";
+import { uploadAttachment } from "../utils/uploadAttachment";
 
 export async function getUserTickets(): Promise<ITicket[]> {
   const { user } = await getMeAction();
@@ -38,25 +40,39 @@ export async function getTicketById(id: string): Promise<ITicket | null> {
   } as ITicket;
 }
 
-export async function createTicket(formData: FormData) {
+export async function createTicket(prevState: any, formData: FormData) {
   const { user } = await getMeAction();
   if (!user) throw new Error("Unauthorized");
 
-  const subject = formData.get("subject") as string;
-  const department = formData.get("department") as TicketDepartment;
-  const message = formData.get("message") as string;
+  const rawData = {
+    subject: formData.get("subject") as string,
+    department: formData.get("department") as string,
+    message: formData.get("message") as string,
+    attachment: formData.get("attachment") as File | null,
+  };
 
-  if (!subject || !department || !message) {
-    return { success: false, message: "لطفاً تمام فیلدهای الزامی را پر کنید." };
+  const result = TicketSchema.safeParse(rawData);
+  if (!result.success) {
+    const errors = result.error.flatten().fieldErrors;
+    const firstError = Object.values(errors).flat()[0];
+    return { success: false, message: firstError };
   }
+
+  const { subject, department, message, attachment } = result.data;
 
   await connectToDB();
 
+  let attachmentUrl = "";
+  if (attachment && attachment.size > 0) {
+    attachmentUrl = await uploadAttachment(attachment);
+  }
+
   await Ticket.create({
     user: user._id,
-    subject,
-    department,
-    message,
+    subject: subject.trim(),
+    department: department as TicketDepartment,
+    message: message.trim(),
+    attachment: attachmentUrl,
     status: "pending",
   });
 
