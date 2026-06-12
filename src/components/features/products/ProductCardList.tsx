@@ -46,7 +46,7 @@ export default function ProductCardList({
           name={name}
           potDimensions={potDimensions}
           stock={stock}
-          nameClassName="text-lg/8 max-md:text-base max-md:text-wrap"
+          nameClassName="text-lg/8 line-clamp-1 max-md:text-base max-md:text-wrap"
         />
         <div className="flex items-center justify-end">
           {isOutOfStock ? (

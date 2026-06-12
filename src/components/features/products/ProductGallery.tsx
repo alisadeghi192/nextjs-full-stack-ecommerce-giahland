@@ -1,6 +1,6 @@
 "use client";
-import { useState } from "react";
 import Image from "next/image";
+import { useState } from "react";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import LikeButton from "./LikeButton";
@@ -9,12 +9,14 @@ interface ProductGalleryProps {
   mainImage: string;
   productName: string;
   images?: string[];
+  id: string
 }
 
 export default function ProductGallery({
   mainImage,
   productName,
   images = [],
+  id
 }: ProductGalleryProps) {
   const [activeImage, setActiveImage] = useState(mainImage);
   const [isOpen, setIsOpen] = useState(false);
@@ -45,7 +47,7 @@ export default function ProductGallery({
             className="object-contain transition-transform duration-300 hover:scale-105"
             priority
           />
-          <LikeButton className="top-4 right-4" />
+          <LikeButton className="top-4 right-4" productId={id} />
         </div>
 
         {/* thumbnails */}

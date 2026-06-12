@@ -1,10 +1,13 @@
 "use client";
-import { useState } from "react";
-import { useScroll } from "@/lib/hooks/useScroll";
-import PanelHeader from "./PanelHeader";
 import { PanelLink } from "@/lib/constants/panelLinks";
+import { useScroll } from "@/lib/hooks/useScroll";
+import {
+  useIsSidebarOpen,
+  useSidebarActions,
+} from "@/stores/selectors/ui.selectors";
 import DesktopSidebar from "./DesktopSidebar";
 import MobileSidebar from "./MobileSidebar";
+import PanelHeader from "./PanelHeader";
 
 interface PanelLayoutProps {
   links: PanelLink[];
@@ -13,14 +16,14 @@ interface PanelLayoutProps {
 
 export default function PanelLayout({ links, children }: PanelLayoutProps) {
   const isScrolled = useScroll();
-  const [isPanelOpen, setIsPanelOpen] = useState(false);
-  const toggleSidebar = () => setIsPanelOpen((prev) => !prev);
+  const isSidebarOpen = useIsSidebarOpen();
+  const { closeSidebar , toggleSidebar} = useSidebarActions();
 
   return (
     <main>
       <PanelHeader
         isScrolled={isScrolled}
-        isSidebarOpen={isPanelOpen}
+        isSidebarOpen={isSidebarOpen}
         toggleSidebar={toggleSidebar}
       />
 
@@ -28,16 +31,18 @@ export default function PanelLayout({ links, children }: PanelLayoutProps) {
         <DesktopSidebar
           links={links}
           isScrolled={isScrolled}
-          isPanelOpen={isPanelOpen}
+          isPanelOpen={isSidebarOpen}
         />
 
         <MobileSidebar
           links={links}
-          isOpen={isPanelOpen}
-          onClose={toggleSidebar}
+          isOpen={isSidebarOpen}
+          onClose={closeSidebar}
         />
 
-        <div className="flex-1 p-6 pl-0 max-md:p-0 max-md:pt-4 max-md:pb-7">{children}</div>
+        <div className="flex-1 p-6 pl-0 max-md:p-0 max-md:pt-4 max-md:pb-7">
+          {children}
+        </div>
       </div>
     </main>
   );

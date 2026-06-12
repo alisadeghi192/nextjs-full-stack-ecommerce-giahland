@@ -1,16 +1,15 @@
 import Breadcrumb from "@/components/shared/ui/Breadcrumb";
 import FormField from "@/components/shared/ui/FormField";
+import PrimaryButton from "@/components/shared/ui/PrimaryButton";
 import TextareaField from "@/components/shared/ui/TextareaField";
 import Image from "next/image";
-import React from "react";
-import {
-  MdDriveFileRenameOutline,
-  MdCheckBoxOutlineBlank,
-  MdCheckBox,
-} from "react-icons/md";
-import { FaInstagram, FaTelegram, FaWhatsapp } from "react-icons/fa6";
 import Link from "next/link";
-import PrimaryButton from "@/components/shared/ui/PrimaryButton";
+import { FaInstagram, FaTelegram, FaWhatsapp } from "react-icons/fa6";
+import {
+  MdCheckBox,
+  MdCheckBoxOutlineBlank,
+  MdDriveFileRenameOutline,
+} from "react-icons/md";
 
 export default function page() {
   return (
@@ -50,6 +49,7 @@ export default function page() {
             <TextareaField
               icon={<MdDriveFileRenameOutline size={22} />}
               name="contact-message"
+              id="contact-message"
               label="متن پیام"
               rows={3}
             />

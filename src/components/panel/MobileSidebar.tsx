@@ -1,7 +1,7 @@
 "use client";
+import { Overlay } from "@/components/shared/layout/public/header";
 import { PanelLink } from "@/lib/constants/panelLinks";
 import PanelSidebar from "./PanelSidebar";
-import { Overlay } from "@/components/shared/layout/public/header";
 
 interface MobileSidebarProps {
   links: PanelLink[];
@@ -9,7 +9,13 @@ interface MobileSidebarProps {
   onClose: () => void;
 }
 
-export default function MobileSidebar({ links, isOpen, onClose }: MobileSidebarProps) {
+export default function MobileSidebar({
+  links,
+  isOpen,
+  onClose,
+}: MobileSidebarProps) {
+
+
   return (
     <aside>
       <div
@@ -20,17 +26,16 @@ export default function MobileSidebar({ links, isOpen, onClose }: MobileSidebarP
         }`}
       >
         <div className="flex h-full flex-col">
-          <PanelSidebar links={links} isPanelOpen={true} />
+          <PanelSidebar
+            links={links}
+            isPanelOpen={true}
+            onClose={onClose}
+          />
         </div>
       </div>
 
       <div className="md:hidden">
-        <Overlay
-          isOpen={isOpen}
-          onClose={onClose}
-          topOffset={56}
-          zIndex={30}
-        />
+        <Overlay isOpen={isOpen} onClose={onClose} topOffset={56} zIndex={30} />
       </div>
     </aside>
   );

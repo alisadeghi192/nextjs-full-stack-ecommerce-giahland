@@ -82,6 +82,7 @@ const relatedIds = relatedProducts.map((p) => p._id);
           mainImage={product.image}
           productName={product.name}
           images={product.images}
+          id={product._id}
         />
         <div className="flex w-125 flex-col max-xl:mt-9 max-lg:w-100 max-md:w-65 max-sm:mt-6 max-sm:w-full">
           <ProductTitleHeader

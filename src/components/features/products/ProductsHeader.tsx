@@ -1,7 +1,7 @@
-import Tabs from "@/components/shared/ui/Tabs";
-import { productSortOptions, productTabs } from "@/lib/constants";
-import ViewToggleWrapper from "./ViewToggleWrapper";
 import SortDropdownWrapper from "@/components/shared/ui/SortDropdownWrapper";
+import Tabs from "@/components/shared/ui/Tabs";
+import ViewToggleWrapper from "@/components/shared/ui/ViewToggleWrapper";
+import { productSortOptions, productTabs } from "@/lib/constants";
 
 interface ProductsHeaderProps {
   activeTab: string;

@@ -5,6 +5,7 @@ interface UIState {
   isSearchOpen: boolean;
   isMenuOpen: boolean;
   isProfileDropdownOpen: boolean;
+  isSidebarOpen: boolean;
   activeNavHover: string | null;
   openSubmenu: string | null;
 
@@ -24,6 +25,10 @@ interface UIState {
   closeProfileDropdown: () => void;
   toggleProfileDropdown: () => void;
 
+  openSidebar: () => void;
+  closeSidebar: () => void;
+  toggleSidebar: () => void;
+
   setActiveNavHover: (href: string | null) => void;
   setOpenSubmenu: (href: string | null) => void;
   closeAll: () => void;
@@ -34,8 +39,15 @@ export const useUIStore = create<UIState>((set, get) => ({
   isSearchOpen: false,
   isMenuOpen: false,
   isProfileDropdownOpen: false,
+  isSidebarOpen: false,
   activeNavHover: null,
   openSubmenu: null,
+
+  // ========== Sidebar ==========
+  openSidebar: () => set({ isSidebarOpen: true }),
+  closeSidebar: () => set({ isSidebarOpen: false }),
+  toggleSidebar: () =>
+    set((state) => ({ isSidebarOpen: !state.isSidebarOpen })),
 
   // ========== Close All ==========
   closeAll: () =>
@@ -44,6 +56,7 @@ export const useUIStore = create<UIState>((set, get) => ({
       isSearchOpen: false,
       isMenuOpen: false,
       isProfileDropdownOpen: false,
+      isSidebarOpen: false,
       activeNavHover: null,
       openSubmenu: null,
     }),

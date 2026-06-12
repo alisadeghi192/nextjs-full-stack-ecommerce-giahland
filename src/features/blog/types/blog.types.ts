@@ -1,4 +1,4 @@
-import { Comment } from "@/types/comment.types";
+import { IComment } from "@/types/comment.types";
 
 export type ContentBlock =
   | {
@@ -48,5 +48,5 @@ export interface BlogPostType {
   views: number;
   publishedAt: Date;
   content?: ContentBlock[];
-  comments?: Comment[];   
+  comments?: IComment[];   
 }

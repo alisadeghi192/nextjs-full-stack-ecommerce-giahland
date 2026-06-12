@@ -1,5 +1,5 @@
 "use client";
-import ViewToggle from "./ViewToggle";
+import ViewToggle from "@/components/shared/ui/ViewToggle";
 import { usePageParams } from "@/lib/hooks/usePageParams";
 
 export default function ViewToggleWrapper() {

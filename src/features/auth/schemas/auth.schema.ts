@@ -1,4 +1,3 @@
-// src/features/auth/schemas/auth.schema.ts
 import { z } from "zod";
 
 const mobileRegex = /^09[0-9]{9}$/;

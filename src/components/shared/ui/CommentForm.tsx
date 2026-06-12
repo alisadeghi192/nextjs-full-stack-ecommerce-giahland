@@ -29,6 +29,7 @@ export default function CommentForm() {
         <TextareaField
           icon={<MdDriveFileRenameOutline size={22} />}
           name="comment-text"
+          id="comment-text"
           label="متن دیدگاه"
           rows={3}
         />
