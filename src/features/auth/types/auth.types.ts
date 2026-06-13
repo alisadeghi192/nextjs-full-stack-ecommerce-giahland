@@ -1,5 +1,5 @@
-import { IUser } from "../../user/types/user.types";
 import { UserRole } from "@/lib/constants";
+import { AuthUser } from "../../user/types/user.types";
 
 export interface ISignupActionResult {
   success: boolean;
@@ -18,10 +18,10 @@ export interface ISigninActionResult {
 }
 
 export interface IAuthState {
-  user: (Omit<IUser, "password"> ) | null;
+  user: (Omit<AuthUser, "password"> ) | null;
   isLoading: boolean;
   isAuthenticated: boolean;
-  setUser: (user: (Omit<IUser, "password"> ) | null) => void;
+  setUser: (user: (Omit<AuthUser, "password"> ) | null) => void;
   logout: () => Promise<void>;
   checkAuth: () => Promise<void>;
 }
@@ -29,7 +29,7 @@ export interface IAuthState {
 export interface IAuthResponse {
   success: boolean;
   message?: string;
-  user?: Omit<IUser, "password">;
+  user?: Omit<AuthUser, "password">;
 }
 
 export interface IGetMeResponse {
@@ -40,10 +40,17 @@ export interface IGetMeResponse {
     role: UserRole;
     firstName?: string;
     lastName?: string;
-    address? : string;
-    postalCode? : string;
+    address?: string;
+    postalCode?: string;
     avatar?: string;
     createdAt: Date;
     updatedAt: Date;
+    wishlist?: string[];
+    specialties?: string;
+    yearsOfExperience?: number;
+    consultationFee?: number;
+    successfulConsultations?: number;
+    articles?: string[];
+    consultations?: string[];
   } | null;
 }
