@@ -1,6 +1,6 @@
+import { getMeAction } from '@/features/auth/actions/me.actions';
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
-import { getMeAction } from './features/auth/actions/me.actions';
 
 export async  function  middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -12,7 +12,6 @@ export async  function  middleware(request: NextRequest) {
       return NextResponse.redirect(new URL('/login-register', request.url));
     }
     
-    // اگر نقش doctor باشد و به مسیر wishlist یا orders برود، ردirection
     if (user.role === 'plant-doctor') {
       if (pathname.includes('/wishlist') || pathname.includes('/orders')) {
         return NextResponse.redirect(new URL('/user', request.url));

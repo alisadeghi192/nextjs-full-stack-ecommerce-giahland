@@ -1,16 +1,18 @@
 "use client";
 
-import IconButton from "@/components/shared/ui/IconButton";
-import { MdOutlineShoppingCart } from "react-icons/md";
 import CartModal from "@/components/features/cart/CartModal";
-import { useIsCartOpen, useCartActions } from "@/stores/selectors/ui.selectors";
+import IconButton from "@/components/shared/ui/IconButton";
+import { useUserRole } from "@/features/auth/selectors/auth.selectors";
 import { toPersianNumber } from "@/lib/utils/format";
-
+import { useCartActions, useIsCartOpen } from "@/stores/selectors/ui.selectors";
+import { MdOutlineShoppingCart } from "react-icons/md";
 const totalItems = 2;
 
 export default function CartButton() {
   const isCartOpen = useIsCartOpen();
   const { toggleCart, closeCart } = useCartActions();
+  const role = useUserRole();
+  if (role === "plant-doctor") return null;
   return (
     <div className="relative">
       <div className="relative">

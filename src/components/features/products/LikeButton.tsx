@@ -1,5 +1,8 @@
 "use client";
-import { useIsAuthenticated } from "@/features/auth/selectors/auth.selectors";
+import {
+  useIsAuthenticated,
+  useUserRole,
+} from "@/features/auth/selectors/auth.selectors";
 import { toggleLike } from "@/features/user/actions/wishlist.actions";
 import { useState } from "react";
 import toast from "react-hot-toast";
@@ -23,10 +26,16 @@ export default function LikeButton({
   const [isLiked, setIsLiked] = useState(initialLiked);
   const [isLoading, setIsLoading] = useState(false);
   const isAuthenticated = useIsAuthenticated();
-
+  const userRole = useUserRole();
+  const isDoctor = userRole === "plant-doctor";
   const handleClick = async (e: React.MouseEvent) => {
     e.stopPropagation();
     onClick?.(e);
+
+    if (isDoctor) {
+      toast.error("حساب گیاه پزشک امکان لایک کردن ندارد.");
+      return;
+    }
 
     if (!isAuthenticated) {
       toast.error("برای لایک کردن ابتدا وارد شوید.");
@@ -49,15 +58,15 @@ export default function LikeButton({
     <button
       onClick={handleClick}
       disabled={isLoading}
-      className={`bg-bg-error absolute flex size-8 cursor-pointer items-center justify-center rounded-full transition-all hover:bg-error/30 ${className}`}
+      className={`bg-bg-error hover:bg-error/30 absolute flex size-8 cursor-pointer items-center justify-center rounded-full transition-all ${className}`}
     >
       {isLiked ? (
         <BsHeartFill
-          className={`text-error size-5 mt-0.5 ${mobileResponsive ? "max-md:size-4" : ""}`}
+          className={`text-error mt-0.5 size-5 ${mobileResponsive ? "max-md:size-4" : ""}`}
         />
       ) : (
         <BsHeart
-          className={`text-neutral7 size-5 mt-0.5 ${mobileResponsive ? "max-md:size-4" : ""}`}
+          className={`text-neutral7 mt-0.5 size-5 ${mobileResponsive ? "max-md:size-4" : ""}`}
         />
       )}
     </button>

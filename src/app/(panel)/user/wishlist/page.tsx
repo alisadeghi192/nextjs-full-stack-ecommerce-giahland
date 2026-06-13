@@ -48,7 +48,10 @@ export default async function WishListPage({
     <div className="w-full">
       <SectionTitle title="علاقه مندی ها" />
       <WishlistToolbar />
-      <WishlistProducts products={JSON.parse(JSON.stringify(paginatedProducts))} viewMode={viewMode} />
+      <WishlistProducts
+        products={JSON.parse(JSON.stringify(paginatedProducts))}
+        viewMode={viewMode}
+      />
       {totalPages > 1 && (
         <div className="mt-8 flex justify-center">
           <Pagination
