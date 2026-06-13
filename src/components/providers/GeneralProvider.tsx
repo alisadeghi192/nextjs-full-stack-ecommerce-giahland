@@ -1,9 +1,9 @@
+import { AuthUser } from "@/features/user/types/user.types";
 import AuthProvider from "./AuthProvider";
-import { IUser } from "@/features/user/types/user.types";
 
 interface GeneralProviderProps {
   children: React.ReactNode;
-  initialUser: Omit<IUser, "password"> | null;
+  initialUser: Omit<AuthUser , "password"> | null;
 }
 
 export default function GeneralProvider({ children, initialUser }: GeneralProviderProps) {

@@ -1,10 +1,11 @@
 "use client";
-import { MdOutlineArrowUpward } from "react-icons/md";
-import { useEffect, useState } from "react";
-import { useScroll } from "../hooks/useScroll";
+import { useUserRole } from "@/features/auth/selectors/auth.selectors";
 import { SCROLL_TO_TOP_THRESHOLD } from "@/lib/constants";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import { MdOutlineArrowUpward } from "react-icons/md";
 import { useFooterVisibility } from "../hooks/useFooterVisibility";
+import { useScroll } from "../hooks/useScroll";
 
 const ScrollToTop = () => {
   const isScrolled = useScroll(SCROLL_TO_TOP_THRESHOLD);
@@ -12,6 +13,9 @@ const ScrollToTop = () => {
   const [windowWidth, setWindowWidth] = useState<number>(0);
   const isFooterVisible = useFooterVisibility();
   const pathname = usePathname();
+    const userRole = useUserRole();
+  const isDoctor = userRole === "plant-doctor";
+
   const isSingleProductPage =
     pathname?.startsWith("/products/") && pathname?.split("/").length === 4;
 
@@ -43,7 +47,7 @@ const ScrollToTop = () => {
   }, []);
 
   const isMobile = windowWidth < 640;
-  const shouldAdjust = isSingleProductPage && isMobile;
+  const shouldAdjust =  !isDoctor && isSingleProductPage && isMobile;
 
   const bottomPosition = shouldAdjust
     ? isFooterVisible

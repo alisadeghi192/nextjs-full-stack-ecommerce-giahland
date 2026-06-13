@@ -1,12 +1,12 @@
 "use client";
 
-import { useEffect } from "react";
+import { AuthUser } from "@/features/user/types/user.types";
 import { useAuthStore } from "@/stores/useAuthStore";
-import { IUser } from "@/features/user/types/user.types";
+import { useEffect } from "react";
 
 interface AuthProviderProps {
   children: React.ReactNode;
-  initialUser: Omit<IUser, "password"> | null;
+  initialUser: Omit<AuthUser , "password"> | null;
 }
 
 export default function AuthProvider({ children, initialUser }: AuthProviderProps) {
