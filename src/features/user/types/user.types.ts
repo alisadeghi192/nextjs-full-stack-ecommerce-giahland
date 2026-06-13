@@ -1,6 +1,6 @@
 import { UserRole } from "@/lib/constants/roles";
 
-export interface IUser {
+export interface BaseUser {
   _id: string;
   mobile: string;
   email: string;
@@ -9,9 +9,29 @@ export interface IUser {
   firstName?: string;
   lastName?: string;
   avatar?: string;
-  postalCode?: string;
-  address?: string;
-  wishlist?: string[];
   createdAt: Date;
   updatedAt: Date;
 }
+
+export interface IAdminUser extends BaseUser {
+  role: "admin";
+}
+
+export interface IRegularUser extends BaseUser {
+  role: "user";
+  postalCode?: string;
+  address?: string;
+  wishlist?: string[];
+}
+
+export interface IPlantDoctorUser extends BaseUser {
+  role: "plant-doctor";
+  specialties: string;
+  yearsOfExperience: number;
+  consultationFee: number;
+  successfulConsultations: number;
+  articles: string[];
+  consultations: string[];
+}
+
+export type AuthUser = IAdminUser | IRegularUser | IPlantDoctorUser;
