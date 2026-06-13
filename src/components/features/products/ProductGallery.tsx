@@ -9,14 +9,14 @@ interface ProductGalleryProps {
   mainImage: string;
   productName: string;
   images?: string[];
-  id: string
+  id: string;
 }
 
 export default function ProductGallery({
   mainImage,
   productName,
   images = [],
-  id
+  id,
 }: ProductGalleryProps) {
   const [activeImage, setActiveImage] = useState(mainImage);
   const [isOpen, setIsOpen] = useState(false);
@@ -47,7 +47,9 @@ export default function ProductGallery({
             className="object-contain transition-transform duration-300 hover:scale-105"
             priority
           />
-          <LikeButton className="top-4 right-4" productId={id} />
+          <div onClick={e => e.stopPropagation()}>
+            <LikeButton className="top-4 right-4" productId={id} />
+          </div>
         </div>
 
         {/* thumbnails */}

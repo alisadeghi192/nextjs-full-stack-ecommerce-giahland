@@ -1,5 +1,5 @@
 "use client";
-import { useAuth } from "@/features/auth/hooks/useAuth";
+import { useIsAuthenticated } from "@/features/auth/selectors/auth.selectors";
 import { toggleLike } from "@/features/user/actions/wishlist.actions";
 import { useState } from "react";
 import toast from "react-hot-toast";
@@ -10,6 +10,7 @@ interface LikeButtonProps {
   initialLiked?: boolean;
   className: string;
   mobileResponsive?: boolean;
+  onClick?: (e: React.MouseEvent) => void;
 }
 
 export default function LikeButton({
@@ -17,27 +18,30 @@ export default function LikeButton({
   initialLiked = false,
   className,
   mobileResponsive = false,
+  onClick,
 }: LikeButtonProps) {
   const [isLiked, setIsLiked] = useState(initialLiked);
   const [isLoading, setIsLoading] = useState(false);
-  const { isAuthenticated } = useAuth();
+  const isAuthenticated = useIsAuthenticated();
 
-  const handleClick = async () => {
+  const handleClick = async (e: React.MouseEvent) => {
+    e.stopPropagation();
+    onClick?.(e);
+
     if (!isAuthenticated) {
       toast.error("برای لایک کردن ابتدا وارد شوید.");
       return;
     }
 
+    setIsLiked((prev) => !prev);
     setIsLoading(true);
+
     const result = await toggleLike(productId);
-    if (result.success) {
-      setIsLiked(result.isLiked);
-      toast.success(
-        result.isLiked
-          ? "به علاقه‌مندی‌ها اضافه شد."
-          : "از علاقه‌مندی‌ها حذف شد."
-      );
+    if (!result.success) {
+      setIsLiked((prev) => !prev);
+      toast.error("خطا در ثبت لایک");
     }
+
     setIsLoading(false);
   };
 
