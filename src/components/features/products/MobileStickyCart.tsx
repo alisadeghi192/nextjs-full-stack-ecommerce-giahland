@@ -1,7 +1,8 @@
 "use client";
-import PriceSection from "./PriceSection";
 import PrimaryButton from "@/components/shared/ui/PrimaryButton";
+import { useUserRole } from "@/features/auth/selectors/auth.selectors";
 import { useFooterVisibility } from "@/lib/hooks/useFooterVisibility";
+import PriceSection from "./PriceSection";
 import StockStatus from "./StockStatus";
 
 interface MobileStickyCartProps {
@@ -19,7 +20,12 @@ export default function MobileStickyCart({
 }: MobileStickyCartProps) {
   const isFooterVisible = useFooterVisibility();
   const isOutOfStock = stock === 0;
-
+    const userRole = useUserRole();
+  const isDoctor = userRole === "plant-doctor";
+  
+  if (isDoctor) {
+    return null;
+  }
   return (
     <>
       <div
