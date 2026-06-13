@@ -1,49 +1,69 @@
 "use server";
 
-import { verifyAccessToken, getAccessTokenFromCookie } from "@/lib/auth/auth.helpers";
+import { IGetMeResponse } from "@/features/auth/types/auth.types";
+import { getAccessTokenFromCookie, verifyAccessToken } from "@/lib/auth/auth.helpers";
 import connectToDB from "@/lib/db/connect";
 import User from "@/lib/db/models/User";
-import { IGetMeResponse } from "@/features/auth/types/auth.types";
 
 export async function getMeAction(): Promise<IGetMeResponse> {
-  // 1. get token from cookie
   const token = await getAccessTokenFromCookie();
 
   if (!token) {
     return { user: null };
   }
 
-  // 2. verify token
   const payload = verifyAccessToken(token) as { userId: string; role: string } | null;
 
   if (!payload || !payload.userId) {
     return { user: null };
   }
 
-  // 3. connect to DB
   await connectToDB();
 
-  // 4. find user by id (exclude password)
   const user = await User.findById(payload.userId).select("-password").lean();
 
   if (!user) {
     return { user: null };
   }
 
-  // 5. return user
+  const baseUser = {
+    _id: user._id.toString(),
+    mobile: user.mobile,
+    email: user.email,
+    role: user.role,
+    firstName: user.firstName || "",
+    lastName: user.lastName || "",
+    avatar: user.avatar || "/static/images/default-user.webp",
+    createdAt: user.createdAt,
+    updatedAt: user.updatedAt,
+  };
+
+  if (user.role === "user") {
+    return {
+      user: {
+        ...baseUser,
+        address: user.address || "",
+        postalCode: user.postalCode || "",
+        wishlist: user.wishlist || [],
+      },
+    };
+  }
+
+  if (user.role === "plant-doctor") {
+    return {
+      user: {
+        ...baseUser,
+        specialties: user.specialties || "",
+        yearsOfExperience: user.yearsOfExperience || 0,
+        consultationFee: user.consultationFee || 0,
+        successfulConsultations: user.successfulConsultations || 0,
+        articles: user.articles || [],
+        consultations: user.consultations || [],
+      },
+    };
+  }
+
   return {
-    user: {
-      _id: user._id.toString(),
-      mobile: user.mobile,
-      email: user.email,
-      role: user.role,
-      firstName: user.firstName || "",
-      lastName: user.lastName || "",
-      avatar: user.avatar || "/static/images/default-user.webp",
-      address: user.address || "",
-      postalCode : user.postalCode || "" ,
-      createdAt: user.createdAt,
-      updatedAt: user.updatedAt,
-    },
+    user: baseUser,
   };
 }
