@@ -1,14 +1,16 @@
-import { redirect } from "next/navigation";
-import { getMeAction } from "@/features/auth/actions/me.actions";
 import PanelLayout from "@/components/panel/PanelLayout";
-import { userLinks } from "@/lib/constants/panelLinks";
+import { getMeAction } from "@/features/auth/actions/me.actions";
+import { plantDoctorLinks, userLinks } from "@/lib/constants/panelLinks";
+import { redirect } from "next/navigation";
 
 export default async function UserLayout({ children }: { children: React.ReactNode }) {
   const { user } = await getMeAction();
 
-  if (!user || user.role !== "user") {
+  if (!user || (user.role !== "user" && user.role !== "plant-doctor")) {
     redirect("/login-register");
   }
 
-  return <PanelLayout links={userLinks}>{children}</PanelLayout>;
+  const links = user.role === "plant-doctor" ? plantDoctorLinks : userLinks;
+
+  return <PanelLayout links={links}>{children}</PanelLayout>;
 }
