@@ -1,8 +1,24 @@
-import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { NextResponse } from 'next/server';
+import { getMeAction } from './features/auth/actions/me.actions';
 
-export function middleware(request: NextRequest) {
+export async  function  middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
+
+   if (pathname.startsWith('/user')) {
+    const { user } = await getMeAction();
+    
+    if (!user) {
+      return NextResponse.redirect(new URL('/login-register', request.url));
+    }
+    
+    // اگر نقش doctor باشد و به مسیر wishlist یا orders برود، ردirection
+    if (user.role === 'plant-doctor') {
+      if (pathname.includes('/wishlist') || pathname.includes('/orders')) {
+        return NextResponse.redirect(new URL('/user', request.url));
+      }
+    }
+  }
 
   const productMatch = pathname.match(/^\/products\/(indoor|decoration|gift|discounted)$/);
   if (productMatch) {
@@ -26,5 +42,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/products/:path*', '/blog/:path*'],
+  matcher: ['/products/:path*', '/blog/:path*', '/user/:path*'],
 };
