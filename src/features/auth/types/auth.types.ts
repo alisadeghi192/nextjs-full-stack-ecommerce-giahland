@@ -1,5 +1,7 @@
-import { UserRole } from "@/lib/constants";
-import { AuthUser } from "../../user/types/user.types";
+import { AuthUser } from "@/features/user/types/user.types";
+import { UserRole } from "@/lib/constants/roles";
+
+export type UserWithoutPassword = Omit<AuthUser, "password">;
 
 export interface ISignupActionResult {
   success: boolean;
@@ -18,10 +20,10 @@ export interface ISigninActionResult {
 }
 
 export interface IAuthState {
-  user: (Omit<AuthUser, "password"> ) | null;
+  user: UserWithoutPassword | null;
   isLoading: boolean;
   isAuthenticated: boolean;
-  setUser: (user: (Omit<AuthUser, "password"> ) | null) => void;
+  setUser: (user: UserWithoutPassword | null) => void;
   logout: () => Promise<void>;
   checkAuth: () => Promise<void>;
 }
@@ -29,7 +31,7 @@ export interface IAuthState {
 export interface IAuthResponse {
   success: boolean;
   message?: string;
-  user?: Omit<AuthUser, "password">;
+  user?: UserWithoutPassword;
 }
 
 export interface IGetMeResponse {
