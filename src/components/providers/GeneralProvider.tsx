@@ -7,8 +7,9 @@ interface GeneralProviderProps {
 }
 
 export default function GeneralProvider({ children, initialUser }: GeneralProviderProps) {
+
   return (
-    <AuthProvider initialUser={initialUser}>
+    <AuthProvider initialUser={JSON.parse(JSON.stringify(initialUser))}>
       {children}
     </AuthProvider>
   );
