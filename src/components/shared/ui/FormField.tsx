@@ -11,7 +11,7 @@ interface FormFieldProps {
   disabled?: boolean;
   error?: string;
   value?: string;
-  defaultValue?: string; 
+  defaultValue?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
   useInSearchButtun?: boolean;
@@ -54,14 +54,14 @@ const FormField = forwardRef<HTMLInputElement, FormFieldProps>(
             placeholder=" "
             className="peer text-neutral11 flex-1 border-0 outline-0"
             value={value}
+            defaultValue={defaultValue}
             onChange={onChange}
             onBlur={onBlur}
             disabled={disabled}
-            defaultValue={defaultValue}
           />
           <label
             htmlFor={id}
-            className={`absolute pointer-events-none right-10.25 rounded-2xl bg-white px-1 transition-all duration-300 peer-focus:right-4 ${useInSearchButtun ? "peer-focus:-translate-y-5.5 peer-[:not(:placeholder-shown)]:-translate-y-5.5" : "peer-focus:-translate-y-7 peer-[:not(:placeholder-shown)]:-translate-y-7"} peer-[:not(:placeholder-shown)]:right-4 max-sm:peer-focus:text-sm max-sm:peer-[:not(:placeholder-shown)]:text-sm ${hasError ? "text-error peer-focus:text-error peer-[:not(:placeholder-shown)]:text-error" : "text-neutral9 peer-focus:text-primary peer-[:not(:placeholder-shown)]:text-primary"}`}
+            className={`pointer-events-none absolute right-10.25 rounded-2xl bg-white px-1 transition-all duration-300 peer-focus:right-4 ${useInSearchButtun ? "peer-focus:-translate-y-5.5 peer-[:not(:placeholder-shown)]:-translate-y-5.5" : "peer-focus:-translate-y-7 peer-[:not(:placeholder-shown)]:-translate-y-7"} peer-[:not(:placeholder-shown)]:right-4 max-sm:peer-focus:text-sm max-sm:peer-[:not(:placeholder-shown)]:text-sm ${hasError ? "text-error peer-focus:text-error peer-[:not(:placeholder-shown)]:text-error" : "text-neutral9 peer-focus:text-primary peer-[:not(:placeholder-shown)]:text-primary"}`}
           >
             {label}
           </label>
@@ -71,5 +71,7 @@ const FormField = forwardRef<HTMLInputElement, FormFieldProps>(
     );
   },
 );
+
+FormField.displayName = "FormField";
 
 export default FormField;
