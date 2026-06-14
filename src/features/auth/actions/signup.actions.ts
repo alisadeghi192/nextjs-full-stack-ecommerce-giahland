@@ -1,22 +1,21 @@
 "use server";
 
+import { RegisterSchema } from "@/features/auth/schemas/auth.schema";
+import { ISignupActionResult } from "@/features/auth/types/auth.types";
 import {
-  hashPassword,
   generateAccessToken,
   generateRefreshToken,
+  hashPassword,
   setAccessTokenCookie,
   setRefreshTokenCookie,
 } from "@/lib/auth/auth.helpers";
 import connectToDB from "@/lib/db/connect";
-import User from "@/lib/db/models/User";
-import { RegisterSchema } from "@/features/auth/schemas/auth.schema";
-import { ISignupActionResult } from "@/features/auth/types/auth.types";
+import BaseUser, { User } from "@/lib/db/models/User";
 
 export async function signupAction(
   prevState: ISignupActionResult | null,
   formData: FormData,
 ): Promise<ISignupActionResult> {
-  // 1. extract data from FormData
   const mobile = formData.get("mobile") as string;
   const email = formData.get("email") as string;
   const password = formData.get("password") as string;
@@ -24,7 +23,6 @@ export async function signupAction(
 
   const data = { mobile, email, password, confirmPassword };
 
-  // 2. validate with Zod
   const result = RegisterSchema.safeParse(data);
   if (!result.success) {
     return {
@@ -39,11 +37,9 @@ export async function signupAction(
     password: validPassword,
   } = result.data;
 
-  // 3. connect to DB
   await connectToDB();
 
-  // 4. check existing user
-  const existingUser = await User.findOne({
+  const existingUser = await BaseUser.findOne({
     $or: [{ email: validEmail }, { mobile: validMobile }],
   });
 
@@ -54,35 +50,38 @@ export async function signupAction(
     };
   }
 
-  // 5. hash password
   const hashedPassword = await hashPassword(validPassword);
-
-  // 6. check if this is the first user
-  const userCount = await User.countDocuments();
+  const userCount = await BaseUser.countDocuments();
   const role = userCount === 0 ? "admin" : "user";
 
-  // 7. create user
-  const user = await User.create({
-    mobile: validMobile,
-    email: validEmail,
-    password: hashedPassword,
-    role,
-  });
+  let createdUser;
+  if (role === "admin") {
+    createdUser = await BaseUser.create({
+      mobile: validMobile,
+      email: validEmail,
+      password: hashedPassword,
+      role,
+    });
+  } else {
+    createdUser = await User.create({
+      mobile: validMobile,
+      email: validEmail,
+      password: hashedPassword,
+      role,
+    });
+  }
 
-  // 8. generate tokens
   const payload = {
-    userId: user._id.toString(),
-    role: user.role,
+    userId: createdUser._id.toString(),
+    role: createdUser.role,
   };
 
   const accessToken = generateAccessToken(payload);
   const refreshToken = generateRefreshToken(payload);
 
-  // 9. set cookies
   await setAccessTokenCookie(accessToken);
   await setRefreshTokenCookie(refreshToken);
 
-  // 10. return success
   return {
     success: true,
     message:
