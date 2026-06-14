@@ -1,73 +1,75 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
-
 import { getMeAction } from "@/features/auth/actions/me.actions";
 import { ProfileFormSchema } from "@/features/user/schemas/profile.schema";
 import connectToDB from "@/lib/db/connect";
-import User from "@/lib/db/models/User";
+import BaseUser, { PlantDoctor, User } from "@/lib/db/models/User";
 
 export async function updateProfileAction(prevState: any, formData: FormData) {
   const { user } = await getMeAction();
   if (!user) throw new Error("Unauthorized");
 
-  const rawData = {
-    firstName: formData.get("firstName"),
-    lastName: formData.get("lastName"),
-    email: formData.get("email"),
-  };
+  await connectToDB();
 
-  const result = ProfileFormSchema.safeParse(rawData);
+  const firstName = formData.get("firstName") as string;
+  const lastName = formData.get("lastName") as string;
+  const email = formData.get("email") as string;
+  const postalCode = formData.get("postalCode") as string;
+  const address = formData.get("address") as string;
+
+  const data: any = { firstName, lastName, email };
+  if (user.role === "user") {
+    data.postalCode = postalCode;
+    data.address = address;
+  }
+
+  const result = ProfileFormSchema.safeParse(data);
   if (!result.success) {
     return { success: false, errors: result.error.flatten().fieldErrors };
   }
 
-  const updateData: any = {};
-  if (result.data.firstName !== undefined) {
-    updateData.firstName = result.data.firstName || "";
-  }
-  if (result.data.lastName !== undefined) {
-    updateData.lastName = result.data.lastName || "";
-  }
-  if (result.data.email !== undefined) {
-    updateData.email = result.data.email || "";
-  }
-
-  if (user.role === "user") {
-    const postalCode = formData.get("postalCode");
-    const address = formData.get("address");
-
-    if (postalCode !== undefined) {
-      updateData.postalCode = postalCode || "";
-    }
-    if (address !== undefined) {
-      updateData.address = address || "";
+  if (email && email !== (user.email || "")) {
+    const emailExists = await BaseUser.findOne({
+      email: email,
+      _id: { $ne: user._id },
+    });
+    if (emailExists) {
+      return { success: false, message: "این ایمیل قبلاً توسط کاربر دیگری ثبت شده است." };
     }
   }
 
-  let isSame = false;
-  if (user.role === "plant-doctor") {
-    isSame =
-      rawData.firstName === user.firstName &&
-      rawData.lastName === user.lastName &&
-      rawData.email === user.email;
-  } else {
-    isSame =
-      rawData.firstName === user.firstName &&
-      rawData.lastName === user.lastName &&
-      rawData.email === user.email &&
-      formData.get("postalCode") === (user as any).postalCode &&
-      formData.get("address") === (user as any).address;
-  }
+  const isFirstNameSame = firstName === (user.firstName || "");
+  const isLastNameSame = lastName === (user.lastName || "");
+  const isEmailSame = email === (user.email || "");
+  const isPostalCodeSame = postalCode === (user.postalCode || "");
+  const isAddressSame = address === (user.address || "");
+
+  const isSame =
+    isFirstNameSame && isLastNameSame && isEmailSame &&
+    (user.role !== "user" || (isPostalCodeSame && isAddressSame));
 
   if (isSame) {
     return { success: false, message: "تغییری در اطلاعات ایجاد نشده است." };
   }
 
-  await connectToDB();
-  await User.findByIdAndUpdate(user._id, updateData);
+  const doc = await BaseUser.findById(user._id);
+  const updateData: any = {};
 
-  revalidatePath("/user");
+  if (!isFirstNameSame) updateData.firstName = firstName;
+  if (!isLastNameSame) updateData.lastName = lastName;
+  if (!isEmailSame) updateData.email = email;
+  if (user.role === "user") {
+    if (!isPostalCodeSame) updateData.postalCode = postalCode;
+    if (!isAddressSame) updateData.address = address;
+  }
+
+  if (doc?.__t === "PlantDoctor") {
+    await PlantDoctor.findByIdAndUpdate(user._id, updateData);
+  } else if (doc?.__t === "User") {
+    await User.findByIdAndUpdate(user._id, updateData);
+  } else {
+    await BaseUser.findByIdAndUpdate(user._id, updateData);
+  }
 
   return { success: true, message: "اطلاعات با موفقیت به‌روزرسانی شد." };
 }
