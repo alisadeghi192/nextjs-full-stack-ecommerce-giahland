@@ -1,16 +1,15 @@
-// features/user/actions/wishlist.actions.ts
 "use server";
 
 import { getMeAction } from "@/features/auth/actions/me.actions";
 import { ProductCardData } from "@/features/products/types/product.types";
 import connectToDB from "@/lib/db/connect";
 import Product from "@/lib/db/models/Product";
-import User from "@/lib/db/models/User";
+import { User } from "@/lib/db/models/User";
 import { revalidatePath } from "next/cache";
 
 export async function toggleLike(productId: string) {
   const { user } = await getMeAction();
-  if (!user) throw new Error("Unauthorized");
+   if (!user || user.role !== "user") throw new Error("Unauthorized");
 
   await connectToDB();
 
@@ -43,12 +42,13 @@ export async function toggleLike(productId: string) {
 
 export async function getUserWishlist(): Promise<ProductCardData[]> {
   const { user } = await getMeAction();
-  if (!user) return [];
+  if (!user || user.role !== "user") return [];
 
   await connectToDB();
   const currentUser = await User.findById(user._id).populate("wishlist");
 
-  if (!currentUser?.wishlist) return [];
+
+   if (!currentUser?.wishlist || currentUser.wishlist.length === 0) return [];
 
   return currentUser.wishlist.map((product: any) => ({
     _id: product._id.toString(),
@@ -67,7 +67,7 @@ export async function getUserWishlist(): Promise<ProductCardData[]> {
 
 export async function isProductLiked(productId: string): Promise<boolean> {
   const { user } = await getMeAction();
-  if (!user) return false;
+  if (!user || user.role !== "user") return false;
 
   await connectToDB();
   const currentUser = await User.findById(user._id).select("wishlist");
@@ -78,7 +78,7 @@ export async function isProductLiked(productId: string): Promise<boolean> {
 
 export async function getBulkLikeStatus(productIds: string[]): Promise<Record<string, boolean>> {
   const { user } = await getMeAction();
-  if (!user) return {};
+  if (!user || user.role !== "user") return {};
 
   await connectToDB();
   const currentUser = await User.findById(user._id).select("wishlist");
