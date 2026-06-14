@@ -1,15 +1,7 @@
+import ContactForm from "@/components/features/contact/ContactForm";
 import Breadcrumb from "@/components/shared/ui/Breadcrumb";
-import FormField from "@/components/shared/ui/FormField";
-import PrimaryButton from "@/components/shared/ui/PrimaryButton";
-import TextareaField from "@/components/shared/ui/TextareaField";
-import Image from "next/image";
 import Link from "next/link";
 import { FaInstagram, FaTelegram, FaWhatsapp } from "react-icons/fa6";
-import {
-  MdCheckBox,
-  MdCheckBoxOutlineBlank,
-  MdDriveFileRenameOutline,
-} from "react-icons/md";
 
 export default function page() {
   return (
@@ -24,55 +16,7 @@ export default function page() {
           </p>
         </div>
         <div className="mt-4 flex gap-x-8 gap-y-4 max-lg:gap-x-6 max-md:flex-col">
-          <form className="basis-1/2 space-y-3">
-            <FormField
-              icon={<MdDriveFileRenameOutline size={22} />}
-              type="text"
-              name="contact-name"
-              id="contact-name"
-              label="نام و نام خانوادگی"
-            />
-            <FormField
-              icon={<MdDriveFileRenameOutline size={22} />}
-              type="text"
-              name="contact-phone"
-              id="contact-phone"
-              label="شماره موبایل"
-            />
-            <FormField
-              icon={<MdDriveFileRenameOutline size={22} />}
-              type="text"
-              name="contact-subject"
-              id="contact-subject"
-              label="موضوع"
-            />
-            <TextareaField
-              icon={<MdDriveFileRenameOutline size={22} />}
-              name="contact-message"
-              id="contact-message"
-              label="متن پیام"
-              rows={3}
-            />
-            <div className="text-neutral9 border-neutral6 rounded-xl border px-4 py-2.5">
-              <label className="flex items-center justify-between rounded-xl leading-6 font-medium">
-                <div className="flex gap-x-2">
-                  <input type="checkbox" hidden className="peer" />
-                  <MdCheckBoxOutlineBlank className="text-primary size-6 peer-checked:hidden" />
-                  <MdCheckBox className="text-primary hidden size-6 peer-checked:block" />
-                  من ربات نیستم
-                </div>
-                <Image
-                  alt="recaptcha"
-                  src={"/static/images/recaptcha.webp"}
-                  width={44}
-                  height={44}
-                />
-              </label>
-            </div>
-            <PrimaryButton className="mt-4 h-12 w-full text-lg">
-              ارسال
-            </PrimaryButton>
-          </form>
+          <ContactForm />
           <div className="flex basis-1/2 flex-col gap-y-3">
             <div className="border-neutral3 h-61 w-full overflow-hidden rounded-xl border">
               <iframe
@@ -116,7 +60,7 @@ export default function page() {
                   href={"https://maps.app.goo.gl/ufHFJ7L2YUCvU9mr9"}
                   className="hover:text-primary max-w-57.5 transition-colors"
                 >
-                  <span className="text-neutral10 hover:text-primary  transition-colors">
+                  <span className="text-neutral10 hover:text-primary transition-colors">
                     آدرس: تهران ، بزرگراه محلاتی، نبرد جنوبی، خیابان زمزم، بازار
                     گل محلاتی ، گیاه لند
                   </span>
