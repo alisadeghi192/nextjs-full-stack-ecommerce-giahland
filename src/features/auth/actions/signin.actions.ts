@@ -1,16 +1,16 @@
 "use server";
 
+import { LoginSchema } from "@/features/auth/schemas/auth.schema";
+import { ISigninActionResult } from "@/features/auth/types/auth.types";
 import {
-  verifyPassword,
   generateAccessToken,
   generateRefreshToken,
   setAccessTokenCookie,
   setRefreshTokenCookie,
+  verifyPassword,
 } from "@/lib/auth/auth.helpers";
 import connectToDB from "@/lib/db/connect";
-import User from "@/lib/db/models/User";
-import { LoginSchema } from "@/features/auth/schemas/auth.schema";
-import { ISigninActionResult } from "@/features/auth/types/auth.types";
+import BaseUser from "@/lib/db/models/User";
 
 export async function signinAction(
   prevState: ISigninActionResult | null,
@@ -36,8 +36,8 @@ export async function signinAction(
   // 3. connect to DB
   await connectToDB();
 
-  // 4. find user by mobile
-  const user = await User.findOne({ mobile: validMobile });
+  // 4. find user by mobile (از BaseUser استفاده کن تا همه نقش‌ها را پیدا کند)
+  const user = await BaseUser.findOne({ mobile: validMobile });
 
   if (!user) {
     return {
