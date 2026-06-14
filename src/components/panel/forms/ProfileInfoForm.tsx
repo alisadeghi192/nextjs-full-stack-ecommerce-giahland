@@ -15,7 +15,7 @@ import {
   useUserYearsOfExperience,
 } from "@/features/auth/selectors/auth.selectors";
 import { updateProfileAction } from "@/features/user/actions/updateProfile.actions";
-import { useActionState, useEffect } from "react";
+import { useActionState, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { BsSignpost } from "react-icons/bs";
 import { GoHome } from "react-icons/go";
@@ -32,17 +32,30 @@ export default function ProfileInfoForm() {
   const checkAuth = useCheckAuth();
   const role = useUserRole();
 
-  const firstName = useUserFirstName() || "";
-  const lastName = useUserLastName() || "";
-  const email = useUserEmail() || "";
+  const storeFirstName = useUserFirstName() || "";
+  const storeLastName = useUserLastName() || "";
+  const storeEmail = useUserEmail() || "";
+  const storeAddress = useUserAddress() || "";
+  const storePostalCode = useUserPostalCode() || "";
+
+  const [firstName, setFirstName] = useState(storeFirstName);
+  const [lastName, setLastName] = useState(storeLastName);
+  const [email, setEmail] = useState(storeEmail);
+  const [address, setAddress] = useState(storeAddress);
+  const [postalCode, setPostalCode] = useState(storePostalCode);
+
   const mobile = useUserMobile() || "";
-
-  const address = useUserAddress() || "";
-  const postalCode = useUserPostalCode() || "";
-
   const specialties = useUserSpecialties() || "";
   const yearsOfExperience = useUserYearsOfExperience() || 0;
   const consultationFee = useUserConsultationFee() || 0;
+
+  useEffect(() => {
+    setFirstName(storeFirstName);
+    setLastName(storeLastName);
+    setEmail(storeEmail);
+    setAddress(storeAddress);
+    setPostalCode(storePostalCode);
+  }, [storeFirstName, storeLastName, storeEmail, storeAddress, storePostalCode]);
 
   useEffect(() => {
     if (state?.success && state?.message) {
@@ -54,7 +67,7 @@ export default function ProfileInfoForm() {
     } else if (state?.message) {
       toast.error(state.message);
     }
-  }, [state]);
+  }, [state, checkAuth]);
 
   if (role === "plant-doctor") {
     return (
@@ -69,7 +82,8 @@ export default function ProfileInfoForm() {
               name="firstName"
               label="نام"
               type="text"
-              defaultValue={firstName}
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
             />
             <FormField
               icon={<MdDriveFileRenameOutline size={20} />}
@@ -77,7 +91,8 @@ export default function ProfileInfoForm() {
               name="lastName"
               label="نام خانوادگی"
               type="text"
-              defaultValue={lastName}
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
             />
             <FormField
               icon={<IoPhonePortraitOutline size={20} />}
@@ -85,7 +100,8 @@ export default function ProfileInfoForm() {
               name="mobile"
               label="شماره موبایل"
               type="text"
-              defaultValue={mobile}
+              value={mobile}
+              onChange={() => {}} // 👈 اضافه
               disabled
             />
             <FormField
@@ -94,17 +110,18 @@ export default function ProfileInfoForm() {
               name="email"
               label="ایمیل"
               type="email"
-              defaultValue={email}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
 
-            {/* فیلدهای تخصصی گیاه پزشک (فقط خواندنی) */}
             <FormField
               icon={<MdDriveFileRenameOutline size={20} />}
               id="specialties"
               name="specialties"
               label="تخصص"
               type="text"
-              defaultValue={specialties}
+              value={specialties}
+              onChange={() => {}} // 👈 اضافه
               disabled
             />
             <FormField
@@ -113,7 +130,8 @@ export default function ProfileInfoForm() {
               name="yearsOfExperience"
               label="سال‌های تجربه"
               type="text"
-              defaultValue={yearsOfExperience.toString()}
+              value={yearsOfExperience.toString()}
+              onChange={() => {}} // 👈 اضافه
               disabled
             />
             <FormField
@@ -122,7 +140,8 @@ export default function ProfileInfoForm() {
               name="consultationFee"
               label="هزینه مشاوره (تومان)"
               type="text"
-              defaultValue={consultationFee.toLocaleString("fa-IR")}
+              value={consultationFee.toLocaleString("fa-IR")}
+              onChange={() => {}} // 👈 اضافه
               disabled
             />
           </div>
@@ -136,6 +155,7 @@ export default function ProfileInfoForm() {
       </div>
     );
   }
+
   return (
     <div className="border-neutral3 rounded-2xl border p-6 shadow-lg max-md:p-3.5">
       <AvatarUpload />
@@ -148,7 +168,8 @@ export default function ProfileInfoForm() {
             name="firstName"
             label="نام"
             type="text"
-            defaultValue={firstName}
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
           />
           <FormField
             icon={<MdDriveFileRenameOutline size={20} />}
@@ -156,7 +177,8 @@ export default function ProfileInfoForm() {
             name="lastName"
             label="نام خانوادگی"
             type="text"
-            defaultValue={lastName}
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
           />
           <FormField
             icon={<IoPhonePortraitOutline size={20} />}
@@ -164,7 +186,8 @@ export default function ProfileInfoForm() {
             name="mobile"
             label="شماره موبایل"
             type="text"
-            defaultValue={mobile}
+            value={mobile}
+            onChange={() => {}} // 👈 اضافه
             disabled
           />
           <FormField
@@ -173,7 +196,8 @@ export default function ProfileInfoForm() {
             name="postalCode"
             label="کد پستی"
             type="text"
-            defaultValue={postalCode}
+            value={postalCode}
+            onChange={(e) => setPostalCode(e.target.value)}
           />
           <FormField
             icon={<MdAlternateEmail size={20} />}
@@ -181,7 +205,8 @@ export default function ProfileInfoForm() {
             name="email"
             label="ایمیل"
             type="email"
-            defaultValue={email}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <FormField
             icon={<GoHome size={20} />}
@@ -189,7 +214,8 @@ export default function ProfileInfoForm() {
             name="address"
             label="آدرس"
             type="text"
-            defaultValue={address}
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
           />
         </div>
         <PrimaryButton
