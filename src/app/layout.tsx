@@ -1,10 +1,10 @@
+import GeneralProvider from "@/components/providers/GeneralProvider";
+import { getMeAction } from "@/features/auth/actions/me.actions";
+import ScrollToTop from "@/lib/utils/ScrollToTop";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import "./globals.css";
-import ScrollToTop from "@/lib/utils/ScrollToTop";
 import { Toaster } from "react-hot-toast";
-import { getMeAction } from "@/features/auth/actions/me.actions";
-import GeneralProvider from "@/components/providers/GeneralProvider";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Create Next App",
