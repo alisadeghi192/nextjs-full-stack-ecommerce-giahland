@@ -1,7 +1,7 @@
 import { USER_ROLES } from "@/lib/constants/roles";
 import mongoose, { Schema, SchemaDefinition } from "mongoose";
 
-const baseOptions : SchemaDefinition = {
+const baseOptions: SchemaDefinition = {
   mobile: {
     type: String,
     required: [true, "Mobile number is required"],
@@ -30,30 +30,26 @@ const baseOptions : SchemaDefinition = {
     type: String,
     enum: USER_ROLES,
     default: "user",
-    required : true,
+    required: true,
   },
   firstName: { type: String, default: "" },
   lastName: { type: String, default: "" },
   avatar: { type: String, default: "/static/images/default-user.webp" },
 };
 
-const UserSchema = new Schema(baseOptions, { timestamps: true });
+const BaseUserSchema = new Schema(baseOptions, { timestamps: true });
 
-const User = mongoose.models.User || mongoose.model("User", UserSchema);
+const BaseUser = mongoose.models.BaseUser || mongoose.model("BaseUser", BaseUserSchema, "users");
 
-const RegularUserSchema = new Schema({
-  postalCode: {
-    type: String,
-    default: "",
-    match: [/^[0-9]{10}$/, "کد پستی باید ۱۰ رقم باشد"],
-  },
+const UserSchema = new Schema({
+  postalCode: { type: String, default: "" },
   address: { type: String, default: "" },
   wishlist: [{ type: Schema.Types.ObjectId, ref: "Product" }],
 });
 
-export const RegularUser =
-  User.discriminators?.["RegularUser"] ||
-  User.discriminator("RegularUser", RegularUserSchema);
+export const User =
+  BaseUser.discriminators?.User ||
+  BaseUser.discriminator("User", UserSchema);
 
 const PlantDoctorSchema = new Schema({
   specialties: { type: String, default: "" },
@@ -65,7 +61,7 @@ const PlantDoctorSchema = new Schema({
 });
 
 export const PlantDoctor =
-  User.discriminators?.["PlantDoctor"] ||
-  User.discriminator("PlantDoctor", PlantDoctorSchema);
+  BaseUser.discriminators?.PlantDoctor ||
+  BaseUser.discriminator("PlantDoctor", PlantDoctorSchema);
 
-export default User;
+export default BaseUser;
