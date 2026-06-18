@@ -11,7 +11,7 @@ export interface PanelLink {
 }
 
 export const userLinks: PanelLink[] = [
-  { href: "/user", icon: <FaRegUser size={24} />, label: "مشخصات کاربری" },
+  { href: "/user/profile", icon: <FaRegUser size={24} />, label: "مشخصات کاربری" },
   { href: "/user/consultations", icon: <FaUserDoctor  size={24} />, label: "مشاوره با گیاه پزشک" },
   { href: "/user/tickets", icon: <LuNotebookPen size={24} />, label: "تیکت‌ها" },
   { href: "/user/wishlist", icon: <BsHeart size={24} />, label: "علاقمندی‌ها" },
@@ -19,9 +19,9 @@ export const userLinks: PanelLink[] = [
 ];
 
 export const plantDoctorLinks: PanelLink[] = [
-  { href: "/user", icon: <FaRegUser size={24} />, label: "مشخصات کاربری" },
+  { href: "/user/profile", icon: <FaRegUser size={24} />, label: "مشخصات کاربری" },
   { href: "/user/articles", icon: <MdOutlineArticle size={24} />, label: "مقالات من" },
-  { href: "/user/consultations", icon: <FaUserDoctor size={24} />, label: "مشاوره‌ها" },
+  { href: "/user/consultations/list", icon: <FaUserDoctor size={24} />, label: "مشاوره‌ها" },
   { href: "/user/tickets", icon: <LuNotebookPen size={24} />, label: "تیکت‌ها" },
   { href: "/user/earnings", icon: <LuPenTool size={24} />, label: "درآمد من" },
 ];
