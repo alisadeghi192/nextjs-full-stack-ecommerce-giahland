@@ -1,22 +1,40 @@
+import { Types } from "mongoose";
+
+export interface DoctorCardInfo {
+  _id: string;
+  firstName: string;
+  lastName: string;
+  avatar: string;
+  specialties: string;
+  yearsOfExperience: number;
+  consultationFee: number;
+  successfulConsultations: number;
+}
+
+export interface LastMessageInfo {
+  text: string;
+  sender: "user" | "doctor";
+  status: "sent" | "seen";
+  createdAt: Date;
+}
 
 export interface IConsultation {
   _id: string;
-  user: string;       
-  doctor: string;     
+  user: Types.ObjectId | string;
+  doctor: Types.ObjectId | string;
   title: string;
-  description: string;
-  images: string[];
-  status: "pending" | "answered" | "closed";
-  lastMessage?: string;
+  status: "active" | "closed";
+  lastMessage: string;
+  lastMessageSender: "user" | "doctor";
+  lastMessageStatus: "sent" | "seen";
   lastMessageAt?: Date;
   createdAt: Date;
   updatedAt: Date;
 }
 
-
 export interface IConsultationMessage {
-  _id: string;
-  consultationId: string;   
+  _id: Types.ObjectId | string;
+  consultationId: Types.ObjectId | string;
   sender: "user" | "doctor";
   text?: string;
   image?: string;
@@ -26,7 +44,6 @@ export interface IConsultationMessage {
   createdAt: Date;
   updatedAt: Date;
 }
-
 
 export interface ConsultationWithDetails {
   _id: string;
@@ -43,15 +60,11 @@ export interface ConsultationWithDetails {
     avatar?: string;
   };
   title: string;
-  description: string;
-  images: string[];
-  status: "pending" | "answered" | "closed";
-  lastMessage?: string;
-  lastMessageAt?: Date;
+  status: "active" | "closed";
+  lastMessage?: LastMessageInfo;  
   createdAt: Date;
   updatedAt: Date;
 }
-
 
 export interface ConsultationMessageWithDetails {
   _id: string;
