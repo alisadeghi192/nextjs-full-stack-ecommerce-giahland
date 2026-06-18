@@ -1,10 +1,10 @@
 "use client";
 
+import OutlineButton from "@/components/shared/ui/OutlineButton";
+import PrimaryButton from "@/components/shared/ui/PrimaryButton";
 import Image from "next/image";
 import { MdOutlineArrowBack } from "react-icons/md";
 import HeroStatsItem from "./HeroStatsItem";
-import PrimaryButton from "@/components/shared/ui/PrimaryButton";
-import OutlineButton from "@/components/shared/ui/OutlineButton";
 
 const HeroSection = () => {
   return (
@@ -15,7 +15,7 @@ const HeroSection = () => {
         </h1>
         <p className="text-neutral11 mb-8 max-w-134.75 text-[20px]/9 max-lg:mb-4 max-lg:text-base max-md:mb-6 max-md:text-center max-md:text-base/6.25 max-sm:text-sm">
           با گیاه لند،آنلاین گیاه خودت رو سفارش بده و از تخفیف های ویژه استفاده
-          کن.علاوه بر اینها میتونی به صورت رایگان از گیاه پزشک سایت مشاوره
+          کن.علاوه بر اینها میتونی در قسمت پنل کاربری از گیاه پزشک سایت مشاوره
           بگیری.
         </p>
         <div className="mb-12 flex max-w-134.75 gap-x-5.5 max-lg:flex-col max-lg:gap-y-2 max-md:mb-10 max-md:flex-row max-md:gap-x-3">
