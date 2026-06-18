@@ -1,15 +1,5 @@
-import ChangePasswordForm from "@/components/panel/forms/ChangePasswordForm";
-import ProfileInfoForm from "@/components/panel/forms/ProfileInfoForm";
-import SectionTitle from "@/components/panel/SectionTitle";
+import { redirect } from "next/navigation";
 
-export default function UserProfilePage() {
-  return (
-    <div className="w-full">
-      <SectionTitle title="مشخصات حساب کاربری" />
-      <ProfileInfoForm />
-
-      <SectionTitle title="تغییر رمز عبور" className="mt-8" />
-      <ChangePasswordForm />
-    </div>
-  );
+export default function UserDashboardPage() {
+  redirect("/user/profile");
 }
