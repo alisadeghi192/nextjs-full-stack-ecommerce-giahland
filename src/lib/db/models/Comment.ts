@@ -1,5 +1,5 @@
-import mongoose, { Schema, Model } from "mongoose";
 import { IComment } from "@/types/comment.types";
+import mongoose, { Model, Schema } from "mongoose";
 
 const CommentAuthorSchema = new Schema(
   {
@@ -12,7 +12,7 @@ const CommentAuthorSchema = new Schema(
       required: true,
     },
   },
-  { _id: false }
+  { _id: false },
 );
 
 const CommentSchema = new Schema<IComment>(
@@ -25,7 +25,7 @@ const CommentSchema = new Schema<IComment>(
     targetId: {
       type: String,
       required: true,
-      index: true, 
+      index: true,
     },
     user: { type: CommentAuthorSchema, required: true },
     text: { type: String, required: true },
@@ -36,7 +36,7 @@ const CommentSchema = new Schema<IComment>(
       date: { type: Date, default: Date.now },
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 CommentSchema.index({ targetType: 1, targetId: 1, date: -1 });
