@@ -1,24 +1,24 @@
 "use client";
-import Image from "next/image";
-import { MdOutlineLogin } from "react-icons/md";
+import ConfirmDialog from "@/components/shared/ui/ConfirmDialog";
 import OutlineButton from "@/components/shared/ui/OutlineButton";
 import {
-  useIsAuthenticated,
-  useAuthActions,
-  useIsLoading,
-  useUserFirstName,
-  useUserAvatar,
+    useAuthActions,
+    useIsAuthenticated,
+    useIsLoading,
+    useUserAvatar,
+    useUserFirstName,
 } from "@/features/auth/selectors/auth.selectors";
+import { toPersianNumber } from "@/lib/utils/format";
 import {
-  useIsProfileDropdownOpen,
-  useProfileDropdownActions,
+    useIsProfileDropdownOpen,
+    useProfileDropdownActions,
 } from "@/stores/selectors/ui.selectors";
+import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
 import { FaRegUser } from "react-icons/fa6";
 import { HiOutlineLogout } from "react-icons/hi";
-import { toPersianNumber } from "@/lib/utils/format";
-import ConfirmDialog from "@/components/shared/ui/ConfirmDialog";
+import { MdOutlineLogin } from "react-icons/md";
 
 const notifications = 5;
 
@@ -80,7 +80,7 @@ export default function AuthButtons() {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <Link href="/user" className="flex cursor-pointer items-center gap-2">
+        <Link href="/user/profile" className="flex cursor-pointer items-center gap-2">
           <Image
             src={avatar || "/static/images/default-user.webp"}
             alt="user"
@@ -105,7 +105,7 @@ export default function AuthButtons() {
           onMouseLeave={handleMouseLeave}
         >
           <Link
-            href="/user"
+            href="/user/profile"
             onClick={closeProfileDropdown}
             className="text-neutral10 hover:text-primary relative flex h-14 w-full cursor-pointer items-center gap-x-3 rounded-lg bg-white px-4 transition-colors"
           >
