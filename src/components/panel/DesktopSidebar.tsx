@@ -11,7 +11,7 @@ interface DesktopSidebarProps {
 export default function DesktopSidebar({ links, isScrolled, isPanelOpen }: DesktopSidebarProps) {
   return (
     <div
-      className={`${isScrolled ? "top-15 h-[calc(100dvh-60px)]" : "top-24 h-[calc(100dvh-96px)]"} ${
+      className={`${isScrolled ? "top-15 h-[calc(100dvh-61px)]" : "top-24 h-[calc(100dvh-97px)]"} ${
         isPanelOpen ? "w-72 max-lg:w-60" : "w-18"
       } border-neutral3 sticky shrink-0 overflow-hidden border-l bg-white max-md:hidden`}
       style={{

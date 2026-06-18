@@ -16,13 +16,13 @@ import ConfirmDialog from "../shared/ui/ConfirmDialog";
 interface PanelSidebarProps {
   links: PanelLink[];
   isPanelOpen: boolean;
-  onClose? : () => void;
+  onClose?: () => void;
 }
 
 export default function PanelSidebar({
   links,
   isPanelOpen,
-  onClose
+  onClose,
 }: PanelSidebarProps) {
   const pathname = usePathname();
   const role = useUserRole();
@@ -33,6 +33,7 @@ export default function PanelSidebar({
 
   const displayName = firstName || "کاربر";
   const persianMobile = mobile?.replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[+d]) || "";
+
   return (
     <div className="custom-scroll ltr *:rtl flex h-full flex-col overflow-x-hidden overflow-y-auto py-6 pr-1 max-md:py-0">
       <div>
@@ -54,27 +55,39 @@ export default function PanelSidebar({
       </div>
 
       <div className="mt-6 flex-1">
-        {links.map((link) => (
-          <Link
-            key={link.href}
-            href={link.href}
-            onClick={onClose}
-            className={`text-neutral10 hover:text-primary flex h-14 items-center gap-x-3 rounded-r-lg pr-4 transition-colors max-md:h-12 ${
-              pathname === link.href
-                ? "text-primary border-primary border-l-4 bg-[#F3FDFA]"
-                : ""
-            }`}
-          >
-            <span className="flex w-6 shrink-0 items-center justify-center">
-              {link.icon}
-            </span>
-            {isPanelOpen && (
-              <span className="text-lg/8 text-nowrap max-md:text-base/7.25">
-                {link.label}
+        {links.map((link) => {
+          let isActive = false;
+          if (
+            link.href === "/user/consultations" ||
+            link.href === "/user/consultations/list"
+          ) {
+            isActive = pathname.includes("/consultations");
+          } else {
+            const lastPart = link.href.split("/").pop() || "";
+            isActive = pathname.includes(lastPart);
+          }
+          return (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={onClose}
+              className={`text-neutral10 hover:text-primary flex h-14 items-center gap-x-3 rounded-r-lg pr-4 transition-colors max-md:h-12 ${
+                isActive
+                  ? "text-primary border-primary border-l-4 bg-[#F3FDFA]"
+                  : ""
+              }`}
+            >
+              <span className="flex w-6 shrink-0 items-center justify-center">
+                {link.icon}
               </span>
-            )}
-          </Link>
-        ))}
+              {isPanelOpen && (
+                <span className="text-lg/8 text-nowrap max-md:text-base/7.25">
+                  {link.label}
+                </span>
+              )}
+            </Link>
+          );
+        })}
       </div>
 
       <ConfirmDialog
