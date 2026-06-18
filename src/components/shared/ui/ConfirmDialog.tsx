@@ -3,7 +3,7 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 
 interface ConfirmDialogProps {
-  onConfirm: () => void | Promise<void>;
+  onConfirm: () => void | Promise<void> | Promise<{ success: boolean; message: string; }>;
   disabled?: boolean;
   className?: string;
   children: React.ReactNode;

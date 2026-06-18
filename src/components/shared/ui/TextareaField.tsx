@@ -7,6 +7,7 @@ interface TextareaFieldProps {
   name: string;
   id:string;
   label: string;
+  disabled?:boolean;
   value?: string;
   onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
   rows?: number;
@@ -17,6 +18,7 @@ export default function TextareaField({
   name,
   id,
   label,
+  disabled = false,
   value,
   onChange,
   rows = 4,
@@ -34,6 +36,7 @@ export default function TextareaField({
         value={value}
         onChange={onChange}
         rows={rows}
+        disabled={disabled}
       />
       <label
         htmlFor={name}
