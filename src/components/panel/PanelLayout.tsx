@@ -5,6 +5,7 @@ import {
   useIsSidebarOpen,
   useSidebarActions,
 } from "@/stores/selectors/ui.selectors";
+import { usePathname } from "next/navigation";
 import DesktopSidebar from "./DesktopSidebar";
 import MobileSidebar from "./MobileSidebar";
 import PanelHeader from "./PanelHeader";
@@ -17,20 +18,26 @@ interface PanelLayoutProps {
 export default function PanelLayout({ links, children }: PanelLayoutProps) {
   const isScrolled = useScroll();
   const isSidebarOpen = useIsSidebarOpen();
-  const { closeSidebar , toggleSidebar} = useSidebarActions();
-
+  const { closeSidebar, toggleSidebar } = useSidebarActions();
+  const pathname = usePathname();
+  const isChatPage =
+    pathname?.includes("/consultations/") &&
+    pathname?.split("/").length === 4 &&
+    !pathname?.endsWith("/list");
   return (
-    <main>
+    <main >
       <PanelHeader
-        isScrolled={isScrolled}
+        isScrolled={isChatPage ? true : isScrolled}
         isSidebarOpen={isSidebarOpen}
         toggleSidebar={toggleSidebar}
       />
 
-      <div className="relative container flex">
+      <div
+        className={`relative flex ${isChatPage ? "md:container " : "container"}`}
+      >
         <DesktopSidebar
           links={links}
-          isScrolled={isScrolled}
+          isScrolled={isChatPage ? true : isScrolled}
           isPanelOpen={isSidebarOpen}
         />
 
@@ -40,7 +47,9 @@ export default function PanelLayout({ links, children }: PanelLayoutProps) {
           onClose={closeSidebar}
         />
 
-        <div className="flex-1 p-6 pl-0 max-md:p-0 max-md:pt-4 max-md:pb-7">
+        <div
+          className={`flex-1 pl-0 max-md:p-0 ${isChatPage ? "p-0 max-md:h-[calc(100dvh-60px)]" : "p-6 max-md:pt-4 max-md:pb-7"}`}
+        >
           {children}
         </div>
       </div>

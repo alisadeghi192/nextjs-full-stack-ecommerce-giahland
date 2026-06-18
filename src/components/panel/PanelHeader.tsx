@@ -13,6 +13,7 @@ export default function PanelHeader({
   isSidebarOpen,
   toggleSidebar,
 }: PanelHeaderProps) {
+  
   return (
     <header className="sticky top-0 right-0 left-0 z-50 bg-white">
       <DesktopPanelHeader
