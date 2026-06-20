@@ -1,5 +1,5 @@
 "use client";
-import { useState, useRef, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { BsSortDownAlt } from "react-icons/bs";
 
 interface SortOption {
@@ -10,7 +10,7 @@ interface SortOption {
 interface SortDropdownProps {
   selectedSort: string;
   onSortChange: (value: string) => void;
-  options: SortOption[];  
+  options: SortOption[];
 }
 
 export default function SortDropdown({
@@ -27,15 +27,17 @@ export default function SortDropdown({
         setShowMenu(false);
       }
     };
-    if (showMenu) document.addEventListener("mousedown", handleClickOutside);
+    if (showMenu) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [showMenu]);
 
   return (
-    <div className="relative max-xs:w-full" ref={menuRef}>
+    <div className="max-xs:w-full relative" ref={menuRef}>
       <button
         onClick={() => setShowMenu(!showMenu)}
-        className="bg-neutral2 border-neutral5 text-primary max-xs:text-sm flex h-12 w-36 max-xs:w-full cursor-pointer items-center justify-center gap-x-2 rounded-xl border max-md:h-11 max-sm:h-10"
+        className="bg-neutral2 border-neutral5 text-primary max-xs:text-sm max-xs:w-full flex h-12 w-36 cursor-pointer items-center justify-center gap-x-2 rounded-xl border max-md:h-11 max-sm:h-10"
       >
         <BsSortDownAlt className="size-6 max-sm:size-5" />
         <span className="text-lg">
@@ -43,7 +45,7 @@ export default function SortDropdown({
         </span>
       </button>
       {showMenu && (
-        <div className="absolute top-full left-0 z-20 mt-2 w-36 overflow-hidden rounded-xl border border-neutral3 bg-white shadow-lg">
+        <div className="border-neutral3 absolute top-full left-0 z-20 mt-2 w-36 overflow-hidden rounded-xl border bg-white shadow-lg">
           {options.map((option) => (
             <button
               key={option.value}
