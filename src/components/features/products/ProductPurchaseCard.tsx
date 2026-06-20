@@ -21,13 +21,8 @@ export default function ProductPurchaseCard({
   stock,
 }: ProductPurchaseCardProps) {
   const isOutOfStock = stock === 0;
-   const userRole = useUserRole();
+  const userRole = useUserRole();
   const isDoctor = userRole === "plant-doctor";
-
-
-  if (isDoctor) {
-    return null;
-  }
 
   return (
     <div className="border-neutral7 w-78 rounded-2xl border px-6 py-7.75 max-xl:mt-9 max-sm:mt-8 max-sm:w-full max-sm:self-center">
@@ -52,10 +47,10 @@ export default function ProductPurchaseCard({
         </div>
       </div>
 
-      {isOutOfStock ? (
+      {isOutOfStock && !isDoctor ? (
         <StockStatus
           stock={stock}
-          className="text-error max-sm:hidden font-medium text-lg block py-6"
+          className="text-error block py-6 text-lg font-medium max-sm:hidden"
         />
       ) : (
         <PriceSection
@@ -67,7 +62,7 @@ export default function ProductPurchaseCard({
 
       <PrimaryButton
         onClick={onAddToCart}
-        className="h-12 w-full  text-lg/8 max-sm:hidden"
+        className={`h-12 w-full text-lg/8 max-sm:hidden ${isDoctor ? "hidden" : "visible"}`}
         disabled={isOutOfStock}
       >
         افزودن به سبد خرید
