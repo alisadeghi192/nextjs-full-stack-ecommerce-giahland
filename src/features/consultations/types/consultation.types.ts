@@ -4,6 +4,7 @@ export interface DoctorCardInfo {
   _id: string;
   firstName: string;
   lastName: string;
+  code: string;
   avatar: string;
   specialties: string;
   yearsOfExperience: number;
@@ -22,6 +23,7 @@ export interface IConsultation {
   _id: string;
   user: Types.ObjectId | string;
   doctor: Types.ObjectId | string;
+  code: string;
   title: string;
   status: "active" | "closed";
   lastMessage: string;
@@ -47,6 +49,7 @@ export interface IConsultationMessage {
 
 export interface ConsultationWithDetails {
   _id: string;
+  code: string;
   user: {
     _id: string;
     firstName: string;
@@ -62,6 +65,7 @@ export interface ConsultationWithDetails {
   title: string;
   status: "active" | "closed";
   lastMessage?: LastMessageInfo;  
+   unreadCount: number;
   createdAt: Date;
   updatedAt: Date;
 }

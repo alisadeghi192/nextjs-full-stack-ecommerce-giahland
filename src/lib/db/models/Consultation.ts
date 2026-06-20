@@ -13,6 +13,12 @@ const ConsultationSchema = new Schema<IConsultation>(
       ref: "BaseUser",
       required: true,
     },
+    code: {
+      type: String,
+      required: true,
+      unique: true,
+      index: true,
+    },
     title: {
       type: String,
       required: true,
@@ -38,7 +44,7 @@ const ConsultationSchema = new Schema<IConsultation>(
   },
   {
     timestamps: true,
-  },
+  }
 );
 
 const Consultation: Model<IConsultation> =

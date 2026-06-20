@@ -2,6 +2,7 @@
 
 import { useUserRole } from "@/features/auth/selectors/auth.selectors";
 import { ConsultationWithDetails } from "@/features/consultations/types/consultation.types";
+import { toPersianNumber } from "@/lib/utils/format";
 import Image from "next/image";
 import Link from "next/link";
 import { IoCheckmarkDoneSharp, IoCheckmarkSharp } from "react-icons/io5";
@@ -58,9 +59,17 @@ export default function ConsultationCard({
               <h3 className="font-medium max-[400px]:font-normal">
                 {personName}
               </h3>
-              <h3 className="text-neutral9 text-sm max-[400px]:text-xs">
-                {new Date(consultation.createdAt).toLocaleDateString("fa-IR")}
-              </h3>
+              <div className="text-neutral9 flex flex-wrap items-center justify-end gap-x-1 text-sm max-[400px]:text-xs">
+                <span>
+                  کد
+                  {consultation.code.replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[+d]) ||
+                    ""}
+                </span>
+                <span className="text-primary font-medium">|</span>
+                <span>
+                  {new Date(consultation.createdAt).toLocaleDateString("fa-IR")}
+                </span>
+              </div>
             </div>
 
             <div className="relative mt-1 flex items-center justify-between">
@@ -85,7 +94,9 @@ export default function ConsultationCard({
                 </span>
 
                 {showUnreadDot && (
-                  <span className="inline-block size-4 rounded-full bg-red-500" />
+                  <span className="inline-flex size-5 items-center justify-center rounded-full bg-red-500 text-sm text-white">
+                    {toPersianNumber(consultation.unreadCount)}
+                  </span>
                 )}
                 {showSeen && <IoCheckmarkDoneSharp className="text-primary" />}
 

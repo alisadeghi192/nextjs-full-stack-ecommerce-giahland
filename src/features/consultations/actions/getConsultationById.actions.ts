@@ -56,6 +56,7 @@ export async function getConsultationById(
 
   return {
     _id: consultation._id.toString(),
+    code: consultation.code,
     user: {
       _id: consultation.user.toString(),
       firstName: userInfo?.firstName || "کاربر",
