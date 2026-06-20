@@ -30,9 +30,10 @@ export default function ChatMessages({
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
+
   useEffect(() => {
     scrollToBottom();
-  }, [initialMessages]);
+  });
 
   useEffect(() => {
     if (!isLoading && initialMessages.length > 0) {
