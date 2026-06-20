@@ -63,8 +63,9 @@ export default function ChatInput({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!message.trim() && !selectedImage) return;
-
+    if (!message.trim() && !selectedImage) {
+      return;
+    }
     setIsLoading(true);
     const formData = new FormData();
     formData.append("consultationId", consultationId);

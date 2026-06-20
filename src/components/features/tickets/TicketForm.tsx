@@ -4,13 +4,14 @@ import PrimaryButton from "@/components/shared/ui/PrimaryButton";
 import TextareaField from "@/components/shared/ui/TextareaField";
 import { createTicket } from "@/features/tickets/actions/ticket.actions";
 import { TICKET_DEPARTMENTS } from "@/lib/constants";
-import { useActionState, useEffect, useRef } from "react";
+import { useActionState, useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { ImAttachment } from "react-icons/im";
 import { MdDriveFileRenameOutline, MdKeyboardArrowDown } from "react-icons/md";
 
 export default function TicketForm() {
   const [state, formAction, isPending] = useActionState(createTicket, null);
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -18,6 +19,7 @@ export default function TicketForm() {
     if (state?.success) {
       toast.success(state.message);
       formRef.current?.reset();
+      setImagePreview(null);
     } else if (state?.success === false && state?.message) {
       toast.error(state.message);
     }
@@ -29,22 +31,34 @@ export default function TicketForm() {
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (!file) {
-      return;
+    if (file) {
+      if (file.size > 4 * 1024 * 1024) {
+        toast.error("حجم فایل نباید بیشتر از ۴ مگابایت باشد.");
+        if (fileInputRef.current) {
+          fileInputRef.current.value = "";
+        }
+        return;
+      }
+      setImagePreview(URL.createObjectURL(file));
     }
-    if (file.size > 4 * 1024 * 1024) {
-      toast.error("حجم فایل نباید بیشتر از ۴ مگابایت باشد.");
-      if (fileInputRef.current) fileInputRef.current.value = "";
-      return;
-    }
-    toast.success("عکس با موفقیت بارگذاری شد.");
   };
 
+  const removeImage = () => {
+    setImagePreview(null);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
+  };
   return (
     <div className="border-neutral3 rounded-2xl border p-6 shadow-lg max-md:p-3.5">
-      <form ref={formRef} action={formAction} className="flex flex-col gap-4" noValidate>
+      <form
+        ref={formRef}
+        action={formAction}
+        className="flex flex-col gap-4"
+        noValidate
+      >
         <div className="flex items-end gap-4 max-lg:flex-col max-lg:items-center">
-          <div className="grid w-3/4 grid-cols-2 gap-3 max-lg:w-full max-lg:grid-cols-1 lg:[&>*:last-child]:col-span-2">
+          <div className="grid w-3/4 grid-cols-2 gap-3 max-lg:w-full max-lg:grid-cols-1 lg:[&>*:nth-child(3)]:col-span-2">
             <FormField
               icon={<MdDriveFileRenameOutline size={20} />}
               id="subject"
@@ -87,14 +101,29 @@ export default function TicketForm() {
               id="message"
               rows={2}
             />
+            {imagePreview && (
+              <div className=" rounded-lg border bg-white p-1 w-fit lg:hidden -my-1.5">
+                <img
+                  src={imagePreview}
+                  alt="preview"
+                  className="size-20 rounded object-cover"
+                />
+                <button
+                  onClick={removeImage}
+                  className="border-error hover:bg-bg-error mt-1 block w-full cursor-pointer rounded-lg border text-xs text-red-500"
+                >
+                  حذف
+                </button>
+              </div>
+            )}
           </div>
 
-          <div className="flex w-1/4 items-center gap-x-4 max-lg:w-full">
+          <div className="relative flex w-1/4 items-center gap-x-4 max-lg:w-full">
             <input
               ref={fileInputRef}
               type="file"
               name="attachment"
-              accept="image/jpeg,image/png,image/webp"
+              accept="image/*"
               className="hidden"
               onChange={handleFileChange}
               disabled={isPending}
@@ -103,10 +132,25 @@ export default function TicketForm() {
               type="button"
               onClick={handleFileClick}
               disabled={isPending}
-              className="border-neutral4 text-primary hover:border-primary flex h-12 w-14 shrink-0 cursor-pointer items-center justify-center rounded-xl border transition-colors disabled:opacity-50"
+              className="border-neutral4 text-primary hover:border-primary relative flex h-12 w-14 shrink-0 cursor-pointer items-center justify-center rounded-xl border transition-colors disabled:opacity-50"
             >
               <ImAttachment className="size-6" />
             </button>
+            {imagePreview && (
+              <div className="absolute right-0 bottom-13.75 rounded-lg border bg-white p-1 max-lg:hidden">
+                <img
+                  src={imagePreview}
+                  alt="preview"
+                  className="size-20 rounded object-cover"
+                />
+                <button
+                  onClick={removeImage}
+                  className="border-error hover:bg-bg-error mt-1 block w-full cursor-pointer rounded-lg border text-xs text-red-500"
+                >
+                  حذف
+                </button>
+              </div>
+            )}
             <PrimaryButton disabled={isPending} className="h-12 w-full">
               {isPending ? "در حال ثبت..." : "ثبت"}
             </PrimaryButton>

@@ -42,8 +42,9 @@ export async function getTicketById(id: string): Promise<ITicket | null> {
 
 export async function createTicket(prevState: any, formData: FormData) {
   const { user } = await getMeAction();
-  if (!user) throw new Error("Unauthorized");
-
+  if (!user) {
+    throw new Error("Unauthorized");
+  }
   const rawData = {
     subject: formData.get("subject") as string,
     department: formData.get("department") as string,
