@@ -33,7 +33,11 @@ export default function ChatInput({
         Math.min(textareaRef.current.scrollHeight, 120) + "px";
     }
   }, [message]);
-  
+
+  useEffect(() => {
+    textareaRef.current?.focus();
+  }, []);
+
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
@@ -74,6 +78,9 @@ export default function ChatInput({
       setMessage("");
       setSelectedImage(null);
       setImagePreview(null);
+      setTimeout(() => {
+        textareaRef.current?.focus();
+      }, 50);
     } else {
       toast.error(result.message || "خطا در ارسال پیام");
     }
@@ -118,10 +125,10 @@ export default function ChatInput({
             </PrimaryButton>
             <div className="flex-1">
               <div className="border-neutral6 focus-within:border-primary relative flex min-h-12 items-center rounded-full border bg-white px-3.75 transition-colors duration-200">
-                 <textarea
+                <textarea
                   ref={textareaRef}
                   rows={1}
-                  className="placeholder:text-neutral10 text-neutral11 w-full resize-none overflow-y-auto outline-0 max-h-20 py-2 custom-scroll h-auto"
+                  className="placeholder:text-neutral10 text-neutral11 custom-scroll h-auto max-h-20 w-full resize-none overflow-y-auto py-2 outline-0"
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   placeholder="پیام خود را بنویسید..."
