@@ -67,7 +67,7 @@ export async function sendMessage(formData: FormData) {
     sentAt: new Date(),
   });
 
-  const lastMessageText = text?.trim() || (imageUrl ? "📷 تصویر" : "");
+  const lastMessageText =  `💬 ${text?.trim()}` || (imageUrl ? "📷 تصویر" : "");
   const lastMessageSender = sender;
   const lastMessageStatus = "sent";
 
