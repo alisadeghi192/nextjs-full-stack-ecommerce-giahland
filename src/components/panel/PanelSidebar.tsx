@@ -33,8 +33,8 @@ export default function PanelSidebar({
 
   const displayName = firstName || "کاربر";
   const persianMobile = mobile?.replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[+d]) || "";
-
   return (
+
     <div className="custom-scroll ltr *:rtl flex h-full flex-col overflow-x-hidden overflow-y-auto py-6 pr-1 max-md:py-0">
       <div>
         <div className="flex shrink-0 items-center gap-x-2">
@@ -67,25 +67,36 @@ export default function PanelSidebar({
             isActive = pathname.includes(lastPart);
           }
           return (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={onClose}
-              className={`text-neutral10 hover:text-primary flex h-14 items-center gap-x-3 rounded-r-lg pr-4 transition-colors max-md:h-12 ${
-                isActive
-                  ? "text-primary border-primary border-l-4 bg-[#F3FDFA]"
-                  : ""
-              }`}
-            >
-              <span className="flex w-6 shrink-0 items-center justify-center">
-                {link.icon}
-              </span>
-              {isPanelOpen && (
-                <span className="text-lg/8 text-nowrap max-md:text-base/7.25">
-                  {link.label}
+            <div key={link.href} className="group relative">
+              <Link
+                href={link.href}
+                onClick={onClose}
+                className={`text-neutral10 hover:text-primary flex h-14 items-center gap-x-3 rounded-r-lg pr-4 transition-colors max-md:h-12 ${
+                  isActive
+                    ? "text-primary border-primary border-l-4 bg-[#F3FDFA]"
+                    : ""
+                }`}
+              >
+                <span className="relative flex w-6 shrink-0 items-center justify-center">
+                  {link.icon}
+                  {!isPanelOpen && (
+                    <div className="pointer-events-none invisible absolute -top-8.5 left-1/2 z-50 -translate-x-1/2 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
+                      <div className="relative rounded-lg bg-primary px-2 py-1 text-xs whitespace-nowrap text-white shadow-lg border">
+                        {link.tooltipLabel}
+                        <span className="absolute top-3 left-1/2 -translate-x-1/2 text-lg text-primary">
+                          ▼
+                        </span>
+                      </div>
+                    </div>
+                  )}
                 </span>
-              )}
-            </Link>
+                {isPanelOpen && (
+                  <span className="text-lg/8 text-nowrap max-md:text-base/7.25">
+                    {link.label}
+                  </span>
+                )}
+              </Link>
+            </div>
           );
         })}
       </div>

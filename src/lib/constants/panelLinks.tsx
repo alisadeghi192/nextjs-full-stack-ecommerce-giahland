@@ -8,20 +8,21 @@ export interface PanelLink {
   href: string;
   icon: ReactNode;
   label: string;
+  tooltipLabel? : string
 }
 
 export const userLinks: PanelLink[] = [
-  { href: "/user/profile", icon: <FaRegUser size={24} />, label: "مشخصات کاربری" },
-  { href: "/user/consultations", icon: <FaUserDoctor  size={24} />, label: "مشاوره با گیاه پزشک" },
-  { href: "/user/tickets", icon: <LuNotebookPen size={24} />, label: "تیکت‌ها" },
-  { href: "/user/wishlist", icon: <BsHeart size={24} />, label: "علاقمندی‌ها" },
-  { href: "/user/orders", icon: <BsTruck size={24} />, label: "تاریخچه سفارش‌ها" },
+  { href: "/user/profile", icon: <FaRegUser size={24} />, label: "مشخصات کاربری" , tooltipLabel : 'پروفایل' },
+  { href: "/user/consultations", icon: <FaUserDoctor  size={24} />, label: "مشاوره با گیاه پزشک" , tooltipLabel : 'مشاوره‌ها'},
+  { href: "/user/tickets", icon: <LuNotebookPen size={24} />, label: "تیکت‌ها" , tooltipLabel : 'تیکت‌ها'},
+  { href: "/user/wishlist", icon: <BsHeart size={24} />, label: "علاقمندی‌ها" , tooltipLabel : 'علاقمندی'},
+  { href: "/user/orders", icon: <BsTruck size={24} />, label: "تاریخچه سفارش‌ها" , tooltipLabel : 'سفارش'},
 ];
 
 export const plantDoctorLinks: PanelLink[] = [
-  { href: "/user/profile", icon: <FaRegUser size={24} />, label: "مشخصات کاربری" },
-  { href: "/user/articles", icon: <MdOutlineArticle size={24} />, label: "مقالات من" },
-  { href: "/user/consultations/list", icon: <FaUserDoctor size={24} />, label: "مشاوره‌ها" },
-  { href: "/user/tickets", icon: <LuNotebookPen size={24} />, label: "تیکت‌ها" },
-  { href: "/user/earnings", icon: <LuPenTool size={24} />, label: "درآمد من" },
+  { href: "/user/profile", icon: <FaRegUser size={24} />, label: "مشخصات کاربری" , tooltipLabel : 'پروفایل'},
+  { href: "/user/articles", icon: <MdOutlineArticle size={24} />, label: "مقالات من" , tooltipLabel : 'مقاله‌ها'},
+  { href: "/user/consultations/list", icon: <FaUserDoctor size={24} />, label: "مشاوره‌ها" , tooltipLabel : 'مشاوره‌ها'},
+  { href: "/user/tickets", icon: <LuNotebookPen size={24} />, label: "تیکت‌ها" , tooltipLabel : 'تیکت‌ها'},
+  { href: "/user/earnings", icon: <LuPenTool size={24} />, label: "درآمد من" , tooltipLabel : 'درآمد'},
 ];
