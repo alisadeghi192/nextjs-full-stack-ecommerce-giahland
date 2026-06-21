@@ -25,7 +25,7 @@ export default function ConsultationsListHeader({
         <div className={`${isSideBarOpen ? "lg:mr-3 max-lg:basis-1/2" : "md:mr-3 max-md:basis-1/2"}`}>
           <ConsultationSearch defaultValue={searchQuery} />
         </div>
-        <div className={`w-34.5 ${isSideBarOpen ? "lg:ml-3 max-lg:basis-1/2" : "md:ml-3 max-md:basis-1/2"}`}>
+        <div className={`w-34.5 ${isSideBarOpen ? `${isDoctor ? '' : "lg:ml-3"} max-lg:basis-1/2` : `${isDoctor ? '' : "md:ml-3"} max-md:basis-1/2`}`}>
           <SortDropdownWrapper
             options={consultationSortOptions}
             usedInConsultation={true}
