@@ -1,25 +1,25 @@
 "use client";
 import ConfirmDialog from "@/components/shared/ui/ConfirmDialog";
+import NotificationBadge from "@/components/shared/ui/NotificationBadge";
 import OutlineButton from "@/components/shared/ui/OutlineButton";
 import {
-    useAuthActions,
-    useIsAuthenticated,
-    useIsLoading,
-    useUserAvatar,
-    useUserFirstName,
+  useAuthActions,
+  useIsAuthenticated,
+  useIsLoading,
+  useUserAvatar,
+  useUserFirstName,
 } from "@/features/auth/selectors/auth.selectors";
-import { toPersianNumber } from "@/lib/utils/format";
+import { useNotifications } from "@/features/notifications/hooks/useNotifications";
 import {
-    useIsProfileDropdownOpen,
-    useProfileDropdownActions,
+  useIsProfileDropdownOpen,
+  useProfileDropdownActions,
 } from "@/stores/selectors/ui.selectors";
 import Image from "next/image";
 import Link from "next/link";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { FaRegUser } from "react-icons/fa6";
 import { HiOutlineLogout } from "react-icons/hi";
 import { MdOutlineLogin } from "react-icons/md";
-
 const notifications = 5;
 
 export default function AuthButtons() {
@@ -33,6 +33,11 @@ export default function AuthButtons() {
     useProfileDropdownActions();
   const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const openTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const { totalUnread , refresh } = useNotifications();
+
+  useEffect(() => {
+    refresh();
+  }, []);
 
   const clearCloseTimeout = () => {
     if (closeTimeoutRef.current) {
@@ -72,7 +77,7 @@ export default function AuthButtons() {
       </div>
     );
   }
-
+  console.log(totalUnread);
   if (isAuthenticated) {
     return (
       <div
@@ -80,19 +85,18 @@ export default function AuthButtons() {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <Link href="/user/profile" className="flex cursor-pointer items-center gap-2">
+        <Link
+          href="/user/profile"
+          className="relative flex cursor-pointer items-center gap-2"
+        >
           <Image
             src={avatar || "/static/images/default-user.webp"}
             alt="user"
             width={48}
             height={48}
-            className="relative size-12 rounded-full object-cover object-center max-lg:size-10"
+            className="size-12 rounded-full object-cover object-center max-lg:size-10"
           />
-          {notifications > 0 && (
-            <span className="bg-error absolute -top-1.25 -right-1.25 flex size-5.5 items-center justify-center rounded-full text-[10px] font-medium text-white">
-              {toPersianNumber(notifications)}
-            </span>
-          )}
+          <NotificationBadge count={totalUnread} className="-top-2 -right-1" />
           <span className="text-lg max-lg:hidden">سلام {userFirstName}</span>
         </Link>
         <div
@@ -111,11 +115,7 @@ export default function AuthButtons() {
           >
             <FaRegUser className="size-6" />
             <span className="font-medium">حساب کاربری</span>
-            {notifications > 0 && (
-              <span className="bg-error absolute top-4.25 left-2 flex size-5.5 items-center justify-center rounded-full text-[10px] font-medium text-white">
-                {toPersianNumber(notifications)}
-              </span>
-            )}
+            <NotificationBadge count={totalUnread} className="left-4"/>
           </Link>
           <ConfirmDialog
             onConfirm={handleLogout}

@@ -1,24 +1,25 @@
 "use client";
 
 import IconButton from "@/components/shared/ui/IconButton";
+import NotificationBadge from "@/components/shared/ui/NotificationBadge";
 import {
-    useIsAuthenticated,
-    useIsLoading,
-    useUserAvatar,
-    useUserRole,
+  useIsAuthenticated,
+  useIsLoading,
+  useUserAvatar,
+  useUserRole,
 } from "@/features/auth/selectors/auth.selectors";
-import { toPersianNumber } from "@/lib/utils/format";
+import { useNotifications } from "@/features/notifications/hooks/useNotifications";
 import { useCartActions } from "@/stores/selectors/ui.selectors";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect } from "react";
 import {
-    MdOutlineDarkMode,
-    MdOutlineLogin,
-    MdOutlineShoppingCart,
+  MdOutlineDarkMode,
+  MdOutlineLogin,
+  MdOutlineShoppingCart,
 } from "react-icons/md";
 
 const totalItems = 2;
-const notifications = 2;
 
 export default function MobileActions() {
   const isLoading = useIsLoading();
@@ -26,9 +27,13 @@ export default function MobileActions() {
   const avatar = useUserAvatar();
   const userRole = useUserRole();
   const { toggleCart } = useCartActions();
-
+  const { totalUnread, refresh } = useNotifications();
   const isDoctor = userRole === "plant-doctor";
   const showCart = !isDoctor;
+
+  useEffect(() => {
+    refresh();
+  }, []);
 
   return (
     <div className="flex items-center gap-2">
@@ -40,11 +45,7 @@ export default function MobileActions() {
             icon={<MdOutlineShoppingCart size={20} />}
             onClick={toggleCart}
           />
-          {totalItems > 0 && (
-            <span className="bg-error absolute -top-1.75 -right-1.5 flex size-4.5 items-center justify-center rounded-full text-[10px] font-medium text-white">
-              {toPersianNumber(totalItems)}
-            </span>
-          )}
+          {totalItems > 0 && <NotificationBadge count={totalItems} />}
         </div>
       )}
 
@@ -59,9 +60,7 @@ export default function MobileActions() {
             height={48}
             className="rounded-full max-md:size-10 max-sm:size-8"
           />
-          <span className="bg-error absolute -top-1.75 -right-1.5 flex size-4.5 items-center justify-center rounded-full text-[10px] font-medium text-white">
-            {toPersianNumber(notifications)}
-          </span>
+          <NotificationBadge count={totalUnread}  className="-top-2 -right-1 max-sm:size-4 max-sm:text-[10px]"/>
         </Link>
       ) : (
         <Link href="/login-register">
