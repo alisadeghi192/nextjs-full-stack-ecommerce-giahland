@@ -1,18 +1,21 @@
 import ConsultationsList from "@/components/features/consultations/ConsultationsList";
 import ConsultationsListHeader from "@/components/features/consultations/ConsultationsListHeader";
+import Pagination from "@/components/shared/ui/pagination";
 import { getMeAction } from "@/features/auth/actions/me.actions";
 import { getUserConsultations } from "@/features/consultations/actions/getUserConsultations.actions";
-
+import { paginateProducts } from "@/features/products/utils/productHelpers";
 interface PageProps {
-  searchParams: Promise<{ sort?: string; search?: string }>;
+  searchParams: Promise<{ sort?: string; search?: string; page?: string }>;
 }
 
 export default async function UserConsultationsPage({
   searchParams,
 }: PageProps) {
-  const { sort, search } = await searchParams;
+  const { sort, search, page } = await searchParams;
   const selectedSort = sort || "newest";
   const searchQuery = search || "";
+  const currentPage = Number(page) || 1;
+
   const consultations = await getUserConsultations();
   const { user } = await getMeAction();
   const isDoctor = user?.role === "plant-doctor";
@@ -29,6 +32,10 @@ export default async function UserConsultationsPage({
     }
   });
 
+  const paginated = paginateProducts(sortedConsultations, currentPage, 6);
+  const totalPages = Math.ceil(sortedConsultations.length / 6);
+  const baseUrl = `?sort=${selectedSort}&search=${searchQuery}`;
+
   const hasConsultations = sortedConsultations.length > 0;
 
   return (
@@ -40,7 +47,18 @@ export default async function UserConsultationsPage({
           مشاوره ای پیدا نشد.
         </div>
       ) : (
-        <ConsultationsList consultations={sortedConsultations} />
+        <>
+          <ConsultationsList consultations={paginated} />
+          {totalPages > 1 && (
+            <div className="flex justify-center">
+              <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                baseUrl={baseUrl}
+              />
+            </div>
+          )}
+        </>
       )}
     </div>
   );
