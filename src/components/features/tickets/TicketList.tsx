@@ -1,7 +1,8 @@
 "use client";
 import SectionTitle from "@/components/panel/SectionTitle";
+import { useNotifications } from "@/features/notifications/hooks/useNotifications";
 import { ITicket } from "@/features/tickets/types/ticket.types";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TicketItem from "./TicketItem";
 
 interface TicketListProps {
@@ -9,6 +10,11 @@ interface TicketListProps {
 }
 
 export default function TicketList({ tickets }: TicketListProps) {
+  const { refresh } = useNotifications();
+
+  useEffect(() => {
+    refresh();
+  }, []);
   const [openId, setOpenId] = useState<string | null>(null);
 
   const toggleItem = (id: string) => {
