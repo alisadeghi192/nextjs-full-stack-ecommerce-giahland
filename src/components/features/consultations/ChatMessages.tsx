@@ -2,6 +2,7 @@
 
 import { useUserRole } from "@/features/auth/selectors/auth.selectors";
 import { ConsultationMessageWithDetails } from "@/features/consultations/types/consultation.types";
+import { useNotifications } from "@/features/notifications/hooks/useNotifications";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { IoCheckmarkDoneSharp, IoCheckmarkSharp } from "react-icons/io5";
@@ -16,6 +17,10 @@ export default function ChatMessages({
   initialMessages,
   isLoading,
 }: ChatMessagesProps) {
+  const { refresh } = useNotifications();
+  useEffect(() => {
+    refresh();
+  }, []);
   const userRole = useUserRole();
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const isDoctor = userRole === "plant-doctor";
@@ -29,7 +34,6 @@ export default function ChatMessages({
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
-
 
   useEffect(() => {
     scrollToBottom();
