@@ -79,7 +79,6 @@ export async function sendMessage(formData: FormData) {
     status: "active",
   });
 
-  revalidatePath(`/user/consultations/${consultationId}`);
   revalidatePath("/user/consultations/list");
 
   return { success: true, messageId: message._id.toString() };
