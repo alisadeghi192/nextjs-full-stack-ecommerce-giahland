@@ -1,6 +1,6 @@
 "use client";
-import SortDropdown from "./SortDropdown";
 import { usePageParams } from "@/lib/hooks/usePageParams";
+import SortDropdown from "./SortDropdown";
 
 interface SortOption {
   value: string;
@@ -9,15 +9,17 @@ interface SortOption {
 
 interface SortDropdownWrapperProps {
   options: SortOption[];
+  usedInConsultation? : boolean; 
 }
 
-export default function SortDropdownWrapper({ options }: SortDropdownWrapperProps) {
+export default function SortDropdownWrapper({ options , usedInConsultation}: SortDropdownWrapperProps) {
   const { selectedSort, setSort } = usePageParams();
   return (
     <SortDropdown
       selectedSort={selectedSort}
       onSortChange={setSort}
       options={options}
+      usedInConsultation = {usedInConsultation}
     />
   );
 }
