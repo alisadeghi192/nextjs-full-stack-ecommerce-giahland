@@ -1,4 +1,5 @@
 "use client";
+import NotificationBadge from "@/components/shared/ui/NotificationBadge";
 import {
   useAuthActions,
   useUserAvatar,
@@ -6,13 +7,13 @@ import {
   useUserMobile,
   useUserRole,
 } from "@/features/auth/selectors/auth.selectors";
+import { useNotifications } from "@/features/notifications/hooks/useNotifications";
 import { PanelLink } from "@/lib/constants/panelLinks";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { HiOutlineLogout } from "react-icons/hi";
 import ConfirmDialog from "../shared/ui/ConfirmDialog";
-
 interface PanelSidebarProps {
   links: PanelLink[];
   isPanelOpen: boolean;
@@ -30,11 +31,11 @@ export default function PanelSidebar({
   const avatar = useUserAvatar();
   const firstName = useUserFirstName();
   const { logout } = useAuthActions();
-
+  const { consultation, ticket } = useNotifications();
   const displayName = firstName || "کاربر";
   const persianMobile = mobile?.replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[+d]) || "";
-  return (
 
+  return (
     <div className="custom-scroll ltr *:rtl flex h-full flex-col overflow-x-hidden overflow-y-auto py-6 pr-1 max-md:py-0">
       <div>
         <div className="flex shrink-0 items-center gap-x-2">
@@ -77,13 +78,22 @@ export default function PanelSidebar({
                     : ""
                 }`}
               >
+                {link.href.includes("/consultations") && (
+                  <NotificationBadge
+                    count={consultation}
+                    className={`${isPanelOpen ? "hidden" : "top-1 right-1"}`}
+                  />
+                )}
+                {link.href.includes("/tickets") && (
+                  <NotificationBadge count={ticket} />
+                )}
                 <span className="relative flex w-6 shrink-0 items-center justify-center">
                   {link.icon}
                   {!isPanelOpen && (
                     <div className="pointer-events-none invisible absolute -top-8.5 left-1/2 z-50 -translate-x-1/2 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
-                      <div className="relative rounded-lg bg-primary px-2 py-1 text-xs whitespace-nowrap text-white shadow-lg border">
+                      <div className="bg-primary relative rounded-lg border px-2 py-1 text-xs whitespace-nowrap text-white shadow-lg">
                         {link.tooltipLabel}
-                        <span className="absolute top-3 left-1/2 -translate-x-1/2 text-lg text-primary">
+                        <span className="text-primary absolute top-3 left-1/2 -translate-x-1/2 text-lg">
                           ▼
                         </span>
                       </div>
@@ -91,8 +101,17 @@ export default function PanelSidebar({
                   )}
                 </span>
                 {isPanelOpen && (
-                  <span className="text-lg/8 text-nowrap max-md:text-base/7.25">
+                  <span className="relative text-lg/8 text-nowrap max-md:text-base/7.25">
                     {link.label}
+                    {link.href.includes("/consultations") && (
+                      <NotificationBadge
+                        count={consultation}
+                        className={`${isPanelOpen ? "top-0 bottom-0 my-auto -left-8" : "hidden"}`}
+                      />
+                    )}
+                    {link.href.includes("/tickets") && (
+                      <NotificationBadge count={ticket} />
+                    )}
                   </span>
                 )}
               </Link>
