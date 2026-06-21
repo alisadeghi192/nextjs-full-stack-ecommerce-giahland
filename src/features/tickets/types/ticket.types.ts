@@ -13,6 +13,7 @@ export interface ITicket {
     message: string;
     createdAt: Date;
   };
+  isReadByUser?: boolean;
   createdAt: Date;
   updatedAt: Date;
 }

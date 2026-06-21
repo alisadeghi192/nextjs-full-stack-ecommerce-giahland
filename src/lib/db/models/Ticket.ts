@@ -1,6 +1,6 @@
-import mongoose, { Schema, Model } from "mongoose";
 import { ITicket } from "@/features/tickets/types/ticket.types";
 import { TICKET_DEPARTMENTS } from "@/lib/constants/ticket";
+import mongoose, { Model, Schema } from "mongoose";
 
 const TicketSchema = new Schema<ITicket>(
   {
@@ -22,8 +22,12 @@ const TicketSchema = new Schema<ITicket>(
       message: { type: String },
       createdAt: { type: Date },
     },
+    isReadByUser: {
+      type: Boolean,
+      default: false,
+    },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 const Ticket: Model<ITicket> =
