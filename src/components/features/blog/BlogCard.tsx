@@ -1,25 +1,16 @@
+import { BlogPostCard } from "@/features/blog/types/blog.types";
 import Link from "next/link";
 import { MdOutlineAccountCircle, MdOutlineCalendarMonth } from "react-icons/md";
-
-interface BlogCardProps {
-  title: string;
-  coverImage: string;
-  slug: string;
-  date: Date;
-  excerpt: string;
-  author: string;
-  category: string;
-}
 
 export default function BlogCard({
   title,
   coverImage,
   slug,
-  date,
   excerpt,
   author,
   category,
-}: BlogCardProps) {
+  publishedAt,
+}: BlogPostCard) {
   return (
     <>
       <div className="text-white justify-self-center overflow-hidden rounded-xl">
@@ -41,11 +32,11 @@ export default function BlogCard({
             <div className="max-xs:text-xs z-10 mt-4 flex items-center justify-between gap-y-2 max-[600px]:flex-col">
               <span className="max-xs:text-xs flex items-center justify-center gap-x-0.5 self-start text-sm">
                 <MdOutlineAccountCircle className="size-5" />
-                {author}
+                {author.firstName} {author.lastName}
               </span>
               <span className="max-xs:text-xs flex items-center justify-center gap-x-0.5 self-start text-sm">
                 <MdOutlineCalendarMonth className="size-5" />
-                {date?.toLocaleDateString("fa-IR")}
+                {publishedAt?.toLocaleDateString("fa-IR")}
               </span>
             </div>
           </div>
