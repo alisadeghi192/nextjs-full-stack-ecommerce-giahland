@@ -1,14 +1,14 @@
-import Breadcrumb from "@/components/shared/ui/Breadcrumb";
-import BlogHeader from "@/components/features/blog/BlogHeader";
 import BlogCard from "@/components/features/blog/BlogCard";
+import BlogHeader from "@/components/features/blog/BlogHeader";
+import Breadcrumb from "@/components/shared/ui/Breadcrumb";
 import Pagination from "@/components/shared/ui/pagination";
+import { getArticles } from "@/features/blog/actions/getArticles.actions";
+import { BlogPostCard } from "@/features/blog/types/blog.types";
 import {
-  getAllPosts,
-  filterPostsByCategory,
-  sortPosts,
-  paginatePosts,
-} from "@/features/blog/utils/blogHelpers";
-import { DEFAULT_TAB, DEFAULT_SORT, BLOG_POSTS_PER_PAGE } from "@/lib/constants";
+  BLOG_POSTS_PER_PAGE,
+  DEFAULT_SORT,
+  DEFAULT_TAB,
+} from "@/lib/constants";
 
 interface BlogPageProps {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -21,14 +21,13 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
   const selectedSort = (params.sort as string) || DEFAULT_SORT;
   const currentPage = Number(params.page) || 1;
 
-  const allPosts = getAllPosts();
-
-  const filteredPosts = filterPostsByCategory(allPosts, activeTab);
-
-  const sortedPosts = sortPosts(filteredPosts, selectedSort);
-
-  const paginatedPosts = paginatePosts(sortedPosts, currentPage, BLOG_POSTS_PER_PAGE);
-  const totalPages = Math.ceil(sortedPosts.length / BLOG_POSTS_PER_PAGE);
+  const result = await getArticles({
+    category: activeTab,
+    sort: selectedSort,
+    page: currentPage,
+    limit: BLOG_POSTS_PER_PAGE,
+  });
+  console.log(result)
 
   const baseUrl = `?category=${activeTab}&sort=${selectedSort}`;
 
@@ -38,15 +37,21 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
       <section>
         <BlogHeader activeTab={activeTab} selectedSort={selectedSort} />
 
-        <div className="max-xs:grid-cols-1 grid grid-cols-4 gap-6 max-lg:grid-cols-3 max-md:grid-cols-2 max-md:gap-4">
-          {paginatedPosts.map((post) => (
-            <BlogCard key={post.id} {...post} />
-          ))}
-        </div>
+        {result.articles.length === 0 ? (
+          <div className="py-12 text-center text-gray-500">
+            مقاله‌ای یافت نشد.
+          </div>
+        ) : (
+          <div className="max-xs:grid-cols-1 grid grid-cols-4 gap-6 max-lg:grid-cols-3 max-md:grid-cols-2 max-md:gap-4">
+            {result.articles.map((post:BlogPostCard) => (
+              <BlogCard key={post._id} {...post} />
+            ))}
+          </div>
+        )}
 
         <Pagination
           currentPage={currentPage}
-          totalPages={totalPages}
+          totalPages={result.totalPages}
           baseUrl={baseUrl}
         />
       </section>

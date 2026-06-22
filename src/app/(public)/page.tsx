@@ -4,15 +4,17 @@ import HeroSection from "@/components/features/landing/HeroSection";
 import PlantDoctorServices from "@/components/features/landing/PlantDoctorServices";
 import ServicesSection from "@/components/features/landing/ServicesSection";
 import ProductSlider from "@/components/features/products/ProductSlider";
-import { getLatestPosts, getMostViewedPosts } from "@/features/blog/utils/blogHelpers";
+import { getArticles } from "@/features/blog/actions/getArticles.actions";
 import { getLatestProductsByCategory } from "@/features/products/actions/product.actions";
 import { getBulkLikeStatus } from "@/features/user/actions/wishlist.actions";
 
 export default async function Home() {
-  const [indoorLatest, decorationLatest, giftLatest] = await Promise.all([
+const [indoorLatest, decorationLatest, giftLatest, latestPostsResult, mostViewedPostsResult] = await Promise.all([
     getLatestProductsByCategory("indoor", 8),
     getLatestProductsByCategory("decoration", 8),
     getLatestProductsByCategory("gift", 8),
+    getArticles({ sort: "newest", limit: 4 }),
+    getArticles({ sort: "most_viewed", limit: 4 }),
   ]);
 
   const indoorIds = indoorLatest.map((p) => p._id);
@@ -25,8 +27,8 @@ export default async function Home() {
     getBulkLikeStatus(giftIds),
   ]);
 
-  const latestPosts = getLatestPosts(4);
-  const mostViewedPosts = getMostViewedPosts(4);
+   const latestPosts = latestPostsResult.articles;
+  const mostViewedPosts = mostViewedPostsResult.articles;
 
   return (
     <main className="container">

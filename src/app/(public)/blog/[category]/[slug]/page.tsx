@@ -1,12 +1,12 @@
-import { blogPosts } from "@/data/blog";
-import { notFound } from "next/navigation";
-import Breadcrumb from "@/components/shared/ui/Breadcrumb";
+import BlogSlider from "@/components/features/blog/BlogSlider";
 import ContentRenderer from "@/components/features/blog/ContentRenderer";
 import PostHeader from "@/components/features/blog/PostHeader";
 import PostMeta from "@/components/features/blog/PostMeta";
+import Breadcrumb from "@/components/shared/ui/Breadcrumb";
 import CommentForm from "@/components/shared/ui/CommentForm";
 import CommentList from "@/components/shared/ui/CommentList";
-import BlogSlider from "@/components/features/blog/BlogSlider";
+import { getArticleBySlug } from "@/features/blog/actions/getArticleBySlug.actions";
+import { getArticles } from "@/features/blog/actions/getArticles.actions";
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -18,20 +18,18 @@ interface BlogPostPageProps {
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { category, slug } = await params;
 
-  const post = blogPosts.find(
-    (post) => post.category === category && post.slug === slug,
-  );
+  const post = await getArticleBySlug(slug);
 
-  if (!post) {
-    notFound();
-  }
+  const { articles: relatedPosts } = await getArticles({
+    category: category,
+    limit: 4,
+    page: 1,
+  });
 
-  const relatedPosts = blogPosts
-    .filter((p) => p.category === category && p.slug !== slug)
-    .sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime())
-    .slice(0, 4);
+  const filteredRelated = relatedPosts.filter((p) => p._id !== post._id);
 
   const categoryLink = `/blog?category=${category}&sort=newest`;
+  const articleAuthor = `${post.author.firstName} ${post.author.lastName}`;
 
   return (
     <main className="container">
@@ -42,19 +40,19 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           title={post.title}
           mainImage={post.mainImage}
           excerpt={post.excerpt}
-          author={post.author}
+          author={articleAuthor}
           publishedAt={post.publishedAt}
         />
         <ContentRenderer content={post.content || []} />
 
         <CommentForm />
 
-        <CommentList comments={post.comments} />
+        <CommentList comments={post.comments || []} />
 
         <BlogSlider
           link={categoryLink}
           title="مقالات مرتبط"
-          posts={relatedPosts}
+          posts={filteredRelated}
         />
       </div>
     </main>
