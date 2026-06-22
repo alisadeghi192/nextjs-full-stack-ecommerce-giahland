@@ -1,29 +1,53 @@
 "use server";
 
 import { getMeAction } from "@/features/auth/actions/me.actions";
-import {
-  LastMessageInfo
-} from "@/features/consultations/types/consultation.types";
+import { LastMessageInfo } from "@/features/consultations/types/consultation.types";
 import connectToDB from "@/lib/db/connect";
 import Consultation from "@/lib/db/models/Consultation";
 import ConsultationMessage from "@/lib/db/models/ConsultationMessage";
 
-export async function getUserConsultations() {
+interface GetUserConsultationsParams {
+  sort?: "newest" | "oldest";
+  search?: string;
+  page?: number;
+  limit?: number;
+}
+
+export async function getUserConsultations({
+  sort = "newest",
+  search = "",
+  page = 1,
+  limit = 6,
+}: GetUserConsultationsParams = {}) {
   const { user } = await getMeAction();
-  if (!user) return [];
+  if (!user) {
+    return { consultations: [], total: 0, totalPages: 0, page: 1 };
+  }
 
   await connectToDB();
 
-  const filter =
-    user.role === "plant-doctor" ? { doctor: user._id } : { user: user._id };
-
-  const consultations = await Consultation.find(filter)
-    .populate("user", "firstName lastName avatar")
-    .populate("doctor", "firstName lastName avatar")
-    .sort({ updatedAt: -1 })
-    .lean();
-
   const isDoctor = user.role === "plant-doctor";
+  const filter: any = isDoctor ? { doctor: user._id } : { user: user._id };
+
+  if (search) {
+    filter.code = { $regex: search, $options: "i" };
+  }
+
+  const sortOption =
+    sort === "newest" ? { createdAt: -1 as any } : { createdAt: 1 as any };
+
+  const skip = (page - 1) * limit;
+
+  const [consultations, total] = await Promise.all([
+    Consultation.find(filter)
+      .populate("user", "firstName lastName avatar")
+      .populate("doctor", "firstName lastName avatar")
+      .sort(sortOption)
+      .skip(skip)
+      .limit(limit)
+      .lean(),
+    Consultation.countDocuments(filter),
+  ]);
 
   const consultationIds = consultations.map((c) => c._id);
   const unreadCounts = await ConsultationMessage.aggregate([
@@ -37,16 +61,16 @@ export async function getUserConsultations() {
     {
       $group: {
         _id: "$consultationId",
-        count: { $sum: 1 },
+        count: { $sum: 1 }, 
       },
     },
   ]);
-  const unreadMap = new Map();
-  unreadCounts.forEach((item) => {
-    unreadMap.set(item._id.toString(), item.count);
-  });
 
-  return consultations.map((c: any) => {
+  const unreadMap = Object.fromEntries(
+    unreadCounts.map((item) => [item._id.toString(), item.count]),
+  );
+
+  const formatted = consultations.map((c: any) => {
     let lastMessageData: LastMessageInfo | undefined = undefined;
 
     if (c.lastMessage) {
@@ -87,9 +111,16 @@ export async function getUserConsultations() {
       title: c.title,
       status: c.status,
       lastMessage: lastMessageData,
-      unreadCount: unreadMap.get(c._id.toString()) || 0, 
+      unreadCount: unreadMap[c._id.toString()] || 0,
       createdAt: c.createdAt,
       updatedAt: c.updatedAt,
     };
   });
+
+  return {
+    consultations: formatted,
+    total,
+    totalPages: Math.ceil(total / limit),
+    page,
+  };
 }
