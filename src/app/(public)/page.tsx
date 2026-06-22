@@ -5,21 +5,21 @@ import PlantDoctorServices from "@/components/features/landing/PlantDoctorServic
 import ServicesSection from "@/components/features/landing/ServicesSection";
 import ProductSlider from "@/components/features/products/ProductSlider";
 import { getArticles } from "@/features/blog/actions/getArticles.actions";
-import { getLatestProductsByCategory } from "@/features/products/actions/product.actions";
+import { getProducts } from "@/features/products/actions/getProducts.actions";
 import { getBulkLikeStatus } from "@/features/user/actions/wishlist.actions";
 
 export default async function Home() {
-const [indoorLatest, decorationLatest, giftLatest, latestPostsResult, mostViewedPostsResult] = await Promise.all([
-    getLatestProductsByCategory("indoor", 8),
-    getLatestProductsByCategory("decoration", 8),
-    getLatestProductsByCategory("gift", 8),
+  const [indoorLatest, decorationLatest, giftLatest, latestPostsResult, mostViewedPostsResult] = await Promise.all([
+    getProducts({ category: "indoor", sort: "newest", limit: 8 }),
+    getProducts({ category: "decoration", sort: "newest", limit: 8 }),
+    getProducts({ category: "gift", sort: "newest", limit: 8 }),
     getArticles({ sort: "newest", limit: 4 }),
     getArticles({ sort: "most_viewed", limit: 4 }),
   ]);
 
-  const indoorIds = indoorLatest.map((p) => p._id);
-  const decorationIds = decorationLatest.map((p) => p._id);
-  const giftIds = giftLatest.map((p) => p._id);
+  const indoorIds = indoorLatest.products.map((p) => p._id);
+  const decorationIds = decorationLatest.products.map((p) => p._id);
+  const giftIds = giftLatest.products.map((p) => p._id);
 
   const [indoorLikeStatuses, decorationLikeStatuses, giftLikeStatuses] = await Promise.all([
     getBulkLikeStatus(indoorIds),
@@ -38,7 +38,7 @@ const [indoorLatest, decorationLatest, giftLatest, latestPostsResult, mostViewed
 
       <ProductSlider
         title="گیاهان آپارتمانی"
-        products={indoorLatest}
+        products={indoorLatest.products}
         link="/products?category=indoor&sort=newest&view=grid"
         likeStatuses={indoorLikeStatuses}
       />
@@ -48,7 +48,7 @@ const [indoorLatest, decorationLatest, giftLatest, latestPostsResult, mostViewed
 
       <ProductSlider
         title="گیاهان دکوراتیو"
-        products={decorationLatest}
+        products={decorationLatest.products}
         link="/products?category=decoration&sort=newest&view=grid"
         likeStatuses={decorationLikeStatuses}
       />
@@ -57,7 +57,7 @@ const [indoorLatest, decorationLatest, giftLatest, latestPostsResult, mostViewed
 
       <ProductSlider
         title="گیاهان کادویی"
-        products={giftLatest}
+        products={giftLatest.products}
         link="/products?category=gift&sort=newest&view=grid"
         likeStatuses={giftLikeStatuses}
       />
