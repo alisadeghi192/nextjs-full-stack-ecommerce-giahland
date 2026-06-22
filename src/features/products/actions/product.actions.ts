@@ -85,10 +85,12 @@ export async function searchProducts(query: string) {
 
   await connectToDB();
 
+  const regexQuery = query.trim().replace(/\s+/g, "[-\\s]*");
+
   const products = await Product.find({
     $or: [
-      { name: { $regex: query } },
-      { slug: { $regex: query, $options: "i" } },
+      { name: { $regex: query, $options: "i" } },
+      { slug: { $regex: regexQuery, $options: "i" } },  
     ],
   })
     .select("name slug category price image")
@@ -99,7 +101,7 @@ export async function searchProducts(query: string) {
     slug: p.slug,
     category: p.category,
     price: p.price,
-    image : p.image,
+    image: p.image,
     _id: p._id.toString(),
   }));
 }
