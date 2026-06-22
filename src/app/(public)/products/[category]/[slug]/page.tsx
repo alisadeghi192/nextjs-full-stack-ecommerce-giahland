@@ -10,10 +10,8 @@ import ProductTitleHeader from "@/components/features/products/ProductTitleHeade
 import Breadcrumb from "@/components/shared/ui/Breadcrumb";
 import CommentForm from "@/components/shared/ui/CommentForm";
 import CommentList from "@/components/shared/ui/CommentList";
-import {
-  getProductBySlug,
-  getRelatedProducts,
-} from "@/features/products/actions/product.actions";
+import { getProductBySlug } from "@/features/products/actions/getProductBySlug.actions";
+import { getProducts } from "@/features/products/actions/getProducts.actions";
 import { getBulkLikeStatus } from "@/features/user/actions/wishlist.actions";
 import { productDetailTabs, productTabs } from "@/lib/constants";
 import type { Metadata } from "next";
@@ -61,8 +59,13 @@ export default async function ProductPage({ params }: ProductPageProps) {
   const categoryName =
     productTabs.find((product) => product.id == category)?.label || "";
 
-  const relatedProducts = await getRelatedProducts(product.category, slug, 8);
-const relatedIds = relatedProducts.map((p) => p._id);
+  const { products: relatedProducts } = await getProducts({
+    category: product.category,
+    sort: "newest",
+    limit: 8,
+  });
+  const filteredRelated = relatedProducts.filter((p) => p.slug !== slug);
+  const relatedIds = relatedProducts.map((p) => p._id);
   const relatedLikeStatuses = await getBulkLikeStatus(relatedIds);
   const categoryLink = `/products?category=${category}`;
 
@@ -133,7 +136,7 @@ const relatedIds = relatedProducts.map((p) => p._id);
 
       <ProductSlider
         link={categoryLink}
-        products={relatedProducts}
+        products={filteredRelated}
         title="گیاه های مشابه"
         likeStatuses={relatedLikeStatuses}
       />
