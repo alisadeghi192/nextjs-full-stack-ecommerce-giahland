@@ -77,7 +77,6 @@ export default function AuthButtons() {
       </div>
     );
   }
-  console.log(totalUnread);
   if (isAuthenticated) {
     return (
       <div
