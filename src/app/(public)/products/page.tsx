@@ -3,23 +3,12 @@ import ProductsHeader from "@/components/features/products/ProductsHeader";
 import ProductsList from "@/components/features/products/ProductsList";
 import Breadcrumb from "@/components/shared/ui/Breadcrumb";
 import Pagination from "@/components/shared/ui/pagination";
-import {
-  getAllProductsCard,
-  getProductsCardByCategory,
-} from "@/features/products/actions/product.actions";
-import { ProductCardData } from "@/features/products/types/product.types";
-import {
-  filterProductsByTab,
-  paginateProducts,
-  sortProducts,
-} from "@/features/products/utils/productHelpers";
+import { getProducts } from "@/features/products/actions/getProducts.actions";
 import {
   DEFAULT_SORT,
   DEFAULT_TAB,
-  DEFAULT_VIEW_MODE,
-  PRODUCTS_PER_PAGE,
+  DEFAULT_VIEW_MODE
 } from "@/lib/constants";
-
 interface ProductsPageProps {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
@@ -34,25 +23,15 @@ export default async function ProductsPage({
   const selectedSort = (params.sort as string) || DEFAULT_SORT;
   const currentPage = Number(params.page) || 1;
 
-  let allProducts: ProductCardData[] = [];
+    const result = await getProducts({
+    category: activeTab ,
+    sort: selectedSort ,
+    page: currentPage,
+  });
 
-  if (activeTab === "all" || activeTab === "discounted") {
-    allProducts = await getAllProductsCard();
-  } else {
-    allProducts = await getProductsCardByCategory(
-      activeTab as "indoor" | "decoration" | "gift",
-    );
-  }
-
-  const filteredProducts = filterProductsByTab(allProducts, activeTab);
-  const sortedProducts = sortProducts(filteredProducts, selectedSort);
-  const paginatedProducts = paginateProducts(
-    sortedProducts,
-    currentPage,
-    PRODUCTS_PER_PAGE,
-  );
-  const totalPages = Math.ceil(sortedProducts.length / PRODUCTS_PER_PAGE);
   const baseUrl = `?category=${activeTab}&view=${viewMode}&sort=${selectedSort}`;
+
+
 
   return (
     <main className="container">
@@ -63,13 +42,13 @@ export default async function ProductsPage({
         viewMode={viewMode}
       />
       {viewMode === DEFAULT_VIEW_MODE ? (
-        <ProductsGrid products={paginatedProducts} />
+        <ProductsGrid products={result.products} />
       ) : (
-        <ProductsList products={paginatedProducts} />
+        <ProductsList products={result.products} />
       )}
       <Pagination
         currentPage={currentPage}
-        totalPages={totalPages}
+        totalPages={result.totalPages}
         baseUrl={baseUrl}
       />
     </main>
