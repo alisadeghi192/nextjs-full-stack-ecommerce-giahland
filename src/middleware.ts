@@ -16,7 +16,7 @@ export async  function  middleware(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  const blogMatch = pathname.match(/^\/blog\/(care|health|intro)$/);
+  const blogMatch = pathname.match(/^\/blog\/(care|health|styling)$/);
   if (blogMatch) {
     const category = blogMatch[1];
     const url = request.nextUrl.clone();

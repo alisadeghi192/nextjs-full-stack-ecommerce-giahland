@@ -1,6 +1,6 @@
 export const blogTabs = [
   { id: "all", label: "همه" },
-  { id: "intro", label: "معرفی" },
+  { id: "styling", label: "چیدمان" },
   { id: "care", label: "نگهداری" },
   { id: "health", label: "آفت‌ها و بیماری‌ها" },
 ];

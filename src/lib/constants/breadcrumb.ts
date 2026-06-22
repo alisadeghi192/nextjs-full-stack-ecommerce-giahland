@@ -2,7 +2,7 @@ export const breadcrumbNameMap: Record<string, string> = {
   products: "محصولات",
   "plant-doctor": "گیاه پزشک",
   blog: "مجله",
-  intro: "معرفی",
+  styling: "چیدمان",
   care: "نگهداری",
   health: "آفت‌ها و بیماری‌ها",
   gift : "کادویی",

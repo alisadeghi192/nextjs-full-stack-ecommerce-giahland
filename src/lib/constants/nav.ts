@@ -14,7 +14,7 @@ export const navLinks = [
     text: "مجله",
     href: "/blog",
     submenu: [
-      { href: "/blog?category=intro", text: "معرفی گیاهان" },
+      { href: "/blog?category=styling", text: "معرفی گیاهان" },
       { href: "/blog?category=care", text: "مراقبت و نگهداری" },
       { href: "/blog?category=health", text: "آفت‌ها و بیماری‌ها" },
     ],

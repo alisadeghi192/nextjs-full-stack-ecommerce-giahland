@@ -45,7 +45,7 @@ export interface IBlogPost {
   slug: string;
   excerpt: string;
   author: Types.ObjectId | string; 
-  category: "care" | "health" | "intro";
+  category: "care" | "health" | "styling";
   views: number;
   publishedAt: Date;
   content: ContentBlock[];
@@ -74,7 +74,7 @@ export interface BlogPostWithDetails {
     avatar?: string;
     role:  "plant-doctor" | "admin";
   };
-  category: "care" | "health" | "intro";
+  category: "care" | "health" | "styling";
   views: number;
   publishedAt: Date;
   content: ContentBlock[];
@@ -100,6 +100,6 @@ export interface BlogPostCard {
     firstName: string;
     lastName: string;
   };
-  category: "care" | "health" | "intro";
+  category: "care" | "health" | "styling";
   publishedAt: Date;
 }

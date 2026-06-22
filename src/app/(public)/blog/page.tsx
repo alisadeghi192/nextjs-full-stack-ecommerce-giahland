@@ -27,7 +27,6 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
     page: currentPage,
     limit: BLOG_POSTS_PER_PAGE,
   });
-  console.log(result)
 
   const baseUrl = `?category=${activeTab}&sort=${selectedSort}`;
 

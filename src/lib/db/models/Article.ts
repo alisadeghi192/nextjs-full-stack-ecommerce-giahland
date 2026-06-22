@@ -35,7 +35,7 @@ const ArticleSchema = new Schema<IBlogPost>(
     },
     category: {
       type: String,
-      enum: ["care", "health", "intro"],
+      enum: ["care", "health", "styling"],
       required: true,
     },
     views: {
