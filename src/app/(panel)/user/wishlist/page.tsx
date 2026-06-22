@@ -2,12 +2,8 @@ import SectionTitle from "@/components/panel/SectionTitle";
 import WishlistProducts from "@/components/panel/WishListProducts";
 import WishlistToolbar from "@/components/panel/WishlistToolbar";
 import Pagination from "@/components/shared/ui/pagination";
-import {
-  paginateProducts,
-  sortProducts,
-} from "@/features/products/utils/productHelpers";
-import { getUserWishlist } from "@/features/user/actions/wishlist.actions";
-import { DEFAULT_VIEW_MODE, PRODUCTS_PER_PAGE } from "@/lib/constants";
+import { getWishlistProducts } from "@/features/products/actions/getWishlistProducts.actions";
+import { DEFAULT_VIEW_MODE } from "@/lib/constants";
 
 interface WishListPageProps {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -21,10 +17,15 @@ export default async function WishListPage({
   const viewMode = (params.view as string) || DEFAULT_VIEW_MODE;
   const selectedSort = (params.sort as string) || "newest";
   const currentPage = Number(params.page) || 1;
+  
+  const result = await getWishlistProducts({
+    sort: selectedSort as any,
+    page: currentPage,
+  });
 
-  const allWishlistProducts = await getUserWishlist();
+  const baseUrl = `?view=${viewMode}&sort=${selectedSort}`;
 
-  if (allWishlistProducts.length === 0) {
+  if (result.total === 0) {
     return (
       <div className="w-full">
         <SectionTitle title="علاقه مندی ها" />
@@ -35,28 +36,19 @@ export default async function WishListPage({
     );
   }
 
-  const sortedProducts = sortProducts(allWishlistProducts, selectedSort);
-  const paginatedProducts = paginateProducts(
-    sortedProducts,
-    currentPage,
-    PRODUCTS_PER_PAGE,
-  );
-  const totalPages = Math.ceil(sortedProducts.length / PRODUCTS_PER_PAGE);
-  const baseUrl = `?view=${viewMode}&sort=${selectedSort}`;
-
   return (
     <div className="w-full">
       <SectionTitle title="علاقه مندی ها" />
       <WishlistToolbar />
       <WishlistProducts
-        products={JSON.parse(JSON.stringify(paginatedProducts))}
+        products={JSON.parse(JSON.stringify(result.products))}
         viewMode={viewMode}
       />
-      {totalPages > 1 && (
+      {result.totalPages > 1 && (
         <div className="mt-8 flex justify-center">
           <Pagination
             currentPage={currentPage}
-            totalPages={totalPages}
+            totalPages={result.totalPages}
             baseUrl={baseUrl}
           />
         </div>
