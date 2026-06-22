@@ -1,7 +1,7 @@
 "use client";
 
 import FormField from "@/components/shared/ui/FormField";
-import { searchProducts } from "@/features/products/actions/product.actions";
+import { searchProducts } from "@/features/products/actions/searchProducts.actions";
 import { formatPrice } from "@/lib/utils/format";
 import Image from "next/image";
 import Link from "next/link";

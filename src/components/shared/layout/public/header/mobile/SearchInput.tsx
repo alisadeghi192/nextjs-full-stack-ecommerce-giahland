@@ -1,5 +1,5 @@
 "use client";
-import { searchProducts } from "@/features/products/actions/product.actions";
+import { searchProducts } from "@/features/products/actions/searchProducts.actions";
 import { formatPrice } from "@/lib/utils/format";
 import {
   useIsSearchOpen,
