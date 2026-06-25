@@ -28,7 +28,7 @@ export default function ConsultationsListHeader({
         <div className={`w-34.5 ${isSideBarOpen ? `${isDoctor ? '' : "lg:ml-3"} max-lg:basis-1/2` : `${isDoctor ? '' : "md:ml-3"} max-md:basis-1/2`}`}>
           <SortDropdownWrapper
             options={consultationSortOptions}
-            usedInConsultation={true}
+            usedInPanel={true}
           />
         </div>
       </div>

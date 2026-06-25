@@ -9,7 +9,8 @@ interface TabsProps {
   tabs: TabItem[];
   activeTab: string;
   currentSort: string;
-  currentView?: string;  
+  currentView?: string;
+  usedInPanel?: boolean;
 }
 
 export default function Tabs({
@@ -17,6 +18,7 @@ export default function Tabs({
   activeTab,
   currentSort,
   currentView,
+  usedInPanel = false,
 }: TabsProps) {
   return (
     <div className="flex flex-wrap justify-center">
@@ -24,7 +26,7 @@ export default function Tabs({
         <Link
           key={tab.id}
           href={`?category=${tab.id}&sort=${currentSort}${currentView ? `&view=${currentView}` : ""}`}
-          className={`border-neutral5 cursor-pointer border-b p-3 text-xl/6 max-lg:text-xl/6 transition-all  max-sm:p-2  max-xs:text-base max-md:text-lg ${
+          className={`border-neutral5 cursor-pointer border-b transition-all ${usedInPanel ? "p-2 text-lg max-md:text-base" : "max-xs:text-base p-3 text-xl/6 max-lg:text-xl/6 max-md:text-lg max-sm:p-2"} ${
             activeTab === tab.id
               ? "text-primary border-primary border-b-2 font-bold"
               : "text-neutral9 hover:text-primary"

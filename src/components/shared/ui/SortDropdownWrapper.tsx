@@ -9,17 +9,17 @@ interface SortOption {
 
 interface SortDropdownWrapperProps {
   options: SortOption[];
-  usedInConsultation? : boolean; 
+  usedInPanel? : boolean; 
 }
 
-export default function SortDropdownWrapper({ options , usedInConsultation}: SortDropdownWrapperProps) {
+export default function SortDropdownWrapper({ options , usedInPanel}: SortDropdownWrapperProps) {
   const { selectedSort, setSort } = usePageParams();
   return (
     <SortDropdown
       selectedSort={selectedSort}
       onSortChange={setSort}
       options={options}
-      usedInConsultation = {usedInConsultation}
+      usedInPanel = {usedInPanel}
     />
   );
 }

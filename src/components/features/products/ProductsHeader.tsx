@@ -15,8 +15,8 @@ export default function ProductsHeader({
   viewMode,
 }: ProductsHeaderProps) {
   return (
-    <div className="mb-6">
-      <div className="flex items-center justify-between max-lg:flex-col-reverse max-lg:gap-y-6">
+    <div className="mb-6 max-xs:mb-4">
+      <div className="flex items-center justify-between max-md:flex-col max-lg:gap-y-6 max-xs:gap-y-4">
         <Tabs
           tabs={productTabs}
           activeTab={activeTab}

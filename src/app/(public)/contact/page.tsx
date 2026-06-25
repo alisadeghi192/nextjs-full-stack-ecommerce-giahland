@@ -3,7 +3,7 @@ import Breadcrumb from "@/components/shared/ui/Breadcrumb";
 import Link from "next/link";
 import { FaInstagram, FaTelegram, FaWhatsapp } from "react-icons/fa6";
 
-export default function page() {
+export default function ContactPage() {
   return (
     <main className="container">
       <Breadcrumb />

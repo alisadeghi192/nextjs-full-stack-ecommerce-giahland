@@ -4,12 +4,11 @@ import Breadcrumb from "@/components/shared/ui/Breadcrumb";
 import PrimaryButton from "@/components/shared/ui/PrimaryButton";
 import { FAQ_ITEMS } from "@/lib/constants";
 import Image from "next/image";
-import React from "react";
 import { FaUserDoctor } from "react-icons/fa6";
 import { MdLocalShipping, MdPestControl } from "react-icons/md";
 import { RiPlantFill } from "react-icons/ri";
 
-function page() {
+export default function AboutPage() {
   return (
     <main className="container">
       <Breadcrumb />
@@ -60,7 +59,7 @@ function page() {
         </div>
       </section>
       <section className="mt-20">
-        <Accordion items={FAQ_ITEMS } />
+        <Accordion items={FAQ_ITEMS} />
       </section>
       <section className="mt-10 max-sm:mt-6">
         <h2 className="mb-4 text-lg font-bold">داستان ما</h2>
@@ -134,5 +133,3 @@ function page() {
     </main>
   );
 }
-
-export default page;

@@ -3,4 +3,4 @@ export const consultationSortOptions = [
   { value: "oldest", label: "قدیمی‌ترین" },
 ];
 
-export const CONSULTATIONS_PER_PAGE = 6
+export const CONSULTATIONS_PER_PAGE = 8
