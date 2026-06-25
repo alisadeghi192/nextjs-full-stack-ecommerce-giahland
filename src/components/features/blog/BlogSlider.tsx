@@ -1,20 +1,20 @@
 "use client";
 
-import { useRef } from "react";
+import { BlogPostCard } from "@/features/blog/types/blog.types";
+import { BLOG_SWIPER_AUTOPLAY_DELAY, BLOG_SWIPER_BREAKPOINTS, BLOG_SWIPER_SPACE_BETWEEN } from "@/lib/constants";
 import Link from "next/link";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { useRef } from "react";
 import type { Swiper as SwiperType } from "swiper";
 import { Autoplay, Navigation } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 import BlogCard from "./BlogCard";
-import { BlogPostType } from "@/features/blog/types/blog.types";
-import { BLOG_SWIPER_BREAKPOINTS, BLOG_SWIPER_AUTOPLAY_DELAY, BLOG_SWIPER_SPACE_BETWEEN } from "@/lib/constants";
 
 
-import "swiper/css";
 import { MdKeyboardArrowLeft } from "react-icons/md";
+import "swiper/css";
 
 interface BlogSliderProps {
-  posts: BlogPostType[];
+  posts: BlogPostCard[];
   title?: string;
   link: string;
 }

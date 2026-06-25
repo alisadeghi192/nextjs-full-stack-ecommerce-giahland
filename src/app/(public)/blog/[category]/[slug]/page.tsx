@@ -22,7 +22,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   const { articles: relatedPosts } = await getArticles({
     category: category,
-    limit: 4,
+    limit: 6,
     page: 1,
   });
 
@@ -30,7 +30,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   const categoryLink = `/blog?category=${category}&sort=newest`;
   const articleAuthor = `${post.author.firstName} ${post.author.lastName}`;
-
   return (
     <main className="container">
       <Breadcrumb title={post.title} />

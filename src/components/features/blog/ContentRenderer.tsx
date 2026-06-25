@@ -1,7 +1,11 @@
-import Image from "next/image";
 import type { ContentBlock } from "@/features/blog/types/blog.types";
+import Image from "next/image";
 
-export default function ContentRenderer({ content }: { content: ContentBlock[] }) {
+export default function ContentRenderer({
+  content,
+}: {
+  content: ContentBlock[];
+}) {
   const renderBlock = (block: ContentBlock, index: number) => {
     switch (block.type) {
       case "paragraph":
@@ -17,12 +21,13 @@ export default function ContentRenderer({ content }: { content: ContentBlock[] }
       case "image":
         return (
           <figure key={index} className="my-8">
-            <div className="relative aspect-video w-full">
+            <div className="relative w-full">
               <Image
                 src={block.data.src}
                 alt={block.data.alt}
-                fill
-                className="rounded-lg object-cover"
+                width={800}
+                height={450}
+                className="rounded-lg object-cover mx-auto"
               />
             </div>
             {block.data.caption && (
