@@ -74,7 +74,7 @@ export default function ProfileInfoForm() {
       <div className="border-neutral3 rounded-2xl border p-6 shadow-lg max-md:p-3.5">
         <AvatarUpload />
 
-        <form action={formAction}>
+        <form action={formAction} noValidate>
           <div className="grid grid-cols-2 gap-4 max-lg:grid-cols-1 max-md:gap-3.5">
             <FormField
               icon={<MdDriveFileRenameOutline size={20} />}
@@ -160,7 +160,7 @@ export default function ProfileInfoForm() {
     <div className="border-neutral3 rounded-2xl border p-6 shadow-lg max-md:p-3.5">
       <AvatarUpload />
 
-      <form action={formAction}>
+      <form action={formAction} noValidate>
         <div className="grid grid-cols-2 gap-4 max-lg:grid-cols-1 max-md:gap-3.5">
           <FormField
             icon={<MdDriveFileRenameOutline size={20} />}

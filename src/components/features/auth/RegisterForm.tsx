@@ -1,11 +1,11 @@
 "use client";
 
-import { UseFormRegister, FieldErrors } from "react-hook-form";
 import PrimaryButton from "@/components/shared/ui/PrimaryButton";
+import { IRegisterInput } from "@/features/auth/schemas/auth.schema";
+import { FieldErrors, UseFormRegister } from "react-hook-form";
+import { MdMailOutline, MdOutlineMobileFriendly } from "react-icons/md";
 import FormField from "../../shared/ui/FormField";
 import PasswordField from "../../shared/ui/PasswordField";
-import { MdMailOutline, MdOutlineMobileFriendly } from "react-icons/md";
-import { IRegisterInput } from "@/features/auth/schemas/auth.schema";
 
 interface RegisterFormProps {
   onToggle: () => void;
@@ -22,16 +22,16 @@ export default function RegisterForm({
   isSubmitting,
   onSubmit,
 }: RegisterFormProps) {
-
   return (
     <div className="relative z-10 w-1/2 bg-white max-lg:w-2/3 max-sm:h-5/8 max-sm:w-full max-sm:rounded-t-[20px]">
-      <div className="mx-auto pb-4 w-72/100 max-md:w-90/100">
+      <div className="mx-auto w-72/100 pb-4 max-md:w-90/100">
         <h5 className="mb-8 text-xl/7 font-semibold max-sm:mt-3.25 max-sm:mb-6 max-sm:text-center max-sm:text-lg/8 max-sm:font-normal">
           ثبت نام
         </h5>
 
         <form
           onSubmit={onSubmit}
+          noValidate
           className="flex flex-col gap-y-5 max-sm:gap-y-4"
         >
           <FormField

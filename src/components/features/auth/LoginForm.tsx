@@ -1,11 +1,11 @@
 "use client";
 
-import { UseFormRegister, FieldErrors } from "react-hook-form";
 import PrimaryButton from "@/components/shared/ui/PrimaryButton";
+import { ILoginInput } from "@/features/auth/schemas/auth.schema";
+import { FieldErrors, UseFormRegister } from "react-hook-form";
+import { MdOutlineMobileFriendly } from "react-icons/md";
 import FormField from "../../shared/ui/FormField";
 import PasswordField from "../../shared/ui/PasswordField";
-import { MdOutlineMobileFriendly } from "react-icons/md";
-import { ILoginInput } from "@/features/auth/schemas/auth.schema";
 
 interface LoginFormProps {
   onToggle: () => void;
@@ -30,6 +30,7 @@ export default function LoginForm({
         </h5>
 
         <form
+          noValidate
           onSubmit={onSubmit}
           className="flex flex-col gap-y-6 max-sm:gap-y-4"
         >
@@ -49,7 +50,7 @@ export default function LoginForm({
             {...register("password")}
           />
 
-          <p className="text-primary cursor-pointer -mt-2 text-sm max-sm:-mt-1">
+          <p className="text-primary -mt-2 cursor-pointer text-sm max-sm:-mt-1">
             بازیابی رمز عبور
           </p>
 

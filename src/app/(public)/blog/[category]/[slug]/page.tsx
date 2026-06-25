@@ -7,12 +7,38 @@ import CommentForm from "@/components/shared/ui/CommentForm";
 import CommentList from "@/components/shared/ui/CommentList";
 import { getArticleBySlug } from "@/features/blog/actions/getArticleBySlug.actions";
 import { getArticles } from "@/features/blog/actions/getArticles.actions";
-
+import type { Metadata } from "next";
 interface BlogPostPageProps {
   params: Promise<{
     category: string;
     slug: string;
   }>;
+}
+
+// ========== SEO ==========
+export async function generateMetadata({
+  params,
+}: BlogPostPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const post = await getArticleBySlug(slug);
+
+  if (!post) {
+    return { title: "مقاله یافت نشد" };
+  }
+
+  return {
+    title: post.seo?.title || post.title,
+    description: post.seo?.description || post.excerpt,
+    keywords: post.seo?.keywords,
+    openGraph: {
+      title: post.seo?.title || post.title,
+      description: post.seo?.description || post.excerpt,
+      images: post.seo?.ogImage || post.mainImage,
+      type: "article",
+      publishedTime: post.publishedAt?.toISOString(),
+      authors: [`${post.author.firstName} ${post.author.lastName}`],
+    },
+  };
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {

@@ -1,8 +1,8 @@
 "use client";
-import { useActionState, useEffect } from "react";
-import { changePasswordAction } from "@/features/user/actions/changePassword.actions";
 import PasswordField from "@/components/shared/ui/PasswordField";
 import PrimaryButton from "@/components/shared/ui/PrimaryButton";
+import { changePasswordAction } from "@/features/user/actions/changePassword.actions";
+import { useActionState, useEffect } from "react";
 import toast from "react-hot-toast";
 
 export default function ChangePasswordForm() {
@@ -23,8 +23,8 @@ export default function ChangePasswordForm() {
   }, [state]);
 
   return (
-    <div className="border-neutral3 rounded-2xl border p-6 max-md:p-3.5 shadow-lg">
-      <form action={formAction}>
+    <div className="border-neutral3 rounded-2xl border p-6 shadow-lg max-md:p-3.5">
+      <form action={formAction} noValidate>
         <div className="grid grid-cols-2 gap-4 max-lg:grid-cols-1 max-md:gap-3.5 lg:[&>*:first-child]:col-span-2">
           <PasswordField
             id="oldPassword"

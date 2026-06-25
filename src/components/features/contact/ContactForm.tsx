@@ -3,18 +3,18 @@ import FormField from "@/components/shared/ui/FormField";
 import PrimaryButton from "@/components/shared/ui/PrimaryButton";
 import TextareaField from "@/components/shared/ui/TextareaField";
 import {
-    useUserFirstName,
-    useUserLastName,
-    useUserMobile,
+  useUserFirstName,
+  useUserLastName,
+  useUserMobile,
 } from "@/features/auth/selectors/auth.selectors";
 import { submitContactAction } from "@/features/contact/actions/contact.actions";
 import Image from "next/image";
 import { useActionState, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import {
-    MdCheckBox,
-    MdCheckBoxOutlineBlank,
-    MdDriveFileRenameOutline,
+  MdCheckBox,
+  MdCheckBoxOutlineBlank,
+  MdDriveFileRenameOutline,
 } from "react-icons/md";
 
 export default function ContactForm() {
@@ -56,7 +56,7 @@ useEffect(() => {
   }, [state]);
 
   return (
-    <form action={formAction} className="basis-1/2 space-y-3">
+    <form action={formAction} className="basis-1/2 space-y-3" noValidate>
       <input type="hidden" name="notRobot" value={notRobot ? "on" : ""} />
 
       <FormField
