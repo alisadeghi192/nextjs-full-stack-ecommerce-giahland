@@ -4,7 +4,7 @@ export interface DoctorCardInfo {
   _id: string;
   firstName: string;
   lastName: string;
-  code: string;
+  code?: string;
   avatar: string;
   specialties: string;
   yearsOfExperience: number;
@@ -65,7 +65,7 @@ export interface ConsultationWithDetails {
   title: string;
   status: "active" | "closed";
   lastMessage?: LastMessageInfo;  
-   unreadCount: number;
+   unreadCount?: number;
   createdAt: Date;
   updatedAt: Date;
 }

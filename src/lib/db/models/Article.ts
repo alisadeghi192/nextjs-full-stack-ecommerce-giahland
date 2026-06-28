@@ -18,8 +18,8 @@ const ArticleSchema = new Schema<IBlogPost>(
     },
     slug: {
       type: String,
+      unique: true, 
       required: true,
-      unique: true,
       trim: true,
       lowercase: true,
     },
@@ -48,8 +48,9 @@ const ArticleSchema = new Schema<IBlogPost>(
     },
     content: {
       type: Schema.Types.Mixed,
+      required: true,
       default: [],
-    } as any,
+    },
     comments: {
       type: [{ type: Schema.Types.ObjectId, ref: "Comment" }],
       default: [],
@@ -66,7 +67,6 @@ const ArticleSchema = new Schema<IBlogPost>(
   }
 );
 
-ArticleSchema.index({ slug: 1 }, { unique: true });
 
 const Article: Model<IBlogPost> =
   mongoose.models.Article || mongoose.model<IBlogPost>("Article", ArticleSchema);

@@ -13,7 +13,7 @@ export default function BlogCard({
 }: BlogPostCard) {
   return (
     <>
-      <div className="text-white justify-self-center overflow-hidden rounded-xl">
+      <div className="text-white justify-self-center overflow-hidden rounded-xl w-full">
         <Link href={`/blog/${category}/${slug}`}>
           <div
             className="max-xs:h-80 relative flex h-94.5 max-w-72 flex-col justify-between overflow-hidden rounded-xl bg-cover bg-center p-4"
