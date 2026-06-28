@@ -101,7 +101,7 @@ export default function ProfileInfoForm() {
               label="شماره موبایل"
               type="text"
               value={mobile}
-              onChange={() => {}} // 👈 اضافه
+              onChange={() => {}} 
               disabled
             />
             <FormField
@@ -121,7 +121,7 @@ export default function ProfileInfoForm() {
               label="تخصص"
               type="text"
               value={specialties}
-              onChange={() => {}} // 👈 اضافه
+              onChange={() => {}} 
               disabled
             />
             <FormField
@@ -131,7 +131,7 @@ export default function ProfileInfoForm() {
               label="سال‌های تجربه"
               type="text"
               value={yearsOfExperience.toString()}
-              onChange={() => {}} // 👈 اضافه
+              onChange={() => {}} 
               disabled
             />
             <FormField
@@ -141,7 +141,7 @@ export default function ProfileInfoForm() {
               label="هزینه مشاوره (تومان)"
               type="text"
               value={consultationFee.toLocaleString("fa-IR")}
-              onChange={() => {}} // 👈 اضافه
+              onChange={() => {}} 
               disabled
             />
           </div>

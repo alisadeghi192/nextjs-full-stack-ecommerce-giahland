@@ -3,6 +3,7 @@
 import IconButton from "@/components/shared/ui/IconButton";
 import NotificationBadge from "@/components/shared/ui/NotificationBadge";
 import {
+  useIsAdmin,
   useIsAuthenticated,
   useIsLoading,
   useUserAvatar,
@@ -26,6 +27,7 @@ export default function MobileActions() {
   const isAuthenticated = useIsAuthenticated();
   const avatar = useUserAvatar();
   const userRole = useUserRole();
+  const isAdmin = useIsAdmin();
   const { toggleCart } = useCartActions();
   const { totalUnread, refresh } = useNotifications();
   const isDoctor = userRole === "plant-doctor";
@@ -52,7 +54,10 @@ export default function MobileActions() {
       {isLoading ? (
         <div className="size-8 animate-pulse rounded-full bg-gray-200 max-md:size-10 max-sm:size-8" />
       ) : isAuthenticated ? (
-        <Link href="/user/profile" className="relative">
+        <Link
+          href={`${isAdmin ? "/admin/dashboard" : "/user/profile"}`}
+          className="relative"
+        >
           <Image
             src={avatar || "/static/images/default-user.webp"}
             alt="user profile"
@@ -60,7 +65,10 @@ export default function MobileActions() {
             height={48}
             className="rounded-full max-md:size-10 max-sm:size-8"
           />
-          <NotificationBadge count={totalUnread}  className="-top-2 -right-1 max-sm:size-4 max-sm:text-[10px]"/>
+          <NotificationBadge
+            count={totalUnread}
+            className="-top-2 -right-1 max-sm:size-4 max-sm:text-[10px]"
+          />
         </Link>
       ) : (
         <Link href="/login-register">

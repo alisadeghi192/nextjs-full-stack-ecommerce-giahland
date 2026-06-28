@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import { BsHeart, BsTruck } from "react-icons/bs";
 import { FaRegUser, FaUserDoctor } from "react-icons/fa6";
 import { LuNotebookPen } from "react-icons/lu";
-import { MdOutlineArticle } from "react-icons/md";
+import { MdDashboard, MdOutlineArticle, MdOutlineShoppingCart } from "react-icons/md";
 
 export interface PanelLink {
   href: string;
@@ -24,4 +24,14 @@ export const plantDoctorLinks: PanelLink[] = [
   { href: "/user/articles", icon: <MdOutlineArticle size={24} />, label: "مقالات من" , tooltipLabel : 'مقاله‌ها'},
   { href: "/user/consultations/list", icon: <FaUserDoctor size={24} />, label: "مشاوره‌ها" , tooltipLabel : 'مشاوره‌ها'},
   { href: "/user/tickets", icon: <LuNotebookPen size={24} />, label: "تیکت‌ها" , tooltipLabel : 'تیکت‌ها'},
+];
+
+export const adminLinks: PanelLink[] = [
+  { href: "/admin/dashboard", icon: <MdDashboard size={24} />, label: "داشبورد", tooltipLabel: "داشبورد" },
+  { href: "/admin/profile", icon: <FaRegUser size={24} />, label: "مشخصات کاربری" , tooltipLabel : 'پروفایل'},
+  { href: "/admin/articles", icon: <MdOutlineArticle size={24} />, label: "مقالات", tooltipLabel: "مقالات" },
+  { href: "/admin/users", icon: <FaRegUser size={24} />, label: "کاربران", tooltipLabel: "کاربران" },
+  { href: "/admin/products", icon: <MdOutlineShoppingCart size={24} />, label: "محصولات", tooltipLabel: "محصولات" },
+  { href: "/admin/tickets", icon: <LuNotebookPen size={24} />, label: "تیکت‌ها", tooltipLabel: "تیکت‌ها" },
+  { href: "/admin/consultations", icon: <FaUserDoctor size={24} />, label: "مشاوره‌ها", tooltipLabel: "مشاوره‌ها" },
 ];

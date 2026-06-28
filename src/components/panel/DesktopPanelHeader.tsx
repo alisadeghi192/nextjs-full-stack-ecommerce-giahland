@@ -1,12 +1,12 @@
 "use client";
 import { Logo } from "@/components/shared/layout/public/header";
 import IconButton from "@/components/shared/ui/IconButton";
-import { MdOutlineDarkMode } from "react-icons/md";
-import Image from "next/image";
 import {
-  useUserFirstName,
   useUserAvatar,
+  useUserFirstName,
 } from "@/features/auth/selectors/auth.selectors";
+import Image from "next/image";
+import { MdOutlineDarkMode } from "react-icons/md";
 import {
   TbLayoutSidebarLeftExpandFilled,
   TbLayoutSidebarRightExpandFilled,

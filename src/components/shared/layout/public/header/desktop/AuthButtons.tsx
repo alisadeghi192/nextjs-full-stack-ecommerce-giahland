@@ -4,6 +4,7 @@ import NotificationBadge from "@/components/shared/ui/NotificationBadge";
 import OutlineButton from "@/components/shared/ui/OutlineButton";
 import {
   useAuthActions,
+  useIsAdmin,
   useIsAuthenticated,
   useIsLoading,
   useUserAvatar,
@@ -19,12 +20,13 @@ import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { FaRegUser } from "react-icons/fa6";
 import { HiOutlineLogout } from "react-icons/hi";
+import { IoSettingsOutline } from "react-icons/io5";
 import { MdOutlineLogin } from "react-icons/md";
-const notifications = 5;
 
 export default function AuthButtons() {
   const isLoading = useIsLoading();
   const isAuthenticated = useIsAuthenticated();
+  const isAdmin = useIsAdmin();
   const userFirstName = useUserFirstName();
   const avatar = useUserAvatar() || "/static/images/default-user.webp";
   const { logout } = useAuthActions();
@@ -33,7 +35,7 @@ export default function AuthButtons() {
     useProfileDropdownActions();
   const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const openTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const { totalUnread , refresh } = useNotifications();
+  const { totalUnread, refresh } = useNotifications();
 
   useEffect(() => {
     refresh();
@@ -85,7 +87,7 @@ export default function AuthButtons() {
         onMouseLeave={handleMouseLeave}
       >
         <Link
-          href="/user/profile"
+          href={`${isAdmin ? "/admin/dashboard" : "/user/profile"}`}
           className="relative flex cursor-pointer items-center gap-2"
         >
           <Image
@@ -108,13 +110,20 @@ export default function AuthButtons() {
           onMouseLeave={handleMouseLeave}
         >
           <Link
-            href="/user/profile"
+            href={`${isAdmin ? "/admin/dashboard" : "/user/profile"}`}
             onClick={closeProfileDropdown}
             className="text-neutral10 hover:text-primary relative flex h-14 w-full cursor-pointer items-center gap-x-3 rounded-lg bg-white px-4 transition-colors"
           >
-            <FaRegUser className="size-6" />
-            <span className="font-medium">حساب کاربری</span>
-            <NotificationBadge count={totalUnread} className="left-4"/>
+            {isAdmin ? (
+              <IoSettingsOutline className="size-6" />
+            ) : (
+              <FaRegUser className="size-6" />
+            )}
+
+            <span className="font-medium">
+              {isAdmin ? "پنل مدیریت" : "حساب کاربری"}
+            </span>
+            <NotificationBadge count={totalUnread} className="left-4" />
           </Link>
           <ConfirmDialog
             onConfirm={handleLogout}
