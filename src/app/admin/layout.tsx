@@ -1,0 +1,18 @@
+import AdminLayout from "@/components/admin/AdminLayout";
+import { getMeAction } from "@/features/auth/actions/me.actions";
+import { adminLinks } from "@/lib/constants";
+import { redirect } from "next/navigation";
+
+export default async function AdminPageLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const { user } = await getMeAction();
+
+  if (!user || user.role !== "admin") {
+    redirect("/");
+  }
+
+  return <AdminLayout links={adminLinks}>{children}</AdminLayout>;
+}
