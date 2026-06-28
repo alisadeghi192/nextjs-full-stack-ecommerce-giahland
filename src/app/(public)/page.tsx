@@ -13,8 +13,8 @@ export default async function Home() {
     getProducts({ category: "indoor", sort: "newest", limit: 8 }),
     getProducts({ category: "decoration", sort: "newest", limit: 8 }),
     getProducts({ category: "gift", sort: "newest", limit: 8 }),
-    getArticles({ sort: "newest", limit: 4 }),
-    getArticles({ sort: "most_viewed", limit: 4 }),
+    getArticles({ sort: "newest", limit: 6 }),
+    getArticles({ sort: "most_viewed", limit: 6 }),
   ]);
 
   const indoorIds = indoorLatest.products.map((p) => p._id);

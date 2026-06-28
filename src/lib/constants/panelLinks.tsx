@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { BsHeart, BsTruck } from "react-icons/bs";
 import { FaRegUser, FaUserDoctor } from "react-icons/fa6";
-import { LuNotebookPen, LuPenTool } from "react-icons/lu";
+import { LuNotebookPen } from "react-icons/lu";
 import { MdOutlineArticle } from "react-icons/md";
 
 export interface PanelLink {
@@ -24,5 +24,4 @@ export const plantDoctorLinks: PanelLink[] = [
   { href: "/user/articles", icon: <MdOutlineArticle size={24} />, label: "مقالات من" , tooltipLabel : 'مقاله‌ها'},
   { href: "/user/consultations/list", icon: <FaUserDoctor size={24} />, label: "مشاوره‌ها" , tooltipLabel : 'مشاوره‌ها'},
   { href: "/user/tickets", icon: <LuNotebookPen size={24} />, label: "تیکت‌ها" , tooltipLabel : 'تیکت‌ها'},
-  { href: "/user/earnings", icon: <LuPenTool size={24} />, label: "درآمد من" , tooltipLabel : 'درآمد'},
 ];
