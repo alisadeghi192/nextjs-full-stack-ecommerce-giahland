@@ -31,11 +31,11 @@ export default async function AdminArticlesPage({ searchParams }: PageProps) {
       <DoctorArticlesHeader activeTab={activeTab} selectedSort={selectedSort} />
       {result.total === 0 ? (
         <div className="border-neutral3 rounded-2xl border p-6 text-center text-gray-500 shadow-lg">
-          مقاله ای یافت نشد.
+         مقاله ای یافت نشد.
         </div>
       ) : (
         <>
-          <DoctorArticlesList articles={result.articles} />
+          <DoctorArticlesList articles={result.articles} showActions={true} />
           {result.totalPages > 1 && (
             <div className="flex justify-center">
               <Pagination
