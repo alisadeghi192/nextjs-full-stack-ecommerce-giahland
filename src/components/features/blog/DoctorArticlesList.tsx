@@ -1,8 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import toast from "react-hot-toast";
-import { MdDelete, MdEdit } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
 
 import BlogCard from "@/components/features/blog/BlogCard";
 import ConfirmDialog from "@/components/shared/ui/ConfirmDialog";
@@ -42,27 +41,22 @@ export default function DoctorArticlesList({
     >
       {articles.map((post) => (
         <div className="flex flex-col" key={post._id}>
-          {showActions && (
-            <div className="flex rounded-lg h-7 mb-1">
-              <Link
-                href={`/admin/articles/${post._id}/edit`}
-                className="w-1/2 rounded-lg flex items-center justify-center text-blue-400 transition hover:bg-blue-500/20"
-              >
-                <MdEdit size={18} />
-              </Link>
+          <BlogCard {...post} />
 
+          {showActions && (
+            <div className="mb-1 flex h-8 relative -top-2 ">
               <ConfirmDialog
                 onConfirm={() => handleDelete(post._id)}
                 title="آیا از حذف این مقاله مطمئن هستید؟ این عملیات برگشت ناپذیر است."
                 confirmText="بله، حذف شود"
                 cancelText="انصراف"
-                className="w-1/2 rounded-lg cursor-pointer flex items-center justify-center text-red-400 transition hover:bg-red-500/20"
+                className="flex w-full cursor-pointer items-center justify-center rounded-b-lg text-white bg-error transition hover:text-error hover:bg-bg-error"
               >
                 <MdDelete size={18} />
+                <span>حذف</span>
               </ConfirmDialog>
             </div>
           )}
-          <BlogCard {...post} />
         </div>
       ))}
     </div>
