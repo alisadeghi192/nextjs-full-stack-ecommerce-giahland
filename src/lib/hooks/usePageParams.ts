@@ -1,6 +1,6 @@
 "use client";
-import { useSearchParams, useRouter } from "next/navigation";
-import { DEFAULT_TAB, DEFAULT_VIEW_MODE, DEFAULT_SORT } from "@/lib/constants";
+import { DEFAULT_SORT, DEFAULT_TAB, DEFAULT_VIEW_MODE } from "@/lib/constants";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export function usePageParams() {
   const searchParams = useSearchParams();
