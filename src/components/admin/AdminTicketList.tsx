@@ -104,32 +104,35 @@ export default function AdminTicketList({ tickets }: AdminTicketListProps) {
         return (
           <div
             key={ticket._id}
-            className="border-neutral3 relative rounded-2xl border p-3.5 shadow-lg"
+            className="border-neutral3 relative rounded-2xl border p-3.5 max-xs:p-2.5 shadow-lg"
           >
-            <div className="mb-2 flex flex-wrap items-center gap-2 text-sm text-gray-500">
-              <span className="text-primary font-medium max-sm:hidden">{userLabel}:</span>
-              <span>{userDisplayName}</span>
-              <span className="text-gray-400">|</span>
-              <span>{ticket.user.mobile}</span>
-              <span className="text-gray-400">|</span>
-              <span
-                className={`rounded-full px-2 py-0.5 text-xs ${
-                  ticket.status === "pending"
-                    ? "bg-red-100 text-red-600"
-                    : "bg-green-100 text-green-600"
-                }`}
-              >
-                {ticket.status === "pending"
-                  ? "بی پاسخ"
-                  : "بسته شده"}
-              </span>
+            <div className="mb-2 flex  justify-between items-center text-sm text-neutral9">
+              <div className="flex items-center flex-wrap gap-2 max-xs:gap-1">
+                <span className="text-primary font-medium max-sm:hidden">
+                  {userLabel}:
+                </span>
+                <span>{userDisplayName}</span>
+                <span className="text-gray-400">|</span>
+                <span>{ticket.user.mobile}</span>
+                <span className="text-gray-400">|</span>
+                <span
+                  className={`rounded-full px-2 py-0.5 text-xs ${
+                    ticket.status === "pending"
+                      ? "bg-red-100 text-error"
+                      : "bg-green-100 text-green-600"
+                  }`}
+                >
+                  {ticket.status === "pending" ? "بی پاسخ" : "بسته شده"}
+                </span>
+              </div>
+
               <ConfirmDialog
                 onConfirm={() => handleDelete(ticket._id)}
                 title="آیا از حذف این تیکت مطمئن هستید؟ این عملیات برگشت ناپذیر می باشد."
                 confirmText="بله، حذف شود"
                 cancelText="انصراف"
                 disabled={deletingId === ticket._id}
-                className="flex items-center gap-1 mr-auto bg-error cursor-pointer rounded-lg px-3 py-1 text-sm text-white transition hover:bg-bg-error hover:text-error disabled:opacity-50"
+                className="bg-error hover:bg-bg-error hover:text-error flex cursor-pointer items-center gap-1 rounded-lg px-3 py-1 text-sm text-white transition disabled:opacity-50"
               >
                 <MdDelete size={18} />
                 <span className="max-sm:hidden">حذف</span>

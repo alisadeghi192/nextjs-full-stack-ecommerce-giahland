@@ -7,7 +7,7 @@ import {
   useUserLastName,
   useUserMobile,
 } from "@/features/auth/selectors/auth.selectors";
-import { submitContactAction } from "@/features/contact/actions/contact.actions";
+import { submitContactMessage } from "@/features/contact/actions/submitContactMessage.actions";
 import Image from "next/image";
 import { useActionState, useEffect, useState } from "react";
 import toast from "react-hot-toast";
@@ -35,7 +35,7 @@ useEffect(() => {
 }, [fname, lname, storeMobile]);
 
   const [state, formAction, isPending] = useActionState(
-    submitContactAction,
+    submitContactMessage,
     null,
   );
 

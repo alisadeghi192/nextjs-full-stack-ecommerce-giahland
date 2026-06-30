@@ -55,7 +55,7 @@ export default function PanelSidebar({
         </div>
       </div>
 
-      <div className="mt-6 flex-1">
+      <div className="mt-4 flex-1">
         {links.map((link) => {
           let isActive = false;
           if (
@@ -72,7 +72,7 @@ export default function PanelSidebar({
               <Link
                 href={link.href}
                 onClick={onClose}
-                className={`text-neutral10 hover:text-primary flex h-14 items-center gap-x-3 rounded-r-lg pr-4 transition-colors max-md:h-12 ${
+                className={`text-neutral10 hover:text-primary flex h-13 items-center gap-x-3 rounded-r-lg pr-4 transition-colors max-md:h-12 ${
                   isActive
                     ? "text-primary border-primary border-l-4 bg-[#F3FDFA]"
                     : ""
@@ -81,13 +81,13 @@ export default function PanelSidebar({
                 {link.href.includes("/consultations") && (
                   <NotificationBadge
                     count={consultation}
-                    className={`${isPanelOpen ? "hidden" : "top-1 right-1"}`}
+                    className={`size-5! ${isPanelOpen ? "hidden" : "top-0 right-1"}`}
                   />
                 )}
                 {link.href.includes("/tickets") && (
                   <NotificationBadge
                     count={ticket}
-                    className={`${isPanelOpen ? "hidden" : "top-1 right-1"}`}
+                    className={`size-5! ${isPanelOpen ? "hidden" : "top-0 right-1"}`}
                   />
                 )}
                 <span className="relative flex w-6 shrink-0 items-center justify-center">
@@ -109,13 +109,13 @@ export default function PanelSidebar({
                     {link.href.includes("/consultations") && (
                       <NotificationBadge
                         count={consultation}
-                        className={`${isPanelOpen ? "top-0 bottom-0 -left-8 my-auto" : "hidden"}`}
+                        className={`size-5! ${isPanelOpen ? "top-0 bottom-0 -left-8 my-auto" : "hidden"}`}
                       />
                     )}
                     {link.href.includes("/tickets") && (
                       <NotificationBadge
                         count={ticket}
-                        className={`${isPanelOpen ? "top-0 bottom-0 -left-8 my-auto" : "hidden"}`}
+                        className={`size-5! ${isPanelOpen ? "top-0 bottom-0 -left-8 my-auto" : "hidden"}`}
                       />
                     )}
                   </span>
