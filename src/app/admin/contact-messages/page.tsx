@@ -1,4 +1,3 @@
-// src/app/admin/contact-messages/page.tsx
 import AdminContactMessagesHeader from "@/components/admin/AdminContactMessagesHeader";
 import AdminContactMessagesList from "@/components/admin/AdminContactMessagesList";
 import SectionTitle from "@/components/panel/SectionTitle";

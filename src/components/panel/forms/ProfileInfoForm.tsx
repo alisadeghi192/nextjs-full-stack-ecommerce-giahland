@@ -187,7 +187,7 @@ export default function ProfileInfoForm() {
             label="شماره موبایل"
             type="text"
             value={mobile}
-            onChange={() => {}} // 👈 اضافه
+            onChange={() => {}} 
             disabled
           />
           <FormField
