@@ -3,6 +3,7 @@ export * from "./blog";
 export * from "./blogSwiper";
 export * from "./breadcrumb";
 export * from "./consultations";
+export * from "./contact";
 export * from "./defaults";
 export * from "./faq";
 export * from "./header";
@@ -14,3 +15,4 @@ export * from "./productSwiper";
 export * from "./roles";
 export * from "./scroll";
 export * from "./ticket";
+

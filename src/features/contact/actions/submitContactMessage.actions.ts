@@ -5,7 +5,7 @@ import connectToDB from "@/lib/db/connect";
 import ContactMessage from "@/lib/db/models/ContactMessage";
 import { revalidatePath } from "next/cache";
 
-export async function submitContactAction(prevState: any, formData: FormData) {
+export async function submitContactMessage(prevState: any, formData: FormData) {
   const rawData = {
     name: formData.get("name"),
     mobile: formData.get("mobile"),
