@@ -21,7 +21,7 @@ export default function ContactForm() {
   const fname = useUserFirstName();
   const lname = useUserLastName();
   const storeMobile = useUserMobile() || "";
-  const displayName = `${fname || ""} ${lname || ""}`.trim();
+  const displayName = `${fname || ""} ${lname || ""}`.trim() || "";
 
   const [username, setUsername] = useState<string>(displayName);
   const [userMobile, setUserMobile] = useState<string>(storeMobile);
@@ -42,8 +42,6 @@ useEffect(() => {
   useEffect(() => {
     if (state?.success && state?.message) {
       toast.success(state.message);
-      setUsername("");
-      setUserMobile("");
       setSubject("");
       setMessage("");
       setNotRobot(false);

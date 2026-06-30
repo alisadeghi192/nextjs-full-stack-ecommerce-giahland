@@ -173,7 +173,7 @@ export default function AdminTicketList({ tickets }: AdminTicketListProps) {
                   <PrimaryButton
                     onClick={() => handleReplySubmit(ticket._id)}
                     disabled={isSubmitting[ticket._id]}
-                    className="mt-3 h-12 w-50 justify-self-end"
+                    className="mt-3 h-12 w-50 justify-self-end max-xs:w-full"
                   >
                     {isSubmitting[ticket._id]
                       ? "در حال ارسال..."

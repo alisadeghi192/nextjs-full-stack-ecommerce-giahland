@@ -13,8 +13,8 @@ export default function AdminTicketsHeader() {
   const { role, status, sort, department, setFilter } = useTicketParams();
 
   return (
-    <div className="mb-4 flex flex-wrap items-center gap-3 max-sm:gap-2">
-      <div className="w-37.5">
+    <div className="mb-4 flex flex-wrap max-[600px]:grid max-[600px]:grid-cols-2 *:max-[600px]:w-full  items-center gap-3 max-sm:gap-2">
+      <div className="w-42">
         <SortDropdown
           selectedSort={role}
           onSortChange={(value) => setFilter("role", value)}
@@ -22,7 +22,7 @@ export default function AdminTicketsHeader() {
           usedInPanel={true}
         />
       </div>
-      <div className="w-37.5">
+      <div className="w-42">
         <SortDropdown
           selectedSort={status}
           onSortChange={(value) => setFilter("status", value)}
@@ -30,7 +30,7 @@ export default function AdminTicketsHeader() {
           usedInPanel={true}
         />
       </div>
-      <div className="w-37.5">
+      <div className="w-42">
         <SortDropdown
           selectedSort={department}
           onSortChange={(value) => setFilter("department", value)}
@@ -38,7 +38,7 @@ export default function AdminTicketsHeader() {
           usedInPanel={true}
         />
       </div>
-      <div className="w-37.5">
+      <div className="w-42">
         <SortDropdown
           selectedSort={sort}
           onSortChange={(value) => setFilter("sort", value)}
