@@ -3,7 +3,7 @@ import AdminTicketsHeader from "@/components/admin/AdminTicketsHeader";
 import SectionTitle from "@/components/panel/SectionTitle";
 import Pagination from "@/components/shared/ui/pagination";
 import { getMeAction } from "@/features/auth/actions/me.actions";
-import { getAllTickets } from "@/features/tickets/actions/ticket.actions";
+import { getAllTickets } from "@/features/tickets/actions/admin.ticket.actions";
 import { redirect } from "next/navigation";
 
 interface PageProps {
@@ -12,6 +12,7 @@ interface PageProps {
     role?: string;
     sort?: string;
     status?: string;
+    department?: string;
   }>;
 }
 
@@ -22,7 +23,7 @@ export default async function AdminTicketsPage({ searchParams }: PageProps) {
     redirect("/admin/dashboard");
   }
 
-  const { page, role, sort, status } = await searchParams;
+  const { page, role, sort, status, department } = await searchParams;
   const currentPage = Number(page) || 1;
   const limit = 5;
 
@@ -30,15 +31,15 @@ export default async function AdminTicketsPage({ searchParams }: PageProps) {
     role,
     sort,
     status,
+    department,
   });
 
-  const baseUrl = `?role=${role || ""}&sort=${sort || "newest"}&status=${status || ""}`;
+  const baseUrl = `?role=${role || ""}&sort=${sort || "newest"}&status=${status || ""}&department=${department || ""}`;
 
   return (
     <div>
       <SectionTitle title="مدیریت تیکت‌ها" />
-      <AdminTicketsHeader
-      />
+      <AdminTicketsHeader />
       <AdminTicketList tickets={tickets} />
       {totalPages > 1 && (
         <div className="mt-6 flex justify-center">

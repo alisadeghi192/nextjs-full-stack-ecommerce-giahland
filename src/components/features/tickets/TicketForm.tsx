@@ -22,6 +22,7 @@ export default function TicketForm() {
       setImagePreview(null);
     } else if (state?.success === false && state?.message) {
       toast.error(state.message);
+      setImagePreview(null);
     }
   }, [state]);
 

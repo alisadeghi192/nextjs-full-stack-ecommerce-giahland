@@ -22,7 +22,7 @@ export default function TicketItem({
 }: TicketItemProps) {
   const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
   const { refresh } = useNotifications();
-
+  const isAnswered = ticket.status === "answered";
   const getDepartmentLabel = (value: string) => {
     return TICKET_DEPARTMENTS.find((d) => d.value === value)?.label || value;
   };
@@ -39,9 +39,7 @@ export default function TicketItem({
 
   return (
     <>
-      <div
-        className={`group ${ticket.status === "pending" ? "bg-red-200" : "bg-green-200"} border-neutral4 flex w-full flex-col rounded-xl border p-4 max-md:p-2`}
-      >
+      <div className="group border-neutral4 flex w-full flex-col rounded-xl border bg-white p-4 max-md:p-2">
         <div className="flex items-center justify-between">
           <div className="flex flex-wrap items-center gap-4">
             <span
@@ -52,6 +50,15 @@ export default function TicketItem({
             </span>
             <span className="bg-primary inline-block h-5 w-0.5 rounded-xs" />
             {new Date(ticket.createdAt).toLocaleDateString("fa-IR")}
+            <span
+              className={`rounded-full px-2 py-0.5 text-xs ${
+                ticket.status === "pending"
+                  ? "text-error bg-red-100"
+                  : "bg-green-100 text-green-600"
+              }`}
+            >
+              {ticket.status === "pending" ? "بی پاسخ" : "بسته شده"}
+            </span>
           </div>
           <div
             className="flex cursor-pointer items-center gap-x-2"
@@ -122,7 +129,7 @@ export default function TicketItem({
                 </div>
               </div>
               {ticket.adminReply && (
-                <div className="border-primary rounded-lg border-r-4 bg-white p-4">
+                <div className="border-primary rounded-lg border-r-4 bg-[#E3F7EA] p-4">
                   <div className="flex items-center justify-between">
                     <div className="mb-1 font-medium">پاسخ ادمین:</div>
                     <div className="ltr text-neutral11 max-md:text-sm">

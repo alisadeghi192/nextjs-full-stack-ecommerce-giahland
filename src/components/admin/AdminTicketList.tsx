@@ -6,7 +6,7 @@ import TextareaField from "@/components/shared/ui/TextareaField";
 import {
   deleteTicketAction,
   replyTicketAction,
-} from "@/features/tickets/actions/ticket.actions";
+} from "@/features/tickets/actions/admin.ticket.actions";
 import { AdminTicket } from "@/features/tickets/types/ticket.types";
 import { useState } from "react";
 import toast from "react-hot-toast";
@@ -104,10 +104,10 @@ export default function AdminTicketList({ tickets }: AdminTicketListProps) {
         return (
           <div
             key={ticket._id}
-            className="border-neutral3 relative rounded-2xl border p-3.5 max-xs:p-2.5 shadow-lg"
+            className="border-neutral3 max-xs:p-2.5 relative rounded-2xl border p-3.5 shadow-lg"
           >
-            <div className="mb-2 flex  justify-between items-center text-sm text-neutral9">
-              <div className="flex items-center flex-wrap gap-2 max-xs:gap-1">
+            <div className="text-neutral9 mb-2 flex items-center justify-between text-sm">
+              <div className="max-xs:gap-1 flex flex-wrap items-center gap-2">
                 <span className="text-primary font-medium max-sm:hidden">
                   {userLabel}:
                 </span>
@@ -118,7 +118,7 @@ export default function AdminTicketList({ tickets }: AdminTicketListProps) {
                 <span
                   className={`rounded-full px-2 py-0.5 text-xs ${
                     ticket.status === "pending"
-                      ? "bg-red-100 text-error"
+                      ? "text-error bg-red-100"
                       : "bg-green-100 text-green-600"
                   }`}
                 >
@@ -173,7 +173,7 @@ export default function AdminTicketList({ tickets }: AdminTicketListProps) {
                   <PrimaryButton
                     onClick={() => handleReplySubmit(ticket._id)}
                     disabled={isSubmitting[ticket._id]}
-                    className="mt-3 h-12 w-50 justify-self-end max-xs:w-full"
+                    className="max-xs:w-full mt-3 h-12 w-50 justify-self-end"
                   >
                     {isSubmitting[ticket._id]
                       ? "در حال ارسال..."
