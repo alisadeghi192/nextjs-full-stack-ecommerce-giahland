@@ -51,4 +51,5 @@ export interface TicketFilters {
   role?: string;      // "plant-doctor" | "user"
   sort?: string;      // "newest" | "oldest"
   status?: string;    // "pending" | "answered"
+  department?: string;  // "support" | "sales" | "complaint" | "other"
 }
