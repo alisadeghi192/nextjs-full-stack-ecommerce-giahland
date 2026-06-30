@@ -85,7 +85,10 @@ export default function PanelSidebar({
                   />
                 )}
                 {link.href.includes("/tickets") && (
-                  <NotificationBadge count={ticket} />
+                  <NotificationBadge
+                    count={ticket}
+                    className={`${isPanelOpen ? "hidden" : "top-1 right-1"}`}
+                  />
                 )}
                 <span className="relative flex w-6 shrink-0 items-center justify-center">
                   {link.icon}
@@ -106,11 +109,14 @@ export default function PanelSidebar({
                     {link.href.includes("/consultations") && (
                       <NotificationBadge
                         count={consultation}
-                        className={`${isPanelOpen ? "top-0 bottom-0 my-auto -left-8" : "hidden"}`}
+                        className={`${isPanelOpen ? "top-0 bottom-0 -left-8 my-auto" : "hidden"}`}
                       />
                     )}
                     {link.href.includes("/tickets") && (
-                      <NotificationBadge count={ticket} />
+                      <NotificationBadge
+                        count={ticket}
+                        className={`${isPanelOpen ? "top-0 bottom-0 -left-8 my-auto" : "hidden"}`}
+                      />
                     )}
                   </span>
                 )}

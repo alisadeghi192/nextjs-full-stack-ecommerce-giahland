@@ -1,4 +1,6 @@
 "use client";
+import { useNotifications } from "@/features/notifications/hooks/useNotifications";
+import { markTicketAsRead } from "@/features/tickets/actions/ticket.actions";
 import { ITicket } from "@/features/tickets/types/ticket.types";
 import { TICKET_DEPARTMENTS } from "@/lib/constants";
 import Image from "next/image";
@@ -19,9 +21,20 @@ export default function TicketItem({
   onToggle,
 }: TicketItemProps) {
   const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
+  const { refresh } = useNotifications();
 
   const getDepartmentLabel = (value: string) => {
     return TICKET_DEPARTMENTS.find((d) => d.value === value)?.label || value;
+  };
+
+  const handleToggle = async () => {
+    if (!isOpen && ticket.status === "answered" && !ticket.isReadByUser) {
+      const result = await markTicketAsRead(ticket._id);
+      if (result.success) {
+        refresh();
+      }
+    }
+    onToggle();
   };
 
   return (
@@ -33,7 +46,7 @@ export default function TicketItem({
           <div className="flex flex-wrap items-center gap-4">
             <span
               className="group-hover:text-primary cursor-pointer font-bold transition-colors"
-              onClick={onToggle}
+              onClick={handleToggle}
             >
               {ticket.subject}
             </span>
@@ -42,7 +55,7 @@ export default function TicketItem({
           </div>
           <div
             className="flex cursor-pointer items-center gap-x-2"
-            onClick={onToggle}
+            onClick={handleToggle}
           >
             <span className="text-shade2 hover:text-primary font-medium transition-colors max-md:hidden">
               مشاهده جزئیات
@@ -84,7 +97,8 @@ export default function TicketItem({
                   <div className="flex items-center justify-between max-md:items-start">
                     <div className="mb-2 flex items-center gap-x-2 max-md:flex-col max-md:items-start">
                       <span className="font-medium max-md:font-normal">
-                        <span className="max-md:hidden">موضوع:</span> {ticket.subject}
+                        <span className="max-md:hidden">موضوع:</span>{" "}
+                        {ticket.subject}
                       </span>
                       <span className="bg-primary inline-block h-5 w-0.5 rounded-xs max-md:hidden" />
                       <span className="font-medium max-md:mt-1 max-md:font-normal">
@@ -102,7 +116,7 @@ export default function TicketItem({
                       })}
                     </div>
                   </div>
-                  <p className="text-neutral10 max-md:text-sm whitespace-pre-wrap">
+                  <p className="text-neutral10 whitespace-pre-wrap max-md:text-sm">
                     {ticket.message}
                   </p>
                 </div>
@@ -124,7 +138,7 @@ export default function TicketItem({
                       )}
                     </div>
                   </div>
-                  <p className="whitespace-pre-wrap text-gray-700 mt-2 max-md:text-sm">
+                  <p className="mt-2 whitespace-pre-wrap text-gray-700 max-md:text-sm">
                     {ticket.adminReply.message}
                   </p>
                 </div>
