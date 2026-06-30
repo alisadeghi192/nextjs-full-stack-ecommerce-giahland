@@ -1,0 +1,187 @@
+"use client";
+
+import TicketItem from "@/components/features/tickets/TicketItem";
+import PrimaryButton from "@/components/shared/ui/PrimaryButton";
+import TextareaField from "@/components/shared/ui/TextareaField";
+import {
+  deleteTicketAction,
+  replyTicketAction,
+} from "@/features/tickets/actions/ticket.actions";
+import { AdminTicket } from "@/features/tickets/types/ticket.types";
+import { useState } from "react";
+import toast from "react-hot-toast";
+import { MdDelete, MdDriveFileRenameOutline } from "react-icons/md";
+import ConfirmDialog from "../shared/ui/ConfirmDialog";
+
+interface AdminTicketListProps {
+  tickets: AdminTicket[];
+}
+
+export default function AdminTicketList({ tickets }: AdminTicketListProps) {
+  const [openId, setOpenId] = useState<string | null>(null);
+  const [replies, setReplies] = useState<Record<string, string>>({});
+  const [isSubmitting, setIsSubmitting] = useState<Record<string, boolean>>({});
+  const [deletingId, setDeletingId] = useState<string | null>(null);
+
+  const toggleItem = (id: string) => {
+    setOpenId((prev) => (prev === id ? null : id));
+  };
+
+  const handleReplyChange = (ticketId: string, value: string) => {
+    setReplies((prev) => ({ ...prev, [ticketId]: value }));
+  };
+
+  const handleReplySubmit = async (ticketId: string) => {
+    const message = replies[ticketId]?.trim();
+    if (!message) {
+      toast.error("لطفاً متن پاسخ را وارد کنید.");
+      return;
+    }
+
+    setIsSubmitting((prev) => ({ ...prev, [ticketId]: true }));
+
+    const result = await replyTicketAction(ticketId, message);
+
+    if (result.success) {
+      toast.success(result.message);
+      setReplies((prev) => ({ ...prev, [ticketId]: "" }));
+    } else {
+      toast.error(result.message);
+    }
+
+    setIsSubmitting((prev) => ({ ...prev, [ticketId]: false }));
+  };
+
+  const handleDelete = async (ticketId: string) => {
+    setDeletingId(ticketId);
+    const result = await deleteTicketAction(ticketId);
+
+    if (result.success) {
+      toast.success(result.message);
+      if (openId === ticketId) {
+        setOpenId(null);
+      }
+    } else {
+      toast.error(result.message);
+    }
+    setDeletingId(null);
+  };
+
+  const getUserDisplayName = (ticket: AdminTicket) => {
+    const firstName = ticket.user.firstName?.trim();
+    const lastName = ticket.user.lastName?.trim();
+
+    if (firstName && lastName) {
+      return `${firstName} ${lastName}`;
+    }
+    if (firstName) {
+      return firstName;
+    }
+    if (lastName) {
+      return lastName;
+    }
+    return "کاربر";
+  };
+
+  const getUserLabel = (role: string) =>
+    role === "plant-doctor" ? "پزشک" : "کاربر";
+
+  if (tickets.length === 0) {
+    return (
+      <div className="border-neutral3 rounded-2xl border p-6 text-center text-gray-500 shadow-lg">
+        هیچ تیکتی ثبت نشده است.
+      </div>
+    );
+  }
+
+  return (
+    <div className="space-y-4">
+      {tickets.map((ticket) => {
+        const isOpen = openId === ticket._id;
+        const isPending = ticket.status === "pending";
+        const userLabel = getUserLabel(ticket.user.role);
+        const userDisplayName = getUserDisplayName(ticket);
+        return (
+          <div
+            key={ticket._id}
+            className="border-neutral3 relative rounded-2xl border p-3.5 shadow-lg"
+          >
+            <div className="mb-2 flex flex-wrap items-center gap-2 text-sm text-gray-500">
+              <span className="text-primary font-medium max-sm:hidden">{userLabel}:</span>
+              <span>{userDisplayName}</span>
+              <span className="text-gray-400">|</span>
+              <span>{ticket.user.mobile}</span>
+              <span className="text-gray-400">|</span>
+              <span
+                className={`rounded-full px-2 py-0.5 text-xs ${
+                  ticket.status === "pending"
+                    ? "bg-red-100 text-red-600"
+                    : "bg-green-100 text-green-600"
+                }`}
+              >
+                {ticket.status === "pending"
+                  ? "بی پاسخ"
+                  : "بسته شده"}
+              </span>
+              <ConfirmDialog
+                onConfirm={() => handleDelete(ticket._id)}
+                title="آیا از حذف این تیکت مطمئن هستید؟ این عملیات برگشت ناپذیر می باشد."
+                confirmText="بله، حذف شود"
+                cancelText="انصراف"
+                disabled={deletingId === ticket._id}
+                className="flex items-center gap-1 mr-auto bg-error cursor-pointer rounded-lg px-3 py-1 text-sm text-white transition hover:bg-bg-error hover:text-error disabled:opacity-50"
+              >
+                <MdDelete size={18} />
+                <span className="max-sm:hidden">حذف</span>
+              </ConfirmDialog>
+            </div>
+
+            <TicketItem
+              ticket={
+                {
+                  ...ticket,
+                  user: ticket.user._id,
+                } as any
+              }
+              isOpen={isOpen}
+              onToggle={() => toggleItem(ticket._id)}
+            />
+
+            <div
+              className={`grid transition-all duration-300 ${
+                isOpen && isPending
+                  ? "mt-3 grid-rows-[1fr] opacity-100"
+                  : "mt-0 grid-rows-[0fr] opacity-0"
+              }`}
+            >
+              <div className="overflow-hidden">
+                <div className="border-primary rounded-xl border border-dashed bg-white p-4 shadow-sm">
+                  <TextareaField
+                    icon={<MdDriveFileRenameOutline size={20} />}
+                    id={`admin-reply-${ticket._id}`}
+                    name={`admin-reply-${ticket._id}`}
+                    label="پاسخ شما"
+                    rows={3}
+                    value={replies[ticket._id] || ""}
+                    onChange={(e) =>
+                      handleReplyChange(ticket._id, e.target.value)
+                    }
+                  />
+                  <PrimaryButton
+                    onClick={() => handleReplySubmit(ticket._id)}
+                    disabled={isSubmitting[ticket._id]}
+                    className="mt-3 h-12 w-50 justify-self-end"
+                  >
+                    {isSubmitting[ticket._id]
+                      ? "در حال ارسال..."
+                      : "ارسال پاسخ"}
+                  </PrimaryButton>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
