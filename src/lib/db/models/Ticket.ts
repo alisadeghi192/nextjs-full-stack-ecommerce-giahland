@@ -4,7 +4,7 @@ import mongoose, { Model, Schema } from "mongoose";
 
 const TicketSchema = new Schema<ITicket>(
   {
-    user: { type: Schema.Types.ObjectId, ref: "User", required: true },
+    user: { type: Schema.Types.ObjectId, ref: "BaseUser", required: true },
     subject: { type: String, required: true },
     department: {
       type: String,
