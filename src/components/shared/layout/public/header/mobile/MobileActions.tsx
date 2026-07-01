@@ -9,6 +9,7 @@ import {
   useUserAvatar,
   useUserRole,
 } from "@/features/auth/selectors/auth.selectors";
+import { useAdminNotifications } from "@/features/notifications/hooks/useAdminNotifications";
 import { useNotifications } from "@/features/notifications/hooks/useNotifications";
 import { useCartActions } from "@/stores/selectors/ui.selectors";
 import Image from "next/image";
@@ -29,13 +30,22 @@ export default function MobileActions() {
   const userRole = useUserRole();
   const isAdmin = useIsAdmin();
   const { toggleCart } = useCartActions();
-  const { totalUnread, refresh } = useNotifications();
   const isDoctor = userRole === "plant-doctor";
   const showCart = !isDoctor;
 
+  const { totalUnread: userTotal, refresh: refreshUser } = useNotifications();
+
+  const { total: adminTotal, refresh: refreshAdmin } = useAdminNotifications();
+
+
   useEffect(() => {
-    refresh();
-  }, []);
+    if (isAdmin) {
+      refreshAdmin();
+    } else {
+      refreshUser();
+    }
+  }, [isAdmin]);
+
 
   return (
     <div className="flex items-center gap-2">
@@ -66,7 +76,7 @@ export default function MobileActions() {
             className="rounded-full max-md:size-10 max-sm:size-8"
           />
           <NotificationBadge
-            count={totalUnread}
+          count={isAdmin ? adminTotal : userTotal}
             className="-top-2 -right-1 max-sm:size-4 max-sm:text-[10px]"
           />
         </Link>

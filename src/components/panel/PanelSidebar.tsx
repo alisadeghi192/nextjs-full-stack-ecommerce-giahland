@@ -2,18 +2,21 @@
 import NotificationBadge from "@/components/shared/ui/NotificationBadge";
 import {
   useAuthActions,
+  useIsAdmin,
   useUserAvatar,
   useUserFirstName,
-  useUserMobile,
-  useUserRole,
+  useUserMobile
 } from "@/features/auth/selectors/auth.selectors";
+import { useAdminNotifications } from "@/features/notifications/hooks/useAdminNotifications";
 import { useNotifications } from "@/features/notifications/hooks/useNotifications";
 import { PanelLink } from "@/lib/constants/panelLinks";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect } from "react";
 import { HiOutlineLogout } from "react-icons/hi";
 import ConfirmDialog from "../shared/ui/ConfirmDialog";
+
 interface PanelSidebarProps {
   links: PanelLink[];
   isPanelOpen: boolean;
@@ -26,14 +29,26 @@ export default function PanelSidebar({
   onClose,
 }: PanelSidebarProps) {
   const pathname = usePathname();
-  const role = useUserRole();
   const mobile = useUserMobile();
   const avatar = useUserAvatar();
   const firstName = useUserFirstName();
   const { logout } = useAuthActions();
-  const { consultation, ticket } = useNotifications();
+  const isAdmin = useIsAdmin();
+
+  const { consultation, ticket , refresh : userRefresh } = useNotifications();
+
+  const {tickets : adminTicket , contact , refresh : adminRefresh} = useAdminNotifications();
+
   const displayName = firstName || "کاربر";
   const persianMobile = mobile?.replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[+d]) || "";
+
+  useEffect(()=>{
+    if(isAdmin){
+      adminRefresh()
+    }else{
+      userRefresh()
+    }
+  },[])
 
   return (
     <div className="custom-scroll ltr *:rtl flex h-full flex-col overflow-x-hidden overflow-y-auto py-6 pr-1 max-md:py-0">
@@ -49,7 +64,7 @@ export default function PanelSidebar({
           {isPanelOpen && (
             <div className="flex flex-col gap-y-1 text-sm/6.25">
               <span className="font-medium">{displayName}</span>
-              {role && <span className="text-neutral9">{persianMobile}</span>}
+              <span className="text-neutral9">{persianMobile}</span>
             </div>
           )}
         </div>
@@ -67,6 +82,24 @@ export default function PanelSidebar({
             const lastPart = link.href.split("/").pop() || "";
             isActive = pathname.includes(lastPart);
           }
+
+          let badgeCount = 0;
+          let showBadge = false;
+
+          if (link.href.includes("/consultations")) {
+            badgeCount = consultation;
+            showBadge = true;
+          } else if (link.href === "/admin/tickets") {
+            badgeCount = adminTicket;
+            showBadge = true;
+          } else if (link.href.includes("/tickets") && !isAdmin) {
+            badgeCount = ticket;
+            showBadge = true;
+          } else if (link.href === "/admin/contact-messages") {
+            badgeCount = contact;
+            showBadge = true;
+          }
+
           return (
             <div key={link.href} className="group relative">
               <Link
@@ -78,15 +111,9 @@ export default function PanelSidebar({
                     : ""
                 }`}
               >
-                {link.href.includes("/consultations") && (
+                {showBadge && badgeCount > 0 && (
                   <NotificationBadge
-                    count={consultation}
-                    className={`size-5! ${isPanelOpen ? "hidden" : "top-0 right-1"}`}
-                  />
-                )}
-                {link.href.includes("/tickets") && (
-                  <NotificationBadge
-                    count={ticket}
+                    count={badgeCount}
                     className={`size-5! ${isPanelOpen ? "hidden" : "top-0 right-1"}`}
                   />
                 )}
@@ -106,15 +133,9 @@ export default function PanelSidebar({
                 {isPanelOpen && (
                   <span className="relative text-lg/8 text-nowrap max-md:text-base/7.25">
                     {link.label}
-                    {link.href.includes("/consultations") && (
+                    {showBadge && badgeCount > 0 && (
                       <NotificationBadge
-                        count={consultation}
-                        className={`size-5! ${isPanelOpen ? "top-0 bottom-0 -left-8 my-auto" : "hidden"}`}
-                      />
-                    )}
-                    {link.href.includes("/tickets") && (
-                      <NotificationBadge
-                        count={ticket}
+                        count={badgeCount}
                         className={`size-5! ${isPanelOpen ? "top-0 bottom-0 -left-8 my-auto" : "hidden"}`}
                       />
                     )}

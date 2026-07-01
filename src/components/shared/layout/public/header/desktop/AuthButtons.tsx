@@ -10,6 +10,7 @@ import {
   useUserAvatar,
   useUserFirstName,
 } from "@/features/auth/selectors/auth.selectors";
+import { useAdminNotifications } from "@/features/notifications/hooks/useAdminNotifications";
 import { useNotifications } from "@/features/notifications/hooks/useNotifications";
 import {
   useIsProfileDropdownOpen,
@@ -35,11 +36,18 @@ export default function AuthButtons() {
     useProfileDropdownActions();
   const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const openTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const { totalUnread, refresh } = useNotifications();
+
+  const { totalUnread: userTotal, refresh: refreshUser } = useNotifications();
+  const { total: adminTotal, refresh: refreshAdmin } = useAdminNotifications();
+
 
   useEffect(() => {
-    refresh();
-  }, []);
+    if (isAdmin) {
+      refreshAdmin();
+    } else {
+      refreshUser();
+    }
+  }, [isAdmin]);
 
   const clearCloseTimeout = () => {
     if (closeTimeoutRef.current) {
@@ -97,7 +105,10 @@ export default function AuthButtons() {
             height={48}
             className="size-12 rounded-full object-cover object-center max-lg:size-10"
           />
-          <NotificationBadge count={totalUnread} className="-top-2 -right-1" />
+          <NotificationBadge
+            count={isAdmin ? adminTotal : userTotal}
+            className="-top-2 -right-1"
+          />
           <span className="text-lg max-lg:hidden">سلام {userFirstName}</span>
         </Link>
         <div
@@ -123,7 +134,10 @@ export default function AuthButtons() {
             <span className="font-medium">
               {isAdmin ? "پنل مدیریت" : "حساب کاربری"}
             </span>
-            <NotificationBadge count={totalUnread} className="left-4" />
+            <NotificationBadge
+              count={isAdmin ? adminTotal : userTotal}
+              className="left-4"
+            />
           </Link>
           <ConfirmDialog
             onConfirm={handleLogout}
