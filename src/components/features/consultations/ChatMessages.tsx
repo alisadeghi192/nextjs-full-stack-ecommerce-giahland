@@ -98,16 +98,18 @@ export default function ChatMessages({
                   ? "bg-neutral2 rounded-br-none"
                   : "rounded-bl-none bg-[#E3F7EA]"
               }`}
-              onClick={() => {
-                const index = allImages.findIndex(
-                  (img) => img.src === message.image,
-                );
-                setLightboxIndex(index >= 0 ? index : 0);
-                setLightboxOpen(true);
-              }}
             >
               {message.image && (
-                <div className="relative mb-2 size-48 overflow-hidden rounded-lg">
+                <div
+                  className="relative mb-2 size-48 cursor-pointer overflow-hidden rounded-lg"
+                  onClick={() => {
+                    const index = allImages.findIndex(
+                      (img) => img.src === message.image,
+                    );
+                    setLightboxIndex(index >= 0 ? index : 0);
+                    setLightboxOpen(true);
+                  }}
+                >
                   <Image
                     src={message.image}
                     alt="attachment"
@@ -157,6 +159,7 @@ export default function ChatMessages({
         close={() => setLightboxOpen(false)}
         slides={allImages}
         index={lightboxIndex}
+        controller={{closeOnBackdropClick : true}}
         styles={{
           container: { backgroundColor: "rgba(0,0,0,0.9)" },
         }}

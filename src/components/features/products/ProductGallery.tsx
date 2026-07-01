@@ -79,6 +79,7 @@ export default function ProductGallery({
         close={() => setIsOpen(false)}
         slides={slides}
         index={photoIndex}
+        controller={{closeOnBackdropClick : true}}
         styles={{
           container: { backgroundColor: "rgba(0,0,0,0.9)" },
         }}

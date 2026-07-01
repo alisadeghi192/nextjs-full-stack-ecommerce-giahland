@@ -1,18 +1,17 @@
 "use client";
 
-import React from "react";
-import { MdOutlineLogin, MdOutlineLogout, MdOutlineMenu } from "react-icons/md";
-import { navLinks } from "@/lib/constants";
-import { Logo, MobileNavLink } from "..";
-import { IoClose } from "react-icons/io5";
-import Link from "next/link";
-import {
-  useIsAuthenticated,
-  useAuthActions,
-} from "@/features/auth/selectors/auth.selectors";
-import { useIsMenuOpen, useMenuActions } from "@/stores/selectors/ui.selectors";
-import { HiOutlineLogout } from "react-icons/hi";
 import ConfirmDialog from "@/components/shared/ui/ConfirmDialog";
+import {
+  useAuthActions,
+  useIsAuthenticated,
+} from "@/features/auth/selectors/auth.selectors";
+import { navLinks } from "@/lib/constants";
+import { useIsMenuOpen, useMenuActions } from "@/stores/selectors/ui.selectors";
+import Link from "next/link";
+import { HiOutlineLogout } from "react-icons/hi";
+import { IoClose } from "react-icons/io5";
+import { MdOutlineLogin, MdOutlineMenu } from "react-icons/md";
+import { Logo, MobileNavLink } from "..";
 
 const MobileMenu = () => {
   const isAuthenticated = useIsAuthenticated();
@@ -42,7 +41,9 @@ const MobileMenu = () => {
       >
         <div className="flex h-full flex-col">
           <div className="mb-4 flex items-center justify-between">
-            <Logo />
+            <div onClick={closeMenu}>
+              <Logo />
+            </div>
             <button onClick={closeMenu}>
               <IoClose className="size-6" />
             </button>

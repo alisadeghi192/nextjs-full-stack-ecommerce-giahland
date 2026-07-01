@@ -159,6 +159,7 @@ export default function TicketItem({
         <Lightbox
           open={!!lightboxSrc}
           close={() => setLightboxSrc(null)}
+          controller={{closeOnBackdropClick : true}}
           slides={[{ src: lightboxSrc }]}
         />
       )}
