@@ -1,13 +1,13 @@
 "use client";
 
-import { useActionState, useTransition, useEffect } from "react";
-import { useForm } from "react-hook-form";
+import { signinAction } from "@/features/auth/actions/signin.actions";
+import { ILoginInput, LoginSchema } from "@/features/auth/schemas/auth.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
+import { useActionState, useEffect, useTransition } from "react";
+import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import LoginForm from "./LoginForm";
-import { signinAction } from "@/features/auth/actions/signin.actions";
-import { LoginSchema, ILoginInput } from "@/features/auth/schemas/auth.schema";
 
 interface LoginFormWrapperProps {
   onToggle: () => void;
@@ -38,10 +38,7 @@ export default function LoginFormWrapper({ onToggle }: LoginFormWrapperProps) {
         style: { maxWidth: "fit-content", boxShadow: "shadow-lg" },
       });
       reset();
-      setTimeout(() => {
-        toast.dismiss()
-        router.push("/");
-      }, 1000);
+      router.push("/");
     } else if (state?.success === false && state?.message) {
       toast.error(state.message, {
         position: "top-left",

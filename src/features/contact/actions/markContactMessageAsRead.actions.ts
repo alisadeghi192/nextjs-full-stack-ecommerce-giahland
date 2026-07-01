@@ -29,7 +29,6 @@ export async function markContactMessageAsRead(messageId: string) {
   await message.save();
 
   revalidatePath("/admin/contact-messages");
-
   return {
     success: true,
     message: message.isRead

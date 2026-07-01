@@ -3,6 +3,7 @@
 import ConfirmDialog from "@/components/shared/ui/ConfirmDialog";
 import { deleteContactMessage } from "@/features/contact/actions/deleteContactMessage.actions";
 import { markContactMessageAsRead } from "@/features/contact/actions/markContactMessageAsRead.actions";
+import { useAdminNotifications } from "@/features/notifications/hooks/useAdminNotifications";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { MdDelete, MdMarkEmailRead, MdMarkEmailUnread } from "react-icons/md";
@@ -25,13 +26,14 @@ export default function AdminContactMessagesList({
   messages,
 }: AdminContactMessagesListProps) {
   const [isLoading, setIsLoading] = useState<string | null>(null);
+const { refresh } = useAdminNotifications();
 
   const handleToggleRead = async (id: string) => {
     setIsLoading(id);
     const result = await markContactMessageAsRead(id);
     if (result.success) {
       toast.success(result.message);
-      window.location.reload();
+      refresh()
     } else {
       toast.error(result.message);
     }
@@ -43,7 +45,7 @@ export default function AdminContactMessagesList({
     const result = await deleteContactMessage(id);
     if (result.success) {
       toast.success(result.message);
-      window.location.reload();
+      refresh()
     } else {
       toast.error(result.message);
     }

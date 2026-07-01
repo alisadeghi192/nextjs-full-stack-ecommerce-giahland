@@ -1,16 +1,16 @@
 "use client";
 
-import { useActionState, useEffect, useTransition } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import toast from "react-hot-toast";
-import RegisterForm from "./RegisterForm";
-import { useRouter } from "next/navigation";
 import { signupAction } from "@/features/auth/actions/signup.actions";
 import {
-  RegisterSchema,
   IRegisterInput,
+  RegisterSchema,
 } from "@/features/auth/schemas/auth.schema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
+import { useActionState, useEffect, useTransition } from "react";
+import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+import RegisterForm from "./RegisterForm";
 
 interface RegisterFormWrapperProps {
   onToggle: () => void;
@@ -43,9 +43,7 @@ export default function RegisterFormWrapper({
         style: { maxWidth: "fit-content", boxShadow: "shadow-lg" },
       });
       reset();
-      setTimeout(() => {
-        router.push("/");
-      }, 1000);
+      router.push("/");
     } else if (state?.success === false && state?.message) {
       toast.error(state.message, {
         position: "top-left",

@@ -28,7 +28,6 @@ export async function deleteContactMessage(messageId: string) {
   await ContactMessage.findByIdAndDelete(messageId);
 
   revalidatePath("/admin/contact-messages");
-
   return {
     success: true,
     message: "پیام با موفقیت حذف شد.",

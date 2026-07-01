@@ -1,9 +1,7 @@
 "use server";
 
 import { getMeAction } from "@/features/auth/actions/me.actions";
-import {
-  ITicket
-} from "@/features/tickets/types/ticket.types";
+import { ITicket } from "@/features/tickets/types/ticket.types";
 import { TicketDepartment } from "@/lib/constants";
 import connectToDB from "@/lib/db/connect";
 import Ticket from "@/lib/db/models/Ticket";
@@ -99,7 +97,6 @@ export async function markTicketAsRead(ticketId: string) {
   await ticket.save();
 
   revalidatePath("/user/tickets");
-
   return {
     success: true,
     message: "تیکت به‌عنوان خوانده شده علامت‌گذاری شد.",

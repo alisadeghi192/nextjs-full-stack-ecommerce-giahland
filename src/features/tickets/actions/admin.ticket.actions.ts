@@ -2,8 +2,8 @@
 
 import { getMeAction } from "@/features/auth/actions/me.actions";
 import {
-    PaginatedTickets,
-    TicketFilters
+  PaginatedTickets,
+  TicketFilters,
 } from "@/features/tickets/types/ticket.types";
 import connectToDB from "@/lib/db/connect";
 import Ticket from "@/lib/db/models/Ticket";
@@ -55,7 +55,6 @@ export async function replyTicketAction(ticketId: string, message: string) {
   await ticket.save();
 
   revalidatePath("/admin/tickets");
-
   return {
     success: true,
     message: "پاسخ با موفقیت ارسال شد.",
@@ -190,7 +189,6 @@ export async function deleteTicketAction(ticketId: string) {
 
   revalidatePath("/admin/tickets");
   revalidatePath("/user/tickets");
-
   return {
     success: true,
     message: "تیکت با موفقیت حذف شد.",

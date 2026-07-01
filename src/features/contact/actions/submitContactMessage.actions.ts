@@ -35,9 +35,10 @@ export async function submitContactMessage(prevState: any, formData: FormData) {
   });
 
   revalidatePath("/contact");
-
+  revalidatePath("/admin/contact-messages");
   return {
     success: true,
-    message: "پیام شما با موفقیت ارسال شد. کارشناسان ما به زودی با شما تماس خواهند گرفت.",
+    message:
+      "پیام شما با موفقیت ارسال شد. کارشناسان ما به زودی با شما تماس خواهند گرفت.",
   };
 }

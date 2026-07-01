@@ -3,6 +3,7 @@
 import TicketItem from "@/components/features/tickets/TicketItem";
 import PrimaryButton from "@/components/shared/ui/PrimaryButton";
 import TextareaField from "@/components/shared/ui/TextareaField";
+import { useAdminNotifications } from "@/features/notifications/hooks/useAdminNotifications";
 import {
   deleteTicketAction,
   replyTicketAction,
@@ -22,7 +23,7 @@ export default function AdminTicketList({ tickets }: AdminTicketListProps) {
   const [replies, setReplies] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState<Record<string, boolean>>({});
   const [deletingId, setDeletingId] = useState<string | null>(null);
-
+  const { refresh } = useAdminNotifications();
   const toggleItem = (id: string) => {
     setOpenId((prev) => (prev === id ? null : id));
   };
@@ -45,6 +46,7 @@ export default function AdminTicketList({ tickets }: AdminTicketListProps) {
     if (result.success) {
       toast.success(result.message);
       setReplies((prev) => ({ ...prev, [ticketId]: "" }));
+      refresh();
     } else {
       toast.error(result.message);
     }
@@ -58,6 +60,7 @@ export default function AdminTicketList({ tickets }: AdminTicketListProps) {
 
     if (result.success) {
       toast.success(result.message);
+      refresh()
       if (openId === ticketId) {
         setOpenId(null);
       }
