@@ -35,6 +35,14 @@ const CommentSchema = new Schema<IComment>(
       text: { type: String, required: true },
       date: { type: Date, default: Date.now },
     },
+    isApproved: {
+      type: Boolean,
+      default: false,
+    },
+    isReadByAdmin: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true },
 );
