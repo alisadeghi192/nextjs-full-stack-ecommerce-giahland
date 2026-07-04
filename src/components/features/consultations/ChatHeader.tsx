@@ -41,7 +41,6 @@ export default function ChatHeader({
       setTimeout(() => {
         router.push("/user/consultations/list");
       }, 1500); 
-      router.push("/user/consultations/list");
     } else {
       toast.error(result.message);
     }

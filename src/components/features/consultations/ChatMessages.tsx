@@ -37,7 +37,7 @@ export default function ChatMessages({
 
   useEffect(() => {
     scrollToBottom();
-  });
+  }, [initialMessages]);
 
   useEffect(() => {
     if (!isLoading && initialMessages.length > 0) {

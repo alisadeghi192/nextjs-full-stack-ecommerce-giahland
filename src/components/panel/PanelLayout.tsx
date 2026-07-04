@@ -48,7 +48,7 @@ export default function PanelLayout({ links, children }: PanelLayoutProps) {
         />
 
         <div
-          className={`flex-1 pl-0 max-md:p-0 ${isChatPage ? "p-0 max-md:h-[calc(100dvh-60px)]" : "p-6 max-md:pt-4 max-md:pb-7"}`}
+          className={`flex-1 pl-0 max-md:p-0 ${isChatPage ? "p-0 max-md:h-[calc(100vh-60px)]" : "p-6 max-md:pt-4 max-md:pb-7"}`}
         >
           {children}
         </div>
