@@ -34,9 +34,7 @@ export default function ChatInput({
     }
   }, [message]);
 
-  useEffect(() => {
-    textareaRef.current?.focus();
-  }, []);
+
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -79,9 +77,6 @@ export default function ChatInput({
       setMessage("");
       setSelectedImage(null);
       setImagePreview(null);
-      setTimeout(() => {
-        textareaRef.current?.focus();
-      }, 50);
     } else {
       toast.error(result.message || "خطا در ارسال پیام");
     }

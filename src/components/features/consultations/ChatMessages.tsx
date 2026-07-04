@@ -83,14 +83,14 @@ export default function ChatMessages({
   }
 
   return (
-    <div className="custom-scroll ltr flex-1 space-y-3 overflow-y-auto px-4 pt-8 pb-5">
+    <div className="custom-scroll ltr flex flex-col gap-y-3  h-[calc(100dvh-177px)] max-md:h-[calc(100dvh-160px)] overflow-y-auto px-4 pt-4 pb-2">
       {initialMessages.map((message) => {
         const isMyMessage = message.sender === (isDoctor ? "doctor" : "user");
 
         return (
           <div
             key={message._id}
-            className={`rtl flex ${isMyMessage ? "justify-start" : "justify-end"}`}
+            className={`rtl flex  ${isMyMessage ? "justify-start" : "justify-end"}`}
           >
             <div
               className={`text-neutral10 border-neutral9 max-w-6/10 rounded-2xl border px-4 py-2 max-lg:max-w-8/10 ${
