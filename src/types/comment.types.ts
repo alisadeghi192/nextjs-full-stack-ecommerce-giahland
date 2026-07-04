@@ -1,4 +1,3 @@
-
 export interface CommentAuthor {
   _id: string;
   name: string;
@@ -9,7 +8,7 @@ export interface CommentAuthor {
 export interface IComment {
   _id: string;
   targetType?: "product" | "blog";
-  targetId?: string;  
+  targetId?: string;
   user: CommentAuthor;
   text: string;
   date: Date;
@@ -20,4 +19,6 @@ export interface IComment {
   };
   createdAt?: Date;
   updatedAt?: Date;
+  isApproved?: boolean;
+  isReadByAdmin?: boolean;
 }
