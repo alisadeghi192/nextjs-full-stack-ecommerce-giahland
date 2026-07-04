@@ -48,7 +48,7 @@ export default function ChatHeader({
   };
 
   return (
-    <div className="max-xs:h-12 max-xs:gap-1 sticky top-18 z-10 mx-auto flex h-14.5 w-9/10 items-center gap-2 transition-all duration-200">
+    <div className="max-xs:h-12 max-xs:gap-1 sticky top-18 max-xs:top-16 z-10 mx-auto flex h-14.5 w-9/10 items-center gap-2 transition-all duration-200">
       {/* close consultation button */}
       {showFinishButton && (
         <ConfirmDialog

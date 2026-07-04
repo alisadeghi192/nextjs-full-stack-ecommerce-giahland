@@ -18,9 +18,31 @@ export default function ChatMessages({
   isLoading,
 }: ChatMessagesProps) {
   const { refresh } = useNotifications();
+  const [messagesHeight, setMessagesHeight] = useState("calc(100dvh - 177px)")
+  const messagesContainerRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     refresh();
   }, []);
+
+  useEffect(() => {
+    const updateHeight = () => {
+      const viewport = window.visualViewport;
+      if (viewport) {
+        const headerHeight = window.innerWidth < 768 ? 56 : 61; 
+        const chatHeaderHeight = window.innerWidth < 480 ? 48 : 58;
+        const inputHeight = 48;
+        const newHeight = viewport.height - headerHeight - inputHeight - chatHeaderHeight ;
+        setMessagesHeight(`${newHeight}px`);
+      }
+    };
+    updateHeight();
+    window.visualViewport?.addEventListener("resize", updateHeight);
+    return () => {
+      window.visualViewport?.removeEventListener("resize", updateHeight);
+    };
+  }, []);
+
   const userRole = useUserRole();
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const isDoctor = userRole === "plant-doctor";
@@ -48,7 +70,7 @@ export default function ChatMessages({
 
   if (initialMessages.length === 0) {
     return (
-      <div className="flex flex-1 items-center justify-center overflow-y-auto">
+      <div className="flex flex-1 items-center justify-center overflow-y-auto ">
         <div className="border-neutral9 fixed top-45/100 rounded-2xl border bg-white p-10">
           <p className="text-neutral11 text-center">
             هنوز پیامی ارسال نشده؛
@@ -83,14 +105,18 @@ export default function ChatMessages({
   }
 
   return (
-    <div className="custom-scroll ltr flex flex-col gap-y-3  h-[calc(100dvh-177px)] max-md:h-[calc(100dvh-160px)] overflow-y-auto px-4 pt-4 pb-2">
+    <div
+      ref={messagesContainerRef}
+      style={{ height: messagesHeight }}
+      className="custom-scroll ltr flex flex-col gap-y-3 overflow-y-auto px-4 pt-4 pb-2"
+    >
       {initialMessages.map((message) => {
         const isMyMessage = message.sender === (isDoctor ? "doctor" : "user");
 
         return (
           <div
             key={message._id}
-            className={`rtl flex  ${isMyMessage ? "justify-start" : "justify-end"}`}
+            className={`rtl flex ${isMyMessage ? "justify-start" : "justify-end"}`}
           >
             <div
               className={`text-neutral10 border-neutral9 max-w-6/10 rounded-2xl border px-4 py-2 max-lg:max-w-8/10 ${
@@ -159,7 +185,7 @@ export default function ChatMessages({
         close={() => setLightboxOpen(false)}
         slides={allImages}
         index={lightboxIndex}
-        controller={{closeOnBackdropClick : true}}
+        controller={{ closeOnBackdropClick: true }}
         styles={{
           container: { backgroundColor: "rgba(0,0,0,0.9)" },
         }}
