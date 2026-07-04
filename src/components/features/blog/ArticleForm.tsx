@@ -1,6 +1,8 @@
 "use client";
 
+import { useIsAdmin } from "@/features/auth/selectors/auth.selectors";
 import { useIsSidebarOpen } from "@/stores/selectors/ui.selectors";
+import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import toast from "react-hot-toast";
 import {
@@ -36,6 +38,8 @@ export default function ArticleForm() {
   const [formData, setFormData] = useState<ArticleFormData>(initialFormData);
   const [isPending, startTransition] = useTransition();
   const isOpenSidebar = useIsSidebarOpen();
+  const router = useRouter();
+  const isAdmin = useIsAdmin();
 
   const handleChange = (field: keyof ArticleFormData, value: any) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -82,7 +86,11 @@ export default function ArticleForm() {
 
       if (result.success) {
         toast.success(result.message || "مقاله با موفقیت ثبت شد!");
-        resetForm();
+        if (isAdmin) {
+          router.push("/admin/articles");
+        }else{
+          router.push("/user/articles");
+        }
       } else {
         if (result.errors) {
           const firstError = Object.values(result.errors).flat()[0];
@@ -202,7 +210,7 @@ export default function ArticleForm() {
           values={formData.seo || { title: "", description: "", keywords: "" }}
           onChange={handleSeoChange}
         />
-        <div className="flex items-center justify-between max-lg:gap-x-4 max-md:flex-col-reverse gap-y-2">
+        <div className="flex items-center justify-between gap-y-2 max-lg:gap-x-4 max-md:flex-col-reverse">
           <p className="text-sm text-yellow-700">
             ⚠️ مقاله پس از انتشار غیرقابل ویرایش است و فقط ادمین می تواند آن را
             حذف کند. لطفاً اطلاعات را دقیق بررسی کنید.
