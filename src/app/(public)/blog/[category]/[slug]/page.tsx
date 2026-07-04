@@ -70,7 +70,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         />
         <ContentRenderer content={post.content || []} />
 
-        <CommentForm />
+        <CommentForm
+          targetType="blog"
+          targetCategory={post.category}
+          targetId={post._id}
+          targetSlug={post.slug}
+        />
 
         <CommentList comments={post.comments || []} />
 

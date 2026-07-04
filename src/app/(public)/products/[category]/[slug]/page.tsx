@@ -130,7 +130,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
           temperature={product.cares.temperature}
           fertilization={product.cares.fertilization}
         />
-        <CommentForm />
+        <CommentForm
+          targetCategory={product.category}
+          targetId={product._id}
+          targetSlug={product.slug}
+          targetType="product"
+        />
         <CommentList comments={product.comments || []} />
       </section>
 
