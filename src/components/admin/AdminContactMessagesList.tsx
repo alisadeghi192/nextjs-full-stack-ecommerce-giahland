@@ -26,14 +26,14 @@ export default function AdminContactMessagesList({
   messages,
 }: AdminContactMessagesListProps) {
   const [isLoading, setIsLoading] = useState<string | null>(null);
-const { refresh } = useAdminNotifications();
+  const { refresh } = useAdminNotifications();
 
   const handleToggleRead = async (id: string) => {
     setIsLoading(id);
     const result = await markContactMessageAsRead(id);
     if (result.success) {
       toast.success(result.message);
-      refresh()
+      refresh();
     } else {
       toast.error(result.message);
     }
@@ -45,7 +45,7 @@ const { refresh } = useAdminNotifications();
     const result = await deleteContactMessage(id);
     if (result.success) {
       toast.success(result.message);
-      refresh()
+      refresh();
     } else {
       toast.error(result.message);
     }
@@ -65,8 +65,8 @@ const { refresh } = useAdminNotifications();
       {messages.map((msg) => (
         <div
           key={msg._id}
-          className={`border-neutral3 rounded-2xl border p-6 shadow-lg transition ${
-            !msg.isRead ? "border-primary border-2 bg-primary/5" : ""
+          className={`border-primary rounded-2xl border-r-4 p-6 shadow-lg transition ${
+            !msg.isRead ? "bg-neutral2" : "bg-[#E3F7EA]"
           }`}
         >
           <div className="flex flex-wrap items-start justify-between gap-2">
@@ -77,28 +77,28 @@ const { refresh } = useAdminNotifications();
               <span className="text-neutral9 text-sm">|</span>
               <span className="text-sm text-gray-500">{msg.mobile}</span>
               {!msg.isRead && (
-                <span className="rounded-full bg-primary px-2 py-0.5 text-xs text-white">
-                  جدید
+                <span className="bg-primary rounded-full px-2 py-0.5 text-xs text-white">
+                  خوانده نشده
                 </span>
               )}
             </div>
-            <div className="flex items-center ltr gap-2 text-sm text-gray-400">
+            <div className="ltr flex items-center gap-2 text-sm text-gray-400">
               {new Date(msg.createdAt).toLocaleDateString("fa-IR", {
                 hour: "2-digit",
-                minute : "2-digit"
+                minute: "2-digit",
               })}
             </div>
           </div>
 
-          <div className="mt-3 border-t pt-3">
+          <div className="mt-3 pt-3">
             <p className="whitespace-pre-wrap text-gray-700">{msg.message}</p>
           </div>
 
-          <div className="mt-4 flex items-center justify-end gap-2 border-t pt-3">
+          <div className="mt-4 flex items-center justify-end gap-2 pt-3">
             <button
               onClick={() => handleToggleRead(msg._id)}
               disabled={isLoading === msg._id}
-              className={`flex items-center gap-1 rounded-lg px-3 py-1.5 text-sm transition hover:bg-primary/10 disabled:opacity-50 ${
+              className={`hover:bg-primary/10 cursor-pointer flex items-center gap-1 rounded-lg px-3 py-1.5 text-sm transition disabled:opacity-50 ${
                 msg.isRead ? "text-gray-500" : "text-primary"
               }`}
             >
@@ -120,7 +120,7 @@ const { refresh } = useAdminNotifications();
               title="آیا از حذف این پیام مطمئن هستید؟"
               confirmText="بله، حذف شود"
               cancelText="انصراف"
-              className="flex items-center gap-1 rounded-lg px-3 py-1.5 text-sm text-red-500 transition hover:bg-red-50 disabled:opacity-50"
+              className="flex items-center gap-1 cursor-pointer rounded-lg px-3 py-1.5 text-sm text-red-500 transition hover:bg-red-50 disabled:opacity-50"
             >
               <MdDelete size={18} />
               <span>حذف</span>
