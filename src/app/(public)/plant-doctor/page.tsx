@@ -1,7 +1,6 @@
+import ConsultationButton from "@/components/features/plant-doctor/ConsultationButton";
 import Breadcrumb from "@/components/shared/ui/Breadcrumb";
-import PrimaryButton from "@/components/shared/ui/PrimaryButton";
 import Image from "next/image";
-import React from "react";
 
 export default function PlantDoctorPage() {
   return (
@@ -20,9 +19,12 @@ export default function PlantDoctorPage() {
             گیاه پزشک آنلاین
           </h1>
           <p className="mt-4 mb-6 text-lg/8">عکس بفرست ، نسخه بگیر</p>
-          <PrimaryButton className="m-auto h-10 w-34 rounded-lg!">
+          <ConsultationButton
+            className="m-auto h-10 w-34 rounded-lg!"
+            variant="primary"
+          >
             مشاوره با پزشک
-          </PrimaryButton>
+          </ConsultationButton>
         </div>
       </section>
       <section className="mx-auto w-80/100 max-xl:w-full">
@@ -87,9 +89,12 @@ export default function PlantDoctorPage() {
           </p>
         </div>
 
-        <PrimaryButton className="max-xs:mt-8 max-xs:w-full m-auto mt-10 h-10 w-52.5 rounded-lg!">
+        <ConsultationButton
+          variant="primary"
+          className="max-xs:mt-8 max-xs:w-full m-auto mt-10 h-10 w-52.5 rounded-lg!"
+        >
           شروع مشاوره
-        </PrimaryButton>
+        </ConsultationButton>
       </section>
     </main>
   );

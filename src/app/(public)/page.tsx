@@ -5,34 +5,48 @@ import PlantDoctorServices from "@/components/features/landing/PlantDoctorServic
 import ServicesSection from "@/components/features/landing/ServicesSection";
 import ProductSlider from "@/components/features/products/ProductSlider";
 import { getArticles } from "@/features/blog/actions/getArticles.actions";
+import { getCategoryCounts } from "@/features/products/actions/getCategoryCounts.actions";
 import { getProducts } from "@/features/products/actions/getProducts.actions";
 import { getBulkLikeStatus } from "@/features/user/actions/wishlist.actions";
 
 export default async function Home() {
-  const [indoorLatest, decorationLatest, giftLatest, latestPostsResult, mostViewedPostsResult] = await Promise.all([
+  const [
+    indoorLatest,
+    decorationLatest,
+    giftLatest,
+    latestPostsResult,
+    mostViewedPostsResult,
+    categoryCounts,
+  ] = await Promise.all([
     getProducts({ category: "indoor", sort: "newest", limit: 8 }),
     getProducts({ category: "decoration", sort: "newest", limit: 8 }),
     getProducts({ category: "gift", sort: "newest", limit: 8 }),
     getArticles({ sort: "newest", limit: 6 }),
     getArticles({ sort: "most_viewed", limit: 6 }),
+    getCategoryCounts(),
   ]);
 
   const indoorIds = indoorLatest.products.map((p) => p._id);
   const decorationIds = decorationLatest.products.map((p) => p._id);
   const giftIds = giftLatest.products.map((p) => p._id);
 
-  const [indoorLikeStatuses, decorationLikeStatuses, giftLikeStatuses] = await Promise.all([
-    getBulkLikeStatus(indoorIds),
-    getBulkLikeStatus(decorationIds),
-    getBulkLikeStatus(giftIds),
-  ]);
+  const [indoorLikeStatuses, decorationLikeStatuses, giftLikeStatuses] =
+    await Promise.all([
+      getBulkLikeStatus(indoorIds),
+      getBulkLikeStatus(decorationIds),
+      getBulkLikeStatus(giftIds),
+    ]);
 
-   const latestPosts = latestPostsResult.articles;
+  const latestPosts = latestPostsResult.articles;
   const mostViewedPosts = mostViewedPostsResult.articles;
 
   return (
     <main className="container">
-      <HeroSection />
+      <HeroSection
+        indoorCount={categoryCounts.indoor}
+        decorationCount={categoryCounts.decoration}
+        giftCount={categoryCounts.gift}
+      />
       <ServicesSection />
       <BannerSection />
 
@@ -53,7 +67,11 @@ export default async function Home() {
         likeStatuses={decorationLikeStatuses}
       />
 
-      <BlogSlider posts={mostViewedPosts} title="پربازدید ترین مقالات" link="/blog?sort=most_viewed&page=1" />
+      <BlogSlider
+        posts={mostViewedPosts}
+        title="پربازدید ترین مقالات"
+        link="/blog?sort=most_viewed&page=1"
+      />
 
       <ProductSlider
         title="گیاهان کادویی"

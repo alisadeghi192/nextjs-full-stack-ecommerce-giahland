@@ -1,12 +1,19 @@
-"use client";
-
-import OutlineButton from "@/components/shared/ui/OutlineButton";
 import PrimaryButton from "@/components/shared/ui/PrimaryButton";
 import Image from "next/image";
-import { MdOutlineArrowBack } from "react-icons/md";
+import ConsultationButton from "../plant-doctor/ConsultationButton";
 import HeroStatsItem from "./HeroStatsItem";
 
-const HeroSection = () => {
+interface HeroSectionProps {
+  indoorCount: number;
+  decorationCount: number;
+  giftCount: number;
+}
+
+const HeroSection = ({
+  indoorCount,
+  decorationCount,
+  giftCount,
+}: HeroSectionProps) => {
   return (
     <section className="mt-19 flex items-center justify-between max-xl:gap-x-10 max-md:mt-15 max-md:flex-col-reverse">
       <div className="basis-1/2 max-md:mt-10">
@@ -27,17 +34,19 @@ const HeroSection = () => {
               گیاهان تخفیف دار
             </span>
           </PrimaryButton>
-          <OutlineButton className=" h-14 flex-1 gap-x-2 border-dashed text-lg max-lg:basis-14 max-md:h-10 max-[350px]:gap-x-0.5">
+          <ConsultationButton
+            className="h-14 flex-1 gap-x-2 border-dashed text-lg max-[350px]:gap-x-0.5 max-lg:basis-14 max-md:h-10"
+            variant="outline"
+          >
             <span className="text-lg/8 max-md:text-sm/6.25 max-md:font-medium">
               مشاوره با گیاه پزشک
             </span>
-            <MdOutlineArrowBack className="size-6 max-md:size-4" />
-          </OutlineButton>
+          </ConsultationButton>
         </div>
         <div className="font-modam flex gap-x-12 max-md:gap-x-2">
-          <HeroStatsItem end={943} label="گیاه خانگی" />
-          <HeroStatsItem end={234} label="گیاه دکوراتیو" />
-          <HeroStatsItem end={128} label="گیاه کادویی" />
+          <HeroStatsItem end={indoorCount} label="گیاه خانگی" />
+          <HeroStatsItem end={decorationCount} label="گیاه دکوراتیو" />
+          <HeroStatsItem end={giftCount} label="گیاه کادویی" />
         </div>
       </div>
       <div className="basis-1/2">

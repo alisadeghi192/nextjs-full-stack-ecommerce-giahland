@@ -14,7 +14,7 @@ const HeroStatsItem = ({ end, label }: HeroStatsItemProps) => {
         <CountUp
           start={0}
           end={end}
-          duration={1.5}
+          duration={2.5}
           formattingFn={(value) => value.toLocaleString("fa-IR")}
         />
         +
