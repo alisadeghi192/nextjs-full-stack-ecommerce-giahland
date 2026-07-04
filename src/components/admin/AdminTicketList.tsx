@@ -117,16 +117,6 @@ export default function AdminTicketList({ tickets }: AdminTicketListProps) {
                 <span>{userDisplayName}</span>
                 <span className="text-gray-400">|</span>
                 <span>{ticket.user.mobile}</span>
-                <span className="text-gray-400">|</span>
-                <span
-                  className={`rounded-full px-2 py-0.5 text-xs ${
-                    ticket.status === "pending"
-                      ? "text-error bg-red-100"
-                      : "bg-green-100 text-green-600"
-                  }`}
-                >
-                  {ticket.status === "pending" ? "بی پاسخ" : "بسته شده"}
-                </span>
               </div>
 
               <ConfirmDialog
