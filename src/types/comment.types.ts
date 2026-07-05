@@ -7,7 +7,7 @@ export interface CommentAuthor {
 
 export interface IComment {
   _id: string;
-  targetType?: "product" | "blog";
+  targetType?: "products" | "blog";
   targetId?: string;
   user: CommentAuthor;
   text: string;

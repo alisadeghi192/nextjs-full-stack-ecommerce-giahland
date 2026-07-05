@@ -19,7 +19,7 @@ const CommentSchema = new Schema<IComment>(
   {
     targetType: {
       type: String,
-      enum: ["product", "blog"],
+      enum: ["products", "blog"],
       required: true,
     },
     targetId: {
@@ -31,9 +31,9 @@ const CommentSchema = new Schema<IComment>(
     text: { type: String, required: true },
     date: { type: Date, default: Date.now },
     reply: {
-      user: { type: CommentAuthorSchema, required: true },
-      text: { type: String, required: true },
-      date: { type: Date, default: Date.now },
+      user: { type: CommentAuthorSchema },
+      text: { type: String },
+      date: { type: Date,},
     },
     isApproved: {
       type: Boolean,
