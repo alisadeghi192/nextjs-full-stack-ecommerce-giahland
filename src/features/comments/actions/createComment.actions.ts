@@ -2,12 +2,14 @@
 
 import { getMeAction } from "@/features/auth/actions/me.actions";
 import connectToDB from "@/lib/db/connect";
+import Article from "@/lib/db/models/Article";
 import CommentModel from "@/lib/db/models/Comment";
+import Product from "@/lib/db/models/Product";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
 
 const CommentSchema = z.object({
-  targetType: z.enum(["product", "blog"]),
+  targetType: z.enum(["products", "blog"]),
   targetId: z.string().min(1, "شناسه هدف الزامی است."),
   targetSlug: z.string().min(1, "اسلاگ هدف الزامی است."),
   targetCategory: z.string().min(1, "دسته‌بندی هدف الزامی است."),
@@ -19,13 +21,15 @@ const CommentSchema = z.object({
 export async function createCommentAction(prevState: any, formData: FormData) {
   const { user } = await getMeAction();
 
-  const targetType = formData.get("targetType") as "product" | "blog";
-  const targetId = formData.get("targetId") as string;
-  const targetSlug = formData.get("targetSlug") as string;
-  const targetCategory = formData.get("targetCategory") as string;
-  const name = formData.get("name") as string;
-  const email = formData.get("email") as string;
-  const text = formData.get("text") as string;
+  console.log(FormData);
+
+  const targetType = (formData.get("targetType") as string) || "";
+  const targetId = (formData.get("targetId") as string) || "";
+  const targetSlug = (formData.get("targetSlug") as string) || "";
+  const targetCategory = (formData.get("targetCategory") as string) || "";
+  const name = (formData.get("name") as string) || "";
+  const email = (formData.get("email") as string) || "";
+  const text = (formData.get("text") as string) || "";
 
   const result = CommentSchema.safeParse({
     targetType,
@@ -53,7 +57,7 @@ export async function createCommentAction(prevState: any, formData: FormData) {
     role: user?.role || "user",
   };
 
-  await CommentModel.create({
+  const newComment = await CommentModel.create({
     targetType: result.data.targetType,
     targetId: result.data.targetId,
     user: author,
@@ -63,7 +67,16 @@ export async function createCommentAction(prevState: any, formData: FormData) {
     isReadByAdmin: false,
   });
 
-  // ✅ فقط صفحه جزئیات رو revalidate کن
+  if (result.data.targetType === "products") {
+    await Product.findByIdAndUpdate(result.data.targetId, {
+      $push: { comments: newComment._id },
+    });
+  } else if (result.data.targetType === "blog") {
+    await Article.findByIdAndUpdate(result.data.targetId, {
+      $push: { comments: newComment._id },
+    });
+  }
+
   const revalidateUrl = `/${result.data.targetType}/${result.data.targetCategory}/${result.data.targetSlug}`;
   revalidatePath(revalidateUrl);
 
