@@ -21,12 +21,14 @@ interface PanelSidebarProps {
   links: PanelLink[];
   isPanelOpen: boolean;
   onClose?: () => void;
+  isAdminPanel:boolean
 }
 
 export default function PanelSidebar({
   links,
   isPanelOpen,
   onClose,
+  isAdminPanel=false,
 }: PanelSidebarProps) {
   const pathname = usePathname();
   const mobile = useUserMobile();
@@ -42,13 +44,13 @@ export default function PanelSidebar({
   const displayName = firstName || "کاربر";
   const persianMobile = mobile?.replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[+d]) || "";
 
-  useEffect(()=>{
-    if(isAdmin){
-      adminRefresh()
-    }else{
-      userRefresh()
+  useEffect(() => {
+    if (isAdmin) {
+      adminRefresh();
+    } else {
+      userRefresh();
     }
-  },[])
+  }, [isAdmin , pathname]);
 
   return (
     <div className="custom-scroll ltr *:rtl flex h-full flex-col overflow-x-hidden overflow-y-auto py-6 pr-1 max-md:py-0">
@@ -70,7 +72,7 @@ export default function PanelSidebar({
         </div>
       </div>
 
-      <div className="mt-4 flex-1">
+      <div className={`${isAdminPanel ? "mt-2" : "mt-4"} flex-1`}>
         {links.map((link) => {
           let isActive = false;
           if (
@@ -105,7 +107,7 @@ export default function PanelSidebar({
               <Link
                 href={link.href}
                 onClick={onClose}
-                className={`text-neutral10 hover:text-primary flex h-13 items-center gap-x-3 rounded-r-lg pr-4 transition-colors max-md:h-12 ${
+                className={`text-neutral10 hover:text-primary flex ${isAdminPanel ? "h-11" : "h-14"}  items-center gap-x-3 rounded-r-lg pr-4 transition-colors max-md:h-12 ${
                   isActive
                     ? "text-primary border-primary border-l-4 bg-[#F3FDFA]"
                     : ""

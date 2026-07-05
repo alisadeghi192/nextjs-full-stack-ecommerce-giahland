@@ -6,9 +6,10 @@ interface DesktopSidebarProps {
   links: PanelLink[];
   isScrolled: boolean;
   isPanelOpen: boolean;
+  isAdmin : boolean;
 }
 
-export default function DesktopSidebar({ links, isScrolled, isPanelOpen }: DesktopSidebarProps) {
+export default function DesktopSidebar({ links, isScrolled, isPanelOpen , isAdmin=false }: DesktopSidebarProps) {
   return (
     <div
       className={`${isScrolled ? "top-15 h-[calc(100dvh-61px)]" : "top-24 h-[calc(100dvh-97px)]"} ${
@@ -18,7 +19,7 @@ export default function DesktopSidebar({ links, isScrolled, isPanelOpen }: Deskt
         transition: "width 300ms ease, top 200ms ease, height 200ms ease",
       }}
     >
-      <PanelSidebar links={links} isPanelOpen={isPanelOpen} />
+      <PanelSidebar links={links} isPanelOpen={isPanelOpen} isAdminPanel={isAdmin}/>
     </div>
   );
 }

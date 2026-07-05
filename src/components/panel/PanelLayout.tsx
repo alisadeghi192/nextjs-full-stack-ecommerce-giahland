@@ -13,9 +13,14 @@ import PanelHeader from "./PanelHeader";
 interface PanelLayoutProps {
   links: PanelLink[];
   children: React.ReactNode;
+  isAdmin?: boolean;
 }
 
-export default function PanelLayout({ links, children }: PanelLayoutProps) {
+export default function PanelLayout({
+  links,
+  children,
+  isAdmin = false,
+}: PanelLayoutProps) {
   const isScrolled = useScroll();
   const isSidebarOpen = useIsSidebarOpen();
   const { closeSidebar, toggleSidebar } = useSidebarActions();
@@ -24,21 +29,24 @@ export default function PanelLayout({ links, children }: PanelLayoutProps) {
     pathname?.includes("/consultations/") &&
     pathname?.split("/").length === 4 &&
     !pathname?.endsWith("/list");
+
+  const scrolledState = isAdmin ? true : isChatPage ? true : isScrolled;
   return (
     <main>
       <PanelHeader
-        isScrolled={isChatPage ? true : isScrolled}
+        isScrolled={scrolledState}
         isSidebarOpen={isSidebarOpen}
         toggleSidebar={toggleSidebar}
       />
 
       <div
-        className={`relative flex ${isChatPage ? "md:container " : "container"}`}
+        className={`relative flex ${isChatPage ? "md:container" : "container"}`}
       >
         <DesktopSidebar
           links={links}
-          isScrolled={isChatPage ? true : isScrolled}
+          isScrolled={scrolledState}
           isPanelOpen={isSidebarOpen}
+          isAdmin={isAdmin}
         />
 
         <MobileSidebar
@@ -48,7 +56,7 @@ export default function PanelLayout({ links, children }: PanelLayoutProps) {
         />
 
         <div
-          className={`flex-1 pl-0 max-md:p-0 ${isChatPage ? "p-0 " : "p-6 max-md:pt-4 max-md:pb-7"}`}
+          className={`flex-1 pl-0 max-md:p-0 ${isChatPage ? "p-0" : "p-6 max-md:pt-4 max-md:pb-7"}`}
         >
           {children}
         </div>

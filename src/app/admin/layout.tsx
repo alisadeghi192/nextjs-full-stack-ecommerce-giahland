@@ -1,4 +1,4 @@
-import AdminLayout from "@/components/admin/AdminLayout";
+import PanelLayout from "@/components/panel/PanelLayout";
 import { getMeAction } from "@/features/auth/actions/me.actions";
 import { adminLinks } from "@/lib/constants";
 import { redirect } from "next/navigation";
@@ -14,5 +14,5 @@ export default async function AdminPageLayout({
     redirect("/");
   }
 
-  return <AdminLayout links={adminLinks}>{children}</AdminLayout>;
+  return <PanelLayout links={adminLinks} isAdmin={true}>{children}</PanelLayout>;
 }
