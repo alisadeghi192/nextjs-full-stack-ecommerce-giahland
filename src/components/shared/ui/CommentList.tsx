@@ -11,20 +11,16 @@ interface CommentListProps {
 }
 
 export default function CommentList({ comments = [] }: CommentListProps) {
-  const approvedComments = comments.filter(
-    (comment) => comment.isApproved !== false,
-  );
-
   const [visibleCount, setVisibleCount] = useState(COMMENTS_PER_PAGE);
-  const hasMore = visibleCount < approvedComments.length;
+  const hasMore = visibleCount < comments.length;
 
   const loadMore = () => {
     setVisibleCount((prev) =>
-      Math.min(prev + COMMENTS_PER_PAGE, approvedComments.length),
+      Math.min(prev + COMMENTS_PER_PAGE, comments.length),
     );
   };
 
-  if (approvedComments.length === 0) {
+  if (comments.length === 0) {
     return (
       <div className="text-neutral9 py-6 text-center">
         هنوز دیدگاهی ثبت نشده است. اولین نفری باشید که نظر می‌دهید.
@@ -32,7 +28,7 @@ export default function CommentList({ comments = [] }: CommentListProps) {
     );
   }
 
-  const visibleComments = approvedComments.slice(0, visibleCount);
+  const visibleComments = comments.slice(0, visibleCount);
 
   return (
     <div className="flex flex-col space-y-4">
@@ -45,7 +41,7 @@ export default function CommentList({ comments = [] }: CommentListProps) {
           onClick={loadMore}
           className="max-xs:w-full max-xs:text-base mx-auto px-4 py-2 text-lg"
         >
-          نمایش بیشتر ({approvedComments.length - visibleCount})
+          نمایش بیشتر ({comments.length - visibleCount})
         </OutlineButton>
       )}
     </div>

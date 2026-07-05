@@ -15,7 +15,7 @@ import { MdDriveFileRenameOutline } from "react-icons/md";
 import PrimaryButton from "./PrimaryButton";
 
 interface CommentFormProps {
-  targetType: "product" | "blog";
+  targetType: "products" | "blog";
   targetId: string;
   targetSlug: string;
   targetCategory: string;
@@ -31,7 +31,6 @@ export default function CommentForm({
   const userFirstName = useUserFirstName() || "";
   const userLastName = useUserLastName() || "";
   const userEmail = useUserEmail() || "";
-
   const [state, formAction, isPending] = useActionState(
     createCommentAction,
     null,
@@ -68,7 +67,6 @@ export default function CommentForm({
             name="name"
             label="نام و نام خانوادگی"
             defaultValue={isAuthenticated ? fullName : ""}
-            disabled={isAuthenticated}
           />
           <FormField
             icon={<MdDriveFileRenameOutline size={22} />}
@@ -77,7 +75,6 @@ export default function CommentForm({
             id="email"
             label="ایمیل"
             defaultValue={isAuthenticated ? userEmail : ""}
-            disabled={isAuthenticated}
           />
         </div>
         <TextareaField

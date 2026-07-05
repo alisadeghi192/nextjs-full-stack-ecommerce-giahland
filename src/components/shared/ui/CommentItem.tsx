@@ -1,7 +1,7 @@
-import Image from "next/image";
-import { formatDate } from "@/lib/utils/format";
 import { roleConfig } from "@/lib/constants";
+import { formatDate } from "@/lib/utils/format";
 import { CommentAuthor } from "@/types/comment.types";
+import Image from "next/image";
 
 interface CommentItemProps {
   user: CommentAuthor;
@@ -35,7 +35,7 @@ export default function CommentItem({ user, date, text, reply }: CommentItemProp
                 {roleConfig[user.role].label}
               </span>
             </div>
-            <span className="text-neutral8 text-xs">{formatDate(date)}</span>
+            <span className="text-neutral8 text-xs">{formatDate(new Date(date))}</span>
           </div>
         </div>
         <p className="text-neutral9 pt-2 leading-5">{text}</p>
@@ -61,7 +61,7 @@ export default function CommentItem({ user, date, text, reply }: CommentItemProp
                     {roleConfig[reply.user.role].label}
                   </span>
                 </div>
-                <span className="text-neutral8 text-xs">{formatDate(reply.date)}</span>
+                <span className="text-neutral8 text-xs">{formatDate(new Date(reply.date))}</span>
               </div>
             </div>
             <p className="text-neutral9 pt-2 leading-5">{reply.text}</p>
