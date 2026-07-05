@@ -3,6 +3,7 @@ import { BsHeart, BsTruck } from "react-icons/bs";
 import { FaRegUser, FaUserDoctor } from "react-icons/fa6";
 import { LuNotebookPen } from "react-icons/lu";
 import {
+  MdComment,
   MdDashboard,
   MdMessage,
   MdOutlineArticle,
@@ -112,6 +113,12 @@ export const adminLinks: PanelLink[] = [
     icon: <LuNotebookPen size={24} />,
     label: "تیکت‌ها",
     tooltipLabel: "تیکت‌ها",
+  },
+  {
+    href: "/admin/comments", 
+    icon: <MdComment size={24} />,
+    label: "کامنت‌ها",
+    tooltipLabel: "کامنت‌ها",
   },
   {
     href: "/admin/consultations",
