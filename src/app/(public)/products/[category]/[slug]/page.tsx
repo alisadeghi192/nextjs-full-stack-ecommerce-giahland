@@ -134,7 +134,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
           targetCategory={product.category}
           targetId={product._id}
           targetSlug={product.slug}
-          targetType="product"
+          targetType="products"
         />
         <CommentList comments={product.comments || []} />
       </section>

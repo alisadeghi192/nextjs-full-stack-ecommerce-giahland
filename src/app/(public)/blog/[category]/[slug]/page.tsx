@@ -52,6 +52,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     page: 1,
   });
 
+
   const filteredRelated = relatedPosts.filter((p) => p._id !== post._id);
 
   const categoryLink = `/blog?category=${category}&sort=newest`;
