@@ -11,16 +11,23 @@ export async function getArticleBySlug(
 ): Promise<BlogPostWithDetails> {
   await connectToDB();
 
-  const article = await Article.findOne({ slug })
-    .populate("author", "firstName lastName avatar role")
-    .populate({
-      path: "comments",
-      populate: {
+const article = await Article.findOne({ slug })
+  .populate("author", "firstName lastName avatar role")
+  .populate({
+    path: "comments",
+    match: { isApproved: true },
+    populate: [
+      {
         path: "user",
         select: "name avatar role",
       },
-    })
-    .lean();
+      {
+        path: "reply.user",
+        select: "name avatar role",
+      },
+    ],
+  })
+  .lean();
 
   if (!article) {
     notFound();
@@ -47,7 +54,7 @@ export async function getArticleBySlug(
       role: author.role || "admin",
     },
     category: article.category,
-    views: article.views + 1,
+    views: (article.views || 0) + 1,
     publishedAt: article.publishedAt,
     content: article.content || [],
     comments: (article.comments || []).map((comment: any) => ({
