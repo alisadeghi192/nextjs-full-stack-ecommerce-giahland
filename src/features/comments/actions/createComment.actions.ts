@@ -15,7 +15,7 @@ const CommentSchema = z.object({
   targetCategory: z.string().min(1, "دسته‌بندی هدف الزامی است."),
   name: z.string().min(2, "نام حداقل ۲ کاراکتر است.").max(50),
   email: z.string().email("ایمیل معتبر نیست.").optional().nullable(),
-  text: z.string().min(3, "متن کامنت حداقل ۳ کاراکتر است.").max(1000),
+  text: z.string().min(3, "متن کامنت حداقل ۳ کاراکتر است.").max(1000 , "متن کامنت خیلی طولانیست."),
 });
 
 export async function createCommentAction(prevState: any, formData: FormData) {
