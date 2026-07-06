@@ -22,3 +22,11 @@ export interface IComment {
   isApproved?: boolean;
   isReadByAdmin?: boolean;
 }
+export interface AdminComment extends IComment {
+  targetInfo?: {
+    name: string;
+    slug: string;
+    category: string;
+    url: string;
+  };
+}
