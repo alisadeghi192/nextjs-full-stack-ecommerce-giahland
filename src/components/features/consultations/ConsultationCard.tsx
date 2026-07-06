@@ -95,7 +95,7 @@ export default function ConsultationCard({
 
                 {showUnreadDot && (
                   <span className="inline-flex size-5 items-center justify-center rounded-full bg-red-500 text-sm text-white">
-                    {toPersianNumber(consultation.unreadCount)}
+                    {toPersianNumber(consultation.unreadCount as number)}
                   </span>
                 )}
                 {showSeen && <IoCheckmarkDoneSharp className="text-primary" />}
