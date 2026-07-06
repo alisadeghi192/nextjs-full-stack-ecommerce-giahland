@@ -2,6 +2,7 @@ export * from "./banners";
 export * from "./blog";
 export * from "./blogSwiper";
 export * from "./breadcrumb";
+export * from "./comments";
 export * from "./consultations";
 export * from "./contact";
 export * from "./defaults";
