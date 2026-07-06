@@ -5,7 +5,7 @@ import {
   useIsAdmin,
   useUserAvatar,
   useUserFirstName,
-  useUserMobile
+  useUserMobile,
 } from "@/features/auth/selectors/auth.selectors";
 import { useAdminNotifications } from "@/features/notifications/hooks/useAdminNotifications";
 import { useNotifications } from "@/features/notifications/hooks/useNotifications";
@@ -21,14 +21,14 @@ interface PanelSidebarProps {
   links: PanelLink[];
   isPanelOpen: boolean;
   onClose?: () => void;
-  isAdminPanel:boolean
+  isAdminPanel: boolean;
 }
 
 export default function PanelSidebar({
   links,
   isPanelOpen,
   onClose,
-  isAdminPanel=false,
+  isAdminPanel = false,
 }: PanelSidebarProps) {
   const pathname = usePathname();
   const mobile = useUserMobile();
@@ -37,9 +37,14 @@ export default function PanelSidebar({
   const { logout } = useAuthActions();
   const isAdmin = useIsAdmin();
 
-  const { consultation, ticket , refresh : userRefresh } = useNotifications();
+  const { consultation, ticket, refresh: userRefresh } = useNotifications();
 
-  const {tickets : adminTicket , contact , refresh : adminRefresh} = useAdminNotifications();
+  const {
+    tickets: adminTicket,
+    contact,
+    comments :adminComments,
+    refresh: adminRefresh,
+  } = useAdminNotifications();
 
   const displayName = firstName || "کاربر";
   const persianMobile = mobile?.replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[+d]) || "";
@@ -50,7 +55,7 @@ export default function PanelSidebar({
     } else {
       userRefresh();
     }
-  }, [isAdmin , pathname]);
+  }, [isAdmin, pathname]);
 
   return (
     <div className="custom-scroll ltr *:rtl flex h-full flex-col overflow-x-hidden overflow-y-auto py-6 pr-1 max-md:py-0">
@@ -100,6 +105,9 @@ export default function PanelSidebar({
           } else if (link.href === "/admin/contact-messages") {
             badgeCount = contact;
             showBadge = true;
+          } else if (link.href === "/admin/comments") {
+            badgeCount = adminComments;
+            showBadge = true;
           }
 
           return (
@@ -107,7 +115,7 @@ export default function PanelSidebar({
               <Link
                 href={link.href}
                 onClick={onClose}
-                className={`text-neutral10 hover:text-primary flex ${isAdminPanel ? "h-11" : "h-14"}  items-center gap-x-3 rounded-r-lg pr-4 transition-colors max-md:h-12 ${
+                className={`text-neutral10 hover:text-primary flex ${isAdminPanel ? "h-11" : "h-14"} items-center gap-x-3 rounded-r-lg pr-4 transition-colors max-md:h-12 ${
                   isActive
                     ? "text-primary border-primary border-l-4 bg-[#F3FDFA]"
                     : ""
