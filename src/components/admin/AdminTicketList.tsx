@@ -9,6 +9,7 @@ import {
   replyTicketAction,
 } from "@/features/tickets/actions/admin.ticket.actions";
 import { AdminTicket } from "@/features/tickets/types/ticket.types";
+import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { MdDelete, MdDriveFileRenameOutline } from "react-icons/md";
@@ -24,6 +25,9 @@ export default function AdminTicketList({ tickets }: AdminTicketListProps) {
   const [isSubmitting, setIsSubmitting] = useState<Record<string, boolean>>({});
   const [deletingId, setDeletingId] = useState<string | null>(null);
   const { refresh } = useAdminNotifications();
+  const router = useRouter();
+  const pathname = usePathname();
+
   const toggleItem = (id: string) => {
     setOpenId((prev) => (prev === id ? null : id));
   };
@@ -60,7 +64,17 @@ export default function AdminTicketList({ tickets }: AdminTicketListProps) {
 
     if (result.success) {
       toast.success(result.message);
-      refresh()
+      refresh();
+
+      const searchParams = new URLSearchParams(window.location.search);
+      const currentPage = Number(searchParams.get("page")) || 1;
+
+      if (tickets.length === 1 && currentPage > 1) {
+        const params = new URLSearchParams(searchParams);
+        params.set("page", String(currentPage - 1));
+        router.push(`${pathname}?${params.toString()}`);
+      }
+
       if (openId === ticketId) {
         setOpenId(null);
       }

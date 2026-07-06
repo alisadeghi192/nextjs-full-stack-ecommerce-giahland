@@ -4,6 +4,7 @@ import ConfirmDialog from "@/components/shared/ui/ConfirmDialog";
 import { deleteContactMessage } from "@/features/contact/actions/deleteContactMessage.actions";
 import { markContactMessageAsRead } from "@/features/contact/actions/markContactMessageAsRead.actions";
 import { useAdminNotifications } from "@/features/notifications/hooks/useAdminNotifications";
+import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { MdDelete, MdMarkEmailRead, MdMarkEmailUnread } from "react-icons/md";
@@ -27,6 +28,8 @@ export default function AdminContactMessagesList({
 }: AdminContactMessagesListProps) {
   const [isLoading, setIsLoading] = useState<string | null>(null);
   const { refresh } = useAdminNotifications();
+  const router = useRouter();
+  const pathname = usePathname();
 
   const handleToggleRead = async (id: string) => {
     setIsLoading(id);
@@ -46,6 +49,15 @@ export default function AdminContactMessagesList({
     if (result.success) {
       toast.success(result.message);
       refresh();
+      
+      const searchParams = new URLSearchParams(window.location.search);
+      const currentPage = Number(searchParams.get("page")) || 1;
+      
+      if (messages.length === 1 && currentPage > 1) {
+        const params = new URLSearchParams(searchParams);
+        params.set("page", String(currentPage - 1));
+        router.push(`${pathname}?${params.toString()}`);
+      }
     } else {
       toast.error(result.message);
     }
@@ -98,7 +110,7 @@ export default function AdminContactMessagesList({
             <button
               onClick={() => handleToggleRead(msg._id)}
               disabled={isLoading === msg._id}
-              className={`hover:bg-primary/10 cursor-pointer flex items-center gap-1 rounded-lg px-3 py-1.5 text-sm transition disabled:opacity-50 ${
+              className={`hover:bg-primary/10 flex cursor-pointer items-center gap-1 rounded-lg px-3 py-1.5 text-sm transition disabled:opacity-50 ${
                 msg.isRead ? "text-gray-500" : "text-primary"
               }`}
             >
@@ -120,7 +132,7 @@ export default function AdminContactMessagesList({
               title="آیا از حذف این پیام مطمئن هستید؟"
               confirmText="بله، حذف شود"
               cancelText="انصراف"
-              className="flex items-center gap-1 cursor-pointer rounded-lg px-3 py-1.5 text-sm text-red-500 transition hover:bg-red-50 disabled:opacity-50"
+              className="flex cursor-pointer items-center gap-1 rounded-lg px-3 py-1.5 text-sm text-red-500 transition hover:bg-red-50 disabled:opacity-50"
             >
               <MdDelete size={18} />
               <span>حذف</span>
