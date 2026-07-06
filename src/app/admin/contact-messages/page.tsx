@@ -2,9 +2,7 @@ import AdminContactMessagesHeader from "@/components/admin/AdminContactMessagesH
 import AdminContactMessagesList from "@/components/admin/AdminContactMessagesList";
 import SectionTitle from "@/components/panel/SectionTitle";
 import Pagination from "@/components/shared/ui/pagination";
-import { getMeAction } from "@/features/auth/actions/me.actions";
 import { getContactMessages } from "@/features/contact/actions/getContactMessages.actions";
-import { redirect } from "next/navigation";
 
 interface PageProps {
   searchParams: Promise<{
@@ -17,11 +15,6 @@ interface PageProps {
 export default async function AdminContactMessagesPage({
   searchParams,
 }: PageProps) {
-  const { user } = await getMeAction();
-
-  if (!user || user.role !== "admin") {
-    redirect("/admin/dashboard");
-  }
 
   const { page, status, sort } = await searchParams;
   const currentPage = Number(page) || 1;

@@ -2,9 +2,7 @@ import AdminTicketList from "@/components/admin/AdminTicketList";
 import AdminTicketsHeader from "@/components/admin/AdminTicketsHeader";
 import SectionTitle from "@/components/panel/SectionTitle";
 import Pagination from "@/components/shared/ui/pagination";
-import { getMeAction } from "@/features/auth/actions/me.actions";
 import { getAllTickets } from "@/features/tickets/actions/admin.ticket.actions";
-import { redirect } from "next/navigation";
 
 interface PageProps {
   searchParams: Promise<{
@@ -17,11 +15,6 @@ interface PageProps {
 }
 
 export default async function AdminTicketsPage({ searchParams }: PageProps) {
-  const { user } = await getMeAction();
-
-  if (!user || user.role !== "admin") {
-    redirect("/admin/dashboard");
-  }
 
   const { page, role, sort, status, department } = await searchParams;
   const currentPage = Number(page) || 1;

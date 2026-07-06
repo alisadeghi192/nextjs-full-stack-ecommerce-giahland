@@ -5,8 +5,8 @@ import { redirect } from "next/navigation";
 export default async function NewArticlePage() {
   const { user } = await getMeAction();
 
-  if (!user ||  user.role !== "admin") {
-    redirect("/");
+  if (!user || (user.role !== "plant-doctor" && user.role !== "admin")) {
+    redirect("/user/profile");
   }
 
   return (
