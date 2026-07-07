@@ -6,6 +6,7 @@ import {
   useUserAvatar,
   useUserFirstName,
   useUserMobile,
+  useUserRole,
 } from "@/features/auth/selectors/auth.selectors";
 import { useAdminNotifications } from "@/features/notifications/hooks/useAdminNotifications";
 import { useDoctorNotifications } from "@/features/notifications/hooks/useDoctorNotifications";
@@ -37,30 +38,25 @@ export default function PanelSidebar({
   const firstName = useUserFirstName();
   const { logout } = useAuthActions();
   const isAdmin = useIsAdmin();
+  const userRole = useUserRole()
 
-  const { consultation, ticket, refresh: userRefresh } = useNotifications();
+  const { consultation : userConsultation, ticket : userTicket, refresh: refreshUser } = useNotifications();
+  const {consultation:doctorConsultaion ,doctorComments,ticket :doctorTicket,refresh:refreshDOctor} = useDoctorNotifications()
+  const { tickets: adminTicket, contact, comments: adminComments, refresh: refreshAdmin, } = useAdminNotifications();
 
-  const {
-    tickets: adminTicket,
-    contact,
-    comments: adminComments,
-    refresh: adminRefresh,
-  } = useAdminNotifications();
-
-  const { count: doctorComments, refresh: doctorRefresh } =
-    useDoctorNotifications();
 
   const displayName = firstName || "کاربر";
   const persianMobile = mobile?.replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[+d]) || "";
 
   useEffect(() => {
-    if (isAdmin) {
-      adminRefresh();
-    } else {
-      userRefresh();
-      doctorRefresh();
+    if (userRole === "admin") {
+      refreshAdmin();
+    } else if (userRole === "plant-doctor") {
+      refreshDOctor()
+    }else{
+      refreshUser()
     }
-  }, [isAdmin]);
+  }, [userRole]);
 
   return (
     <div className="custom-scroll ltr *:rtl flex h-full flex-col overflow-x-hidden overflow-y-auto py-6 pr-1 max-md:py-0">
@@ -98,14 +94,20 @@ export default function PanelSidebar({
           let badgeCount = 0;
           let showBadge = false;
 
-          if (link.href.includes("/consultations")) {
-            badgeCount = consultation;
+          if (link.href.includes("/consultations") && userRole === "plant-doctor") {
+            badgeCount = doctorConsultaion;
+            showBadge = true;
+          } else if (link.href.includes("/consultations") && userRole === "user") {
+            badgeCount = userConsultation;
             showBadge = true;
           } else if (link.href === "/admin/tickets") {
             badgeCount = adminTicket;
             showBadge = true;
-          } else if (link.href.includes("/tickets") && !isAdmin) {
-            badgeCount = ticket;
+          } else if (link.href.includes("/tickets") &&  userRole === "plant-doctor") {
+            badgeCount = doctorTicket;
+            showBadge = true;
+          }else if (link.href.includes("/tickets") &&  userRole === "user") {
+            badgeCount = userTicket;
             showBadge = true;
           } else if (link.href === "/admin/contact-messages") {
             badgeCount = contact;
