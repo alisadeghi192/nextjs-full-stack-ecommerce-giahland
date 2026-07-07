@@ -2,6 +2,7 @@
 
 import { useUserRole } from "@/features/auth/selectors/auth.selectors";
 import { ConsultationMessageWithDetails } from "@/features/consultations/types/consultation.types";
+import { useDoctorNotifications } from "@/features/notifications/hooks/useDoctorNotifications";
 import { useNotifications } from "@/features/notifications/hooks/useNotifications";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
@@ -18,21 +19,35 @@ export default function ChatMessages({
   isLoading,
 }: ChatMessagesProps) {
   const { refresh } = useNotifications();
-  const [messagesHeight, setMessagesHeight] = useState("calc(100dvh - 177px)")
+  const { refresh: doctorRefresh } = useDoctorNotifications();
+  const [messagesHeight, setMessagesHeight] = useState("calc(100dvh - 177px)");
   const messagesContainerRef = useRef<HTMLDivElement>(null);
+  const userRole = useUserRole();
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   useEffect(() => {
-    refresh();
+    if (userRole === "plant-doctor") {
+      doctorRefresh();
+    } else {
+      refresh();
+    }
   }, []);
+
+  useEffect(() => {
+    scrollToBottom();
+  });
 
   useEffect(() => {
     const updateHeight = () => {
       const viewport = window.visualViewport;
       if (viewport) {
-        const headerHeight = window.innerWidth < 768 ? 56 : 61; 
+        const headerHeight = window.innerWidth < 768 ? 56 : 61;
         const chatHeaderHeight = window.innerWidth < 480 ? 48 : 58;
         const inputHeight = 48;
-        const newHeight = viewport.height - headerHeight - inputHeight - chatHeaderHeight ;
+        const newHeight =
+          viewport.height - headerHeight - inputHeight - chatHeaderHeight;
         setMessagesHeight(`${newHeight}px`);
       }
     };
@@ -42,20 +57,6 @@ export default function ChatMessages({
       window.visualViewport?.removeEventListener("resize", updateHeight);
     };
   }, []);
-
-  const userRole = useUserRole();
-  const messagesEndRef = useRef<HTMLDivElement>(null);
-  const isDoctor = userRole === "plant-doctor";
-  const [showSkeleton, setShowSkeleton] = useState(true);
-  const [lightboxOpen, setLightboxOpen] = useState(false);
-  const [lightboxIndex, setLightboxIndex] = useState(0);
-  const allImages = initialMessages
-    .filter((msg) => msg.image)
-    .map((msg) => ({ src: msg.image! }));
-
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
 
   useEffect(() => {
     scrollToBottom();
@@ -68,9 +69,18 @@ export default function ChatMessages({
     }
   }, [isLoading, initialMessages]);
 
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const isDoctor = userRole === "plant-doctor";
+  const [showSkeleton, setShowSkeleton] = useState(true);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+  const allImages = initialMessages
+    .filter((msg) => msg.image)
+    .map((msg) => ({ src: msg.image! }));
+
   if (initialMessages.length === 0) {
     return (
-      <div className="flex flex-1 items-center justify-center overflow-y-auto ">
+      <div className="flex flex-1 items-center justify-center overflow-y-auto">
         <div className="border-neutral9 fixed top-45/100 rounded-2xl border bg-white p-10">
           <p className="text-neutral11 text-center">
             هنوز پیامی ارسال نشده؛

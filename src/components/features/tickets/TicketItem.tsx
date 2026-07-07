@@ -1,4 +1,6 @@
 "use client";
+import { useUserRole } from "@/features/auth/selectors/auth.selectors";
+import { useDoctorNotifications } from "@/features/notifications/hooks/useDoctorNotifications";
 import { useNotifications } from "@/features/notifications/hooks/useNotifications";
 import { markTicketAsRead } from "@/features/tickets/actions/ticket.actions";
 import { ITicket } from "@/features/tickets/types/ticket.types";
@@ -22,16 +24,22 @@ export default function TicketItem({
 }: TicketItemProps) {
   const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
   const { refresh } = useNotifications();
+  const { refresh: refreshDoctor } = useDoctorNotifications();
   const isAnswered = ticket.status === "answered";
+  const userRole = useUserRole();
   const getDepartmentLabel = (value: string) => {
     return TICKET_DEPARTMENTS.find((d) => d.value === value)?.label || value;
   };
 
   const handleToggle = async () => {
-    if (!isOpen && ticket.status === "answered" && !ticket.isReadByUser) {
+    if (!isOpen && isAnswered && !ticket.isReadByUser) {
       const result = await markTicketAsRead(ticket._id);
       if (result.success) {
-        refresh();
+        if (userRole === "plant-doctor") {
+          refreshDoctor();
+        } else {
+          refresh();
+        }
       }
     }
     onToggle();
@@ -159,7 +167,7 @@ export default function TicketItem({
         <Lightbox
           open={!!lightboxSrc}
           close={() => setLightboxSrc(null)}
-          controller={{closeOnBackdropClick : true}}
+          controller={{ closeOnBackdropClick: true }}
           slides={[{ src: lightboxSrc }]}
         />
       )}

@@ -1,7 +1,11 @@
 "use client";
 
-import { useIsLoading } from "@/features/auth/selectors/auth.selectors";
+import {
+  useIsLoading,
+  useUserRole,
+} from "@/features/auth/selectors/auth.selectors";
 import { ConsultationWithDetails } from "@/features/consultations/types/consultation.types";
+import { useDoctorNotifications } from "@/features/notifications/hooks/useDoctorNotifications";
 import { useNotifications } from "@/features/notifications/hooks/useNotifications";
 import { useIsSidebarOpen } from "@/stores/selectors/ui.selectors";
 import { useEffect } from "react";
@@ -16,12 +20,17 @@ export default function ConsultationsList({
 }: ConsultationsListProps) {
   const isSidebarOpen = useIsSidebarOpen();
   const isAuthLoading = useIsLoading();
-  const {refresh} = useNotifications()
+  const userRole = useUserRole();
+  const { refresh } = useNotifications();
+  const { refresh: refreshDoctor } = useDoctorNotifications();
 
-    useEffect(() => {
-    refresh()
+  useEffect(() => {
+    if (userRole === "plant-doctor") {
+      refreshDoctor();
+    } else {
+      refresh();
+    }
   }, []);
-
 
   const gridColumns = isSidebarOpen
     ? "grid-cols-2 max-xl:grid-cols-1"
