@@ -5,12 +5,11 @@ import connectToDB from "@/lib/db/connect";
 import Consultation from "@/lib/db/models/Consultation";
 import ConsultationMessage from "@/lib/db/models/ConsultationMessage";
 import Ticket from "@/lib/db/models/Ticket";
-import { UnreadCounts } from "../types/notification.types";
 
-export async function getUnreadCounts(): Promise<UnreadCounts> {
+export async function getUnreadCounts() {
   const { user } = await getMeAction();
   if (!user) {
-    return { consultation: 0, ticket: 0, totalUnread: 0 };
+    return { consultation: 0, ticket: 0 };
   }
 
   await connectToDB();
@@ -46,7 +45,6 @@ export async function getUnreadCounts(): Promise<UnreadCounts> {
     const newConsultationsWithoutMessage = consultations.filter(
       (c) => !c.lastMessage || c.lastMessage === ""
     ).length;
-
     consultationUnread += newConsultationsWithoutMessage;
   }
 
@@ -59,6 +57,5 @@ export async function getUnreadCounts(): Promise<UnreadCounts> {
   return {
     consultation: consultationUnread,
     ticket: ticketUnread,
-    totalUnread: consultationUnread + ticketUnread,
   };
 }
