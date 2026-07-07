@@ -10,6 +10,7 @@ import {
   useUserRole,
 } from "@/features/auth/selectors/auth.selectors";
 import { useAdminNotifications } from "@/features/notifications/hooks/useAdminNotifications";
+import { useDoctorNotifications } from "@/features/notifications/hooks/useDoctorNotifications";
 import { useNotifications } from "@/features/notifications/hooks/useNotifications";
 import { useCartActions } from "@/stores/selectors/ui.selectors";
 import Image from "next/image";
@@ -35,16 +36,18 @@ export default function MobileActions() {
 
   const { total: userTotal, refresh: refreshUser } = useNotifications();
   const { total: adminTotal, refresh: refreshAdmin } = useAdminNotifications();
-
+  const { total: doctorTotal, refresh: refreshDOctor } =
+    useDoctorNotifications();
 
   useEffect(() => {
-    if (isAdmin) {
+    if (userRole === "admin") {
       refreshAdmin();
+    } else if (userRole === "plant-doctor") {
+      refreshDOctor();
     } else {
       refreshUser();
     }
-  }, [isAdmin]);
-
+  }, [userRole]);
 
   return (
     <div className="flex items-center gap-2">
@@ -75,7 +78,13 @@ export default function MobileActions() {
             className="rounded-full max-md:size-10 max-sm:size-8"
           />
           <NotificationBadge
-          count={isAdmin ? adminTotal : userTotal}
+            count={
+              userRole === "admin"
+                ? adminTotal
+                : userRole === "plant-doctor"
+                  ? doctorTotal
+                  : userTotal
+            }
             className="-top-2 -right-1 max-sm:size-4 max-sm:text-[10px]"
           />
         </Link>
