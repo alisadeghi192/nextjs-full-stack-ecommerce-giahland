@@ -75,6 +75,12 @@ export const plantDoctorLinks: PanelLink[] = [
     label: "تیکت‌ها",
     tooltipLabel: "تیکت‌ها",
   },
+  {
+    href: "/user/comments",
+    icon: <MdComment size={24} />,
+    label: "کامنت‌ها",
+    tooltipLabel: "کامنت‌ها",
+  },
 ];
 
 export const adminLinks: PanelLink[] = [
@@ -115,7 +121,7 @@ export const adminLinks: PanelLink[] = [
     tooltipLabel: "تیکت‌ها",
   },
   {
-    href: "/admin/comments", 
+    href: "/admin/comments",
     icon: <MdComment size={24} />,
     label: "کامنت‌ها",
     tooltipLabel: "کامنت‌ها",
