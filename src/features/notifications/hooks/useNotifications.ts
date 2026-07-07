@@ -5,14 +5,13 @@ import { getUnreadCounts } from "../actions/getUnreadCounts.actions";
 
 export function useNotifications() {
   const { consultation, ticket, setUnread } = useNotificationStore();
-  
+  const total = consultation + ticket;
+
   const refresh = async () => {
     const data = await getUnreadCounts();
     setUnread({ consultation: data.consultation, ticket: data.ticket });
   };
-  
-  const total = consultation + ticket;
-  
+
   return {
     consultation,
     ticket,
