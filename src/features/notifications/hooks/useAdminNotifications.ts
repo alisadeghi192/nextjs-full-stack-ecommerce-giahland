@@ -1,18 +1,28 @@
 "use client";
 
-import { useAdminNotificationStore } from "@/stores/useAdminNotificationStore";
+import { useNotificationStore } from "@/stores/useNotificationStore";
 import { getAdminUnreadCounts } from "../actions/getAdminUnreadCounts.actions";
 
 export function useAdminNotifications() {
-  const { setUnread , ...state } = useAdminNotificationStore();
+  const { adminTickets, adminContact, adminComments, setUnread } =
+    useNotificationStore();
 
-  const fetchUnread = async () => {
+  const refresh = async () => {
     const data = await getAdminUnreadCounts();
-    setUnread(data);
+    setUnread({
+      adminTickets: data.adminTickets,
+      adminContact: data.adminContact,
+      adminComments: data.adminComments,
+    });
   };
 
+  const total = adminTickets + adminContact + adminComments;
+
   return {
-    ...state,
-    refresh : fetchUnread,
+    tickets: adminTickets,
+    contact: adminContact,
+    comments: adminComments,
+    total,
+    refresh,
   };
 }

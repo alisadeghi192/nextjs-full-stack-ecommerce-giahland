@@ -4,15 +4,19 @@ import { useNotificationStore } from "@/stores/useNotificationStore";
 import { getUnreadCounts } from "../actions/getUnreadCounts.actions";
 
 export function useNotifications() {
-  const { setUnread, ...state } = useNotificationStore();
-
-  const fetchUnread = async () => {
+  const { consultation, ticket, setUnread } = useNotificationStore();
+  
+  const refresh = async () => {
     const data = await getUnreadCounts();
-    setUnread(data);
+    setUnread({ consultation: data.consultation, ticket: data.ticket });
   };
-
+  
+  const total = consultation + ticket;
+  
   return {
-    ...state,
-    refresh: fetchUnread,
+    consultation,
+    ticket,
+    total,
+    refresh,
   };
 }
