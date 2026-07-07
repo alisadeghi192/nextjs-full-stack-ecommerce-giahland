@@ -1,13 +1,13 @@
 export interface NotificationState {
   consultation: number;
   ticket: number;
-  
+
   doctorComments: number;
-  
+
   adminTickets: number;
   adminContact: number;
   adminComments: number;
-  
+
   setUnread: (data: Partial<NotificationState>) => void;
 }
 
@@ -26,4 +26,13 @@ export interface AdminUnreadCounts {
   adminContact: number;
   adminComments: number;
   total: number;
+}
+
+export interface UnreadCounts {
+  consultation?: number;
+  ticket?: number;
+  doctorComments?: number;
+  adminTickets?: number;
+  adminContact?: number;
+  adminComments?: number;
 }
