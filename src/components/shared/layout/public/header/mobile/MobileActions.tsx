@@ -33,8 +33,7 @@ export default function MobileActions() {
   const isDoctor = userRole === "plant-doctor";
   const showCart = !isDoctor;
 
-  const { totalUnread: userTotal, refresh: refreshUser } = useNotifications();
-
+  const { total: userTotal, refresh: refreshUser } = useNotifications();
   const { total: adminTotal, refresh: refreshAdmin } = useAdminNotifications();
 
 

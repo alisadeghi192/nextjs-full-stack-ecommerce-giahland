@@ -8,6 +8,7 @@ import {
   useUserMobile,
 } from "@/features/auth/selectors/auth.selectors";
 import { useAdminNotifications } from "@/features/notifications/hooks/useAdminNotifications";
+import { useDoctorNotifications } from "@/features/notifications/hooks/useDoctorNotifications";
 import { useNotifications } from "@/features/notifications/hooks/useNotifications";
 import { PanelLink } from "@/lib/constants/panelLinks";
 import Image from "next/image";
@@ -42,9 +43,12 @@ export default function PanelSidebar({
   const {
     tickets: adminTicket,
     contact,
-    comments :adminComments,
+    comments: adminComments,
     refresh: adminRefresh,
   } = useAdminNotifications();
+
+  const { count: doctorComments, refresh: doctorRefresh } =
+    useDoctorNotifications();
 
   const displayName = firstName || "کاربر";
   const persianMobile = mobile?.replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[+d]) || "";
@@ -54,8 +58,9 @@ export default function PanelSidebar({
       adminRefresh();
     } else {
       userRefresh();
+      doctorRefresh();
     }
-  }, [isAdmin, pathname]);
+  }, [isAdmin]);
 
   return (
     <div className="custom-scroll ltr *:rtl flex h-full flex-col overflow-x-hidden overflow-y-auto py-6 pr-1 max-md:py-0">
@@ -107,6 +112,9 @@ export default function PanelSidebar({
             showBadge = true;
           } else if (link.href === "/admin/comments") {
             badgeCount = adminComments;
+            showBadge = true;
+          } else if (link.href === "/user/comments") {
+            badgeCount = doctorComments;
             showBadge = true;
           }
 

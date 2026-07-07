@@ -37,7 +37,7 @@ export default function AuthButtons() {
   const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const openTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  const { totalUnread: userTotal, refresh: refreshUser } = useNotifications();
+  const { total: userTotal, refresh: refreshUser } = useNotifications();
   const { total: adminTotal, refresh: refreshAdmin } = useAdminNotifications();
 
 
