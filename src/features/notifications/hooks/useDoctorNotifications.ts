@@ -2,17 +2,31 @@
 
 import { useNotificationStore } from "@/stores/useNotificationStore";
 import { getDoctorCommentCounts } from "../actions/getDoctorCommentCounts.actions";
+import { getUnreadCounts } from "../actions/getUnreadCounts.actions";
 
 export function useDoctorNotifications() {
-  const { doctorComments, setUnread } = useNotificationStore();
+  const { consultation, ticket, doctorComments, setUnread } = useNotificationStore();
+
+  const total = consultation + ticket + doctorComments;
 
   const refresh = async () => {
-    const data = await getDoctorCommentCounts();
-    setUnread({ doctorComments: data.doctorComments });
+    const [unreadData, commentData] = await Promise.all([
+      getUnreadCounts(),
+      getDoctorCommentCounts(),
+    ]);
+
+    setUnread({
+      consultation: unreadData.consultation,
+      ticket: unreadData.ticket,
+      doctorComments: commentData.doctorComments,
+    });
   };
 
   return {
-    count: doctorComments,
+    consultation,
+    ticket,
+    doctorComments,
+    total,
     refresh,
   };
 }
