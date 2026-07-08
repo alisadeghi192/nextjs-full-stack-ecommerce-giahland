@@ -1,11 +1,11 @@
-import DoctorArticlesHeader from "@/components/features/blog/DoctorArticlesHeader";
-import DoctorArticlesList from "@/components/features/blog/DoctorArticlesList";
+import DoctorArticlesHeader from "@/components/doctor/DoctorArticlesHeader";
+import DoctorArticlesList from "@/components/doctor/DoctorArticlesList";
 import Pagination from "@/components/shared/ui/pagination";
 import { getArticlesByDoctor } from "@/features/blog/actions/getArticlesByDoctor.actions";
 import {
-  BLOG_POSTS_PER_PAGE,
-  DEFAULT_SORT,
-  DEFAULT_TAB,
+    BLOG_POSTS_PER_PAGE,
+    DEFAULT_SORT,
+    DEFAULT_TAB,
 } from "@/lib/constants";
 interface PageProps {
   searchParams: Promise<{ category?: string; sort?: string; page?: string }>;

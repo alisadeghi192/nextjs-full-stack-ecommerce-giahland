@@ -19,7 +19,6 @@ export default function DoctorArticlesList({
   showActions = false,
 }: DoctorArticlesListProps) {
   const isSidebarOpen = useIsSidebarOpen();
-
   const gridColumns = isSidebarOpen
     ? "grid-cols-3 max-xl:grid-cols-2 max-lg:gap-4"
     : "grid-cols-4 max-xl:grid-cols-3 max-lg:grid-cols-2 max-xs:grid-cols-1";

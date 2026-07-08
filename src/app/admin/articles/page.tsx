@@ -1,5 +1,5 @@
-import DoctorArticlesHeader from "@/components/features/blog/DoctorArticlesHeader";
-import DoctorArticlesList from "@/components/features/blog/DoctorArticlesList";
+import DoctorArticlesHeader from "@/components/doctor/DoctorArticlesHeader";
+import DoctorArticlesList from "@/components/doctor/DoctorArticlesList";
 import Pagination from "@/components/shared/ui/pagination";
 import { getArticles } from "@/features/blog/actions/getArticles.actions";
 import {
