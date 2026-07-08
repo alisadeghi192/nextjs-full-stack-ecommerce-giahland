@@ -47,7 +47,7 @@ export default function TicketItem({
 
   return (
     <>
-      <div className="group border-neutral4 flex w-full flex-col rounded-xl border bg-white p-4 max-md:p-2">
+      <div className="group border-neutral4 shadow-lg flex w-full flex-col rounded-xl border bg-white p-4 max-md:p-2">
         <div className="flex items-center justify-between">
           <div className="flex flex-wrap items-center gap-4">
             <span
