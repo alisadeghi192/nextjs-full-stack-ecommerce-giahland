@@ -7,7 +7,7 @@ import ProductImage from "./ProductImage";
 import ProductInfo from "./ProductInfo";
 import StockStatus from "./StockStatus";
 interface ProductCardListProps {
-  _id : string
+  _id: string;
   name: string;
   price: number;
   image: string;
@@ -55,16 +55,25 @@ export default function ProductCardList({
               className="text-error mr-auto text-lg/8 max-md:text-base"
             />
           ) : (
-            <PriceSection price={price} discount={discount} variant="product-card"/>
+            <PriceSection
+              price={price}
+              discount={discount}
+              variant="product-card"
+            />
           )}
         </div>
-        {hasDiscount && !isOutOfStock && <DiscountBadge discount={discount} className="absolute top-5 right-5" />}
+        {hasDiscount && !isOutOfStock && (
+          <DiscountBadge
+            discount={discount}
+            className="absolute top-5 right-5"
+          />
+        )}
       </div>
     </div>
   );
 
   return (
-    <div className="border-neutral5 group relative overflow-hidden rounded-lg border">
+    <div className="border-neutral5 group relative overflow-hidden rounded-lg border shadow-lg">
       {isOutOfStock ? (
         <div className="cursor-default">{Content()}</div>
       ) : (
@@ -72,8 +81,8 @@ export default function ProductCardList({
       )}
       {!isOutOfStock && (
         <LikeButton
-        productId={_id}
-        initialLiked={isLiked}
+          productId={_id}
+          initialLiked={isLiked}
           mobileResponsive={true}
           className="top-4 -left-9 group-hover:left-4 max-md:top-2 max-md:left-2 max-md:size-7 max-md:group-hover:left-2"
         />

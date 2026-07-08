@@ -1,14 +1,17 @@
 "use client";
 
 import { BlogPostCard } from "@/features/blog/types/blog.types";
-import { BLOG_SWIPER_AUTOPLAY_DELAY, BLOG_SWIPER_BREAKPOINTS, BLOG_SWIPER_SPACE_BETWEEN } from "@/lib/constants";
+import {
+  BLOG_SWIPER_AUTOPLAY_DELAY,
+  BLOG_SWIPER_BREAKPOINTS,
+  BLOG_SWIPER_SPACE_BETWEEN,
+} from "@/lib/constants";
 import Link from "next/link";
 import { useRef } from "react";
 import type { Swiper as SwiperType } from "swiper";
 import { Autoplay, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import BlogCard from "./BlogCard";
-
 
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import "swiper/css";
@@ -64,7 +67,7 @@ export default function BlogSlider({
         >
           {posts.map((post, index) => (
             <SwiperSlide key={index}>
-              <BlogCard {...post} />
+              <BlogCard {...post} usedInSlider={true}/>
             </SwiperSlide>
           ))}
         </Swiper>

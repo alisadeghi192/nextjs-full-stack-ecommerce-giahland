@@ -102,4 +102,5 @@ export interface BlogPostCard {
   };
   category: "care" | "health" | "styling";
   publishedAt: Date;
+  usedInSlider?:boolean
 }

@@ -22,6 +22,7 @@ interface ProductCardGridProps {
   };
   stock: number;
   isLiked?: boolean;
+  usedInSlider?:boolean
 }
 
 export default function ProductCardGrid({
@@ -35,6 +36,7 @@ export default function ProductCardGrid({
   potDimensions,
   stock,
   isLiked = false,
+  usedInSlider = false
 }: ProductCardGridProps) {
   const isOutOfStock = stock === 0;
   const hasDiscount = discount > 0;
@@ -74,7 +76,7 @@ export default function ProductCardGrid({
   );
 
   return (
-    <div className="group border-neutral5 relative flex h-full flex-col justify-between gap-y-2 justify-self-center overflow-hidden rounded-xl border bg-white p-4 max-xl:gap-y-4 max-sm:max-w-57">
+    <div className={`group border-neutral5 relative flex h-full flex-col justify-between gap-y-2 justify-self-center overflow-hidden rounded-xl border bg-white p-4 ${usedInSlider ? "" : "shadow-lg"}  max-xl:gap-y-4`}>
       {isOutOfStock ? (
         <div className="cursor-default">{contentElement}</div>
       ) : (

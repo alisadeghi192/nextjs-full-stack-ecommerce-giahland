@@ -14,8 +14,8 @@ export default function WishlistProducts({ products, viewMode }: WishlistProduct
   const isSidebarOpen = useIsSidebarOpen();
 
   const gridColumns = isSidebarOpen
-    ? "grid-cols-3 max-lg:grid-cols-2"
-    : "grid-cols-4 max-xl:grid-cols-3 max-md:grid-cols-2";
+    ? "grid-cols-[repeat(3,auto)] justify-center max-lg:grid-cols-2"
+    : "grid-cols-4 max-xl:grid-cols-3 max-md:grid-cols-[repeat(2,auto)] max-md:justify-center";
 
   const listColumns = isSidebarOpen
     ? "grid-cols-2 max-xl:grid-cols-1"

@@ -12,7 +12,11 @@ import { Autoplay, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import ProductCardGrid from "./ProductCardGrid";
 
-import { PRODUCT_SWIPER_AUTOPLAY_DELAY, PRODUCT_SWIPER_BREAKPOINTS, PRODUCT_SWIPER_SPACE_BETWEEN } from "@/lib/constants";
+import {
+  PRODUCT_SWIPER_AUTOPLAY_DELAY,
+  PRODUCT_SWIPER_BREAKPOINTS,
+  PRODUCT_SWIPER_SPACE_BETWEEN,
+} from "@/lib/constants";
 import Link from "next/link";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -22,7 +26,7 @@ interface ProductSliderProps {
   title: string;
   products: ProductCardData[];
   link: string;
-   likeStatuses?: Record<string, boolean>;
+  likeStatuses?: Record<string, boolean>;
 }
 
 export default function ProductSlider({
@@ -35,7 +39,7 @@ export default function ProductSlider({
 
   return (
     <section className="relative mt-16 max-sm:mt-10">
-     <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between">
         <h4 className="text-primary mb-6 text-2xl/8.5 font-bold max-sm:text-xl/7 max-sm:font-semibold">
           {title}
         </h4>
@@ -71,7 +75,11 @@ export default function ProductSlider({
         >
           {products.map((product) => (
             <SwiperSlide key={product._id} className="h-auto">
-              <ProductCardGrid {...product} isLiked={likeStatuses?.[product._id]}/>
+              <ProductCardGrid
+                {...product}
+                isLiked={likeStatuses?.[product._id]}
+                usedInSlider={true}
+              />
             </SwiperSlide>
           ))}
         </Swiper>

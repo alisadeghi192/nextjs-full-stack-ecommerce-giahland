@@ -10,13 +10,14 @@ export default function BlogCard({
   author,
   category,
   publishedAt,
+  usedInSlider=false
 }: BlogPostCard) {
   return (
     <>
-      <div className="text-white justify-self-center overflow-hidden rounded-xl w-full">
+      <div className={`text-white ${usedInSlider ? "" : "shadow-lg"} overflow-hidden rounded-xl w-full`}>
         <Link href={`/blog/${category}/${slug}`}>
           <div
-            className="max-xs:h-80 relative flex h-94.5 max-w-72 flex-col justify-between overflow-hidden rounded-xl bg-cover bg-center p-4"
+            className="max-xs:h-80 relative  flex h-94.5 justify-self-center max-w-72 flex-col justify-between overflow-hidden rounded-xl bg-cover bg-center p-4"
             style={{ backgroundImage: `url(${coverImage})` }}
           >
             <div className="absolute inset-0 bg-black/60"></div>
