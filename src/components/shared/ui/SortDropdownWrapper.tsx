@@ -1,5 +1,5 @@
 "use client";
-import { usePageParams } from "@/lib/hooks/usePageParams";
+import { useUrlParams } from "@/lib/hooks/useUrlParams";
 import SortDropdown from "./SortDropdown";
 
 interface SortOption {
@@ -13,11 +13,12 @@ interface SortDropdownWrapperProps {
 }
 
 export default function SortDropdownWrapper({ options , usedInPanel}: SortDropdownWrapperProps) {
-  const { selectedSort, setSort } = usePageParams();
+    const { get, set } = useUrlParams();
+  const selectedSort = get("sort") || "newest";
   return (
     <SortDropdown
       selectedSort={selectedSort}
-      onSortChange={setSort}
+      onSortChange={(value) => set("sort", value)}
       options={options}
       usedInPanel = {usedInPanel}
     />

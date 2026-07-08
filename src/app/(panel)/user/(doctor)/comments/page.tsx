@@ -36,7 +36,7 @@ export default async function DoctorCommentsPage({ searchParams }: PageProps) {
   return (
     <div>
       <SectionTitle title="کامنت‌های قابل پاسخ" />
-      <DoctorCommentHeader sort={currentSort} totalCount={result.total} />
+      <DoctorCommentHeader sort={currentSort}  />
       <DoctorCommentsList comments={result.comments} currentPage={currentPage}/>
       {result.totalPages > 1 && (
         <div className="mt-6 flex justify-center">

@@ -1,7 +1,7 @@
 "use client";
 
+import { useUrlParams } from "@/lib/hooks/useUrlParams";
 import { AdminComment } from "@/types/comment.types";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import DoctorCommentItem from "./DoctorCommentItem";
 
@@ -11,21 +11,19 @@ interface DoctorCommentsListProps {
 }
 
 export default function DoctorCommentsList({
-  comments,currentPage
+  comments,
+  currentPage,
 }: DoctorCommentsListProps) {
   const [openId, setOpenId] = useState<string | null>(null);
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const router = useRouter();
+  const { get, set } = useUrlParams();
+
   const toggleItem = (id: string) => {
     setOpenId((prev) => (prev === id ? null : id));
   };
 
   useEffect(() => {
     if (comments.length === 0 && currentPage > 1) {
-      const params = new URLSearchParams(searchParams.toString());
-      params.set("page", String(currentPage - 1));
-      router.push(`${pathname}?${params.toString()}`);
+      set("page", String(currentPage - 1));
     }
   }, [comments.length, currentPage]);
 
