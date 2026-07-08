@@ -1,5 +1,6 @@
 "use client";
 import {
+  useIsAdmin,
   useIsAuthenticated,
   useUserRole,
 } from "@/features/auth/selectors/auth.selectors";
@@ -28,14 +29,15 @@ export default function LikeButton({
   const isAuthenticated = useIsAuthenticated();
   const userRole = useUserRole();
   const isDoctor = userRole === "plant-doctor";
+  const isAdmin = useIsAdmin();
+
+  if (isAdmin || isDoctor) {
+    return null;
+  }
+
   const handleClick = async (e: React.MouseEvent) => {
     e.stopPropagation();
     onClick?.(e);
-
-    if (isDoctor) {
-      toast.error("حساب گیاه پزشک امکان لایک کردن ندارد.");
-      return;
-    }
 
     if (!isAuthenticated) {
       toast.error("برای لایک کردن ابتدا وارد شوید.");
