@@ -2,7 +2,7 @@
 
 import SortDropdown from "@/components/shared/ui/SortDropdown";
 import { CONTACT_SORT_OPTIONS, CONTACT_STATUS_OPTIONS } from "@/lib/constants";
-import { usePathname, useRouter } from "next/navigation";
+import { useUrlParams } from "@/lib/hooks/useUrlParams";
 
 interface AdminContactMessagesHeaderProps {
   currentStatus: string;
@@ -13,31 +13,14 @@ export default function AdminContactMessagesHeader({
   currentStatus,
   currentSort,
 }: AdminContactMessagesHeaderProps) {
-  const router = useRouter();
-  const pathname = usePathname();
+  const { set } = useUrlParams();
 
-  const updateParams = (key: string, value: string) => {
-    const params = new URLSearchParams();
-
-    if (key !== "status") {
-      params.set("status", currentStatus);
-    }
-    if (key !== "sort") {
-      params.set("sort", currentSort);
-    }
-
-    params.set(key, value);
-    params.set("page", "1");
-
-    const query = params.toString();
-    router.push(`${pathname}?${query}`);
-  };
   return (
     <div className="mb-4 flex flex-wrap items-center gap-3">
       <div className="w-37.5">
         <SortDropdown
           selectedSort={currentStatus}
-          onSortChange={(value) => updateParams("status", value)}
+          onSortChange={(value) => set("status", value)}
           options={CONTACT_STATUS_OPTIONS}
           usedInPanel={true}
         />
@@ -45,7 +28,7 @@ export default function AdminContactMessagesHeader({
       <div className="w-37.5">
         <SortDropdown
           selectedSort={currentSort}
-          onSortChange={(value) => updateParams("sort", value)}
+          onSortChange={(value) => set("sort", value)}
           options={CONTACT_SORT_OPTIONS}
           usedInPanel={true}
         />

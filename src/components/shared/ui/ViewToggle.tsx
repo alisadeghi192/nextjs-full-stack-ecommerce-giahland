@@ -4,17 +4,19 @@ import { MdDensityMedium, MdGridView } from "react-icons/md";
 interface ViewToggleProps {
   viewMode: "grid" | "list";
   onViewChange: (mode: "grid" | "list") => void;
+  usedInPanel?: boolean;
 }
 
 export default function ViewToggle({
   viewMode,
   onViewChange,
+  usedInPanel = false,
 }: ViewToggleProps) {
   return (
     <div className="flex items-center gap-x-4">
       <button
         onClick={() => onViewChange("grid")}
-        className={`border-neutral5 flex size-12 cursor-pointer items-center justify-center rounded-xl border transition-all max-md:size-11 max-sm:size-10 ${
+        className={`border-neutral5 flex ${usedInPanel ? "size-10" : "size-12 max-md:size-11 max-sm:size-10"} cursor-pointer items-center justify-center rounded-xl border transition-all ${
           viewMode === "grid"
             ? "bg-primary text-white"
             : "bg-neutral2 text-primary"
@@ -24,7 +26,7 @@ export default function ViewToggle({
       </button>
       <button
         onClick={() => onViewChange("list")}
-        className={`max-sm:size10 border-neutral5 flex size-12 cursor-pointer items-center justify-center rounded-xl border transition-all max-md:size-11 max-sm:size-10 ${
+        className={`border-neutral5 flex ${usedInPanel ? "size-10" : "size-12 max-md:size-11 max-sm:size-10"} cursor-pointer items-center justify-center rounded-xl border transition-all ${
           viewMode === "list"
             ? "bg-primary text-white"
             : "bg-neutral2 text-primary"

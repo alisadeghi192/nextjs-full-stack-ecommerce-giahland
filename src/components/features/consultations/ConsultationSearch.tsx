@@ -1,29 +1,31 @@
 "use client";
 
 import FormField from "@/components/shared/ui/FormField";
-import { usePathname, useRouter } from "next/navigation";
+import { useUrlParams } from "@/lib/hooks/useUrlParams";
 import { useState } from "react";
 import { IoClose, IoSearch } from "react-icons/io5";
 
 interface ConsultationSearchProps {
   defaultValue?: string;
-  classname? : string;
+  className?: string;
 }
 
-export default function ConsultationSearch({ defaultValue = "" , classname }: ConsultationSearchProps) {
-  const router = useRouter();
-  const pathname = usePathname();
+export default function ConsultationSearch({
+  defaultValue = "",
+  className = "",
+}: ConsultationSearchProps) {
+  const { set } = useUrlParams();
   const [query, setQuery] = useState(defaultValue);
 
   const handleSearch = () => {
     if (query.trim()) {
-      router.push(`${pathname}?search=${query.trim()}`);
+      set("search", query.trim());
     }
   };
 
   const handleClear = () => {
     setQuery("");
-    router.push(pathname);
+    set("search", "");
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -33,13 +35,13 @@ export default function ConsultationSearch({ defaultValue = "" , classname }: Co
   };
 
   return (
-    <div className={`flex items-center bg-whit max-[400px]:w-full ${classname}`}>
+    <div className={`flex items-center max-[400px]:w-full ${className}`}>
       <div className="flex-1">
         <FormField
           icon={<IoSearch className="size-5" />}
           id="consultation-search"
           type="text"
-          label="کد‌ مشاوره"
+          label="کد مشاوره"
           name="search"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
