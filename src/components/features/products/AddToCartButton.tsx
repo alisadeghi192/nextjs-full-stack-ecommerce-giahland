@@ -8,13 +8,14 @@ interface AddToCartButtonProps {
 export default function AddToCartButton({ className }: AddToCartButtonProps) {
   const userRole = useUserRole();
   const isDoctor = userRole === "plant-doctor";
+  const isAdmin = userRole === "admin";
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
     alert("به سبد خرید اضافه شد");
   };
 
-  if (isDoctor) {
+  if (isDoctor || isAdmin) {
     return null;
   }
 

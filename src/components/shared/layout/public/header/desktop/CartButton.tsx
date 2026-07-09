@@ -12,7 +12,7 @@ export default function CartButton() {
   const isCartOpen = useIsCartOpen();
   const { toggleCart, closeCart } = useCartActions();
   const role = useUserRole();
-  if (role === "plant-doctor") return null;
+  if (role === "plant-doctor" || role === "admin") return null;
   return (
     <div className="relative">
       <div className="relative">

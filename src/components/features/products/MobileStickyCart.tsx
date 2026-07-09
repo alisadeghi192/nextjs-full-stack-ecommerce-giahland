@@ -22,8 +22,9 @@ export default function MobileStickyCart({
   const isOutOfStock = stock === 0;
     const userRole = useUserRole();
   const isDoctor = userRole === "plant-doctor";
+  const isAdmin = userRole === "admin"
   
-  if (isDoctor) {
+  if (isDoctor || isAdmin) {
     return null;
   }
   return (
