@@ -1,8 +1,6 @@
-import { AuthUser } from "@/features/user/types/user.types";
 import { useAuthStore } from "@/stores/useAuthStore";
 import { useShallow } from "zustand/react/shallow";
 
-type UserWithoutPassword = Omit<AuthUser, "password">;
 
 const useIsAuthenticated = () => useAuthStore((s) => s.isAuthenticated);
 const useIsLoading = () => useAuthStore((s) => s.isLoading);
@@ -91,3 +89,4 @@ export {
   useUserWishlist,
   useUserYearsOfExperience
 };
+

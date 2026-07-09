@@ -23,7 +23,7 @@ interface PanelSidebarProps {
   links: PanelLink[];
   isPanelOpen: boolean;
   onClose?: () => void;
-  isAdminPanel: boolean;
+  isAdminPanel?: boolean;
 }
 
 export default function PanelSidebar({
