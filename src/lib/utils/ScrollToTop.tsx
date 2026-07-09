@@ -13,8 +13,9 @@ const ScrollToTop = () => {
   const [windowWidth, setWindowWidth] = useState<number>(0);
   const isFooterVisible = useFooterVisibility();
   const pathname = usePathname();
-    const userRole = useUserRole();
+  const userRole = useUserRole();
   const isDoctor = userRole === "plant-doctor";
+  const isAdmin = userRole === "admin";
 
   const isSingleProductPage =
     pathname?.startsWith("/products/") && pathname?.split("/").length === 4;
@@ -47,7 +48,7 @@ const ScrollToTop = () => {
   }, []);
 
   const isMobile = windowWidth < 640;
-  const shouldAdjust =  !isDoctor && isSingleProductPage && isMobile;
+  const shouldAdjust = !isDoctor && isSingleProductPage && isMobile && !isAdmin;
 
   const bottomPosition = shouldAdjust
     ? isFooterVisible
