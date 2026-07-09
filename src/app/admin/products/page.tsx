@@ -1,6 +1,7 @@
 import AdminProducts from "@/components/admin/AdminProducts";
 import AdminProductsHeader from "@/components/admin/AdminProductsHeader";
 import SectionTitle from "@/components/panel/SectionTitle";
+import OutlineButton from "@/components/shared/ui/OutlineButton";
 import Pagination from "@/components/shared/ui/pagination";
 import { getProductsForAdmin } from "@/features/products/actions/getProductsForAdmin.actions";
 
@@ -34,7 +35,15 @@ export default async function AdminProductsPage({ searchParams }: PageProps) {
 
   return (
     <div>
-      <SectionTitle title="مدیریت محصولات" />
+      <div className="flex mb-2 items-center justify-between">
+        <SectionTitle title="مدیریت محصولات" className="mb-0!" />
+        <OutlineButton
+          href="/admin/products/new"
+          className="h-10 shrink-0 px-6 text-center text-base font-medium"
+        >
+          محصول جدید
+        </OutlineButton>
+      </div>
       <AdminProductsHeader
         activeTab={activeTab}
         selectedSort={selectedSort}

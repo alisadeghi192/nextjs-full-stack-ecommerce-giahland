@@ -4,6 +4,7 @@ import ProductCardGrid from "@/components/features/products/ProductCardGrid";
 import ProductCardList from "@/components/features/products/ProductCardList";
 import { ProductCardData } from "@/features/products/types/product.types";
 import { useIsSidebarOpen } from "@/stores/selectors/ui.selectors";
+import Link from "next/link";
 import { MdDelete, MdEdit } from "react-icons/md";
 import ConfirmDialog from "../shared/ui/ConfirmDialog";
 
@@ -34,16 +35,19 @@ export default function AdminProducts({
           <div className="relative mx-auto w-fit" key={product._id}>
             <ProductCardGrid {...product} />
             <div className="relative -top-8 right-0 left-0 flex h-8 items-center">
-              <button className="flex h-8 w-full cursor-pointer items-center justify-center rounded-br-lg bg-blue-400 text-white transition hover:bg-blue-100 hover:text-blue-500">
+              <Link
+                href={`/admin/products/edit/${product._id}`}
+                className="flex h-8 w-full cursor-pointer items-center justify-center gap-x-1 rounded-br-lg bg-blue-400 text-white transition hover:bg-blue-100 hover:text-blue-500"
+              >
                 <MdEdit size={18} />
                 <span>ویرایش</span>
-              </button>
+              </Link>
               <ConfirmDialog
                 onConfirm={() => {}}
                 title="آیا از حذف این محصول مطمئن هستید؟ این عملیات برگشت ناپذیر است."
                 confirmText="بله، حذف شود"
                 cancelText="انصراف"
-                className="bg-error hover:text-error hover:bg-bg-error flex h-8 w-full cursor-pointer items-center justify-center rounded-bl-lg text-white transition-colors"
+                className="bg-error hover:text-error hover:bg-bg-error flex h-8 w-full cursor-pointer items-center justify-center gap-x-1 rounded-bl-lg text-white transition-colors"
               >
                 <MdDelete size={18} />
                 <span>حذف</span>
@@ -60,20 +64,23 @@ export default function AdminProducts({
       {products.map((product) => (
         <div className="relative" key={product._id}>
           <ProductCardList {...product} />
-          <div className="relative -top-2 right-0 shadow-lg left-0 flex h-6 items-center">
-            <button className="flex h-6 w-full cursor-pointer items-center justify-center rounded-br-lg bg-blue-400 text-white transition hover:bg-blue-100 hover:text-blue-500">
-              <MdEdit size={18} />
-              <span>ویرایش</span>
-            </button>
+          <div className="absolute right-0 bottom-0 left-0 flex items-center">
+            <Link
+              href={`/admin/products/edit/${product._id}`}
+              className="flex w-full cursor-pointer items-center justify-center gap-x-2 rounded-br-lg bg-blue-400 text-white transition hover:bg-blue-100 hover:text-blue-500"
+            >
+              <MdEdit className="size-4" />
+              <span className="text-sm">ویرایش</span>
+            </Link>
             <ConfirmDialog
               onConfirm={() => {}}
               title="آیا از حذف این محصول مطمئن هستید؟ این عملیات برگشت ناپذیر است."
               confirmText="بله، حذف شود"
               cancelText="انصراف"
-              className="bg-error hover:text-error hover:bg-bg-error flex h-6 w-full cursor-pointer items-center justify-center rounded-bl-lg text-white transition-colors"
+              className="bg-error hover:text-error hover:bg-bg-error flex w-full cursor-pointer items-center justify-center gap-x-2 rounded-bl-lg text-white transition-colors"
             >
-              <MdDelete size={18} />
-              <span>حذف</span>
+              <MdDelete className="size-4" />
+              <span className="text-sm">حذف</span>
             </ConfirmDialog>
           </div>
         </div>

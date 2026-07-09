@@ -23,20 +23,22 @@ export default function AdminProductsHeader({
 
   const handleSortChange = (value: string) => set("sort", value);
 
-  const isSidebarOpen = useIsSidebarOpen()
+  const isSidebarOpen = useIsSidebarOpen();
 
   return (
     <div className="mb-3">
-      <div className={`flex items-center justify-between ${isSidebarOpen ? "max-lg:flex-col" : "max-md:flex-col"}  gap-y-3`}>
+      <div
+        className={`flex items-center justify-between ${isSidebarOpen ? "max-lg:flex-col" : "max-md:flex-col"} gap-y-3`}
+      >
         <Tabs
           tabs={productTabs}
           activeTab={activeTab}
           currentSort={selectedSort}
           usedInPanel={true}
         />
-        <div className="flex items-center gap-x-4 max-xs:w-full">
-          <ViewToggleWrapper usedInPanel={true}/>
-          <div className="w-40 max-xs:w-full">
+        <div className="max-xs:w-full flex items-center gap-x-4">
+          <ViewToggleWrapper usedInPanel={true} />
+          <div className="max-xs:w-full w-40">
             <SortDropdown
               selectedSort={selectedSort}
               onSortChange={handleSortChange}
@@ -46,7 +48,9 @@ export default function AdminProductsHeader({
           </div>
         </div>
       </div>
-      <div className={`w-60 mt-3 max-md:w-80 ${isSidebarOpen ? "max-lg:mx-auto max-lg:w-90" : "max-md:mx-auto"}  max-xs:w-full`}>
+      <div
+        className={`mt-3 w-60 max-md:w-80 ${isSidebarOpen ? "max-lg:mx-auto max-lg:w-90" : "max-md:mx-auto"} max-xs:w-full`}
+      >
         <AdminProductSearch defaultValue={searchQuery} />
       </div>
     </div>

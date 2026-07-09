@@ -1,4 +1,3 @@
-// src/components/admin/AdminProductSearch.tsx
 "use client";
 
 import FormField from "@/components/shared/ui/FormField";
@@ -47,7 +46,7 @@ export default function AdminProductSearch({
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={handleKeyDown}
-          usedInConsultation={true}
+          isSearch={true}
         />
       </div>
       <button
