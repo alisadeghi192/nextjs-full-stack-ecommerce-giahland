@@ -1,8 +1,8 @@
 "use client";
 
 import NotificationBadge from "@/components/shared/ui/NotificationBadge";
+import OutlineButton from "@/components/shared/ui/OutlineButton";
 import { useNotifications } from "@/features/notifications/hooks/useNotifications";
-import Link from "next/link";
 import { useEffect } from "react";
 
 export default function ConsultationsPageHeader() {
@@ -13,12 +13,12 @@ export default function ConsultationsPageHeader() {
   }, []);
 
   return (
-    <Link
+    <OutlineButton
       href="/user/consultations/list"
-      className="text-primary border-primary relative flex h-10 w-37.5 items-center justify-center rounded-xl border text-center font-medium"
+      className="relative h-10 w-37.5 text-center font-medium"
     >
       مشاوره های من
-      <NotificationBadge count={consultation} className="-top-2 -right-1"/>
-    </Link>
+      <NotificationBadge count={consultation} className="-top-2 -right-1" />
+    </OutlineButton>
   );
 }

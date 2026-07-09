@@ -6,7 +6,7 @@ import Tabs from "@/components/shared/ui/Tabs";
 import { useIsAdmin } from "@/features/auth/selectors/auth.selectors";
 import { blogSortOptions, blogTabs } from "@/lib/constants";
 import { useIsSidebarOpen } from "@/stores/selectors/ui.selectors";
-import Link from "next/link";
+import OutlineButton from "../shared/ui/OutlineButton";
 
 interface DoctorArticlesHeaderProps {
   activeTab: string;
@@ -18,11 +18,9 @@ export default function DoctorArticlesHeader({
   selectedSort,
 }: DoctorArticlesHeaderProps) {
   const isOpenSidebar = useIsSidebarOpen();
-  const isAdmin = useIsAdmin()
+  const isAdmin = useIsAdmin();
   return (
-    <div
-      className="flex flex-wrap items-center gap-y-4 mb-6 max-xs:mb-4"
-    >
+    <div className="max-xs:mb-4 mb-6 flex flex-wrap items-center gap-y-4">
       <SectionTitle
         title={isAdmin ? "مدیریت مقاله ها" : "مقاله های من"}
         className={`mb-0! ${isOpenSidebar ? "max-xl:basis-1/2" : "max-lg:basis-1/2"} max-xs:basis-auto ml-4`}
@@ -43,12 +41,12 @@ export default function DoctorArticlesHeader({
       >
         <SortDropdownWrapper options={blogSortOptions} usedInPanel={true} />
       </div>
-      <Link
-        href= {`/${isAdmin ? "admin" : "user"}/articles/new` }
-        className={`text-primary border-primary relative mr-4 flex h-10 w-37.5 items-center justify-center rounded-xl border text-center font-medium ${isOpenSidebar ? "max-xl:order-1 max-xl:mr-auto" : "max-lg:order-1 max-lg:mr-auto"}`}
+      <OutlineButton
+        href={`/${isAdmin ? "admin" : "user"}/articles/new`}
+        className={`relative mr-4 h-10 w-37.5 text-center font-medium ${isOpenSidebar ? "max-xl:order-1 max-xl:mr-auto" : "max-lg:order-1 max-lg:mr-auto"}`}
       >
         مقاله جدید
-      </Link>
+      </OutlineButton>
     </div>
   );
 }

@@ -46,7 +46,7 @@ export default function ConsultationSearch({
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={handleKeyDown}
-          usedInConsultation={true}
+          isSearch={true}
         />
       </div>
       <button
