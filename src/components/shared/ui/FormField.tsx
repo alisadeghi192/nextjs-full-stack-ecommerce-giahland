@@ -15,7 +15,7 @@ interface FormFieldProps {
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
-  usedInConsultation?: boolean;
+  isSearch?: boolean;
 }
 
 const FormField = forwardRef<HTMLInputElement, FormFieldProps>(
@@ -33,7 +33,7 @@ const FormField = forwardRef<HTMLInputElement, FormFieldProps>(
       onBlur,
       onKeyDown,
       defaultValue,
-      usedInConsultation,
+      isSearch,
     },
     ref,
   ) => {
@@ -41,7 +41,7 @@ const FormField = forwardRef<HTMLInputElement, FormFieldProps>(
     return (
       <div>
         <div
-          className={`group relative ${usedInConsultation ? "h-10" : "h-14 max-sm:h-12"} flex items-center gap-x-2 rounded-xl border px-3.75 transition-colors duration-200  ${hasError ? "border-error focus-within:border-error" : "border-neutral6 focus-within:border-primary"}`}
+          className={`group relative ${isSearch ? "h-10" : "h-14 max-sm:h-12"} flex items-center gap-x-2 rounded-xl border px-3.75 transition-colors duration-200  ${hasError ? "border-error focus-within:border-error" : "border-neutral6 focus-within:border-primary"}`}
         >
           <span
             className={`relative z-10 size-5.5 transition-colors duration-200 ${hasError ? "text-error group-focus-within:text-error" : "text-neutral9 group-focus-within:text-primary"}`}
@@ -54,7 +54,7 @@ const FormField = forwardRef<HTMLInputElement, FormFieldProps>(
             name={name}
             id={id}
             placeholder=" "
-            className={`peer text-neutral11 flex-1 border-0 outline-0 ${usedInConsultation ? "w-18" : ""
+            className={`peer text-neutral11 flex-1 border-0 outline-0 ${isSearch ? "w-18" : ""
             }`}
             value={value}
             defaultValue={defaultValue}
@@ -65,7 +65,7 @@ const FormField = forwardRef<HTMLInputElement, FormFieldProps>(
           />
           <label
             htmlFor={id}
-            className={`pointer-events-none absolute right-10.25 rounded-2xl bg-white px-1 transition-all duration-300 peer-focus:right-4 ${usedInConsultation ? "peer-focus:-translate-y-5.5 peer-[:not(:placeholder-shown)]:-translate-y-5.5" : "peer-focus:-translate-y-7 peer-[:not(:placeholder-shown)]:-translate-y-7"} peer-[:not(:placeholder-shown)]:right-4 max-sm:peer-focus:text-sm max-sm:peer-[:not(:placeholder-shown)]:text-sm ${hasError ? "text-error peer-focus:text-error peer-[:not(:placeholder-shown)]:text-error" : "text-neutral9 peer-focus:text-primary peer-[:not(:placeholder-shown)]:text-primary"}`}
+            className={`pointer-events-none absolute right-10.25 rounded-2xl bg-white px-1 transition-all duration-300 peer-focus:right-4 ${isSearch ? "peer-focus:-translate-y-5.5 peer-[:not(:placeholder-shown)]:-translate-y-5.5" : "peer-focus:-translate-y-7 peer-[:not(:placeholder-shown)]:-translate-y-7"} peer-[:not(:placeholder-shown)]:right-4 max-sm:peer-focus:text-sm max-sm:peer-[:not(:placeholder-shown)]:text-sm ${hasError ? "text-error peer-focus:text-error peer-[:not(:placeholder-shown)]:text-error" : "text-neutral9 peer-focus:text-primary peer-[:not(:placeholder-shown)]:text-primary"}`}
           >
             {label}
           </label>
