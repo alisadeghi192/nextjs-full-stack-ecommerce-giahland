@@ -10,6 +10,7 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 import SectionTitle from "@/components/panel/SectionTitle";
 import PrimaryButton from "@/components/shared/ui/PrimaryButton";
 import { createProductAction } from "@/features/products/actions/createProduct.actions";
+import { updateProductAction } from "@/features/products/actions/updateProduct.actions";
 import {
   ProductFormData,
   ProductFormDefaultValues,
@@ -116,16 +117,16 @@ export default function ProductForm({
       formData.append("stock", String(Number(data.stock) || 0));
       formData.append("category", data.category);
 
-      if (data.mainImage instanceof File) {
+      if (data.mainImage) {
         formData.append("mainImage", data.mainImage);
       }
-      if (data.gallery1 instanceof File) {
+      if (data.gallery1) {
         formData.append("gallery1", data.gallery1);
       }
-      if (data.gallery2 instanceof File) {
+      if (data.gallery2) {
         formData.append("gallery2", data.gallery2);
       }
-      if (data.gallery3 instanceof File) {
+      if (data.gallery3) {
         formData.append("gallery3", data.gallery3);
       }
 
@@ -152,7 +153,9 @@ export default function ProductForm({
         formData.append("productId", productId);
       }
 
-      const result = await createProductAction(null, formData);
+      const result = await (isEdit
+        ? updateProductAction(null, formData)
+        : createProductAction(null, formData));
 
       if (result?.success) {
         toast.success(result.message || "محصول با موفقیت ثبت شد.");
@@ -333,13 +336,13 @@ export default function ProductForm({
       {/* SEO */}
       <ProductSeoFields register={register} />
 
-      <div className="flex items-center justify-between gap-y-2 max-md:flex-col-reverse max-md:h-50">
+      <div className="flex items-center justify-between gap-y-2 max-md:h-50 max-md:flex-col-reverse">
         <p className="text-sm text-yellow-700 max-md:mb-auto">
           ⚠️ پس از ثبت، محصول قابل ویرایش است.
         </p>
         <PrimaryButton
           disabled={isPending}
-          className="h-12 w-37.5 md:self-end text-lg max-md:fixed max-md:bottom-6 max-md:shadow-2xl max-md:shadow-primary max-md:w-8/10 max-md:mx-auto"
+          className="max-md:shadow-primary h-12 w-37.5 text-lg max-md:fixed max-md:bottom-6 max-md:mx-auto max-md:w-8/10 max-md:shadow-2xl md:self-end"
         >
           {isPending ? "در حال ثبت..." : isEdit ? "ویرایش محصول" : "ثبت محصول"}
         </PrimaryButton>
