@@ -29,12 +29,11 @@ const ProductCaresSchema = z.object({
     .length(3, "دقیقاً ۳ مورد برای کوددهی وارد کنید."),
 });
 
-const ProductSEOSchema = z
-  .object({
-    title: z.string().min(1, "عنوان سئو الزامی است."),
-    description: z.string().min(1, "توضیحات سئو الزامی است."),
-    keywords: z.string().min(1, "کلمات کلیدی سئو الزامی است."),
-  })
+const ProductSEOSchema = z.object({
+  title: z.string().min(1, "عنوان سئو الزامی است."),
+  description: z.string().min(1, "توضیحات سئو الزامی است."),
+  keywords: z.string().min(1, "کلمات کلیدی سئو الزامی است."),
+});
 
 const toNumber = (val: unknown) => {
   if (val === "" || val === null || val === undefined) {
@@ -42,6 +41,16 @@ const toNumber = (val: unknown) => {
   }
   const num = Number(val);
   return isNaN(num) ? undefined : num;
+};
+
+const isValidImage = (val: unknown): boolean => {
+  if (val instanceof File) {
+    return val.size > 0;
+  }
+  if (typeof val === "string") {
+    return val.length > 0;
+  }
+  return false;
 };
 
 export const ProductFormSchema = z.object({
@@ -81,16 +90,16 @@ export const ProductFormSchema = z.object({
       message: "دسته‌بندی نامعتبر است.",
     }),
 
-  mainImage: z.any().refine((file) => file instanceof File && file.size > 0, {
+  mainImage: z.any().refine(isValidImage, {
     message: "تصویر اصلی الزامی است.",
   }),
-  gallery1: z.any().refine((file) => file instanceof File && file.size > 0, {
+  gallery1: z.any().refine(isValidImage, {
     message: "تصویر گالری ۱ الزامی است.",
   }),
-  gallery2: z.any().refine((file) => file instanceof File && file.size > 0, {
+  gallery2: z.any().refine(isValidImage, {
     message: "تصویر گالری ۲ الزامی است.",
   }),
-  gallery3: z.any().refine((file) => file instanceof File && file.size > 0, {
+  gallery3: z.any().refine(isValidImage, {
     message: "تصویر گالری ۳ الزامی است.",
   }),
 
