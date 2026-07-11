@@ -2,13 +2,16 @@
 
 import ProductCardGrid from "@/components/features/products/ProductCardGrid";
 import ProductCardList from "@/components/features/products/ProductCardList";
+import { deleteProductAction } from "@/features/products/actions/deleteProduct.actions";
 import { ProductCardData } from "@/features/products/types/product.types";
 import { useIsSidebarOpen } from "@/stores/selectors/ui.selectors";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 import { MdDelete, MdEdit } from "react-icons/md";
 import ConfirmDialog from "../shared/ui/ConfirmDialog";
 
-interface WishlistProductsProps {
+interface AdminProductsProps {
   products: ProductCardData[];
   viewMode: string;
 }
@@ -16,7 +19,9 @@ interface WishlistProductsProps {
 export default function AdminProducts({
   products,
   viewMode,
-}: WishlistProductsProps) {
+}: AdminProductsProps) {
+  const router = useRouter();
+  const pathname = usePathname();
   const isSidebarOpen = useIsSidebarOpen();
   const gridColumns = isSidebarOpen
     ? "grid-cols-[repeat(3,auto)] justify-center max-lg:grid-cols-2"
@@ -25,6 +30,23 @@ export default function AdminProducts({
   const listColumns = isSidebarOpen
     ? "grid-cols-2 max-xl:grid-cols-1"
     : "grid-cols-3 max-xl:grid-cols-2 max-sm:grid-cols-1";
+
+  const handleDelete = async (productId: string) => {
+    const result = await deleteProductAction(productId);
+    if (result.success) {
+      toast.success(result.message);
+      const searchParams = new URLSearchParams(window.location.search);
+      const currentPage = Number(searchParams.get("page")) || 1;
+
+      if (products.length === 1 && currentPage > 1) {
+        const params = new URLSearchParams(searchParams);
+        params.set("page", String(currentPage - 1));
+        router.push(`${pathname}?${params.toString()}`);
+      }
+    } else {
+      toast.error(result.message);
+    }
+  };
 
   if (viewMode === "grid") {
     return (
@@ -43,7 +65,7 @@ export default function AdminProducts({
                 <span>ویرایش</span>
               </Link>
               <ConfirmDialog
-                onConfirm={() => {}}
+                onConfirm={() => handleDelete(product._id)}
                 title="آیا از حذف این محصول مطمئن هستید؟ این عملیات برگشت ناپذیر است."
                 confirmText="بله، حذف شود"
                 cancelText="انصراف"
@@ -73,7 +95,7 @@ export default function AdminProducts({
               <span className="text-sm">ویرایش</span>
             </Link>
             <ConfirmDialog
-              onConfirm={() => {}}
+              onConfirm={() => handleDelete(product._id)}
               title="آیا از حذف این محصول مطمئن هستید؟ این عملیات برگشت ناپذیر است."
               confirmText="بله، حذف شود"
               cancelText="انصراف"

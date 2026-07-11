@@ -25,7 +25,7 @@ export default async function AdminProductsPage({ searchParams }: PageProps) {
 
   const result = await getProductsForAdmin({
     page: currentPage,
-    limit: 10,
+    limit: 8,
     category: activeTab,
     sort: selectedSort,
     search: searchQuery,
