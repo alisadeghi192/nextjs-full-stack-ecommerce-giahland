@@ -1,4 +1,5 @@
-"use server"
+"use server";
+
 import { getMeAction } from "@/features/auth/actions/me.actions";
 import connectToDB from "@/lib/db/connect";
 import Cart from "@/lib/db/models/Cart";
