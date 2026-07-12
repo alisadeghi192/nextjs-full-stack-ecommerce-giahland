@@ -13,6 +13,7 @@ import { useAdminNotifications } from "@/features/notifications/hooks/useAdminNo
 import { useDoctorNotifications } from "@/features/notifications/hooks/useDoctorNotifications";
 import { useNotifications } from "@/features/notifications/hooks/useNotifications";
 import { useCartActions } from "@/stores/selectors/ui.selectors";
+import { useCartStore } from "@/stores/useCartStore";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect } from "react";
@@ -22,8 +23,6 @@ import {
   MdOutlineShoppingCart,
 } from "react-icons/md";
 
-const totalItems = 2;
-
 export default function MobileActions() {
   const isLoading = useIsLoading();
   const isAuthenticated = useIsAuthenticated();
@@ -31,6 +30,7 @@ export default function MobileActions() {
   const userRole = useUserRole();
   const isAdmin = useIsAdmin();
   const { toggleCart } = useCartActions();
+  const { totalItems, fetchCart } = useCartStore();
   const isDoctor = userRole === "plant-doctor";
   const showCart = !isDoctor && !isAdmin;
 
@@ -38,6 +38,11 @@ export default function MobileActions() {
   const { total: adminTotal, refresh: refreshAdmin } = useAdminNotifications();
   const { total: doctorTotal, refresh: refreshDOctor } =
     useDoctorNotifications();
+
+  useEffect(() => {
+    console.log("🔵 useEffect in CartButton triggered");
+    fetchCart();
+  }, []);
 
   useEffect(() => {
     if (userRole === "admin") {
@@ -59,7 +64,10 @@ export default function MobileActions() {
             icon={<MdOutlineShoppingCart size={20} />}
             onClick={toggleCart}
           />
-          {totalItems > 0 && <NotificationBadge count={totalItems} />}
+          <NotificationBadge
+            count={totalItems}
+            className="-top-1.5 -right-1 max-md:size-4.5 max-md:text-[11px]"
+          />
         </div>
       )}
 
@@ -85,7 +93,7 @@ export default function MobileActions() {
                   ? doctorTotal
                   : userTotal
             }
-            className="-top-2 -right-1 max-sm:size-4 max-sm:text-[10px]"
+            className="-top-1.5 -right-1 max-md:size-4.5 max-md:text-[11px]"
           />
         </Link>
       ) : (

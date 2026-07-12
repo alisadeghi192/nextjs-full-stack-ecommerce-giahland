@@ -88,7 +88,10 @@ export default function ProductCardList({
         />
       )}
       {!isOutOfStock && (
-        <AddToCartButton className="bg-neutral3 hover:bg-primary absolute top-14 -left-9 flex size-8 shrink-0 items-center justify-center rounded-full transition-all group-hover:left-4 hover:*:text-white max-md:top-10 max-md:left-2 max-md:size-7 max-md:group-hover:left-2" />
+        <AddToCartButton
+          className="bg-neutral3 hover:bg-primary absolute top-14 -left-9 flex size-8 shrink-0 items-center justify-center rounded-full transition-all group-hover:left-4 hover:*:text-white max-md:top-10 max-md:left-2 max-md:size-7 max-md:group-hover:left-2"
+          productId={_id}
+        />
       )}
     </div>
   );

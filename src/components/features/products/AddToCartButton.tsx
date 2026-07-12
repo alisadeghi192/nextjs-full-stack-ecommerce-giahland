@@ -1,23 +1,35 @@
 "use client";
-import { useUserRole } from "@/features/auth/selectors/auth.selectors";
+import { useIsAuthenticated, useUserRole } from "@/features/auth/selectors/auth.selectors";
+import { useCartStore } from "@/stores/useCartStore";
+import toast from "react-hot-toast";
 import { MdOutlineShoppingCart } from "react-icons/md";
 interface AddToCartButtonProps {
-  className: string;
+  productId: string;
+  className?: string;
 }
 
-export default function AddToCartButton({ className }: AddToCartButtonProps) {
+export default function AddToCartButton({
+  className,
+  productId,
+}: AddToCartButtonProps) {
+  const isAuthenticated = useIsAuthenticated();
   const userRole = useUserRole();
-  const isDoctor = userRole === "plant-doctor";
-  const isAdmin = userRole === "admin";
-  const handleClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    alert("به سبد خرید اضافه شد");
-  };
+  const { addItem } = useCartStore();
 
-  if (isDoctor || isAdmin) {
+  if (userRole === "admin" || userRole === "plant-doctor") {
     return null;
   }
+  const handleClick = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (!isAuthenticated) {
+      toast.error("لطفاً ابتدا ثبت‌نام یا لاگین کنید.");
+      return;
+    }
+
+    await addItem(productId, 1);
+  };
 
   return (
     <button onClick={handleClick} className={className}>

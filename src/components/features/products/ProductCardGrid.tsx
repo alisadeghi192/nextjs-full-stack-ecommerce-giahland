@@ -22,7 +22,7 @@ interface ProductCardGridProps {
   };
   stock: number;
   isLiked?: boolean;
-  usedInSlider?:boolean
+  usedInSlider?: boolean;
 }
 
 export default function ProductCardGrid({
@@ -36,7 +36,7 @@ export default function ProductCardGrid({
   potDimensions,
   stock,
   isLiked = false,
-  usedInSlider = false
+  usedInSlider = false,
 }: ProductCardGridProps) {
   const isOutOfStock = stock === 0;
   const hasDiscount = discount > 0;
@@ -59,7 +59,10 @@ export default function ProductCardGrid({
             />
           ) : (
             <>
-              <AddToCartButton className="bg-neutral3 hover:bg-primary flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-full transition-colors hover:*:text-white" />
+              <AddToCartButton
+                className="bg-neutral3 hover:bg-primary flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-full transition-colors hover:*:text-white"
+                productId={_id}
+              />
               <PriceSection
                 price={price}
                 discount={discount}
@@ -76,7 +79,9 @@ export default function ProductCardGrid({
   );
 
   return (
-    <div className={`group border-neutral5 relative flex h-full flex-col justify-between gap-y-2 justify-self-center overflow-hidden rounded-xl border bg-white p-4 ${usedInSlider ? "" : "shadow-lg"}  max-xl:gap-y-4`}>
+    <div
+      className={`group border-neutral5 relative flex h-full flex-col justify-between gap-y-2 justify-self-center overflow-hidden rounded-xl border bg-white p-4 ${usedInSlider ? "" : "shadow-lg"} max-xl:gap-y-4`}
+    >
       {isOutOfStock ? (
         <div className="cursor-default">{contentElement}</div>
       ) : (

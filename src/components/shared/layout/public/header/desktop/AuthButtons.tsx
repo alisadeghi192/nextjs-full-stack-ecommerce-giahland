@@ -112,7 +112,7 @@ export default function AuthButtons() {
           />
           <NotificationBadge
             count={userRole === "admin" ? adminTotal : userRole === "plant-doctor" ? doctorTotal : userTotal}
-            className="-top-2 -right-1"
+            className="-top-1.5 -right-1 max-lg:size-5"
           />
           <span className="text-lg max-lg:hidden">سلام {userFirstName}</span>
         </Link>
