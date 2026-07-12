@@ -104,6 +104,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
           />
         </div>
         <ProductPurchaseCard
+          productId={product._id}
           price={product.price}
           discount={product.discount}
           stock={product.stock}
@@ -147,6 +148,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
       />
 
       <MobileStickyCart
+        productId={product._id}
         discount={product.discount}
         price={product.price}
         stock={product.stock}
