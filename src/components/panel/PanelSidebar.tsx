@@ -2,15 +2,11 @@
 import NotificationBadge from "@/components/shared/ui/NotificationBadge";
 import {
   useAuthActions,
-  useIsAdmin,
   useUserAvatar,
   useUserFirstName,
-  useUserMobile,
-  useUserRole,
+  useUserMobile
 } from "@/features/auth/selectors/auth.selectors";
-import { useAdminNotifications } from "@/features/notifications/hooks/useAdminNotifications";
-import { useDoctorNotifications } from "@/features/notifications/hooks/useDoctorNotifications";
-import { useNotifications } from "@/features/notifications/hooks/useNotifications";
+import { useAllNotifications } from "@/features/notifications/hooks/useAllNotifications";
 import { PanelLink } from "@/lib/constants/panelLinks";
 import Image from "next/image";
 import Link from "next/link";
@@ -37,26 +33,23 @@ export default function PanelSidebar({
   const avatar = useUserAvatar();
   const firstName = useUserFirstName();
   const { logout } = useAuthActions();
-  const isAdmin = useIsAdmin();
-  const userRole = useUserRole()
 
-  const { consultation : userConsultation, ticket : userTicket, refresh: refreshUser } = useNotifications();
-  const {consultation:doctorConsultaion ,doctorComments,ticket :doctorTicket,refresh:refreshDOctor} = useDoctorNotifications()
-  const { tickets: adminTicket, contact, comments: adminComments, refresh: refreshAdmin, } = useAdminNotifications();
-
+  const {
+    adminComments,
+    adminContact,
+    adminTickets,
+    consultation,
+    doctorComments,
+    ticket,
+    refresh,
+  } = useAllNotifications();
 
   const displayName = firstName || "کاربر";
   const persianMobile = mobile?.replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[+d]) || "";
 
   useEffect(() => {
-    if (userRole === "admin") {
-      refreshAdmin();
-    } else if (userRole === "plant-doctor") {
-      refreshDOctor()
-    }else{
-      refreshUser()
-    }
-  }, [userRole]);
+    refresh();
+  }, [pathname]);
 
   return (
     <div className="custom-scroll ltr *:rtl flex h-full flex-col overflow-x-hidden overflow-y-auto py-6 pr-1 max-md:py-0">
@@ -67,7 +60,7 @@ export default function PanelSidebar({
             alt="user"
             width={60}
             height={60}
-            className="size-15 rounded-full shrink-0 object-cover object-center"
+            className="size-15 shrink-0 rounded-full object-cover object-center"
           />
           {isPanelOpen && (
             <div className="flex flex-col gap-y-1 text-sm/6.25">
@@ -94,23 +87,17 @@ export default function PanelSidebar({
           let badgeCount = 0;
           let showBadge = false;
 
-          if (link.href.includes("/consultations") && userRole === "plant-doctor") {
-            badgeCount = doctorConsultaion;
-            showBadge = true;
-          } else if (link.href.includes("/consultations") && userRole === "user") {
-            badgeCount = userConsultation;
+          if (link.href.includes("/consultations")) {
+            badgeCount = consultation;
             showBadge = true;
           } else if (link.href === "/admin/tickets") {
-            badgeCount = adminTicket;
+            badgeCount = adminTickets;
             showBadge = true;
-          } else if (link.href.includes("/tickets") &&  userRole === "plant-doctor") {
-            badgeCount = doctorTicket;
-            showBadge = true;
-          }else if (link.href.includes("/tickets") &&  userRole === "user") {
-            badgeCount = userTicket;
+          } else if (link.href.includes("/tickets")) {
+            badgeCount = ticket;
             showBadge = true;
           } else if (link.href === "/admin/contact-messages") {
-            badgeCount = contact;
+            badgeCount = adminContact;
             showBadge = true;
           } else if (link.href === "/admin/comments") {
             badgeCount = adminComments;

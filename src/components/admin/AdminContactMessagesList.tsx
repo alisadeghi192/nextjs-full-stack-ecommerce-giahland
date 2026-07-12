@@ -3,7 +3,7 @@
 import ConfirmDialog from "@/components/shared/ui/ConfirmDialog";
 import { deleteContactMessage } from "@/features/contact/actions/deleteContactMessage.actions";
 import { markContactMessageAsRead } from "@/features/contact/actions/markContactMessageAsRead.actions";
-import { useAdminNotifications } from "@/features/notifications/hooks/useAdminNotifications";
+import { useAllNotifications } from "@/features/notifications/hooks/useAllNotifications";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
@@ -27,7 +27,7 @@ export default function AdminContactMessagesList({
   messages,
 }: AdminContactMessagesListProps) {
   const [isLoading, setIsLoading] = useState<string | null>(null);
-  const { refresh } = useAdminNotifications();
+  const { refresh } = useAllNotifications();
   const router = useRouter();
   const pathname = usePathname();
 

@@ -4,6 +4,7 @@ export const useAuth = () => {
   const { user, isLoading, isAuthenticated, setUser, logout, checkAuth } = useAuthStore();
 
   return {
+    role : user?.role,
     user,
     isLoading,
     isAuthenticated,

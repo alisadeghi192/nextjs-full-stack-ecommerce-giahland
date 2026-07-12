@@ -3,16 +3,16 @@
 import ConfirmDialog from "@/components/shared/ui/ConfirmDialog";
 import TextareaField from "@/components/shared/ui/TextareaField";
 import { replyDoctorComment } from "@/features/comments/actions/replyDoctorComment.actions";
-import { useDoctorNotifications } from "@/features/notifications/hooks/useDoctorNotifications";
+import { useAllNotifications } from "@/features/notifications/hooks/useAllNotifications";
 import { AdminComment } from "@/types/comment.types";
 import Link from "next/link";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import {
-    MdDriveFileRenameOutline,
-    MdKeyboardArrowDown,
-    MdReply,
-    MdSend,
+  MdDriveFileRenameOutline,
+  MdKeyboardArrowDown,
+  MdReply,
+  MdSend,
 } from "react-icons/md";
 
 interface DoctorCommentItemProps {
@@ -29,7 +29,7 @@ export default function DoctorCommentItem({
   const [isReplyOpen, setIsReplyOpen] = useState(false);
   const [replyText, setReplyText] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const { refresh } = useDoctorNotifications();
+  const { refresh } = useAllNotifications();
 
   const handleReplySubmit = async () => {
     if (!replyText.trim()) {

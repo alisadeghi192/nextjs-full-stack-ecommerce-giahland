@@ -1,8 +1,6 @@
 "use client";
 import SectionTitle from "@/components/panel/SectionTitle";
-import { useUserRole } from "@/features/auth/selectors/auth.selectors";
-import { useAdminNotifications } from "@/features/notifications/hooks/useAdminNotifications";
-import { useNotifications } from "@/features/notifications/hooks/useNotifications";
+import { useAllNotifications } from "@/features/notifications/hooks/useAllNotifications";
 import { ITicket } from "@/features/tickets/types/ticket.types";
 import { useEffect, useState } from "react";
 import TicketItem from "./TicketItem";
@@ -12,15 +10,9 @@ interface TicketListProps {
 }
 
 export default function TicketList({ tickets }: TicketListProps) {
-  const { refresh } = useNotifications();
-  const { refresh: refreshAdmin } = useAdminNotifications();
-  const userRole = useUserRole();
+  const { refresh } = useAllNotifications();
   useEffect(() => {
-    if (userRole === "admin") {
-      refreshAdmin();
-    } else {
-      refresh();
-    }
+    refresh();
   }, []);
   const [openId, setOpenId] = useState<string | null>(null);
 

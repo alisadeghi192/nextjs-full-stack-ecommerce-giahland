@@ -1,7 +1,5 @@
 "use client";
-import { useUserRole } from "@/features/auth/selectors/auth.selectors";
-import { useDoctorNotifications } from "@/features/notifications/hooks/useDoctorNotifications";
-import { useNotifications } from "@/features/notifications/hooks/useNotifications";
+import { useAllNotifications } from "@/features/notifications/hooks/useAllNotifications";
 import { markTicketAsRead } from "@/features/tickets/actions/ticket.actions";
 import { ITicket } from "@/features/tickets/types/ticket.types";
 import { TICKET_DEPARTMENTS } from "@/lib/constants";
@@ -23,10 +21,8 @@ export default function TicketItem({
   onToggle,
 }: TicketItemProps) {
   const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
-  const { refresh } = useNotifications();
-  const { refresh: refreshDoctor } = useDoctorNotifications();
+  const { refresh } = useAllNotifications();
   const isAnswered = ticket.status === "answered";
-  const userRole = useUserRole();
   const getDepartmentLabel = (value: string) => {
     return TICKET_DEPARTMENTS.find((d) => d.value === value)?.label || value;
   };
@@ -35,11 +31,7 @@ export default function TicketItem({
     if (!isOpen && isAnswered && !ticket.isReadByUser) {
       const result = await markTicketAsRead(ticket._id);
       if (result.success) {
-        if (userRole === "plant-doctor") {
-          refreshDoctor();
-        } else {
-          refresh();
-        }
+        refresh();
       }
     }
     onToggle();
@@ -47,7 +39,7 @@ export default function TicketItem({
 
   return (
     <>
-      <div className="group border-neutral4 shadow-lg flex w-full flex-col rounded-xl border bg-white p-4 max-md:p-2">
+      <div className="group border-neutral4 flex w-full flex-col rounded-xl border bg-white p-4 shadow-lg max-md:p-2">
         <div className="flex items-center justify-between">
           <div className="flex flex-wrap items-center gap-4">
             <span

@@ -3,7 +3,7 @@
 import TicketItem from "@/components/features/tickets/TicketItem";
 import PrimaryButton from "@/components/shared/ui/PrimaryButton";
 import TextareaField from "@/components/shared/ui/TextareaField";
-import { useAdminNotifications } from "@/features/notifications/hooks/useAdminNotifications";
+import { useAllNotifications } from "@/features/notifications/hooks/useAllNotifications";
 import {
   deleteTicketAction,
   replyTicketAction,
@@ -24,7 +24,7 @@ export default function AdminTicketList({ tickets }: AdminTicketListProps) {
   const [replies, setReplies] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState<Record<string, boolean>>({});
   const [deletingId, setDeletingId] = useState<string | null>(null);
-  const { refresh } = useAdminNotifications();
+  const { refresh } = useAllNotifications();
   const router = useRouter();
   const pathname = usePathname();
 

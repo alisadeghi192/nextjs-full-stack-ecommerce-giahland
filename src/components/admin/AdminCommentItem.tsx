@@ -7,7 +7,7 @@ import { approveComment } from "@/features/comments/actions/approveComment.actio
 import { deleteComment } from "@/features/comments/actions/deleteComment.actions";
 import { replyComment } from "@/features/comments/actions/replyComment.actions";
 import { toggleCommentReadByAdmin } from "@/features/comments/actions/toggleCommentReadByAdmin.actions";
-import { useAdminNotifications } from "@/features/notifications/hooks/useAdminNotifications";
+import { useAllNotifications } from "@/features/notifications/hooks/useAllNotifications";
 import { AdminComment } from "@/types/comment.types";
 import Link from "next/link";
 import { useState } from "react";
@@ -38,7 +38,7 @@ export default function AdminCommentItem({
   const [isReplyOpen, setIsReplyOpen] = useState(false);
   const [replyText, setReplyText] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const { refresh } = useAdminNotifications();
+  const { refresh } = useAllNotifications();
 
   const handleToggleRead = async () => {
     setIsLoading(true);

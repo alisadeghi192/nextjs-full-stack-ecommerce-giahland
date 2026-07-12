@@ -11,16 +11,14 @@ import {
   useUserFirstName,
   useUserRole,
 } from "@/features/auth/selectors/auth.selectors";
-import { useAdminNotifications } from "@/features/notifications/hooks/useAdminNotifications";
-import { useDoctorNotifications } from "@/features/notifications/hooks/useDoctorNotifications";
-import { useNotifications } from "@/features/notifications/hooks/useNotifications";
+import { useAllNotifications } from "@/features/notifications/hooks/useAllNotifications";
 import {
   useIsProfileDropdownOpen,
   useProfileDropdownActions,
 } from "@/stores/selectors/ui.selectors";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { FaRegUser } from "react-icons/fa6";
 import { HiOutlineLogout } from "react-icons/hi";
 import { IoSettingsOutline } from "react-icons/io5";
@@ -40,19 +38,7 @@ export default function AuthButtons() {
   const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const openTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  const { total: userTotal, refresh: refreshUser } = useNotifications();
-  const { total: adminTotal, refresh: refreshAdmin } = useAdminNotifications();
-  const { total: doctorTotal, refresh: refreshDOctor } =useDoctorNotifications()
-
-  useEffect(() => {
-    if (userRole === "admin") {
-      refreshAdmin();
-    } else if (userRole === "plant-doctor") {
-      refreshDOctor()
-    }else{
-      refreshUser()
-    }
-  }, [userRole]);
+  const { userTotal, adminTotal, doctorTotal } = useAllNotifications();
 
   const clearCloseTimeout = () => {
     if (closeTimeoutRef.current) {
@@ -111,7 +97,13 @@ export default function AuthButtons() {
             className="size-12 rounded-full object-cover object-center max-lg:size-10"
           />
           <NotificationBadge
-            count={userRole === "admin" ? adminTotal : userRole === "plant-doctor" ? doctorTotal : userTotal}
+            count={
+              userRole === "admin"
+                ? adminTotal
+                : userRole === "plant-doctor"
+                  ? doctorTotal
+                  : userTotal
+            }
             className="-top-1.5 -right-1 max-lg:size-5"
           />
           <span className="text-lg max-lg:hidden">سلام {userFirstName}</span>
@@ -140,7 +132,13 @@ export default function AuthButtons() {
               {isAdmin ? "پنل مدیریت" : "حساب کاربری"}
             </span>
             <NotificationBadge
-              count={userRole === "admin" ? adminTotal : userRole === "plant-doctor" ? doctorTotal : userTotal}
+              count={
+                userRole === "admin"
+                  ? adminTotal
+                  : userRole === "plant-doctor"
+                    ? doctorTotal
+                    : userTotal
+              }
               className="left-4"
             />
           </Link>

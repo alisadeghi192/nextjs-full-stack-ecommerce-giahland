@@ -1,6 +1,6 @@
 "use client";
 import { useIsAuthenticated, useUserRole } from "@/features/auth/selectors/auth.selectors";
-import { useCartStore } from "@/stores/useCartStore";
+import { useCartStoreActions } from "@/stores/selectors/cart.selectors";
 import toast from "react-hot-toast";
 import { MdOutlineShoppingCart } from "react-icons/md";
 interface AddToCartButtonProps {
@@ -14,7 +14,7 @@ export default function AddToCartButton({
 }: AddToCartButtonProps) {
   const isAuthenticated = useIsAuthenticated();
   const userRole = useUserRole();
-  const { addItem } = useCartStore();
+ const { addItem } = useCartStoreActions();
 
   if (userRole === "admin" || userRole === "plant-doctor") {
     return null;

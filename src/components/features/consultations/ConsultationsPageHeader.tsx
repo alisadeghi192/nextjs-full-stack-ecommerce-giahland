@@ -2,11 +2,11 @@
 
 import NotificationBadge from "@/components/shared/ui/NotificationBadge";
 import OutlineButton from "@/components/shared/ui/OutlineButton";
-import { useNotifications } from "@/features/notifications/hooks/useNotifications";
+import { useAllNotifications } from "@/features/notifications/hooks/useAllNotifications";
 import { useEffect } from "react";
 
 export default function ConsultationsPageHeader() {
-  const { consultation, refresh } = useNotifications();
+  const { consultation, refresh } = useAllNotifications();
 
   useEffect(() => {
     refresh();

@@ -2,8 +2,7 @@
 
 import { useUserRole } from "@/features/auth/selectors/auth.selectors";
 import { ConsultationMessageWithDetails } from "@/features/consultations/types/consultation.types";
-import { useDoctorNotifications } from "@/features/notifications/hooks/useDoctorNotifications";
-import { useNotifications } from "@/features/notifications/hooks/useNotifications";
+import { useAllNotifications } from "@/features/notifications/hooks/useAllNotifications";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { IoCheckmarkDoneSharp, IoCheckmarkSharp } from "react-icons/io5";
@@ -18,8 +17,7 @@ export default function ChatMessages({
   initialMessages,
   isLoading,
 }: ChatMessagesProps) {
-  const { refresh } = useNotifications();
-  const { refresh: doctorRefresh } = useDoctorNotifications();
+  const { refresh } = useAllNotifications();
   const [messagesHeight, setMessagesHeight] = useState("calc(100dvh - 177px)");
   const messagesContainerRef = useRef<HTMLDivElement>(null);
   const userRole = useUserRole();
@@ -28,11 +26,7 @@ export default function ChatMessages({
   };
 
   useEffect(() => {
-    if (userRole === "plant-doctor") {
-      doctorRefresh();
-    } else {
-      refresh();
-    }
+    refresh();
   }, []);
 
   useEffect(() => {
