@@ -4,8 +4,11 @@ import CartModal from "@/components/features/cart/CartModal";
 import IconButton from "@/components/shared/ui/IconButton";
 import NotificationBadge from "@/components/shared/ui/NotificationBadge";
 import { useUserRole } from "@/features/auth/selectors/auth.selectors";
+import {
+  useCartStoreActions,
+  useCartTotalItems,
+} from "@/stores/selectors/cart.selectors";
 import { useCartActions, useIsCartOpen } from "@/stores/selectors/ui.selectors";
-import { useCartStore } from "@/stores/useCartStore";
 import { useEffect } from "react";
 import { MdOutlineShoppingCart } from "react-icons/md";
 const totalItems = 2;
@@ -14,12 +17,12 @@ export default function CartButton() {
   const isCartOpen = useIsCartOpen();
   const { toggleCart, closeCart } = useCartActions();
   const role = useUserRole();
-  const { totalItems, fetchCart } = useCartStore();
+  const totalItems = useCartTotalItems();
+  const { fetchCart } = useCartStoreActions();
 
-useEffect(() => {
-  console.log("🔵 useEffect in CartButton triggered");
-  fetchCart();
-}, []);
+  useEffect(() => {
+    fetchCart();
+  }, []);
 
   if (role === "plant-doctor" || role === "admin") {
     return null;
@@ -31,7 +34,10 @@ useEffect(() => {
           icon={<MdOutlineShoppingCart size={24} />}
           onClick={toggleCart}
         />
-        <NotificationBadge count={totalItems} className="-top-1.5 -right-1 max-lg:size-5" />
+        <NotificationBadge
+          count={totalItems}
+          className="-top-1.5 -right-1 max-lg:size-5"
+        />
       </div>
 
       <div

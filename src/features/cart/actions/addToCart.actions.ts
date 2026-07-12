@@ -4,6 +4,7 @@ import { getMeAction } from "@/features/auth/actions/me.actions";
 import connectToDB from "@/lib/db/connect";
 import Cart from "@/lib/db/models/Cart";
 import Product from "@/lib/db/models/Product";
+import { toPersianNumber } from "@/lib/utils/format";
 import { revalidatePath } from "next/cache";
 import { ICartItem } from "../types/cart.types";
 
@@ -45,7 +46,7 @@ export async function addToCartAction(productId: string, quantity: number = 1) {
   if (product.stock < quantity) {
     return {
       success: false,
-      message: `موجودی محصول کافی نیست. (موجودی: ${product.stock})`,
+      message: `موجودی محصول کافی نیست. (موجودی: ${toPersianNumber(product.stock)})`,
       items: [],
       totalItems: 0,
       totalPrice: 0,

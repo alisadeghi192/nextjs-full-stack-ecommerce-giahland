@@ -9,11 +9,12 @@ import {
   useUserAvatar,
   useUserRole,
 } from "@/features/auth/selectors/auth.selectors";
-import { useAdminNotifications } from "@/features/notifications/hooks/useAdminNotifications";
-import { useDoctorNotifications } from "@/features/notifications/hooks/useDoctorNotifications";
-import { useNotifications } from "@/features/notifications/hooks/useNotifications";
+import { useAllNotifications } from "@/features/notifications/hooks/useAllNotifications";
+import {
+  useCartStoreActions,
+  useCartTotalItems,
+} from "@/stores/selectors/cart.selectors";
 import { useCartActions } from "@/stores/selectors/ui.selectors";
-import { useCartStore } from "@/stores/useCartStore";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect } from "react";
@@ -30,29 +31,16 @@ export default function MobileActions() {
   const userRole = useUserRole();
   const isAdmin = useIsAdmin();
   const { toggleCart } = useCartActions();
-  const { totalItems, fetchCart } = useCartStore();
+  const totalItems = useCartTotalItems();
+  const { fetchCart } = useCartStoreActions();
   const isDoctor = userRole === "plant-doctor";
   const showCart = !isDoctor && !isAdmin;
 
-  const { total: userTotal, refresh: refreshUser } = useNotifications();
-  const { total: adminTotal, refresh: refreshAdmin } = useAdminNotifications();
-  const { total: doctorTotal, refresh: refreshDOctor } =
-    useDoctorNotifications();
-
   useEffect(() => {
-    console.log("🔵 useEffect in CartButton triggered");
     fetchCart();
   }, []);
 
-  useEffect(() => {
-    if (userRole === "admin") {
-      refreshAdmin();
-    } else if (userRole === "plant-doctor") {
-      refreshDOctor();
-    } else {
-      refreshUser();
-    }
-  }, [userRole]);
+  const { userTotal, adminTotal, doctorTotal } = useAllNotifications();
 
   return (
     <div className="flex items-center gap-2">

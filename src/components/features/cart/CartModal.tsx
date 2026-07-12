@@ -4,7 +4,10 @@ import PriceSection from "@/components/features/products/PriceSection";
 import PrimaryButton from "@/components/shared/ui/PrimaryButton";
 import { useIsAuthenticated } from "@/features/auth/selectors/auth.selectors";
 import { toPersianNumber } from "@/lib/utils/format";
-import { useCartStore } from "@/stores/useCartStore";
+import {
+  useCartStoreActions,
+  useCartSummary,
+} from "@/stores/selectors/cart.selectors";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
@@ -16,14 +19,8 @@ interface CartModalProps {
 }
 
 export default function CartModal({ onClose }: CartModalProps) {
-  const {
-    items,
-    totalItems,
-    totalPrice,
-    fetchCart,
-    updateQuantity,
-    removeItem,
-  } = useCartStore();
+  const { fetchCart, updateQuantity, removeItem } = useCartStoreActions();
+  const { items, totalItems, totalPrice } = useCartSummary();
   const isAuthenticated = useIsAuthenticated();
   const pathname = usePathname();
   useEffect(() => {

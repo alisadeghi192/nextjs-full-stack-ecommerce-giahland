@@ -1,6 +1,8 @@
 "use client";
 import PrimaryButton from "@/components/shared/ui/PrimaryButton";
-import { useUserRole } from "@/features/auth/selectors/auth.selectors";
+import { useIsAuthenticated, useUserRole } from "@/features/auth/selectors/auth.selectors";
+import { useCartStoreActions } from "@/stores/selectors/cart.selectors";
+import toast from "react-hot-toast";
 import { AiOutlineDollarCircle } from "react-icons/ai";
 import { BiSupport } from "react-icons/bi";
 import { MdOutlineChangeCircle } from "react-icons/md";
@@ -8,21 +10,36 @@ import PriceSection from "./PriceSection";
 import StockStatus from "./StockStatus";
 
 interface ProductPurchaseCardProps {
+  productId : string
   price: number;
   discount: number;
-  onAddToCart?: () => void;
   stock: number;
 }
 
 export default function ProductPurchaseCard({
+  productId,
   price,
-  onAddToCart,
   discount,
   stock,
 }: ProductPurchaseCardProps) {
   const isOutOfStock = stock === 0;
   const userRole = useUserRole();
   const hidePrice = userRole === "plant-doctor" || userRole ==="admin";
+  const isAuthenticated = useIsAuthenticated()
+  const { addItem } = useCartStoreActions();
+    const handleAddToCart = async () => {
+    if (!isAuthenticated) {
+      toast.error("لطفاً ابتدا ثبت‌نام یا لاگین کنید.");
+      return;
+    }
+
+    if (isOutOfStock) {
+      toast.error("این محصول موجود نیست.");
+      return;
+    }
+
+    await addItem(productId, 1);
+  };
 
   return (
     <div className="border-neutral7 w-78 rounded-2xl border px-6 py-7.75 max-xl:mt-9 max-sm:mt-8 max-sm:w-full max-sm:self-center">
@@ -61,7 +78,7 @@ export default function ProductPurchaseCard({
       )}
 
       <PrimaryButton
-        onClick={onAddToCart}
+        onClick={handleAddToCart}
         className={`h-12 w-full text-lg/8 max-sm:hidden ${hidePrice ? "hidden" : "visible"}`}
         disabled={isOutOfStock}
       >
