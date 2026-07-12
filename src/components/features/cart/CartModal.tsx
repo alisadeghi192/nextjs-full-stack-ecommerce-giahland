@@ -1,93 +1,93 @@
 "use client";
-import React, { useState } from "react";
-import { toPersianNumber } from "@/lib/utils/format";
-import { IoClose } from "react-icons/io5";
+
 import PriceSection from "@/components/features/products/PriceSection";
 import PrimaryButton from "@/components/shared/ui/PrimaryButton";
-import CartModalItem from "./CartModalItem";
+import { useIsAuthenticated } from "@/features/auth/selectors/auth.selectors";
+import { toPersianNumber } from "@/lib/utils/format";
+import { useCartStore } from "@/stores/useCartStore";
 import Image from "next/image";
-
-const numberOfProducts = 2;
-const finalPrice = 4250000;
-const productName = "بابا آدم";
-const dimensions = {
-  length: 25,
-  width: 25,
-  height: 50,
-};
-const price = 1850000;
-const discount = 25;
+import { usePathname } from "next/navigation";
+import { useEffect } from "react";
+import { IoClose } from "react-icons/io5";
+import CartModalItem from "./CartModalItem";
 
 interface CartModalProps {
   onClose: () => void;
 }
 
 export default function CartModal({ onClose }: CartModalProps) {
-  const [count, setCount] = useState<number>(2);
-  const increase = () => setCount(count + 1);
-  const decrease = () => setCount(count - 1);
-  const reset = () => setCount(0);
+  const {
+    items,
+    totalItems,
+    totalPrice,
+    fetchCart,
+    updateQuantity,
+    removeItem,
+  } = useCartStore();
+  const isAuthenticated = useIsAuthenticated();
+  const pathname = usePathname();
+  useEffect(() => {
+    onClose();
+  }, [pathname]);
 
-  const items = [
-    {
-      id: 1,
-      name: productName,
-      image: "/static/images/blog-covers/plant8.png",
-      dimensions,
-      price,
-      discount,
-      quantity: count,
-    },
-    {
-      id: 2,
-      name: productName,
-      image: "/static/images/blog-covers/plant8.png",
-      dimensions,
-      price,
-      discount,
-      quantity: count,
-    },
-    {
-      id: 3,
-      name: productName,
-      image: "/static/images/blog-covers/plant8.png",
-      dimensions,
-      price,
-      discount,
-      quantity: count,
-    },
-  ];
+  useEffect(() => {
+    if (isAuthenticated) {
+      fetchCart();
+    }
+  }, [isAuthenticated]);
+
+  const handleIncrease = (productId: string) => {
+    const existingItem = items.find(
+      (item) => (item.product as any)?._id === productId,
+    );
+    if (existingItem) {
+      const newQuantity = existingItem.quantity + 1;
+      updateQuantity(productId, newQuantity);
+    }
+  };
+
+  const handleDecrease = (productId: string) => {
+    const existingItem = items.find(
+      (item) => (item.product as any)?._id === productId,
+    );
+    if (existingItem) {
+      if (existingItem.quantity <= 1) {
+        removeItem(productId);
+      } else {
+        const newQuantity = existingItem.quantity - 1;
+        updateQuantity(productId, newQuantity);
+      }
+    }
+  };
+
+  const handleRemove = (productId: string) => {
+    removeItem(productId);
+  };
 
   return (
-    <div
-      className="border-neutral3 w-115 rounded-xl border bg-white p-3 pr-1.5 shadow-lg max-md:w-full"
-    >
+    <div className="border-neutral3 w-115 rounded-xl border bg-white p-3 pr-1.5 shadow-lg max-md:w-full">
       <div className="mr-1.5 mb-2 flex items-center justify-between">
         <div className="flex gap-x-1 leading-7.25 font-medium">
           <span>سبد خرید</span>
           {items.length > 0 && (
             <span className="text-neutral8">
-              ({toPersianNumber(numberOfProducts)} کالا)
+              ({toPersianNumber(totalItems)} کالا)
             </span>
           )}
         </div>
         <IoClose className="size-5 cursor-pointer" onClick={onClose} />
       </div>
+
       {items.length > 0 ? (
         <div>
           <div className="custom-scroll ltr flex max-h-80 flex-col space-y-2 overflow-y-auto max-md:max-h-80">
             {items?.map((item) => (
               <CartModalItem
-                key={item.id}
-                productName={item.name}
-                imageSrc={item.image}
-                dimensions={item.dimensions}
-                price={item.price}
-                discount={item.discount}
-                quantity={item.quantity}
-                onIncrease={increase}
-                onDecrease={decrease}
-                onRemove={reset}
+                key={(item.product as any)._id}
+                item={item as any}
+                onIncrease={handleIncrease}
+                onDecrease={handleDecrease}
+                onRemove={handleRemove}
               />
             ))}
           </div>
@@ -97,14 +97,19 @@ export default function CartModal({ onClose }: CartModalProps) {
               <span className="text-neutral9 leading-7.25 font-medium">
                 جمع مبلغ:
               </span>
+              {/* ✅ قیمت واقعی از store */}
               <PriceSection
                 discount={0}
-                price={finalPrice}
+                price={totalPrice}
                 variant="product-card"
                 bold
               />
             </div>
-            <PrimaryButton className="mt-2 w-full py-2 text-lg">
+            {/* ✅ لینک به صفحه تسویه */}
+            <PrimaryButton
+              className="mt-2 w-full py-2 text-lg"
+              href="/checkout"
+            >
               ثبت سفارش
             </PrimaryButton>
           </div>
