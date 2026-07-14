@@ -30,7 +30,7 @@ export default async function PaymentPage({ params }: PaymentPageProps) {
   }
 
   return (
-    <main className="container mt-10">
+    <main className="container mt-10 max-xs:mt-6 flex items-center justify-center">
       <PaymentPageClient
         orderId={orderId}
         finalAmount={order.finalAmount}

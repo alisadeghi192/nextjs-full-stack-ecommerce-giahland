@@ -3,14 +3,15 @@
 import PrimaryButton from "@/components/shared/ui/PrimaryButton";
 import { confirmPaymentAction } from "@/features/payment/actions/confirmPayment.actions";
 import { formatPrice, toPersianCode } from "@/lib/utils/format";
+import { useCartStoreActions } from "@/stores/selectors/cart.selectors";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import {
-    MdArrowBack,
-    MdCheckCircle,
-    MdPayment,
-    MdSecurity,
+  MdArrowBack,
+  MdCheckCircle,
+  MdPayment,
+  MdSecurity,
 } from "react-icons/md";
 
 interface PaymentPageClientProps {
@@ -26,7 +27,7 @@ export default function PaymentPageClient({
 }: PaymentPageClientProps) {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
-
+  const { clearCart } = useCartStoreActions();
   const handlePayment = async () => {
     setIsLoading(true);
 
@@ -35,6 +36,7 @@ export default function PaymentPageClient({
 
       if (result.success) {
         toast.success("پرداخت با موفقیت انجام شد");
+        await clearCart();
         router.push(`/payment/success/${orderId}`);
       } else {
         toast.error(result.message || "خطا در پرداخت");
@@ -49,7 +51,7 @@ export default function PaymentPageClient({
   const formattedAmount = formatPrice(finalAmount);
 
   return (
-    <div className="flex min-h-[calc(100dvh-200px)] items-center justify-center">
+    <div className="flex items-center justify-center">
       <div className="border-neutral3 relative w-full max-w-md overflow-hidden rounded-2xl border bg-white shadow-xl transition-all duration-300 hover:shadow-2xl">
         <div className="bg-primary h-2 w-full"></div>
 
