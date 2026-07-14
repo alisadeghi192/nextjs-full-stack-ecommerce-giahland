@@ -1,14 +1,19 @@
+"use client"
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   RiInstagramFill,
   RiMapPin2Fill,
   RiTelegram2Fill,
 } from "react-icons/ri";
 
+
 export default function Footer() {
+  const pathname = usePathname()
+  const shoudAdjust = pathname === "/cart" || pathname === "/checkout"
   return (
-    <footer id="footer" className="bg-neutral2 max-xs:mt-6 mt-10 pt-7 pb-10">
+    <footer id="footer" className={`bg-neutral2 max-xs:mt-6 mt-10 pt-7 pb-10 ${shoudAdjust ? "pb-10 max-md:pb-30" : ""}`}>
       <div className="container flex items-baseline justify-between max-xl:gap-12 max-sm:flex-col-reverse">
         <div className="flex basis-124 flex-col gap-x-10 max-sm:basis-full max-sm:gap-x-4">
           <div className="flex flex-col gap-y-6 max-lg:gap-y-4 max-md:gap-y-3">

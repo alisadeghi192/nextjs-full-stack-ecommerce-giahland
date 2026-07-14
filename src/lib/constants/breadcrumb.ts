@@ -5,9 +5,11 @@ export const breadcrumbNameMap: Record<string, string> = {
   styling: "چیدمان",
   care: "نگهداری",
   health: "آفت‌ها و بیماری‌ها",
-  gift : "کادویی",
-  decoration : "دکوراتیو",
-  indoor : "آپارتمانی",
-  "contact" : "تماس با ما",
-  "about" : "درباره ما"
+  gift: "کادویی",
+  decoration: "دکوراتیو",
+  indoor: "آپارتمانی",
+  contact: "تماس با ما",
+  about: "درباره ما",
+  cart: "سبد خرید",
+  checkout: "تسویه حساب",
 };

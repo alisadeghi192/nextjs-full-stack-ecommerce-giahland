@@ -15,7 +15,7 @@ export default function PublicHeader() {
   }, [pathname]);
 
   return (
-    <header className="sticky top-0 right-0 left-0 z-50">
+    <header className="sticky top-0 right-0 left-0 z-50 bg-white">
       <DesktopHeader isScrolled={isScrolled} />
       <MobileHeader isScrolled={isScrolled} />
     </header>
