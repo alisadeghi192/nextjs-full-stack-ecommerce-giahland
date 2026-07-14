@@ -1,4 +1,4 @@
-import { IOrder, IOrderItem, OrderStatus } from "@/features/order/types/order.types";
+import { IOrder, IOrderItem, IOrderUserInfo, OrderStatus } from "@/features/order/types/order.types";
 import mongoose, { Model, Schema } from "mongoose";
 
 const OrderItemSchema = new Schema<IOrderItem>(
@@ -29,6 +29,16 @@ const OrderItemSchema = new Schema<IOrderItem>(
   { _id: false }
 );
 
+const UserInfoSchema = new Schema<IOrderUserInfo>(
+  {
+    firstName: { type: String, required: true },
+    lastName: { type: String, required: true },
+    mobile: { type: String, required: true },
+    postalCode: { type: String, required: true },
+  },
+  { _id: false }
+);
+
 const OrderSchema = new Schema<IOrder>(
   {
     user: {
@@ -55,8 +65,8 @@ const OrderSchema = new Schema<IOrder>(
     },
     status: {
       type: String,
-      enum: ["processing", "delivered"] as OrderStatus[],
-      default: "processing",
+      enum: ["pending", "paid", "delivered"] as OrderStatus[],
+      default: "pending",
     },
     address: {
       type: String,
@@ -64,6 +74,15 @@ const OrderSchema = new Schema<IOrder>(
     },
     trackingCode: {
       type: String,
+    },
+    userInfo: {
+      type: UserInfoSchema,
+      required: true,
+    },
+    deliveryMethod: {
+      type: String,
+      enum: ["pickup", "courier"],
+      required: true,
     },
   },
   { timestamps: true }

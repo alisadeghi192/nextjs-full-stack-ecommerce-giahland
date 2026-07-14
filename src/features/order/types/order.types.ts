@@ -1,17 +1,26 @@
 import mongoose from "mongoose";
 
-export type OrderStatus = "processing" | "delivered";
+export type OrderStatus = "pending" | "paid" | "delivered";
+
+export type ObjectId = mongoose.Types.ObjectId | string;
 
 export interface IOrderItem {
-  product: mongoose.Types.ObjectId | string;  
+  product: ObjectId;
   quantity: number;
   price: number;
   name: string;
   image: string;
 }
 
+export interface IOrderUserInfo {
+  firstName: string;
+  lastName: string;
+  mobile: string;
+  postalCode: string;
+}
+
 export interface IOrder {
-  user: mongoose.Types.ObjectId | string;     
+  user: ObjectId;
   items: IOrderItem[];
   totalAmount: number;
   shippingCost: number;
@@ -21,4 +30,6 @@ export interface IOrder {
   trackingCode?: string;
   createdAt: Date;
   updatedAt: Date;
+  userInfo: IOrderUserInfo;
+  deliveryMethod: "pickup" | "courier";
 }
