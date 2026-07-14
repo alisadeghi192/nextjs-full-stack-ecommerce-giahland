@@ -22,3 +22,7 @@ export const toPersianNumber = (num: number): string => {
 export const formatDate = (date: Date): string => {
   return date.toLocaleDateString("fa-IR")
 };
+
+export const toPersianCode = (num:string): string => {
+  return num.replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[+d]) || "";
+}
