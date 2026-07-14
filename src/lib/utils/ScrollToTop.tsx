@@ -49,12 +49,14 @@ const ScrollToTop = () => {
 
   const isMobile = windowWidth < 640;
   const shouldAdjust = !isDoctor && isSingleProductPage && isMobile && !isAdmin;
+  const isInCheckout = pathname === '/cart' || pathname === '/checkout'
+  let bottomPosition = "bottom-6"
 
-  const bottomPosition = shouldAdjust
-    ? isFooterVisible
-      ? "bottom-6"
-      : "bottom-24"
-    : "bottom-6";
+  if(shouldAdjust){
+     bottomPosition = shouldAdjust  ? isFooterVisible  ? "bottom-6"  : "bottom-24"  : "bottom-6";
+  }else if (isInCheckout && isMobile){
+    bottomPosition = "bottom-24"
+  }
 
   const radius = 19;
   const circumference = 2 * Math.PI * radius;

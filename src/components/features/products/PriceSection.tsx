@@ -53,7 +53,7 @@ export default function PriceSection({
             <DiscountBadge discount={discount} />
           </div>
         )}
-        <span className="text-xl/9 max-[400px]:text-lg">{formatPrice(finalPrice)}</span>
+        <span className="text-xl/9 font-bold max-[400px]:text-lg">{formatPrice(finalPrice)}</span>
       </div>
     );
   }

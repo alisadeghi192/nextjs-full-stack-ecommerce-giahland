@@ -14,7 +14,6 @@ interface MobileStickyCartProps {
   productId: string;
   price: number;
   discount: number;
-  onAddToCart?: () => void;
   stock: number;
 }
 
@@ -22,7 +21,6 @@ export default function MobileStickyCart({
   productId,
   price,
   discount,
-  onAddToCart,
   stock,
 }: MobileStickyCartProps) {
   const isFooterVisible = useFooterVisibility();
@@ -52,7 +50,7 @@ export default function MobileStickyCart({
   return (
     <>
       <div
-        className={`shadow-top border-neutral4 max-xs:gap-x-8 max-xs:justify-between fixed right-0 bottom-0 left-0 z-40 flex h-20 items-center justify-center gap-x-15 border-t bg-white px-4 transition-all duration-300 sm:hidden ${isFooterVisible ? "pointer-events-none translate-y-full opacity-0" : "translate-y-0 opacity-100"}`}
+        className={`border-neutral4 max-xs:gap-x-8 max-xs:justify-between fixed right-0 bottom-0 left-0 z-40 flex h-20 items-center justify-center gap-x-15 border-t bg-white px-4 shadow-[0_-25px_50px_-12px_rgba(0,0,0,0.5)] transition-all duration-300 sm:hidden ${isFooterVisible ? "pointer-events-none translate-y-full opacity-0" : "translate-y-0 opacity-100"}`}
       >
         <PrimaryButton
           onClick={handleAddToCart}
