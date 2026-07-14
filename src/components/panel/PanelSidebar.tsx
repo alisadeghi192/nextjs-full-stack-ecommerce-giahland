@@ -8,6 +8,7 @@ import {
 } from "@/features/auth/selectors/auth.selectors";
 import { useAllNotifications } from "@/features/notifications/hooks/useAllNotifications";
 import { PanelLink } from "@/lib/constants/panelLinks";
+import { toPersianCode } from "@/lib/utils/format";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -45,7 +46,7 @@ export default function PanelSidebar({
   } = useAllNotifications();
 
   const displayName = firstName || "کاربر";
-  const persianMobile = mobile?.replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[+d]) || "";
+  const persianMobile = toPersianCode(mobile as string)
 
   useEffect(() => {
     refresh();
