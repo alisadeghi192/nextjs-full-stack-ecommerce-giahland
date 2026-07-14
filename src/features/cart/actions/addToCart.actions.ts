@@ -67,7 +67,7 @@ export async function addToCartAction(productId: string, quantity: number = 1) {
     if (product.stock < newQuantity) {
       return {
         success: false,
-        message: `موجودی محصول کافی نیست. (موجودی: ${product.stock})`,
+        message: `موجودی محصول کافی نیست. (موجودی: ${toPersianNumber(product.stock)})`,
         items: [],
         totalItems: 0,
         totalPrice: 0,
