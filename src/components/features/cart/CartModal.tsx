@@ -23,6 +23,7 @@ export default function CartModal({ onClose }: CartModalProps) {
   const { items, totalItems, totalPrice } = useCartSummary();
   const isAuthenticated = useIsAuthenticated();
   const pathname = usePathname();
+
   useEffect(() => {
     onClose();
   }, [pathname]);
@@ -47,13 +48,8 @@ export default function CartModal({ onClose }: CartModalProps) {
     const existingItem = items.find(
       (item) => (item.product as any)?._id === productId,
     );
-    if (existingItem) {
-      if (existingItem.quantity <= 1) {
-        removeItem(productId);
-      } else {
-        const newQuantity = existingItem.quantity - 1;
-        updateQuantity(productId, newQuantity);
-      }
+    if (existingItem && existingItem.quantity > 1) {
+      updateQuantity(productId, existingItem.quantity - 1);
     }
   };
 
@@ -94,7 +90,6 @@ export default function CartModal({ onClose }: CartModalProps) {
               <span className="text-neutral9 leading-7.25 font-medium">
                 جمع مبلغ:
               </span>
-              {/* ✅ قیمت واقعی از store */}
               <PriceSection
                 discount={0}
                 price={totalPrice}
@@ -102,11 +97,7 @@ export default function CartModal({ onClose }: CartModalProps) {
                 bold
               />
             </div>
-            {/* ✅ لینک به صفحه تسویه */}
-            <PrimaryButton
-              className="mt-2 w-full py-2 text-lg"
-              href="/checkout"
-            >
+            <PrimaryButton className="mt-2 w-full py-2 text-lg" href="/cart">
               ثبت سفارش
             </PrimaryButton>
           </div>
