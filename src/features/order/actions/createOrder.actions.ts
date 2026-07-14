@@ -21,7 +21,7 @@ export async function createOrderAction(input: unknown) {
   }
 
   const { deliveryMethod, userInfo } = validation.data;
-  
+
   let address = userInfo.address?.trim() || "";
   let postalCode = userInfo.postalCode?.trim() || "";
 
@@ -78,17 +78,20 @@ export async function createOrderAction(input: unknown) {
   const shippingCost = deliveryMethod === "courier" ? 300000 : 0;
   const finalAmount = totalAmount + shippingCost;
 
+  const trackingCode = String(Date.now()).slice(-8);
+
   const order = await Order.create({
     user: user._id,
     items: orderItems,
     totalAmount,
     shippingCost,
     finalAmount,
+    trackingCode,
     status: "pending",
     address,
     userInfo: {
       ...userInfo,
-      postalCode, 
+      postalCode,
     },
     deliveryMethod,
   });
