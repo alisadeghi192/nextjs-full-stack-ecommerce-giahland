@@ -2,7 +2,7 @@
 
 import { useUserRole } from "@/features/auth/selectors/auth.selectors";
 import { ConsultationWithDetails } from "@/features/consultations/types/consultation.types";
-import { toPersianNumber } from "@/lib/utils/format";
+import { toPersianCode, toPersianNumber } from "@/lib/utils/format";
 import Image from "next/image";
 import Link from "next/link";
 import { IoCheckmarkDoneSharp, IoCheckmarkSharp } from "react-icons/io5";
@@ -55,17 +55,14 @@ export default function ConsultationCard({
             />
           </div>
           <div className="flex-1">
-            <div className="flex items-center justify-between">
-              <h3 className="font-medium max-[400px]:font-normal">
+            <div className="flex items-center justify-between gap-x-2">
+              <h3 className="font-medium max-[400px]:font-normal text-nowrap">
                 {personName}
               </h3>
               <div className="text-neutral9 flex flex-wrap items-center justify-end gap-x-1 text-sm max-[400px]:text-xs">
                 <span>
-                  کد
-                  {consultation.code.replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[+d]) ||
-                    ""}
+                   کد {toPersianCode(consultation.code) || ""}
                 </span>
-                <span className="text-primary font-medium">|</span>
                 <span>
                   {new Date(consultation.createdAt).toLocaleDateString("fa-IR")}
                 </span>
