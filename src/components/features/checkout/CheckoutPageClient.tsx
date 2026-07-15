@@ -35,7 +35,9 @@ export default function CheckoutPageClient({
   const [isLoading, setIsLoading] = useState(false);
   const [userInfo, setUserInfo] = useState(initialUserInfo);
   const [isUserInfoConfirmed, setIsUserInfoConfirmed] = useState(false);
-  const [deliveryMethod, setDeliveryMethod] = useState<"pickup" | "courier" | null >(null);
+  const [deliveryMethod, setDeliveryMethod] = useState<
+    "pickup" | "courier" | null
+  >(null);
 
   const shippingCost = deliveryMethod === "courier" ? 300000 : 0;
   const finalTotal = totalPrice + shippingCost;
@@ -67,6 +69,11 @@ export default function CheckoutPageClient({
       });
 
       if (result.success && result.orderId) {
+        if (result.redirect) {
+          toast.success(result.message);
+          router.push(result.redirect);
+          return;
+        }
         toast.success(result.message);
         router.push(`/payment/${result.orderId}`);
       } else {
@@ -74,7 +81,7 @@ export default function CheckoutPageClient({
       }
     } catch (error) {
       toast.error("خطا در ثبت سفارش");
-      console.log(error)
+      console.error(error);
     } finally {
       setIsLoading(false);
     }
