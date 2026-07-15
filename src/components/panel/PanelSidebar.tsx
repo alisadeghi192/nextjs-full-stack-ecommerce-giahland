@@ -46,7 +46,10 @@ export default function PanelSidebar({
   } = useAllNotifications();
 
   const displayName = firstName || "کاربر";
-  const persianMobile = toPersianCode(mobile as string)
+  let persianMobile = ""
+  if(mobile){
+    persianMobile = toPersianCode(mobile)
+  }
 
   useEffect(() => {
     refresh();
