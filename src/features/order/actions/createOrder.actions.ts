@@ -78,6 +78,35 @@ export async function createOrderAction(input: unknown) {
   const shippingCost = deliveryMethod === "courier" ? 300000 : 0;
   const finalAmount = totalAmount + shippingCost;
 
+  const existingOrder = await Order.findOne({
+    user: user._id,
+    status: "pending",
+  });
+
+  if (existingOrder) {
+    existingOrder.items = orderItems;
+    existingOrder.totalAmount = totalAmount;
+    existingOrder.shippingCost = shippingCost;
+    existingOrder.finalAmount = finalAmount;
+    existingOrder.address = address;
+    existingOrder.userInfo = {
+      ...userInfo,
+      postalCode,
+    };
+    existingOrder.deliveryMethod = deliveryMethod;
+
+    await existingOrder.save();
+
+    revalidatePath("/user/orders");
+
+    return {
+      success: true,
+      message: "اطلاعات سفارش به‌روزرسانی شد.",
+      orderId: existingOrder._id.toString(),
+      redirect: `/payment/${existingOrder._id}`,
+    };
+  }
+
   const trackingCode = String(Date.now()).slice(-8);
 
   const order = await Order.create({
@@ -95,15 +124,6 @@ export async function createOrderAction(input: unknown) {
     },
     deliveryMethod,
   });
-
-  for (const item of orderItems) {
-    await Product.findByIdAndUpdate(item.product, {
-      $inc: { stock: -item.quantity },
-    });
-  }
-
-  cart.items = [];
-  await cart.save();
 
   revalidatePath("/cart");
   revalidatePath("/user/orders");
