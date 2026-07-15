@@ -61,11 +61,12 @@ export interface ConsultationWithDetails {
     firstName: string;
     lastName: string;
     avatar?: string;
+    consultationFee?: number;
   };
   title: string;
   status: "active" | "closed";
-  lastMessage?: LastMessageInfo;  
-   unreadCount?: number;
+  lastMessage?: LastMessageInfo;
+  unreadCount?: number;
   createdAt: Date;
   updatedAt: Date;
 }

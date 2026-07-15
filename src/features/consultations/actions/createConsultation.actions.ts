@@ -3,24 +3,7 @@
 import { getMeAction } from "@/features/auth/actions/me.actions";
 import connectToDB from "@/lib/db/connect";
 import Consultation from "@/lib/db/models/Consultation";
-import { randomInt } from "crypto";
 import { revalidatePath } from "next/cache";
-
-async function generateUniqueCode(): Promise<string> {
-  let code: string;
-  let attempts = 0;
-  const maxAttempts = 20;
-
-  while (attempts < maxAttempts) {
-    const num = randomInt(0, 10000);
-    code = String(num).padStart(4, "0");
-    const existing = await Consultation.findOne({ code });
-    if (!existing) return code;
-    attempts++;
-  }
-
-  throw new Error("Unable to generate unique consultation code");
-}
 
 export async function createConsultation(doctorId: string) {
   const { user } = await getMeAction();
@@ -36,7 +19,25 @@ export async function createConsultation(doctorId: string) {
   }
 
   await connectToDB();
-  const code = await generateUniqueCode();
+
+  const existingConsultation = await Consultation.findOne({
+    user: user._id,
+    doctor: doctorId,
+    status: "active",
+  });
+
+  if (existingConsultation) {
+    revalidatePath("/user/consultations/list");
+    return {
+      success: true,
+      message: "شما قبلاً برای این پزشک مشاوره فعال دارید.",
+      consultationId: existingConsultation._id.toString(),
+      code: existingConsultation.code,
+      redirect: `/user/consultations/${existingConsultation._id}`,
+    };
+  }
+
+  const code = String(Date.now()).slice(-6);
   const consultation = await Consultation.create({
     user: user._id,
     doctor: doctorId,

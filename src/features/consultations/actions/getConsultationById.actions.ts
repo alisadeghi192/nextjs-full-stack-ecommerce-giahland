@@ -30,7 +30,7 @@ export async function getConsultationById(
     .lean();
 
   const doctorInfo = await PlantDoctor.findById(consultation.doctor)
-    .select("firstName lastName avatar")
+    .select("firstName lastName avatar consultationFee")
     .lean();
 
   let lastMessageData = undefined;
@@ -68,6 +68,7 @@ export async function getConsultationById(
       firstName: doctorInfo?.firstName || "",
       lastName: doctorInfo?.lastName || "",
       avatar: doctorInfo?.avatar || "/static/images/default-user.webp",
+      consultationFee: doctorInfo?.consultationFee || 0,
     },
     title: consultation.title,
     status: consultation.status,
