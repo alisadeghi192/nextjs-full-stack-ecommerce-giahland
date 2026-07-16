@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 
 export type OrderStatus = "pending" | "paid" | "delivered";
-
 export type ObjectId = mongoose.Types.ObjectId | string;
 
 export interface IOrderItem {
@@ -10,6 +9,9 @@ export interface IOrderItem {
   price: number;
   name: string;
   image: string;
+  slug: string;
+  category: string;
+  discount: number;
 }
 
 export interface IOrderUserInfo {
@@ -20,6 +22,7 @@ export interface IOrderUserInfo {
 }
 
 export interface IOrder {
+  _id: string;
   user: ObjectId;
   items: IOrderItem[];
   totalAmount: number;
@@ -32,4 +35,8 @@ export interface IOrder {
   updatedAt: Date;
   userInfo: IOrderUserInfo;
   deliveryMethod: "pickup" | "courier";
+}
+
+export interface OrderWithTotal extends IOrder {
+  totalItems: number;
 }
