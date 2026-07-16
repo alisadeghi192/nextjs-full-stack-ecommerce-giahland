@@ -6,6 +6,7 @@ import connectToDB from "@/lib/db/connect";
 import Cart from "@/lib/db/models/Cart";
 import Order from "@/lib/db/models/Order";
 import Product from "@/lib/db/models/Product";
+import { getDiscountedPrice } from "@/lib/utils/price";
 import { revalidatePath } from "next/cache";
 
 export async function createOrderAction(input: unknown) {
@@ -71,8 +72,11 @@ export async function createOrderAction(input: unknown) {
       price: product.price,
       name: product.name,
       image: product.image,
+      slug: product.slug,
+      category: product.category,
+      discount : product.discount
     });
-    totalAmount += product.price * item.quantity;
+    totalAmount += getDiscountedPrice(product.price, product.discount) * item.quantity;
   }
 
   const shippingCost = deliveryMethod === "courier" ? 300000 : 0;
