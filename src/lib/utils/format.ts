@@ -20,9 +20,25 @@ export const toPersianNumber = (num: number): string => {
 };
 
 export const formatDate = (date: Date): string => {
-  return date.toLocaleDateString("fa-IR")
+  return date.toLocaleDateString("fa-IR");
 };
 
-export const toPersianCode = (num:string): string => {
+export const toPersianCode = (num: string): string => {
   return num.replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[+d]) || "";
-}
+};
+
+export const toStyledSlug = (slug: string): string =>
+  slug
+    .split("-")
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(" ");
+
+export const toPersianDateAndTime = (date: Date): string => {
+  return date.toLocaleString("fa-IR", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+};
