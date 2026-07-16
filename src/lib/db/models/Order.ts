@@ -1,4 +1,9 @@
-import { IOrder, IOrderItem, IOrderUserInfo, OrderStatus } from "@/features/order/types/order.types";
+import {
+  IOrder,
+  IOrderItem,
+  IOrderUserInfo,
+  OrderStatus,
+} from "@/features/order/types/order.types";
 import mongoose, { Model, Schema } from "mongoose";
 
 const OrderItemSchema = new Schema<IOrderItem>(
@@ -25,8 +30,17 @@ const OrderItemSchema = new Schema<IOrderItem>(
       type: String,
       required: true,
     },
+    slug: {
+      type: String,
+      required: true,
+    },
+    category: {
+      type: String,
+      required: true,
+    },
+    discount: { type: Number, default: 0 },
   },
-  { _id: false }
+  { _id: false },
 );
 
 const UserInfoSchema = new Schema<IOrderUserInfo>(
@@ -36,7 +50,7 @@ const UserInfoSchema = new Schema<IOrderUserInfo>(
     mobile: { type: String, required: true },
     postalCode: { type: String, required: true },
   },
-  { _id: false }
+  { _id: false },
 );
 
 const OrderSchema = new Schema<IOrder>(
@@ -85,7 +99,7 @@ const OrderSchema = new Schema<IOrder>(
       required: true,
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 const Order: Model<IOrder> =
