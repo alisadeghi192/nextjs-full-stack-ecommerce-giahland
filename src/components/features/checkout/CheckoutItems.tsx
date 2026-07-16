@@ -1,6 +1,7 @@
 "use client";
 
 import { formatPrice, toPersianNumber } from "@/lib/utils/format";
+import { getDiscountedPrice } from "@/lib/utils/price";
 
 interface CheckoutItemsProps {
   items: any[];
@@ -20,27 +21,34 @@ export default function CheckoutItems({
   return (
     <div className="border-neutral3 rounded-xl border p-4 shadow-lg">
       <div className="mb-3 flex items-center justify-between">
-        <span className="font-bold text-lg max-md:text-base">سبد خرید</span>
+        <span className="text-lg font-bold max-md:text-base">سبد خرید</span>
         <span className="text-neutral8 text-sm">
           ({toPersianNumber(totalItems)} کالا)
         </span>
       </div>
 
-      <div className="max-h-60 space-y-4 overflow-y-auto custom-scroll pl-1">
-        {items.map((item, index) => (
-          <div key={index} className="flex justify-between items-center  text-sm">
-            <span className="line-clamp-1">
-              {toPersianNumber(index+1)}- {(item.product as any).name} × {toPersianNumber(item.quantity)}
-            </span>
-            <span className="shrink-0">
-              {formatPrice((item.product as any).price * item.quantity)}
-            </span>
-          </div>
-        ))}
+      <div className="custom-scroll max-h-60 space-y-4 overflow-y-auto pl-1">
+        {items.map((item, index) => {
+          const {product} = item
+          const discountedPrice = getDiscountedPrice(product.price, product.discount);
+          const finalPrice = formatPrice(discountedPrice * item.quantity);
+          return (
+            <div
+              key={index}
+              className="flex items-center justify-between text-sm"
+            >
+              <span className="line-clamp-1">
+                {toPersianNumber(index + 1)}- {(item.product as any).name} ×{" "}
+                {toPersianNumber(item.quantity)}
+              </span>
+              <span className="shrink-0">{finalPrice}</span>
+            </div>
+          );
+        })}
       </div>
 
       <div className="mt-3 space-y-4 border-t pt-3">
-        <div className="flex justify-between items-center text-sm">
+        <div className="flex items-center justify-between text-sm">
           <span>جمع کل</span>
           <span>{formatPrice(totalPrice)}</span>
         </div>
