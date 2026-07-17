@@ -2,10 +2,10 @@
 
 import { IOrder } from "@/features/order/types/order.types";
 import {
-    formatDate,
-    formatPrice,
-    toPersianCode,
-    toPersianNumber,
+  formatDate,
+  formatPrice,
+  toPersianCode,
+  toPersianNumber,
 } from "@/lib/utils/format";
 import { useIsSidebarOpen } from "@/stores/selectors/ui.selectors";
 import Image from "next/image";
