@@ -46,24 +46,24 @@ export default function AdminProductSearch({
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={handleKeyDown}
-          isSearch={true}
+          isPanelSearch={true}
         />
       </div>
       <button
         onClick={handleSearch}
         disabled={!query.trim()}
-        className={`rounded-lg p-1 transition-colors ${
+        className={`flex items-center mr-2 justify-center rounded-xl size-10 bg-primary transition-colors ${
           query.trim()
-            ? "text-primary hover:bg-primary/10"
+            ? "text-primary hover:bg-shade2"
             : "text-neutral9 cursor-not-allowed"
         }`}
       >
-        <IoSearch className="size-6 cursor-pointer" />
+        <IoSearch className={`size-5 text-white ${query.trim() ? "cursor-pointer" : "cursor-not-allowed"} `} />
       </button>
       {query && (
         <button
           onClick={handleClear}
-          className="rounded-lg p-1 text-red-500 transition-colors hover:bg-red-50"
+          className="flex items-center mr-1 text-red-500 hover:text-error  justify-center rounded-xl transition-colors"
         >
           <IoClose className="size-6 cursor-pointer" />
         </button>
