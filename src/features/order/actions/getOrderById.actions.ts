@@ -22,10 +22,18 @@ export async function getOrderByIdAction(orderId: string) {
 
   await connectToDB();
 
-  const order = await Order.findOne({
-    _id: orderId,
-    user: user._id,
-  }).lean();
+  let order;
+
+  if (user.role === "admin") {
+    order = await Order.findOne({
+      _id: orderId,
+    }).lean();
+  } else {
+    order = await Order.findOne({
+      _id: orderId,
+      user: user._id,
+    }).lean();
+  }
 
   if (!order) {
     return {
