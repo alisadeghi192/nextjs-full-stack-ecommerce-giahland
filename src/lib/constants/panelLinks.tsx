@@ -7,6 +7,7 @@ import {
   MdDashboard,
   MdMessage,
   MdOutlineArticle,
+  MdOutlineReceiptLong,
   MdOutlineShoppingCart,
 } from "react-icons/md";
 
@@ -113,6 +114,12 @@ export const adminLinks: PanelLink[] = [
     icon: <MdOutlineShoppingCart size={24} />,
     label: "محصولات",
     tooltipLabel: "محصولات",
+  },
+  {
+    href: "/admin/orders",
+    icon: <MdOutlineReceiptLong size={24} />,
+    label: "سفارش‌ها",
+    tooltipLabel: "سفارش‌ها",
   },
   {
     href: "/admin/tickets",
