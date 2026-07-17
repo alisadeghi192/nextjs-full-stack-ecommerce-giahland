@@ -40,7 +40,6 @@ export default function FactorItems({ order }: FactorItemsProps) {
               image,
               category,
               name,
-              product,
               quantity,
               slug,
             } = item;
@@ -62,11 +61,11 @@ export default function FactorItems({ order }: FactorItemsProps) {
                         alt={name}
                         width={100}
                         height={100}
-                        className="size-25 rounded-lg object-cover"
+                        className="size-25 max-lg:size-20 max-[580px]:size-18! max-xs:size-14! rounded-lg object-cover"
                       />
                       <DiscountBadge
                         discount={discount}
-                        className="absolute top-0 right-0"
+                        className="absolute top-0 right-0 max-sm:scale-80"
                       />
                     </div>
                     <div>
