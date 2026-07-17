@@ -73,7 +73,9 @@ export default function FactorItems({ order }: FactorItemsProps) {
                         href={`/products/${category}/${slug}`}
                         className="group-hover:text-primary line-clamp-1 font-medium transition-colors max-[580px]:text-sm max-sm:font-normal"
                       >
-                        {name}
+                        <span className="max-xs:hidden">{name}</span>
+                        <span className="xs:hidden">{`${toPersianNumber(quantity)}× ${name}`}</span>
+                        
                       </Link>
                       <p className="text-neutral9 line-clamp-1 text-sm max-[580px]:text-xs">
                         {toStyledSlug(slug)}
