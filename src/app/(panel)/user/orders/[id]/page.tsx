@@ -35,7 +35,7 @@ export default async function OrderDetailPage({
 
   return (
     <div className="w-full space-y-4">
-      <FactorHeader />
+      <FactorHeader href="/user/orders"/>
       <div className="border-neutral3 bg-neutral2 rounded-2xl border p-4 shadow-lg">
         <FactorInfo order={order} />
         <FactorItems order={order} />
