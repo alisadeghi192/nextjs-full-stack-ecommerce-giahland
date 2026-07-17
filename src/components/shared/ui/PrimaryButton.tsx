@@ -1,12 +1,12 @@
 "use client";
 
-import { ReactNode } from "react";
 import Link from "next/link";
+import { ReactNode } from "react";
 
 interface PrimaryButtonProps {
   children: ReactNode;
   href?: string;
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void | Promise<void>;
   disabled?: boolean;
   className?: string;
 }
