@@ -80,7 +80,7 @@ export default function SearchModalContent({ onClose, isOpen }: SearchModalConte
         ref={inputRef}
         value={query}
         onChange={handleChange}
-        isSearch={true}
+        isMainSearch={true}
       />
 
       <div className="mt-2 max-h-80 overflow-y-auto custom-scroll ltr">
