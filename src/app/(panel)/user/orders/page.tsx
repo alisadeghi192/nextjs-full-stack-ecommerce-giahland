@@ -1,7 +1,7 @@
 import OrderCard from "@/components/features/order/OrderCard";
-import OrdersSearch from "@/components/features/order/OrdersSearch";
 import SectionTitle from "@/components/panel/SectionTitle";
 import Pagination from "@/components/shared/ui/pagination";
+import PanelSearch from "@/components/shared/ui/PanelSearch";
 import { getUserOrdersAction } from "@/features/order/actions/getUserOrders.actions";
 import { IOrder } from "@/features/order/types/order.types";
 import { ORDERS_PER_PAGE } from "@/lib/constants/pagination";
@@ -10,7 +10,9 @@ interface UserOrdersPageProps {
   searchParams: Promise<{ search?: string; page?: string }>;
 }
 
-export default async function UserOrdersPage({ searchParams }: UserOrdersPageProps) {
+export default async function UserOrdersPage({
+  searchParams,
+}: UserOrdersPageProps) {
   const { search = "", page = "1" } = await searchParams;
   const currentPage = Number(page) || 1;
 
@@ -24,16 +26,22 @@ export default async function UserOrdersPage({ searchParams }: UserOrdersPagePro
 
   return (
     <div className="w-full">
-      <div className="mb-4 flex items-center justify-between max-xs:flex-col max-xs:gap-y-3">
+      <div className="max-xs:flex-col max-xs:gap-y-3 mb-4 flex items-center justify-between">
         <SectionTitle title="سفارش‌های من" className="mb-0! ml-auto" />
-        <div className="w-72 max-xs:w-full">
-          <OrdersSearch defaultValue={search} />
+        <div className="max-xs:w-full w-72">
+          <PanelSearch
+            id="order-search"
+            label="جستجوی کد پیگیری"
+            defaultValue={search}
+          />
         </div>
       </div>
 
       {result.orders.length === 0 ? (
         <div className="border-neutral3 rounded-2xl border p-6 text-center text-gray-500 shadow-lg">
-          {search ? "سفارشی با این کد پیگیری یافت نشد." : "هیچ سفارشی ثبت نشده است."}
+          {search
+            ? "سفارشی با این کد پیگیری یافت نشد."
+            : "هیچ سفارشی ثبت نشده است."}
         </div>
       ) : (
         <>

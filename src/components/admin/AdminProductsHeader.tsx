@@ -5,8 +5,8 @@ import Tabs from "@/components/shared/ui/Tabs";
 import { productSortOptions, productTabs } from "@/lib/constants";
 import { useUrlParams } from "@/lib/hooks/useUrlParams";
 import { useIsSidebarOpen } from "@/stores/selectors/ui.selectors";
+import PanelSearch from "../shared/ui/PanelSearch";
 import ViewToggleWrapper from "../shared/ui/ViewToggleWrapper";
-import AdminProductSearch from "./AdminProductSearch";
 
 interface AdminProductsHeaderProps {
   activeTab: string;
@@ -51,7 +51,11 @@ export default function AdminProductsHeader({
       <div
         className={`mt-3 w-60 max-md:w-80 ${isSidebarOpen ? "max-lg:mx-auto max-lg:w-90" : "max-md:mx-auto"} max-xs:w-full`}
       >
-        <AdminProductSearch defaultValue={searchQuery} />
+        <PanelSearch
+          id="product-search"
+          label="جستجوی محصول"
+          defaultValue={searchQuery}
+        />
       </div>
     </div>
   );

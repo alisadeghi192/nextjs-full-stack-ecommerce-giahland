@@ -1,8 +1,8 @@
 "use client";
 
-import ConsultationSearch from "@/components/features/consultations/ConsultationSearch";
 import SectionTitle from "@/components/panel/SectionTitle";
 import OutlineButton from "@/components/shared/ui/OutlineButton";
+import PanelSearch from "@/components/shared/ui/PanelSearch";
 import SortDropdownWrapper from "@/components/shared/ui/SortDropdownWrapper";
 import { consultationSortOptions } from "@/lib/constants";
 import { useIsSidebarOpen } from "@/stores/selectors/ui.selectors";
@@ -29,7 +29,7 @@ export default function ConsultationsListHeader({
         <div
           className={`${isSideBarOpen ? "max-lg:basis-1/2 lg:mr-3" : "max-md:basis-1/2 md:mr-3"}`}
         >
-          <ConsultationSearch defaultValue={searchQuery} />
+          <PanelSearch id="consultation-search" label="کد مشاوره" defaultValue={searchQuery}/>
         </div>
         <div
           className={`w-34.5 ${isSideBarOpen ? `${isDoctor ? "" : "lg:ml-3"} max-lg:basis-1/2` : `${isDoctor ? "" : "md:ml-3"} max-md:basis-1/2`}`}

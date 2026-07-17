@@ -1,6 +1,6 @@
 "use client";
 
-import OrdersSearch from "@/components/features/order/OrdersSearch";
+import PanelSearch from "@/components/shared/ui/PanelSearch";
 import SortDropdown from "@/components/shared/ui/SortDropdown";
 import { useUrlParams } from "@/lib/hooks/useUrlParams";
 
@@ -31,7 +31,11 @@ export default function AdminOrdersHeader() {
       </div>
 
       <div className="w-64 max-sm:w-full">
-        <OrdersSearch defaultValue={search} />
+        <PanelSearch
+          id="order-search"
+          label="جستجوی کد پیگیری"
+          defaultValue={search}
+        />
       </div>
     </div>
   );

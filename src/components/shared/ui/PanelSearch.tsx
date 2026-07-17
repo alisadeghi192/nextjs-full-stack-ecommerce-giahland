@@ -5,27 +5,33 @@ import { useUrlParams } from "@/lib/hooks/useUrlParams";
 import { useState } from "react";
 import { IoClose, IoSearch } from "react-icons/io5";
 
-interface AdminProductSearchProps {
+interface PanelSearchProps {
   defaultValue?: string;
   className?: string;
+  label: string;
+  id: string;
+  searchParam?: string; 
 }
 
-export default function AdminProductSearch({
+export default function PanelSearch({
   defaultValue = "",
   className = "",
-}: AdminProductSearchProps) {
+  label,
+  id,
+  searchParam = "search",
+}: PanelSearchProps) {
   const { set } = useUrlParams();
   const [query, setQuery] = useState(defaultValue);
 
   const handleSearch = () => {
     if (query.trim()) {
-      set("search", query.trim());
+      set(searchParam, query.trim());
     }
   };
 
   const handleClear = () => {
     setQuery("");
-    set("search", "");
+    set(searchParam, "");
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -39,10 +45,10 @@ export default function AdminProductSearch({
       <div className="flex-1">
         <FormField
           icon={<IoSearch className="size-5" />}
-          id="product-search"
+          id={id}
           type="text"
-          label="جستجوی محصول"
-          name="search"
+          label={label}
+          name={searchParam}
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={handleKeyDown}
@@ -58,12 +64,12 @@ export default function AdminProductSearch({
             : "text-neutral9 cursor-not-allowed"
         }`}
       >
-        <IoSearch className={`size-5 text-white ${query.trim() ? "cursor-pointer" : "cursor-not-allowed"} `} />
+        <IoSearch className={`size-5 text-white ${query.trim() ? "cursor-pointer" : "cursor-not-allowed"}`} />
       </button>
       {query && (
         <button
           onClick={handleClear}
-          className="flex items-center mr-1 text-red-500 hover:text-error  justify-center rounded-xl transition-colors"
+          className="flex items-center mr-1 text-red-500 hover:text-error justify-center rounded-xl transition-colors"
         >
           <IoClose className="size-6 cursor-pointer" />
         </button>
