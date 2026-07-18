@@ -56,9 +56,9 @@ const FormField = forwardRef<HTMLInputElement, FormFieldProps>(
             name={name}
             id={id}
             placeholder={isPanelSearch ? label : " "}
-            className={`peer text-neutral11 flex-1 border-0 outline-0 ${
+            className={`peer flex-1 border-0 outline-0 ${
               isPanelSearch ? "placeholder:text-neutral9 w-18" : ""
-            }`}
+            } ${disabled ? "text-neutral9" : "text-neutral11"}`}
             value={value}
             defaultValue={defaultValue}
             onChange={onChange}
