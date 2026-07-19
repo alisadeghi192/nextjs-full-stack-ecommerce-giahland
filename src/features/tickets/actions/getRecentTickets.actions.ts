@@ -18,12 +18,30 @@ export async function getRecentTickets(limit: number = 5) {
     .limit(limit)
     .lean();
 
-  return tickets.map((ticket) => ({
-    _id: ticket._id.toString(),
-    subject: ticket.subject,
-    userName: (ticket.user as any)?.firstName + " " + (ticket.user as any)?.lastName || "کاربر",
-    status: ticket.status, // "pending" | "answered"
-    message:ticket.message,
-    createdAt: ticket.createdAt,
-  }));
+  const getUserDisplayName = (user: any): string => {
+    const firstName = user?.firstName?.trim() || "";
+    const lastName = user?.lastName?.trim() || "";
+    if (firstName && lastName) {
+      return `${firstName} ${lastName}`;
+    }
+    if (firstName) {
+      return firstName;
+    }
+    if (lastName) {
+      return lastName;
+    }
+    return "کاربر";
+  };
+
+  return tickets.map((ticket) => {
+    const displayName = getUserDisplayName(ticket.user);
+    return {
+      _id: ticket._id.toString(),
+      subject: ticket.subject,
+      userName: displayName,
+      status: ticket.status,
+      message: ticket.message,
+      createdAt: ticket.createdAt,
+    };
+  });
 }
