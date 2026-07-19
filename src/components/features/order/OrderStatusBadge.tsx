@@ -26,7 +26,7 @@ export default function OrderStatusBadge({ status }: OrderStatusBadgeProps) {
 
   return (
     <span
-      className={`inline-block rounded-xl px-1 text-xs/5.5 font-bold ${config.className}`}
+      className={`inline-block rounded-xl px-1 text-nowrap text-xs/5.5 font-bold ${config.className}`}
     >
       {config.label}
     </span>
