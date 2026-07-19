@@ -30,3 +30,12 @@ export interface AdminComment extends IComment {
     url: string;
   };
 }
+
+export interface DashboardComment {
+  _id: string;
+  text: string;
+  userName: string;
+  isApproved: boolean | undefined;
+  isReadByAdmin: boolean | undefined;
+  createdAt: Date | undefined;
+}

@@ -48,8 +48,16 @@ export interface PaginatedTickets {
 }
 
 export interface TicketFilters {
-  role?: string;      // "plant-doctor" | "user"
-  sort?: string;      // "newest" | "oldest"
-  status?: string;    // "pending" | "answered"
-  department?: string;  // "support" | "sales" | "complaint" | "other"
+  role?: string; // "plant-doctor" | "user"
+  sort?: string; // "newest" | "oldest"
+  status?: string; // "pending" | "answered"
+  department?: string; // "support" | "sales" | "complaint" | "other"
+}
+export interface DashboardTickets {
+  _id: string;
+  subject: string;
+  userName: string;
+  message:string;
+  status: "pending" | "answered";
+  createdAt: Date;
 }

@@ -40,3 +40,15 @@ export interface IOrder {
 export interface OrderWithTotal extends IOrder {
   totalItems: number;
 }
+
+export interface DashboardOrder {
+  _id: string;
+  trackingCode?: string;
+  finalAmount: number;
+  status: "pending" | "paid" | "delivered";
+  userInfo: {
+    firstName: string;
+    lastName: string;
+  };
+  createdAt: Date;
+}
