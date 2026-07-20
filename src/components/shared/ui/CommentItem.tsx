@@ -57,7 +57,7 @@ export default function CommentItem({ user, date, text, reply }: CommentItemProp
               <div className="flex flex-col gap-y-2">
                 <div className="flex items-center gap-x-2.5">
                   <span className="text-neutral10 text-sm/5 font-bold">{reply.user.name}</span>
-                  <span className={`h-5 rounded-md px-1 text-xs/5 font-medium ${roleConfig[reply.user.role].className}`}>
+                  <span className={`h-5 rounded-md px-2 text-xs/5 font-medium ${roleConfig[reply.user.role].className}`}>
                     {roleConfig[reply.user.role].label}
                   </span>
                 </div>

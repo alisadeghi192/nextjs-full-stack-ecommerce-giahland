@@ -22,6 +22,7 @@ export interface IRegularUser extends BaseUser {
   postalCode?: string;
   address?: string;
   wishlist?: string[];
+  isBlocked?: boolean;
 }
 
 export interface IPlantDoctorUser extends BaseUser {
@@ -35,3 +36,34 @@ export interface IPlantDoctorUser extends BaseUser {
 }
 
 export type AuthUser = IAdminUser | IRegularUser | IPlantDoctorUser;
+
+export interface IUserCard {
+  user: {
+    _id: string;
+    firstName: string;
+    lastName: string;
+    mobile: string;
+    email: string;
+    role: "admin" | "user" | "plant-doctor";
+    avatar: string;
+    isBlocked: boolean;
+    createdAt: Date;
+    updatedAt?: Date;
+  };
+}
+
+export interface DashboardUser {
+  _id: string;
+  firstName: string;
+  lastName: string;
+  mobile: string;
+  email: string;
+  role: "admin" | "user" | "plant-doctor";
+  avatar: string;
+  isBlocked: boolean;
+  createdAt: Date;
+}
+
+export interface DashboardUserList {
+  users: DashboardUser[];
+}
