@@ -39,17 +39,22 @@ const baseOptions: SchemaDefinition = {
 
 const BaseUserSchema = new Schema(baseOptions, { timestamps: true });
 
-const BaseUser = mongoose.models.BaseUser || mongoose.model("BaseUser", BaseUserSchema, "users");
+const BaseUser =
+  mongoose.models.BaseUser ||
+  mongoose.model("BaseUser", BaseUserSchema, "users");
 
 const UserSchema = new Schema({
   postalCode: { type: String, default: "" },
   address: { type: String, default: "" },
   wishlist: [{ type: Schema.Types.ObjectId, ref: "Product" }],
+  isBlocked: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 export const User =
-  BaseUser.discriminators?.User ||
-  BaseUser.discriminator("User", UserSchema);
+  BaseUser.discriminators?.User || BaseUser.discriminator("User", UserSchema);
 
 const PlantDoctorSchema = new Schema({
   specialties: { type: String, default: "" },
