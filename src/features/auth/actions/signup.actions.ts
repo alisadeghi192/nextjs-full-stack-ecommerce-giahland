@@ -53,6 +53,7 @@ export async function signupAction(
   const hashedPassword = await hashPassword(validPassword);
   const userCount = await BaseUser.countDocuments();
   const role = userCount === 0 ? "admin" : "user";
+  const isSuperAdmin = userCount === 0;
 
   let createdUser;
   if (role === "admin") {
@@ -61,6 +62,7 @@ export async function signupAction(
       email: validEmail,
       password: hashedPassword,
       role,
+      isSuperAdmin,
     });
   } else {
     createdUser = await User.create({
@@ -68,6 +70,7 @@ export async function signupAction(
       email: validEmail,
       password: hashedPassword,
       role,
+      isSuperAdmin,
     });
   }
 

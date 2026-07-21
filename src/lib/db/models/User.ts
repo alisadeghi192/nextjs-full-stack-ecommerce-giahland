@@ -35,6 +35,10 @@ const baseOptions: SchemaDefinition = {
   firstName: { type: String, default: "" },
   lastName: { type: String, default: "" },
   avatar: { type: String, default: "/static/images/default-user.webp" },
+  isSuperAdmin: {
+    type: Boolean,
+    default: false,
+  },
 };
 
 const BaseUserSchema = new Schema(baseOptions, { timestamps: true });

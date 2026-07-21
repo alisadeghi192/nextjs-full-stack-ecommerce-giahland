@@ -12,12 +12,17 @@ export async function getMeAction(): Promise<IGetMeResponse> {
   const token = await getAccessTokenFromCookie();
   if (!token) return { user: null };
 
-  const payload = verifyAccessToken(token) as { userId: string; role: string } | null;
+  const payload = verifyAccessToken(token) as {
+    userId: string;
+    role: string;
+  } | null;
   if (!payload?.userId) return { user: null };
 
   await connectToDB();
 
-  const user = await BaseUser.findById(payload.userId).select("-password").lean();
+  const user = await BaseUser.findById(payload.userId)
+    .select("-password")
+    .lean();
   if (!user) return { user: null };
 
   const base = {
@@ -30,6 +35,7 @@ export async function getMeAction(): Promise<IGetMeResponse> {
     avatar: user.avatar || "/static/images/default-user.webp",
     createdAt: user.createdAt,
     updatedAt: user.updatedAt,
+    isSuperAdmin: user.isSuperAdmin || false,
   };
 
   if (user.role === "user") {

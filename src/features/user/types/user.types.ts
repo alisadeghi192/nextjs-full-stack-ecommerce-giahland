@@ -11,6 +11,7 @@ export interface BaseUser {
   avatar?: string;
   createdAt: Date;
   updatedAt: Date;
+  isSuperAdmin?: boolean;
 }
 
 export interface IAdminUser extends BaseUser {
@@ -66,4 +67,25 @@ export interface DashboardUser {
 
 export interface DashboardUserList {
   users: DashboardUser[];
+}
+
+export interface DashbordUserWithDetails {
+  user: {
+    _id: string;
+    firstName: string;
+    lastName: string;
+    mobile: string;
+    email: string;
+    role: "admin" | "user" | "plant-doctor";
+    avatar: string;
+    createdAt: Date;
+    isBlocked?: boolean;
+    postalCode?: string;
+    address?: string;
+    specialties?: string;
+    yearsOfExperience?: number;
+    consultationFee?: number;
+    successfulConsultations?: number;
+  };
+  isSuperAdmin?: boolean;
 }

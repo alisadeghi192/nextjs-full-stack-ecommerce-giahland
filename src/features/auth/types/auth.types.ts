@@ -54,5 +54,6 @@ export interface IGetMeResponse {
     successfulConsultations?: number;
     articles?: string[];
     consultations?: string[];
+    isSuperAdmin?: boolean;
   } | null;
 }
