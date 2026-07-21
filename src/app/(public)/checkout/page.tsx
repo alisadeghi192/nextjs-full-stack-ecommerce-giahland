@@ -17,6 +17,7 @@ export default async function CheckoutPage() {
   }
 
   const userInfo = {
+    userId : user._id,
     firstName: user.firstName || "",
     lastName: user.lastName || "",
     mobile: user.mobile || "",

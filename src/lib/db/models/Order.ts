@@ -45,6 +45,7 @@ const OrderItemSchema = new Schema<IOrderItem>(
 
 const UserInfoSchema = new Schema<IOrderUserInfo>(
   {
+    userId:{type:String , required: true},
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
     mobile: { type: String, required: true },

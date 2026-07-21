@@ -16,6 +16,7 @@ interface CheckoutPageClientProps {
   totalItems: number;
   totalPrice: number;
   initialUserInfo: {
+    userId : string;
     firstName: string;
     lastName: string;
     mobile: string;
@@ -60,6 +61,7 @@ export default function CheckoutPageClient({
       const result = await createOrderAction({
         deliveryMethod,
         userInfo: {
+          userId : userInfo.userId,
           firstName: userInfo.firstName,
           lastName: userInfo.lastName,
           mobile: userInfo.mobile,
@@ -67,7 +69,7 @@ export default function CheckoutPageClient({
           address: userInfo.address,
         },
       });
-
+      
       if (result.success && result.orderId) {
         if (result.redirect) {
           toast.success(result.message);

@@ -15,6 +15,7 @@ export interface IOrderItem {
 }
 
 export interface IOrderUserInfo {
+  userId:string;
   firstName: string;
   lastName: string;
   mobile: string;
@@ -47,6 +48,7 @@ export interface DashboardOrder {
   finalAmount: number;
   status: "pending" | "paid" | "delivered";
   userInfo: {
+    userId:string;
     firstName: string;
     lastName: string;
   };

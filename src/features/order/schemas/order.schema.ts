@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 const UserInfoBaseSchema = z.object({
+  userId: z.string(),
   firstName: z
     .string()
     .min(1, "نام الزامی است.")
@@ -20,9 +21,7 @@ export const UserInfoPickupSchema = UserInfoBaseSchema.extend({
 });
 
 export const UserInfoCourierSchema = UserInfoBaseSchema.extend({
-  postalCode: z
-    .string()
-    .regex(/^[0-9]{10}$/, "کد پستی باید ۱۰ رقم باشد."),
+  postalCode: z.string().regex(/^[0-9]{10}$/, "کد پستی باید ۱۰ رقم باشد."),
   address: z
     .string()
     .min(5, "آدرس حداقل ۵ کاراکتر است.")
@@ -40,5 +39,5 @@ export const CreateOrderSchema = z.discriminatedUnion("deliveryMethod", [
   }),
 ]);
 
-export type UserInfoFormData = z.infer<typeof UserInfoPickupSchema>; 
+export type UserInfoFormData = z.infer<typeof UserInfoPickupSchema>;
 export type CreateOrderInput = z.infer<typeof CreateOrderSchema>;
