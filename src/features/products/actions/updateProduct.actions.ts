@@ -30,8 +30,6 @@ export async function updateProductAction(prevState: any, formData: FormData) {
     };
   }
 
-  console.log(productId);
-
   const name = formData.get("name") as string;
   const slug = formData.get("slug") as string;
   const price = Number(formData.get("price"));

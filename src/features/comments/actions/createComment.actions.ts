@@ -21,8 +21,6 @@ const CommentSchema = z.object({
 export async function createCommentAction(prevState: any, formData: FormData) {
   const { user } = await getMeAction();
 
-  console.log(FormData);
-
   const targetType = (formData.get("targetType") as string) || "";
   const targetId = (formData.get("targetId") as string) || "";
   const targetSlug = (formData.get("targetSlug") as string) || "";
