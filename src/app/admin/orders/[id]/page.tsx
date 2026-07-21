@@ -27,7 +27,7 @@ export default async function AdminOrderDetailPage({
 
   return (
     <div className="w-full space-y-4">
-      <FactorHeader href="/admin/orders" />
+      <FactorHeader/>
       <div className="border-neutral3 bg-neutral2 rounded-2xl border p-4 shadow-lg">
         <FactorInfo order={order} />
         <FactorItems order={order} />
