@@ -19,12 +19,6 @@ interface UserCardProps {
   };
 }
 
-const roleLabels = {
-  admin: { label: "ادمین", icon: "👑", color: "text-purple-600" },
-  user: { label: "کاربر", icon: "👤", color: "text-blue-600" },
-  "plant-doctor": { label: "پزشک", icon: "👨‍⚕️", color: "text-green-600" },
-};
-
 export default function UserCard({ user }: UserCardProps) {
   const displayName = `${user.firstName} ${user.lastName}`.trim() || "کاربر";
 

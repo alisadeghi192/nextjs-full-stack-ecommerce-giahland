@@ -55,6 +55,9 @@ export default async function AdminDashboardPage() {
     Consultation.countDocuments({ status: "active" }),
   ]);
   const totalRevenue = revenueResult.length > 0 ? revenueResult[0].total : 0;
+
+  console.log(recentOrders)
+
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">

@@ -23,7 +23,6 @@ interface AdminOrderCardProps {
 
 export default function AdminOrderCard({ order }: AdminOrderCardProps) {
   const { items, trackingCode, createdAt, finalAmount, status, _id } = order;
-  console.log(_id);
 
   const [isUpdating, setIsUpdating] = useState(false);
   const displayItems = items.slice(0, 3);

@@ -5,13 +5,11 @@ import { formatPrice, toPersianCode } from "@/lib/utils/format";
 import Link from "next/link";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 
-interface RecentOrdersProps{
-    orders : DashboardOrder[]
+interface RecentOrdersProps {
+  orders: DashboardOrder[];
 }
 
-export default async function RecentOrders({orders} : RecentOrdersProps) {
- 
-
+export default async function RecentOrders({ orders }: RecentOrdersProps) {
   if (orders.length === 0) {
     return (
       <div className="border-neutral3 rounded-xl border bg-white p-5 shadow-lg">
@@ -39,20 +37,17 @@ export default async function RecentOrders({orders} : RecentOrdersProps) {
       <div className="overflow-x-auto">
         <table className="w-full border-separate border-spacing-y-2">
           <thead>
-            <tr className="text-primary border-b text-center text-sm">
-              <th className="p-2 max-xs:p-1">کد پیگیری</th>
-              <th className="p-2 max-xs:p-1  max-[550px]:hidden">خریدار</th>
-              <th className="p-2 max-xs:p-1 ">مبلغ</th>
-              <th className="w-28 p-2 max-xs:p-1">وضعیت</th>
+            <tr className="text-primary text-center text-sm">
+              <th className="max-xs:p-1 p-2">کد پیگیری</th>
+              <th className="max-xs:p-1 p-2 max-[550px]:hidden">خریدار</th>
+              <th className="max-xs:p-1 p-2">مبلغ</th>
+              <th className="max-xs:p-1 w-28 p-2">وضعیت</th>
             </tr>
           </thead>
           <tbody>
             {orders.map((order) => (
-              <tr
-                key={order._id}
-                className="hover:bg-neutral2 group bg-neutral2 text-center last:border-0"
-              >
-                <td className="p-2 max-xs:p-1 py-3">
+              <tr key={order._id} className="group bg-neutral2 text-center">
+                <td className="max-xs:p-1 p-2 py-3">
                   <Link
                     href={`/admin/orders/${order._id}`}
                     className="hover:text-primary group-hover:text-primary transition-colors"
@@ -60,14 +55,20 @@ export default async function RecentOrders({orders} : RecentOrdersProps) {
                     {toPersianCode(order.trackingCode || order._id.slice(-8))}
                   </Link>
                 </td>
-                <td className="max-w-50 truncate overflow-hidden p-2 max-xs:p-1 py-3 max-[550px]:hidden">
-                  {order.userInfo.firstName} {order.userInfo.lastName}
+                <td className="group-hover:text-primary transition-colors max-xs:p-1 max-w-50 truncate overflow-hidden p-2 py-3 max-[550px]:hidden">
+                  <Link href={`/admin/users/${order.userInfo.userId}`}>
+                    {order.userInfo.firstName} {order.userInfo.lastName}
+                  </Link>
                 </td>
-                <td className="p-2 max-xs:p-1 py-3 ">
-                  <span className="max-xs:hidden">{formatPrice(order.finalAmount)}</span>
-                  <span className="xs:hidden">{formatPrice(order.finalAmount ,false)}</span>
+                <td className="max-xs:p-1 p-2 py-3">
+                  <span className="max-xs:hidden">
+                    {formatPrice(order.finalAmount)}
+                  </span>
+                  <span className="xs:hidden">
+                    {formatPrice(order.finalAmount, false)}
+                  </span>
                 </td>
-                <td className="p-2 max-xs:p-1 py-3">
+                <td className="max-xs:p-1 p-2 py-3">
                   <span>
                     <OrderStatusBadge status={order.status} />
                   </span>
