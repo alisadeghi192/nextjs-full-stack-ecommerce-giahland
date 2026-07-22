@@ -23,7 +23,10 @@ export async function getMeAction(): Promise<IGetMeResponse> {
   const user = await BaseUser.findById(payload.userId)
     .select("-password")
     .lean();
-  if (!user) return { user: null };
+
+  if (!user) {
+    return { user: null };
+  }
 
   const base = {
     _id: user._id.toString(),
@@ -44,6 +47,7 @@ export async function getMeAction(): Promise<IGetMeResponse> {
         ...base,
         postalCode: (user as any).postalCode || "",
         address: (user as any).address || "",
+        isBlocked: (user as any).isBlocked || false,
       },
     };
   }
