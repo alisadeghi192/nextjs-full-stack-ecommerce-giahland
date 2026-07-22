@@ -6,12 +6,6 @@ import { deleteUserAvatar } from "@/features/user/actions/deleteUserAvatar.actio
 import { toggleUserBlock } from "@/features/user/actions/toggleUserBlock.actions";
 import { updateUserInfo } from "@/features/user/actions/updateUserInfo.actions";
 import { roleConfig } from "@/lib/constants";
-import {
-  formatDate,
-  formatPrice,
-  toPersianCode,
-  toPersianNumber,
-} from "@/lib/utils/format";
 import { useIsSidebarOpen } from "@/stores/selectors/ui.selectors";
 import Image from "next/image";
 import { useState } from "react";
@@ -24,6 +18,8 @@ import {
 } from "react-icons/md";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
+import EditUserModal from "./EditUserModal";
+import UserInfoFields from "./UserInfoFields";
 
 interface UserInfoCardProps {
   user: {
@@ -75,9 +71,7 @@ export default function UserInfoCard({
   const isSidebarOpen = useIsSidebarOpen();
 
   const handleDeleteAvatar = async () => {
-    if (!canEdit) {
-      return;
-    }
+    if (!canEdit) return;
     setIsLoading(true);
     const result = await deleteUserAvatar(user._id);
     if (result.success) {
@@ -89,9 +83,7 @@ export default function UserInfoCard({
   };
 
   const handleToggleBlock = async () => {
-    if (!canBlock || !canEdit) {
-      return;
-    }
+    if (!canBlock || !canEdit) return;
     setIsLoading(true);
     const result = await toggleUserBlock(user._id);
     if (result.success) {
@@ -262,57 +254,7 @@ export default function UserInfoCard({
               </div>
             </div>
 
-            <div className="grid grid-cols-[2fr_1fr] gap-y-2 max-lg:grid-cols-1 max-sm:self-start">
-              <div className="flex items-center gap-x-2">
-                <span className="text-neutral9">موبایل:</span>
-                <span>{toPersianCode(user.mobile)}</span>
-              </div>
-              <div className="flex items-center gap-x-2">
-                <span className="text-neutral9">تاریخ ثبت‌نام:</span>
-                <span>{formatDate(new Date(user.createdAt))}</span>
-              </div>
-              <div className="flex items-center gap-x-2">
-                <span className="text-neutral9">ایمیل:</span>
-                <span className="line-clamp-1">{user.email}</span>
-              </div>
-
-              {user.role === "user" && (
-                <>
-                  <div className="flex items-center gap-x-2">
-                    <span className="text-neutral9">کد پستی:</span>
-                    <span>
-                      {toPersianCode(user.postalCode as string) || "ثبت نشده"}
-                    </span>
-                  </div>
-                  <div className="col-span-2 flex items-start gap-x-2 max-lg:col-span-1">
-                    <span className="text-neutral9">آدرس:</span>
-                    <span>
-                      {toPersianCode(user.address as string) || "ثبت نشده"}
-                    </span>
-                  </div>
-                </>
-              )}
-              {user.role === "plant-doctor" && (
-                <>
-                  <div className="flex items-center gap-x-2">
-                    <span className="text-neutral9">سال‌های تجربه:</span>
-                    {toPersianNumber(user.yearsOfExperience || 0)}
-                  </div>
-                  <div className="flex items-center gap-x-2">
-                    <span className="text-neutral9">تخصص:</span>
-                    <span>{user.specialties || "ثبت نشده"}</span>
-                  </div>
-                  <div className="flex items-center gap-x-2">
-                    <span className="text-neutral9">مشاوره‌های موفق:</span>
-                    {toPersianNumber(user.successfulConsultations || 0)}
-                  </div>
-                  <div className="flex items-center gap-x-2">
-                    <span className="text-neutral9">هزینه مشاوره:</span>
-                    {formatPrice(user.consultationFee || 0)}
-                  </div>
-                </>
-              )}
-            </div>
+            <UserInfoFields user={user} />
 
             <div
               className={`mt-2 flex items-center gap-2 ${
@@ -380,98 +322,23 @@ export default function UserInfoCard({
         />
       </div>
 
-      {isEditModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
-          <div className="w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl">
-            <h3 className="mb-4 text-xl font-bold">ویرایش اطلاعات کاربر</h3>
-            <form onSubmit={handleEditSubmit}>
-              <div className="space-y-4">
-                <div>
-                  <label className="text-neutral9 text-sm font-medium">
-                    نام
-                  </label>
-                  <input
-                    type="text"
-                    value={editFirstName}
-                    onChange={(e) => setEditFirstName(e.target.value)}
-                    className="border-neutral3 focus:border-primary mt-1 w-full rounded-xl border px-4 py-2 outline-0"
-                    required
-                  />
-                </div>
-                <div>
-                  <label className="text-neutral9 text-sm font-medium">
-                    نام خانوادگی
-                  </label>
-                  <input
-                    type="text"
-                    value={editLastName}
-                    onChange={(e) => setEditLastName(e.target.value)}
-                    className="border-neutral3 focus:border-primary mt-1 w-full rounded-xl border px-4 py-2 outline-0"
-                    required
-                  />
-                </div>
-                {user.role === "plant-doctor" && (
-                  <>
-                    <div>
-                      <label className="text-neutral9 text-sm font-medium">
-                        تخصص
-                      </label>
-                      <input
-                        type="text"
-                        value={editSpecialties}
-                        onChange={(e) => setEditSpecialties(e.target.value)}
-                        className="border-neutral3 focus:border-primary mt-1 w-full rounded-xl border px-4 py-2 outline-0"
-                      />
-                    </div>
-                    <div>
-                      <label className="text-neutral9 text-sm font-medium">
-                        سال‌های تجربه
-                      </label>
-                      <input
-                        type="number"
-                        value={editYearsOfExperience}
-                        onChange={(e) =>
-                          setEditYearsOfExperience(e.target.value)
-                        }
-                        className="border-neutral3 focus:border-primary mt-1 w-full rounded-xl border px-4 py-2 outline-0"
-                        min="0"
-                      />
-                    </div>
-                    <div>
-                      <label className="text-neutral9 text-sm font-medium">
-                        هزینه مشاوره (تومان)
-                      </label>
-                      <input
-                        type="number"
-                        value={editConsultationFee}
-                        onChange={(e) => setEditConsultationFee(e.target.value)}
-                        className="border-neutral3 focus:border-primary mt-1 w-full rounded-xl border px-4 py-2 outline-0"
-                        min="0"
-                      />
-                    </div>
-                  </>
-                )}
-              </div>
-              <div className="mt-6 flex justify-end gap-3">
-                <button
-                  type="button"
-                  onClick={() => setIsEditModalOpen(false)}
-                  className="border-neutral3 text-neutral9 hover:bg-neutral3 cursor-pointer rounded-lg border px-4 py-2 text-sm font-medium transition"
-                >
-                  انصراف
-                </button>
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="bg-primary hover:bg-shade2 cursor-pointer rounded-lg px-4 py-2 text-sm font-medium text-white transition disabled:opacity-50"
-                >
-                  {isSubmitting ? "در حال ذخیره..." : "ذخیره تغییرات"}
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
+      <EditUserModal
+        isOpen={isEditModalOpen}
+        isSubmitting={isSubmitting}
+        role={user.role}
+        firstName={editFirstName}
+        lastName={editLastName}
+        specialties={editSpecialties}
+        yearsOfExperience={editYearsOfExperience}
+        consultationFee={editConsultationFee}
+        onClose={() => setIsEditModalOpen(false)}
+        onSubmit={handleEditSubmit}
+        onFirstNameChange={setEditFirstName}
+        onLastNameChange={setEditLastName}
+        onSpecialtiesChange={setEditSpecialties}
+        onYearsOfExperienceChange={setEditYearsOfExperience}
+        onConsultationFeeChange={setEditConsultationFee}
+      />
     </>
   );
 }
