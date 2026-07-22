@@ -14,7 +14,6 @@ import {
 } from "@/lib/utils/format";
 import { useIsSidebarOpen } from "@/stores/selectors/ui.selectors";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import {
@@ -51,13 +50,21 @@ export default function UserInfoCard({
   user,
   isSuperAdmin = false,
 }: UserInfoCardProps) {
-  const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [editFirstName, setEditFirstName] = useState(user.firstName || "");
   const [editLastName, setEditLastName] = useState(user.lastName || "");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [editSpecialties, setEditSpecialties] = useState(
+    user.specialties || "",
+  );
+  const [editYearsOfExperience, setEditYearsOfExperience] = useState(
+    user.yearsOfExperience?.toString() || "",
+  );
+  const [editConsultationFee, setEditConsultationFee] = useState(
+    user.consultationFee?.toString() || "",
+  );
 
   const displayName = `${user.firstName} ${user.lastName}`.trim() || "کاربر";
 
@@ -68,9 +75,9 @@ export default function UserInfoCard({
   const isSidebarOpen = useIsSidebarOpen();
 
   const handleDeleteAvatar = async () => {
-    if (!canEdit){
+    if (!canEdit) {
       return;
-    } 
+    }
     setIsLoading(true);
     const result = await deleteUserAvatar(user._id);
     if (result.success) {
@@ -82,9 +89,9 @@ export default function UserInfoCard({
   };
 
   const handleToggleBlock = async () => {
-    if (!canBlock || !canEdit){
+    if (!canBlock || !canEdit) {
       return;
-    } 
+    }
     setIsLoading(true);
     const result = await toggleUserBlock(user._id);
     if (result.success) {
@@ -98,6 +105,9 @@ export default function UserInfoCard({
   const handleEdit = () => {
     setEditFirstName(user.firstName || "");
     setEditLastName(user.lastName || "");
+    setEditSpecialties(user.specialties || "");
+    setEditYearsOfExperience(user.yearsOfExperience?.toString() || "");
+    setEditConsultationFee(user.consultationFee?.toString() || "");
     setIsEditModalOpen(true);
   };
 
@@ -109,6 +119,9 @@ export default function UserInfoCard({
     formData.append("userId", user._id);
     formData.append("firstName", editFirstName);
     formData.append("lastName", editLastName);
+    formData.append("specialties", editSpecialties);
+    formData.append("yearsOfExperience", editYearsOfExperience);
+    formData.append("consultationFee", editConsultationFee);
 
     const result = await updateUserInfo(formData);
     if (result.success) {
@@ -184,7 +197,7 @@ export default function UserInfoCard({
                 cancelText="خیر"
                 confirmText="بله"
                 disabled={isLoading}
-                className="flex cursor-pointer items-center justify-center gap-1 rounded-lg border border-red-400 px-3 py-1.5 text-sm font-medium text-red-600 transition hover:bg-red-50 disabled:opacity-50 lg:hidden max-sm:hidden"
+                className="flex cursor-pointer items-center justify-center gap-1 rounded-lg border border-red-400 px-3 py-1.5 text-sm font-medium text-red-600 transition hover:bg-red-50 disabled:opacity-50 max-sm:hidden lg:hidden"
               >
                 <MdDeleteOutline className="size-4" />
                 حذف عکس
@@ -317,17 +330,17 @@ export default function UserInfoCard({
                 </button>
               )}
               {canEdit && !isDefaultAvatar && (
-               <ConfirmDialog
-                    onConfirm={handleDeleteAvatar}
-                    title="آیا از حذف عکس پروفایل کاربر مطمئنید؟"
-                    cancelText="خیر"
-                    confirmText="بله"
-                    disabled={isLoading}
-                    className="flex cursor-pointer items-center justify-center gap-1 rounded-lg border border-red-400 px-3 py-1.5 text-sm font-medium text-red-600 transition hover:bg-red-50 disabled:opacity-50 sm:hidden"
-                  >
-                    <MdDeleteOutline className="size-4" />
-                    حذف عکس
-                  </ConfirmDialog>
+                <ConfirmDialog
+                  onConfirm={handleDeleteAvatar}
+                  title="آیا از حذف عکس پروفایل کاربر مطمئنید؟"
+                  cancelText="خیر"
+                  confirmText="بله"
+                  disabled={isLoading}
+                  className="flex cursor-pointer items-center justify-center gap-1 rounded-lg border border-red-400 px-3 py-1.5 text-sm font-medium text-red-600 transition hover:bg-red-50 disabled:opacity-50 sm:hidden"
+                >
+                  <MdDeleteOutline className="size-4" />
+                  حذف عکس
+                </ConfirmDialog>
               )}
               {canBlock && canEdit && (
                 <button
@@ -397,19 +410,60 @@ export default function UserInfoCard({
                     required
                   />
                 </div>
+                {user.role === "plant-doctor" && (
+                  <>
+                    <div>
+                      <label className="text-neutral9 text-sm font-medium">
+                        تخصص
+                      </label>
+                      <input
+                        type="text"
+                        value={editSpecialties}
+                        onChange={(e) => setEditSpecialties(e.target.value)}
+                        className="border-neutral3 focus:border-primary mt-1 w-full rounded-xl border px-4 py-2 outline-0"
+                      />
+                    </div>
+                    <div>
+                      <label className="text-neutral9 text-sm font-medium">
+                        سال‌های تجربه
+                      </label>
+                      <input
+                        type="number"
+                        value={editYearsOfExperience}
+                        onChange={(e) =>
+                          setEditYearsOfExperience(e.target.value)
+                        }
+                        className="border-neutral3 focus:border-primary mt-1 w-full rounded-xl border px-4 py-2 outline-0"
+                        min="0"
+                      />
+                    </div>
+                    <div>
+                      <label className="text-neutral9 text-sm font-medium">
+                        هزینه مشاوره (تومان)
+                      </label>
+                      <input
+                        type="number"
+                        value={editConsultationFee}
+                        onChange={(e) => setEditConsultationFee(e.target.value)}
+                        className="border-neutral3 focus:border-primary mt-1 w-full rounded-xl border px-4 py-2 outline-0"
+                        min="0"
+                      />
+                    </div>
+                  </>
+                )}
               </div>
               <div className="mt-6 flex justify-end gap-3">
                 <button
                   type="button"
                   onClick={() => setIsEditModalOpen(false)}
-                  className="border-neutral3 cursor-pointer text-neutral9 hover:bg-neutral3 rounded-lg border px-4 py-2 text-sm font-medium transition"
+                  className="border-neutral3 text-neutral9 hover:bg-neutral3 cursor-pointer rounded-lg border px-4 py-2 text-sm font-medium transition"
                 >
                   انصراف
                 </button>
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="bg-primary cursor-pointer hover:bg-shade2 rounded-lg px-4 py-2 text-sm font-medium text-white transition disabled:opacity-50"
+                  className="bg-primary hover:bg-shade2 cursor-pointer rounded-lg px-4 py-2 text-sm font-medium text-white transition disabled:opacity-50"
                 >
                   {isSubmitting ? "در حال ذخیره..." : "ذخیره تغییرات"}
                 </button>
