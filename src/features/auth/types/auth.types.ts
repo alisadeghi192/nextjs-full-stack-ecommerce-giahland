@@ -44,6 +44,7 @@ export interface IGetMeResponse {
     lastName?: string;
     address?: string;
     postalCode?: string;
+    isBlocked? : boolean,
     avatar?: string;
     createdAt: Date;
     updatedAt: Date;
