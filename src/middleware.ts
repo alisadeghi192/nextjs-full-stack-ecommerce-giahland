@@ -1,17 +1,17 @@
-import type { NextRequest } from 'next/server';
-import { NextResponse } from 'next/server';
+import type { NextRequest } from "next/server";
+import { NextResponse } from "next/server";
+import { getMeAction } from "./features/auth/actions/me.actions";
 
-export async  function  middleware(request: NextRequest) {
-
-  
+export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  
 
-  const productMatch = pathname.match(/^\/products\/(indoor|decoration|gift|discounted)$/);
+  const productMatch = pathname.match(
+    /^\/products\/(indoor|decoration|gift|discounted)$/,
+  );
   if (productMatch) {
     const category = productMatch[1];
     const url = request.nextUrl.clone();
-    url.pathname = '/products';
+    url.pathname = "/products";
     url.search = `?category=${category}`;
     return NextResponse.redirect(url);
   }
@@ -20,14 +20,37 @@ export async  function  middleware(request: NextRequest) {
   if (blogMatch) {
     const category = blogMatch[1];
     const url = request.nextUrl.clone();
-    url.pathname = '/blog';
+    url.pathname = "/blog";
     url.search = `?category=${category}`;
     return NextResponse.redirect(url);
+  }
+
+  if (
+    pathname.startsWith("/user") ||
+    pathname.startsWith("/admin") ||
+    pathname.startsWith("/checkout") ||
+    pathname.startsWith("/payment")
+  ) {
+    const { user } = await getMeAction();
+
+    if (user?.isBlocked) {
+      const url = request.nextUrl.clone();
+      url.pathname = "/blocked";
+      return NextResponse.redirect(url);
+    }
   }
 
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ['/products/:path*', '/blog/:path*', '/user/:path*'],
+  runtime: "nodejs",
+  matcher: [
+    "/products/:path*",
+    "/blog/:path*",
+    "/user/:path*",
+    "/admin/:path*",
+    "/checkout/:path*",
+    "/payment/:path*",
+  ],
 };
