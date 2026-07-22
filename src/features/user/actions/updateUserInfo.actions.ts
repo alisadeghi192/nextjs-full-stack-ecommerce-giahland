@@ -55,8 +55,12 @@ export async function updateUserInfo(formData: FormData) {
   }
 
   const updateData: any = {};
-  if (firstName !== undefined) updateData.firstName = firstName;
-  if (lastName !== undefined) updateData.lastName = lastName;
+  if (firstName !== undefined) {
+    updateData.firstName = firstName;
+  }
+  if (lastName !== undefined) {
+    updateData.lastName = lastName;
+  }
 
   if (Object.keys(updateData).length === 0) {
     return {

@@ -4,6 +4,7 @@ import { getMeAction } from "@/features/auth/actions/me.actions";
 import connectToDB from "@/lib/db/connect";
 import BaseUser from "@/lib/db/models/User";
 import { unlink } from "fs/promises";
+import { revalidatePath } from "next/cache";
 import path from "path";
 
 export async function deleteUserAvatar(userId: string) {
@@ -51,6 +52,9 @@ export async function deleteUserAvatar(userId: string) {
   await BaseUser.findByIdAndUpdate(userId, {
     avatar: "/static/images/default-user.webp",
   });
+
+  revalidatePath('/admin/users')
+  revalidatePath(`/admin/users/${userId}`)
 
   return {
     success: true,
