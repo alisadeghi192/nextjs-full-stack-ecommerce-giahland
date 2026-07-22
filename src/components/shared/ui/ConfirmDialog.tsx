@@ -3,7 +3,10 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 
 interface ConfirmDialogProps {
-  onConfirm: () => void | Promise<void> | Promise<{ success: boolean; message: string; }>;
+  onConfirm: () =>
+    | void
+    | Promise<void>
+    | Promise<{ success: boolean; message: string }>;
   disabled?: boolean;
   className?: string;
   children: React.ReactNode;
@@ -24,7 +27,9 @@ export default function ConfirmDialog({
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
 
   const handleClick = () => {
-    if (isConfirmOpen) return;
+    if (isConfirmOpen) {
+      return;
+    }
     setIsConfirmOpen(true);
     toast(
       (t) => (
