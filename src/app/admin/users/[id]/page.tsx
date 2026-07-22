@@ -29,9 +29,6 @@ export default async function AdminUserDetailPage({ params }: PageProps) {
   return (
     <div className="space-y-4">
       <UserDetailHeader
-        userId={targetUser._id}
-        role={targetUser.role}
-        isBlocked={targetUser.isBlocked}
       />
 
       <UserDetailContent

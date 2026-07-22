@@ -1,6 +1,10 @@
 "use client";
 
 import SectionTitle from "@/components/panel/SectionTitle";
+import ConfirmDialog from "@/components/shared/ui/ConfirmDialog";
+import { deleteUserAvatar } from "@/features/user/actions/deleteUserAvatar.actions";
+import { toggleUserBlock } from "@/features/user/actions/toggleUserBlock.actions";
+import { updateUserInfo } from "@/features/user/actions/updateUserInfo.actions";
 import { roleConfig } from "@/lib/constants";
 import {
   formatDate,
@@ -10,6 +14,7 @@ import {
 } from "@/lib/utils/format";
 import { useIsSidebarOpen } from "@/stores/selectors/ui.selectors";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import {
@@ -46,115 +51,289 @@ export default function UserInfoCard({
   user,
   isSuperAdmin = false,
 }: UserInfoCardProps) {
+  const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [editFirstName, setEditFirstName] = useState(user.firstName || "");
+  const [editLastName, setEditLastName] = useState(user.lastName || "");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const displayName = `${user.firstName} ${user.lastName}`.trim() || "کاربر";
 
   const canBlock = user.role === "user";
   const canEdit = !isSuperAdmin;
 
   const isDefaultAvatar = user.avatar.includes("default-user.webp");
-  const isSidebarOpen = useIsSidebarOpen()
+  const isSidebarOpen = useIsSidebarOpen();
+
+  const handleDeleteAvatar = async () => {
+    if (!canEdit){
+      return;
+    } 
+    setIsLoading(true);
+    const result = await deleteUserAvatar(user._id);
+    if (result.success) {
+      toast.success(result.message);
+    } else {
+      toast.error(result.message);
+    }
+    setIsLoading(false);
+  };
+
+  const handleToggleBlock = async () => {
+    if (!canBlock || !canEdit){
+      return;
+    } 
+    setIsLoading(true);
+    const result = await toggleUserBlock(user._id);
+    if (result.success) {
+      toast.success(result.message);
+    } else {
+      toast.error(result.message);
+    }
+    setIsLoading(false);
+  };
 
   const handleEdit = () => {
-    toast.success("باز شدن فرم ویرایش...");
+    setEditFirstName(user.firstName || "");
+    setEditLastName(user.lastName || "");
+    setIsEditModalOpen(true);
   };
 
-  const handleDeleteAvatar = () => {
-    toast.success("حذف عکس پروفایل...");
-  };
+  const handleEditSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
 
-  const handleToggleBlock = () => {
-    toast.success(user.isBlocked ? "رفع مسدودیت..." : "مسدود کردن...");
+    const formData = new FormData();
+    formData.append("userId", user._id);
+    formData.append("firstName", editFirstName);
+    formData.append("lastName", editLastName);
+
+    const result = await updateUserInfo(formData);
+    if (result.success) {
+      toast.success(result.message);
+      setIsEditModalOpen(false);
+    } else {
+      toast.error(result.message);
+    }
+    setIsSubmitting(false);
   };
 
   return (
-    <div className={`border-neutral3 rounded-xl border bg-white p-4 pb-7 shadow-lg ${isSidebarOpen ? "max-lg:pb-4" : "max-sm:pb-4"} `}>
-      <div className="mb-4 flex items-center justify-between">
-        <SectionTitle title="اطلاعات شخصی" className="mb-0!" />
-        <div className="flex items-center gap-x-2">
-          <span
-            className={`flex w-20 items-center justify-center rounded-full py-1 text-sm font-medium ${roleConfig[user.role].className}`}
-          >
-            {roleConfig[user.role].label}
-          </span>
-          {user.role === "user" && user.isBlocked && (
-            <span className="rounded-full bg-red-100 px-3 py-1 text-sm font-medium text-red-700">
-              🔒 مسدود
+    <>
+      <div
+        className={`border-neutral3 rounded-xl border bg-white p-4 pb-7 shadow-lg ${
+          isSidebarOpen ? "max-lg:pb-4" : "max-sm:pb-4"
+        }`}
+      >
+        <div className="mb-4 flex items-center justify-between">
+          <SectionTitle title="اطلاعات شخصی" className="mb-0!" />
+          <div className="flex items-center gap-x-2">
+            <span
+              className={`flex w-20 items-center justify-center rounded-full py-1 text-sm font-medium ${roleConfig[user.role].className}`}
+            >
+              {roleConfig[user.role].label}
             </span>
-          )}
-        </div>
-      </div>
-
-      <div className={`flex items-start gap-6 ${isSidebarOpen ? "max-lg:flex-col max-lg:items-center max-lg:gap-4" : "max-sm:flex-col max-sm:items-center max-sm:gap-4"}   `}>
-        <div className="flex flex-col items-center justify-center gap-y-4">
-          <div
-            onClick={() => {
-              if (!isDefaultAvatar) {
-                setIsLightboxOpen(true);
-              }
-            }}
-            className={`relative flex size-35 shrink-0 flex-col overflow-hidden rounded-full ${
-              !isDefaultAvatar
-                ? "ring-primary cursor-pointer ring-2 transition hover:ring-4"
-                : ""
-            }`}
-          >
-            <Image
-              src={user.avatar}
-              alt={displayName}
-              fill
-              className="object-cover"
-            />
-            {!isDefaultAvatar && (
-              <div className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 transition hover:opacity-100">
-                <span className="rounded-lg bg-white/90 px-2 py-1 text-xs font-medium text-gray-700">
-                  🔍 بزرگ‌نمایی
-                </span>
-              </div>
+            {user.role === "user" && user.isBlocked && (
+              <span className="rounded-full bg-red-100 px-3 py-1 text-sm font-medium text-red-700">
+                🔒 مسدود
+              </span>
             )}
           </div>
-          {canEdit && !isDefaultAvatar && (
-            <button
-              onClick={handleDeleteAvatar}
-              disabled={isLoading}
-              className={`flex cursor-pointer items-center justify-center gap-1 rounded-lg border border-red-400 px-3 py-1.5 text-sm font-medium text-red-600 transition hover:bg-red-50 disabled:opacity-50 ${isSidebarOpen ? "max-lg:hidden" : "max-sm:hidden " }  lg:hidden`}
-            >
-              <MdDeleteOutline className="size-4" />
-              حذف عکس
-            </button>
-          )}
         </div>
 
-        <div className="flex-1 w-full">
-          <div className="mb-4 flex items-center justify-between">
-            <h2 className="text-xl font-bold">{displayName}</h2>
-            <div className="flex items-center gap-x-2">
+        <div
+          className={`flex items-start gap-6 ${
+            isSidebarOpen
+              ? "max-lg:flex-col max-lg:items-center max-lg:gap-4"
+              : "max-sm:flex-col max-sm:items-center max-sm:gap-4"
+          }`}
+        >
+          <div className="flex flex-col items-center justify-center gap-y-4">
+            <div
+              onClick={() => {
+                if (!isDefaultAvatar) {
+                  setIsLightboxOpen(true);
+                }
+              }}
+              className={`relative flex size-35 shrink-0 flex-col overflow-hidden rounded-full ${
+                !isDefaultAvatar
+                  ? "ring-primary cursor-pointer ring-2 transition hover:ring-4"
+                  : ""
+              }`}
+            >
+              <Image
+                src={user.avatar}
+                alt={displayName}
+                fill
+                className="object-cover"
+              />
+              {!isDefaultAvatar && (
+                <div className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 transition hover:opacity-100">
+                  <span className="rounded-lg bg-white/90 px-2 py-1 text-xs font-medium text-gray-700">
+                    🔍 بزرگ‌نمایی
+                  </span>
+                </div>
+              )}
+            </div>
+            {canEdit && !isDefaultAvatar && (
+              <ConfirmDialog
+                onConfirm={handleDeleteAvatar}
+                title="آیا از حذف عکس پروفایل کاربر مطمئنید؟"
+                cancelText="خیر"
+                confirmText="بله"
+                disabled={isLoading}
+                className="flex cursor-pointer items-center justify-center gap-1 rounded-lg border border-red-400 px-3 py-1.5 text-sm font-medium text-red-600 transition hover:bg-red-50 disabled:opacity-50 lg:hidden max-sm:hidden"
+              >
+                <MdDeleteOutline className="size-4" />
+                حذف عکس
+              </ConfirmDialog>
+            )}
+          </div>
+
+          <div className="w-full flex-1">
+            <div className="mb-4 flex items-center justify-between">
+              <h2 className="text-xl font-bold">{displayName}</h2>
+              <div className="flex items-center gap-x-2">
+                {canEdit && (
+                  <button
+                    onClick={handleEdit}
+                    disabled={isLoading}
+                    className={`flex cursor-pointer items-center gap-1 rounded-lg border border-blue-400 px-3 py-1.5 text-sm font-medium text-blue-600 transition hover:bg-blue-50 disabled:opacity-50 ${
+                      isSidebarOpen ? "max-lg:hidden" : "max-sm:hidden"
+                    }`}
+                  >
+                    <MdEdit className="size-4" />
+                    ویرایش
+                  </button>
+                )}
+                {canEdit && !isDefaultAvatar && (
+                  <ConfirmDialog
+                    onConfirm={handleDeleteAvatar}
+                    title="آیا از حذف عکس پروفایل کاربر مطمئنید؟"
+                    cancelText="خیر"
+                    confirmText="بله"
+                    disabled={isLoading}
+                    className="flex cursor-pointer items-center justify-center gap-1 rounded-lg border border-red-400 px-3 py-1.5 text-sm font-medium text-red-600 transition hover:bg-red-50 disabled:opacity-50 max-lg:hidden"
+                  >
+                    <MdDeleteOutline className="size-4" />
+                    حذف عکس
+                  </ConfirmDialog>
+                )}
+                {canBlock && canEdit && (
+                  <button
+                    onClick={handleToggleBlock}
+                    disabled={isLoading}
+                    className={`flex cursor-pointer items-center gap-1 rounded-lg border px-3 py-1.5 text-sm font-medium transition disabled:opacity-50 ${
+                      isSidebarOpen ? "max-lg:hidden" : "max-sm:hidden"
+                    } ${
+                      user.isBlocked
+                        ? "border-green-400 text-green-600 hover:bg-green-50"
+                        : "border-red-400 text-red-600 hover:bg-red-50"
+                    }`}
+                  >
+                    {user.isBlocked ? (
+                      <>
+                        <MdCheckCircle className="size-4" />
+                        رفع مسدودیت
+                      </>
+                    ) : (
+                      <>
+                        <MdBlock className="size-4" />
+                        مسدود کردن
+                      </>
+                    )}
+                  </button>
+                )}
+              </div>
+            </div>
+
+            <div className="grid grid-cols-[2fr_1fr] gap-y-2 max-lg:grid-cols-1 max-sm:self-start">
+              <div className="flex items-center gap-x-2">
+                <span className="text-neutral9">موبایل:</span>
+                <span>{toPersianCode(user.mobile)}</span>
+              </div>
+              <div className="flex items-center gap-x-2">
+                <span className="text-neutral9">تاریخ ثبت‌نام:</span>
+                <span>{formatDate(new Date(user.createdAt))}</span>
+              </div>
+              <div className="flex items-center gap-x-2">
+                <span className="text-neutral9">ایمیل:</span>
+                <span className="line-clamp-1">{user.email}</span>
+              </div>
+
+              {user.role === "user" && (
+                <>
+                  <div className="flex items-center gap-x-2">
+                    <span className="text-neutral9">کد پستی:</span>
+                    <span>
+                      {toPersianCode(user.postalCode as string) || "ثبت نشده"}
+                    </span>
+                  </div>
+                  <div className="col-span-2 flex items-start gap-x-2 max-lg:col-span-1">
+                    <span className="text-neutral9">آدرس:</span>
+                    <span>
+                      {toPersianCode(user.address as string) || "ثبت نشده"}
+                    </span>
+                  </div>
+                </>
+              )}
+              {user.role === "plant-doctor" && (
+                <>
+                  <div className="flex items-center gap-x-2">
+                    <span className="text-neutral9">سال‌های تجربه:</span>
+                    {toPersianNumber(user.yearsOfExperience || 0)}
+                  </div>
+                  <div className="flex items-center gap-x-2">
+                    <span className="text-neutral9">تخصص:</span>
+                    <span>{user.specialties || "ثبت نشده"}</span>
+                  </div>
+                  <div className="flex items-center gap-x-2">
+                    <span className="text-neutral9">مشاوره‌های موفق:</span>
+                    {toPersianNumber(user.successfulConsultations || 0)}
+                  </div>
+                  <div className="flex items-center gap-x-2">
+                    <span className="text-neutral9">هزینه مشاوره:</span>
+                    {formatPrice(user.consultationFee || 0)}
+                  </div>
+                </>
+              )}
+            </div>
+
+            <div
+              className={`mt-2 flex items-center gap-2 ${
+                isSidebarOpen ? "lg:hidden" : "sm:hidden"
+              } mx-auto w-fit flex-wrap`}
+            >
               {canEdit && (
                 <button
                   onClick={handleEdit}
                   disabled={isLoading}
-                  className={`flex cursor-pointer items-center gap-1 rounded-lg border border-blue-400 px-3 py-1.5 text-sm font-medium text-blue-600 transition hover:bg-blue-50 disabled:opacity-50 ${isSidebarOpen ? "max-lg:hidden" : "max-sm:hidden" } `}
+                  className="flex cursor-pointer items-center gap-1 rounded-lg border border-blue-400 px-3 py-1.5 text-sm font-medium text-blue-600 transition hover:bg-blue-50 disabled:opacity-50"
                 >
                   <MdEdit className="size-4" />
                   ویرایش
                 </button>
               )}
               {canEdit && !isDefaultAvatar && (
-                <button
-                  onClick={handleDeleteAvatar}
-                  disabled={isLoading}
-                  className="flex cursor-pointer items-center justify-center gap-1 rounded-lg border border-red-400 px-3 py-1.5 text-sm font-medium text-red-600 transition hover:bg-red-50 disabled:opacity-50  max-lg:hidden"
-                >
-                  <MdDeleteOutline className="size-4" />
-                  حذف عکس
-                </button>
+               <ConfirmDialog
+                    onConfirm={handleDeleteAvatar}
+                    title="آیا از حذف عکس پروفایل کاربر مطمئنید؟"
+                    cancelText="خیر"
+                    confirmText="بله"
+                    disabled={isLoading}
+                    className="flex cursor-pointer items-center justify-center gap-1 rounded-lg border border-red-400 px-3 py-1.5 text-sm font-medium text-red-600 transition hover:bg-red-50 disabled:opacity-50 sm:hidden"
+                  >
+                    <MdDeleteOutline className="size-4" />
+                    حذف عکس
+                  </ConfirmDialog>
               )}
               {canBlock && canEdit && (
                 <button
                   onClick={handleToggleBlock}
                   disabled={isLoading}
-                  className={`flex items-center gap-1 rounded-lg border px-3 py-1.5 text-sm font-medium transition disabled:opacity-50 ${isSidebarOpen ? "max-lg:hidden" : "max-sm:hidden" } ${
+                  className={`flex cursor-pointer items-center gap-1 rounded-lg border px-3 py-1.5 text-sm font-medium transition disabled:opacity-50 ${
                     user.isBlocked
                       ? "border-green-400 text-green-600 hover:bg-green-50"
                       : "border-red-400 text-red-600 hover:bg-red-50"
@@ -175,115 +354,70 @@ export default function UserInfoCard({
               )}
             </div>
           </div>
+        </div>
 
-          <div className="grid grid-cols-[2fr_1fr] gap-y-2 max-lg:grid-cols-1 max-sm:self-start">
-            <div className="flex items-center gap-x-2">
-              <span className="text-neutral9">موبایل:</span>
-              <span>{toPersianCode(user.mobile)}</span>
-            </div>
-            <div className="flex items-center gap-x-2">
-              <span className="text-neutral9">تاریخ ثبت‌نام:</span>
-              <span>{formatDate(new Date(user.createdAt))}</span>
-            </div>
-            <div className="flex items-center gap-x-2">
-              <span className="text-neutral9">ایمیل:</span>
-              <span className="line-clamp-1">{user.email}</span>
-            </div>
+        <Lightbox
+          open={isLightboxOpen}
+          close={() => setIsLightboxOpen(false)}
+          slides={[{ src: user.avatar }]}
+          controller={{ closeOnBackdropClick: true }}
+          styles={{
+            container: { backgroundColor: "rgba(0,0,0,0.9)" },
+          }}
+        />
+      </div>
 
-            {user.role === "user" && (
-              <>
-                <div className="flex items-center gap-x-2">
-                  <span className="text-neutral9">کد پستی:</span>
-                  <span>
-                    {toPersianCode(user.postalCode as string) || "ثبت نشده"}
-                  </span>
+      {isEditModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
+          <div className="w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl">
+            <h3 className="mb-4 text-xl font-bold">ویرایش اطلاعات کاربر</h3>
+            <form onSubmit={handleEditSubmit}>
+              <div className="space-y-4">
+                <div>
+                  <label className="text-neutral9 text-sm font-medium">
+                    نام
+                  </label>
+                  <input
+                    type="text"
+                    value={editFirstName}
+                    onChange={(e) => setEditFirstName(e.target.value)}
+                    className="border-neutral3 focus:border-primary mt-1 w-full rounded-xl border px-4 py-2 outline-0"
+                    required
+                  />
                 </div>
-                <div className="col-span-2 flex items-start gap-x-2 max-lg:col-span-1">
-                  <span className="text-neutral9">آدرس:</span>
-                  <span>
-                    {toPersianCode(user.address as string) || "ثبت نشده"}
-                  </span>
+                <div>
+                  <label className="text-neutral9 text-sm font-medium">
+                    نام خانوادگی
+                  </label>
+                  <input
+                    type="text"
+                    value={editLastName}
+                    onChange={(e) => setEditLastName(e.target.value)}
+                    className="border-neutral3 focus:border-primary mt-1 w-full rounded-xl border px-4 py-2 outline-0"
+                    required
+                  />
                 </div>
-              </>
-            )}
-            {user.role === "plant-doctor" && (
-              <>
-                <div className="flex items-center gap-x-2">
-                  <span className="text-neutral9">سال‌های تجربه:</span>
-                  {toPersianNumber(user.yearsOfExperience || 0)}
-                </div>
-                <div className="flex items-center gap-x-2">
-                  <span className="text-neutral9">تخصص:</span>
-                  <span>{user.specialties || "ثبت نشده"}</span>
-                </div>
-                <div className="flex items-center gap-x-2">
-                  <span className="text-neutral9">مشاوره‌های موفق:</span>
-                  {toPersianNumber(user.successfulConsultations || 0)}
-                </div>
-                <div className="flex items-center gap-x-2">
-                  <span className="text-neutral9">هزینه مشاوره:</span>
-                  {formatPrice(user.consultationFee || 0)}
-                </div>
-              </>
-            )}
-          </div>
-
-          <div className={`flex items-center gap-2 mt-2 ${isSidebarOpen ? "lg:hidden" : "sm:hidden"}  mx-auto w-fit flex-wrap`}>
-            {canEdit && (
-              <button
-                onClick={handleEdit}
-                disabled={isLoading}
-                className="flex cursor-pointer items-center gap-1 rounded-lg border border-blue-400 px-3 py-1.5 text-sm font-medium text-blue-600 transition hover:bg-blue-50 disabled:opacity-50"
-              >
-                <MdEdit className="size-4" />
-                ویرایش
-              </button>
-            )}
-            {canEdit && !isDefaultAvatar && (
-              <button
-                onClick={handleDeleteAvatar}
-                disabled={isLoading}
-                className="flex cursor-pointer items-center justify-center gap-1 rounded-lg border border-red-400 px-3 py-1.5 text-sm font-medium text-red-600 transition hover:bg-red-50 disabled:opacity-50"
-              >
-                <MdDeleteOutline className="size-4" />
-                حذف عکس
-              </button>
-            )}
-            {canBlock && canEdit && (
-              <button
-                onClick={handleToggleBlock}
-                disabled={isLoading}
-                className={`flex items-center gap-1 rounded-lg border px-3 py-1.5 text-sm font-medium transition disabled:opacity-50 ${
-                  user.isBlocked
-                    ? "border-green-400 text-green-600 hover:bg-green-50"
-                    : "border-red-400 text-red-600 hover:bg-red-50"
-                }`}
-              >
-                {user.isBlocked ? (
-                  <>
-                    <MdCheckCircle className="size-4" />
-                    رفع مسدودیت
-                  </>
-                ) : (
-                  <>
-                    <MdBlock className="size-4" />
-                    مسدود کردن
-                  </>
-                )}
-              </button>
-            )}
+              </div>
+              <div className="mt-6 flex justify-end gap-3">
+                <button
+                  type="button"
+                  onClick={() => setIsEditModalOpen(false)}
+                  className="border-neutral3 cursor-pointer text-neutral9 hover:bg-neutral3 rounded-lg border px-4 py-2 text-sm font-medium transition"
+                >
+                  انصراف
+                </button>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="bg-primary cursor-pointer hover:bg-shade2 rounded-lg px-4 py-2 text-sm font-medium text-white transition disabled:opacity-50"
+                >
+                  {isSubmitting ? "در حال ذخیره..." : "ذخیره تغییرات"}
+                </button>
+              </div>
+            </form>
           </div>
         </div>
-      </div>
-      <Lightbox
-        open={isLightboxOpen}
-        close={() => setIsLightboxOpen(false)}
-        slides={[{ src: user.avatar }]}
-        controller={{ closeOnBackdropClick: true }}
-        styles={{
-          container: { backgroundColor: "rgba(0,0,0,0.9)" },
-        }}
-      />
-    </div>
+      )}
+    </>
   );
 }
