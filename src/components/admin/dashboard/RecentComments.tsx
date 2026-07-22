@@ -12,13 +12,15 @@ export default function RecentComments({ comments }: RecentCommentsProps) {
     <div className="border-neutral3 flex h-full flex-col rounded-xl border bg-white p-4 shadow">
       <div className="mb-4 flex items-center justify-between">
         <SectionTitle title="آخرین کامنت‌ها📃" className="mb-0!" />
-        <Link
-          href="/admin/comments"
-          className="text-primary hover:text-shade2 *: flex items-center justify-center text-sm"
-        >
-          <span className="">مشاهده همه</span>
-          <MdKeyboardArrowLeft className="size-5" />
-        </Link>
+        {comments.length > 0 && (
+          <Link
+            href="/admin/comments"
+            className="text-primary hover:text-shade2 *: flex items-center justify-center text-sm"
+          >
+            <span className="">مشاهده همه</span>
+            <MdKeyboardArrowLeft className="size-5" />
+          </Link>
+        )}
       </div>
 
       <div className="flex-1 space-y-2">
