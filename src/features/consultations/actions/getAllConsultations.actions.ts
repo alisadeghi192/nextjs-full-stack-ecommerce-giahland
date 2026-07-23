@@ -3,7 +3,7 @@
 import { getMeAction } from "@/features/auth/actions/me.actions";
 import connectToDB from "@/lib/db/connect";
 import Consultation from "@/lib/db/models/Consultation";
-import { User } from "@/lib/db/models/User";
+import BaseUser from "@/lib/db/models/User";
 
 interface GetAllConsultationsParams {
   status?: "all" | "active" | "closed";
@@ -39,7 +39,7 @@ export async function getAllConsultations({
   }
 
   if (search.trim()) {
-    const users = await User.find({
+    const users = await BaseUser.find({
       $or: [
         { firstName: { $regex: search.trim(), $options: "i" } },
         { lastName: { $regex: search.trim(), $options: "i" } },

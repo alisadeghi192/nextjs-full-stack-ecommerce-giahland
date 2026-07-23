@@ -10,7 +10,9 @@ export async function getConsultationById(
   consultationId: string,
 ): Promise<ConsultationWithDetails | null> {
   const { user } = await getMeAction();
-  if (!user) return null;
+  if (!user) {
+    return null;
+  }
 
   await connectToDB();
 
@@ -35,16 +37,8 @@ export async function getConsultationById(
 
   let lastMessageData = undefined;
   if (consultation.lastMessage) {
-    const isDoctor = user.role === "plant-doctor";
-    const isSender = consultation.lastMessageSender === (isDoctor ? "doctor" : "user");
-    const isSeen = consultation.lastMessageStatus === "seen";
-
-    let displayStatus: "sent" | "seen" = "sent";
-    if (isSender) {
-      displayStatus = isSeen ? "seen" : "sent";
-    } else {
-      displayStatus = isSeen ? "seen" : "sent";
-    }
+    const displayStatus: "sent" | "seen" =
+      consultation.lastMessageStatus === "seen" ? "seen" : "sent";
 
     lastMessageData = {
       text: consultation.lastMessage,
