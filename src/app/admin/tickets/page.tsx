@@ -3,6 +3,7 @@ import AdminTicketsHeader from "@/components/admin/AdminTicketsHeader";
 import SectionTitle from "@/components/panel/SectionTitle";
 import Pagination from "@/components/shared/ui/pagination";
 import { getAllTickets } from "@/features/tickets/actions/admin.ticket.actions";
+import { toPersianNumber } from "@/lib/utils/format";
 
 interface PageProps {
   searchParams: Promise<{
@@ -20,7 +21,7 @@ export default async function AdminTicketsPage({ searchParams }: PageProps) {
   const currentPage = Number(page) || 1;
   const limit = 5;
 
-  const { tickets, totalPages } = await getAllTickets(currentPage, limit, {
+  const { tickets, totalPages , total} = await getAllTickets(currentPage, limit, {
     role,
     sort,
     status,
@@ -31,7 +32,7 @@ export default async function AdminTicketsPage({ searchParams }: PageProps) {
 
   return (
     <div>
-      <SectionTitle title="مدیریت تیکت‌ها" />
+      <SectionTitle title={`مدیریت تیکت‌ها (${toPersianNumber(total)})`} />
       <AdminTicketsHeader />
       <AdminTicketList tickets={tickets} />
       {totalPages > 1 && (

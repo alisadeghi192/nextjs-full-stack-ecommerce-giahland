@@ -4,6 +4,8 @@ import SectionTitle from "@/components/panel/SectionTitle";
 import OutlineButton from "@/components/shared/ui/OutlineButton";
 import Pagination from "@/components/shared/ui/pagination";
 import { getProductsForAdmin } from "@/features/products/actions/getProductsForAdmin.actions";
+import { toPersianNumber } from "@/lib/utils/format";
+import { FaPlus } from "react-icons/fa6";
 
 interface PageProps {
   searchParams: Promise<{
@@ -36,12 +38,13 @@ export default async function AdminProductsPage({ searchParams }: PageProps) {
   return (
     <div>
       <div className="flex mb-2 items-center justify-between">
-        <SectionTitle title="مدیریت محصولات" className="mb-0!" />
+        <SectionTitle title={`مدیریت محصولات (${toPersianNumber(result.total)})`} className="mb-0!" />
         <OutlineButton
           href="/admin/products/new"
-          className="h-10 shrink-0 px-6 text-center text-base font-medium"
+          className="h-10 shrink-0 px-5.75 gap-x-1 text-center text-base font-medium"
         >
           محصول جدید
+          <FaPlus className="size-4" />
         </OutlineButton>
       </div>
       <AdminProductsHeader

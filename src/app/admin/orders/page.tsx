@@ -1,10 +1,12 @@
 import AdminOrderCard from "@/components/admin/orders/AdminOrderCard";
 import AdminOrdersHeader from "@/components/admin/orders/AdminOrdersHeader";
+import SectionTitle from "@/components/panel/SectionTitle";
 import Pagination from "@/components/shared/ui/pagination";
 import { getMeAction } from "@/features/auth/actions/me.actions";
 import { getAdminOrders } from "@/features/order/actions/getAdminOrders.actions";
 import { IOrder } from "@/features/order/types/order.types";
 import { ORDERS_PER_PAGE } from "@/lib/constants/pagination";
+import { toPersianNumber } from "@/lib/utils/format";
 import { redirect } from "next/navigation";
 
 interface PageProps {
@@ -40,9 +42,7 @@ export default async function AdminOrdersPage({ searchParams }: PageProps) {
 
   return (
     <div className="w-full">
-      <div className="mb-4 flex items-center justify-between">
-        <h2 className="text-lg font-bold">مدیریت سفارش‌ها</h2>
-      </div>
+        <SectionTitle title={`مدیریت سفارش ها (${toPersianNumber(result.total)})`}/>
 
       <AdminOrdersHeader />
 

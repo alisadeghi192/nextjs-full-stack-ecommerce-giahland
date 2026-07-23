@@ -28,7 +28,7 @@ export default async function AdminArticlesPage({ searchParams }: PageProps) {
 
   return (
     <div className="w-full">
-      <DoctorArticlesHeader activeTab={activeTab} selectedSort={selectedSort} />
+      <DoctorArticlesHeader activeTab={activeTab} selectedSort={selectedSort} total={result.total}/>
       {result.total === 0 ? (
         <div className="border-neutral3 rounded-2xl border p-6 text-center text-gray-500 shadow-lg">
          مقاله ای یافت نشد.

@@ -5,6 +5,7 @@ import OutlineButton from "@/components/shared/ui/OutlineButton";
 import Pagination from "@/components/shared/ui/pagination";
 import { getMeAction } from "@/features/auth/actions/me.actions";
 import { getUsers } from "@/features/user/actions/getUsers.actions";
+import { toPersianNumber } from "@/lib/utils/format";
 import { redirect } from "next/navigation";
 import { FaPlus } from "react-icons/fa6";
 
@@ -47,10 +48,10 @@ export default async function AdminUsersPage({ searchParams }: PageProps) {
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <SectionTitle title="مدیریت کاربران" className="mb-0!" />
+        <SectionTitle title={`مدیریت کاربران (${(toPersianNumber(result.total))})`} className="mb-0!" />
         <OutlineButton
           href="/admin/users/new-doctor"
-          className="size-45 h-10 gap-x-1"
+          className="size-45 h-10 gap-x-1 font-medium"
         >
           افزودن پزشک جدید
           <FaPlus className="size-4" />

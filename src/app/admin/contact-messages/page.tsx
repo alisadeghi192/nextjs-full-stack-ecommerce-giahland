@@ -3,6 +3,7 @@ import AdminContactMessagesList from "@/components/admin/AdminContactMessagesLis
 import SectionTitle from "@/components/panel/SectionTitle";
 import Pagination from "@/components/shared/ui/pagination";
 import { getContactMessages } from "@/features/contact/actions/getContactMessages.actions";
+import { toPersianNumber } from "@/lib/utils/format";
 
 interface PageProps {
   searchParams: Promise<{
@@ -31,7 +32,7 @@ export default async function AdminContactMessagesPage({
 
   return (
     <div>
-      <SectionTitle title="پیام‌های تماس" />
+      <SectionTitle title={`پیام‌های دریافتی (${toPersianNumber(result.total)})`} />
       <AdminContactMessagesHeader
         currentStatus={status || "all"}
         currentSort={sort || "newest"}

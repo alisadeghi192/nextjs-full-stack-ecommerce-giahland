@@ -3,6 +3,7 @@ import AdminCommentsList from "@/components/admin/AdminCommentsList";
 import SectionTitle from "@/components/panel/SectionTitle";
 import Pagination from "@/components/shared/ui/pagination";
 import { getComments } from "@/features/comments/actions/getComments.actions";
+import { toPersianNumber } from "@/lib/utils/format";
 
 interface PageProps {
   searchParams: Promise<{
@@ -29,7 +30,7 @@ export default async function AdminCommentsPage({ searchParams }: PageProps) {
 
   return (
     <div>
-      <SectionTitle title="مدیریت کامنت‌ها" />
+      <SectionTitle title={`مدیریت کامنت‌ها (${toPersianNumber(result.total)})`} />
       <AdminCommentHeader />
       <AdminCommentsList comments={result.comments} />
       {result.totalPages > 1 && (

@@ -5,6 +5,7 @@ import Pagination from "@/components/shared/ui/pagination";
 import { getMeAction } from "@/features/auth/actions/me.actions";
 import { getAllConsultations } from "@/features/consultations/actions/getAllConsultations.actions";
 import { CONSULTATIONS_PER_PAGE } from "@/lib/constants";
+import { toPersianNumber } from "@/lib/utils/format";
 import { redirect } from "next/navigation";
 
 interface PageProps {
@@ -40,13 +41,9 @@ export default async function AdminConsultationsPage({
 
   return (
     <div className="space-y-4">
-      <div className="flex items-center justify-between">
-        <SectionTitle title="مدیریت مشاوره‌ها" className="mb-0!" />
-        <span className="text-neutral9 text-sm">
-          تعداد کل: {result.total.toLocaleString("fa-IR")}
-        </span>
-      </div>
-
+      <SectionTitle
+        title={`مدیریت مشاوره‌ها (${toPersianNumber(result.total)})`}
+      />
       <AdminConsultationsHeader />
 
       {result.consultations.length === 0 ? (
@@ -57,9 +54,7 @@ export default async function AdminConsultationsPage({
         </div>
       ) : (
         <>
-          <AdminConsultationsList
-            consultations={result.consultations}
-          />
+          <AdminConsultationsList consultations={result.consultations} />
           {result.totalPages > 1 && (
             <div className="mt-6 flex justify-center">
               <Pagination
