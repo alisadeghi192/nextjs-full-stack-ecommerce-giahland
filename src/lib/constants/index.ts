@@ -7,6 +7,7 @@ export * from "./consultations";
 export * from "./contact";
 export * from "./defaults";
 export * from "./faq";
+export * from "./footer";
 export * from "./header";
 export * from "./nav";
 export * from "./pagination";
