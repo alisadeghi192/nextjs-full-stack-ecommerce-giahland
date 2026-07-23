@@ -57,7 +57,7 @@ export default function ChatHeader({
           confirmText="بله"
           title="آیا از بستن مشاوره مطمئنید؟"
           disabled={isLoading}
-          className={`border-neutral9 max-xs:size-10 flex h-14 shrink-0 cursor-pointer items-center justify-center gap-x-2 rounded-full border bg-red-500 px-2 text-white transition-colors hover:bg-red-600 max-sm:size-14 ${isSidebarOpen ? "max-lg:size-14" : ""}`}
+          className={`border-neutral9 max-xs:size-10 flex h-14 shrink-0 cursor-pointer items-center justify-center gap-x-2 rounded-full border bg-red-500/60 backdrop-blur-lg px-2 text-white transition-colors hover:bg-red-500 max-sm:size-14 ${isSidebarOpen ? "max-lg:size-14" : ""}`}
         >
           <span
             className={`leading-tight max-sm:hidden ${isSidebarOpen ? "max-lg:hidden" : ""}`}
@@ -71,7 +71,7 @@ export default function ChatHeader({
       )}
 
       {/* display person details */}
-      <div className="border-neutral5 max-xs:p-0 maxsm:h-10 flex w-full items-center justify-between rounded-full border bg-white p-1">
+      <div className="border-neutral5 max-xs:p-0 maxsm:h-10 flex w-full items-center justify-between rounded-full border bg-white/40 backdrop-blur-lg p-1">
         <div className="max-xs:gap-2 max-xs:w-full flex items-center gap-4">
           <div className="max-xs:size-10 relative size-12 shrink-0 overflow-hidden rounded-full">
             <Image
@@ -98,7 +98,7 @@ export default function ChatHeader({
       {/* back button */}
       <Link
         href="/user/consultations/list"
-        className="border-neutral5 max-xs:size-10 flex h-14 items-center justify-center gap-x-2 rounded-full border bg-gray-100 px-4 text-gray-600 transition-colors hover:bg-gray-200"
+        className="border-neutral5 max-xs:size-10 flex h-14 items-center justify-center gap-x-2 rounded-full border bg-gray-100/40 px-4 text-gray-600 transition-colors cursor-pointer hover:bg-gray-200/40 backdrop-blur-lg"
       >
         <span
           className={`max-sm:hidden ${isSidebarOpen ? "max-lg:hidden" : ""}`}

@@ -120,7 +120,7 @@ export default function ChatInput({
               <MdSend className="size-5 rotate-180" />
             </PrimaryButton>
             <div className="flex-1">
-              <div className="border-neutral6 focus-within:border-primary relative flex min-h-12 items-center rounded-full border bg-white px-3.75 transition-colors duration-200">
+              <div className="border-neutral6 focus-within:border-primary relative flex min-h-12 items-center rounded-full border bg-white/40 backdrop-blur-lg px-3.75 transition-colors duration-200">
                 <textarea
                   ref={textareaRef}
                   rows={1}

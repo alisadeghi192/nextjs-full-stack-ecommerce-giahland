@@ -29,9 +29,11 @@ export default function ChatMessages({
     refresh();
   }, []);
 
-  useEffect(() => {
+useEffect(() => {
+  if (!isLoading && initialMessages.length > 0) {
     scrollToBottom();
-  });
+  }
+}, [initialMessages, isLoading]);
 
   useEffect(() => {
     const updateHeight = () => {
@@ -52,9 +54,7 @@ export default function ChatMessages({
     };
   }, []);
 
-  useEffect(() => {
-    scrollToBottom();
-  }, [initialMessages]);
+
 
   useEffect(() => {
     if (!isLoading && initialMessages.length > 0) {
@@ -131,7 +131,7 @@ export default function ChatMessages({
             >
               {message.image && (
                 <div
-                  className="relative mb-2 size-48 cursor-pointer overflow-hidden rounded-lg"
+                  className="relative mb-2 mx-auto size-48 cursor-pointer overflow-hidden rounded-lg"
                   onClick={() => {
                     const index = allImages.findIndex(
                       (img) => img.src === message.image,
