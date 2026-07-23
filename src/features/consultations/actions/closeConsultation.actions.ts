@@ -3,6 +3,7 @@
 import { getMeAction } from "@/features/auth/actions/me.actions";
 import connectToDB from "@/lib/db/connect";
 import Consultation from "@/lib/db/models/Consultation";
+import { PlantDoctor } from "@/lib/db/models/User";
 import { revalidatePath } from "next/cache";
 
 export async function closeConsultation(consultationId: string) {
@@ -18,10 +19,7 @@ export async function closeConsultation(consultationId: string) {
     return { success: false, message: "مشاوره یافت نشد." };
   }
 
-  if (
-    consultation.doctor.toString() !== user._id &&
-    user.role !== "admin"
-  ) {
+  if (consultation.doctor.toString() !== user._id && user.role !== "admin") {
     return { success: false, message: "شما مجاز به بستن این مشاوره نیستید." };
   }
 
@@ -33,8 +31,13 @@ export async function closeConsultation(consultationId: string) {
     status: "closed",
   });
 
+  await PlantDoctor.findByIdAndUpdate(consultation.doctor, {
+    $inc: { successfulConsultations: 1 },
+  });
+
   revalidatePath("/user/consultations/list");
   revalidatePath(`/user/consultations/${consultationId}`);
+  revalidatePath("/admin/consultations");
 
   return {
     success: true,
