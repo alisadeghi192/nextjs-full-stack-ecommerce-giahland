@@ -32,7 +32,7 @@ export default function AboutPage() {
             </p>
           </div>
           <PrimaryButton
-            href="/"
+            href="/plant-doctor"
             className="mt-auto h-12 w-full text-lg max-md:mt-6"
           >
             مشاوره با گیاه‌پزشک
@@ -126,7 +126,7 @@ export default function AboutPage() {
         <h5 className="mb-4 text-center text-lg font-bold">
           همین حالا گیاهت رو معاینه کن!
         </h5>
-        <PrimaryButton className="max-xs:w-full mx-auto h-12 w-72.5 text-lg">
+        <PrimaryButton href="/plant-doctor" className="max-xs:w-full mx-auto h-12 w-72.5 text-lg">
           مشاوره با گیاه‌پزشک
         </PrimaryButton>
       </div>

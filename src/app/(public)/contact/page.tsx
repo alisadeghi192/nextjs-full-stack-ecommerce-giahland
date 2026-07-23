@@ -1,5 +1,7 @@
 import ContactForm from "@/components/features/contact/ContactForm";
 import Breadcrumb from "@/components/shared/ui/Breadcrumb";
+import { STORE_ADDRESS, STORE_EMAIL_ADDRESS, STORE_GOOGLE_MAPS_IFRAME_LINK, STORE_INSTAGRAM, STORE_LOCATION, STORE_PHONE_NUMBER, STORE_TELEGRAM, STORE_WHATSAPP } from "@/lib/constants/";
+import { toPersianCode } from "@/lib/utils/format";
 import Link from "next/link";
 import { FaInstagram, FaTelegram, FaWhatsapp } from "react-icons/fa6";
 
@@ -20,7 +22,7 @@ export default function ContactPage() {
           <div className="flex basis-1/2 flex-col gap-y-3">
             <div className="border-neutral3 h-61 w-full overflow-hidden rounded-xl border">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3855.0043980227456!2d51.47482920105349!3d35.66076290704235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f91fd096f2b1da5%3A0xe5f33cd4f5d56b32!2sMahallati!5e0!3m2!1sen!2sde!4v1777991927441!5m2!1sen!2sde"
+                src={STORE_GOOGLE_MAPS_IFRAME_LINK}
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -32,24 +34,24 @@ export default function ContactPage() {
             <div className="border-neutral3 space-y-3 rounded-xl border p-3 text-sm/6">
               <div className="flex items-center justify-between">
                 <span className="text-neutral9 font-medium">تلفن:</span>
-                <span className="text-primary">09371921199</span>
+                <span className="text-primary">{toPersianCode(STORE_PHONE_NUMBER)}</span>
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-neutral9 font-medium">ایمیل:</span>
-                <span className="text-primary">Giahland@gmail.com</span>
+                <span className="text-primary">{STORE_EMAIL_ADDRESS}</span>
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-neutral9 font-medium">
                   شبکه‌های اجتماعی:
                 </span>
                 <div className="flex gap-x-2">
-                  <Link href="/">
+                  <Link href={STORE_INSTAGRAM}>
                     <FaInstagram className="size-6 text-[#E338C3]" />
                   </Link>
-                  <Link href="/">
+                  <Link href={STORE_TELEGRAM}>
                     <FaTelegram className="size-6 text-[#2AABEE]" />
                   </Link>
-                  <Link href="/">
+                  <Link href={STORE_WHATSAPP}>
                     <FaWhatsapp className="size-6 text-[#25D366]" />
                   </Link>
                 </div>
@@ -57,12 +59,11 @@ export default function ContactPage() {
               <div className="flex flex-wrap items-start justify-between gap-y-2">
                 <span className="text-neutral9 font-medium">آدرس فروشنده:</span>
                 <Link
-                  href={"https://maps.app.goo.gl/ufHFJ7L2YUCvU9mr9"}
+                  href={STORE_LOCATION}
                   className="hover:text-primary max-w-57.5 transition-colors"
                 >
                   <span className="text-neutral10 hover:text-primary transition-colors">
-                    آدرس: تهران ، بزرگراه محلاتی، نبرد جنوبی، خیابان زمزم، بازار
-                    گل محلاتی ، گیاه لند
+                    {STORE_ADDRESS}
                   </span>
                 </Link>
               </div>
