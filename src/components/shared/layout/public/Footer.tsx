@@ -43,7 +43,10 @@ export default function Footer() {
           <div className="mt-10 flex items-center justify-between max-xl:mt-8">
             <div className="flex flex-col gap-y-4">
               <p className="text-neutral10 text-xl max-md:text-base">
-                تلفن پشتیبانی : {toPersianCode(STORE_PHONE_NUMBER)}
+                <span> تلفن پشتیبانی :</span>
+                <Link href="tel:09371921199" className="transition-colors hover:text-primary">
+                  {toPersianCode(STORE_PHONE_NUMBER)}
+                </Link>
               </p>
               <div className="flex gap-x-6">
                 <Link href={STORE_LOCATION}>
@@ -80,7 +83,7 @@ export default function Footer() {
                   <Link
                     key={product.label}
                     href={product.link}
-                    className="text-neutral10 max-xs:text-[12px] text-xl/9 max-md:text-base"
+                    className="text-neutral10 hover:text-primary max-xs:text-[12px] text-xl/9 transition-colors max-md:text-base"
                   >
                     {product.label}
                   </Link>

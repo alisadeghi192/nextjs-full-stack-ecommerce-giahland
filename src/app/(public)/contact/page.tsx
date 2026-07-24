@@ -1,6 +1,15 @@
 import ContactForm from "@/components/features/contact/ContactForm";
 import Breadcrumb from "@/components/shared/ui/Breadcrumb";
-import { STORE_ADDRESS, STORE_EMAIL_ADDRESS, STORE_GOOGLE_MAPS_IFRAME_LINK, STORE_INSTAGRAM, STORE_LOCATION, STORE_PHONE_NUMBER, STORE_TELEGRAM, STORE_WHATSAPP } from "@/lib/constants/";
+import {
+  STORE_ADDRESS,
+  STORE_EMAIL_ADDRESS,
+  STORE_GOOGLE_MAPS_IFRAME_LINK,
+  STORE_INSTAGRAM,
+  STORE_LOCATION,
+  STORE_PHONE_NUMBER,
+  STORE_TELEGRAM,
+  STORE_WHATSAPP,
+} from "@/lib/constants/";
 import { toPersianCode } from "@/lib/utils/format";
 import Link from "next/link";
 import { FaInstagram, FaTelegram, FaWhatsapp } from "react-icons/fa6";
@@ -34,7 +43,12 @@ export default function ContactPage() {
             <div className="border-neutral3 space-y-3 rounded-xl border p-3 text-sm/6">
               <div className="flex items-center justify-between">
                 <span className="text-neutral9 font-medium">تلفن:</span>
-                <span className="text-primary">{toPersianCode(STORE_PHONE_NUMBER)}</span>
+                <Link
+                  href="tel:09371921199"
+                  className="text-primary hover:text-shade2 transition-colors"
+                >
+                  {toPersianCode(STORE_PHONE_NUMBER)}
+                </Link>
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-neutral9 font-medium">ایمیل:</span>
