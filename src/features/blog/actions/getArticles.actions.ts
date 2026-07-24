@@ -1,6 +1,6 @@
 "use server";
 
-import { BlogPostCard } from "@/features/blog/types/blog.types";
+import { IBlogPostCard } from "@/features/blog/types/blog.types";
 import { BLOG_SORT_OPTIONS, BLOG_TABS } from "@/lib/constants/blog";
 import { BLOG_POSTS_PER_PAGE } from "@/lib/constants/pagination";
 import connectToDB from "@/lib/db/connect";
@@ -64,7 +64,7 @@ export async function getArticles({
         },
         category: article.category,
         publishedAt: article.publishedAt,
-      } as BlogPostCard;
+      } as IBlogPostCard;
     }),
     total,
     totalPages: Math.ceil(total / limit),

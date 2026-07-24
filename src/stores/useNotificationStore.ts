@@ -1,7 +1,7 @@
-import { NotificationState } from "@/features/notifications/types/notification.types";
+import { INotificationState } from "@/features/notifications/types/notification.types";
 import { create } from "zustand";
 
-export const useNotificationStore = create<NotificationState>((set) => ({
+export const useNotificationStore = create<INotificationState>((set) => ({
   consultation: 0,
   ticket: 0,
 

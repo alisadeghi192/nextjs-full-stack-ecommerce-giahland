@@ -5,10 +5,10 @@ import PrimaryButton from "@/components/shared/ui/PrimaryButton";
 import TextareaField from "@/components/shared/ui/TextareaField";
 import { useAllNotifications } from "@/features/notifications/hooks/useAllNotifications";
 import {
-  deleteTicketAction,
-  replyTicketAction,
+    deleteTicketAction,
+    replyTicketAction,
 } from "@/features/tickets/actions/admin.ticket.actions";
-import { AdminTicket } from "@/features/tickets/types/ticket.types";
+import { IAdminTicket } from "@/features/tickets/types/ticket.types";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
@@ -16,7 +16,7 @@ import { MdDelete, MdDriveFileRenameOutline } from "react-icons/md";
 import ConfirmDialog from "../shared/ui/ConfirmDialog";
 
 interface AdminTicketListProps {
-  tickets: AdminTicket[];
+  tickets: IAdminTicket[];
 }
 
 export default function AdminTicketList({ tickets }: AdminTicketListProps) {
@@ -84,7 +84,7 @@ export default function AdminTicketList({ tickets }: AdminTicketListProps) {
     setDeletingId(null);
   };
 
-  const getUserDisplayName = (ticket: AdminTicket) => {
+  const getUserDisplayName = (ticket: IAdminTicket) => {
     const firstName = ticket.user.firstName?.trim();
     const lastName = ticket.user.lastName?.trim();
 

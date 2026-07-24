@@ -1,4 +1,4 @@
-import { BlogPostCard } from "@/features/blog/types/blog.types";
+import { IBlogPostCard } from "@/features/blog/types/blog.types";
 import Link from "next/link";
 import { MdOutlineAccountCircle, MdOutlineCalendarMonth } from "react-icons/md";
 
@@ -11,7 +11,7 @@ export default function BlogCard({
   category,
   publishedAt,
   usedInSlider=false
-}: BlogPostCard) {
+}: IBlogPostCard) {
   return (
     <>
       <div className={`text-white ${usedInSlider ? "" : "shadow-lg"} overflow-hidden rounded-xl w-full`}>

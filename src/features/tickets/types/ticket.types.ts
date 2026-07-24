@@ -17,7 +17,7 @@ export interface ITicket {
   createdAt: Date;
   updatedAt: Date;
 }
-export interface AdminTicket {
+export interface IAdminTicket {
   _id: string;
   subject: string;
   department: string;
@@ -40,20 +40,20 @@ export interface AdminTicket {
   };
 }
 
-export interface PaginatedTickets {
-  tickets: AdminTicket[];
+export interface IPaginatedTickets {
+  tickets: IAdminTicket[];
   total: number;
   page: number;
   totalPages: number;
 }
 
-export interface TicketFilters {
+export interface ITicketFilters {
   role?: string; // "plant-doctor" | "user"
   sort?: string; // "newest" | "oldest"
   status?: string; // "pending" | "answered"
   department?: string; // "support" | "sales" | "complaint" | "other"
 }
-export interface DashboardTickets {
+export interface IDashboardTickets {
   _id: string;
   subject: string;
   userName: string;

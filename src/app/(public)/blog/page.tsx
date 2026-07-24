@@ -3,7 +3,7 @@ import BlogHeader from "@/components/features/blog/BlogHeader";
 import Breadcrumb from "@/components/shared/ui/Breadcrumb";
 import Pagination from "@/components/shared/ui/Pagination";
 import { getArticles } from "@/features/blog/actions/getArticles.actions";
-import { BlogPostCard } from "@/features/blog/types/blog.types";
+import { IBlogPostCard } from "@/features/blog/types/blog.types";
 import {
     BLOG_POSTS_PER_PAGE,
     DEFAULT_SORT,
@@ -42,7 +42,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
           </div>
         ) : (
           <div className="max-xs:grid-cols-1 grid grid-cols-[repeat(4,auto)] justify-center gap-6 max-lg:grid-cols-3 max-md:grid-cols-2 max-md:gap-4">
-            {result.articles.map((post:BlogPostCard) => (
+            {result.articles.map((post:IBlogPostCard) => (
               <BlogCard key={post._id} {...post} />
             ))}
           </div>

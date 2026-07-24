@@ -1,8 +1,8 @@
-import { DashboardUser } from "@/features/user/types/user.types";
+import { IDashboardUser } from "@/features/user/types/user.types";
 import UserCard from "./UserCard";
 
 interface UsersListProps {
-  users: DashboardUser[]; 
+  users: IDashboardUser[]; 
 }
 
 export default function UsersList({ users }: UsersListProps) {

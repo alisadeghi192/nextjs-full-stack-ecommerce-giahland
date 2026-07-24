@@ -1,17 +1,17 @@
 import { IComment } from "@/features/comments/types/comment.types";
-export interface CareItem {
+export interface ICareItem {
   title: string;
   description: string;
 }
 
-export interface ProductCare {
-  light: CareItem[];
-  watering: CareItem[];
-  soil: CareItem[];
-  temperature: CareItem[];
-  fertilization: CareItem[];
+export interface IProductCare {
+  light: ICareItem[];
+  watering: ICareItem[];
+  soil: ICareItem[];
+  temperature: ICareItem[];
+  fertilization: ICareItem[];
 }
-export interface ProductFeatures {
+export interface IProductFeatures {
   overview: string[];
   appearance: string[];
   warnings: string[];
@@ -19,14 +19,14 @@ export interface ProductFeatures {
   summary: string[];
 }
 
-export interface ProductSEO {
+export interface IProductSEO {
   title: string;
   description: string;
   keywords?: string[];
   ogImage?: string;
 }
 
-export interface ProductType {
+export interface IProductType {
   _id: string;
   name: string;
   price: number;
@@ -50,14 +50,14 @@ export interface ProductType {
   sunlight: string;
   images: string[];
 
-  features: ProductFeatures;
-  cares: ProductCare;
+  features: IProductFeatures;
+  cares: IProductCare;
 
-  seo?: ProductSEO;
+  seo?: IProductSEO;
   comments?:  IComment[];
 }
 
-export interface ProductCardData {
+export interface IProductCardData {
   _id: string;
   name: string;
   price: number;

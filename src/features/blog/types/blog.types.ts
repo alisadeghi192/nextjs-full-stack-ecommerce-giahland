@@ -60,7 +60,7 @@ export interface IBlogPost {
   updatedAt: Date;
 }
 
-export interface BlogPostWithDetails {
+export interface IBlogPostWithDetails {
   _id: string;
   title: string;
   coverImage: string;
@@ -89,7 +89,7 @@ export interface BlogPostWithDetails {
   updatedAt: Date;
 }
 
-export interface BlogPostCard {
+export interface IBlogPostCard {
   _id: string;
   title: string;
   coverImage: string;

@@ -1,12 +1,12 @@
-import mongoose, { Schema, Model } from "mongoose";
-import { 
-  ProductType, 
-  ProductFeatures, 
-  CareItem,
-  ProductSEO 
+import {
+  ICareItem,
+  IProductFeatures,
+  IProductSEO,
+  IProductType
 } from "@/features/products/types/product.types";
+import mongoose, { Model, Schema } from "mongoose";
 
-const CareItemSchema = new Schema<CareItem>(
+const CareItemSchema = new Schema<ICareItem>(
   {
     title: { type: String, required: true },
     description: { type: String, required: true },
@@ -14,7 +14,7 @@ const CareItemSchema = new Schema<CareItem>(
   { _id: false }
 );
 
-const FeaturesSchema = new Schema<ProductFeatures>(
+const FeaturesSchema = new Schema<IProductFeatures>(
   {
     overview: { type: [String], default: [] },
     appearance: { type: [String], default: [] },
@@ -25,7 +25,7 @@ const FeaturesSchema = new Schema<ProductFeatures>(
   { _id: false }
 );
 
-const SEOSchema = new Schema<ProductSEO>(
+const SEOSchema = new Schema<IProductSEO>(
   {
     title: { type: String, required: true },
     description: { type: String, required: true },
@@ -35,7 +35,7 @@ const SEOSchema = new Schema<ProductSEO>(
   { _id: false }
 );
 
-const ProductSchema = new Schema<ProductType>(
+const ProductSchema = new Schema<IProductType>(
   {
     name: { type: String, required: true },
     price: { type: Number, required: true },
@@ -78,7 +78,7 @@ const ProductSchema = new Schema<ProductType>(
   { timestamps: true }
 );
 
-const Product: Model<ProductType> =
-mongoose.models.Product || mongoose.model<ProductType>("Product", ProductSchema);
+const Product: Model<IProductType> =
+mongoose.models.Product || mongoose.model<IProductType>("Product", ProductSchema);
 
 export default Product;

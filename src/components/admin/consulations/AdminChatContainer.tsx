@@ -2,7 +2,7 @@
 
 import ChatMessages from "@/components/features/consultations/ChatMessages";
 import { closeConsultation } from "@/features/consultations/actions/closeConsultation.actions";
-import { ConsultationMessageWithDetails } from "@/features/consultations/types/consultation.types";
+import { IConsultationMessageWithDetails } from "@/features/consultations/types/consultation.types";
 import { formatDate, toPersianCode } from "@/lib/utils/format";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -24,7 +24,7 @@ interface AdminChatContainerProps {
     avatar?: string;
   };
   status: "active" | "closed";
-  messages: ConsultationMessageWithDetails[];
+  messages: IConsultationMessageWithDetails[];
   code: string;
   createdAt: Date;
 }

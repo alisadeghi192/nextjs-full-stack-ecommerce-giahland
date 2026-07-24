@@ -1,12 +1,12 @@
 import OrderStatusBadge from "@/components/features/order/OrderStatusBadge";
 import SectionTitle from "@/components/panel/SectionTitle";
-import { DashboardOrder } from "@/features/order/types/order.types";
+import { IDashboardOrder } from "@/features/order/types/order.types";
 import { formatPrice, toPersianCode } from "@/lib/utils/format";
 import Link from "next/link";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 
 interface RecentOrdersProps {
-  orders: DashboardOrder[];
+  orders: IDashboardOrder[];
 }
 
 export default async function RecentOrders({ orders }: RecentOrdersProps) {

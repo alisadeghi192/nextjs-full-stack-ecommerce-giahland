@@ -1,6 +1,6 @@
 import { Types } from "mongoose";
 
-export interface DoctorCardInfo {
+export interface IDoctorCardInfo {
   _id: string;
   firstName: string;
   lastName: string;
@@ -12,7 +12,7 @@ export interface DoctorCardInfo {
   successfulConsultations: number;
 }
 
-export interface LastMessageInfo {
+export interface ILastMessageInfo {
   text: string;
   sender: "user" | "doctor";
   status: "sent" | "seen";
@@ -47,7 +47,7 @@ export interface IConsultationMessage {
   updatedAt: Date;
 }
 
-export interface ConsultationWithDetails {
+export interface IConsultationWithDetails {
   _id: string;
   code: string;
   user: {
@@ -65,13 +65,13 @@ export interface ConsultationWithDetails {
   };
   title: string;
   status: "active" | "closed";
-  lastMessage?: LastMessageInfo;
+  lastMessage?: ILastMessageInfo;
   unreadCount?: number;
   createdAt: Date;
   updatedAt: Date;
 }
 
-export interface ConsultationMessageWithDetails {
+export interface IConsultationMessageWithDetails {
   _id: string;
   consultationId: string;
   sender: "user" | "doctor";

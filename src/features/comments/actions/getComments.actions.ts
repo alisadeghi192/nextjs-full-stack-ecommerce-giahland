@@ -1,7 +1,7 @@
 "use server";
 
 import { getMeAction } from "@/features/auth/actions/me.actions";
-import { AdminComment } from "@/features/comments/types/comment.types";
+import { IAdminComment } from "@/features/comments/types/comment.types";
 import connectToDB from "@/lib/db/connect";
 import Article from "@/lib/db/models/Article";
 import CommentModel from "@/lib/db/models/Comment";
@@ -20,7 +20,7 @@ export async function getComments({
   filter = "all",
   sort = "newest",
 }: GetCommentsParams = {}): Promise<{
-  comments: AdminComment[];
+  comments: IAdminComment[];
   total: number;
   totalPages: number;
 }> {
@@ -100,7 +100,7 @@ export async function getComments({
     };
   }
 
-  const result: AdminComment[] = [];
+  const result: IAdminComment[] = [];
 
   for (const comment of comments) {
     let targetInfo = undefined;

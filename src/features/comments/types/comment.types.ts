@@ -22,7 +22,7 @@ export interface IComment {
   isApproved?: boolean;
   isReadByAdmin?: boolean;
 }
-export interface AdminComment extends IComment {
+export interface IAdminComment extends IComment {
   targetInfo?: {
     name: string;
     slug: string;
@@ -31,7 +31,7 @@ export interface AdminComment extends IComment {
   };
 }
 
-export interface DashboardComment {
+export interface IDashboardComment {
   _id: string;
   text: string;
   userName: string;

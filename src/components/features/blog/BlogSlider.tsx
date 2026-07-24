@@ -1,10 +1,10 @@
 "use client";
 
-import { BlogPostCard } from "@/features/blog/types/blog.types";
+import { IBlogPostCard } from "@/features/blog/types/blog.types";
 import {
-  BLOG_SWIPER_AUTOPLAY_DELAY,
-  BLOG_SWIPER_BREAKPOINTS,
-  BLOG_SWIPER_SPACE_BETWEEN,
+    BLOG_SWIPER_AUTOPLAY_DELAY,
+    BLOG_SWIPER_BREAKPOINTS,
+    BLOG_SWIPER_SPACE_BETWEEN,
 } from "@/lib/constants";
 import Link from "next/link";
 import { useRef } from "react";
@@ -17,7 +17,7 @@ import { MdKeyboardArrowLeft } from "react-icons/md";
 import "swiper/css";
 
 interface BlogSliderProps {
-  posts: BlogPostCard[];
+  posts: IBlogPostCard[];
   title?: string;
   link: string;
 }

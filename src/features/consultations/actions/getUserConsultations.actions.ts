@@ -1,7 +1,7 @@
 "use server";
 
 import { getMeAction } from "@/features/auth/actions/me.actions";
-import { LastMessageInfo } from "@/features/consultations/types/consultation.types";
+import { ILastMessageInfo } from "@/features/consultations/types/consultation.types";
 import connectToDB from "@/lib/db/connect";
 import Consultation from "@/lib/db/models/Consultation";
 import ConsultationMessage from "@/lib/db/models/ConsultationMessage";
@@ -50,7 +50,7 @@ export async function getUserConsultations({
   ]);
 
   const consultationIds = consultations.map((c) => c._id);
-  const unreadCounts = await ConsultationMessage.aggregate([
+  const IUnreadCounts = await ConsultationMessage.aggregate([
     {
       $match: {
         consultationId: { $in: consultationIds },
@@ -67,11 +67,11 @@ export async function getUserConsultations({
   ]);
 
   const unreadMap = Object.fromEntries(
-    unreadCounts.map((item) => [item._id.toString(), item.count]),
+    IUnreadCounts.map((item) => [item._id.toString(), item.count]),
   );
 
   const formatted = consultations.map((c: any) => {
-    let lastMessageData: LastMessageInfo | undefined = undefined;
+    let lastMessageData: ILastMessageInfo | undefined = undefined;
 
     if (c.lastMessage) {
       const sender = c.lastMessageSender || "user";

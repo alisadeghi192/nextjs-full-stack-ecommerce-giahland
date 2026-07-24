@@ -3,7 +3,7 @@
 import ConfirmDialog from "@/components/shared/ui/ConfirmDialog";
 import TextareaField from "@/components/shared/ui/TextareaField";
 import { replyDoctorComment } from "@/features/comments/actions/replyDoctorComment.actions";
-import { AdminComment } from "@/features/comments/types/comment.types";
+import { IAdminComment } from "@/features/comments/types/comment.types";
 import { useAllNotifications } from "@/features/notifications/hooks/useAllNotifications";
 import Link from "next/link";
 import { useState } from "react";
@@ -16,7 +16,7 @@ import {
 } from "react-icons/md";
 
 interface DoctorCommentItemProps {
-  comment: AdminComment;
+  comment: IAdminComment;
   isOpen: boolean;
   onToggle: () => void;
 }

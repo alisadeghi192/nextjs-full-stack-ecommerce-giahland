@@ -1,12 +1,12 @@
 "use server";
 
-import { ProductType } from "@/features/products/types/product.types";
+import { IProductType } from "@/features/products/types/product.types";
 import connectToDB from "@/lib/db/connect";
 import Product from "@/lib/db/models/Product";
 
 export async function getProductBySlug(
   slug: string,
-): Promise<ProductType | null> {
+): Promise<IProductType | null> {
   await connectToDB();
   const product = await Product.findOne({ slug })
     .populate({
@@ -76,5 +76,5 @@ export async function getProductBySlug(
       createdAt: comment.createdAt,
       updatedAt: comment.updatedAt,
     })),
-  } as ProductType;
+  } as IProductType;
 }

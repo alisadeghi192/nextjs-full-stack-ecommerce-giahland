@@ -1,14 +1,14 @@
 "use client";
 
 import { useUserRole } from "@/features/auth/selectors/auth.selectors";
-import { ConsultationWithDetails } from "@/features/consultations/types/consultation.types";
+import { IConsultationWithDetails } from "@/features/consultations/types/consultation.types";
 import { toPersianCode, toPersianNumber } from "@/lib/utils/format";
 import Image from "next/image";
 import Link from "next/link";
 import { IoCheckmarkDoneSharp, IoCheckmarkSharp } from "react-icons/io5";
 
 interface ConsultationCardProps {
-  consultation: ConsultationWithDetails;
+  consultation: IConsultationWithDetails;
 }
 
 export default function ConsultationCard({

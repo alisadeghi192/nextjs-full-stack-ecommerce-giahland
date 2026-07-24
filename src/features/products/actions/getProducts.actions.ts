@@ -1,6 +1,6 @@
 "use server";
 
-import { ProductCardData } from "@/features/products/types/product.types";
+import { IProductCardData } from "@/features/products/types/product.types";
 import { PRODUCT_SORT_OPTIONS, PRODUCT_TABS, PRODUCTS_PER_PAGE } from "@/lib/constants";
 import connectToDB from "@/lib/db/connect";
 import Product from "@/lib/db/models/Product";
@@ -64,7 +64,7 @@ export async function getProducts({
     products: products.map((p) => ({
       ...p,
       _id: p._id.toString(),
-    })) as ProductCardData[],
+    })) as IProductCardData[],
     total,
     totalPages: Math.ceil(total / limit),
     page,

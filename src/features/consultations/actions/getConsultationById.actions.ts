@@ -1,14 +1,14 @@
 "use server";
 
 import { getMeAction } from "@/features/auth/actions/me.actions";
-import { ConsultationWithDetails } from "@/features/consultations/types/consultation.types";
+import { IConsultationWithDetails } from "@/features/consultations/types/consultation.types";
 import connectToDB from "@/lib/db/connect";
 import Consultation from "@/lib/db/models/Consultation";
 import BaseUser, { PlantDoctor } from "@/lib/db/models/User";
 
 export async function getConsultationById(
   consultationId: string,
-): Promise<ConsultationWithDetails | null> {
+): Promise<IConsultationWithDetails | null> {
   const { user } = await getMeAction();
   if (!user) {
     return null;

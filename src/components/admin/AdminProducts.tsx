@@ -3,7 +3,7 @@
 import ProductCardGrid from "@/components/features/products/ProductCardGrid";
 import ProductCardList from "@/components/features/products/ProductCardList";
 import { deleteProductAction } from "@/features/products/actions/deleteProduct.actions";
-import { ProductCardData } from "@/features/products/types/product.types";
+import { IProductCardData } from "@/features/products/types/product.types";
 import { useIsSidebarOpen } from "@/stores/selectors/ui.selectors";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -12,7 +12,7 @@ import { MdDelete, MdEdit } from "react-icons/md";
 import ConfirmDialog from "../shared/ui/ConfirmDialog";
 
 interface AdminProductsProps {
-  products: ProductCardData[];
+  products: IProductCardData[];
   viewMode: string;
 }
 

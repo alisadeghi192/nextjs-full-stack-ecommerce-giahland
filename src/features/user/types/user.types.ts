@@ -38,22 +38,9 @@ export interface IPlantDoctorUser extends BaseUser {
 
 export type AuthUser = IAdminUser | IRegularUser | IPlantDoctorUser;
 
-export interface IUserCard {
-  user: {
-    _id: string;
-    firstName: string;
-    lastName: string;
-    mobile: string;
-    email: string;
-    role: "admin" | "user" | "plant-doctor";
-    avatar: string;
-    isBlocked: boolean;
-    createdAt: Date;
-    updatedAt?: Date;
-  };
-}
 
-export interface DashboardUser {
+
+export interface IDashboardUser {
   _id: string;
   firstName: string;
   lastName: string;
@@ -65,27 +52,4 @@ export interface DashboardUser {
   createdAt: Date;
 }
 
-export interface DashboardUserList {
-  users: DashboardUser[];
-}
 
-export interface DashbordUserWithDetails {
-  user: {
-    _id: string;
-    firstName: string;
-    lastName: string;
-    mobile: string;
-    email: string;
-    role: "admin" | "user" | "plant-doctor";
-    avatar: string;
-    createdAt: Date;
-    isBlocked?: boolean;
-    postalCode?: string;
-    address?: string;
-    specialties?: string;
-    yearsOfExperience?: number;
-    consultationFee?: number;
-    successfulConsultations?: number;
-  };
-  isSuperAdmin?: boolean;
-}

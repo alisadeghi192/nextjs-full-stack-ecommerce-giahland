@@ -1,6 +1,6 @@
 "use server";
 
-import { BlogPostWithDetails } from "@/features/blog/types/blog.types";
+import { IBlogPostWithDetails } from "@/features/blog/types/blog.types";
 import connectToDB from "@/lib/db/connect";
 import Article from "@/lib/db/models/Article";
 import { notFound } from "next/navigation";
@@ -8,7 +8,7 @@ const CommentModel = require("@/lib/db/models/Comment").default;
 
 export async function getArticleBySlug(
   slug: string,
-): Promise<BlogPostWithDetails> {
+): Promise<IBlogPostWithDetails> {
   await connectToDB();
 
 const article = await Article.findOne({ slug })

@@ -7,7 +7,7 @@ import { approveComment } from "@/features/comments/actions/approveComment.actio
 import { deleteComment } from "@/features/comments/actions/deleteComment.actions";
 import { replyComment } from "@/features/comments/actions/replyComment.actions";
 import { toggleCommentReadByAdmin } from "@/features/comments/actions/toggleCommentReadByAdmin.actions";
-import { AdminComment } from "@/features/comments/types/comment.types";
+import { IAdminComment } from "@/features/comments/types/comment.types";
 import { useAllNotifications } from "@/features/notifications/hooks/useAllNotifications";
 import Link from "next/link";
 import { useState } from "react";
@@ -23,7 +23,7 @@ import {
 } from "react-icons/md";
 
 interface AdminCommentItemProps {
-  comment: AdminComment;
+  comment: IAdminComment;
   isOpen: boolean;
   onToggle: () => void;
   onAfterDelete?: () => void;

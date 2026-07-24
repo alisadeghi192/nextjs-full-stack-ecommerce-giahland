@@ -1,9 +1,9 @@
-import { ProductCardData } from "@/features/products/types/product.types";
+import { IProductCardData } from "@/features/products/types/product.types";
 import { getBulkLikeStatus } from "@/features/user/actions/wishlist.actions";
 import ProductCardGrid from "./ProductCardGrid";
 
 interface ProductsGridProps {
-  products: ProductCardData[];
+  products: IProductCardData[];
 }
 
 export default async function ProductsGrid({ products }: ProductsGridProps) {

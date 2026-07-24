@@ -1,7 +1,7 @@
 "use server";
 
 import { getMeAction } from "@/features/auth/actions/me.actions";
-import { ProductCardData } from "@/features/products/types/product.types";
+import { IProductCardData } from "@/features/products/types/product.types";
 import { PRODUCTS_PER_PAGE } from "@/lib/constants";
 import connectToDB from "@/lib/db/connect";
 import Product from "@/lib/db/models/Product";
@@ -66,7 +66,7 @@ export async function getWishlistProducts({
     products: products.map((p) => ({
       ...p,
       _id: p._id.toString(),
-    })) as ProductCardData[],
+    })) as IProductCardData[],
     total,
     totalPages: Math.ceil(total / limit),
     page,

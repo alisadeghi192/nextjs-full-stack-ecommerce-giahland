@@ -1,12 +1,12 @@
 "use client";
 
-import { AdminComment } from "@/features/comments/types/comment.types";
+import { IAdminComment } from "@/features/comments/types/comment.types";
 import { useUrlParams } from "@/lib/hooks/useUrlParams";
 import { useEffect, useState } from "react";
 import DoctorCommentItem from "./DoctorCommentItem";
 
 interface DoctorCommentsListProps {
-  comments: AdminComment[];
+  comments: IAdminComment[];
   currentPage: number;
 }
 

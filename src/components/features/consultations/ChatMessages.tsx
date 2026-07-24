@@ -1,7 +1,7 @@
 "use client";
 
 import { useUserRole } from "@/features/auth/selectors/auth.selectors";
-import { ConsultationMessageWithDetails } from "@/features/consultations/types/consultation.types";
+import { IConsultationMessageWithDetails } from "@/features/consultations/types/consultation.types";
 import { useAllNotifications } from "@/features/notifications/hooks/useAllNotifications";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
@@ -9,7 +9,7 @@ import { IoCheckmarkDoneSharp, IoCheckmarkSharp } from "react-icons/io5";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 interface ChatMessagesProps {
-  initialMessages: ConsultationMessageWithDetails[];
+  initialMessages: IConsultationMessageWithDetails[];
   isLoading?: boolean;
 }
 

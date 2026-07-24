@@ -1,11 +1,11 @@
 import SectionTitle from "@/components/panel/SectionTitle";
-import { DashboardTickets } from "@/features/tickets/types/ticket.types";
+import { IDashboardTickets } from "@/features/tickets/types/ticket.types";
 import { formatDate } from "@/lib/utils/format";
 import Link from "next/link";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 
 interface RecentTicketsProps {
-  tickets: DashboardTickets[];
+  tickets: IDashboardTickets[];
 }
 
 export default function RecentTickets({ tickets }: RecentTicketsProps) {
@@ -28,7 +28,7 @@ export default function RecentTickets({ tickets }: RecentTicketsProps) {
         {tickets.length === 0 ? (
           <p className="text-neutral9 py-4 text-center">تیکتی وجود ندارد.</p>
         ) : (
-          tickets.map((ticket: DashboardTickets) => (
+          tickets.map((ticket: IDashboardTickets) => (
             <div
               key={ticket._id}
               className={`border-neutral3 max-xs:px-2 max-xs:py-1 rounded-2xl border p-3 shadow-lg transition max-sm:p-3 ${ticket.status === "pending" ? "border-yellow-400 bg-yellow-50" : ""}`}

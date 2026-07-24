@@ -38,11 +38,8 @@ export interface IOrder {
   deliveryMethod: "pickup" | "courier";
 }
 
-export interface OrderWithTotal extends IOrder {
-  totalItems: number;
-}
 
-export interface DashboardOrder {
+export interface IDashboardOrder {
   _id: string;
   trackingCode?: string;
   finalAmount: number;

@@ -1,11 +1,11 @@
 "use client";
 
 import DoctorCard from "@/components/features/consultations/DoctorCard";
-import { DoctorCardInfo } from "@/features/consultations/types/consultation.types";
+import { IDoctorCardInfo } from "@/features/consultations/types/consultation.types";
 import { useIsSidebarOpen } from "@/stores/selectors/ui.selectors";
 
 interface DoctorsListProps {
-  doctors: DoctorCardInfo[];
+  doctors: IDoctorCardInfo[];
 }
 
 export default function DoctorsList({ doctors }: DoctorsListProps) {

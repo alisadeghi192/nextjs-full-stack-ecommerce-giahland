@@ -1,11 +1,11 @@
-import { CareItem } from "@/features/products/types/product.types";
+import { ICareItem } from "@/features/products/types/product.types";
 
 interface ProductCaresRendererProps {
-  light: CareItem[];
-  watering: CareItem[];
-  soil: CareItem[];
-  temperature: CareItem[];
-  fertilization: CareItem[];
+  light: ICareItem[];
+  watering: ICareItem[];
+  soil: ICareItem[];
+  temperature: ICareItem[];
+  fertilization: ICareItem[];
 }
 
 export default function ProductCaresRenderer({

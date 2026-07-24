@@ -2,11 +2,11 @@
 
 import ProductCardGrid from "@/components/features/products/ProductCardGrid";
 import ProductCardList from "@/components/features/products/ProductCardList";
-import { ProductCardData } from "@/features/products/types/product.types";
+import { IProductCardData } from "@/features/products/types/product.types";
 import { useIsSidebarOpen } from "@/stores/selectors/ui.selectors";
 
 interface WishlistProductsProps {
-  products: ProductCardData[];
+  products: IProductCardData[];
   viewMode: string;
 }
 

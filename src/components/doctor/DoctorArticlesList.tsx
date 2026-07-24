@@ -6,11 +6,11 @@ import { MdDelete } from "react-icons/md";
 import BlogCard from "@/components/features/blog/BlogCard";
 import ConfirmDialog from "@/components/shared/ui/ConfirmDialog";
 import { deleteArticleAction } from "@/features/blog/actions/deleteArticle.actions";
-import { BlogPostCard } from "@/features/blog/types/blog.types";
+import { IBlogPostCard } from "@/features/blog/types/blog.types";
 import { useIsSidebarOpen } from "@/stores/selectors/ui.selectors";
 
 interface DoctorArticlesListProps {
-  articles: BlogPostCard[];
+  articles: IBlogPostCard[];
   showActions?: boolean;
 }
 

@@ -2,9 +2,9 @@
 
 import connectToDB from "@/lib/db/connect";
 import { PlantDoctor } from "@/lib/db/models/User";
-import { DoctorCardInfo } from "../types/consultation.types";
+import { IDoctorCardInfo } from "../types/consultation.types";
 
-export async function getDoctors(): Promise<DoctorCardInfo[]> {
+export async function getDoctors(): Promise<IDoctorCardInfo[]> {
   await connectToDB();
 
   const doctors = await PlantDoctor.find({})

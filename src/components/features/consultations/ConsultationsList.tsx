@@ -1,16 +1,16 @@
 "use client";
 
 import {
-  useIsLoading
+    useIsLoading
 } from "@/features/auth/selectors/auth.selectors";
-import { ConsultationWithDetails } from "@/features/consultations/types/consultation.types";
+import { IConsultationWithDetails } from "@/features/consultations/types/consultation.types";
 import { useAllNotifications } from "@/features/notifications/hooks/useAllNotifications";
 import { useIsSidebarOpen } from "@/stores/selectors/ui.selectors";
 import { useEffect } from "react";
 import ConsultationCard from "./ConsultationCard";
 
 interface ConsultationsListProps {
-  consultations: ConsultationWithDetails[];
+  consultations: IConsultationWithDetails[];
 }
 
 export default function ConsultationsList({

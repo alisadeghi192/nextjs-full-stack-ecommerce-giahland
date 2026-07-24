@@ -1,11 +1,11 @@
 "use client";
 
-import { ProductCardData } from "@/features/products/types/product.types";
+import { IProductCardData } from "@/features/products/types/product.types";
 import { useRef } from "react";
 import {
-  MdKeyboardArrowLeft,
-  MdNavigateBefore,
-  MdOutlineNavigateNext,
+    MdKeyboardArrowLeft,
+    MdNavigateBefore,
+    MdOutlineNavigateNext,
 } from "react-icons/md";
 import type { Swiper as SwiperType } from "swiper";
 import { Autoplay, Navigation } from "swiper/modules";
@@ -13,9 +13,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import ProductCardGrid from "./ProductCardGrid";
 
 import {
-  PRODUCT_SWIPER_AUTOPLAY_DELAY,
-  PRODUCT_SWIPER_BREAKPOINTS,
-  PRODUCT_SWIPER_SPACE_BETWEEN,
+    PRODUCT_SWIPER_AUTOPLAY_DELAY,
+    PRODUCT_SWIPER_BREAKPOINTS,
+    PRODUCT_SWIPER_SPACE_BETWEEN,
 } from "@/lib/constants";
 import Link from "next/link";
 import "swiper/css";
@@ -24,7 +24,7 @@ import "swiper/css/pagination";
 
 interface ProductSliderProps {
   title: string;
-  products: ProductCardData[];
+  products: IProductCardData[];
   link: string;
   likeStatuses?: Record<string, boolean>;
 }

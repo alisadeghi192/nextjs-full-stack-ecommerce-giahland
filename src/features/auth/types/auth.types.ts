@@ -28,12 +28,6 @@ export interface IAuthState {
   checkAuth: () => Promise<void>;
 }
 
-export interface IAuthResponse {
-  success: boolean;
-  message?: string;
-  user?: UserWithoutPassword;
-}
-
 export interface IGetMeResponse {
   user: {
     _id: string;

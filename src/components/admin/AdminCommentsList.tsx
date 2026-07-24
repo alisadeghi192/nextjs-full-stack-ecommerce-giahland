@@ -1,11 +1,11 @@
 "use client";
 
-import { AdminComment } from "@/features/comments/types/comment.types";
+import { IAdminComment } from "@/features/comments/types/comment.types";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import AdminCommentItem from "./AdminCommentItem";
 interface AdminCommentsListProps {
-  comments: AdminComment[];
+  comments: IAdminComment[];
 }
 
 export default function AdminCommentsList({

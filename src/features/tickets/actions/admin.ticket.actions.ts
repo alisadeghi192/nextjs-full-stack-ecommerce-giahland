@@ -2,8 +2,8 @@
 
 import { getMeAction } from "@/features/auth/actions/me.actions";
 import {
-  PaginatedTickets,
-  TicketFilters,
+  IPaginatedTickets,
+  ITicketFilters,
 } from "@/features/tickets/types/ticket.types";
 import connectToDB from "@/lib/db/connect";
 import Ticket from "@/lib/db/models/Ticket";
@@ -64,8 +64,8 @@ export async function replyTicketAction(ticketId: string, message: string) {
 export async function getAllTickets(
   page: number = 1,
   limit: number = 10,
-  filters: TicketFilters = {},
-): Promise<PaginatedTickets> {
+  filters: ITicketFilters = {},
+): Promise<IPaginatedTickets> {
   const { user } = await getMeAction();
 
   if (!user || user.role !== "admin") {

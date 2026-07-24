@@ -1,10 +1,10 @@
 import SectionTitle from "@/components/panel/SectionTitle";
-import { DashboardComment } from "@/features/comments/types/comment.types";
+import { IDashboardComment } from "@/features/comments/types/comment.types";
 import { formatDate } from "@/lib/utils/format";
 import Link from "next/link";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 interface RecentCommentsProps {
-  comments: DashboardComment[];
+  comments: IDashboardComment[];
 }
 
 export default function RecentComments({ comments }: RecentCommentsProps) {
@@ -27,7 +27,7 @@ export default function RecentComments({ comments }: RecentCommentsProps) {
         {comments.length === 0 ? (
           <p className="text-neutral9 py-4 text-center">کامنتی وجود ندارد.</p>
         ) : (
-          comments.map((comment: DashboardComment) => (
+          comments.map((comment: IDashboardComment) => (
             <div
               key={comment._id}
               className={`border-neutral3 max-xs:py-1 max-xs:px-2 rounded-2xl border p-3 shadow-lg transition max-sm:p-3 ${

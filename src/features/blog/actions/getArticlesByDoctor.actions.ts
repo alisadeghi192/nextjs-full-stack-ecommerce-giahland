@@ -1,7 +1,7 @@
 "use server";
 
 import { getMeAction } from "@/features/auth/actions/me.actions";
-import { BlogPostCard } from "@/features/blog/types/blog.types";
+import { IBlogPostCard } from "@/features/blog/types/blog.types";
 import { BLOG_SORT_OPTIONS, BLOG_TABS } from "@/lib/constants/blog";
 import connectToDB from "@/lib/db/connect";
 import Article from "@/lib/db/models/Article";
@@ -71,7 +71,7 @@ export async function getArticlesByDoctor({
         },
         category: article.category,
         publishedAt: article.publishedAt,
-      } as BlogPostCard;
+      } as IBlogPostCard;
     }),
     total,
     totalPages: Math.ceil(total / limit),

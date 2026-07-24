@@ -1,14 +1,14 @@
 "use server";
 
 import { getMeAction } from "@/features/auth/actions/me.actions";
-import { ConsultationMessageWithDetails } from "@/features/consultations/types/consultation.types";
+import { IConsultationMessageWithDetails } from "@/features/consultations/types/consultation.types";
 import connectToDB from "@/lib/db/connect";
 import Consultation from "@/lib/db/models/Consultation";
 import ConsultationMessage from "@/lib/db/models/ConsultationMessage";
 
 export async function getConsultationMessages(
   consultationId: string,
-): Promise<ConsultationMessageWithDetails[]> {
+): Promise<IConsultationMessageWithDetails[]> {
   const { user } = await getMeAction();
   if (!user) return [];
 
