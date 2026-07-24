@@ -57,11 +57,11 @@ export default function FactorInfo({ order }: FactorInfoProps) {
           <p className="mt-1 font-medium max-[580px]:text-sm max-md:font-normal">
             {order.deliveryMethod === "courier" ? (
               <>
-                {order.address || "ثبت نشده"}
+                {toPersianCode(order.address) || "ثبت نشده"}
                 <br /> کد پستی:{toPersianCode(userInfo.postalCode)}
               </>
             ) : (
-              <>{order.address || "ثبت نشده"}</>
+              <>{toPersianCode(order.address) || "ثبت نشده"}</>
             )}
           </p>
         </div>
