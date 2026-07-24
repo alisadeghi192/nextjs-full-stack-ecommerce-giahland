@@ -40,7 +40,7 @@ export default async function AdminConsultationsPage({
   const baseUrl = `?status=${status}&search=${search}`;
 
   return (
-    <div className="space-y-4">
+    <section className="space-y-4">
       <SectionTitle
         title={`مدیریت مشاوره‌ها (${toPersianNumber(result.total)})`}
       />
@@ -66,6 +66,6 @@ export default async function AdminConsultationsPage({
           )}
         </>
       )}
-    </div>
+    </section>
   );
 }

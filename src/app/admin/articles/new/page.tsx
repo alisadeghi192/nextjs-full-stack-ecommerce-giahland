@@ -11,12 +11,12 @@ export default async function NewArticlePage() {
   }
 
   return (
-    <div className="w-full">
+    <section className="w-full">
       <div className="flex items-center justify-between mb-4">
         <SectionTitle title="نوشتن مقاله جدید" className="mb-0!" />
         <BackButton />
       </div>
       <ArticleForm />
-    </div>
+    </section>
   );
 }

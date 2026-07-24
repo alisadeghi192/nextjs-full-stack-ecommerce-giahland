@@ -12,7 +12,7 @@ export default async function BlockedPage() {
   }
 
   return (
-    <div className="flex items-center justify-center">
+    <section className="flex items-center justify-center">
       <div className="mt-6 w-full max-w-md rounded-2xl bg-white p-8 max-sm:p-4 text-center shadow-2xl">
         <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-red-100">
           <MdBlock className="size-10 text-red-600" />
@@ -34,6 +34,6 @@ export default async function BlockedPage() {
           صفحه تماس با ما
         </OutlineButton>
       </div>
-    </div>
+    </section>
   );
 }

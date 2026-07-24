@@ -27,7 +27,7 @@ export default async function AdminUserDetailPage({ params }: PageProps) {
   const isRegularUser = targetUser.role === "user";
 
   return (
-    <div className="space-y-4">
+    <section className="space-y-4">
       <UserDetailHeader
       />
 
@@ -39,6 +39,6 @@ export default async function AdminUserDetailPage({ params }: PageProps) {
         isSuperAdmin={isSuperAdmin}
         isRegularUser={isRegularUser}
       />
-    </div>
+    </section>
   );
 }

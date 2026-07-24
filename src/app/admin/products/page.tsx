@@ -36,7 +36,7 @@ export default async function AdminProductsPage({ searchParams }: PageProps) {
   const baseUrl = `?category=${activeTab}&sort=${selectedSort}&search=${searchQuery}&view=${viewMode}`;
 
   return (
-    <div>
+    <section>
       <div className="flex mb-2 items-center justify-between">
         <SectionTitle title={`مدیریت محصولات (${toPersianNumber(result.total)})`} className="mb-0!" />
         <OutlineButton
@@ -65,6 +65,6 @@ export default async function AdminProductsPage({ searchParams }: PageProps) {
           />
         </div>
       )}
-    </div>
+    </section>
   );
 }

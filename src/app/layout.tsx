@@ -100,9 +100,9 @@ export default async function RootLayout({
     >
       <body className="font-modam text-BLACK antialiased">
         <GeneralProvider initialUser={initialUser}>
-          <div className="flex min-h-dvh flex-col justify-between">
+          <main className="flex min-h-dvh flex-col justify-between">
             {children}
-          </div>
+          </main>
         </GeneralProvider>
         <ScrollToTop />
         <Toaster position="top-center" />

@@ -27,7 +27,7 @@ export default async function AdminArticlesPage({ searchParams }: PageProps) {
   const baseUrl = `?sort=${selectedSort}&category=${activeTab}`;
 
   return (
-    <div className="w-full">
+    <section className="w-full">
       <DoctorArticlesHeader activeTab={activeTab} selectedSort={selectedSort} total={result.total}/>
       {result.total === 0 ? (
         <div className="border-neutral3 rounded-2xl border p-6 text-center text-gray-500 shadow-lg">
@@ -47,6 +47,6 @@ export default async function AdminArticlesPage({ searchParams }: PageProps) {
           )}
         </>
       )}
-    </div>
+    </section>
   );
 }

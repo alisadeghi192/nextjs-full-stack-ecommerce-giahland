@@ -24,7 +24,7 @@ export default async function ConsultationSuccessPage({
   }
 
   return (
-    <main className="max-xs:mt-6 container mt-5 flex min-h-[calc(100dvh-200px)] items-center justify-center">
+    <section className="max-xs:mt-6 container mt-5 flex min-h-[calc(100dvh-200px)] items-center justify-center">
       <PaymentSuccess
         variant="consultation"
         trackingCode={consultation.code}
@@ -34,6 +34,6 @@ export default async function ConsultationSuccessPage({
           value: `دکتر ${consultation.doctor.firstName} ${consultation.doctor.lastName}`,
         }}
       />
-    </main>
+    </section>
   );
 }

@@ -34,9 +34,8 @@ export default async function ChatPage({ params }: ChatPageProps) {
     displayPerson.avatar || "/static/images/default-user.webp";
 
   return (
-    <div className="relative flex h-[calc(100dvh-61px)] max-md:h-[calc(100dvh-56px)] flex-col bg-[url('/static/images/chat-bg.webp')] bg-size-[350px] bg-fixed bg-repeat">
+    <section className="relative flex h-[calc(100dvh-61px)] max-md:h-[calc(100dvh-56px)] flex-col bg-[url('/static/images/chat-bg.webp')] bg-size-[350px] bg-fixed bg-repeat">
       {/* Header */}
-
       <ChatHeader
         consultationId={id}
         displayPersonRole={displayPersonRole}
@@ -45,7 +44,6 @@ export default async function ChatPage({ params }: ChatPageProps) {
         status={consultation.status}
         isDoctor={isDoctor}
       />
-
       {/* Messages */}
       <ChatMessages initialMessages={messages} />
       {/* Input */}
@@ -54,6 +52,6 @@ export default async function ChatPage({ params }: ChatPageProps) {
         consultationStatus={consultation.status}
         username={username}
       />
-    </div>
+    </section>
   );
 }

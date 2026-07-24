@@ -27,7 +27,7 @@ export default async function AdminConsultationDetailPage({
   const messages = await getConsultationMessages(id);
 
   return (
-    <div className="h-[calc(100dvh-61px)] max-md:h-[calc(100dvh-56px)]">
+    <section className="h-[calc(100dvh-61px)] max-md:h-[calc(100dvh-56px)]">
       <AdminChatContainer
         consultationId={id}
         user={{
@@ -45,6 +45,6 @@ export default async function AdminConsultationDetailPage({
         code={consultation.code}
         createdAt={consultation.createdAt}
       />
-    </div>
+    </section>
   );
 }

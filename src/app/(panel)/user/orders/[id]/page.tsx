@@ -34,13 +34,13 @@ export default async function OrderDetailPage({
   const isPending = order.status === "pending";
 
   return (
-    <div className="w-full space-y-4">
-      <FactorHeader href="/user/orders"/>
+    <section className="w-full space-y-4">
+      <FactorHeader/>
       <div className="border-neutral3 bg-neutral2 rounded-2xl border p-4 shadow-lg">
         <FactorInfo order={order} />
         <FactorItems order={order} />
       </div>
       {isPending && <FactorPaymentButton order={order} />}
-    </div>
+    </section>
   );
 }

@@ -38,7 +38,7 @@ export default async function WishListPage({
   }
 
   return (
-    <div className="w-full">
+    <section className="w-full">
       <SectionTitle title={`علاقه‌مندی‌ها(${toPersianNumber(result.total)})`} />
       <WishlistToolbar />
       <WishlistProducts
@@ -54,6 +54,6 @@ export default async function WishListPage({
           />
         </div>
       )}
-    </div>
+    </section>
   );
 }

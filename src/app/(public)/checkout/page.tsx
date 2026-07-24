@@ -28,7 +28,7 @@ export default async function CheckoutPage() {
   const { items, totalItems, totalPrice } = cartResult;
 
   return (
-    <main className="container">
+    <section className="container">
       <Breadcrumb />
       <h1 className="mb-4 text-lg font-bold max-md:text-base">تسویه حساب</h1>
 
@@ -38,6 +38,6 @@ export default async function CheckoutPage() {
         totalPrice={totalPrice}
         initialUserInfo={userInfo}
       />
-    </main>
+    </section>
   );
 }

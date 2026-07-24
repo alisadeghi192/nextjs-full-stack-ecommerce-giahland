@@ -31,7 +31,7 @@ export default async function AdminTicketsPage({ searchParams }: PageProps) {
   const baseUrl = `?role=${role || ""}&sort=${sort || "newest"}&status=${status || ""}&department=${department || ""}`;
 
   return (
-    <div>
+    <section>
       <SectionTitle title={`مدیریت تیکت‌ها (${toPersianNumber(total)})`} />
       <AdminTicketsHeader />
       <AdminTicketList tickets={tickets} />
@@ -44,6 +44,6 @@ export default async function AdminTicketsPage({ searchParams }: PageProps) {
           />
         </div>
       )}
-    </div>
+    </section>
   );
 }

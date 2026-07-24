@@ -1,10 +1,10 @@
-import Image from "next/image";
 import AuthToggle from "@/components/features/auth/AuthToggle";
 import MobileNav from "@/components/shared/layout/public/header/mobile/MobileHeader";
+import Image from "next/image";
 
 export default function AuthPage() {
   return (
-    <main className="relative flex h-dvh items-center max-sm:flex-col-reverse">
+    <section className="relative flex h-dvh items-center max-sm:flex-col-reverse">
       <div className="absolute top-0 right-0 left-0 z-20  sm:hidden ">
         <MobileNav hasSearchInput={false} isScrolled={true} useInLoginPage={true}/>
       </div>
@@ -17,6 +17,6 @@ export default function AuthPage() {
           className="object-cover  max-sm:mt-12"
         />
       </div>
-    </main>
+    </section>
   );
 }

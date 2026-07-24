@@ -29,7 +29,7 @@ export default async function OrderSuccessPage({
   const order = result.order;
 
   return (
-    <main className="max-xs:mt-6 container mt-10 flex items-center justify-center">
+    <section className="max-xs:mt-6 container mt-10 flex items-center justify-center">
       <PaymentSuccess
         variant="order"
         trackingCode={order.trackingCode}
@@ -40,6 +40,6 @@ export default async function OrderSuccessPage({
             order.deliveryMethod === "courier" ? "ارسال با پیک" : "تحویل حضوری",
         }}
       />
-    </main>
+    </section>
   );
 }

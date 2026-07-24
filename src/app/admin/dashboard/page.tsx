@@ -57,7 +57,7 @@ export default async function AdminDashboardPage() {
   const totalRevenue = revenueResult.length > 0 ? revenueResult[0].total : 0;
 
   return (
-    <div className="space-y-4">
+    <section className="space-y-4">
       <div className="flex items-center justify-between">
         <SectionTitle title="داشبورد مدیریت" className="mb-0!" />
         <span className="text-primary font-medium">
@@ -86,6 +86,6 @@ export default async function AdminDashboardPage() {
         <RecentComments comments={recentComments} />
         <RecentTickets tickets={recentTickets} />
       </div>
-    </div>
+    </section>
   );
 }

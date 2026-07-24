@@ -41,7 +41,7 @@ export default async function AdminOrdersPage({ searchParams }: PageProps) {
   const baseUrl = `?status=${status}&search=${search}`;
 
   return (
-    <div className="w-full">
+    <section className="w-full">
         <SectionTitle title={`مدیریت سفارش ها (${toPersianNumber(result.total)})`}/>
 
       <AdminOrdersHeader />
@@ -72,6 +72,6 @@ export default async function AdminOrdersPage({ searchParams }: PageProps) {
           )}
         </>
       )}
-    </div>
+    </section>
   );
 }

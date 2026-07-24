@@ -16,7 +16,7 @@ export default async function CartPage() {
 
   if (!success || totalItems === 0) {
     return (
-      <main className="container [&+*]:pb-10!">
+      <section className="container [&+*]:pb-10!">
         <Breadcrumb />
         <div className="py-12 text-center">
           <h2 className="max-xs:text-xl text-2xl font-bold">
@@ -32,7 +32,7 @@ export default async function CartPage() {
             مشاهده محصولات
           </PrimaryButton>
         </div>
-      </main>
+      </section>
     );
   }
 

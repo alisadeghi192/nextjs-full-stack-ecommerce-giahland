@@ -28,7 +28,7 @@ export default async function UserConsultationsPage({
   const baseUrl = `?sort=${selectedSort}&search=${searchQuery}`;
 
   return (
-    <div className="w-full">
+    <section className="w-full">
       <ConsultationsListHeader searchQuery={searchQuery} isDoctor={isDoctor} />
 
       {result.total === 0 ? (
@@ -49,6 +49,6 @@ export default async function UserConsultationsPage({
           )}
         </>
       )}
-    </div>
+    </section>
   );
 }

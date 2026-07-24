@@ -34,7 +34,7 @@ export default async function DoctorCommentsPage({ searchParams }: PageProps) {
   const baseUrl = `?sort=${currentSort}`;
 
   return (
-    <div>
+    <section>
       <SectionTitle title="کامنت‌های قابل پاسخ" />
       <DoctorCommentHeader sort={currentSort}  />
       <DoctorCommentsList comments={result.comments} currentPage={currentPage}/>
@@ -47,6 +47,6 @@ export default async function DoctorCommentsPage({ searchParams }: PageProps) {
           />
         </div>
       )}
-    </div>
+    </section>
   );
 }

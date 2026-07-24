@@ -31,7 +31,7 @@ export default async function AdminContactMessagesPage({
   const baseUrl = `?status=${status || "all"}&sort=${sort || "newest"}`;
 
   return (
-    <div>
+    <section>
       <SectionTitle title={`پیام‌های دریافتی (${toPersianNumber(result.total)})`} />
       <AdminContactMessagesHeader
         currentStatus={status || "all"}
@@ -47,6 +47,6 @@ export default async function AdminContactMessagesPage({
           />
         </div>
       )}
-    </div>
+    </section>
   );
 }

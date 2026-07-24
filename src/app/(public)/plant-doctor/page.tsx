@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function PlantDoctorPage() {
   return (
-    <main className="container">
+    <section className="container">
       <Breadcrumb />
       <section className="border-neutral4 shadow-xl m-auto flex w-80/100 items-center justify-center gap-x-20 rounded-2xl border max-xl:w-full max-lg:gap-x-10 max-md:flex-col max-md:p-4">
         <Image
@@ -96,6 +96,6 @@ export default function PlantDoctorPage() {
           شروع مشاوره
         </ConsultationButton>
       </section>
-    </main>
+    </section>
   );
 }

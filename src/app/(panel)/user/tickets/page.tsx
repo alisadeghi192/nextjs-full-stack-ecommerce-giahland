@@ -7,10 +7,10 @@ export default async function TicketsPage() {
   const tickets = await getUserTickets();
 
   return (
-    <div className="w-full">
+    <section className="w-full">
       <SectionTitle title="تیکت های پشتیبانی" />
       <TicketForm />
       <TicketList tickets={tickets} />
-    </div>
+    </section>
   );
 }

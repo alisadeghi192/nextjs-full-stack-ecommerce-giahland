@@ -10,9 +10,9 @@ export default async function NewDoctorPage() {
   }
 
   return (
-    <div className="space-y-4">
+    <section className="space-y-4">
       <CreateDoctorHeader />
       <CreateDoctorForm />
-    </div>
+    </section>
   );
 }

@@ -47,7 +47,7 @@ export default async function OrderPaymentPage({ params }: OrderPaymentPageProps
   }
 
   return (
-    <div className="flex  mt-10 max-xs:mt-6 items-center justify-center">
+    <section className="flex  mt-10 max-xs:mt-6 items-center justify-center">
       <PaymentCard
         title="پرداخت سفارش"
         amount={order.finalAmount}
@@ -56,6 +56,6 @@ export default async function OrderPaymentPage({ params }: OrderPaymentPageProps
         isLoading={false}
         onSubmit={handlePayment}
       />
-    </div>
+    </section>
   );
 }

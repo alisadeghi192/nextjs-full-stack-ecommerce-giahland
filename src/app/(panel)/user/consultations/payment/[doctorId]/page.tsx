@@ -42,7 +42,7 @@ export default async function ConsultationPaymentPage({
   }
 
   return (
-    <div className="mt-5 flex min-h-[calc(100dvh-200px)] items-center justify-center">
+    <section className="mt-5 flex min-h-[calc(100dvh-200px)] items-center justify-center">
       <PaymentCard
         title="پرداخت مشاوره"
         amount={doctor.consultationFee}
@@ -53,6 +53,6 @@ export default async function ConsultationPaymentPage({
         isLoading={false}
         onSubmit={handlePayment}
       />
-    </div>
+    </section>
   );
 }

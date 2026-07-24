@@ -29,7 +29,7 @@ export default async function AdminCommentsPage({ searchParams }: PageProps) {
   const baseUrl = `?filter=${filter || "all"}&sort=${sort || "newest"}`;
 
   return (
-    <div>
+    <section>
       <SectionTitle title={`مدیریت کامنت‌ها (${toPersianNumber(result.total)})`} />
       <AdminCommentHeader />
       <AdminCommentsList comments={result.comments} />
@@ -42,6 +42,6 @@ export default async function AdminCommentsPage({ searchParams }: PageProps) {
           />
         </div>
       )}
-    </div>
+    </section>
   );
 }

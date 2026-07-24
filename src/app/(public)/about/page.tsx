@@ -10,7 +10,7 @@ import { RiPlantFill } from "react-icons/ri";
 
 export default function AboutPage() {
   return (
-    <main className="container">
+    <section className="container">
       <Breadcrumb />
       <section className="mt-12 flex gap-x-14 max-lg:items-center max-lg:gap-x-10 max-md:mt-0 max-md:flex-col-reverse">
         <div className="-mt-4 flex flex-col max-md:mt-6 max-md:basis-full">
@@ -130,6 +130,6 @@ export default function AboutPage() {
           مشاوره با گیاه‌پزشک
         </PrimaryButton>
       </div>
-    </main>
+    </section>
   );
 }

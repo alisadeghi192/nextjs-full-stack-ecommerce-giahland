@@ -64,12 +64,12 @@ export default async function EditProductPage({
   };
 
   return (
-    <div className="w-full">
+    <section className="w-full">
       <div className="flex items-center justify-between mb-4">
         <SectionTitle title="ویرایش محصول" className="mb-0!"/>
         <BackButton />
       </div>
       <ProductForm defaultValues={defaultValues} isEdit={true} productId={id} />
-    </div>
+    </section>
   );
 }

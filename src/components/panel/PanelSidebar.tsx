@@ -56,7 +56,7 @@ export default function PanelSidebar({
   }, [pathname]);
 
   return (
-    <div className="custom-scroll ltr *:rtl flex h-full flex-col overflow-x-hidden overflow-y-auto py-6 pr-1 max-md:py-0">
+    <aside className="custom-scroll ltr *:rtl flex h-full flex-col overflow-x-hidden overflow-y-auto py-6 pr-1 max-md:py-0">
       <div>
         <div className="flex shrink-0 items-center gap-x-2">
           <Image
@@ -172,6 +172,6 @@ export default function PanelSidebar({
           <span className="font-medium text-nowrap">خروج از حساب کاربری</span>
         )}
       </ConfirmDialog>
-    </div>
+    </aside>
   );
 }

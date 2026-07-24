@@ -15,7 +15,7 @@ export default async function ConsultationsPage() {
   const hasDoctors = doctors.length > 0;
 
   return (
-    <div className="w-full">
+    <section className="w-full">
       <div className="mb-4 flex items-center justify-between">
         <SectionTitle title="شروع مشاوره" className="mb-0!" />
         <ConsultationsPageHeader />
@@ -27,6 +27,6 @@ export default async function ConsultationsPage() {
       ) : (
         <DoctorsList doctors={doctors} />
       )}
-    </div>
+    </section>
   );
 }

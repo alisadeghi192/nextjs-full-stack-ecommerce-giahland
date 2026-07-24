@@ -46,7 +46,7 @@ export default async function AdminUsersPage({ searchParams }: PageProps) {
   const baseUrl = `?role=${role}&status=${status}&search=${search}&sort=${sort}`;
 
   return (
-    <div className="space-y-4">
+    <section className="space-y-4">
       <div className="flex items-center justify-between">
         <SectionTitle title={`مدیریت کاربران (${(toPersianNumber(result.total))})`} className="mb-0!" />
         <OutlineButton
@@ -77,6 +77,6 @@ export default async function AdminUsersPage({ searchParams }: PageProps) {
           />
         </div>
       )}
-    </div>
+    </section>
   );
 }

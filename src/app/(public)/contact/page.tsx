@@ -16,7 +16,7 @@ import { FaInstagram, FaTelegram, FaWhatsapp } from "react-icons/fa6";
 
 export default function ContactPage() {
   return (
-    <main className="container">
+    <section className="container">
       <Breadcrumb />
       <section className="border-neutral4 shadow-xl rounded-xl border bg-white p-6 max-sm:px-4">
         <div className="space-y-2">
@@ -85,6 +85,6 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-    </main>
+    </section>
   );
 }

@@ -4,12 +4,12 @@ import ChangePasswordForm from "@/components/panel/forms/ChangePasswordForm";
 
 export default function AdminProfilePage() {
   return (
-    <div>
+    <section>
       <SectionTitle title="مشخصات حساب کاربری" />
       <AdminProfileForm />
 
       <SectionTitle title="تغییر رمز عبور" className="mt-8" />
       <ChangePasswordForm />
-    </div>
+    </section>
   );
 }

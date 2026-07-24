@@ -26,7 +26,7 @@ export default async function UserOrdersPage({
   const baseUrl = `?search=${search}`;
 
   return (
-    <div className="w-full">
+    <section className="w-full">
       <div className="max-xs:flex-col max-xs:gap-y-3 mb-4 flex items-center justify-between">
         <SectionTitle title={`سفارش‌های من(${toPersianNumber(result.total)})`} className="mb-0! ml-auto" />
         <div className="max-xs:w-full w-72">
@@ -63,6 +63,6 @@ export default async function UserOrdersPage({
           )}
         </>
       )}
-    </div>
+    </section>
   );
 }

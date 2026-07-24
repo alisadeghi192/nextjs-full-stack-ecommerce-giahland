@@ -41,7 +41,7 @@ export default async function Home() {
   const mostViewedPosts = mostViewedPostsResult.articles;
 
   return (
-    <main className="container">
+    <section className="container">
       <HeroSection
         indoorCount={categoryCounts.indoor}
         decorationCount={categoryCounts.decoration}
@@ -79,6 +79,6 @@ export default async function Home() {
         link="/products?category=gift&sort=newest&view=grid"
         likeStatuses={giftLikeStatuses}
       />
-    </main>
+    </section>
   );
 }

@@ -31,7 +31,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
   const baseUrl = `?category=${activeTab}&sort=${selectedSort}`;
 
   return (
-    <main className="container">
+    <section className="container">
       <Breadcrumb />
       <section>
         <BlogHeader activeTab={activeTab} selectedSort={selectedSort} />
@@ -54,6 +54,6 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
           baseUrl={baseUrl}
         />
       </section>
-    </main>
+    </section>
   );
 }

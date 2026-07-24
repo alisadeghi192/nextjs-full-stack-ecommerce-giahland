@@ -58,7 +58,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const categoryLink = `/blog?category=${category}&sort=newest`;
   const articleAuthor = `${post.author.firstName} ${post.author.lastName}`;
   return (
-    <main className="container">
+    <section className="container">
       <Breadcrumb title={post.title} />
       <div className="mx-auto mt-10 w-80/100 max-lg:w-full max-md:mt-8 max-sm:mt-4">
         <PostHeader title={post.title} views={post.views} />
@@ -86,6 +86,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           posts={filteredRelated}
         />
       </div>
-    </main>
+    </section>
   );
 }
