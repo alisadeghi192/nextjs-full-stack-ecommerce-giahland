@@ -86,7 +86,6 @@ export async function createOrderAction(input: unknown) {
     user: user._id,
     status: "pending",
   });
-  console.log(userInfo)
 
   if (existingOrder) {
     existingOrder.items = orderItems;
