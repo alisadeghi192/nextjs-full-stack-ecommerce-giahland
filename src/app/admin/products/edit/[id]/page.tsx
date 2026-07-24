@@ -1,5 +1,6 @@
 import ProductForm from "@/components/admin/forms/ProductForm";
 import SectionTitle from "@/components/panel/SectionTitle";
+import BackButton from "@/components/shared/ui/BackButton";
 import { getMeAction } from "@/features/auth/actions/me.actions";
 import { getProductById } from "@/features/products/actions/getProductById.actions";
 import { notFound, redirect } from "next/navigation";
@@ -8,7 +9,9 @@ interface EditProductPageProps {
   params: Promise<{ id: string }>;
 }
 
-export default async function EditProductPage({ params }: EditProductPageProps) {
+export default async function EditProductPage({
+  params,
+}: EditProductPageProps) {
   const { id } = await params;
 
   const { user } = await getMeAction();
@@ -57,17 +60,16 @@ export default async function EditProductPage({ params }: EditProductPageProps) 
       temperature: [],
       fertilization: [],
     },
-    seo: defaultSeo, 
+    seo: defaultSeo,
   };
 
   return (
     <div className="w-full">
-      <SectionTitle title="ویرایش محصول" />
-      <ProductForm
-        defaultValues={defaultValues}
-        isEdit={true}
-        productId={id}
-      />
+      <div className="flex items-center justify-between mb-4">
+        <SectionTitle title="ویرایش محصول" className="mb-0!"/>
+        <BackButton />
+      </div>
+      <ProductForm defaultValues={defaultValues} isEdit={true} productId={id} />
     </div>
   );
 }
