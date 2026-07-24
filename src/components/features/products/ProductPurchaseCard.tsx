@@ -47,13 +47,13 @@ export default function ProductPurchaseCard({
         <div className="bg-neutral3 flex items-center gap-x-3 rounded-xl p-3">
           <MdOutlineChangeCircle className="text-shade1 size-7.5" />
           <span className="text-neutral9 text-sm/6 font-medium">
-            7 روز ضمانت بازگشت کالا
+            ۷ روز ضمانت بازگشت کالا
           </span>
         </div>
         <div className="bg-neutral3 flex items-center gap-x-3 rounded-xl p-3">
           <BiSupport className="text-shade1 size-7.5" />
           <span className="text-neutral9 text-sm/6 font-medium">
-            پشتیبانی 24 ساعته
+            پشتیبانی ۲۴ ساعته
           </span>
         </div>
         <div className="bg-neutral3 flex items-center gap-x-3 rounded-xl p-3">
