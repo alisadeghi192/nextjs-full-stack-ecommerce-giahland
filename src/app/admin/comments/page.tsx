@@ -1,7 +1,7 @@
 import AdminCommentHeader from "@/components/admin/AdminCommentHeader";
 import AdminCommentsList from "@/components/admin/AdminCommentsList";
 import SectionTitle from "@/components/panel/SectionTitle";
-import Pagination from "@/components/shared/ui/pagination";
+import Pagination from "@/components/shared/ui/Pagination";
 import { getComments } from "@/features/comments/actions/getComments.actions";
 import { toPersianNumber } from "@/lib/utils/format";
 

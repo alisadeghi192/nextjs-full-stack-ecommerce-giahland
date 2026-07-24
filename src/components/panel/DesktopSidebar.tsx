@@ -1,5 +1,5 @@
 "use client";
-import { PanelLink } from "@/lib/constants/panelLinks";
+import { PanelLink } from "@/lib/constants/PanelLinks";
 import PanelSidebar from "./PanelSidebar";
 
 interface DesktopSidebarProps {

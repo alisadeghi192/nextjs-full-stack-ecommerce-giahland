@@ -1,6 +1,6 @@
 import ConsultationsList from "@/components/features/consultations/ConsultationsList";
 import ConsultationsListHeader from "@/components/features/consultations/ConsultationsListHeader";
-import Pagination from "@/components/shared/ui/pagination";
+import Pagination from "@/components/shared/ui/Pagination";
 import { getMeAction } from "@/features/auth/actions/me.actions";
 import { getUserConsultations } from "@/features/consultations/actions/getUserConsultations.actions";
 import { CONSULTATIONS_PER_PAGE } from "@/lib/constants";

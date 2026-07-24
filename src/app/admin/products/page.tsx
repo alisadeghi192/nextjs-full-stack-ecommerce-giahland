@@ -2,7 +2,7 @@ import AdminProducts from "@/components/admin/AdminProducts";
 import AdminProductsHeader from "@/components/admin/AdminProductsHeader";
 import SectionTitle from "@/components/panel/SectionTitle";
 import OutlineButton from "@/components/shared/ui/OutlineButton";
-import Pagination from "@/components/shared/ui/pagination";
+import Pagination from "@/components/shared/ui/Pagination";
 import { getProductsForAdmin } from "@/features/products/actions/getProductsForAdmin.actions";
 import { toPersianNumber } from "@/lib/utils/format";
 import { FaPlus } from "react-icons/fa6";

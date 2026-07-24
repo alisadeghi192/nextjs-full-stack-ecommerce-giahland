@@ -1,11 +1,11 @@
-import { UserRole } from "@/lib/constants/roles";
+import { USER_ROLE } from "@/lib/constants";
 
 export interface BaseUser {
   _id: string;
   mobile: string;
   email: string;
   password: string;
-  role: UserRole;
+  role: USER_ROLE;
   firstName?: string;
   lastName?: string;
   avatar?: string;

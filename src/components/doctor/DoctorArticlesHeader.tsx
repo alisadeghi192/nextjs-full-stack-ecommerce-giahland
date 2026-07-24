@@ -4,7 +4,7 @@ import SectionTitle from "@/components/panel/SectionTitle";
 import SortDropdownWrapper from "@/components/shared/ui/SortDropdownWrapper";
 import Tabs from "@/components/shared/ui/Tabs";
 import { useIsAdmin } from "@/features/auth/selectors/auth.selectors";
-import { blogSortOptions, blogTabs } from "@/lib/constants";
+import { BLOG_SORT_OPTIONS, BLOG_TABS } from "@/lib/constants";
 import { toPersianNumber } from "@/lib/utils/format";
 import { useIsSidebarOpen } from "@/stores/selectors/ui.selectors";
 import { FaPlus } from "react-icons/fa6";
@@ -34,7 +34,7 @@ export default function DoctorArticlesHeader({
         className={`${isOpenSidebar ? "max-xl:order-2 max-lg:mx-auto" : "max-[550px]:mx-auto max-lg:order-2"} `}
       >
         <Tabs
-          tabs={blogTabs}
+          tabs={BLOG_TABS}
           activeTab={activeTab}
           currentSort={selectedSort}
           usedInPanel={true}
@@ -44,7 +44,7 @@ export default function DoctorArticlesHeader({
       <div
         className={`mr-auto w-37.5 ${isOpenSidebar ? "max-xl:order-3 max-lg:w-full" : "max-[550px]:w-full max-lg:order-3"} `}
       >
-        <SortDropdownWrapper options={blogSortOptions} usedInPanel={true} />
+        <SortDropdownWrapper options={BLOG_SORT_OPTIONS} usedInPanel={true} />
       </div>
       <OutlineButton
         href={`/${isAdmin ? "admin" : "user"}/articles/new`}

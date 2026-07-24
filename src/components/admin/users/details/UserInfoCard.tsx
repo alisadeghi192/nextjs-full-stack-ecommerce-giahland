@@ -5,16 +5,16 @@ import ConfirmDialog from "@/components/shared/ui/ConfirmDialog";
 import { deleteUserAvatar } from "@/features/user/actions/deleteUserAvatar.actions";
 import { toggleUserBlock } from "@/features/user/actions/toggleUserBlock.actions";
 import { updateUserInfo } from "@/features/user/actions/updateUserInfo.actions";
-import { roleConfig } from "@/lib/constants";
+import { ROLE_CONFIG } from "@/lib/constants";
 import { useIsSidebarOpen } from "@/stores/selectors/ui.selectors";
 import Image from "next/image";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import {
-  MdBlock,
-  MdCheckCircle,
-  MdDeleteOutline,
-  MdEdit,
+    MdBlock,
+    MdCheckCircle,
+    MdDeleteOutline,
+    MdEdit,
 } from "react-icons/md";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
@@ -136,9 +136,9 @@ export default function UserInfoCard({
           <SectionTitle title="اطلاعات شخصی" className="mb-0!" />
           <div className="flex items-center gap-x-2">
             <span
-              className={`flex w-20 items-center justify-center rounded-full py-1 text-sm font-medium ${roleConfig[user.role].className}`}
+              className={`flex w-20 items-center justify-center rounded-full py-1 text-sm font-medium ${ROLE_CONFIG[user.role].className}`}
             >
-              {roleConfig[user.role].label}
+              {ROLE_CONFIG[user.role].label}
             </span>
             {user.role === "user" && user.isBlocked && (
               <span className="rounded-full bg-red-100 px-3 py-1 text-sm font-medium text-red-700">

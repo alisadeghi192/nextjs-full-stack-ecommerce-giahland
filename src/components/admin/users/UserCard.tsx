@@ -1,6 +1,6 @@
 "use client";
 
-import { roleConfig } from "@/lib/constants";
+import { ROLE_CONFIG } from "@/lib/constants";
 import { formatDate, toPersianCode } from "@/lib/utils/format";
 import Image from "next/image";
 import Link from "next/link";
@@ -52,9 +52,9 @@ export default function UserCard({ user }: UserCardProps) {
         )}
         <div className="flex items-center">
           <span
-            className={`absolute top-3 right-3 h-5 rounded-md px-2 text-xs/5 font-medium ${roleConfig[user.role].className}`}
+            className={`absolute top-3 right-3 h-5 rounded-md px-2 text-xs/5 font-medium ${ROLE_CONFIG[user.role].className}`}
           >
-            {roleConfig[user.role].label}
+            {ROLE_CONFIG[user.role].label}
           </span>
         </div>
       </div>

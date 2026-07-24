@@ -7,19 +7,19 @@ import { approveComment } from "@/features/comments/actions/approveComment.actio
 import { deleteComment } from "@/features/comments/actions/deleteComment.actions";
 import { replyComment } from "@/features/comments/actions/replyComment.actions";
 import { toggleCommentReadByAdmin } from "@/features/comments/actions/toggleCommentReadByAdmin.actions";
+import { AdminComment } from "@/features/comments/types/comment.types";
 import { useAllNotifications } from "@/features/notifications/hooks/useAllNotifications";
-import { AdminComment } from "@/types/comment.types";
 import Link from "next/link";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import {
-  MdCheck,
-  MdDelete,
-  MdDriveFileRenameOutline,
-  MdKeyboardArrowDown,
-  MdMarkEmailRead,
-  MdMarkEmailUnread,
-  MdReply,
+    MdCheck,
+    MdDelete,
+    MdDriveFileRenameOutline,
+    MdKeyboardArrowDown,
+    MdMarkEmailRead,
+    MdMarkEmailUnread,
+    MdReply,
 } from "react-icons/md";
 
 interface AdminCommentItemProps {

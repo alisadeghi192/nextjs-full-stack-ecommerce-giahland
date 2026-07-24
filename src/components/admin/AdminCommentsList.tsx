@@ -1,6 +1,6 @@
 "use client";
 
-import { AdminComment } from "@/types/comment.types";
+import { AdminComment } from "@/features/comments/types/comment.types";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import AdminCommentItem from "./AdminCommentItem";

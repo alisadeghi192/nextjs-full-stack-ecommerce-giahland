@@ -1,7 +1,7 @@
 import AdminContactMessagesHeader from "@/components/admin/AdminContactMessagesHeader";
 import AdminContactMessagesList from "@/components/admin/AdminContactMessagesList";
 import SectionTitle from "@/components/panel/SectionTitle";
-import Pagination from "@/components/shared/ui/pagination";
+import Pagination from "@/components/shared/ui/Pagination";
 import { getContactMessages } from "@/features/contact/actions/getContactMessages.actions";
 import { toPersianNumber } from "@/lib/utils/format";
 

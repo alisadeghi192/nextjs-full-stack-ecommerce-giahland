@@ -2,7 +2,7 @@
 
 import SortDropdown from "@/components/shared/ui/SortDropdown";
 import Tabs from "@/components/shared/ui/Tabs";
-import { productSortOptions, productTabs } from "@/lib/constants";
+import { PRODUCT_SORT_OPTIONS, PRODUCT_TABS } from "@/lib/constants";
 import { useUrlParams } from "@/lib/hooks/useUrlParams";
 import { useIsSidebarOpen } from "@/stores/selectors/ui.selectors";
 import PanelSearch from "../shared/ui/PanelSearch";
@@ -31,7 +31,7 @@ export default function AdminProductsHeader({
         className={`flex items-center justify-between ${isSidebarOpen ? "max-lg:flex-col" : "max-md:flex-col"} gap-y-3`}
       >
         <Tabs
-          tabs={productTabs}
+          tabs={PRODUCT_TABS}
           activeTab={activeTab}
           currentSort={selectedSort}
           usedInPanel={true}
@@ -42,7 +42,7 @@ export default function AdminProductsHeader({
             <SortDropdown
               selectedSort={selectedSort}
               onSortChange={handleSortChange}
-              options={productSortOptions}
+              options={PRODUCT_SORT_OPTIONS}
               usedInPanel={true}
             />
           </div>

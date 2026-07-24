@@ -4,7 +4,7 @@ export const TICKET_DEPARTMENTS = [
   { value: "complaint", label: "شکایات" },
   { value: "other", label: "سایر" },
 ] as const;
-export type TicketDepartment = "support" | "sales" | "complaint" | "other";
+export type TICKET_DEPARTMENT = "support" | "sales" | "complaint" | "other";
 
 export const TICKET_SORT_OPTIONS = [
   { value: "newest", label: "جدیدترین" },

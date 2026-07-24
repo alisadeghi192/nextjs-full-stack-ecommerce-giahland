@@ -1,5 +1,5 @@
 import { ITicket } from "@/features/tickets/types/ticket.types";
-import { TICKET_DEPARTMENTS } from "@/lib/constants/ticket";
+import { TICKET_DEPARTMENTS } from "@/lib/constants";
 import mongoose, { Model, Schema } from "mongoose";
 
 const TicketSchema = new Schema<ITicket>(

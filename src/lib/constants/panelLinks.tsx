@@ -18,7 +18,7 @@ export interface PanelLink {
   tooltipLabel?: string;
 }
 
-export const userLinks: PanelLink[] = [
+export const USER_PANEL_LINKS: PanelLink[] = [
   {
     href: "/user/profile",
     icon: <FaRegUser size={24} />,
@@ -51,7 +51,7 @@ export const userLinks: PanelLink[] = [
   },
 ];
 
-export const plantDoctorLinks: PanelLink[] = [
+export const DOCTOR_PANEL_LINKS: PanelLink[] = [
   {
     href: "/user/profile",
     icon: <FaRegUser size={24} />,
@@ -84,7 +84,7 @@ export const plantDoctorLinks: PanelLink[] = [
   },
 ];
 
-export const adminLinks: PanelLink[] = [
+export const ADMIN_PANEL_LINKS: PanelLink[] = [
   {
     href: "/admin/dashboard",
     icon: <MdDashboard size={24} />,

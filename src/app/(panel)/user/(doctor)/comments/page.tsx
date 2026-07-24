@@ -1,7 +1,7 @@
 import DoctorCommentHeader from "@/components/doctor/DoctorCommentHeader";
 import DoctorCommentsList from "@/components/doctor/DoctorCommentsList";
 import SectionTitle from "@/components/panel/SectionTitle";
-import Pagination from "@/components/shared/ui/pagination";
+import Pagination from "@/components/shared/ui/Pagination";
 import { getMeAction } from "@/features/auth/actions/me.actions";
 import { getDoctorComments } from "@/features/comments/actions/getDoctorComments.actions";
 import { redirect } from "next/navigation";

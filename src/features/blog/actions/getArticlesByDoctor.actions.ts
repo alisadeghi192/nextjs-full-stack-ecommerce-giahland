@@ -2,12 +2,12 @@
 
 import { getMeAction } from "@/features/auth/actions/me.actions";
 import { BlogPostCard } from "@/features/blog/types/blog.types";
-import { blogSortOptions, blogTabs } from "@/lib/constants/blog";
+import { BLOG_SORT_OPTIONS, BLOG_TABS } from "@/lib/constants/blog";
 import connectToDB from "@/lib/db/connect";
 import Article from "@/lib/db/models/Article";
 
-type Category = typeof blogTabs[number]["id"];
-type Sort = typeof blogSortOptions[number]["value"];
+type Category = typeof BLOG_TABS[number]["id"];
+type Sort = typeof BLOG_SORT_OPTIONS[number]["value"];
 
 interface GetArticlesByDoctorParams {
   category?: Category;

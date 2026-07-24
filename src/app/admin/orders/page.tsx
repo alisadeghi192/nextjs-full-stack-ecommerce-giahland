@@ -1,7 +1,7 @@
 import AdminOrderCard from "@/components/admin/orders/AdminOrderCard";
 import AdminOrdersHeader from "@/components/admin/orders/AdminOrdersHeader";
 import SectionTitle from "@/components/panel/SectionTitle";
-import Pagination from "@/components/shared/ui/pagination";
+import Pagination from "@/components/shared/ui/Pagination";
 import { getMeAction } from "@/features/auth/actions/me.actions";
 import { getAdminOrders } from "@/features/order/actions/getAdminOrders.actions";
 import { IOrder } from "@/features/order/types/order.types";

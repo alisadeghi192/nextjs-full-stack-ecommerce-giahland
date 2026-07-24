@@ -1,9 +1,9 @@
 "use client";
-import { PanelLink } from "@/lib/constants/panelLinks";
+import { PanelLink } from "@/lib/constants/PanelLinks";
 import { useScroll } from "@/lib/hooks/useScroll";
 import {
-  useIsSidebarOpen,
-  useSidebarActions,
+    useIsSidebarOpen,
+    useSidebarActions,
 } from "@/stores/selectors/ui.selectors";
 import { usePathname } from "next/navigation";
 import DesktopSidebar from "./DesktopSidebar";

@@ -1,7 +1,7 @@
 import AdminConsultationsHeader from "@/components/admin/consulations/AdminConsultationsHeader";
 import AdminConsultationsList from "@/components/admin/consulations/AdminConsultationsList";
 import SectionTitle from "@/components/panel/SectionTitle";
-import Pagination from "@/components/shared/ui/pagination";
+import Pagination from "@/components/shared/ui/Pagination";
 import { getMeAction } from "@/features/auth/actions/me.actions";
 import { getAllConsultations } from "@/features/consultations/actions/getAllConsultations.actions";
 import { CONSULTATIONS_PER_PAGE } from "@/lib/constants";

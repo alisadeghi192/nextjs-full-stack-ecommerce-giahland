@@ -1,13 +1,13 @@
 "use server";
 
 import { BlogPostCard } from "@/features/blog/types/blog.types";
-import { blogSortOptions, blogTabs } from "@/lib/constants/blog";
+import { BLOG_SORT_OPTIONS, BLOG_TABS } from "@/lib/constants/blog";
 import { BLOG_POSTS_PER_PAGE } from "@/lib/constants/pagination";
 import connectToDB from "@/lib/db/connect";
 import Article from "@/lib/db/models/Article";
 
-type Category = typeof blogTabs[number]["id"];
-type Sort = typeof blogSortOptions[number]["value"];
+type Category = typeof BLOG_TABS[number]["id"];
+type Sort = typeof BLOG_SORT_OPTIONS[number]["value"];
 
 interface GetArticlesParams {
   category?: Category;

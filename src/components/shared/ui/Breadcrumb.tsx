@@ -1,6 +1,6 @@
 "use client";
 
-import { breadcrumbNameMap } from "@/lib/constants";
+import { BREADCRUMB_NAME_MAP } from "@/lib/constants";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { MdKeyboardArrowLeft, MdOutlineHome } from "react-icons/md";
@@ -27,7 +27,7 @@ export default function Breadcrumb({ title }: BreadcrumbProps) {
       return "مشاهده";
     }
 
-    return breadcrumbNameMap[segment] || segment;
+    return BREADCRUMB_NAME_MAP[segment] || segment;
   };
 
   return (

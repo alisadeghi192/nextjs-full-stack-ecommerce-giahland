@@ -3,16 +3,16 @@
 import ConfirmDialog from "@/components/shared/ui/ConfirmDialog";
 import TextareaField from "@/components/shared/ui/TextareaField";
 import { replyDoctorComment } from "@/features/comments/actions/replyDoctorComment.actions";
+import { AdminComment } from "@/features/comments/types/comment.types";
 import { useAllNotifications } from "@/features/notifications/hooks/useAllNotifications";
-import { AdminComment } from "@/types/comment.types";
 import Link from "next/link";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import {
-  MdDriveFileRenameOutline,
-  MdKeyboardArrowDown,
-  MdReply,
-  MdSend,
+    MdDriveFileRenameOutline,
+    MdKeyboardArrowDown,
+    MdReply,
+    MdSend,
 } from "react-icons/md";
 
 interface DoctorCommentItemProps {

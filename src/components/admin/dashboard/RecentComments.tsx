@@ -1,6 +1,6 @@
 import SectionTitle from "@/components/panel/SectionTitle";
+import { DashboardComment } from "@/features/comments/types/comment.types";
 import { formatDate } from "@/lib/utils/format";
-import { DashboardComment } from "@/types/comment.types";
 import Link from "next/link";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 interface RecentCommentsProps {

@@ -1,5 +1,5 @@
 
-import { IComment } from "@/types/comment.types";
+import { IComment } from "@/features/comments/types/comment.types";
 import { Types } from "mongoose";
 
 export type ContentBlock =

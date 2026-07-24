@@ -1,12 +1,12 @@
 "use client";
 
-import { navLinks } from "@/lib/constants";
-import {DesktopNavLink} from "..";
+import { NAV_LINKS } from "@/lib/constants";
+import { DesktopNavLink } from "..";
 
 export default function DesktopNav() {
   return (
     <ul className="flex gap-x-6">
-      {navLinks.map((link) => (
+      {NAV_LINKS.map((link) => (
         <DesktopNavLink
           key={link.href}
           href={link.href}

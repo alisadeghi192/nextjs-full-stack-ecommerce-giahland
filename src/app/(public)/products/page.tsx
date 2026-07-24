@@ -2,12 +2,12 @@ import ProductsGrid from "@/components/features/products/ProductsGrid";
 import ProductsHeader from "@/components/features/products/ProductsHeader";
 import ProductsList from "@/components/features/products/ProductsList";
 import Breadcrumb from "@/components/shared/ui/Breadcrumb";
-import Pagination from "@/components/shared/ui/pagination";
+import Pagination from "@/components/shared/ui/Pagination";
 import { getProducts } from "@/features/products/actions/getProducts.actions";
 import {
-  DEFAULT_SORT,
-  DEFAULT_TAB,
-  DEFAULT_VIEW_MODE
+    DEFAULT_SORT,
+    DEFAULT_TAB,
+    DEFAULT_VIEW_MODE
 } from "@/lib/constants";
 interface ProductsPageProps {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;

@@ -1,6 +1,6 @@
-import { roleConfig } from "@/lib/constants";
+import { CommentAuthor } from "@/features/comments/types/comment.types";
+import { ROLE_CONFIG } from "@/lib/constants";
 import { formatDate } from "@/lib/utils/format";
-import { CommentAuthor } from "@/types/comment.types";
 import Image from "next/image";
 
 interface CommentItemProps {
@@ -31,8 +31,8 @@ export default function CommentItem({ user, date, text, reply }: CommentItemProp
           <div className="flex flex-col gap-y-2">
             <div className="flex items-center gap-x-2.5">
               <span className="text-neutral10 text-sm/5 font-bold">{user.name}</span>
-              <span className={`h-5 rounded-md px-1 text-xs/5 font-medium ${roleConfig[user.role].className}`}>
-                {roleConfig[user.role].label}
+              <span className={`h-5 rounded-md px-1 text-xs/5 font-medium ${ROLE_CONFIG[user.role].className}`}>
+                {ROLE_CONFIG[user.role].label}
               </span>
             </div>
             <span className="text-neutral8 text-xs">{formatDate(new Date(date))}</span>
@@ -57,8 +57,8 @@ export default function CommentItem({ user, date, text, reply }: CommentItemProp
               <div className="flex flex-col gap-y-2">
                 <div className="flex items-center gap-x-2.5">
                   <span className="text-neutral10 text-sm/5 font-bold">{reply.user.name}</span>
-                  <span className={`h-5 rounded-md px-2 text-xs/5 font-medium ${roleConfig[reply.user.role].className}`}>
-                    {roleConfig[reply.user.role].label}
+                  <span className={`h-5 rounded-md px-2 text-xs/5 font-medium ${ROLE_CONFIG[reply.user.role].className}`}>
+                    {ROLE_CONFIG[reply.user.role].label}
                   </span>
                 </div>
                 <span className="text-neutral8 text-xs">{formatDate(new Date(reply.date))}</span>

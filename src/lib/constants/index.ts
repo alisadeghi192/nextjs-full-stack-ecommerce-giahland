@@ -11,7 +11,7 @@ export * from "./footer";
 export * from "./header";
 export * from "./nav";
 export * from "./pagination";
-export * from "./panelLinks";
+export * from "./PanelLinks";
 export * from "./products";
 export * from "./productSwiper";
 export * from "./roles";

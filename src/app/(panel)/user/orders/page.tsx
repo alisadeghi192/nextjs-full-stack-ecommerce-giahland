@@ -1,6 +1,6 @@
 import OrderCard from "@/components/features/order/OrderCard";
 import SectionTitle from "@/components/panel/SectionTitle";
-import Pagination from "@/components/shared/ui/pagination";
+import Pagination from "@/components/shared/ui/Pagination";
 import PanelSearch from "@/components/shared/ui/PanelSearch";
 import { getUserOrdersAction } from "@/features/order/actions/getUserOrders.actions";
 import { IOrder } from "@/features/order/types/order.types";

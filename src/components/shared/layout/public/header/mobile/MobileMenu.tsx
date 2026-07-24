@@ -5,7 +5,7 @@ import {
   useAuthActions,
   useIsAuthenticated,
 } from "@/features/auth/selectors/auth.selectors";
-import { navLinks } from "@/lib/constants";
+import { NAV_LINKS } from "@/lib/constants";
 import { useIsMenuOpen, useMenuActions } from "@/stores/selectors/ui.selectors";
 import Link from "next/link";
 import { HiOutlineLogout } from "react-icons/hi";
@@ -50,7 +50,7 @@ const MobileMenu = () => {
           </div>
 
           <div className="divide-neutral3 flex flex-col divide-y overflow-x-hidden overflow-y-auto">
-            {navLinks.map((link) => (
+            {NAV_LINKS.map((link) => (
               <MobileNavLink
                 key={link.href}
                 href={link.href}

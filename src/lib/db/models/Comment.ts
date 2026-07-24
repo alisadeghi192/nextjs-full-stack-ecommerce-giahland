@@ -1,4 +1,4 @@
-import { IComment } from "@/types/comment.types";
+import { IComment } from "@/features/comments/types/comment.types";
 import mongoose, { Model, Schema } from "mongoose";
 
 const CommentAuthorSchema = new Schema(

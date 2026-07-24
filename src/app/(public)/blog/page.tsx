@@ -1,13 +1,13 @@
 import BlogCard from "@/components/features/blog/BlogCard";
 import BlogHeader from "@/components/features/blog/BlogHeader";
 import Breadcrumb from "@/components/shared/ui/Breadcrumb";
-import Pagination from "@/components/shared/ui/pagination";
+import Pagination from "@/components/shared/ui/Pagination";
 import { getArticles } from "@/features/blog/actions/getArticles.actions";
 import { BlogPostCard } from "@/features/blog/types/blog.types";
 import {
-  BLOG_POSTS_PER_PAGE,
-  DEFAULT_SORT,
-  DEFAULT_TAB,
+    BLOG_POSTS_PER_PAGE,
+    DEFAULT_SORT,
+    DEFAULT_TAB,
 } from "@/lib/constants";
 
 interface BlogPageProps {

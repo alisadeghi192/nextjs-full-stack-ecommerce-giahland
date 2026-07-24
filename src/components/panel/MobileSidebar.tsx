@@ -1,6 +1,6 @@
 "use client";
 import { Overlay } from "@/components/shared/layout/public/header";
-import { PanelLink } from "@/lib/constants/panelLinks";
+import { PanelLink } from "@/lib/constants/PanelLinks";
 import PanelSidebar from "./PanelSidebar";
 
 interface MobileSidebarProps {

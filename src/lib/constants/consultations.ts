@@ -1,4 +1,4 @@
-export const consultationSortOptions = [
+export const CONSULTATION_SORT_OPTIONS = [
   { value: "newest", label: "جدیدترین" },
   { value: "oldest", label: "قدیمی‌ترین" },
 ];

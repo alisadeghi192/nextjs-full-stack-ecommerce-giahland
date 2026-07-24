@@ -1,7 +1,7 @@
 "use client";
 
+import { IComment } from "@/features/comments/types/comment.types";
 import { COMMENTS_PER_PAGE } from "@/lib/constants";
-import { IComment } from "@/types/comment.types";
 import { useState } from "react";
 import CommentItem from "./CommentItem";
 import OutlineButton from "./OutlineButton";

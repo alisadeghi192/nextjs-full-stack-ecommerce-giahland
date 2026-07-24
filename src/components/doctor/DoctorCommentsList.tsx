@@ -1,7 +1,7 @@
 "use client";
 
+import { AdminComment } from "@/features/comments/types/comment.types";
 import { useUrlParams } from "@/lib/hooks/useUrlParams";
-import { AdminComment } from "@/types/comment.types";
 import { useEffect, useState } from "react";
 import DoctorCommentItem from "./DoctorCommentItem";
 

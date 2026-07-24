@@ -1,11 +1,11 @@
 "use server";
 
 import { getMeAction } from "@/features/auth/actions/me.actions";
+import { AdminComment } from "@/features/comments/types/comment.types";
 import connectToDB from "@/lib/db/connect";
 import Article from "@/lib/db/models/Article";
 import CommentModel from "@/lib/db/models/Comment";
 import Product from "@/lib/db/models/Product";
-import { AdminComment } from "@/types/comment.types";
 
 interface GetDoctorCommentsParams {
   page?: number;

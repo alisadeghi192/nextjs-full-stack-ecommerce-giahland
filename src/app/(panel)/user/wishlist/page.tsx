@@ -1,7 +1,7 @@
 import SectionTitle from "@/components/panel/SectionTitle";
 import WishlistProducts from "@/components/panel/WishListProducts";
 import WishlistToolbar from "@/components/panel/WishlistToolbar";
-import Pagination from "@/components/shared/ui/pagination";
+import Pagination from "@/components/shared/ui/Pagination";
 import { getWishlistProducts } from "@/features/products/actions/getWishlistProducts.actions";
 import { DEFAULT_VIEW_MODE } from "@/lib/constants";
 import { toPersianNumber } from "@/lib/utils/format";

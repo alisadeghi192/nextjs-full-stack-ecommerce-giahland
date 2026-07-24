@@ -13,7 +13,7 @@ import CommentList from "@/components/shared/ui/CommentList";
 import { getProductBySlug } from "@/features/products/actions/getProductBySlug.actions";
 import { getProducts } from "@/features/products/actions/getProducts.actions";
 import { getBulkLikeStatus } from "@/features/user/actions/wishlist.actions";
-import { productDetailTabs, productTabs } from "@/lib/constants";
+import { PRODUCT_DETAIL_TABS, PRODUCT_TABS } from "@/lib/constants";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 interface ProductPageProps {
@@ -57,7 +57,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
   }
 
   const categoryName =
-    productTabs.find((product) => product.id == category)?.label || "";
+    PRODUCT_TABS.find((product) => product.id == category)?.label || "";
 
   const { products: relatedProducts } = await getProducts({
     category: product.category,
@@ -112,7 +112,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
       </section>
 
       <section>
-        <ProductDetailTabs tabs={productDetailTabs} />
+        <ProductDetailTabs tabs={PRODUCT_DETAIL_TABS} />
 
         <ProductFeaturesRenderer
           overview={product.features.overview}

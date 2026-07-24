@@ -2,7 +2,7 @@ import UsersHeader from "@/components/admin/users/UsersHeader";
 import UsersList from "@/components/admin/users/UsersList";
 import SectionTitle from "@/components/panel/SectionTitle";
 import OutlineButton from "@/components/shared/ui/OutlineButton";
-import Pagination from "@/components/shared/ui/pagination";
+import Pagination from "@/components/shared/ui/Pagination";
 import { getMeAction } from "@/features/auth/actions/me.actions";
 import { getUsers } from "@/features/user/actions/getUsers.actions";
 import { toPersianNumber } from "@/lib/utils/format";

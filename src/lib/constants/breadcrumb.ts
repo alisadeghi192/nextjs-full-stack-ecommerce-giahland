@@ -1,4 +1,4 @@
-export const breadcrumbNameMap: Record<string, string> = {
+export const BREADCRUMB_NAME_MAP: Record<string, string> = {
   products: "محصولات",
   "plant-doctor": "گیاه پزشک",
   blog: "مجله",

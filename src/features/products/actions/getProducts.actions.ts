@@ -1,13 +1,12 @@
 "use server";
 
 import { ProductCardData } from "@/features/products/types/product.types";
-import { PRODUCTS_PER_PAGE } from "@/lib/constants/pagination";
-import { productSortOptions, productTabs } from "@/lib/constants/products";
+import { PRODUCT_SORT_OPTIONS, PRODUCT_TABS, PRODUCTS_PER_PAGE } from "@/lib/constants";
 import connectToDB from "@/lib/db/connect";
 import Product from "@/lib/db/models/Product";
 
-type Category = typeof productTabs[number]["id"];
-type Sort = typeof productSortOptions[number]["value"];
+type Category = typeof PRODUCT_TABS[number]["id"];
+type Sort = typeof PRODUCT_SORT_OPTIONS[number]["value"];
 
 interface GetProductsParams {
   category?: Category;

@@ -1,7 +1,7 @@
 import AdminTicketList from "@/components/admin/AdminTicketList";
 import AdminTicketsHeader from "@/components/admin/AdminTicketsHeader";
 import SectionTitle from "@/components/panel/SectionTitle";
-import Pagination from "@/components/shared/ui/pagination";
+import Pagination from "@/components/shared/ui/Pagination";
 import { getAllTickets } from "@/features/tickets/actions/admin.ticket.actions";
 import { toPersianNumber } from "@/lib/utils/format";
 

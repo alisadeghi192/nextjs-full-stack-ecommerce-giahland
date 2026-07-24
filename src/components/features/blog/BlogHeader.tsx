@@ -1,6 +1,6 @@
 import SortDropdownWrapper from "@/components/shared/ui/SortDropdownWrapper";
 import Tabs from "@/components/shared/ui/Tabs";
-import { blogSortOptions, blogTabs } from "@/lib/constants";
+import { BLOG_SORT_OPTIONS, BLOG_TABS } from "@/lib/constants";
 
 interface BlogHeaderProps {
   activeTab: string;
@@ -15,11 +15,11 @@ export default function BlogHeader({
     <div className="mb-6 max-xs:mb-4">
       <div className="flex items-center justify-between max-sm:flex-col max-sm:gap-y-6 max-xs:gap-y-4">
         <Tabs
-          tabs={blogTabs}
+          tabs={BLOG_TABS}
           activeTab={activeTab}
           currentSort={selectedSort}
         />
-        <SortDropdownWrapper options={blogSortOptions} />
+        <SortDropdownWrapper options={BLOG_SORT_OPTIONS} />
       </div>
     </div>
   );

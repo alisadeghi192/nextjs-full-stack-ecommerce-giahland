@@ -2,7 +2,7 @@
 
 import { getMeAction } from "@/features/auth/actions/me.actions";
 import { ITicket } from "@/features/tickets/types/ticket.types";
-import { TicketDepartment } from "@/lib/constants";
+import { TICKET_DEPARTMENT } from "@/lib/constants";
 import connectToDB from "@/lib/db/connect";
 import Ticket from "@/lib/db/models/Ticket";
 import { revalidatePath } from "next/cache";
@@ -56,7 +56,7 @@ export async function createTicket(prevState: any, formData: FormData) {
   await Ticket.create({
     user: user._id,
     subject: subject.trim(),
-    department: department as TicketDepartment,
+    department: department as TICKET_DEPARTMENT,
     message: message.trim(),
     attachment: attachmentUrl,
     status: "pending",

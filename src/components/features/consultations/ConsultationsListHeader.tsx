@@ -4,7 +4,7 @@ import SectionTitle from "@/components/panel/SectionTitle";
 import OutlineButton from "@/components/shared/ui/OutlineButton";
 import PanelSearch from "@/components/shared/ui/PanelSearch";
 import SortDropdownWrapper from "@/components/shared/ui/SortDropdownWrapper";
-import { consultationSortOptions } from "@/lib/constants";
+import { CONSULTATION_SORT_OPTIONS } from "@/lib/constants";
 import { useIsSidebarOpen } from "@/stores/selectors/ui.selectors";
 
 interface ConsultationsListHeaderProps {
@@ -35,7 +35,7 @@ export default function ConsultationsListHeader({
           className={`w-34.5 ${isSideBarOpen ? `${isDoctor ? "" : "lg:ml-3"} max-lg:basis-1/2` : `${isDoctor ? "" : "md:ml-3"} max-md:basis-1/2`}`}
         >
           <SortDropdownWrapper
-            options={consultationSortOptions}
+            options={CONSULTATION_SORT_OPTIONS}
             usedInPanel={true}
           />
         </div>

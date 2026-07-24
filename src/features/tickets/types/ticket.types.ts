@@ -1,11 +1,11 @@
-import { TicketDepartment } from "@/lib/constants/ticket";
+import { TICKET_DEPARTMENT } from "@/lib/constants";
 import { Types } from "mongoose";
 
 export interface ITicket {
   _id: string;
   user: Types.ObjectId | string;
   subject: string;
-  department: TicketDepartment;
+  department: TICKET_DEPARTMENT;
   message: string;
   attachment?: string;
   status: "pending" | "answered";

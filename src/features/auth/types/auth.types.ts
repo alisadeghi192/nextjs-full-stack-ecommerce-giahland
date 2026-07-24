@@ -1,5 +1,5 @@
 import { AuthUser } from "@/features/user/types/user.types";
-import { UserRole } from "@/lib/constants/roles";
+import { USER_ROLE } from "@/lib/constants/roles";
 
 export type UserWithoutPassword = Omit<AuthUser, "password">;
 
@@ -39,7 +39,7 @@ export interface IGetMeResponse {
     _id: string;
     mobile: string;
     email: string;
-    role: UserRole;
+    role: USER_ROLE;
     firstName?: string;
     lastName?: string;
     address?: string;
