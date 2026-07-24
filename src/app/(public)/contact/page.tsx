@@ -18,7 +18,7 @@ export default function ContactPage() {
   return (
     <main className="container">
       <Breadcrumb />
-      <section className="border-neutral4 rounded-xl border bg-white p-6 max-sm:px-4">
+      <section className="border-neutral4 shadow-xl rounded-xl border bg-white p-6 max-sm:px-4">
         <div className="space-y-2">
           <h4 className="leading-6 font-bold">تماس با ما</h4>
           <p className="text-neutral10 text-sm/6 font-medium">
@@ -40,7 +40,7 @@ export default function ContactPage() {
                 title="نقشه فروشگاه"
               ></iframe>
             </div>
-            <div className="border-neutral3 space-y-3 rounded-xl border p-3 text-sm/6">
+            <div className="border-neutral3 shadow-lg space-y-3 rounded-xl border p-3 text-sm/6">
               <div className="flex items-center justify-between">
                 <span className="text-neutral9 font-medium">تلفن:</span>
                 <Link

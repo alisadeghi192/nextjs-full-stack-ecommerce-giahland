@@ -6,7 +6,7 @@ export default function PlantDoctorPage() {
   return (
     <main className="container">
       <Breadcrumb />
-      <section className="border-neutral4 m-auto flex w-80/100 items-center justify-center gap-x-20 rounded-2xl border max-xl:w-full max-lg:gap-x-10 max-md:flex-col max-md:p-4">
+      <section className="border-neutral4 shadow-xl m-auto flex w-80/100 items-center justify-center gap-x-20 rounded-2xl border max-xl:w-full max-lg:gap-x-10 max-md:flex-col max-md:p-4">
         <Image
           alt="plant-doctor"
           src={"/static/images/plantDoctor.webp"}
@@ -55,7 +55,7 @@ export default function PlantDoctorPage() {
           سم‌پاشی مناسب برای همان گیاه به شما داده می‌شود.
         </p>
       </section>
-      <section className="border-neutral4 mx-auto mt-10 w-5/10 overflow-hidden rounded-2xl border max-sm:w-full">
+      <section className="border-neutral4 shadow-lg mx-auto mt-10 w-5/10 overflow-hidden rounded-2xl border max-sm:w-full">
         <Image
           alt="plant-doctor"
           src="/static/images/plantDoctor2.webp"
