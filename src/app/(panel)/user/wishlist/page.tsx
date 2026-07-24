@@ -4,6 +4,7 @@ import WishlistToolbar from "@/components/panel/WishlistToolbar";
 import Pagination from "@/components/shared/ui/pagination";
 import { getWishlistProducts } from "@/features/products/actions/getWishlistProducts.actions";
 import { DEFAULT_VIEW_MODE } from "@/lib/constants";
+import { toPersianNumber } from "@/lib/utils/format";
 
 interface WishListPageProps {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -38,7 +39,7 @@ export default async function WishListPage({
 
   return (
     <div className="w-full">
-      <SectionTitle title="علاقه مندی ها" />
+      <SectionTitle title={`علاقه‌مندی‌ها(${toPersianNumber(result.total)})`} />
       <WishlistToolbar />
       <WishlistProducts
         products={JSON.parse(JSON.stringify(result.products))}

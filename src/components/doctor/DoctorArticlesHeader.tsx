@@ -26,7 +26,7 @@ export default function DoctorArticlesHeader({
   return (
     <div className="max-xs:mb-4 mb-6 flex flex-wrap items-center gap-y-4">
       <SectionTitle
-        title={isAdmin ? `مدیریت مقاله‌ها (${toPersianNumber(total)})` : "مقاله‌های من"}
+        title={isAdmin ? `مدیریت مقاله‌ها (${toPersianNumber(total)})` : `مقاله‌های من (${toPersianNumber(total)})`}
         className={`mb-0! ${isOpenSidebar ? "max-xl:basis-1/2" : "max-lg:basis-1/2"} max-xs:basis-auto ml-4`}
       />
 

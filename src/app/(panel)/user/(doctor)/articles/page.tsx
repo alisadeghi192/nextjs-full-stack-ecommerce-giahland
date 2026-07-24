@@ -3,9 +3,9 @@ import DoctorArticlesList from "@/components/doctor/DoctorArticlesList";
 import Pagination from "@/components/shared/ui/pagination";
 import { getArticlesByDoctor } from "@/features/blog/actions/getArticlesByDoctor.actions";
 import {
-    BLOG_POSTS_PER_PAGE,
-    DEFAULT_SORT,
-    DEFAULT_TAB,
+  BLOG_POSTS_PER_PAGE,
+  DEFAULT_SORT,
+  DEFAULT_TAB,
 } from "@/lib/constants";
 interface PageProps {
   searchParams: Promise<{ category?: string; sort?: string; page?: string }>;
@@ -28,7 +28,7 @@ export default async function DoctorArticlesPage({ searchParams }: PageProps) {
 
   return (
     <div className="w-full">
-      <DoctorArticlesHeader activeTab={activeTab} selectedSort={selectedSort} />
+      <DoctorArticlesHeader activeTab={activeTab} selectedSort={selectedSort} total={result.total}/>
       {result.total === 0 ? (
         <div className="border-neutral3 rounded-2xl border p-6 text-center text-gray-500 shadow-lg">
           هنوز مقاله ای ننوشتید.

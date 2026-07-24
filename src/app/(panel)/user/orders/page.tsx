@@ -5,6 +5,7 @@ import PanelSearch from "@/components/shared/ui/PanelSearch";
 import { getUserOrdersAction } from "@/features/order/actions/getUserOrders.actions";
 import { IOrder } from "@/features/order/types/order.types";
 import { ORDERS_PER_PAGE } from "@/lib/constants/pagination";
+import { toPersianNumber } from "@/lib/utils/format";
 
 interface UserOrdersPageProps {
   searchParams: Promise<{ search?: string; page?: string }>;
@@ -27,7 +28,7 @@ export default async function UserOrdersPage({
   return (
     <div className="w-full">
       <div className="max-xs:flex-col max-xs:gap-y-3 mb-4 flex items-center justify-between">
-        <SectionTitle title="سفارش‌های من" className="mb-0! ml-auto" />
+        <SectionTitle title={`سفارش‌های من(${toPersianNumber(result.total)})`} className="mb-0! ml-auto" />
         <div className="max-xs:w-full w-72">
           <PanelSearch
             id="order-search"
