@@ -36,8 +36,8 @@ export default function BlogCard({
                 {author.firstName} {author.lastName}
               </span>
               <span className="max-xs:text-xs flex items-center justify-center gap-x-0.5 self-start text-sm">
-                <MdOutlineCalendarMonth className="size-5" />
                 {publishedAt?.toLocaleDateString("fa-IR")}
+                <MdOutlineCalendarMonth className="size-5" />
               </span>
             </div>
           </div>
