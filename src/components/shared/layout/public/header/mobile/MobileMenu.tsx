@@ -1,15 +1,23 @@
 "use client";
 
 import ConfirmDialog from "@/components/shared/ui/ConfirmDialog";
+import NotificationBadge from "@/components/shared/ui/NotificationBadge";
 import {
   useAuthActions,
+  useIsAdmin,
   useIsAuthenticated,
+  useUserAvatar,
+  useUserFirstName,
+  useUserRole,
 } from "@/features/auth/selectors/auth.selectors";
+import { useAllNotifications } from "@/features/notifications/hooks/useAllNotifications";
 import { NAV_LINKS } from "@/lib/constants";
 import { useIsMenuOpen, useMenuActions } from "@/stores/selectors/ui.selectors";
+import Image from "next/image";
 import Link from "next/link";
+import { FaRegUser } from "react-icons/fa6";
 import { HiOutlineLogout } from "react-icons/hi";
-import { IoClose } from "react-icons/io5";
+import { IoClose, IoSettingsOutline } from "react-icons/io5";
 import { MdOutlineLogin, MdOutlineMenu } from "react-icons/md";
 import { Logo, MobileNavLink } from "..";
 
@@ -18,7 +26,11 @@ const MobileMenu = () => {
   const { logout } = useAuthActions();
   const isMenuOpen = useIsMenuOpen();
   const { closeMenu, toggleMenu } = useMenuActions();
-
+  const userAvatar = useUserAvatar();
+  const isAdmin = useIsAdmin();
+  const firstName = useUserFirstName();
+  const userRole = useUserRole();
+  const { userTotal, adminTotal, doctorTotal } = useAllNotifications();
   const handleLogout = async () => {
     closeMenu();
     logout();
@@ -33,10 +45,10 @@ const MobileMenu = () => {
         <MdOutlineMenu className="size-5 sm:size-6" />
       </button>
       <div
-        className={`border-neutral3 fixed top-0 -right-82 z-40 h-dvh w-82 rounded-tl-xl rounded-bl-xl border bg-white p-4 shadow-lg transition-all duration-200 ${
+        className={`border-neutral3 fixed top-0 -right-70 z-40 h-dvh w-70 rounded-tl-xl rounded-bl-xl border bg-white p-4 shadow-lg transition-all duration-200 ${
           isMenuOpen
-            ? "visible -translate-x-82 opacity-100"
-            : "invisible translate-x-82 opacity-0"
+            ? "visible -translate-x-70 opacity-100"
+            : "invisible translate-x-70 opacity-0"
         }`}
       >
         <div className="flex h-full flex-col">
@@ -48,6 +60,45 @@ const MobileMenu = () => {
               <IoClose className="size-6" />
             </button>
           </div>
+          {isAuthenticated && (
+            <div className="flex flex-col gap-1">
+              <div className="flex items-center gap-x-2">
+                <div className="relative size-16 overflow-hidden rounded-full">
+                  <Image
+                    alt="user profile pic"
+                    src={userAvatar || "/static/images/default-user.webp"}
+                    fill
+                  ></Image>
+                </div>
+                <p>سلام {firstName}</p>
+              </div>
+              <Link
+                href={`${isAdmin ? "/admin/dashboard" : "/user/profile"}`}
+                onClick={closeMenu}
+                className="text-neutral10 border-neutral3 hover:text-primary relative flex h-14 w-full cursor-pointer items-center rounded-lg border-b bg-white transition-colors"
+              >
+                {isAdmin ? (
+                  <IoSettingsOutline className="size-5" />
+                ) : (
+                  <FaRegUser className="size-5" />
+                )}
+
+                <span className="mr-2 font-medium">
+                  {isAdmin ? "پنل مدیریت" : "حساب کاربری"}
+                </span>
+                <NotificationBadge
+                  count={
+                    userRole === "admin"
+                      ? adminTotal
+                      : userRole === "plant-doctor"
+                        ? doctorTotal
+                        : userTotal
+                  }
+                  className="left-1"
+                />
+              </Link>
+            </div>
+          )}
 
           <div className="divide-neutral3 flex flex-col divide-y overflow-x-hidden overflow-y-auto">
             {NAV_LINKS.map((link) => (
