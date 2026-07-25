@@ -3,17 +3,9 @@
 import { getMeAction } from "@/features/auth/actions/me.actions";
 import connectToDB from "@/lib/db/connect";
 import BaseUser from "@/lib/db/models/User";
-import { z } from "zod";
+import AdminProfileSchema from "../schemas/adminProfile.schema";
 
-const AdminProfileSchema = z.object({
-  firstName: z.string().optional().nullable(),
-  lastName: z.string().optional().nullable(),
-  email: z
-    .string()
-    .email("ایمیل معتبر نیست")
-    .optional()
-    .nullable(),
-});
+
 
 export async function updateAdminProfileAction(prevState: any, formData: FormData) {
   const { user } = await getMeAction();

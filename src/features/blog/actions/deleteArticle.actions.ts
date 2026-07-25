@@ -50,7 +50,6 @@ export async function deleteArticleAction(articleId: string) {
     deleteFolderIfExists(staticDir),
   ]);
 
-  // ============================================
   await Article.findByIdAndDelete(articleId);
 
   revalidatePath("/admin/articles");

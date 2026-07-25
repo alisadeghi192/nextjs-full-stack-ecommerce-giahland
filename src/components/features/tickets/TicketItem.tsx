@@ -1,6 +1,6 @@
 "use client";
 import { useAllNotifications } from "@/features/notifications/hooks/useAllNotifications";
-import { markTicketAsRead } from "@/features/tickets/actions/ticket.actions";
+import { markTicketAsRead } from "@/features/tickets/actions/markTicketAsRead.actions";
 import { ITicket } from "@/features/tickets/types/ticket.types";
 import { TICKET_DEPARTMENTS } from "@/lib/constants";
 import Image from "next/image";
