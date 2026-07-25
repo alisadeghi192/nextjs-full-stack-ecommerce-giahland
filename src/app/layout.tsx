@@ -96,7 +96,7 @@ export default async function RootLayout({
       lang="fa"
       dir="rtl"
       data-scroll-behavior="smooth"
-      className={`${modamFont.variable} scroll-smooth`}
+      className={`${modamFont.variable} scroll-smooth custom-scroll`}
     >
       <body className="font-modam text-BLACK antialiased">
         <GeneralProvider initialUser={initialUser}>
