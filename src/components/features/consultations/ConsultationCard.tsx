@@ -2,7 +2,7 @@
 
 import { useUserRole } from "@/features/auth/selectors/auth.selectors";
 import { IConsultationWithDetails } from "@/features/consultations/types/consultation.types";
-import { toPersianCode, toPersianNumber } from "@/lib/utils/format";
+import { toPersianCode, toPersianDate, toPersianNumber } from "@/lib/utils/format";
 import Image from "next/image";
 import Link from "next/link";
 import { IoCheckmarkDoneSharp, IoCheckmarkSharp } from "react-icons/io5";
@@ -64,7 +64,7 @@ export default function ConsultationCard({
                    کد {toPersianCode(consultation.code) || ""}
                 </span>
                 <span>
-                  {new Date(consultation.createdAt).toLocaleDateString("fa-IR")}
+                  {toPersianDate(consultation.createdAt)}
                 </span>
               </div>
             </div>

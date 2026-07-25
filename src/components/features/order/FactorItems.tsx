@@ -1,5 +1,5 @@
 import { IOrder, IOrderItem } from "@/features/order/types/order.types";
-import { formatPrice, toPersianNumber, toStyledSlug } from "@/lib/utils/format";
+import { toPersianNumber, toPersianPrice, toStyledSlug } from "@/lib/utils/format";
 import { getDiscountedPrice } from "@/lib/utils/price";
 import Image from "next/image";
 import Link from "next/link";
@@ -90,13 +90,13 @@ export default function FactorItems({ order }: FactorItemsProps) {
                   ×
                 </td>
                 <td className="max-xs:p-1 p-3 text-center max-[580px]:p-2 max-md:hidden">
-                  {formatPrice(discountedPrice)}
+                  {toPersianPrice(discountedPrice)}
                 </td>
                 <td className="text-primary max-xs:p-1 p-3 text-center font-bold max-[580px]:p-2 max-xl:hidden">
                   =
                 </td>
                 <td className="text-primary max-xs:p-1 p-3 text-center font-bold max-[580px]:p-2 max-[580px]:text-sm max-sm:font-normal">
-                  {formatPrice(discountedPrice * quantity)}
+                  {toPersianPrice(discountedPrice * quantity)}
                 </td>
               </tr>
             );
@@ -115,7 +115,7 @@ export default function FactorItems({ order }: FactorItemsProps) {
             <td className="max-[580px]:hidden max-xl:hidden"></td>
             <td className="max-xs:hidden md:hidden"></td>
             <td className="border-neutral5 max-xs:p-1 p-3 text-center font-bold max-[580px]:p-2 max-[580px]:text-sm max-sm:font-semibold">
-              {formatPrice(order.totalAmount)}
+              {toPersianPrice(order.totalAmount)}
             </td>
           </tr>
           <tr className="bg-neutral1">
@@ -132,7 +132,7 @@ export default function FactorItems({ order }: FactorItemsProps) {
             <td className="max-xs:hidden md:hidden"></td>
             <td className="border-neutral5 max-xs:p-1 p-3 text-center font-medium max-[580px]:p-2 max-[580px]:text-sm">
               {order.shippingCost > 0
-                ? formatPrice(order.shippingCost)
+                ? toPersianPrice(order.shippingCost)
                 : "رایگان"}
             </td>
           </tr>
@@ -155,7 +155,7 @@ export default function FactorItems({ order }: FactorItemsProps) {
             <td className="max-[580px]:hidden max-xl:hidden"></td>
             <td className="max-xs:hidden md:hidden"></td>
             <td className="text-primary max-xs:p-1 rounded-bl-2xl p-3 text-center text-lg font-bold max-[580px]:p-2 max-[580px]:text-base">
-              {formatPrice(order.finalAmount)}
+              {toPersianPrice(order.finalAmount)}
             </td>
           </tr>
         </tbody>

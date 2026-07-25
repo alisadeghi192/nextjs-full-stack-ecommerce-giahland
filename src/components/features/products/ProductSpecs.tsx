@@ -1,6 +1,6 @@
+import { formatDimensions, toPersianNumber } from "@/lib/utils/format";
 import Link from "next/link";
 import { MdKeyboardArrowDown } from "react-icons/md";
-import { formatDimensions } from "@/lib/utils/format";
 import ProductSpecBox from "./ProductSpecBox";
 
 interface ProductSpecsProps {
@@ -26,7 +26,7 @@ export default function ProductSpecs({
       <div className="border-neutral6 grid grid-cols-2 gap-x-6 gap-y-10 max-md:grid-cols-1 max-md:gap-y-2.25 max-sm:gap-y-2 max-sm:border-b max-sm:pb-4">
         <ProductSpecBox label="جنس گلدان" value={potMaterial} />
         <ProductSpecBox label="خاک گیاه" value={soilType} />
-        <ProductSpecBox label="وزن" value={`${weight.toLocaleString("fa-IR")} گرم`} />
+        <ProductSpecBox label="وزن" value={`${toPersianNumber(weight)} گرم`} />
         <ProductSpecBox label="ابعاد" value={formatDimensions(potDimensions)} />
         <ProductSpecBox label="وضعیت نسبت به آفتاب" value={sunlight} />
         <div className="text-primary mx-auto flex h-10 cursor-pointer items-center gap-x-2 self-end max-md:hidden max-sm:flex">

@@ -1,6 +1,6 @@
 "use client";
 
-import { formatPrice, toPersianNumber } from "@/lib/utils/format";
+import { toPersianNumber, toPersianPrice } from "@/lib/utils/format";
 
 interface CartSummaryProps {
   totalItems: number;
@@ -20,7 +20,7 @@ export default function CartSummary({ totalItems, totalPrice }: CartSummaryProps
 
         <div className="flex justify-between ">
           <span className="text-neutral9">جمع کل</span>
-          <span className="font-medium">{formatPrice(totalPrice)}</span>
+          <span className="font-medium">{toPersianPrice(totalPrice)}</span>
         </div>
 
         <div className="flex justify-between ">
@@ -31,7 +31,7 @@ export default function CartSummary({ totalItems, totalPrice }: CartSummaryProps
         <div className="border-t pt-3">
           <div className="flex justify-between text-base font-bold">
             <span>مبلغ قابل پرداخت</span>
-            <span className="text-primary text-xl">{formatPrice(totalPrice)}</span>
+            <span className="text-primary text-xl">{toPersianPrice(totalPrice)}</span>
           </div>
         </div>
       </div>

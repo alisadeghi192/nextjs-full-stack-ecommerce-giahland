@@ -1,6 +1,6 @@
 import { CommentAuthor } from "@/features/comments/types/comment.types";
 import { ROLE_CONFIG } from "@/lib/constants";
-import { formatDate } from "@/lib/utils/format";
+import { toPersianDate } from "@/lib/utils/format";
 import Image from "next/image";
 
 interface CommentItemProps {
@@ -35,7 +35,7 @@ export default function CommentItem({ user, date, text, reply }: CommentItemProp
                 {ROLE_CONFIG[user.role].label}
               </span>
             </div>
-            <span className="text-neutral8 text-xs">{formatDate(new Date(date))}</span>
+            <span className="text-neutral8 text-xs">{toPersianDate(new Date(date))}</span>
           </div>
         </div>
         <p className="text-neutral9 pt-2 leading-5">{text}</p>
@@ -61,7 +61,7 @@ export default function CommentItem({ user, date, text, reply }: CommentItemProp
                     {ROLE_CONFIG[reply.user.role].label}
                   </span>
                 </div>
-                <span className="text-neutral8 text-xs">{formatDate(new Date(reply.date))}</span>
+                <span className="text-neutral8 text-xs">{toPersianDate(new Date(reply.date))}</span>
               </div>
             </div>
             <p className="text-neutral9 pt-2 leading-5">{reply.text}</p>

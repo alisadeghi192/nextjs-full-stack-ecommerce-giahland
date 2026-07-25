@@ -1,13 +1,13 @@
 "use client";
 
 import PrimaryButton from "@/components/shared/ui/PrimaryButton";
-import { formatPrice, toPersianCode } from "@/lib/utils/format";
+import { toPersianCode, toPersianPrice } from "@/lib/utils/format";
 import { useState } from "react";
 import {
-  MdArrowBack,
-  MdCheckCircle,
-  MdPayment,
-  MdSecurity,
+    MdArrowBack,
+    MdCheckCircle,
+    MdPayment,
+    MdSecurity,
 } from "react-icons/md";
 
 interface PaymentCardProps {
@@ -36,7 +36,7 @@ export default function PaymentCard({
 }: PaymentCardProps) {
   const [loading, setLoading] = useState(isLoading);
 
-  const formattedAmount = formatPrice(amount);
+  const formattedAmount = toPersianPrice(amount);
 
   const handleSubmit = async () => {
     setLoading(true);

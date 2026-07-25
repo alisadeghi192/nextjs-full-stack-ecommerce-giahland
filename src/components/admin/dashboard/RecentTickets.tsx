@@ -1,6 +1,6 @@
 import SectionTitle from "@/components/panel/SectionTitle";
 import { IDashboardTickets } from "@/features/tickets/types/ticket.types";
-import { formatDate } from "@/lib/utils/format";
+import { toPersianDate } from "@/lib/utils/format";
 import Link from "next/link";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 
@@ -52,7 +52,7 @@ export default function RecentTickets({ tickets }: RecentTicketsProps) {
                 </div>
 
                 <div className="text-neutral9 max-xs:text-xs text-sm">
-                  {ticket.createdAt && formatDate(ticket.createdAt)}
+                  {ticket.createdAt && toPersianDate(ticket.createdAt)}
                 </div>
               </div>
 

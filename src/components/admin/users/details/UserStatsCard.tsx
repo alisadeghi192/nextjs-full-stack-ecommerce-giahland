@@ -1,7 +1,7 @@
 "use client";
 
 import SectionTitle from "@/components/panel/SectionTitle";
-import { formatDate, formatPrice, toPersianNumber } from "@/lib/utils/format";
+import { toPersianDate, toPersianNumber, toPersianPrice } from "@/lib/utils/format";
 
 interface UserStatsCardProps {
   stats: {
@@ -24,7 +24,7 @@ export default function UserStatsCard({ stats }: UserStatsCardProps) {
         </div>
         <div className="flex justify-between border-b border-neutral3 pb-2">
           <span className="text-neutral9">مجموع خرید</span>
-          <span className="font-bold">{formatPrice(stats.totalSpent)}</span>
+          <span className="font-bold">{toPersianPrice(stats.totalSpent)}</span>
         </div>
         <div className="flex justify-between border-b border-neutral3 pb-2">
           <span className="text-neutral9">تعداد کامنت‌ها</span>
@@ -32,7 +32,7 @@ export default function UserStatsCard({ stats }: UserStatsCardProps) {
         </div>
         <div className="flex justify-between">
           <span className="text-neutral9">آخرین فعالیت</span>
-          <span className="font-bold">{formatDate(new Date(stats.lastActivity))}</span>
+          <span className="font-bold">{toPersianDate(new Date(stats.lastActivity))}</span>
         </div>
       </div>
     </div>

@@ -2,7 +2,7 @@
 
 import OutlineButton from "@/components/shared/ui/OutlineButton";
 import PrimaryButton from "@/components/shared/ui/PrimaryButton";
-import { formatPrice, toPersianCode } from "@/lib/utils/format";
+import { toPersianCode, toPersianPrice } from "@/lib/utils/format";
 import { useCartStoreActions } from "@/stores/selectors/cart.selectors";
 import { useEffect, useRef } from "react";
 
@@ -79,7 +79,7 @@ export default function PaymentSuccess({
         </div>
         <div className="flex justify-between py-1">
           <span className="text-neutral9">مبلغ پرداختی</span>
-          <span className="text-primary font-medium">{formatPrice(price)}</span>
+          <span className="text-primary font-medium">{toPersianPrice(price)}</span>
         </div>
         {extraInfo && (
           <div className="flex justify-between py-1">

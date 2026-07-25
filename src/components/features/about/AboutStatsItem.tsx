@@ -1,5 +1,6 @@
 "use client";
 
+import { toPersianNumber } from "@/lib/utils/format";
 import CountUp from "react-countup";
 
 interface AboutStatsItemProps {
@@ -15,7 +16,7 @@ const AboutStatsItem = ({ end, label }: AboutStatsItemProps) => {
           start={0}
           end={end}
           duration={1.5}
-          formattingFn={(value) => value.toLocaleString("fa-IR")}
+          formattingFn={(value) => toPersianNumber(value)}
         />
         +
       </span>

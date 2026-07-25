@@ -1,7 +1,7 @@
 "use client";
 
 import { ROLE_CONFIG } from "@/lib/constants";
-import { formatDate, toPersianCode } from "@/lib/utils/format";
+import { toPersianCode, toPersianDate } from "@/lib/utils/format";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -43,7 +43,7 @@ export default function UserCard({ user }: UserCardProps) {
           {toPersianCode(user.mobile)}
         </h4>
         <p className="text-neutral9 mt-1 text-xs">
-          ثبت‌نام: {formatDate(new Date(user.createdAt))}
+          ثبت‌نام: {toPersianDate(new Date(user.createdAt))}
         </p>
         {user.isBlocked && (
           <span className="absolute top-3 left-3 inline-flex items-center gap-1 rounded-full bg-red-100 px-3 py-1 text-xs font-medium text-red-700">

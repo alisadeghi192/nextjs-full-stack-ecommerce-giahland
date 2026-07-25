@@ -1,9 +1,9 @@
 "use client";
 import { searchProducts } from "@/features/products/actions/searchProducts.actions";
-import { formatPrice } from "@/lib/utils/format";
+import { toPersianPrice } from "@/lib/utils/format";
 import {
-  useIsSearchOpen,
-  useSearchActions,
+    useIsSearchOpen,
+    useSearchActions,
 } from "@/stores/selectors/ui.selectors";
 import Image from "next/image";
 import Link from "next/link";
@@ -115,7 +115,7 @@ const SearchInput = ({ isScrolled }: SearchInputProps) => {
                     <div>
                       <p className="font-medium">{item.name}</p>
                       <p className="text-neutral9 text-sm">
-                        {formatPrice(item.price)}
+                        {toPersianPrice(item.price)}
                       </p>
                     </div>
                   </div>

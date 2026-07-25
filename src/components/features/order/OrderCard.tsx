@@ -2,10 +2,10 @@
 
 import { IOrder } from "@/features/order/types/order.types";
 import {
-  formatDate,
-  formatPrice,
-  toPersianCode,
-  toPersianNumber,
+    toPersianCode,
+    toPersianDate,
+    toPersianNumber,
+    toPersianPrice,
 } from "@/lib/utils/format";
 import { useIsSidebarOpen } from "@/stores/selectors/ui.selectors";
 import Image from "next/image";
@@ -49,11 +49,11 @@ export default function OrderCard({ order }: OrderCardProps) {
         <div className={`mt-3 flex items-center gap-x-4 ${isSidebarOpen ? "max-lg:flex-col max-lg:gap-y-3" : "max-sm:flex-col max-sm:gap-y-3"} `}>
           <div className="text-neutral10 flex w-full items-center justify-between rounded-xl bg-white px-4 py-2 max-sm:text-sm">
             <span>تاریخ ثبت سفارش:</span>
-            <span>{formatDate(new Date(createdAt))}</span>
+            <span>{toPersianDate(new Date(createdAt))}</span>
           </div>
           <div className="text-neutral10 flex w-full items-center justify-between rounded-xl bg-white px-4 py-2 max-sm:text-sm">
             <span>مبلغ کل:</span>
-            <span>{formatPrice(finalAmount)}</span>
+            <span>{toPersianPrice(finalAmount)}</span>
           </div>
         </div>
 

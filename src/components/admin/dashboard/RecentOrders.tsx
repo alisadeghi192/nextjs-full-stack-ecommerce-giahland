@@ -1,7 +1,7 @@
 import OrderStatusBadge from "@/components/features/order/OrderStatusBadge";
 import SectionTitle from "@/components/panel/SectionTitle";
 import { IDashboardOrder } from "@/features/order/types/order.types";
-import { formatPrice, toPersianCode } from "@/lib/utils/format";
+import { toPersianCode, toPersianPrice } from "@/lib/utils/format";
 import Link from "next/link";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 
@@ -62,10 +62,10 @@ export default async function RecentOrders({ orders }: RecentOrdersProps) {
                 </td>
                 <td className="max-xs:p-1 p-2 py-3">
                   <span className="max-xs:hidden">
-                    {formatPrice(order.finalAmount)}
+                    {toPersianPrice(order.finalAmount)}
                   </span>
                   <span className="xs:hidden">
-                    {formatPrice(order.finalAmount, false)}
+                    {toPersianPrice(order.finalAmount, false)}
                   </span>
                 </td>
                 <td className="max-xs:p-1 p-2 py-3">

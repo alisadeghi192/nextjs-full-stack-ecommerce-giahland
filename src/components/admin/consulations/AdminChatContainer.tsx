@@ -3,7 +3,7 @@
 import ChatMessages from "@/components/features/consultations/ChatMessages";
 import { closeConsultation } from "@/features/consultations/actions/closeConsultation.actions";
 import { IConsultationMessageWithDetails } from "@/features/consultations/types/consultation.types";
-import { formatDate, toPersianCode } from "@/lib/utils/format";
+import { toPersianCode, toPersianDate } from "@/lib/utils/format";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
@@ -79,7 +79,7 @@ export default function AdminChatContainer({
       <div className="text-neutral9 flex shrink-0 items-center justify-center gap-x-2 bg-white/40 px-4 py-2 text-center text-sm backdrop-blur-lg">
         <span className="text-primary">فقط مشاهده👀</span>
         <span className="text-primary">
-          کد: {toPersianCode(code)} - {formatDate(createdAt)}
+          کد: {toPersianCode(code)} - {toPersianDate(createdAt)}
         </span>
       </div>
     </div>

@@ -15,6 +15,7 @@ import {
   useUserYearsOfExperience,
 } from "@/features/auth/selectors/auth.selectors";
 import { updateProfileAction } from "@/features/user/actions/updateProfile.actions";
+import { toPersianNumber } from "@/lib/utils/format";
 import { useActionState, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { BsSignpost } from "react-icons/bs";
@@ -140,7 +141,7 @@ export default function ProfileInfoForm() {
               name="consultationFee"
               label="هزینه مشاوره (تومان)"
               type="text"
-              value={consultationFee.toLocaleString("fa-IR")}
+              value={toPersianNumber(consultationFee)}
               onChange={() => {}} 
               disabled
             />

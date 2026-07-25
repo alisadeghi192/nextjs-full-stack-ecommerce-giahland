@@ -11,7 +11,7 @@ export const formatDimensions = (dimensions: Dimensions): string => {
   return `${height} × ${width} × ${length}`;
 };
 
-export const formatPrice = (price: number, unit: boolean = true): string => {
+export const toPersianPrice = (price: number, unit: boolean = true): string => {
   return `${price.toLocaleString("fa-IR")} ${unit ? "تومان" : ""}`;
 };
 
@@ -19,7 +19,7 @@ export const toPersianNumber = (num: number): string => {
   return num.toLocaleString("fa-IR");
 };
 
-export const formatDate = (date: Date): string => {
+export const toPersianDate = (date: Date): string => {
   return date.toLocaleDateString("fa-IR");
 };
 

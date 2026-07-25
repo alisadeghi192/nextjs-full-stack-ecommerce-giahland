@@ -1,5 +1,5 @@
 "use client"
-import { formatPrice, toPersianNumber } from "@/lib/utils/format";
+import { toPersianNumber, toPersianPrice } from "@/lib/utils/format";
 import { useIsSidebarOpen } from "@/stores/selectors/ui.selectors";
 import { BsCurrencyDollar, BsPeople, BsTree, BsTruck } from "react-icons/bs";
 import StatCard from "./StatCard";
@@ -31,7 +31,7 @@ export default function StatsCards({
       />
       <StatCard
         title="درآمد کل"
-        value={formatPrice(totalRevenue)}
+        value={toPersianPrice(totalRevenue)}
         icon={<BsCurrencyDollar className="size-6 text-white" />}
         color="bg-amber-500"
       />

@@ -1,6 +1,6 @@
 import SectionTitle from "@/components/panel/SectionTitle";
 import { IDashboardComment } from "@/features/comments/types/comment.types";
-import { formatDate } from "@/lib/utils/format";
+import { toPersianDate } from "@/lib/utils/format";
 import Link from "next/link";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 interface RecentCommentsProps {
@@ -54,7 +54,7 @@ export default function RecentComments({ comments }: RecentCommentsProps) {
                 </div>
 
                 <div className="text-neutral9 max-xs:text-xs text-sm">
-                  {comment.createdAt && formatDate(comment.createdAt)}
+                  {comment.createdAt && toPersianDate(comment.createdAt)}
                 </div>
               </div>
 

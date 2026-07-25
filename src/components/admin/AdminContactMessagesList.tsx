@@ -4,6 +4,7 @@ import ConfirmDialog from "@/components/shared/ui/ConfirmDialog";
 import { deleteContactMessage } from "@/features/contact/actions/deleteContactMessage.actions";
 import { markContactMessageAsRead } from "@/features/contact/actions/markContactMessageAsRead.actions";
 import { useAllNotifications } from "@/features/notifications/hooks/useAllNotifications";
+import { toPersianDateAndTime } from "@/lib/utils/format";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
@@ -49,10 +50,10 @@ export default function AdminContactMessagesList({
     if (result.success) {
       toast.success(result.message);
       refresh();
-      
+
       const searchParams = new URLSearchParams(window.location.search);
       const currentPage = Number(searchParams.get("page")) || 1;
-      
+
       if (messages.length === 1 && currentPage > 1) {
         const params = new URLSearchParams(searchParams);
         params.set("page", String(currentPage - 1));
@@ -95,10 +96,7 @@ export default function AdminContactMessagesList({
               )}
             </div>
             <div className="ltr flex items-center gap-2 text-sm text-gray-400">
-              {new Date(msg.createdAt).toLocaleDateString("fa-IR", {
-                hour: "2-digit",
-                minute: "2-digit",
-              })}
+              {toPersianDateAndTime(msg.createdAt)}
             </div>
           </div>
 

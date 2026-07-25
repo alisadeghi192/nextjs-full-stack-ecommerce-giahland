@@ -2,7 +2,7 @@
 
 import OrderStatusBadge from "@/components/features/order/OrderStatusBadge";
 import SectionTitle from "@/components/panel/SectionTitle";
-import { formatDate, formatPrice, toPersianCode } from "@/lib/utils/format";
+import { toPersianCode, toPersianDate, toPersianPrice } from "@/lib/utils/format";
 import Link from "next/link";
 
 interface UserRecentOrdersProps {
@@ -45,17 +45,17 @@ export default function UserRecentOrders({ orders }: UserRecentOrdersProps) {
                   </td>
                   <td className="p-2 text-center">
                     <span className="max-sm:hidden">
-                      {formatPrice(order.finalAmount)}
+                      {toPersianPrice(order.finalAmount)}
                     </span>
                     <span className="sm:hidden">
-                      {formatPrice(order.finalAmount, false)}
+                      {toPersianPrice(order.finalAmount, false)}
                     </span>
                   </td>
                   <td className="p-2 text-center max-xs:hidden">
                     <OrderStatusBadge status={order.status} />
                   </td>
                   <td className="text-neutral9 p-2 text-center text-sm">
-                    {formatDate(new Date(order.createdAt))}
+                    {toPersianDate(new Date(order.createdAt))}
                   </td>
                 </tr>
               ))}

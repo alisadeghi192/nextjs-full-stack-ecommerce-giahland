@@ -1,8 +1,8 @@
 "use client";
 import { ICartItem } from "@/features/cart/types/cart.types";
 import {
-  formatPrice,
   toPersianNumber,
+  toPersianPrice,
   toStyledSlug
 } from "@/lib/utils/format";
 import { getDiscountedPrice } from "@/lib/utils/price";
@@ -43,7 +43,7 @@ export default function CartModalItem({
   const productId = product._id;
   const price = product.price || 0;
   const discount = product.discount || 0;
-  const discountedPrice = formatPrice(getDiscountedPrice(price, discount));
+  const discountedPrice = toPersianPrice(getDiscountedPrice(price, discount));
 
   return (
     <div className="bg-neutral2 rtl border-neutral5 mr-1.5 flex gap-x-6 rounded-xl border p-4">

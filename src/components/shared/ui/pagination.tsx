@@ -1,3 +1,4 @@
+import { toPersianNumber } from "@/lib/utils/format";
 import Link from "next/link";
 import {
   MdKeyboardArrowRight,
@@ -79,7 +80,7 @@ export default function Pagination({
                 : "hover:bg-gray-50"
             }`}
           >
-            {page.toLocaleString("fa-IR")}
+            {toPersianNumber(+page)}
           </Link>
         );
       })}

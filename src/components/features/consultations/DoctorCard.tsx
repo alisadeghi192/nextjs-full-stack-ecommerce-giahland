@@ -1,7 +1,7 @@
 "use client";
 
 import PrimaryButton from "@/components/shared/ui/PrimaryButton";
-import { toPersianNumber } from "@/lib/utils/format";
+import { toPersianNumber, toPersianPrice } from "@/lib/utils/format";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -49,7 +49,7 @@ export default function DoctorCard({ doctor }: DoctorCardProps) {
           <div className="max-xs:hidden flex w-full items-center justify-between">
             <div>
               <span className="text-lg">
-                {doctor.consultationFee.toLocaleString("fa-IR")} تومان
+               {toPersianPrice(doctor.consultationFee)}
               </span>
             </div>
             <Link  href={`/user/consultations/payment/${doctor._id}`}>
@@ -61,7 +61,7 @@ export default function DoctorCard({ doctor }: DoctorCardProps) {
       <div className="xs:hidden mt-2 flex w-full items-center justify-between">
         <div>
           <span className="text-lg">
-            {doctor.consultationFee.toLocaleString("fa-IR")} تومان
+            {toPersianPrice(doctor.consultationFee)}
           </span>
         </div>
         <Link  href={`/user/consultations/payment/${doctor._id}`}>

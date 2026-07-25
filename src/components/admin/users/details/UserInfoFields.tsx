@@ -1,6 +1,6 @@
 "use client";
 
-import { formatDate, formatPrice, toPersianCode, toPersianNumber } from "@/lib/utils/format";
+import { toPersianCode, toPersianDate, toPersianNumber, toPersianPrice } from "@/lib/utils/format";
 
 interface UserInfoFieldsProps {
   user: {
@@ -26,7 +26,7 @@ export default function UserInfoFields({ user }: UserInfoFieldsProps) {
       </div>
       <div className="flex items-center gap-x-2">
         <span className="text-neutral9">تاریخ ثبت‌نام:</span>
-        <span>{formatDate(new Date(user.createdAt))}</span>
+        <span>{toPersianDate(new Date(user.createdAt))}</span>
       </div>
       <div className="flex items-center gap-x-2">
         <span className="text-neutral9">ایمیل:</span>
@@ -65,7 +65,7 @@ export default function UserInfoFields({ user }: UserInfoFieldsProps) {
           </div>
           <div className="flex items-center gap-x-2">
             <span className="text-neutral9">هزینه مشاوره:</span>
-            {formatPrice(user.consultationFee || 0)}
+            {toPersianPrice(user.consultationFee || 0)}
           </div>
         </>
       )}

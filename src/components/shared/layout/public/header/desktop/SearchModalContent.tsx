@@ -2,7 +2,7 @@
 
 import FormField from "@/components/shared/ui/FormField";
 import { searchProducts } from "@/features/products/actions/searchProducts.actions";
-import { formatPrice } from "@/lib/utils/format";
+import { toPersianPrice } from "@/lib/utils/format";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
@@ -111,7 +111,7 @@ export default function SearchModalContent({ onClose, isOpen }: SearchModalConte
                   <div>
                     <p className="font-medium">{item.name}</p>
                     <p className="text-neutral9 text-sm">
-                      {formatPrice(item.price)}
+                      {toPersianPrice(item.price)}
                     </p>
                   </div>
                 </div>

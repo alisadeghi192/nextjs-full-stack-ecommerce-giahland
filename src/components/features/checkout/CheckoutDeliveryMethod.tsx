@@ -1,6 +1,6 @@
 "use client";
 
-import { formatPrice } from "@/lib/utils/format";
+import { toPersianPrice } from "@/lib/utils/format";
 import { useState } from "react";
 import { MdKeyboardArrowDown } from "react-icons/md";
 
@@ -79,7 +79,7 @@ export default function CheckoutDeliveryMethod({
                 </span>
               </div>
               <span className="text-primary font-medium">
-                {formatPrice(300000)}
+                {toPersianPrice(300000)}
               </span>
             </label>
 

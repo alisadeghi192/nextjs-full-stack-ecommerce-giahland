@@ -1,6 +1,6 @@
 "use client";
 
-import { formatPrice, toPersianNumber } from "@/lib/utils/format";
+import { toPersianNumber, toPersianPrice } from "@/lib/utils/format";
 import { getDiscountedPrice } from "@/lib/utils/price";
 
 interface CheckoutItemsProps {
@@ -31,7 +31,7 @@ export default function CheckoutItems({
         {items.map((item, index) => {
           const {product} = item
           const discountedPrice = getDiscountedPrice(product.price, product.discount);
-          const finalPrice = formatPrice(discountedPrice * item.quantity);
+          const finalPrice = toPersianPrice(discountedPrice * item.quantity);
           return (
             <div
               key={index}
@@ -50,15 +50,15 @@ export default function CheckoutItems({
       <div className="mt-3 space-y-4 border-t pt-3">
         <div className="flex items-center justify-between text-sm">
           <span>جمع کل</span>
-          <span>{formatPrice(totalPrice)}</span>
+          <span>{toPersianPrice(totalPrice)}</span>
         </div>
         <div className="flex justify-between text-sm">
           <span>هزینه ارسال</span>
-          <span>{shippingCost > 0 ? formatPrice(shippingCost) : "رایگان"}</span>
+          <span>{shippingCost > 0 ? toPersianPrice(shippingCost) : "رایگان"}</span>
         </div>
         <div className="flex justify-between text-lg font-bold">
           <span className="max-md:text-base">مبلغ قابل پرداخت</span>
-          <span className="text-primary">{formatPrice(finalTotal)}</span>
+          <span className="text-primary">{toPersianPrice(finalTotal)}</span>
         </div>
       </div>
     </div>

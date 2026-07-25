@@ -15,7 +15,7 @@ import Consultation from "@/lib/db/models/Consultation";
 import Order from "@/lib/db/models/Order";
 import Product from "@/lib/db/models/Product";
 import { PlantDoctor, User } from "@/lib/db/models/User";
-import { formatDate } from "@/lib/utils/format";
+import { toPersianDate } from "@/lib/utils/format";
 import { redirect } from "next/navigation";
 
 export default async function AdminDashboardPage() {
@@ -61,7 +61,7 @@ export default async function AdminDashboardPage() {
       <div className="flex items-center justify-between">
         <SectionTitle title="داشبورد مدیریت" className="mb-0!" />
         <span className="text-primary font-medium">
-          {formatDate(new Date())}
+          {toPersianDate(new Date())}
         </span>
       </div>
 

@@ -3,6 +3,7 @@ import { useAllNotifications } from "@/features/notifications/hooks/useAllNotifi
 import { markTicketAsRead } from "@/features/tickets/actions/markTicketAsRead.actions";
 import { ITicket } from "@/features/tickets/types/ticket.types";
 import { TICKET_DEPARTMENTS } from "@/lib/constants";
+import { toPersianDate, toPersianDateAndTime } from "@/lib/utils/format";
 import Image from "next/image";
 import { useState } from "react";
 import { MdKeyboardArrowDown } from "react-icons/md";
@@ -49,7 +50,7 @@ export default function TicketItem({
               {ticket.subject}
             </span>
             <span className="bg-primary inline-block h-5 w-0.5 rounded-xs" />
-            {new Date(ticket.createdAt).toLocaleDateString("fa-IR")}
+            {toPersianDate(ticket.createdAt)}
             <span
               className={`rounded-full px-2 py-0.5 text-xs ${
                 ticket.status === "pending"
@@ -114,13 +115,7 @@ export default function TicketItem({
                       </span>
                     </div>
                     <div className="ltr text-neutral11 max-md:text-sm">
-                      {new Date(ticket.createdAt).toLocaleDateString("fa-IR", {
-                        year: "numeric",
-                        month: "2-digit",
-                        day: "2-digit",
-                        hour: "2-digit",
-                        minute: "2-digit",
-                      })}
+                      {toPersianDateAndTime(ticket.createdAt)}
                     </div>
                   </div>
                   <p className="text-neutral10 whitespace-pre-wrap max-md:text-sm">
@@ -133,16 +128,7 @@ export default function TicketItem({
                   <div className="flex items-center justify-between">
                     <div className="mb-1 font-medium">پاسخ ادمین:</div>
                     <div className="ltr text-neutral11 max-md:text-sm">
-                      {new Date(ticket.adminReply.createdAt).toLocaleDateString(
-                        "fa-IR",
-                        {
-                          year: "numeric",
-                          month: "2-digit",
-                          day: "2-digit",
-                          hour: "2-digit",
-                          minute: "2-digit",
-                        },
-                      )}
+                      {toPersianDateAndTime(ticket.adminReply.createdAt)}
                     </div>
                   </div>
                   <p className="mt-2 whitespace-pre-wrap text-gray-700 max-md:text-sm">

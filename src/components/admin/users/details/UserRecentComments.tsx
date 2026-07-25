@@ -1,7 +1,7 @@
 "use client";
 
 import SectionTitle from "@/components/panel/SectionTitle";
-import { formatDate } from "@/lib/utils/format";
+import { toPersianDate } from "@/lib/utils/format";
 
 interface UserRecentCommentsProps {
   comments: {
@@ -51,7 +51,7 @@ export default function UserRecentComments({
                     )}
                   </div>
                   <span className="text-neutral9 max-xs:text-xs text-sm">
-                    {comment.createdAt && formatDate(comment.createdAt)}
+                    {comment.createdAt && toPersianDate(comment.createdAt)}
                   </span>
                 </div>
               </div>

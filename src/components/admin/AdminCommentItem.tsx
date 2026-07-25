@@ -9,17 +9,18 @@ import { replyComment } from "@/features/comments/actions/replyComment.actions";
 import { toggleCommentReadByAdmin } from "@/features/comments/actions/toggleCommentReadByAdmin.actions";
 import { IAdminComment } from "@/features/comments/types/comment.types";
 import { useAllNotifications } from "@/features/notifications/hooks/useAllNotifications";
+import { toPersianDateAndTime } from "@/lib/utils/format";
 import Link from "next/link";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import {
-    MdCheck,
-    MdDelete,
-    MdDriveFileRenameOutline,
-    MdKeyboardArrowDown,
-    MdMarkEmailRead,
-    MdMarkEmailUnread,
-    MdReply,
+  MdCheck,
+  MdDelete,
+  MdDriveFileRenameOutline,
+  MdKeyboardArrowDown,
+  MdMarkEmailRead,
+  MdMarkEmailUnread,
+  MdReply,
 } from "react-icons/md";
 
 interface AdminCommentItemProps {
@@ -167,15 +168,7 @@ export default function AdminCommentItem({
                 </span>
                 <span className="text-gray-400">|</span>
                 <div className="ltr text-sm text-gray-400">
-                  {new Date(
-                    comment.createdAt || comment.date || new Date(),
-                  ).toLocaleString("fa-IR", {
-                    year: "numeric",
-                    month: "2-digit",
-                    day: "2-digit",
-                    hour: "2-digit",
-                    minute: "2-digit",
-                  })}
+                  {toPersianDateAndTime(comment.createdAt || comment.date)}
                 </div>
               </div>
             </div>
@@ -192,13 +185,7 @@ export default function AdminCommentItem({
                 </span>
                 <span className="text-gray-400">|</span>
                 <span className="ltr text-gray-400">
-                  {new Date(comment.reply.date).toLocaleString("fa-IR", {
-                    year: "numeric",
-                    month: "2-digit",
-                    day: "2-digit",
-                    hour: "2-digit",
-                    minute: "2-digit",
-                  })}
+                  {toPersianDateAndTime(comment.reply.date)}
                 </span>
               </div>
               <p className="mt-1 text-gray-700">{comment.reply.text}</p>

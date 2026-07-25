@@ -1,8 +1,8 @@
 "use client";
 
 import {
-  formatPrice,
   toPersianNumber,
+  toPersianPrice,
   toStyledSlug
 } from "@/lib/utils/format";
 import { getDiscountedPrice } from "@/lib/utils/price";
@@ -20,7 +20,7 @@ interface CartPageItemProps {
 export default function CartPageItem({ item }: CartPageItemProps) {
   const { updateQuantity, removeItem } = useCartStoreActions();
   const product = item.product as any;
-  const totalPrice = formatPrice(
+  const totalPrice = toPersianPrice(
     getDiscountedPrice(product.price, product.discount || 0) * item.quantity,
   );
 
@@ -89,7 +89,7 @@ export default function CartPageItem({ item }: CartPageItemProps) {
           <div className="flex items-center gap-x-2">
             <div className="text-error relative text-sm">
               {product.discount > 0 &&
-                formatPrice(product.price * item.quantity, false)}
+                toPersianPrice(product.price * item.quantity, false)}
               <span className="bg-error mr-0-auto absolute top-1/2 block h-px w-full"></span>
             </div>
             <div className="text-lg max-md:text-base font-medium">{totalPrice}</div>

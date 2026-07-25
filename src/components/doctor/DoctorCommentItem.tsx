@@ -5,14 +5,15 @@ import TextareaField from "@/components/shared/ui/TextareaField";
 import { replyDoctorComment } from "@/features/comments/actions/replyDoctorComment.actions";
 import { IAdminComment } from "@/features/comments/types/comment.types";
 import { useAllNotifications } from "@/features/notifications/hooks/useAllNotifications";
+import { toPersianDateAndTime } from "@/lib/utils/format";
 import Link from "next/link";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import {
-    MdDriveFileRenameOutline,
-    MdKeyboardArrowDown,
-    MdReply,
-    MdSend,
+  MdDriveFileRenameOutline,
+  MdKeyboardArrowDown,
+  MdReply,
+  MdSend,
 } from "react-icons/md";
 
 interface DoctorCommentItemProps {
@@ -114,15 +115,7 @@ export default function DoctorCommentItem({
                 </span>
                 <span className="text-gray-400">|</span>
                 <div className="ltr text-sm text-gray-400">
-                  {new Date(
-                    comment.createdAt || comment.date || new Date(),
-                  ).toLocaleString("fa-IR", {
-                    year: "numeric",
-                    month: "2-digit",
-                    day: "2-digit",
-                    hour: "2-digit",
-                    minute: "2-digit",
-                  })}
+                  {toPersianDateAndTime(comment.createdAt || comment.date)}
                 </div>
               </div>
             </div>
@@ -139,13 +132,7 @@ export default function DoctorCommentItem({
                 </span>
                 <span className="text-gray-400">|</span>
                 <span className="ltr text-gray-400">
-                  {new Date(comment.reply.date).toLocaleString("fa-IR", {
-                    year: "numeric",
-                    month: "2-digit",
-                    day: "2-digit",
-                    hour: "2-digit",
-                    minute: "2-digit",
-                  })}
+                  {toPersianDateAndTime(comment.reply.date)}
                 </span>
               </div>
               <p className="mt-1 text-gray-700">{comment.reply.text}</p>
@@ -183,14 +170,14 @@ export default function DoctorCommentItem({
                   onChange={(e) => setReplyText(e.target.value)}
                   disabled={isLoading}
                 />
-                <div className="mt-3 flex justify-end max-xs:w-full">
+                <div className="max-xs:w-full mt-3 flex justify-end">
                   <ConfirmDialog
                     onConfirm={handleReplySubmit}
                     disabled={isLoading || !replyText.trim()}
                     title="⚠️ پس از ارسال، پاسخ شما قابل ویرایش نیست و این کامنت از لیست شما خارج می‌شود.آیا از ثبت این پاسخ مطمئن هستید؟"
                     confirmText="بله، ثبت شود"
                     cancelText="انصراف"
-                    className="flex items-center cursor-pointer gap-2 rounded-lg bg-primary px-4 py-2 text-sm text-white transition hover:bg-primary/80 disabled:opacity-50 max-xs:w-full max-xs:justify-center"
+                    className="bg-primary hover:bg-primary/80 max-xs:w-full max-xs:justify-center flex cursor-pointer items-center gap-2 rounded-lg px-4 py-2 text-sm text-white transition disabled:opacity-50"
                   >
                     <MdSend size={18} />
                     {isLoading ? "در حال ارسال..." : "ارسال پاسخ"}

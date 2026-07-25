@@ -1,4 +1,4 @@
-import { formatDate } from "@/lib/utils/format";
+import { toPersianDate } from "@/lib/utils/format";
 import Image from "next/image";
 import { MdOutlineAccountCircle, MdOutlineCalendarMonth } from "react-icons/md";
 
@@ -34,7 +34,7 @@ export default function PostMeta({
           <MdOutlineAccountCircle className="size-5" /> {author}
         </span>
         <span className="flex items-center justify-between gap-1">
-          {formatDate(new Date(publishedAt))}
+          {toPersianDate(new Date(publishedAt))}
           <MdOutlineCalendarMonth className="size-5" />{" "}
         </span>
       </div>

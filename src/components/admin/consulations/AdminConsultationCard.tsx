@@ -2,8 +2,8 @@
 
 import PrimaryButton from "@/components/shared/ui/PrimaryButton";
 import {
-  formatDate,
   toPersianCode,
+  toPersianDate,
   toPersianDateAndTime,
 } from "@/lib/utils/format";
 import { useIsSidebarOpen } from "@/stores/selectors/ui.selectors";
@@ -75,7 +75,7 @@ export default function AdminConsultationCard({
 
         <div className="flex items-center gap-2">
           <span className="max-xs:text-sm">
-            {formatDate(new Date(consultation.createdAt))}📅
+            {toPersianDate(consultation.createdAt)}📅
           </span>
           <MdKeyboardArrowDown
             className={`size-5 transition-transform duration-200 ${
