@@ -15,7 +15,7 @@ export default function Overlay({
 }: OverlayProps) {
   return (
     <div
-      className={`fixed inset-0 bg-black/60 transition-all duration-200 ${
+      className={`fixed inset-0 h-dvh bg-black/60 transition-all duration-200 ${
         isOpen ? "opacity-100 visible" : "opacity-0 invisible"
       }`}
       style={{ top: `${topOffset}px`, zIndex }}
