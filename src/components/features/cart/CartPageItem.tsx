@@ -1,9 +1,9 @@
 "use client";
 
 import {
-  formatDimensions,
   formatPrice,
   toPersianNumber,
+  toStyledSlug
 } from "@/lib/utils/format";
 import { getDiscountedPrice } from "@/lib/utils/price";
 import { useCartStoreActions } from "@/stores/selectors/cart.selectors";
@@ -58,8 +58,8 @@ export default function CartPageItem({ item }: CartPageItemProps) {
           {product.name}
         </Link>
         {product.potDimensions && (
-          <p className="text-neutral9 text-sm/6.25">
-            ابعاد: {formatDimensions(product.potDimensions)}
+          <p className="text-neutral9 text-sm/6.25 line-clamp-1">
+            {toStyledSlug(product.slug)}
           </p>
         )}
 

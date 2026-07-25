@@ -14,11 +14,6 @@ interface ProductCardListProps {
   slug: string;
   category: String;
   discount: number;
-  potDimensions: {
-    length: number;
-    width: number;
-    height: number;
-  };
   stock: number;
   isLiked?: boolean;
 }
@@ -31,7 +26,6 @@ export default function ProductCardList({
   category,
   slug,
   discount,
-  potDimensions,
   stock,
   isLiked = false,
 }: ProductCardListProps) {
@@ -44,7 +38,7 @@ export default function ProductCardList({
       <div className="flex grow flex-col justify-between">
         <ProductInfo
           name={name}
-          potDimensions={potDimensions}
+          slug={slug}
           stock={stock}
           nameClassName="text-lg/8 line-clamp-1 max-md:text-base max-md:text-wrap"
         />

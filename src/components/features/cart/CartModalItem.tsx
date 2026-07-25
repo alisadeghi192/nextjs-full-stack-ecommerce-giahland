@@ -1,9 +1,9 @@
 "use client";
 import { ICartItem } from "@/features/cart/types/cart.types";
 import {
-  formatDimensions,
   formatPrice,
   toPersianNumber,
+  toStyledSlug
 } from "@/lib/utils/format";
 import { getDiscountedPrice } from "@/lib/utils/price";
 import Image from "next/image";
@@ -22,11 +22,6 @@ interface CartModalItemProps {
       discount?: number;
       slug: string;
       category: string;
-      potDimensions?: {
-        length: number;
-        width: number;
-        height: number;
-      };
     };
   };
   onIncrease: (productId: string) => void;
@@ -73,9 +68,9 @@ export default function CartModalItem({
           >
             {product.name}
           </Link>
-          {product.potDimensions && (
-            <span className="text-neutral9 text-sm/6.25">
-              ابعاد: {formatDimensions(product.potDimensions)}
+          {product.slug && (
+            <span className="text-neutral9 line-clamp-1 text-sm/6.25">
+            {toStyledSlug(product.slug)}
             </span>
           )}
         </div>

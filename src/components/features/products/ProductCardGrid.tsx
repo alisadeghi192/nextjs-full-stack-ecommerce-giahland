@@ -15,11 +15,6 @@ interface ProductCardGridProps {
   slug: string;
   category: string;
   discount: number;
-  potDimensions: {
-    length: number;
-    width: number;
-    height: number;
-  };
   stock: number;
   isLiked?: boolean;
   usedInSlider?: boolean;
@@ -33,7 +28,6 @@ export default function ProductCardGrid({
   category,
   slug = "/",
   discount,
-  potDimensions,
   stock,
   isLiked = false,
   usedInSlider = false,
@@ -47,7 +41,7 @@ export default function ProductCardGrid({
       <div className="mt-auto flex flex-col gap-y-4 max-sm:gap-y-2">
         <ProductInfo
           name={name}
-          potDimensions={potDimensions}
+          slug={slug}
           stock={stock}
           nameClassName="max-xs:text-sm mt-2 line-clamp-1 text-lg/8 max-sm:text-base/7.25"
         />
