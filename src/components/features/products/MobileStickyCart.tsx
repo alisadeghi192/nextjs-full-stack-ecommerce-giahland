@@ -1,11 +1,11 @@
 "use client";
 import PrimaryButton from "@/components/shared/ui/PrimaryButton";
 import {
-  useIsAuthenticated,
-  useUserRole,
+    useIsAuthenticated,
+    useUserRole,
 } from "@/features/auth/selectors/auth.selectors";
+import { useCartStoreActions } from "@/features/cart/selectors/cart.selectors";
 import { useFooterVisibility } from "@/lib/hooks/useFooterVisibility";
-import { useCartStoreActions } from "@/stores/selectors/cart.selectors";
 import toast from "react-hot-toast";
 import PriceSection from "./PriceSection";
 import StockStatus from "./StockStatus";

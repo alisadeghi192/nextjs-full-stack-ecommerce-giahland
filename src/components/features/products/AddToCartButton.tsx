@@ -1,6 +1,6 @@
 "use client";
 import { useIsAuthenticated, useUserRole } from "@/features/auth/selectors/auth.selectors";
-import { useCartStoreActions } from "@/stores/selectors/cart.selectors";
+import { useCartStoreActions } from "@/features/cart/selectors/cart.selectors";
 import toast from "react-hot-toast";
 import { MdOutlineShoppingCart } from "react-icons/md";
 interface AddToCartButtonProps {

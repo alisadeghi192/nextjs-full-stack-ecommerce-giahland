@@ -5,9 +5,9 @@ import IconButton from "@/components/shared/ui/IconButton";
 import NotificationBadge from "@/components/shared/ui/NotificationBadge";
 import { useUserRole } from "@/features/auth/selectors/auth.selectors";
 import {
-  useCartStoreActions,
-  useCartTotalItems,
-} from "@/stores/selectors/cart.selectors";
+    useCartStoreActions,
+    useCartTotalItems,
+} from "@/features/cart/selectors/cart.selectors";
 import { useCartActions, useIsCartOpen } from "@/stores/selectors/ui.selectors";
 import { useEffect } from "react";
 import { MdOutlineShoppingCart } from "react-icons/md";

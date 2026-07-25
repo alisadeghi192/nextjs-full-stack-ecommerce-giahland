@@ -3,11 +3,11 @@
 import PriceSection from "@/components/features/products/PriceSection";
 import PrimaryButton from "@/components/shared/ui/PrimaryButton";
 import { useIsAuthenticated } from "@/features/auth/selectors/auth.selectors";
-import { toPersianNumber } from "@/lib/utils/format";
 import {
   useCartStoreActions,
   useCartSummary,
-} from "@/stores/selectors/cart.selectors";
+} from "@/features/cart/selectors/cart.selectors";
+import { toPersianNumber } from "@/lib/utils/format";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";

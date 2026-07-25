@@ -1,12 +1,12 @@
 "use client";
 
+import { useCartStoreActions } from "@/features/cart/selectors/cart.selectors";
 import {
   toPersianNumber,
   toPersianPrice,
   toStyledSlug
 } from "@/lib/utils/format";
 import { getDiscountedPrice } from "@/lib/utils/price";
-import { useCartStoreActions } from "@/stores/selectors/cart.selectors";
 import Image from "next/image";
 import Link from "next/link";
 import { AiOutlineDelete } from "react-icons/ai";

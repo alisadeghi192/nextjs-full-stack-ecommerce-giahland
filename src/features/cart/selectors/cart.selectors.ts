@@ -1,9 +1,7 @@
 import { useCartStore } from "@/stores/useCartStore";
 import { useShallow } from "zustand/react/shallow";
 
-export const useCartItems = () => useCartStore((state) => state.items);
 export const useCartTotalItems = () => useCartStore((state) => state.totalItems);
-export const useCartTotalPrice = () => useCartStore((state) => state.totalPrice);
 
 export const useCartSummary = () =>
   useCartStore(

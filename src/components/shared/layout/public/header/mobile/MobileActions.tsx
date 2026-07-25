@@ -3,25 +3,25 @@
 import IconButton from "@/components/shared/ui/IconButton";
 import NotificationBadge from "@/components/shared/ui/NotificationBadge";
 import {
-  useIsAdmin,
-  useIsAuthenticated,
-  useIsLoading,
-  useUserAvatar,
-  useUserRole,
+    useIsAdmin,
+    useIsAuthenticated,
+    useIsLoading,
+    useUserAvatar,
+    useUserRole,
 } from "@/features/auth/selectors/auth.selectors";
-import { useAllNotifications } from "@/features/notifications/hooks/useAllNotifications";
 import {
-  useCartStoreActions,
-  useCartTotalItems,
-} from "@/stores/selectors/cart.selectors";
+    useCartStoreActions,
+    useCartTotalItems,
+} from "@/features/cart/selectors/cart.selectors";
+import { useAllNotifications } from "@/features/notifications/hooks/useAllNotifications";
 import { useCartActions } from "@/stores/selectors/ui.selectors";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect } from "react";
 import {
-  MdOutlineDarkMode,
-  MdOutlineLogin,
-  MdOutlineShoppingCart,
+    MdOutlineDarkMode,
+    MdOutlineLogin,
+    MdOutlineShoppingCart,
 } from "react-icons/md";
 
 export default function MobileActions() {

@@ -2,8 +2,8 @@
 
 import OutlineButton from "@/components/shared/ui/OutlineButton";
 import PrimaryButton from "@/components/shared/ui/PrimaryButton";
+import { useCartStoreActions } from "@/features/cart/selectors/cart.selectors";
 import { toPersianCode, toPersianPrice } from "@/lib/utils/format";
-import { useCartStoreActions } from "@/stores/selectors/cart.selectors";
 import { useEffect, useRef } from "react";
 
 type PaymentSuccessVariant = "order" | "consultation";
