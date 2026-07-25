@@ -1,3 +1,4 @@
+"use server"
 import { getMeAction } from "@/features/auth/actions/me.actions";
 import { TICKET_DEPARTMENT } from "@/lib/constants";
 import connectToDB from "@/lib/db/connect";
