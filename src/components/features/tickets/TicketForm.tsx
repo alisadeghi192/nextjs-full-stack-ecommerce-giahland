@@ -2,7 +2,7 @@
 import FormField from "@/components/shared/ui/FormField";
 import PrimaryButton from "@/components/shared/ui/PrimaryButton";
 import TextareaField from "@/components/shared/ui/TextareaField";
-import { createTicket } from "@/features/tickets/actions/ticket.actions";
+import { createTicket } from "@/features/tickets/actions/createTicket.actions";
 import { TICKET_DEPARTMENTS } from "@/lib/constants";
 import { useActionState, useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";

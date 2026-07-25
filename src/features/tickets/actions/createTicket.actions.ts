@@ -1,29 +1,10 @@
-"use server";
-
 import { getMeAction } from "@/features/auth/actions/me.actions";
-import { ITicket } from "@/features/tickets/types/ticket.types";
 import { TICKET_DEPARTMENT } from "@/lib/constants";
 import connectToDB from "@/lib/db/connect";
 import Ticket from "@/lib/db/models/Ticket";
 import { revalidatePath } from "next/cache";
 import { TicketSchema } from "../schemas/ticket.schema";
 import { uploadAttachment } from "../utils/uploadAttachment";
-
-export async function getUserTickets(): Promise<ITicket[]> {
-  const { user } = await getMeAction();
-  if (!user) throw new Error("Unauthorized");
-
-  await connectToDB();
-  const tickets = await Ticket.find({ user: user._id })
-    .sort({ createdAt: -1 })
-    .lean();
-
-  return tickets.map((ticket) => ({
-    ...ticket,
-    _id: ticket._id.toString(),
-    user: ticket.user.toString(),
-  })) as ITicket[];
-}
 
 export async function createTicket(prevState: any, formData: FormData) {
   const { user } = await getMeAction();
@@ -64,41 +45,4 @@ export async function createTicket(prevState: any, formData: FormData) {
 
   revalidatePath("/user/tickets");
   return { success: true, message: "تیکت با موفقیت ثبت شد." };
-}
-
-export async function markTicketAsRead(ticketId: string) {
-  const { user } = await getMeAction();
-
-  if (!user || user.role === "admin") {
-    return {
-      success: false,
-      message: "شما مجاز به این کار نیستید.",
-    };
-  }
-
-  await connectToDB();
-
-  const ticket = await Ticket.findOne({ _id: ticketId, user: user._id });
-  if (!ticket) {
-    return {
-      success: false,
-      message: "تیکت یافت نشد.",
-    };
-  }
-
-  if (ticket.isReadByUser) {
-    return {
-      success: true,
-      message: "قبلاً خوانده شده.",
-    };
-  }
-
-  ticket.isReadByUser = true;
-  await ticket.save();
-
-  revalidatePath("/user/tickets");
-  return {
-    success: true,
-    message: "تیکت به‌عنوان خوانده شده علامت‌گذاری شد.",
-  };
 }
