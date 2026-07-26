@@ -3,10 +3,15 @@ import DoctorArticlesList from "@/components/doctor/DoctorArticlesList";
 import Pagination from "@/components/shared/ui/Pagination";
 import { getArticlesByDoctor } from "@/features/blog/actions/getArticlesByDoctor.actions";
 import {
-    BLOG_POSTS_PER_PAGE,
-    DEFAULT_SORT,
-    DEFAULT_TAB,
+  BLOG_POSTS_PER_PAGE,
+  DEFAULT_SORT,
+  DEFAULT_TAB,
 } from "@/lib/constants";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "مقاله‌های من | پنل کاربری",
+};
 interface PageProps {
   searchParams: Promise<{ category?: string; sort?: string; page?: string }>;
 }

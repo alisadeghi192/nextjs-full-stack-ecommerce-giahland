@@ -6,6 +6,11 @@ import { getUserOrdersAction } from "@/features/order/actions/getUserOrders.acti
 import { IOrder } from "@/features/order/types/order.types";
 import { ORDERS_PER_PAGE } from "@/lib/constants/pagination";
 import { toPersianNumber } from "@/lib/utils/format";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "سفارش‌های من | پنل کاربری",
+};
 
 interface UserOrdersPageProps {
   searchParams: Promise<{ search?: string; page?: string }>;

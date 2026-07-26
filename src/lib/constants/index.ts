@@ -9,6 +9,7 @@ export * from "./defaults";
 export * from "./faq";
 export * from "./footer";
 export * from "./header";
+export * from "./metadata";
 export * from "./nav";
 export * from "./pagination";
 export * from "./PanelLinks";

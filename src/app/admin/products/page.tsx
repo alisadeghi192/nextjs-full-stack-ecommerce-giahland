@@ -5,7 +5,12 @@ import OutlineButton from "@/components/shared/ui/OutlineButton";
 import Pagination from "@/components/shared/ui/Pagination";
 import { getProductsForAdmin } from "@/features/products/actions/getProductsForAdmin.actions";
 import { toPersianNumber } from "@/lib/utils/format";
+import type { Metadata } from "next";
 import { FaPlus } from "react-icons/fa6";
+
+export const metadata: Metadata = {
+  title: "  محصولات | پنل مدیریت",
+};
 
 interface PageProps {
   searchParams: Promise<{

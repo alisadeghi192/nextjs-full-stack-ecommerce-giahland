@@ -2,11 +2,24 @@ import AboutStatsItem from "@/components/features/about/AboutStatsItem";
 import Accordion from "@/components/shared/ui/Accordion";
 import Breadcrumb from "@/components/shared/ui/Breadcrumb";
 import PrimaryButton from "@/components/shared/ui/PrimaryButton";
-import { FAQ_ITEMS } from "@/lib/constants";
+import { ABOUT_METADATA, FAQ_ITEMS } from "@/lib/constants";
+import type { Metadata } from "next";
 import Image from "next/image";
 import { FaUserDoctor } from "react-icons/fa6";
 import { MdLocalShipping, MdPestControl } from "react-icons/md";
 import { RiPlantFill } from "react-icons/ri";
+
+export const metadata: Metadata = {
+  title: ABOUT_METADATA.title,
+  description: ABOUT_METADATA.description,
+  keywords: ABOUT_METADATA.keywords,
+  openGraph: {
+    title: ABOUT_METADATA.title,
+    description: ABOUT_METADATA.description,
+    images: "/static/images/logo.webp",
+  },
+};
+
 
 export default function AboutPage() {
   return (

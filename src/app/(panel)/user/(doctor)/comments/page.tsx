@@ -4,7 +4,11 @@ import SectionTitle from "@/components/panel/SectionTitle";
 import Pagination from "@/components/shared/ui/Pagination";
 import { getMeAction } from "@/features/auth/actions/me.actions";
 import { getDoctorComments } from "@/features/comments/actions/getDoctorComments.actions";
+import { Metadata } from "next";
 import { redirect } from "next/navigation";
+export const metadata: Metadata = {
+  title: " کامنت‌ها | پنل کاربری",
+};
 
 interface PageProps {
   searchParams: Promise<{

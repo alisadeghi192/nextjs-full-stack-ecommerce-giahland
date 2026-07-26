@@ -6,7 +6,12 @@ import { getMeAction } from "@/features/auth/actions/me.actions";
 import { getAllConsultations } from "@/features/consultations/actions/getAllConsultations.actions";
 import { CONSULTATIONS_PER_PAGE } from "@/lib/constants";
 import { toPersianNumber } from "@/lib/utils/format";
+import type { Metadata } from "next";
 import { redirect } from "next/navigation";
+
+export const metadata: Metadata = {
+  title: "  مشاوره‌ها | پنل مدیریت",
+};
 
 interface PageProps {
   searchParams: Promise<{

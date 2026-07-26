@@ -5,10 +5,23 @@ import Pagination from "@/components/shared/ui/Pagination";
 import { getArticles } from "@/features/blog/actions/getArticles.actions";
 import { IBlogPostCard } from "@/features/blog/types/blog.types";
 import {
-    BLOG_POSTS_PER_PAGE,
-    DEFAULT_SORT,
-    DEFAULT_TAB,
+  BLOG_METADATA,
+  BLOG_POSTS_PER_PAGE,
+  DEFAULT_SORT,
+  DEFAULT_TAB,
 } from "@/lib/constants";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: BLOG_METADATA.title,
+  description: BLOG_METADATA.description,
+  keywords: BLOG_METADATA.keywords,
+  openGraph: {
+    title: BLOG_METADATA.title,
+    description: BLOG_METADATA.description,
+    images: "/static/images/logo.webp",
+  },
+};
 
 interface BlogPageProps {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;

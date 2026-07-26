@@ -4,6 +4,11 @@ import Pagination from "@/components/shared/ui/Pagination";
 import { getMeAction } from "@/features/auth/actions/me.actions";
 import { getUserConsultations } from "@/features/consultations/actions/getUserConsultations.actions";
 import { CONSULTATIONS_PER_PAGE } from "@/lib/constants";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "مشاوره‌های من | پنل کاربری",
+};
 interface PageProps {
   searchParams: Promise<{ sort?: string; search?: string; page?: string }>;
 }

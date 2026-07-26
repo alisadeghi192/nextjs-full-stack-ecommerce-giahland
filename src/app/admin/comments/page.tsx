@@ -4,7 +4,11 @@ import SectionTitle from "@/components/panel/SectionTitle";
 import Pagination from "@/components/shared/ui/Pagination";
 import { getComments } from "@/features/comments/actions/getComments.actions";
 import { toPersianNumber } from "@/lib/utils/format";
+import type { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: " کامنت‌ها | پنل مدیریت",
+};
 interface PageProps {
   searchParams: Promise<{
     page?: string;

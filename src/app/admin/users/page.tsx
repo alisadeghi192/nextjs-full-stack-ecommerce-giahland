@@ -6,8 +6,13 @@ import Pagination from "@/components/shared/ui/Pagination";
 import { getMeAction } from "@/features/auth/actions/me.actions";
 import { getUsers } from "@/features/user/actions/getUsers.actions";
 import { toPersianNumber } from "@/lib/utils/format";
+import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { FaPlus } from "react-icons/fa6";
+
+export const metadata: Metadata = {
+  title: "  کاربران | پنل مدیریت",
+};
 
 interface PageProps {
   searchParams: Promise<{

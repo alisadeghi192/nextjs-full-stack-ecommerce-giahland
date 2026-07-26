@@ -1,5 +1,6 @@
 import ContactForm from "@/components/features/contact/ContactForm";
 import Breadcrumb from "@/components/shared/ui/Breadcrumb";
+import { CONTACT_METADATA } from "@/lib/constants";
 import {
   STORE_ADDRESS,
   STORE_EMAIL_ADDRESS,
@@ -11,9 +12,20 @@ import {
   STORE_WHATSAPP,
 } from "@/lib/constants/";
 import { toPersianCode } from "@/lib/utils/format";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { FaInstagram, FaTelegram, FaWhatsapp } from "react-icons/fa6";
 
+export const metadata: Metadata = {
+  title: CONTACT_METADATA.title,
+  description: CONTACT_METADATA.description,
+  keywords: CONTACT_METADATA.keywords,
+  openGraph: {
+    title: CONTACT_METADATA.title,
+    description: CONTACT_METADATA.description,
+    images: "/static/images/logo.webp",
+  },
+};
 export default function ContactPage() {
   return (
     <section className="container">

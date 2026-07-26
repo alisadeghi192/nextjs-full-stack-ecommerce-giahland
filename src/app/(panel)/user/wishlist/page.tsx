@@ -5,6 +5,11 @@ import Pagination from "@/components/shared/ui/Pagination";
 import { getWishlistProducts } from "@/features/products/actions/getWishlistProducts.actions";
 import { DEFAULT_VIEW_MODE } from "@/lib/constants";
 import { toPersianNumber } from "@/lib/utils/format";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: " علاقمندی ها | پنل کاربری",
+};
 
 interface WishListPageProps {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;

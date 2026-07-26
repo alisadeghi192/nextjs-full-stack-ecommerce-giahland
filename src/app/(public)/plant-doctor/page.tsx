@@ -1,6 +1,19 @@
 import ConsultationButton from "@/components/features/plant-doctor/ConsultationButton";
 import Breadcrumb from "@/components/shared/ui/Breadcrumb";
+import { PLANT_DOCTOR_METADATA } from "@/lib/constants";
+import type { Metadata } from "next";
 import Image from "next/image";
+
+export const metadata: Metadata = {
+  title: PLANT_DOCTOR_METADATA.title,
+  description: PLANT_DOCTOR_METADATA.description,
+  keywords: PLANT_DOCTOR_METADATA.keywords,
+  openGraph: {
+    title: PLANT_DOCTOR_METADATA.title,
+    description: PLANT_DOCTOR_METADATA.description,
+    images: "/static/images/logo.webp",
+  },
+};
 
 export default function PlantDoctorPage() {
   return (

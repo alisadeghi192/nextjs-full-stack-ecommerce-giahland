@@ -3,8 +3,12 @@ import SectionTitle from "@/components/panel/SectionTitle";
 import BackButton from "@/components/shared/ui/BackButton";
 import { getMeAction } from "@/features/auth/actions/me.actions";
 import { getProductById } from "@/features/products/actions/getProductById.actions";
+import type { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
 
+export const metadata: Metadata = {
+  title: "  ویرایش‌ محصول | پنل مدیریت",
+};
 interface EditProductPageProps {
   params: Promise<{ id: string }>;
 }

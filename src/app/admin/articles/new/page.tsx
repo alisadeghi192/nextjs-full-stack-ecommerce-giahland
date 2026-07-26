@@ -2,7 +2,12 @@ import ArticleForm from "@/components/features/blog/ArticleForm";
 import SectionTitle from "@/components/panel/SectionTitle";
 import BackButton from "@/components/shared/ui/BackButton";
 import { getMeAction } from "@/features/auth/actions/me.actions";
+import type { Metadata } from "next";
 import { redirect } from "next/navigation";
+
+export const metadata: Metadata = {
+  title: " مقاله جدید | پنل مدیریت",
+};
 export default async function NewArticlePage() {
   const { user } = await getMeAction();
 
@@ -12,7 +17,7 @@ export default async function NewArticlePage() {
 
   return (
     <section className="w-full">
-      <div className="flex items-center justify-between mb-4">
+      <div className="mb-4 flex items-center justify-between">
         <SectionTitle title="نوشتن مقاله جدید" className="mb-0!" />
         <BackButton />
       </div>

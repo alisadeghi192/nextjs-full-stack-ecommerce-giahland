@@ -3,10 +3,15 @@ import DoctorArticlesList from "@/components/doctor/DoctorArticlesList";
 import Pagination from "@/components/shared/ui/Pagination";
 import { getArticles } from "@/features/blog/actions/getArticles.actions";
 import {
-    BLOG_POSTS_PER_PAGE,
-    DEFAULT_SORT,
-    DEFAULT_TAB,
+  BLOG_POSTS_PER_PAGE,
+  DEFAULT_SORT,
+  DEFAULT_TAB,
 } from "@/lib/constants";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: " مقاله ها | پنل مدیریت",
+};
 interface PageProps {
   searchParams: Promise<{ category?: string; sort?: string; page?: string }>;
 }
@@ -28,10 +33,14 @@ export default async function AdminArticlesPage({ searchParams }: PageProps) {
 
   return (
     <section className="w-full">
-      <DoctorArticlesHeader activeTab={activeTab} selectedSort={selectedSort} total={result.total}/>
+      <DoctorArticlesHeader
+        activeTab={activeTab}
+        selectedSort={selectedSort}
+        total={result.total}
+      />
       {result.total === 0 ? (
         <div className="border-neutral3 rounded-2xl border p-6 text-center text-gray-500 shadow-lg">
-         مقاله ای یافت نشد.
+          مقاله ای یافت نشد.
         </div>
       ) : (
         <>

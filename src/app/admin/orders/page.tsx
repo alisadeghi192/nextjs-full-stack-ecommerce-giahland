@@ -7,7 +7,12 @@ import { getAdminOrders } from "@/features/order/actions/getAdminOrders.actions"
 import { IOrder } from "@/features/order/types/order.types";
 import { ORDERS_PER_PAGE } from "@/lib/constants/pagination";
 import { toPersianNumber } from "@/lib/utils/format";
+import type { Metadata } from "next";
 import { redirect } from "next/navigation";
+
+export const metadata: Metadata = {
+  title: " سفارش‌ها | پنل مدیریت",
+};
 
 interface PageProps {
   searchParams: Promise<{

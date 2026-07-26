@@ -4,6 +4,11 @@ import SectionTitle from "@/components/panel/SectionTitle";
 import Pagination from "@/components/shared/ui/Pagination";
 import { getAllTickets } from "@/features/tickets/actions/admin.ticket.actions";
 import { toPersianNumber } from "@/lib/utils/format";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "  تیکت‌های پشتیبانی | پنل مدیریت",
+};
 
 interface PageProps {
   searchParams: Promise<{

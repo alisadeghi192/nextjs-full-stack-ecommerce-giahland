@@ -8,6 +8,19 @@ import { getArticles } from "@/features/blog/actions/getArticles.actions";
 import { getCategoryCounts } from "@/features/products/actions/getCategoryCounts.actions";
 import { getProducts } from "@/features/products/actions/getProducts.actions";
 import { getBulkLikeStatus } from "@/features/user/actions/wishlist.actions";
+import { HOME_METADATA } from "@/lib/constants";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: HOME_METADATA.title,
+  description: HOME_METADATA.description,
+  keywords: HOME_METADATA.keywords,
+  openGraph: {
+    title: HOME_METADATA.title,
+    description: HOME_METADATA.description,
+    images: "/static/images/logo.webp",
+  },
+};
 
 export default async function Home() {
   const [
