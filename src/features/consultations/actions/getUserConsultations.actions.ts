@@ -2,6 +2,7 @@
 
 import { getMeAction } from "@/features/auth/actions/me.actions";
 import { ILastMessageInfo } from "@/features/consultations/types/consultation.types";
+import { DEFAULT_PROFILE_PIC } from "@/lib/constants";
 import connectToDB from "@/lib/db/connect";
 import Consultation from "@/lib/db/models/Consultation";
 import ConsultationMessage from "@/lib/db/models/ConsultationMessage";
@@ -100,13 +101,13 @@ export async function getUserConsultations({
         _id: c.user._id.toString(),
         firstName: c.user.firstName || "کاربر",
         lastName: c.user.lastName || "",
-        avatar: c.user.avatar || "/static/images/default-user.webp",
+        avatar: c.user.avatar || DEFAULT_PROFILE_PIC,
       },
       doctor: {
         _id: c.doctor._id.toString(),
         firstName: c.doctor.firstName || "",
         lastName: c.doctor.lastName || "",
-        avatar: c.doctor.avatar || "/static/images/default-user.webp",
+        avatar: c.doctor.avatar || DEFAULT_PROFILE_PIC,
       },
       title: c.title,
       status: c.status,

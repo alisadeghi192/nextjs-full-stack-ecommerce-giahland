@@ -1,5 +1,5 @@
 import { CommentAuthor } from "@/features/comments/types/comment.types";
-import { ROLE_CONFIG } from "@/lib/constants";
+import { DEFAULT_PROFILE_PIC, ROLE_CONFIG } from "@/lib/constants";
 import { toPersianDate } from "@/lib/utils/format";
 import Image from "next/image";
 
@@ -21,7 +21,7 @@ export default function CommentItem({ user, date, text, reply }: CommentItemProp
         <div className="border-neutral5 flex items-center gap-x-2 border-b pb-2">
           <div className="shrink-0">
             <Image
-              src={user.avatar || "/static/images/default-user.webp"}
+              src={user.avatar || DEFAULT_PROFILE_PIC}
               alt={user.name}
               width={44}
               height={44}
@@ -47,7 +47,7 @@ export default function CommentItem({ user, date, text, reply }: CommentItemProp
             <div className="border-neutral5 flex items-center gap-x-2 border-b pb-2">
               <div className="shrink-0">
                 <Image
-                  src={reply.user.avatar || "/static/images/default-user.webp"}
+                  src={reply.user.avatar || DEFAULT_PROFILE_PIC}
                   alt={reply.user.name}
                   width={44}
                   height={44}

@@ -5,6 +5,7 @@ import {
   getAccessTokenFromCookie,
   verifyAccessToken,
 } from "@/lib/auth/auth.helpers";
+import { DEFAULT_PROFILE_PIC } from "@/lib/constants";
 import connectToDB from "@/lib/db/connect";
 import BaseUser from "@/lib/db/models/User";
 
@@ -35,7 +36,7 @@ export async function getMeAction(): Promise<IGetMeResponse> {
     role: user.role,
     firstName: user.firstName || "",
     lastName: user.lastName || "",
-    avatar: user.avatar || "/static/images/default-user.webp",
+    avatar: user.avatar || DEFAULT_PROFILE_PIC,
     createdAt: user.createdAt,
     updatedAt: user.updatedAt,
     isSuperAdmin: user.isSuperAdmin || false,

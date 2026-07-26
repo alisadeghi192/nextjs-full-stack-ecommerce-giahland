@@ -1,11 +1,12 @@
 import { IComment } from "@/features/comments/types/comment.types";
+import { DEFAULT_PROFILE_PIC } from "@/lib/constants";
 import mongoose, { Model, Schema } from "mongoose";
 
 const CommentAuthorSchema = new Schema(
   {
     _id: { type: String, required: true },
     name: { type: String, required: true },
-    avatar: { type: String, default: "/static/images/default-user.webp" },
+    avatar: { type: String, default: DEFAULT_PROFILE_PIC },
     role: {
       type: String,
       enum: ["admin", "user", "plant-doctor"],

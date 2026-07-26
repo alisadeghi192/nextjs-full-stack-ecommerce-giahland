@@ -1,6 +1,7 @@
 "use server";
 
 import { getMeAction } from "@/features/auth/actions/me.actions";
+import { DEFAULT_PROFILE_PIC } from "@/lib/constants";
 import connectToDB from "@/lib/db/connect";
 import Consultation from "@/lib/db/models/Consultation";
 import BaseUser from "@/lib/db/models/User";
@@ -77,13 +78,13 @@ export async function getAllConsultations({
         _id: (c.user as any)._id.toString(),
         firstName: (c.user as any).firstName || "",
         lastName: (c.user as any).lastName || "",
-        avatar: (c.user as any).avatar || "/static/images/default-user.webp",
+        avatar: (c.user as any).avatar || DEFAULT_PROFILE_PIC,
       },
       doctor: {
         _id: (c.doctor as any)._id.toString(),
         firstName: (c.doctor as any).firstName || "",
         lastName: (c.doctor as any).lastName || "",
-        avatar: (c.doctor as any).avatar || "/static/images/default-user.webp",
+        avatar: (c.doctor as any).avatar || DEFAULT_PROFILE_PIC,
       },
       status: c.status,
       lastMessage: c.lastMessage,

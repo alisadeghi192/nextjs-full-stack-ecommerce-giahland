@@ -11,7 +11,7 @@ import {
   useUserRole,
 } from "@/features/auth/selectors/auth.selectors";
 import { useAllNotifications } from "@/features/notifications/hooks/useAllNotifications";
-import { NAV_LINKS } from "@/lib/constants";
+import { DEFAULT_PROFILE_PIC, NAV_LINKS } from "@/lib/constants";
 import { useIsMenuOpen, useMenuActions } from "@/stores/selectors/ui.selectors";
 import Image from "next/image";
 import Link from "next/link";
@@ -66,7 +66,7 @@ const MobileMenu = () => {
                 <div className="relative size-16 overflow-hidden rounded-full">
                   <Image
                     alt="user profile pic"
-                    src={userAvatar || "/static/images/default-user.webp"}
+                    src={userAvatar || DEFAULT_PROFILE_PIC}
                     fill
                   ></Image>
                 </div>

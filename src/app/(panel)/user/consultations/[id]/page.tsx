@@ -5,6 +5,7 @@ import { getMeAction } from "@/features/auth/actions/me.actions";
 import { getConsultationById } from "@/features/consultations/actions/getConsultationById.actions";
 import { getConsultationMessages } from "@/features/consultations/actions/getConsultationMessages.actions";
 import { markMessagesAsSeen } from "@/features/consultations/actions/markMessagesAsSeen.actions";
+import { DEFAULT_PROFILE_PIC } from "@/lib/constants";
 import { notFound } from "next/navigation";
 
 interface ChatPageProps {
@@ -31,7 +32,7 @@ export default async function ChatPage({ params }: ChatPageProps) {
     ? `${displayPerson.firstName} ${displayPerson.lastName}`
     : `دکتر ${displayPerson.firstName} ${displayPerson.lastName}`;
   const displayAvatar =
-    displayPerson.avatar || "/static/images/default-user.webp";
+    displayPerson.avatar || DEFAULT_PROFILE_PIC;
 
   return (
     <section className="relative flex h-[calc(100dvh-61px)] max-md:h-[calc(100dvh-56px)] flex-col bg-[url('/static/images/chat-bg.webp')] bg-size-[350px] bg-fixed bg-repeat">

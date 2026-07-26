@@ -1,6 +1,7 @@
 "use server";
 
 import { getMeAction } from "@/features/auth/actions/me.actions";
+import { DEFAULT_PROFILE_PIC } from "@/lib/constants";
 import connectToDB from "@/lib/db/connect";
 import BaseUser from "@/lib/db/models/User";
 
@@ -80,7 +81,7 @@ export async function getUsers({
       mobile: u.mobile,
       email: u.email,
       role: u.role,
-      avatar: u.avatar || "/static/images/default-user.webp",
+      avatar: u.avatar || DEFAULT_PROFILE_PIC,
       isBlocked: u.isBlocked || false,
       createdAt: u.createdAt,
     })),

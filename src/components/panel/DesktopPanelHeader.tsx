@@ -5,6 +5,7 @@ import {
   useUserAvatar,
   useUserFirstName,
 } from "@/features/auth/selectors/auth.selectors";
+import { DEFAULT_PROFILE_PIC } from "@/lib/constants";
 import Image from "next/image";
 import { MdOutlineDarkMode } from "react-icons/md";
 import {
@@ -50,7 +51,7 @@ export default function DesktopPanelHeader({
           <IconButton icon={<MdOutlineDarkMode size={24} />} />
           <button className="flex items-center gap-2">
             <Image
-              src={userAvatar || "/static/images/default-user.webp"}
+              src={userAvatar || DEFAULT_PROFILE_PIC}
               alt="user"
               width={48}
               height={48}

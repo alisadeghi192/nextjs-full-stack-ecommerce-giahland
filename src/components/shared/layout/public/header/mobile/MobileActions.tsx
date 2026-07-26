@@ -3,25 +3,26 @@
 import IconButton from "@/components/shared/ui/IconButton";
 import NotificationBadge from "@/components/shared/ui/NotificationBadge";
 import {
-    useIsAdmin,
-    useIsAuthenticated,
-    useIsLoading,
-    useUserAvatar,
-    useUserRole,
+  useIsAdmin,
+  useIsAuthenticated,
+  useIsLoading,
+  useUserAvatar,
+  useUserRole,
 } from "@/features/auth/selectors/auth.selectors";
 import {
-    useCartStoreActions,
-    useCartTotalItems,
+  useCartStoreActions,
+  useCartTotalItems,
 } from "@/features/cart/selectors/cart.selectors";
 import { useAllNotifications } from "@/features/notifications/hooks/useAllNotifications";
+import { DEFAULT_PROFILE_PIC } from "@/lib/constants";
 import { useCartActions } from "@/stores/selectors/ui.selectors";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect } from "react";
 import {
-    MdOutlineDarkMode,
-    MdOutlineLogin,
-    MdOutlineShoppingCart,
+  MdOutlineDarkMode,
+  MdOutlineLogin,
+  MdOutlineShoppingCart,
 } from "react-icons/md";
 
 export default function MobileActions() {
@@ -67,7 +68,7 @@ export default function MobileActions() {
           className="relative"
         >
           <Image
-            src={avatar || "/static/images/default-user.webp"}
+            src={avatar || DEFAULT_PROFILE_PIC}
             alt="user profile"
             width={48}
             height={48}

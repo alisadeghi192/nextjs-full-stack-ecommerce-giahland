@@ -3,6 +3,7 @@ import AdminChatContainer from "@/components/admin/consulations/AdminChatContain
 import { getMeAction } from "@/features/auth/actions/me.actions";
 import { getConsultationById } from "@/features/consultations/actions/getConsultationById.actions";
 import { getConsultationMessages } from "@/features/consultations/actions/getConsultationMessages.actions";
+import { DEFAULT_PROFILE_PIC } from "@/lib/constants";
 import { notFound, redirect } from "next/navigation";
 
 interface PageProps {
@@ -33,12 +34,12 @@ export default async function AdminConsultationDetailPage({
         user={{
           ...consultation.user,
           avatar:
-            consultation.user.avatar || "/static/images/default-user.webp",
+            consultation.user.avatar || DEFAULT_PROFILE_PIC,
         }}
         doctor={{
           ...consultation.doctor,
           avatar:
-            consultation.doctor.avatar || "/static/images/default-user.webp",
+            consultation.doctor.avatar || DEFAULT_PROFILE_PIC,
         }}
         status={consultation.status}
         messages={messages}

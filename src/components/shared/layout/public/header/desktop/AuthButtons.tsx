@@ -12,6 +12,7 @@ import {
   useUserRole,
 } from "@/features/auth/selectors/auth.selectors";
 import { useAllNotifications } from "@/features/notifications/hooks/useAllNotifications";
+import { DEFAULT_PROFILE_PIC } from "@/lib/constants";
 import {
   useIsProfileDropdownOpen,
   useProfileDropdownActions,
@@ -30,7 +31,7 @@ export default function AuthButtons() {
   const isAdmin = useIsAdmin();
   const userRole = useUserRole();
   const userFirstName = useUserFirstName();
-  const avatar = useUserAvatar() || "/static/images/default-user.webp";
+  const avatar = useUserAvatar() || DEFAULT_PROFILE_PIC;
   const { logout } = useAuthActions();
   const isProfileDropdownOpen = useIsProfileDropdownOpen();
   const { closeProfileDropdown, openProfileDropdown } =
@@ -90,7 +91,7 @@ export default function AuthButtons() {
           className="relative flex cursor-pointer items-center gap-2"
         >
           <Image
-            src={avatar || "/static/images/default-user.webp"}
+            src={avatar || DEFAULT_PROFILE_PIC}
             alt="user"
             width={48}
             height={48}

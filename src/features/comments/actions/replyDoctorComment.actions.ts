@@ -1,6 +1,7 @@
 "use server";
 
 import { getMeAction } from "@/features/auth/actions/me.actions";
+import { DEFAULT_PROFILE_PIC } from "@/lib/constants";
 import connectToDB from "@/lib/db/connect";
 import CommentModel from "@/lib/db/models/Comment";
 import { revalidatePath } from "next/cache";
@@ -44,7 +45,7 @@ export async function replyDoctorComment({
     user: {
       _id: user._id,
       name: `${user.firstName || ""} ${user.lastName || ""}`.trim() || "پزشک",
-      avatar: user.avatar || "/static/images/default-user.webp",
+      avatar: user.avatar || DEFAULT_PROFILE_PIC,
       role: "plant-doctor",
     },
     text: replyText.trim(),

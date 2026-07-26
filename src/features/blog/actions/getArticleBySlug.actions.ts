@@ -1,6 +1,7 @@
 "use server";
 
 import { IBlogPostWithDetails } from "@/features/blog/types/blog.types";
+import { DEFAULT_PROFILE_PIC } from "@/lib/constants";
 import connectToDB from "@/lib/db/connect";
 import Article from "@/lib/db/models/Article";
 import { notFound } from "next/navigation";
@@ -50,7 +51,7 @@ const article = await Article.findOne({ slug })
       _id: author._id.toString(),
       firstName: author.firstName || "",
       lastName: author.lastName || "",
-      avatar: author.avatar || "/static/images/default-user.webp",
+      avatar: author.avatar || DEFAULT_PROFILE_PIC,
       role: author.role || "admin",
     },
     category: article.category,
@@ -62,7 +63,7 @@ const article = await Article.findOne({ slug })
       user: {
         _id: comment.user?._id?.toString() || "",
         name: comment.user?.name || "",
-        avatar: comment.user?.avatar || "/static/images/default-user.webp",
+        avatar: comment.user?.avatar || DEFAULT_PROFILE_PIC,
         role: comment.user?.role || "user",
       },
       text: comment.text,
@@ -74,7 +75,7 @@ const article = await Article.findOne({ slug })
               name: comment.reply.user?.name || "",
               avatar:
                 comment.reply.user?.avatar ||
-                "/static/images/default-user.webp",
+                DEFAULT_PROFILE_PIC,
               role: comment.reply.user?.role || "user",
             },
             text: comment.reply.text,

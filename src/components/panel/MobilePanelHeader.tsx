@@ -1,11 +1,12 @@
 "use client";
 import { Logo } from "@/components/shared/layout/public/header";
 import IconButton from "@/components/shared/ui/IconButton";
-import { MdOutlineDarkMode } from "react-icons/md";
-import Image from "next/image";
 import {
   useUserAvatar,
 } from "@/features/auth/selectors/auth.selectors";
+import { DEFAULT_PROFILE_PIC } from "@/lib/constants";
+import Image from "next/image";
+import { MdOutlineDarkMode } from "react-icons/md";
 import { TbLayoutSidebarLeftExpandFilled, TbLayoutSidebarRightExpandFilled } from "react-icons/tb";
 
 interface MobilePanelHeaderProps {
@@ -38,7 +39,7 @@ export default function MobilePanelHeader({
         <div className="flex shrink-0 items-center gap-x-2">
           <IconButton icon={<MdOutlineDarkMode size={20} />} />
           <Image
-            src={userAvatar || "/static/images/default-user.webp"}
+            src={userAvatar || DEFAULT_PROFILE_PIC}
             alt="user profile"
             width={48}
             height={48}

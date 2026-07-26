@@ -1,6 +1,7 @@
 "use server";
 
 import { getMeAction } from "@/features/auth/actions/me.actions";
+import { DEFAULT_PROFILE_PIC } from "@/lib/constants";
 import connectToDB from "@/lib/db/connect";
 import BaseUser from "@/lib/db/models/User";
 import { unlink } from "fs/promises";
@@ -50,7 +51,7 @@ export async function deleteUserAvatar(userId: string) {
   }
 
   await BaseUser.findByIdAndUpdate(userId, {
-    avatar: "/static/images/default-user.webp",
+    avatar: DEFAULT_PROFILE_PIC,
   });
 
   revalidatePath('/admin/users')

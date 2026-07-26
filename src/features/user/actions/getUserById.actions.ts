@@ -1,6 +1,7 @@
 "use server";
 
 import { getMeAction } from "@/features/auth/actions/me.actions";
+import { DEFAULT_PROFILE_PIC } from "@/lib/constants";
 import connectToDB from "@/lib/db/connect";
 import Comment from "@/lib/db/models/Comment";
 import Order from "@/lib/db/models/Order";
@@ -89,7 +90,7 @@ export async function getUserById(userId: string) {
       mobile: targetUser.mobile,
       email: targetUser.email,
       role: targetUser.role,
-      avatar: targetUser.avatar || "/static/images/default-user.webp",
+      avatar: targetUser.avatar || DEFAULT_PROFILE_PIC,
       createdAt: targetUser.createdAt,
       updatedAt: targetUser.updatedAt,
       isSuperAdmin: targetUser.isSuperAdmin || false,

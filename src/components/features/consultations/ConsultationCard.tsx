@@ -2,6 +2,7 @@
 
 import { useUserRole } from "@/features/auth/selectors/auth.selectors";
 import { IConsultationWithDetails } from "@/features/consultations/types/consultation.types";
+import { DEFAULT_PROFILE_PIC } from "@/lib/constants";
 import { toPersianCode, toPersianDate, toPersianNumber } from "@/lib/utils/format";
 import Image from "next/image";
 import Link from "next/link";
@@ -49,7 +50,7 @@ export default function ConsultationCard({
           <div className="relative size-18 shrink-0 overflow-hidden rounded-full">
             <Image
               alt={personName}
-              src={displayPerson.avatar || "/static/images/default-user.webp"}
+              src={displayPerson.avatar || DEFAULT_PROFILE_PIC}
               fill
               className="object-cover"
             />

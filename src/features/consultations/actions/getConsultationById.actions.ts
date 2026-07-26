@@ -2,6 +2,7 @@
 
 import { getMeAction } from "@/features/auth/actions/me.actions";
 import { IConsultationWithDetails } from "@/features/consultations/types/consultation.types";
+import { DEFAULT_PROFILE_PIC } from "@/lib/constants";
 import connectToDB from "@/lib/db/connect";
 import Consultation from "@/lib/db/models/Consultation";
 import BaseUser, { PlantDoctor } from "@/lib/db/models/User";
@@ -55,13 +56,13 @@ export async function getConsultationById(
       _id: consultation.user.toString(),
       firstName: userInfo?.firstName || "کاربر",
       lastName: userInfo?.lastName || "",
-      avatar: userInfo?.avatar || "/static/images/default-user.webp",
+      avatar: userInfo?.avatar || DEFAULT_PROFILE_PIC,
     },
     doctor: {
       _id: consultation.doctor.toString(),
       firstName: doctorInfo?.firstName || "",
       lastName: doctorInfo?.lastName || "",
-      avatar: doctorInfo?.avatar || "/static/images/default-user.webp",
+      avatar: doctorInfo?.avatar || DEFAULT_PROFILE_PIC,
       consultationFee: doctorInfo?.consultationFee || 0,
     },
     title: consultation.title,

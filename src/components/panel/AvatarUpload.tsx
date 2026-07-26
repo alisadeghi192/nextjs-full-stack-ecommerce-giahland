@@ -6,6 +6,7 @@ import {
 } from "@/features/auth/selectors/auth.selectors";
 import { deleteAvatarAction } from "@/features/user/actions/deleteAvatar.actions";
 import { uploadAvatarAction } from "@/features/user/actions/uploadAvatar.actions";
+import { DEFAULT_PROFILE_PIC } from "@/lib/constants";
 import Image from "next/image";
 import { useRef, useState } from "react";
 import toast from "react-hot-toast";
@@ -14,8 +15,8 @@ import ConfirmDialog from "../shared/ui/ConfirmDialog";
 
 export default function AvatarUpload() {
   const [isLoading, setIsLoading] = useState(false);
-  const userAvatar = useUserAvatar() || "/static/images/default-user.webp";
-  const isDefaultAvatar = userAvatar === "/static/images/default-user.webp";
+  const userAvatar = useUserAvatar() || DEFAULT_PROFILE_PIC;
+  const isDefaultAvatar = userAvatar === DEFAULT_PROFILE_PIC;
   const firstName = useUserFirstName() || "";
   const checkAuth = useCheckAuth();
   const fileInputRef = useRef<HTMLInputElement>(null);

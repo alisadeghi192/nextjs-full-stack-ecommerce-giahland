@@ -60,7 +60,7 @@ export default function PanelSidebar({
       <div>
         <div className="flex shrink-0 items-center gap-x-2">
           <Image
-            src={avatar || "/static/images/default-user.webp"}
+            src={avatar || DEFAULT_PROFILE_PIC}
             alt="user"
             width={60}
             height={60}

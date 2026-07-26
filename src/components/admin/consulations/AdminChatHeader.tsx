@@ -1,6 +1,7 @@
 "use client";
 
 import ConfirmDialog from "@/components/shared/ui/ConfirmDialog";
+import { DEFAULT_PROFILE_PIC } from "@/lib/constants";
 import { useIsSidebarOpen } from "@/stores/selectors/ui.selectors";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -70,7 +71,7 @@ export default function AdminChatHeader({
         <div className="max-xs:gap-2 max-xs:w-full flex items-center gap-4 max-sm:gap-2">
           <div className="max-xs:size-10 relative size-12 shrink-0 overflow-hidden rounded-full">
             <Image
-              src={user.avatar || "/static/images/default-user.webp"}
+              src={user.avatar || DEFAULT_PROFILE_PIC}
               alt={userDisplayName}
               fill
               className="size-full object-cover"
@@ -91,7 +92,7 @@ export default function AdminChatHeader({
           </div>
           <div className="max-xs:size-10 relative size-12 shrink-0 overflow-hidden rounded-full">
             <Image
-              src={doctor.avatar || "/static/images/default-user.webp"}
+              src={doctor.avatar || DEFAULT_PROFILE_PIC}
               alt={doctorDisplayName}
               fill
               className="size-full object-cover"

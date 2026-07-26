@@ -1,3 +1,4 @@
+import { DEFAULT_PROFILE_PIC } from "@/lib/constants";
 import { USER_ROLES } from "@/lib/constants/roles";
 import mongoose, { Schema, SchemaDefinition } from "mongoose";
 
@@ -34,7 +35,7 @@ const baseOptions: SchemaDefinition = {
   },
   firstName: { type: String, default: "" },
   lastName: { type: String, default: "" },
-  avatar: { type: String, default: "/static/images/default-user.webp" },
+  avatar: { type: String, default: DEFAULT_PROFILE_PIC },
   isSuperAdmin: {
     type: Boolean,
     default: false,

@@ -1,6 +1,7 @@
 "use server";
 
 import { getMeAction } from "@/features/auth/actions/me.actions";
+import { DEFAULT_PROFILE_PIC } from "@/lib/constants";
 import connectToDB from "@/lib/db/connect";
 import Article from "@/lib/db/models/Article";
 import CommentModel from "@/lib/db/models/Comment";
@@ -43,7 +44,7 @@ export async function createCommentAction(prevState: any, formData: FormData) {
   const author = {
     _id: user?._id || `guest_${Date.now()}`,
     name: result.data.name,
-    avatar: user?.avatar || "/static/images/default-user.webp",
+    avatar: user?.avatar || DEFAULT_PROFILE_PIC,
     role: user?.role || "user",
   };
 

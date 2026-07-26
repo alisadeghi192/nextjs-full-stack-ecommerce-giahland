@@ -1,6 +1,7 @@
 "use server";
 
 import { IProductType } from "@/features/products/types/product.types";
+import { DEFAULT_PROFILE_PIC } from "@/lib/constants";
 import connectToDB from "@/lib/db/connect";
 import Product from "@/lib/db/models/Product";
 
@@ -54,7 +55,7 @@ export async function getProductBySlug(
       user: {
         _id: comment.user?._id?.toString() || "",
         name: comment.user?.name || "",
-        avatar: comment.user?.avatar || "/static/images/default-user.webp",
+        avatar: comment.user?.avatar || DEFAULT_PROFILE_PIC,
         role: comment.user?.role || "user",
       },
       text: comment.text,
@@ -66,7 +67,7 @@ export async function getProductBySlug(
               name: comment.reply.user?.name || "",
               avatar:
                 comment.reply.user?.avatar ||
-                "/static/images/default-user.webp",
+                DEFAULT_PROFILE_PIC,
               role: comment.reply.user?.role || "user",
             },
             text: comment.reply.text,
