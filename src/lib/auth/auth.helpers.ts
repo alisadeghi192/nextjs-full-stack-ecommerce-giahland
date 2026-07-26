@@ -1,5 +1,4 @@
-
-import { hash, compare } from "bcryptjs";
+import { compare, hash } from "bcryptjs";
 import { sign, verify } from "jsonwebtoken";
 import { cookies } from "next/headers";
 
@@ -30,6 +29,16 @@ const verifyAccessToken = (token: string): object | null => {
 
 const generateRefreshToken = (payload: object): string => {
   return sign(payload, process.env.REFRESH_TOKEN_SECRET!, { expiresIn: "30d" });
+};
+
+const verifyRefreshToken = (token: string): object | null => {
+  try {
+    const tokenPayload = verify(token, process.env.REFRESH_TOKEN_SECRET!);
+    return tokenPayload as object;
+  } catch (err) {
+    console.error("Verify Refresh Token Error ->", err);
+    return null;
+  }
 };
 
 const setAccessTokenCookie = async (token: string): Promise<void> => {
@@ -73,14 +82,16 @@ const deleteAuthCookies = async (): Promise<void> => {
 };
 
 export {
-  hashPassword,
-  verifyPassword,
+  deleteAuthCookies,
   generateAccessToken,
-  verifyAccessToken,
   generateRefreshToken,
-  setAccessTokenCookie,
-  setRefreshTokenCookie,
   getAccessTokenFromCookie,
   getRefreshTokenFromCookie,
-  deleteAuthCookies,
+  hashPassword,
+  setAccessTokenCookie,
+  setRefreshTokenCookie,
+  verifyAccessToken,
+  verifyPassword,
+  verifyRefreshToken
 };
+

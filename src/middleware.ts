@@ -1,3 +1,9 @@
+import {
+  generateAccessToken,
+  getRefreshTokenFromCookie,
+  setAccessTokenCookie,
+  verifyRefreshToken,
+} from "@/lib/auth/auth.helpers";
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { getMeAction } from "./features/auth/actions/me.actions";
@@ -31,9 +37,31 @@ export async function middleware(request: NextRequest) {
     pathname.startsWith("/checkout") ||
     pathname.startsWith("/payment")
   ) {
-    const { user } = await getMeAction();
+    let { user } = await getMeAction();
+    if (!user) {
+      const refreshToken = await getRefreshTokenFromCookie();
+      if (refreshToken) {
+        const payload = verifyRefreshToken(refreshToken) as {
+          userId: string;
+          role: string;
+        } | null;
 
-    if (user?.isBlocked) {
+        if (payload?.userId) {
+          const newAccessToken = generateAccessToken({
+            userId: payload.userId,
+            role: payload.role,
+          });
+          await setAccessTokenCookie(newAccessToken);
+          const result = await getMeAction();
+          user = result.user;
+        }
+      }
+    }
+    if (!user) {
+      const loginUrl = new URL("/login-register", request.url);
+      return NextResponse.redirect(loginUrl);
+    }
+    if (user.isBlocked) {
       const url = request.nextUrl.clone();
       url.pathname = "/blocked";
       return NextResponse.redirect(url);
