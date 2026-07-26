@@ -1,5 +1,5 @@
-import AdminCommentHeader from "@/components/admin/AdminCommentHeader";
-import AdminCommentsList from "@/components/admin/AdminCommentsList";
+import AdminCommentHeader from "@/components/admin/comments/AdminCommentHeader";
+import AdminCommentsList from "@/components/admin/comments/AdminCommentsList";
 import SectionTitle from "@/components/panel/SectionTitle";
 import Pagination from "@/components/shared/ui/Pagination";
 import { getComments } from "@/features/comments/actions/getComments.actions";

@@ -1,12 +1,12 @@
 "use client";
 
+import PanelSearch from "@/components/shared/ui/PanelSearch";
 import SortDropdown from "@/components/shared/ui/SortDropdown";
 import Tabs from "@/components/shared/ui/Tabs";
+import ViewToggleWrapper from "@/components/shared/ui/ViewToggleWrapper";
 import { PRODUCT_SORT_OPTIONS, PRODUCT_TABS } from "@/lib/constants";
 import { useUrlParams } from "@/lib/hooks/useUrlParams";
 import { useIsSidebarOpen } from "@/stores/selectors/ui.selectors";
-import PanelSearch from "../shared/ui/PanelSearch";
-import ViewToggleWrapper from "../shared/ui/ViewToggleWrapper";
 
 interface AdminProductsHeaderProps {
   activeTab: string;

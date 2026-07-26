@@ -1,5 +1,5 @@
-import AdminConsultationsHeader from "@/components/admin/consulations/AdminConsultationsHeader";
-import AdminConsultationsList from "@/components/admin/consulations/AdminConsultationsList";
+import AdminConsultationsHeader from "@/components/admin/consultations/AdminConsultationsHeader";
+import AdminConsultationsList from "@/components/admin/consultations/AdminConsultationsList";
 import SectionTitle from "@/components/panel/SectionTitle";
 import Pagination from "@/components/shared/ui/Pagination";
 import { getMeAction } from "@/features/auth/actions/me.actions";

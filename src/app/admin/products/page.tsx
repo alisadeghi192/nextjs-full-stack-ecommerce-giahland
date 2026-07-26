@@ -1,5 +1,5 @@
-import AdminProducts from "@/components/admin/AdminProducts";
-import AdminProductsHeader from "@/components/admin/AdminProductsHeader";
+import AdminProducts from "@/components/admin/products/AdminProducts";
+import AdminProductsHeader from "@/components/admin/products/AdminProductsHeader";
 import SectionTitle from "@/components/panel/SectionTitle";
 import OutlineButton from "@/components/shared/ui/OutlineButton";
 import Pagination from "@/components/shared/ui/Pagination";

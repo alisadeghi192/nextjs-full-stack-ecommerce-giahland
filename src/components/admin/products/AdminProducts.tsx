@@ -2,6 +2,7 @@
 
 import ProductCardGrid from "@/components/features/products/ProductCardGrid";
 import ProductCardList from "@/components/features/products/ProductCardList";
+import ConfirmDialog from "@/components/shared/ui/ConfirmDialog";
 import { deleteProductAction } from "@/features/products/actions/deleteProduct.actions";
 import { IProductCardData } from "@/features/products/types/product.types";
 import { useIsSidebarOpen } from "@/stores/selectors/ui.selectors";
@@ -9,7 +10,6 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { MdDelete, MdEdit } from "react-icons/md";
-import ConfirmDialog from "../shared/ui/ConfirmDialog";
 
 interface AdminProductsProps {
   products: IProductCardData[];

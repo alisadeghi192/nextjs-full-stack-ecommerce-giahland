@@ -1,4 +1,4 @@
-import LogoutButton from "@/components/auth/LogoutButton";
+import LogoutButton from "@/components/features/auth/LogoutButton";
 import OutlineButton from "@/components/shared/ui/OutlineButton";
 import { getMeAction } from "@/features/auth/actions/me.actions";
 import { redirect } from "next/navigation";

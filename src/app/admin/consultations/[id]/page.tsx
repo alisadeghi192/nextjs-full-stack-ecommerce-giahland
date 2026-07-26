@@ -1,5 +1,5 @@
 
-import AdminChatContainer from "@/components/admin/consulations/AdminChatContainer";
+import AdminChatContainer from "@/components/admin/consultations/AdminChatContainer";
 import { getMeAction } from "@/features/auth/actions/me.actions";
 import { getConsultationById } from "@/features/consultations/actions/getConsultationById.actions";
 import { getConsultationMessages } from "@/features/consultations/actions/getConsultationMessages.actions";

@@ -1,5 +1,5 @@
-import AdminTicketList from "@/components/admin/AdminTicketList";
-import AdminTicketsHeader from "@/components/admin/AdminTicketsHeader";
+import AdminTicketList from "@/components/admin/tickets/AdminTicketList";
+import AdminTicketsHeader from "@/components/admin/tickets/AdminTicketsHeader";
 import SectionTitle from "@/components/panel/SectionTitle";
 import Pagination from "@/components/shared/ui/Pagination";
 import { getAllTickets } from "@/features/tickets/actions/admin.ticket.actions";

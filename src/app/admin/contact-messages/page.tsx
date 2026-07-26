@@ -1,5 +1,5 @@
-import AdminContactMessagesHeader from "@/components/admin/AdminContactMessagesHeader";
-import AdminContactMessagesList from "@/components/admin/AdminContactMessagesList";
+import AdminContactMessagesHeader from "@/components/admin/messages/AdminContactMessagesHeader";
+import AdminContactMessagesList from "@/components/admin/messages/AdminContactMessagesList";
 import SectionTitle from "@/components/panel/SectionTitle";
 import Pagination from "@/components/shared/ui/Pagination";
 import { getContactMessages } from "@/features/contact/actions/getContactMessages.actions";
