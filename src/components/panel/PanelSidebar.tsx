@@ -7,6 +7,7 @@ import {
   useUserMobile
 } from "@/features/auth/selectors/auth.selectors";
 import { useAllNotifications } from "@/features/notifications/hooks/useAllNotifications";
+import { DEFAULT_PROFILE_PIC } from "@/lib/constants";
 import { PanelLink } from "@/lib/constants/PanelLinks";
 import { toPersianCode } from "@/lib/utils/format";
 import Image from "next/image";
