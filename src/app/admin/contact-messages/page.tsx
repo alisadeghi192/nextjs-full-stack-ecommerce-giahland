@@ -21,7 +21,6 @@ interface PageProps {
 export default async function AdminContactMessagesPage({
   searchParams,
 }: PageProps) {
-
   const { page, status, sort } = await searchParams;
   const currentPage = Number(page) || 1;
   const limit = 5;
@@ -29,15 +28,17 @@ export default async function AdminContactMessagesPage({
   const result = await getContactMessages({
     page: currentPage,
     limit,
-    status: status as "all" | "read" | "unread" || "all",
-    sort: sort as "newest" | "oldest" || "newest",
+    status: (status as "all" | "read" | "unread") || "all",
+    sort: (sort as "newest" | "oldest") || "newest",
   });
 
   const baseUrl = `?status=${status || "all"}&sort=${sort || "newest"}`;
 
   return (
     <section>
-      <SectionTitle title={`پیام‌های دریافتی (${toPersianNumber(result.total)})`} />
+      <SectionTitle
+        title={`پیام‌های دریافتی (${toPersianNumber(result.total)})`}
+      />
       <AdminContactMessagesHeader
         currentStatus={status || "all"}
         currentSort={sort || "newest"}

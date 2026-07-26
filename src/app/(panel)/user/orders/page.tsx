@@ -33,7 +33,10 @@ export default async function UserOrdersPage({
   return (
     <section className="w-full">
       <div className="max-xs:flex-col max-xs:gap-y-3 mb-4 flex items-center justify-between">
-        <SectionTitle title={`سفارش‌های من(${toPersianNumber(result.total)})`} className="mb-0! ml-auto" />
+        <SectionTitle
+          title={`سفارش‌های من(${toPersianNumber(result.total)})`}
+          className="mb-0! ml-auto"
+        />
         <div className="max-xs:w-full w-72">
           <PanelSearch
             id="order-search"

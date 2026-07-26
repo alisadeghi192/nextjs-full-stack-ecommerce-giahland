@@ -21,17 +21,20 @@ interface PageProps {
 }
 
 export default async function AdminTicketsPage({ searchParams }: PageProps) {
-
   const { page, role, sort, status, department } = await searchParams;
   const currentPage = Number(page) || 1;
   const limit = 5;
 
-  const { tickets, totalPages , total} = await getAllTickets(currentPage, limit, {
-    role,
-    sort,
-    status,
-    department,
-  });
+  const { tickets, totalPages, total } = await getAllTickets(
+    currentPage,
+    limit,
+    {
+      role,
+      sort,
+      status,
+      department,
+    },
+  );
 
   const baseUrl = `?role=${role || ""}&sort=${sort || "newest"}&status=${status || ""}&department=${department || ""}`;
 

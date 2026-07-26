@@ -28,8 +28,7 @@ export default async function AdminUserDetailPage({ params }: PageProps) {
 
   return (
     <section className="space-y-4">
-      <UserDetailHeader
-      />
+      <UserDetailHeader />
 
       <UserDetailContent
         user={targetUser}

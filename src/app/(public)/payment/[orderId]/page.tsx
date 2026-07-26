@@ -8,7 +8,9 @@ interface OrderPaymentPageProps {
   params: Promise<{ orderId: string }>;
 }
 
-export default async function OrderPaymentPage({ params }: OrderPaymentPageProps) {
+export default async function OrderPaymentPage({
+  params,
+}: OrderPaymentPageProps) {
   const { orderId } = await params;
 
   const { user } = await getMeAction();
@@ -47,7 +49,7 @@ export default async function OrderPaymentPage({ params }: OrderPaymentPageProps
   }
 
   return (
-    <section className="flex  mt-10 max-xs:mt-6 items-center justify-center">
+    <section className="max-xs:mt-6 mt-10 flex items-center justify-center">
       <PaymentCard
         title="پرداخت سفارش"
         amount={order.finalAmount}

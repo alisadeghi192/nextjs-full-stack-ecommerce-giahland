@@ -33,7 +33,11 @@ export default async function DoctorArticlesPage({ searchParams }: PageProps) {
 
   return (
     <section className="w-full">
-      <DoctorArticlesHeader activeTab={activeTab} selectedSort={selectedSort} total={result.total}/>
+      <DoctorArticlesHeader
+        activeTab={activeTab}
+        selectedSort={selectedSort}
+        total={result.total}
+      />
       {result.total === 0 ? (
         <div className="border-neutral3 rounded-2xl border p-6 text-center text-gray-500 shadow-lg">
           هنوز مقاله ای ننوشتید.

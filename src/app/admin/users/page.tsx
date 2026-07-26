@@ -20,7 +20,7 @@ interface PageProps {
     status?: string;
     search?: string;
     page?: string;
-    sort?:string
+    sort?: string;
   }>;
 }
 
@@ -53,7 +53,10 @@ export default async function AdminUsersPage({ searchParams }: PageProps) {
   return (
     <section className="space-y-4">
       <div className="flex items-center justify-between">
-        <SectionTitle title={`مدیریت کاربران (${(toPersianNumber(result.total))})`} className="mb-0!" />
+        <SectionTitle
+          title={`مدیریت کاربران (${toPersianNumber(result.total)})`}
+          className="mb-0!"
+        />
         <OutlineButton
           href="/admin/users/new-doctor"
           className="size-45 h-10 gap-x-1 font-medium"
@@ -62,7 +65,7 @@ export default async function AdminUsersPage({ searchParams }: PageProps) {
           <FaPlus className="size-4" />
         </OutlineButton>
       </div>
-      <UsersHeader/>
+      <UsersHeader />
 
       {result.users.length === 0 ? (
         <div className="border-neutral3 rounded-2xl border p-8 text-center text-gray-500 shadow-lg">

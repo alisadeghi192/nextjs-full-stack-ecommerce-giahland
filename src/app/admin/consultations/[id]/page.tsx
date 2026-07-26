@@ -1,4 +1,3 @@
-
 import AdminChatContainer from "@/components/admin/consultations/AdminChatContainer";
 import { getMeAction } from "@/features/auth/actions/me.actions";
 import { getConsultationById } from "@/features/consultations/actions/getConsultationById.actions";
@@ -33,13 +32,11 @@ export default async function AdminConsultationDetailPage({
         consultationId={id}
         user={{
           ...consultation.user,
-          avatar:
-            consultation.user.avatar || DEFAULT_PROFILE_PIC,
+          avatar: consultation.user.avatar || DEFAULT_PROFILE_PIC,
         }}
         doctor={{
           ...consultation.doctor,
-          avatar:
-            consultation.doctor.avatar || DEFAULT_PROFILE_PIC,
+          avatar: consultation.doctor.avatar || DEFAULT_PROFILE_PIC,
         }}
         status={consultation.status}
         messages={messages}

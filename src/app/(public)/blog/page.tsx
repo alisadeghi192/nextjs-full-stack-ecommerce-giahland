@@ -24,14 +24,14 @@ export const metadata: Metadata = {
 };
 
 interface BlogPageProps {
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+  searchParams: Promise<{ category?: string; sort?: string; page?: string }>;
 }
 
 export default async function BlogPage({ searchParams }: BlogPageProps) {
   const params = await searchParams;
 
-  const activeTab = (params.category as string) || DEFAULT_TAB;
-  const selectedSort = (params.sort as string) || DEFAULT_SORT;
+  const activeTab = params.category || DEFAULT_TAB;
+  const selectedSort = params.sort || DEFAULT_SORT;
   const currentPage = Number(params.page) || 1;
 
   const result = await getArticles({
@@ -55,7 +55,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
           </div>
         ) : (
           <div className="max-xs:grid-cols-1 grid grid-cols-[repeat(4,auto)] justify-center gap-6 max-lg:grid-cols-3 max-md:grid-cols-2 max-md:gap-4">
-            {result.articles.map((post:IBlogPostCard) => (
+            {result.articles.map((post: IBlogPostCard) => (
               <BlogCard key={post._id} {...post} />
             ))}
           </div>

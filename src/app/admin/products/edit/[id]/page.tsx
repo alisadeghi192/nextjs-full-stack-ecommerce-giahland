@@ -69,8 +69,8 @@ export default async function EditProductPage({
 
   return (
     <section className="w-full">
-      <div className="flex items-center justify-between mb-4">
-        <SectionTitle title="ویرایش محصول" className="mb-0!"/>
+      <div className="mb-4 flex items-center justify-between">
+        <SectionTitle title="ویرایش محصول" className="mb-0!" />
         <BackButton />
       </div>
       <ProductForm defaultValues={defaultValues} isEdit={true} productId={id} />

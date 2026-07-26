@@ -18,7 +18,6 @@ interface PageProps {
 }
 
 export default async function AdminCommentsPage({ searchParams }: PageProps) {
-
   const { page, filter, sort } = await searchParams;
   const currentPage = Number(page) || 1;
   const limit = 10;
@@ -26,15 +25,17 @@ export default async function AdminCommentsPage({ searchParams }: PageProps) {
   const result = await getComments({
     page: currentPage,
     limit,
-    filter: filter as "all" | "approved" | "pending" || "all",
-    sort: sort as "newest" | "oldest" || "newest",
+    filter: (filter as "all" | "approved" | "pending") || "all",
+    sort: (sort as "newest" | "oldest") || "newest",
   });
 
   const baseUrl = `?filter=${filter || "all"}&sort=${sort || "newest"}`;
 
   return (
     <section>
-      <SectionTitle title={`مدیریت کامنت‌ها (${toPersianNumber(result.total)})`} />
+      <SectionTitle
+        title={`مدیریت کامنت‌ها (${toPersianNumber(result.total)})`}
+      />
       <AdminCommentHeader />
       <AdminCommentsList comments={result.comments} />
       {result.totalPages > 1 && (

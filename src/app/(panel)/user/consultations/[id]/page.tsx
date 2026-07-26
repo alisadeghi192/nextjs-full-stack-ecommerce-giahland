@@ -31,11 +31,10 @@ export default async function ChatPage({ params }: ChatPageProps) {
   const displayName = isDoctor
     ? `${displayPerson.firstName} ${displayPerson.lastName}`
     : `دکتر ${displayPerson.firstName} ${displayPerson.lastName}`;
-  const displayAvatar =
-    displayPerson.avatar || DEFAULT_PROFILE_PIC;
+  const displayAvatar = displayPerson.avatar || DEFAULT_PROFILE_PIC;
 
   return (
-    <section className="relative flex h-[calc(100dvh-61px)] max-md:h-[calc(100dvh-56px)] flex-col bg-[url('/static/images/chat-bg.webp')] bg-size-[350px] bg-fixed bg-repeat">
+    <section className="relative flex h-[calc(100dvh-61px)] flex-col bg-[url('/static/images/chat-bg.webp')] bg-size-[350px] bg-fixed bg-repeat max-md:h-[calc(100dvh-56px)]">
       {/* Header */}
       <ChatHeader
         consultationId={id}

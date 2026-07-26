@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 interface WishListPageProps {
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+  searchParams: Promise<{ view?: string; sort?: string; page?: string }>;
 }
 
 export default async function WishListPage({
@@ -20,10 +20,10 @@ export default async function WishListPage({
 }: WishListPageProps) {
   const params = await searchParams;
 
-  const viewMode = (params.view as string) || DEFAULT_VIEW_MODE;
-  const selectedSort = (params.sort as string) || "newest";
+  const viewMode = params.view || DEFAULT_VIEW_MODE;
+  const selectedSort = params.sort || "newest";
   const currentPage = Number(params.page) || 1;
-  
+
   const result = await getWishlistProducts({
     sort: selectedSort as any,
     page: currentPage,

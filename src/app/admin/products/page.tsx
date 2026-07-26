@@ -42,11 +42,14 @@ export default async function AdminProductsPage({ searchParams }: PageProps) {
 
   return (
     <section>
-      <div className="flex mb-2 items-center justify-between">
-        <SectionTitle title={`مدیریت محصولات (${toPersianNumber(result.total)})`} className="mb-0!" />
+      <div className="mb-2 flex items-center justify-between">
+        <SectionTitle
+          title={`مدیریت محصولات (${toPersianNumber(result.total)})`}
+          className="mb-0!"
+        />
         <OutlineButton
           href="/admin/products/new"
-          className="h-10 shrink-0 px-5.75 gap-x-1 text-center text-base font-medium"
+          className="h-10 shrink-0 gap-x-1 px-5.75 text-center text-base font-medium"
         >
           محصول جدید
           <FaPlus className="size-4" />

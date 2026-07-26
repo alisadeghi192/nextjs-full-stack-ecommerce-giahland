@@ -29,7 +29,8 @@ export default async function AdminOrdersPage({ searchParams }: PageProps) {
   }
 
   const params = await searchParams;
-  const status = (params.status as "pending" | "paid" | "delivered" | "all") || "all";
+  const status =
+    (params.status as "pending" | "paid" | "delivered" | "all") || "all";
   const search = params.search || "";
   const currentPage = Number(params.page) || 1;
 
@@ -40,29 +41,29 @@ export default async function AdminOrdersPage({ searchParams }: PageProps) {
     limit: ORDERS_PER_PAGE,
   });
 
-  const {orders} = result
-
+  const { orders } = result;
 
   const baseUrl = `?status=${status}&search=${search}`;
 
   return (
     <section className="w-full">
-        <SectionTitle title={`مدیریت سفارش ها (${toPersianNumber(result.total)})`}/>
+      <SectionTitle
+        title={`مدیریت سفارش ها (${toPersianNumber(result.total)})`}
+      />
 
       <AdminOrdersHeader />
 
       {orders.length === 0 ? (
         <div className="border-neutral3 rounded-2xl border p-6 text-center text-gray-500 shadow-lg">
-          {search ? "سفارشی با این کد پیگیری یافت نشد." : "هیچ سفارشی ثبت نشده است."}
+          {search
+            ? "سفارشی با این کد پیگیری یافت نشد."
+            : "هیچ سفارشی ثبت نشده است."}
         </div>
       ) : (
         <>
           <div className="space-y-4">
             {orders.map((order: IOrder & { totalItems: number }) => (
-              <AdminOrderCard
-                key={order._id}
-                order={order}
-              />
+              <AdminOrderCard key={order._id} order={order} />
             ))}
           </div>
 

@@ -4,7 +4,12 @@ import ProductsList from "@/components/features/products/ProductsList";
 import Breadcrumb from "@/components/shared/ui/Breadcrumb";
 import Pagination from "@/components/shared/ui/Pagination";
 import { getProducts } from "@/features/products/actions/getProducts.actions";
-import { DEFAULT_SORT, DEFAULT_TAB, DEFAULT_VIEW_MODE, PRODUCTS_METADATA } from "@/lib/constants";
+import {
+  DEFAULT_SORT,
+  DEFAULT_TAB,
+  DEFAULT_VIEW_MODE,
+  PRODUCTS_METADATA,
+} from "@/lib/constants";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -19,7 +24,12 @@ export const metadata: Metadata = {
 };
 
 interface ProductsPageProps {
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+  searchParams: Promise<{
+    category?: string;
+    view?: string;
+    sort?: string;
+    page?: string;
+  }>;
 }
 
 export default async function ProductsPage({
@@ -27,9 +37,9 @@ export default async function ProductsPage({
 }: ProductsPageProps) {
   const params = await searchParams;
 
-  const activeTab = (params.category as string) || DEFAULT_TAB;
-  const viewMode = (params.view as string) || DEFAULT_VIEW_MODE;
-  const selectedSort = (params.sort as string) || DEFAULT_SORT;
+  const activeTab = params.category || DEFAULT_TAB;
+  const viewMode = params.view || DEFAULT_VIEW_MODE;
+  const selectedSort = params.sort || DEFAULT_SORT;
   const currentPage = Number(params.page) || 1;
 
   const result = await getProducts({
