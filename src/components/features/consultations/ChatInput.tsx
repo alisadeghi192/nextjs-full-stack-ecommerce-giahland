@@ -34,21 +34,24 @@ export default function ChatInput({
     }
   }, [message]);
 
-
-
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (file) {
-      if (file.size > 5 * 1024 * 1024) {
-        toast.error("حجم عکس نباید بیشتر از ۵ مگابایت باشد.");
-        if (fileInputRef.current) {
-          fileInputRef.current.value = "";
-        }
-        return;
-      }
-      setSelectedImage(file);
-      setImagePreview(URL.createObjectURL(file));
+    if (!file) return;
+
+    if (file.size > 5 * 1024 * 1024) {
+      toast.error("حجم عکس نباید بیشتر از ۵ مگابایت باشد.");
+      if (fileInputRef.current) fileInputRef.current.value = "";
+      return;
     }
+
+    if (!file.type.startsWith("image/")) {
+      toast.error("فایل انتخابی یک تصویر معتبر نیست.");
+      if (fileInputRef.current) fileInputRef.current.value = "";
+      return;
+    }
+
+    setSelectedImage(file);
+    setImagePreview(URL.createObjectURL(file));
   };
 
   const removeImage = () => {
@@ -120,7 +123,7 @@ export default function ChatInput({
               <MdSend className="size-5 rotate-180" />
             </PrimaryButton>
             <div className="flex-1">
-              <div className="border-neutral6 focus-within:border-primary relative flex min-h-12 items-center rounded-full border bg-white/40 backdrop-blur-lg px-3.75 transition-colors duration-200">
+              <div className="border-neutral6 focus-within:border-primary relative flex min-h-12 items-center rounded-full border bg-white/40 px-3.75 backdrop-blur-lg transition-colors duration-200">
                 <textarea
                   ref={textareaRef}
                   rows={1}

@@ -8,7 +8,7 @@ export const TicketSchema = z.object({
     .min(3, "موضوع باید حداقل ۳ کاراکتر باشد.")
     .max(20, "موضوع نباید بیشتر از ۲۰ کاراکتر باشد."),
 
- department: z
+  department: z
     .union([z.string(), z.null()])
     .transform((val) => val || "")
     .refine((val) => val !== "", "انتخاب دپارتمان الزامی است.")
@@ -27,14 +27,17 @@ export const TicketSchema = z.object({
     .any()
     .optional()
     .refine((file) => {
-      if (!file || file.size === 0) return true;
-      const allowedTypes = ["image/jpeg", "image/png", "image/webp"];
-      return allowedTypes.includes(file.type);
-    }, "فایل پیوست باید از نوع JPEG، PNG یا WebP باشد.")
+      if (!file || file.size === 0) {
+        return true;
+      }
+      return file.type.startsWith("image/");
+    }, "فایل پیوست باید یک تصویر معتبر باشد.")
     .refine((file) => {
-      if (!file || file.size === 0) return true;
-      return file.size <= 4 * 1024 * 1024;
-    }, "حجم فایل نباید بیشتر از ۴ مگابایت باشد."),
+      if (!file || file.size === 0) {
+        return true;
+      }
+      return file.size <= 5 * 1024 * 1024;
+    }, "حجم فایل نباید بیشتر از ۵ مگابایت باشد."),
 });
 
 export type ITicketInput = z.infer<typeof TicketSchema>;

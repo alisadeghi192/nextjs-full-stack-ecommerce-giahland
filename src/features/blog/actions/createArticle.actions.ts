@@ -5,15 +5,14 @@ import { ArticleFormSchema } from "@/features/blog/schemas/article.schema";
 import type { ContentBlock } from "@/features/blog/types/blog.types";
 import connectToDB from "@/lib/db/connect";
 import Article from "@/lib/db/models/Article";
+import { validateAndProcessImage } from "@/lib/utils/image-upload";
 import { mkdir, writeFile } from "fs/promises";
 import { revalidatePath } from "next/cache";
 import path from "path";
-import sharp from "sharp";
-
 
 export async function createArticleAction(
   prevState: any,
-  formData: FormData
+  formData: FormData,
 ): Promise<{
   success: boolean;
   message?: string;
@@ -92,30 +91,29 @@ export async function createArticleAction(
     process.cwd(),
     "public/uploads/blog",
     category,
-    slug
+    slug,
   );
   await mkdir(uploadDir, { recursive: true });
 
-  const saveImageAsWebP = async (
+  const saveImage = async (
     file: File | null,
-    fileName: string
+    fileName: string,
   ): Promise<string | null> => {
     if (!file || file.size === 0) return null;
-
-    const bytes = await file.arrayBuffer();
-    const buffer = Buffer.from(bytes);
-    
-    const webpBuffer = await sharp(buffer).webp({ quality: 80 }).toBuffer();
-    
-    const fullFileName = `${fileName}.webp`;
-    const filePath = path.join(uploadDir, fullFileName);
-    await writeFile(filePath, webpBuffer);
-    
-    return `/uploads/blog/${category}/${slug}/${fullFileName}`;
+    try {
+      const webpBuffer = await validateAndProcessImage(file);
+      const fullFileName = `${fileName}.webp`;
+      const filePath = path.join(uploadDir, fullFileName);
+      await writeFile(filePath, webpBuffer);
+      return `/uploads/blog/${category}/${slug}/${fullFileName}`;
+    } catch (error: any) {
+      console.error(`Error saving image ${fileName}:`, error.message);
+      return null;
+    }
   };
 
-  const coverImageUrl = await saveImageAsWebP(coverImageFile, "cover");
-  const mainImageUrl = await saveImageAsWebP(mainImageFile, "main");
+  const coverImageUrl = await saveImage(coverImageFile, "cover");
+  const mainImageUrl = await saveImage(mainImageFile, "main");
 
   let imageCounter = 1;
   const updatedContent: ContentBlock[] = [];
@@ -123,25 +121,32 @@ export async function createArticleAction(
   for (const block of validatedData.content) {
     if (block.type === "image" && block.data.src) {
       const imageUrl = block.data.src;
-      
+
       if (imageUrl.startsWith("data:image")) {
-        const base64Data = imageUrl.split(",")[1];
-        const buffer = Buffer.from(base64Data, "base64");
-        
-        const webpBuffer = await sharp(buffer).webp({ quality: 80 }).toBuffer();
-        const fileName = `${imageCounter}.webp`;
-        const filePath = path.join(uploadDir, fileName);
-        await writeFile(filePath, webpBuffer);
-        const newUrl = `/uploads/blog/${category}/${slug}/${fileName}`;
-        
-        updatedContent.push({
-          ...block,
-          data: {
-            ...block.data,
-            src: newUrl,
-          },
-        });
-        imageCounter++;
+        try {
+          const base64Data = imageUrl.split(",")[1];
+          const buffer = Buffer.from(base64Data, "base64");
+          const sharp = require("sharp");
+          const webpBuffer = await sharp(buffer)
+            .webp({ quality: 80 })
+            .toBuffer();
+          const fileName = `${imageCounter}.webp`;
+          const filePath = path.join(uploadDir, fileName);
+          await writeFile(filePath, webpBuffer);
+          const newUrl = `/uploads/blog/${category}/${slug}/${fileName}`;
+
+          updatedContent.push({
+            ...block,
+            data: {
+              ...block.data,
+              src: newUrl,
+            },
+          });
+          imageCounter++;
+        } catch (error) {
+          console.error("Error processing base64 image:", error);
+          updatedContent.push(block);
+        }
       } else {
         updatedContent.push(block);
       }

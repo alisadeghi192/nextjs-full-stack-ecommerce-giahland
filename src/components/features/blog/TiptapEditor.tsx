@@ -131,8 +131,8 @@ export default function TiptapEditor({
       const file = (e.target as HTMLInputElement).files?.[0];
       if (!file) return;
 
-      if (file.size > 4 * 1024 * 1024) {
-        toast.error("حجم عکس نباید بیشتر از ۴ مگابایت باشد.");
+      if (file.size > 5 * 1024 * 1024) {
+        toast.error("حجم عکس نباید بیشتر از ۵ مگابایت باشد.");
         return;
       }
 

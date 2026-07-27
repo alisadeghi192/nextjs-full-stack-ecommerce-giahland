@@ -4,10 +4,10 @@ import { getMeAction } from "@/features/auth/actions/me.actions";
 import { ProductFormSchema } from "@/features/products/schemas/product.schema";
 import connectToDB from "@/lib/db/connect";
 import Product from "@/lib/db/models/Product";
+import { validateAndProcessImage } from "@/lib/utils/image-upload";
 import { mkdir, rm, stat, writeFile } from "fs/promises";
 import { revalidatePath } from "next/cache";
 import path from "path";
-import sharp from "sharp";
 
 const isEqual = (obj1: any, obj2: any): boolean => {
   return JSON.stringify(obj1) === JSON.stringify(obj2);
@@ -112,6 +112,7 @@ export async function updateProductAction(prevState: any, formData: FormData) {
     gallery1 instanceof File ||
     gallery2 instanceof File ||
     gallery3 instanceof File;
+
   const normalizeSeo = (seo: any) => {
     if (!seo) return { title: "", description: "", keywords: [] };
     return {
@@ -164,20 +165,17 @@ export async function updateProductAction(prevState: any, formData: FormData) {
     file: File | string | null,
     fileName: string,
   ): Promise<string | null> => {
-    if (typeof file === "string") {
-      return file;
-    }
-
-    if (!file || !(file instanceof File) || file.size === 0) {
+    if (typeof file === "string") return file;
+    if (!file || !(file instanceof File) || file.size === 0) return null;
+    try {
+      const webpBuffer = await validateAndProcessImage(file);
+      const filePath = path.join(uploadDir, `${fileName}.webp`);
+      await writeFile(filePath, webpBuffer);
+      return `/uploads/products/${data.category}/${data.slug}/${fileName}.webp`;
+    } catch (error: any) {
+      console.error(`Error saving image ${fileName}:`, error.message);
       return null;
     }
-
-    const bytes = await file.arrayBuffer();
-    const buffer = Buffer.from(bytes);
-    const webpBuffer = await sharp(buffer).webp({ quality: 80 }).toBuffer();
-    const filePath = path.join(uploadDir, `${fileName}.webp`);
-    await writeFile(filePath, webpBuffer);
-    return `/uploads/products/${data.category}/${data.slug}/${fileName}.webp`;
   };
 
   const deleteFolderIfExists = async (folderPath: string) => {

@@ -30,14 +30,18 @@ export default function AvatarUpload() {
     if (!file) {
       return;
     }
-
-    if (file.size > 4 * 1024 * 1024) {
-      toast.error("حجم عکس نباید بیشتر از ۴ مگابایت باشد.");
-      if (fileInputRef.current) {
-        fileInputRef.current.value = "";
-      }
+    if (file.size > 5 * 1024 * 1024) {
+      toast.error("حجم عکس نباید بیشتر از ۵ مگابایت باشد.");
+      if (fileInputRef.current) fileInputRef.current.value = "";
       return;
     }
+
+    if (!file.type.startsWith("image/")) {
+      toast.error("فایل انتخابی یک تصویر معتبر نیست.");
+      if (fileInputRef.current) fileInputRef.current.value = "";
+      return;
+    }
+
 
     setIsLoading(true);
     const formData = new FormData();

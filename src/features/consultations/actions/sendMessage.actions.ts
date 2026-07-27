@@ -4,6 +4,7 @@ import { getMeAction } from "@/features/auth/actions/me.actions";
 import connectToDB from "@/lib/db/connect";
 import Consultation from "@/lib/db/models/Consultation";
 import ConsultationMessage from "@/lib/db/models/ConsultationMessage";
+import { getWebPFileName, validateAndProcessImage } from "@/lib/utils/image-upload";
 import { mkdir, writeFile } from "fs/promises";
 import { revalidatePath } from "next/cache";
 import path from "path";
@@ -24,36 +25,27 @@ export async function sendMessage(formData: FormData) {
 
   const consultation = await Consultation.findById(consultationId);
   if (!consultation) return { success: false, message: "مشاوره یافت نشد." };
-
   if (consultation.status === "closed") {
     return { success: false, message: "این مشاوره به اتمام رسیده است." };
   }
 
-  if (
-    consultation.user.toString() !== user._id &&
-    consultation.doctor.toString() !== user._id
-  ) {
-    return { success: false, message: "شما به این مشاوره دسترسی ندارید." };
-  }
-
   let imageUrl: string | undefined = undefined;
+
   if (imageFile && imageFile.size > 0) {
-    if (imageFile.size > 5 * 1024 * 1024) {
-      return {
-        success: false,
-        message: "حجم عکس نباید بیشتر از ۵ مگابایت باشد.",
-      };
+    try {
+      const webpBuffer = await validateAndProcessImage(imageFile);
+      const webpFileName = getWebPFileName(imageFile.name);
+
+      const uploadDir = path.join("public/uploads/consultations", consultationId);
+      await mkdir(uploadDir, { recursive: true });
+
+      const filePath = path.join(uploadDir, webpFileName);
+      await writeFile(filePath, webpBuffer);
+
+      imageUrl = `/uploads/consultations/${consultationId}/${webpFileName}`;
+    } catch (error: any) {
+      return { success: false, message: error.message || "خطا در ذخیره تصویر" };
     }
-    const bytes = await imageFile.arrayBuffer();
-    const buffer = Buffer.from(bytes);
-    const timestamp = Date.now();
-    const ext = imageFile.name.split(".").pop() || "jpg";
-    const fileName = `${timestamp}-${Math.random().toString(36).substring(2, 8)}.${ext}`;
-    const uploadDir = path.join("public/uploads/consultations", consultationId);
-    await mkdir(uploadDir, { recursive: true });
-    const filePath = path.join(uploadDir, fileName);
-    await writeFile(filePath, buffer);
-    imageUrl = `/uploads/consultations/${consultationId}/${fileName}`;
   }
 
   const sender = user.role === "plant-doctor" ? "doctor" : "user";
@@ -67,14 +59,13 @@ export async function sendMessage(formData: FormData) {
     sentAt: new Date(),
   });
 
-  const lastMessageText =  `💬 ${text?.trim()}` || (imageUrl ? "📷 تصویر" : "");
+  const lastMessageText = text?.trim() || (imageUrl ? "📷 تصویر" : "");
   const lastMessageSender = sender;
-  const lastMessageStatus = "sent";
 
   await Consultation.findByIdAndUpdate(consultationId, {
     lastMessage: lastMessageText,
     lastMessageSender: lastMessageSender,
-    lastMessageStatus: lastMessageStatus,
+    lastMessageStatus: "sent",
     lastMessageAt: new Date(),
     status: "active",
   });

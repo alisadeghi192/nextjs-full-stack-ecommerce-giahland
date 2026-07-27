@@ -4,10 +4,10 @@ import { getMeAction } from "@/features/auth/actions/me.actions";
 import { ProductFormSchema } from "@/features/products/schemas/product.schema";
 import connectToDB from "@/lib/db/connect";
 import Product from "@/lib/db/models/Product";
+import { validateAndProcessImage } from "@/lib/utils/image-upload";
 import { mkdir, writeFile } from "fs/promises";
 import { revalidatePath } from "next/cache";
 import path from "path";
-import sharp from "sharp";
 
 export async function createProductAction(prevState: any, formData: FormData) {
   const { user } = await getMeAction();
@@ -34,10 +34,14 @@ export async function createProductAction(prevState: any, formData: FormData) {
   const soilType = formData.get("soilType") as string;
   const weight = Number(formData.get("weight"));
   const sunlight = formData.get("sunlight") as string;
-  const potDimensions = JSON.parse(formData.get("potDimensions") as string || "{}");
-  const features = JSON.parse(formData.get("features") as string || "{}");
-  const cares = JSON.parse(formData.get("cares") as string || "{}");
-  const seoRaw = formData.get("seo") ? JSON.parse(formData.get("seo") as string) : undefined;
+  const potDimensions = JSON.parse(
+    (formData.get("potDimensions") as string) || "{}",
+  );
+  const features = JSON.parse((formData.get("features") as string) || "{}");
+  const cares = JSON.parse((formData.get("cares") as string) || "{}");
+  const seoRaw = formData.get("seo")
+    ? JSON.parse(formData.get("seo") as string)
+    : undefined;
 
   const result = ProductFormSchema.safeParse({
     name,
@@ -82,18 +86,24 @@ export async function createProductAction(prevState: any, formData: FormData) {
     process.cwd(),
     "public/uploads/products",
     data.category,
-    data.slug
+    data.slug,
   );
   await mkdir(uploadDir, { recursive: true });
 
-  const saveImage = async (file: File | null, fileName: string): Promise<string | null> => {
+  const saveImage = async (
+    file: File | null,
+    fileName: string,
+  ): Promise<string | null> => {
     if (!file || file.size === 0) return null;
-    const bytes = await file.arrayBuffer();
-    const buffer = Buffer.from(bytes);
-    const webpBuffer = await sharp(buffer).webp({ quality: 80 }).toBuffer();
-    const filePath = path.join(uploadDir, `${fileName}.webp`);
-    await writeFile(filePath, webpBuffer);
-    return `/uploads/products/${data.category}/${data.slug}/${fileName}.webp`; 
+    try {
+      const webpBuffer = await validateAndProcessImage(file);
+      const filePath = path.join(uploadDir, `${fileName}.webp`);
+      await writeFile(filePath, webpBuffer);
+      return `/uploads/products/${data.category}/${data.slug}/${fileName}.webp`;
+    } catch (error: any) {
+      console.error(`Error saving image ${fileName}:`, error.message);
+      return null;
+    }
   };
 
   const mainImagePath = await saveImage(data.mainImage, "main");
@@ -101,15 +111,19 @@ export async function createProductAction(prevState: any, formData: FormData) {
   const gallery2Path = await saveImage(data.gallery2, "2");
   const gallery3Path = await saveImage(data.gallery3, "3");
 
-  const imagesArray = [mainImagePath, gallery1Path, gallery2Path, gallery3Path].filter(
-    (p): p is string => p !== null
-  );
-
+  const imagesArray = [
+    mainImagePath,
+    gallery1Path,
+    gallery2Path,
+    gallery3Path,
+  ].filter((p): p is string => p !== null);
 
   const seoData = {
     title: data.seo?.title || "",
     description: data.seo?.description || "",
-    keywords: data.seo?.keywords ? data.seo.keywords.split(/[،,、\s]+/).filter(k => k.trim()) : [],
+    keywords: data.seo?.keywords
+      ? data.seo.keywords.split(/[،,、\s]+/).filter((k) => k.trim())
+      : [],
     ogImage: mainImagePath || "",
   };
 

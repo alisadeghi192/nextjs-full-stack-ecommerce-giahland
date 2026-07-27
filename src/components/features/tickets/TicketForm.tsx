@@ -30,19 +30,24 @@ export default function TicketForm() {
     fileInputRef.current?.click();
   };
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      if (file.size > 4 * 1024 * 1024) {
-        toast.error("حجم فایل نباید بیشتر از ۴ مگابایت باشد.");
-        if (fileInputRef.current) {
-          fileInputRef.current.value = "";
-        }
-        return;
-      }
-      setImagePreview(URL.createObjectURL(file));
-    }
-  };
+const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const file = e.target.files?.[0];
+  if (!file) return;
+
+  if (file.size > 5 * 1024 * 1024) {
+    toast.error("حجم فایل نباید بیشتر از ۵ مگابایت باشد.");
+    if (fileInputRef.current) fileInputRef.current.value = "";
+    return;
+  }
+
+  if (!file.type.startsWith("image/")) {
+    toast.error("فایل انتخابی یک تصویر معتبر نیست.");
+    if (fileInputRef.current) fileInputRef.current.value = "";
+    return;
+  }
+
+  setImagePreview(URL.createObjectURL(file));
+};
 
   const removeImage = () => {
     setImagePreview(null);

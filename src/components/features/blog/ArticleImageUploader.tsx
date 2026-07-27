@@ -22,21 +22,20 @@ export default function ArticleImageUploader({
   onChange,
   required = false,
 }: ArticleImageUploaderProps) {
-  const [preview, setPreview] = useState<string | null>(null)
-  
+  const [preview, setPreview] = useState<string | null>(null);
+
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    if (file.size > 4 * 1024 * 1024) {
-      toast.error("حجم عکس نباید بیشتر از ۴ مگابایت باشد.");
+    if (file.size > 5 * 1024 * 1024) {
+      toast.error("حجم عکس نباید بیشتر از ۵ مگابایت باشد.");
       e.target.value = "";
       return;
     }
 
-    const allowedTypes = ["image/jpeg", "image/png", "image/webp"];
-    if (!allowedTypes.includes(file.type)) {
-      toast.error("فقط فرمت‌های JPEG، PNG و WebP مجاز هستند.");
+    if (!file.type.startsWith("image/")) {
+      toast.error("فایل انتخابی یک تصویر معتبر نیست.");
       e.target.value = "";
       return;
     }
@@ -53,16 +52,11 @@ export default function ArticleImageUploader({
 
   return (
     <div>
-      <SectionTitle title={label} className="text-sm mb-2!" />
+      <SectionTitle title={label} className="mb-2! text-sm" />
 
       {preview ? (
         <div className="relative h-40 w-full overflow-hidden rounded-xl border border-dashed">
-          <Image
-            src={preview}
-            alt={label}
-            fill
-            className="object-contain"
-          />
+          <Image src={preview} alt={label} fill className="object-contain" />
           <button
             type="button"
             onClick={handleRemove}
@@ -80,14 +74,14 @@ export default function ArticleImageUploader({
           <span className="text-neutral8 mt-2 text-sm">
             برای آپلود کلیک کنید
           </span>
-          <span className="text-neutral8 text-xs text-center">
-            (حداکثر ۴ مگابایت، JPEG/PNG/WebP)
+          <span className="text-neutral8 text-center text-xs">
+            (حداکثر ۵ مگابایت، JPEG/PNG/WebP)
           </span>
           <input
             type="file"
             id={`file-upload-${name}`}
             name={name}
-            accept="image/jpeg,image/png,image/webp"
+            accept="image/*"
             className="hidden"
             onChange={handleFileChange}
             required={required}
