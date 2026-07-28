@@ -6,7 +6,7 @@ import connectToDB from "@/lib/db/connect";
 import Product from "@/lib/db/models/Product";
 import { validateAndProcessImage } from "@/lib/utils/image-upload";
 import { mkdir, writeFile } from "fs/promises";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import path from "path";
 
 export async function createProductAction(prevState: any, formData: FormData) {
@@ -150,6 +150,7 @@ export async function createProductAction(prevState: any, formData: FormData) {
 
   revalidatePath("/admin/products");
   revalidatePath("/products");
+  revalidateTag("home-products")
 
   return {
     success: true,

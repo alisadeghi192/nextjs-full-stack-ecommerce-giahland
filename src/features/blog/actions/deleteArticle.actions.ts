@@ -4,7 +4,7 @@ import { getMeAction } from "@/features/auth/actions/me.actions";
 import connectToDB from "@/lib/db/connect";
 import Article from "@/lib/db/models/Article";
 import { rm, stat } from "fs/promises";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import path from "path";
 
 export async function deleteArticleAction(articleId: string) {
@@ -25,14 +25,14 @@ export async function deleteArticleAction(articleId: string) {
     process.cwd(),
     "public/uploads/blog",
     article.category,
-    article.slug
+    article.slug,
   );
 
   const staticDir = path.join(
     process.cwd(),
     "public/static/images/blog",
     article.category,
-    article.slug
+    article.slug,
   );
 
   const deleteFolderIfExists = async (folderPath: string) => {
@@ -55,6 +55,7 @@ export async function deleteArticleAction(articleId: string) {
   revalidatePath("/admin/articles");
   revalidatePath("/user/articles");
   revalidatePath("/blog");
+  revalidateTag("home-articles");
 
   return {
     success: true,

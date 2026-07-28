@@ -4,7 +4,7 @@ import { getMeAction } from "@/features/auth/actions/me.actions";
 import connectToDB from "@/lib/db/connect";
 import Product from "@/lib/db/models/Product";
 import { rm, stat } from "fs/promises";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import path from "path";
 
 export async function deleteProductAction(productId: string) {
@@ -59,6 +59,7 @@ export async function deleteProductAction(productId: string) {
 
   revalidatePath("/admin/products");
   revalidatePath("/products");
+  revalidateTag("home-products")
 
   return {
     success: true,

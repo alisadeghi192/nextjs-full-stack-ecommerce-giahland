@@ -6,7 +6,7 @@ import connectToDB from "@/lib/db/connect";
 import Product from "@/lib/db/models/Product";
 import { validateAndProcessImage } from "@/lib/utils/image-upload";
 import { mkdir, rm, stat, writeFile } from "fs/promises";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import path from "path";
 
 const isEqual = (obj1: any, obj2: any): boolean => {
@@ -241,6 +241,7 @@ export async function updateProductAction(prevState: any, formData: FormData) {
   revalidatePath("/admin/products");
   revalidatePath("/products");
   revalidatePath(`/products/${data.category}/${data.slug}`);
+  revalidateTag("home-products");
 
   return {
     success: true,

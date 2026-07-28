@@ -7,7 +7,7 @@ import connectToDB from "@/lib/db/connect";
 import Article from "@/lib/db/models/Article";
 import { validateAndProcessImage } from "@/lib/utils/image-upload";
 import { mkdir, writeFile } from "fs/promises";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import path from "path";
 
 export async function createArticleAction(
@@ -184,6 +184,7 @@ export async function createArticleAction(
 
   revalidatePath("/user/articles");
   revalidatePath("/blog");
+  revalidateTag("home-articles")
 
   return {
     success: true,
