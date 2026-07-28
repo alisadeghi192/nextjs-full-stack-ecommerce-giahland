@@ -11,6 +11,7 @@ import {
   PRODUCTS_METADATA,
 } from "@/lib/constants";
 import type { Metadata } from "next";
+import { unstable_cache } from "next/cache";
 
 export const metadata: Metadata = {
   title: PRODUCTS_METADATA.title,
@@ -22,6 +23,13 @@ export const metadata: Metadata = {
     images: "/static/images/logo.webp",
   },
 };
+
+const getCachedProducts = (category: string, sort: string, page: number) =>
+  unstable_cache(
+    async () => getProducts({ category, sort, page }),
+    [`products-${category}-${sort}-${page}`],
+    { revalidate: 600, tags: ["products"] },
+  );
 
 interface ProductsPageProps {
   searchParams: Promise<{
@@ -42,11 +50,11 @@ export default async function ProductsPage({
   const selectedSort = params.sort || DEFAULT_SORT;
   const currentPage = Number(params.page) || 1;
 
-  const result = await getProducts({
-    category: activeTab,
-    sort: selectedSort,
-    page: currentPage,
-  });
+  const result = await getCachedProducts(
+    activeTab,
+    selectedSort,
+    currentPage,
+  )();
 
   const baseUrl = `?category=${activeTab}&view=${viewMode}&sort=${selectedSort}`;
 

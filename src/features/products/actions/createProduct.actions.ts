@@ -152,6 +152,7 @@ export async function createProductAction(prevState: any, formData: FormData) {
   revalidatePath("/products");
   revalidateTag("home-products");
   revalidateTag("admin-stats");
+  revalidateTag("products");
   return {
     success: true,
     message: "محصول با موفقیت ثبت شد.",

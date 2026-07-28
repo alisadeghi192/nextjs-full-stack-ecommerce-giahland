@@ -60,6 +60,7 @@ export async function deleteProductAction(productId: string) {
   revalidatePath("/products");
   revalidateTag("home-products");
   revalidateTag("admin-stats");
+  revalidateTag("products");
   return {
     success: true,
     message: "محصول و تمام تصاویر آن با موفقیت حذف شد.",
