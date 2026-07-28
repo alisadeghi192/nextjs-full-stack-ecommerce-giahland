@@ -4,7 +4,7 @@ import { getMeAction } from "@/features/auth/actions/me.actions";
 import { DEFAULT_PROFILE_PIC } from "@/lib/constants";
 import connectToDB from "@/lib/db/connect";
 import CommentModel from "@/lib/db/models/Comment";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 
 export async function replyComment(commentId: string, replyText: string) {
   const { user } = await getMeAction();
@@ -40,7 +40,14 @@ export async function replyComment(commentId: string, replyText: string) {
 
   await comment.save();
 
+  if (comment.targetType === "products") {
+    revalidateTag("product");
+  } else if (comment.targetType === "blog") {
+    revalidateTag("article");
+  }
+
   revalidatePath("/admin/comments");
+  revalidateTag("admin-stats");
   return {
     success: true,
     message: "پاسخ شما با موفقیت ثبت شد و کامنت تایید شد.",

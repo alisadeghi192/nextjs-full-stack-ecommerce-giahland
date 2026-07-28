@@ -6,7 +6,7 @@ import connectToDB from "@/lib/db/connect";
 import Article from "@/lib/db/models/Article";
 import CommentModel from "@/lib/db/models/Comment";
 import Product from "@/lib/db/models/Product";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import CommentSchema from "../schemas/comment.schema";
 
 export async function createCommentAction(prevState: any, formData: FormData) {
@@ -60,15 +60,17 @@ export async function createCommentAction(prevState: any, formData: FormData) {
     await Product.findByIdAndUpdate(result.data.targetId, {
       $push: { comments: newComment._id },
     });
+    revalidateTag("product");
   } else if (result.data.targetType === "blog") {
     await Article.findByIdAndUpdate(result.data.targetId, {
       $push: { comments: newComment._id },
     });
+    revalidateTag("article");
   }
 
   const revalidateUrl = `/${result.data.targetType}/${result.data.targetCategory}/${result.data.targetSlug}`;
   revalidatePath(revalidateUrl);
-
+  revalidateTag("admin-stats");
   return {
     success: true,
     message: "کامنت شما با موفقیت ثبت شد و پس از تایید نمایش داده می‌شود.",

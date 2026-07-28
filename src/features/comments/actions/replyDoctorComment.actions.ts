@@ -4,7 +4,7 @@ import { getMeAction } from "@/features/auth/actions/me.actions";
 import { DEFAULT_PROFILE_PIC } from "@/lib/constants";
 import connectToDB from "@/lib/db/connect";
 import CommentModel from "@/lib/db/models/Comment";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 
 interface ReplyDoctorCommentParams {
   commentId: string;
@@ -54,8 +54,14 @@ export async function replyDoctorComment({
 
   await comment.save();
 
+  if (comment.targetType === "products") {
+    revalidateTag("product");
+  } else if (comment.targetType === "blog") {
+    revalidateTag("article");
+  }
+
   revalidatePath("/user/comments");
-  revalidatePath("/");
+  revalidateTag("admin-stats");
 
   return {
     success: true,
