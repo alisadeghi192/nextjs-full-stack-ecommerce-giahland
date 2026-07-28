@@ -50,7 +50,7 @@ const getCachedStats = unstable_cache(
     };
   },
   ["admin-dashboard-stats"],
-  { revalidate: 600, tags: ["admin-stats"] },
+  { revalidate: 600, tags: ["admin-stats"] }
 );
 
 const getCachedRevenue = unstable_cache(
@@ -62,39 +62,7 @@ const getCachedRevenue = unstable_cache(
     return result.length > 0 ? result[0].total : 0;
   },
   ["admin-dashboard-revenue"],
-  { revalidate: 600, tags: ["admin-revenue"] },
-);
-
-const getCachedRecentOrders = unstable_cache(
-  async () => {
-    return await Order.find().sort({ createdAt: -1 }).limit(5).lean();
-  },
-  ["admin-recent-orders"],
-  { revalidate: 600, tags: ["admin-recent-orders"] },
-);
-
-const getCachedRecentMessages = unstable_cache(
-  async () => {
-    return await getRecentContactMessages(5);
-  },
-  ["admin-recent-messages"],
-  { revalidate: 600, tags: ["admin-recent-messages"] },
-);
-
-const getCachedRecentComments = unstable_cache(
-  async () => {
-    return await getRecentComments(5);
-  },
-  ["admin-recent-comments"],
-  { revalidate: 600, tags: ["admin-recent-comments"] },
-);
-
-const getCachedRecentTickets = unstable_cache(
-  async () => {
-    return await getRecentTickets(5);
-  },
-  ["admin-recent-tickets"],
-  { revalidate: 600, tags: ["admin-recent-tickets"] },
+  { revalidate: 600, tags: ["admin-revenue"] }
 );
 
 export default async function AdminDashboardPage() {
@@ -113,10 +81,10 @@ export default async function AdminDashboardPage() {
   ] = await Promise.all([
     getCachedStats(),
     getCachedRevenue(),
-    getCachedRecentOrders(),
-    getCachedRecentMessages(),
-    getCachedRecentComments(),
-    getCachedRecentTickets(),
+    Order.find().sort({ createdAt: -1 }).limit(5).lean(),
+    getRecentContactMessages(5),
+    getRecentComments(5),
+    getRecentTickets(5),
   ]);
 
   return (
