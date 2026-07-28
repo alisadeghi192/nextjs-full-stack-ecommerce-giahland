@@ -186,6 +186,7 @@ export async function createArticleAction(
   revalidatePath("/blog");
   revalidateTag("home-articles");
   revalidateTag("admin-stats");
+  revalidateTag("blog");
   return {
     success: true,
     message: "مقاله با موفقیت ثبت شد!",

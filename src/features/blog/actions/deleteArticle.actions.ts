@@ -57,6 +57,7 @@ export async function deleteArticleAction(articleId: string) {
   revalidatePath("/blog");
   revalidateTag("home-articles");
   revalidateTag("admin-stats");
+  revalidateTag("blog");
   return {
     success: true,
     message: "مقاله و تمام فایل‌های آن با موفقیت حذف شد.",

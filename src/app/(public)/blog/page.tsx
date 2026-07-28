@@ -6,11 +6,11 @@ import { getArticles } from "@/features/blog/actions/getArticles.actions";
 import { IBlogPostCard } from "@/features/blog/types/blog.types";
 import {
   BLOG_METADATA,
-  BLOG_POSTS_PER_PAGE,
   DEFAULT_SORT,
-  DEFAULT_TAB,
+  DEFAULT_TAB
 } from "@/lib/constants";
 import type { Metadata } from "next";
+import { unstable_cache } from "next/cache";
 
 export const metadata: Metadata = {
   title: BLOG_METADATA.title,
@@ -23,6 +23,13 @@ export const metadata: Metadata = {
   },
 };
 
+const getCachedArticles = (category: string, sort: string, page: number) =>
+  unstable_cache(
+    async () => getArticles({ category, sort, page }),
+    [`blog-${category}-${sort}-${page}`],
+    { revalidate: 600, tags: ["blog"] },
+  );
+
 interface BlogPageProps {
   searchParams: Promise<{ category?: string; sort?: string; page?: string }>;
 }
@@ -34,12 +41,11 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
   const selectedSort = params.sort || DEFAULT_SORT;
   const currentPage = Number(params.page) || 1;
 
-  const result = await getArticles({
-    category: activeTab,
-    sort: selectedSort,
-    page: currentPage,
-    limit: BLOG_POSTS_PER_PAGE,
-  });
+  const result = await getCachedArticles(
+    activeTab,
+    selectedSort,
+    currentPage,
+  )();
 
   const baseUrl = `?category=${activeTab}&sort=${selectedSort}`;
 
