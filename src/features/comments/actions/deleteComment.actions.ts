@@ -5,7 +5,7 @@ import connectToDB from "@/lib/db/connect";
 import Article from "@/lib/db/models/Article";
 import CommentModel from "@/lib/db/models/Comment";
 import Product from "@/lib/db/models/Product";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 
 export async function deleteComment(commentId: string) {
   const { user } = await getMeAction();
@@ -36,10 +36,12 @@ export async function deleteComment(commentId: string) {
     await Product.findByIdAndUpdate(targetId, {
       $pull: { comments: commentId },
     });
+    revalidateTag("product");
   } else if (targetType === "blog") {
     await Article.findByIdAndUpdate(targetId, {
       $pull: { comments: commentId },
     });
+    revalidateTag("article");
   }
 
   revalidatePath("/admin/comments");

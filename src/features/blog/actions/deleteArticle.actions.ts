@@ -4,7 +4,7 @@ import { getMeAction } from "@/features/auth/actions/me.actions";
 import connectToDB from "@/lib/db/connect";
 import Article from "@/lib/db/models/Article";
 import { rm, stat } from "fs/promises";
-import { revalidatePath, revalidateTag } from "next/cache";
+import { revalidateTag } from "next/cache";
 import path from "path";
 
 export async function deleteArticleAction(articleId: string) {
@@ -52,9 +52,6 @@ export async function deleteArticleAction(articleId: string) {
 
   await Article.findByIdAndDelete(articleId);
 
-  revalidatePath("/admin/articles");
-  revalidatePath("/user/articles");
-  revalidatePath("/blog");
   revalidateTag("home-articles");
   revalidateTag("admin-stats");
   revalidateTag("blog");

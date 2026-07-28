@@ -106,7 +106,6 @@ export async function addToCartAction(productId: string, quantity: number = 1) {
   }
 
   revalidatePath("/cart");
-  revalidatePath("/products");
 
   return {
     success: true,
