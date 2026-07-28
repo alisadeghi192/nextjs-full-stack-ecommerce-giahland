@@ -3,7 +3,7 @@
 import { getMeAction } from "@/features/auth/actions/me.actions";
 import connectToDB from "@/lib/db/connect";
 import CommentModel from "@/lib/db/models/Comment";
-import { revalidatePath, revalidateTag } from "next/cache";
+import { revalidatePath } from "next/cache";
 
 export async function approveComment(commentId: string) {
   const { user } = await getMeAction();
@@ -28,6 +28,5 @@ export async function approveComment(commentId: string) {
   await comment.save();
 
   revalidatePath("/admin/comments");
-  revalidateTag("admin-recent-comments");
   return { success: true, message: "کامنت با موفقیت تایید شد." };
 }

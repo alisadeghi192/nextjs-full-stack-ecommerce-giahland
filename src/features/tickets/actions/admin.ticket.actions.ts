@@ -8,7 +8,7 @@ import {
 import connectToDB from "@/lib/db/connect";
 import Ticket from "@/lib/db/models/Ticket";
 import { unlink } from "fs/promises";
-import { revalidatePath, revalidateTag } from "next/cache";
+import { revalidatePath } from "next/cache";
 import path from "path";
 
 export async function replyTicketAction(ticketId: string, message: string) {
@@ -189,7 +189,6 @@ export async function deleteTicketAction(ticketId: string) {
 
   revalidatePath("/admin/tickets");
   revalidatePath("/user/tickets");
-  revalidateTag("admin-recent-tickets");
   return {
     success: true,
     message: "تیکت با موفقیت حذف شد.",

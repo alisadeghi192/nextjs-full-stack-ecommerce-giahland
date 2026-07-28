@@ -134,7 +134,6 @@ export async function createOrderAction(input: unknown) {
   revalidatePath("/user/orders");
   revalidateTag("admin-stats");
   revalidateTag("admin-revenue");
-  revalidateTag("admin-recent-orders");
   return {
     success: true,
     message: "سفارش شما با موفقیت ثبت شد.",

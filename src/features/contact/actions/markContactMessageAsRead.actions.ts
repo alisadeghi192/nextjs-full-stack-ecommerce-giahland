@@ -3,7 +3,7 @@
 import { getMeAction } from "@/features/auth/actions/me.actions";
 import connectToDB from "@/lib/db/connect";
 import ContactMessage from "@/lib/db/models/ContactMessage";
-import { revalidatePath, revalidateTag } from "next/cache";
+import { revalidatePath } from "next/cache";
 
 export async function markContactMessageAsRead(messageId: string) {
   const { user } = await getMeAction();
@@ -29,7 +29,6 @@ export async function markContactMessageAsRead(messageId: string) {
   await message.save();
 
   revalidatePath("/admin/contact-messages");
-  revalidateTag("admin-recent-messages");
   return {
     success: true,
     message: message.isRead

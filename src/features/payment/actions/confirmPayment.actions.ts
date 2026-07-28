@@ -59,7 +59,6 @@ export async function confirmPaymentAction(orderId: string) {
   revalidatePath(`/payment/${orderId}`);
   revalidateTag("admin-stats");
   revalidateTag("admin-revenue");
-  revalidateTag("admin-recent-orders");
   return {
     success: true,
     message: "پرداخت با موفقیت انجام شد.",

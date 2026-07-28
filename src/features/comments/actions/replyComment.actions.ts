@@ -4,7 +4,7 @@ import { getMeAction } from "@/features/auth/actions/me.actions";
 import { DEFAULT_PROFILE_PIC } from "@/lib/constants";
 import connectToDB from "@/lib/db/connect";
 import CommentModel from "@/lib/db/models/Comment";
-import { revalidatePath, revalidateTag } from "next/cache";
+import { revalidatePath } from "next/cache";
 
 export async function replyComment(commentId: string, replyText: string) {
   const { user } = await getMeAction();
@@ -41,7 +41,6 @@ export async function replyComment(commentId: string, replyText: string) {
   await comment.save();
 
   revalidatePath("/admin/comments");
-  revalidateTag("admin-recent-comments");
   return {
     success: true,
     message: "پاسخ شما با موفقیت ثبت شد و کامنت تایید شد.",

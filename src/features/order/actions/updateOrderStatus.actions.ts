@@ -49,7 +49,6 @@ export async function updateOrderStatusAction(
   revalidatePath("/user/orders");
   revalidateTag("admin-stats");
   revalidateTag("admin-revenue");
-  revalidateTag("admin-recent-orders");
 
   return {
     success: true,
