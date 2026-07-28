@@ -40,14 +40,12 @@ export default function ProductImageUploader({
     const file = e.target.files?.[0];
     if (!file) return;
 
-    // ✅ چک حجم
     if (file.size > 5 * 1024 * 1024) {
       toast.error("حجم عکس نباید بیشتر از ۵ مگابایت باشد.");
       e.target.value = "";
       return;
     }
 
-    // ✅ همه فرمت‌های تصویر
     if (!file.type.startsWith("image/")) {
       toast.error("فایل انتخابی یک تصویر معتبر نیست.");
       e.target.value = "";

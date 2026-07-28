@@ -2,7 +2,7 @@
 import BlogSlider from "@/components/features/blog/BlogSlider";
 import BannerSection from "@/components/features/landing/BannerSection";
 import HeroSection from "@/components/features/landing/HeroSection";
-import LazySliders from "@/components/features/landing/LazySliders"; // 👈 جدید
+import LazySliders from "@/components/features/landing/LazySliders";
 import PlantDoctorServices from "@/components/features/landing/PlantDoctorServices";
 import ServicesSection from "@/components/features/landing/ServicesSection";
 import ProductSlider from "@/components/features/products/ProductSlider";

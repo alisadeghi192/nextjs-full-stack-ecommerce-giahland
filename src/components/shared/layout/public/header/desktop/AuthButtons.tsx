@@ -19,7 +19,7 @@ import {
 } from "@/stores/selectors/ui.selectors";
 import Image from "next/image";
 import Link from "next/link";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { FaRegUser } from "react-icons/fa6";
 import { HiOutlineLogout } from "react-icons/hi";
 import { IoSettingsOutline } from "react-icons/io5";
@@ -54,6 +54,12 @@ export default function AuthButtons() {
       openTimeoutRef.current = null;
     }
   };
+  useEffect(() => {
+    return () => {
+      clearTimeout(closeTimeoutRef.current ?? undefined);
+      clearTimeout(openTimeoutRef.current ?? undefined);
+    };
+  }, []);
 
   const handleMouseEnter = () => {
     clearCloseTimeout();
