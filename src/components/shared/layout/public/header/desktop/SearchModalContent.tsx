@@ -1,11 +1,11 @@
 "use client";
 
 import FormField from "@/components/shared/ui/FormField";
-import { searchProducts } from "@/features/products/actions/searchProducts.actions";
+import { useProductSearch } from "@/lib/hooks/useProductSearch";
 import { toPersianPrice } from "@/lib/utils/format";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { IoMdSearch } from "react-icons/io";
 
 interface SearchModalContentProps {
@@ -14,56 +14,17 @@ interface SearchModalContentProps {
 }
 
 export default function SearchModalContent({ onClose, isOpen }: SearchModalContentProps) {
-  const [query, setQuery] = useState("");
-  const [results, setResults] = useState<any[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const { query, setQuery, results, isLoading } = useProductSearch();
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (isOpen) {
-      const timeout = setTimeout(() => {
-        inputRef.current?.focus();
-      }, 50);
+      const timeout = setTimeout(() => inputRef.current?.focus(), 50);
       return () => clearTimeout(timeout);
     } else {
       setQuery("");
-      setResults([]);
     }
-  }, [isOpen]);
-
-  // Debounce
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (query.trim().length >= 2) {
-        handleSearch(query);
-      } else {
-        setResults([]);
-      }
-    }, 500);
-
-    return () => clearTimeout(timer);
-  }, [query]);
-
-  const handleSearch = async (value: string) => {
-    if (value.trim().length < 2) {
-      setResults([]);
-      return;
-    }
-    setIsLoading(true);
-    try {
-      const data = await searchProducts(value);
-      setResults(data);
-    } catch (error) {
-      setResults([]);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setQuery(value);
-  };
+  }, [isOpen, setQuery]);
 
   const handleSelect = () => {
     onClose();
@@ -79,14 +40,14 @@ export default function SearchModalContent({ onClose, isOpen }: SearchModalConte
         name="search"
         ref={inputRef}
         value={query}
-        onChange={handleChange}
+        onChange={(e) => setQuery(e.target.value)}
         isMainSearch={true}
       />
 
-      <div className="mt-2 max-h-80 overflow-y-auto custom-scroll ltr">
+      <div className="custom-scroll ltr mt-2 max-h-80 overflow-y-auto">
         {isLoading ? (
           <div className="flex items-center justify-center py-6">
-            <div className="border-primary h-6 w-6 animate-spin rounded-full border-4 border-t-transparent"></div>
+            <div className="border-primary h-6 w-6 animate-spin rounded-full border-4 border-t-transparent" />
           </div>
         ) : results.length > 0 ? (
           <div className="space-y-1">
@@ -100,26 +61,19 @@ export default function SearchModalContent({ onClose, isOpen }: SearchModalConte
                 <div className="flex items-center gap-3">
                   {item.image && (
                     <div className="relative size-12 shrink-0 overflow-hidden rounded-lg">
-                      <Image
-                        src={item.image}
-                        alt={item.name}
-                        fill
-                        className="object-cover"
-                      />
+                      <Image src={item.image} alt={item.name} fill className="object-cover" />
                     </div>
                   )}
                   <div>
                     <p className="font-medium">{item.name}</p>
-                    <p className="text-neutral9 text-sm">
-                      {toPersianPrice(item.price)}
-                    </p>
+                    <p className="text-neutral9 text-sm">{toPersianPrice(item.price)}</p>
                   </div>
                 </div>
               </Link>
             ))}
           </div>
         ) : query && results.length === 0 ? (
-          <p className="text-neutral9 px-3 py-2 rtl text-sm">محصولی یافت نشد.</p>
+          <p className="text-neutral9 rtl px-3 py-2 text-sm">محصولی یافت نشد.</p>
         ) : null}
       </div>
     </div>
