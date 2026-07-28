@@ -1,15 +1,19 @@
 import { AuthUser } from "@/features/user/types/user.types";
 import AuthProvider from "./AuthProvider";
+import ThemeInitializer from "./ThemeInitializer";
 
 interface GeneralProviderProps {
   children: React.ReactNode;
-  initialUser: Omit<AuthUser , "password"> | null;
+  initialUser: Omit<AuthUser, "password"> | null;
 }
 
-export default function GeneralProvider({ children, initialUser }: GeneralProviderProps) {
-
+export default function GeneralProvider({
+  children,
+  initialUser,
+}: GeneralProviderProps) {
   return (
     <AuthProvider initialUser={JSON.parse(JSON.stringify(initialUser))}>
+      <ThemeInitializer />
       {children}
     </AuthProvider>
   );

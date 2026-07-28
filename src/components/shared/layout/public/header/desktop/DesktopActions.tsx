@@ -1,18 +1,17 @@
 "use client";
 
-import IconButton from "@/components/shared/ui/IconButton";
-import { MdOutlineDarkMode } from "react-icons/md";
-import {AuthButtons,CartButton,Overlay ,SearchButton} from ".."
+import ThemeButton from "@/components/shared/ui/ThemeButton";
 import {
   HEADER_DESKTOP_DEFAULT,
   HEADER_DESKTOP_SCROLLED,
 } from "@/lib/constants";
 import {
+  useCartActions,
   useIsCartOpen,
   useIsSearchOpen,
-  useCartActions,
   useSearchActions,
 } from "@/stores/selectors/ui.selectors";
+import { AuthButtons, CartButton, Overlay, SearchButton } from "..";
 
 interface DesktopActionsProps {
   isScrolled: boolean;
@@ -35,7 +34,7 @@ export default function DesktopActions({ isScrolled }: DesktopActionsProps) {
 
   return (
     <div className="relative flex gap-x-4 max-xl:gap-x-1">
-      <IconButton icon={<MdOutlineDarkMode size={24} />} />
+      <ThemeButton />
 
       <SearchButton />
 

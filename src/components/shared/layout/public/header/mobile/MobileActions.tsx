@@ -2,6 +2,7 @@
 
 import IconButton from "@/components/shared/ui/IconButton";
 import NotificationBadge from "@/components/shared/ui/NotificationBadge";
+import ThemeButton from "@/components/shared/ui/ThemeButton";
 import {
   useIsAdmin,
   useIsAuthenticated,
@@ -20,9 +21,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect } from "react";
 import {
-  MdOutlineDarkMode,
   MdOutlineLogin,
-  MdOutlineShoppingCart,
+  MdOutlineShoppingCart
 } from "react-icons/md";
 
 export default function MobileActions() {
@@ -45,7 +45,7 @@ export default function MobileActions() {
 
   return (
     <div className="flex items-center gap-2">
-      <IconButton icon={<MdOutlineDarkMode size={20} />} />
+      <ThemeButton />
 
       {showCart && (
         <div className="relative">

@@ -1,8 +1,10 @@
 import GeneralProvider from "@/components/providers/GeneralProvider";
 import { getMeAction } from "@/features/auth/actions/me.actions";
+import { THEME_COOKIE_NAME } from "@/lib/constants/theme";
 import ScrollToTop from "@/lib/utils/ScrollToTop";
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
+import { cookies } from "next/headers";
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
 
@@ -39,8 +41,8 @@ export const metadata: Metadata = {
   },
 };
 
-export const viewport : Viewport= {
-  themeColor: "#417f56", 
+export const viewport: Viewport = {
+  themeColor: "#417f56",
 };
 
 const modamFont = localFont({
@@ -91,14 +93,33 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const { user: initialUser } = await getMeAction();
+  const cookieStore = await cookies();
+  const theme =
+    cookieStore.get(THEME_COOKIE_NAME)?.value === "dark" ? "dark" : "light";
+
+  const themeScript = `
+    (function() {
+      var saved = document.cookie.match(/(?:^|;\\s*)theme=([^;]+)/);
+      if (saved && saved[1]) {
+        document.documentElement.classList.add(saved[1]);
+        return;
+      }
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.classList.add(prefersDark ? 'dark' : 'light');
+    })();
+  `.replace(/\n/g, " ");
+
   return (
     <html
       lang="fa"
       dir="rtl"
       data-scroll-behavior="smooth"
-      className={`${modamFont.variable} scroll-smooth custom-scroll`}
+      className={`${theme} ${modamFont.variable} custom-scroll scroll-smooth`}
     >
-      <body className="font-modam text-BLACK antialiased">
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
+      <body className="font-modam text-BLACK antialiased ">
         <GeneralProvider initialUser={initialUser}>
           <main className="flex min-h-dvh flex-col justify-between">
             {children}

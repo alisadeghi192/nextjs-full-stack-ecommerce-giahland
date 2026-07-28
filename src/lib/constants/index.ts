@@ -18,6 +18,7 @@ export * from "./productSwiper";
 export * from "./roles";
 export * from "./scroll";
 export * from "./storeInfo";
+export * from "./theme";
 export * from "./ticket";
 export * from "./users";
 

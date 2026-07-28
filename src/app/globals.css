@@ -1,5 +1,5 @@
 @import "tailwindcss";
-
+@custom-variant dark (&:where(.dark, .dark *));
 @theme {
   --breakpoint-xs: 30rem;
   --font-modam: var(--font-modam), sans-serif;
