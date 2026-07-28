@@ -11,6 +11,7 @@ export default function BlogCard({
   author,
   category,
   publishedAt,
+  createdAt,
   usedInSlider = false,
 }: IBlogPostCard) {
   return (
@@ -40,7 +41,7 @@ export default function BlogCard({
               </span>
               <span className="max-xs:text-xs flex items-center justify-center gap-x-0.5 self-start text-sm">
                 <span className="max-sm:order-2">
-                  {toPersianDate(publishedAt)}
+                  {toPersianDate(new Date(publishedAt) || new Date(createdAt) )}
                 </span>
                 <MdOutlineCalendarMonth className="size-5" />
               </span>

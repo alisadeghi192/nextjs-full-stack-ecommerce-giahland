@@ -64,6 +64,7 @@ export async function getArticles({
         },
         category: article.category,
         publishedAt: article.publishedAt,
+        createdAt: article.createdAt,
       } as IBlogPostCard;
     }),
     total,

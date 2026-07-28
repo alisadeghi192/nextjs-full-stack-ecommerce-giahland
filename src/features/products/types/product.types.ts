@@ -65,7 +65,6 @@ export interface IProductCardData {
   slug: string;
   category: string;
   discount: number;
-  potDimensions: { length: number; width: number; height: number };
   stock: number;
   liked: number;
   createdAt: Date;

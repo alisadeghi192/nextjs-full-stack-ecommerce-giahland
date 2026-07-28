@@ -55,7 +55,7 @@ export async function getProducts({
       .sort(sortOption)
       .skip(skip)
       .limit(limit)
-      .select("name price image slug category discount potDimensions stock liked createdAt")
+      .select("name price image slug category discount stock liked createdAt")
       .lean(),
     Product.countDocuments(filter),
   ]);
