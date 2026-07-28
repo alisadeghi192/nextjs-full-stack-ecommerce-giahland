@@ -16,7 +16,86 @@ import Order from "@/lib/db/models/Order";
 import Product from "@/lib/db/models/Product";
 import { PlantDoctor, User } from "@/lib/db/models/User";
 import { toPersianDate } from "@/lib/utils/format";
+import { unstable_cache } from "next/cache";
 import { redirect } from "next/navigation";
+
+const getCachedStats = unstable_cache(
+  async () => {
+    const [
+      ordersCount,
+      productsCount,
+      usersCount,
+      doctorsCount,
+      discountedProductsCount,
+      articlesCount,
+      activeConsulationsCount,
+    ] = await Promise.all([
+      Order.countDocuments(),
+      Product.countDocuments(),
+      User.countDocuments(),
+      PlantDoctor.countDocuments(),
+      Product.countDocuments({ discount: { $gt: 0 } }),
+      Article.countDocuments(),
+      Consultation.countDocuments({ status: "active" }),
+    ]);
+
+    return {
+      ordersCount,
+      productsCount,
+      usersCount,
+      doctorsCount,
+      discountedProductsCount,
+      articlesCount,
+      activeConsulationsCount,
+    };
+  },
+  ["admin-dashboard-stats"],
+  { revalidate: 600, tags: ["admin-stats"] },
+);
+
+const getCachedRevenue = unstable_cache(
+  async () => {
+    const result = await Order.aggregate([
+      { $match: { status: { $in: ["paid", "delivered"] } } },
+      { $group: { _id: null, total: { $sum: "$finalAmount" } } },
+    ]);
+    return result.length > 0 ? result[0].total : 0;
+  },
+  ["admin-dashboard-revenue"],
+  { revalidate: 600, tags: ["admin-revenue"] },
+);
+
+const getCachedRecentOrders = unstable_cache(
+  async () => {
+    return await Order.find().sort({ createdAt: -1 }).limit(5).lean();
+  },
+  ["admin-recent-orders"],
+  { revalidate: 600, tags: ["admin-recent-orders"] },
+);
+
+const getCachedRecentMessages = unstable_cache(
+  async () => {
+    return await getRecentContactMessages(5);
+  },
+  ["admin-recent-messages"],
+  { revalidate: 600, tags: ["admin-recent-messages"] },
+);
+
+const getCachedRecentComments = unstable_cache(
+  async () => {
+    return await getRecentComments(5);
+  },
+  ["admin-recent-comments"],
+  { revalidate: 600, tags: ["admin-recent-comments"] },
+);
+
+const getCachedRecentTickets = unstable_cache(
+  async () => {
+    return await getRecentTickets(5);
+  },
+  ["admin-recent-tickets"],
+  { revalidate: 600, tags: ["admin-recent-tickets"] },
+);
 
 export default async function AdminDashboardPage() {
   const { user } = await getMeAction();
@@ -25,39 +104,23 @@ export default async function AdminDashboardPage() {
   }
 
   const [
-    ordersCount,
-    productsCount,
-    usersCount,
-    doctorsCount,
-    revenueResult,
+    stats,
+    totalRevenue,
     recentOrders,
     recentMessages,
     recentComments,
     recentTickets,
-    discountedProductsCount,
-    articlesCount,
-    activeConsulationsCount,
   ] = await Promise.all([
-    Order.countDocuments(),
-    Product.countDocuments(),
-    User.countDocuments(),
-    PlantDoctor.countDocuments(),
-    Order.aggregate([
-      { $match: { status: { $in: ["paid", "delivered"] } } },
-      { $group: { _id: null, total: { $sum: "$finalAmount" } } },
-    ]),
-    Order.find().sort({ createdAt: -1 }).limit(5).lean(),
-    getRecentContactMessages(5),
-    getRecentComments(5),
-    getRecentTickets(5),
-    Product.countDocuments({ discount: { $gt: 0 } }),
-    Article.countDocuments(),
-    Consultation.countDocuments({ status: "active" }),
+    getCachedStats(),
+    getCachedRevenue(),
+    getCachedRecentOrders(),
+    getCachedRecentMessages(),
+    getCachedRecentComments(),
+    getCachedRecentTickets(),
   ]);
-  const totalRevenue = revenueResult.length > 0 ? revenueResult[0].total : 0;
 
   return (
-    <section className="space-y-4">
+    <div className="space-y-4">
       <div className="flex items-center justify-between">
         <SectionTitle title="داشبورد مدیریت" className="mb-0!" />
         <span className="text-primary font-medium">
@@ -66,16 +129,17 @@ export default async function AdminDashboardPage() {
       </div>
 
       <StatsCards
-        ordersCount={ordersCount}
-        productsCount={productsCount}
-        usersCount={usersCount}
-        doctorsCount={doctorsCount}
+        ordersCount={stats.ordersCount}
+        productsCount={stats.productsCount}
+        usersCount={stats.usersCount}
+        doctorsCount={stats.doctorsCount}
         totalRevenue={totalRevenue}
       />
+
       <QuickStats
-        discountedProducts={discountedProductsCount}
-        articles={articlesCount}
-        consultations={activeConsulationsCount}
+        discountedProducts={stats.discountedProductsCount}
+        articles={stats.articlesCount}
+        consultations={stats.activeConsulationsCount}
       />
 
       <DashboardCharts />
@@ -86,6 +150,6 @@ export default async function AdminDashboardPage() {
         <RecentComments comments={recentComments} />
         <RecentTickets tickets={recentTickets} />
       </div>
-    </section>
+    </div>
   );
 }
