@@ -8,6 +8,8 @@ import CommentList from "@/components/shared/ui/CommentList";
 import { getArticleBySlug } from "@/features/blog/actions/getArticleBySlug.actions";
 import { getArticles } from "@/features/blog/actions/getArticles.actions";
 import type { Metadata } from "next";
+import { unstable_cache } from "next/cache";
+import { Suspense } from "react";
 interface BlogPostPageProps {
   params: Promise<{
     category: string;
@@ -15,12 +17,32 @@ interface BlogPostPageProps {
   }>;
 }
 
+const getCachedArticle = (slug: string) =>
+  unstable_cache(async () => getArticleBySlug(slug), [`article-${slug}`], {
+    revalidate: 3600,
+    tags: ["article"],
+  });
+
+const getCachedRelatedArticles = (category: string, slug: string) =>
+  unstable_cache(
+    async () => {
+      const { articles } = await getArticles({
+        category,
+        limit: 6,
+        page: 1,
+      });
+      return articles.filter((a) => a.slug !== slug);
+    },
+    [`related-articles-${category}-${slug}`],
+    { revalidate: 600, tags: ["related-articles"] },
+  );
+
 // ========== SEO ==========
 export async function generateMetadata({
   params,
 }: BlogPostPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const post = await getArticleBySlug(slug);
+  const post = await getCachedArticle(slug)();
 
   if (!post) {
     return { title: "مقاله یافت نشد" };
@@ -35,7 +57,7 @@ export async function generateMetadata({
       description: post.seo?.description || post.excerpt,
       images: post.seo?.ogImage || post.mainImage,
       type: "article",
-      publishedTime: post.publishedAt?.toISOString(),
+      publishedTime: new Date(post.publishedAt || post.createdAt).toISOString(),
       authors: [`${post.author.firstName} ${post.author.lastName}`],
     },
   };
@@ -44,15 +66,9 @@ export async function generateMetadata({
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { category, slug } = await params;
 
-  const post = await getArticleBySlug(slug);
+  const post = await getCachedArticle(slug)();
 
-  const { articles: relatedPosts } = await getArticles({
-    category: category,
-    limit: 6,
-    page: 1,
-  });
-
-  const filteredRelated = relatedPosts.filter((p) => p._id !== post._id);
+  const relatedPosts = await getCachedRelatedArticles(category, slug)();
 
   const categoryLink = `/blog?category=${category}&sort=newest`;
   const articleAuthor = `${post.author.firstName} ${post.author.lastName}`;
@@ -79,11 +95,27 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
         <CommentList comments={post.comments || []} />
 
-        <BlogSlider
-          link={categoryLink}
-          title="مقالات مرتبط"
-          posts={filteredRelated}
-        />
+        <Suspense
+          fallback={
+            <div className="mt-16">
+              <div className="mb-6 h-8 w-48 animate-pulse rounded bg-gray-200" />
+              <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+                {Array.from({ length: 4 }).map((_, i) => (
+                  <div
+                    key={i}
+                    className="aspect-4/5 w-full animate-pulse rounded-xl bg-gray-200"
+                  />
+                ))}
+              </div>
+            </div>
+          }
+        >
+          <BlogSlider
+            link={categoryLink}
+            title="مقالات مرتبط"
+            posts={relatedPosts}
+          />
+        </Suspense>
       </div>
     </section>
   );

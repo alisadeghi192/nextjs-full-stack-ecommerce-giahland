@@ -12,10 +12,11 @@ import CommentForm from "@/components/shared/ui/CommentForm";
 import CommentList from "@/components/shared/ui/CommentList";
 import { getProductBySlug } from "@/features/products/actions/getProductBySlug.actions";
 import { getProducts } from "@/features/products/actions/getProducts.actions";
-import { getBulkLikeStatus } from "@/features/user/actions/wishlist.actions";
 import { PRODUCT_DETAIL_TABS, PRODUCT_TABS } from "@/lib/constants";
 import type { Metadata } from "next";
+import { unstable_cache } from "next/cache";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 interface ProductPageProps {
   params: Promise<{
     category: string;
@@ -23,12 +24,32 @@ interface ProductPageProps {
   }>;
 }
 
+const getCachedProduct = (slug: string) =>
+  unstable_cache(async () => getProductBySlug(slug), [`product-${slug}`], {
+    revalidate: 3600,
+    tags: ["product"],
+  });
+
+const getCachedRelatedProducts = (category: string, slug: string) =>
+  unstable_cache(
+    async () => {
+      const { products } = await getProducts({
+        category,
+        sort: "newest",
+        limit: 8,
+      });
+      return products.filter((p) => p.slug !== slug);
+    },
+    [`related-products-${category}-${slug}`],
+    { revalidate: 600, tags: ["related-products"] },
+  );
+
 // ========== SEO ==========
 export async function generateMetadata({
   params,
 }: ProductPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const product = await getProductBySlug(slug);
+  const product = await getCachedProduct(slug)();
 
   if (!product) {
     return { title: "محصول یافت نشد" };
@@ -50,7 +71,7 @@ export async function generateMetadata({
 export default async function ProductPage({ params }: ProductPageProps) {
   const { category, slug } = await params;
 
-  const product = await getProductBySlug(slug);
+  const product = await getCachedProduct(slug)();
 
   if (!product || product.category !== category) {
     notFound();
@@ -59,14 +80,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
   const categoryName =
     PRODUCT_TABS.find((product) => product.id == category)?.label || "";
 
-  const { products: relatedProducts } = await getProducts({
-    category: product.category,
-    sort: "newest",
-    limit: 8,
-  });
-  const filteredRelated = relatedProducts.filter((p) => p.slug !== slug);
-  const relatedIds = relatedProducts.map((p) => p._id);
-  const relatedLikeStatuses = await getBulkLikeStatus(relatedIds);
+  const relatedProducts = await getCachedRelatedProducts(category, slug)();
   const categoryLink = `/products?category=${category}`;
 
   return (
@@ -140,12 +154,27 @@ export default async function ProductPage({ params }: ProductPageProps) {
         <CommentList comments={product.comments || []} />
       </section>
 
-      <ProductSlider
-        link={categoryLink}
-        products={filteredRelated}
-        title="گیاه های مشابه"
-        likeStatuses={relatedLikeStatuses}
-      />
+      <Suspense
+        fallback={
+          <div className="mt-16">
+            <div className="mb-6 h-8 w-48 animate-pulse rounded bg-gray-200" />
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+              {Array.from({ length: 4 }).map((_, i) => (
+                <div
+                  key={i}
+                  className="aspect-square w-full animate-pulse rounded-xl bg-gray-200"
+                />
+              ))}
+            </div>
+          </div>
+        }
+      >
+        <ProductSlider
+          link={categoryLink}
+          products={relatedProducts}
+          title="گیاه های مشابه"
+        />
+      </Suspense>
 
       <MobileStickyCart
         productId={product._id}
