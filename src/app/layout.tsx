@@ -119,7 +119,7 @@ export default async function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
-      <body className="font-modam text-BLACK antialiased ">
+      <body className="font-modam text-BLACK antialiased dark:text-white dark:bg-shade5 transition-colors">
         <GeneralProvider initialUser={initialUser}>
           <main className="flex min-h-dvh flex-col justify-between">
             {children}

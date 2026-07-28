@@ -22,7 +22,7 @@ export default function Footer() {
   return (
     <footer
       id="footer"
-      className={`bg-neutral2 max-xs:mt-6 mt-10 pt-7 pb-10 ${shoudAdjust ? "pb-10 max-md:pb-30" : ""}`}
+      className={`bg-neutral2 dark:bg-shade5 dark:border-t dark:border-shade4 transition-colors max-xs:mt-6 mt-10 pt-7 pb-10 ${shoudAdjust ? "pb-10 max-md:pb-30" : ""}`}
     >
       <div className="container flex items-baseline justify-between max-xl:gap-12 max-sm:flex-col-reverse">
         <div className="flex basis-124 flex-col gap-x-10 max-sm:basis-full max-sm:gap-x-4">
@@ -33,7 +33,7 @@ export default function Footer() {
             >
               گیاه لند
             </Link>
-            <p className="text-neutral10 max-xs:text-[12px] text-justify leading-7.25 max-md:text-sm/6">
+            <p className="text-neutral10 dark:text-text-dark transition-colors max-xs:text-[12px] text-justify leading-7.25 max-md:text-sm/6">
               گیاه لند سعی بر این دارد با ارائه خدمات نوین در حوزه فروش گیاهان
               باعث راحتی شما در خرید انواع گیاه شود.تنوع گیاهان و همچنین ایجاد
               بستری مناسب برای مشاوره با گیاه پزشک از دیگر مزیت های گیاه لند
@@ -43,23 +43,23 @@ export default function Footer() {
           <div className="mt-10 flex items-center justify-between max-xl:mt-8">
             <div className="flex flex-col gap-y-4">
               <p className="text-neutral10 text-xl max-md:text-base">
-                <span> تلفن پشتیبانی :</span>
+                <span className="dark:text-text-dark"> تلفن پشتیبانی :</span>
                 <Link
                   href="tel:09371921199"
-                  className="hover:text-primary transition-colors"
+                  className="hover:text-primary transition-colors dark:text-text-dark"
                 >
                   {toPersianCode(STORE_PHONE_NUMBER)}
                 </Link>
               </p>
               <div className="flex gap-x-6">
                 <Link href={STORE_LOCATION}>
-                  <RiMapPin2Fill className="text-neutral10 size-6 cursor-pointer" />
+                  <RiMapPin2Fill className="text-neutral10 dark:text-text-dark transition-colors hover:text-primary size-6 cursor-pointer" />
                 </Link>
                 <Link href={STORE_TELEGRAM}>
-                  <RiTelegram2Fill className="text-neutral10 size-6 cursor-pointer" />
+                  <RiTelegram2Fill className="text-neutral10 dark:text-text-dark transition-colors hover:text-primary size-6 cursor-pointer" />
                 </Link>
                 <Link href={STORE_INSTAGRAM}>
-                  <RiInstagramFill className="text-neutral10 size-6 cursor-pointer" />
+                  <RiInstagramFill className="text-neutral10 dark:text-text-dark transition-colors hover:text-primary size-6 cursor-pointer" />
                 </Link>
               </div>
             </div>
@@ -80,7 +80,7 @@ export default function Footer() {
             >
               <Link
                 href={category.categoryLink}
-                className="text-neutral10 hover:text-primary border-Border max-xs:text-[12px] border-b pb-2 text-xl/7 font-semibold transition-colors max-md:text-base"
+                className="text-neutral10 dark:text-text-dark dark:border-primary hover:text-primary border-neutral4 max-xs:text-[12px] border-b pb-2 text-xl/7 font-semibold transition-colors max-md:text-base"
               >
                 {category.category}
               </Link>
@@ -89,7 +89,7 @@ export default function Footer() {
                   <Link
                     key={product.label}
                     href={product.link}
-                    className="text-neutral10 hover:text-primary max-xs:text-[12px] text-xl/9 transition-colors max-md:text-base"
+                    className="text-neutral10 dark:text-text-dark hover:text-primary max-xs:text-[12px] text-xl/9 transition-colors max-md:text-base"
                   >
                     {product.label}
                   </Link>

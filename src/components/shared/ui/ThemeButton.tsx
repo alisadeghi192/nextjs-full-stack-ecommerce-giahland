@@ -18,9 +18,9 @@ export default function ThemeButton() {
   return (
     <button
       onClick={toggleTheme}
-      className={`border-primary hover:border-shade2 group flex size-8 cursor-pointer items-center justify-center rounded-lg border transition-colors sm:size-10 sm:rounded-xl lg:size-12`}
+      className={`border-primary dark:border-primary-dark hover:border-shade2 group flex size-8 cursor-pointer items-center justify-center rounded-lg border transition-colors sm:size-10 sm:rounded-xl lg:size-12`}
     >
-      <span className="text-primary group-hover:text-shade2 transition-colors">
+      <span className="text-primary dark:text-primary-dark group-hover:text-shade2 transition-colors">
         {theme === "dark" ? <MdOutlineLightMode size={24} /> : <MdOutlineDarkMode size={24} />}
       </span>
     </button>

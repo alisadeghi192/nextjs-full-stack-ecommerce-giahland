@@ -11,6 +11,8 @@
   --color-tint6: #3f9b92;
   --color-tint7: #278f85;
   --color-primary: #417f56;
+  --color-primary-dark: #7dce99;
+  --color-text-dark: #b8e5c8;
   --color-shade1: #396f4b;
   --color-shade2: #315f41;
   --color-shade3: #294f36;
@@ -53,7 +55,6 @@
     background-color: #417f56;
     border-radius: 9999px;
   }
-
 }
 
 @utility container {
@@ -72,9 +73,8 @@
   @media (width >= 80rem) /* 1280px */ {
     max-width: 80rem;
   }
- 
 
-  @apply mx-auto w-full px-4 md:px-2.5 ;
+  @apply mx-auto w-full px-4 md:px-2.5;
 }
 
 @utility ltr {

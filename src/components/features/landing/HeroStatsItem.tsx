@@ -11,7 +11,7 @@ interface HeroStatsItemProps {
 const HeroStatsItem = ({ end, label }: HeroStatsItemProps) => {
   return (
     <div className="flex basis-1/3 flex-col gap-y-1 max-md:text-center">
-      <span className="text-shade3 text-[32px]/11.25 font-medium max-md:text-2xl/8.5 max-md:font-normal">
+      <span className="text-shade3 dark:text-primary-dark transition-colors text-[32px]/11.25 font-medium max-md:text-2xl/8.5 max-md:font-normal">
         <CountUp
           start={0}
           end={end}
@@ -20,7 +20,7 @@ const HeroStatsItem = ({ end, label }: HeroStatsItemProps) => {
         />
         +
       </span>
-      <span className="text-shade4 text-xl/8 font-normal max-lg:text-base">
+      <span className="text-shade4 dark:text-primary-dark transition-colors text-xl/8 font-normal max-lg:text-base">
         {label}
       </span>
     </div>

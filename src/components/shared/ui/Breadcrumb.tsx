@@ -49,9 +49,9 @@ export default function Breadcrumb({ title }: BreadcrumbProps) {
 
         return (
           <div key={href} className="flex items-center gap-x-1">
-            <MdKeyboardArrowLeft className="max-xs:size-4 text-neutral9 mr-1 size-6 max-md:size-5" />
+            <MdKeyboardArrowLeft className="max-xs:size-4 text-neutral9 transition-colors dark:text-text-dark mr-1 size-6 max-md:size-5" />
             {isLast ? (
-              <span className="text-neutral9 max-xs:text-sm inline-block text-base/6.25 font-normal">
+              <span className="text-neutral9 dark:text-text-dark transition-colors max-xs:text-sm inline-block text-base/6.25 font-normal">
                 <span className="hidden max-md:inline">
                   {truncatedDisplayName}
                 </span>

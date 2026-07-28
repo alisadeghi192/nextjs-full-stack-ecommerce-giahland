@@ -2,9 +2,9 @@
 
 import { IBlogPostCard } from "@/features/blog/types/blog.types";
 import {
-    BLOG_SWIPER_AUTOPLAY_DELAY,
-    BLOG_SWIPER_BREAKPOINTS,
-    BLOG_SWIPER_SPACE_BETWEEN,
+  BLOG_SWIPER_AUTOPLAY_DELAY,
+  BLOG_SWIPER_BREAKPOINTS,
+  BLOG_SWIPER_SPACE_BETWEEN,
 } from "@/lib/constants";
 import Link from "next/link";
 import { useRef } from "react";
@@ -32,12 +32,12 @@ export default function BlogSlider({
   return (
     <section className="relative mt-16 max-sm:mt-10">
       <div className="flex items-center justify-between">
-        <h4 className="text-primary mb-6 text-2xl/8.5 font-bold max-sm:text-xl/7 max-sm:font-semibold">
+        <h4 className="text-primary dark:text-white transition-colors mb-6 text-2xl/8.5 font-bold max-sm:text-xl/7 max-sm:font-semibold">
           {title}
         </h4>
         <Link
           href={link}
-          className="text-primary hover:text-shade2 mb-6 text-xl font-semibold transition-colors max-sm:text-base"
+          className="text-primary dark:text-primary-dark hover:text-shade2 mb-6 text-xl font-semibold transition-colors max-sm:text-base"
         >
           <div className="flex items-center justify-center">
             <h4 className="">مشاهده همه</h4>

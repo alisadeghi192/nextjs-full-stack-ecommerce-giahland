@@ -24,7 +24,7 @@ const BannerSection = () => {
           <div className="relative z-10 mr-auto w-fit transition-transform duration-200 md:absolute md:left-0 md:-translate-x-50 md:group-hover:translate-x-6">
             <Link
               href={banner.href}
-              className="text-primary hover:text-shade2 mt-2.5 mr-auto flex cursor-pointer items-center gap-x-2 rounded-lg border bg-[#E3F7EA] px-5 py-2 transition-colors max-lg:px-3 max-sm:gap-x-1 max-sm:px-2 max-sm:py-1 max-sm:text-sm"
+              className="text-primary dark:text-shade4 dark:bg-primary-dark hover:text-shade2 mt-2.5 mr-auto flex cursor-pointer items-center gap-x-2 rounded-lg border bg-[#E3F7EA] px-5 py-2 transition-colors max-lg:px-3 max-sm:gap-x-1 max-sm:px-2 max-sm:py-1 max-sm:text-sm"
             >
               <span className="text-lg/8 max-lg:text-base max-sm:text-sm">
                 {banner.buttonText}
