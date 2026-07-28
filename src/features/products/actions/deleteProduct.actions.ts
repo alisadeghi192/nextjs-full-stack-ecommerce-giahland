@@ -32,22 +32,21 @@ export async function deleteProductAction(productId: string) {
     process.cwd(),
     "public/uploads/products",
     category,
-    slug
+    slug,
   );
 
   const staticPath = path.join(
     process.cwd(),
     "public/static/images/products",
     category,
-    slug
+    slug,
   );
 
   const deleteFolderIfExists = async (folderPath: string) => {
     try {
       await stat(folderPath);
       await rm(folderPath, { recursive: true, force: true });
-    } catch {
-    }
+    } catch {}
   };
 
   await Promise.all([
@@ -59,8 +58,8 @@ export async function deleteProductAction(productId: string) {
 
   revalidatePath("/admin/products");
   revalidatePath("/products");
-  revalidateTag("home-products")
-
+  revalidateTag("home-products");
+  revalidateTag("admin-stats");
   return {
     success: true,
     message: "محصول و تمام تصاویر آن با موفقیت حذف شد.",

@@ -3,7 +3,7 @@ import { getMeAction } from "@/features/auth/actions/me.actions";
 import { TICKET_DEPARTMENT } from "@/lib/constants";
 import connectToDB from "@/lib/db/connect";
 import Ticket from "@/lib/db/models/Ticket";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import { TicketSchema } from "../schemas/ticket.schema";
 import { uploadAttachment } from "../utils/uploadAttachment";
 
@@ -45,5 +45,6 @@ export async function createTicket(prevState: any, formData: FormData) {
   });
 
   revalidatePath("/user/tickets");
+  revalidateTag("admin-recent-tickets");
   return { success: true, message: "تیکت با موفقیت ثبت شد." };
 }

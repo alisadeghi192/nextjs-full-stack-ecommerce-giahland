@@ -7,7 +7,7 @@ import Cart from "@/lib/db/models/Cart";
 import Order from "@/lib/db/models/Order";
 import Product from "@/lib/db/models/Product";
 import { getDiscountedPrice } from "@/lib/utils/price";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 
 export async function createOrderAction(input: unknown) {
   const validation = CreateOrderSchema.safeParse(input);
@@ -74,9 +74,10 @@ export async function createOrderAction(input: unknown) {
       image: product.image,
       slug: product.slug,
       category: product.category,
-      discount : product.discount
+      discount: product.discount,
     });
-    totalAmount += getDiscountedPrice(product.price, product.discount) * item.quantity;
+    totalAmount +=
+      getDiscountedPrice(product.price, product.discount) * item.quantity;
   }
 
   const shippingCost = deliveryMethod === "courier" ? 300000 : 0;
@@ -131,7 +132,9 @@ export async function createOrderAction(input: unknown) {
 
   revalidatePath("/cart");
   revalidatePath("/user/orders");
-
+  revalidateTag("admin-stats");
+  revalidateTag("admin-revenue");
+  revalidateTag("admin-recent-orders");
   return {
     success: true,
     message: "سفارش شما با موفقیت ثبت شد.",

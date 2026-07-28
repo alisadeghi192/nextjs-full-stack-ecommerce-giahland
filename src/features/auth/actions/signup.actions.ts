@@ -11,6 +11,7 @@ import {
 } from "@/lib/auth/auth.helpers";
 import connectToDB from "@/lib/db/connect";
 import BaseUser, { User } from "@/lib/db/models/User";
+import { revalidateTag } from "next/cache";
 
 export async function signupAction(
   prevState: ISignupActionResult | null,
@@ -84,6 +85,8 @@ export async function signupAction(
 
   await setAccessTokenCookie(accessToken);
   await setRefreshTokenCookie(refreshToken);
+
+  revalidateTag("admin-stats");
 
   return {
     success: true,

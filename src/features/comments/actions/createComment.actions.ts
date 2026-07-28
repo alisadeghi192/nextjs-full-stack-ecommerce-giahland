@@ -6,10 +6,8 @@ import connectToDB from "@/lib/db/connect";
 import Article from "@/lib/db/models/Article";
 import CommentModel from "@/lib/db/models/Comment";
 import Product from "@/lib/db/models/Product";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import CommentSchema from "../schemas/comment.schema";
-
-
 
 export async function createCommentAction(prevState: any, formData: FormData) {
   const { user } = await getMeAction();
@@ -70,6 +68,7 @@ export async function createCommentAction(prevState: any, formData: FormData) {
 
   const revalidateUrl = `/${result.data.targetType}/${result.data.targetCategory}/${result.data.targetSlug}`;
   revalidatePath(revalidateUrl);
+  revalidateTag("admin-recent-comments");
 
   return {
     success: true,

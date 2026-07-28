@@ -3,9 +3,12 @@
 import { getMeAction } from "@/features/auth/actions/me.actions";
 import connectToDB from "@/lib/db/connect";
 import Order from "@/lib/db/models/Order";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 
-export async function updateOrderStatusAction(orderId: string, newStatus: "delivered") {
+export async function updateOrderStatusAction(
+  orderId: string,
+  newStatus: "delivered",
+) {
   const { user } = await getMeAction();
   if (!user || user.role !== "admin") {
     return {
@@ -43,7 +46,10 @@ export async function updateOrderStatusAction(orderId: string, newStatus: "deliv
 
   revalidatePath("/admin/orders");
   revalidatePath(`/admin/orders/${orderId}`);
-  revalidatePath("/user/orders"); 
+  revalidatePath("/user/orders");
+  revalidateTag("admin-stats");
+  revalidateTag("admin-revenue");
+  revalidateTag("admin-recent-orders");
 
   return {
     success: true,

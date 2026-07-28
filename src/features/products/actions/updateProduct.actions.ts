@@ -242,7 +242,7 @@ export async function updateProductAction(prevState: any, formData: FormData) {
   revalidatePath("/products");
   revalidatePath(`/products/${data.category}/${data.slug}`);
   revalidateTag("home-products");
-
+  revalidateTag("admin-stats");
   return {
     success: true,
     message: "محصول با موفقیت ویرایش شد.",

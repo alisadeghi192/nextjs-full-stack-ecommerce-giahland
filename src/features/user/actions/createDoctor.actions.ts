@@ -5,9 +5,9 @@ import { CreateDoctorSchema } from "@/features/user/schemas/createDoctor.schema"
 import { hashPassword } from "@/lib/auth/auth.helpers";
 import connectToDB from "@/lib/db/connect";
 import { PlantDoctor } from "@/lib/db/models/User";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 
-export async function createDoctor( formData: FormData) {
+export async function createDoctor(formData: FormData) {
   const { user } = await getMeAction();
   if (!user || user.role !== "admin") {
     return {
@@ -66,6 +66,7 @@ export async function createDoctor( formData: FormData) {
   });
 
   revalidatePath("/admin/users");
+  revalidateTag("admin-stats");
   return {
     success: true,
     message: "پزشک با موفقیت ثبت شد.",

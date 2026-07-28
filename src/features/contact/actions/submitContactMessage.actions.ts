@@ -3,7 +3,7 @@
 import { ContactFormSchema } from "@/features/contact/schemas/contact.schema";
 import connectToDB from "@/lib/db/connect";
 import ContactMessage from "@/lib/db/models/ContactMessage";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 
 export async function submitContactMessage(prevState: any, formData: FormData) {
   const rawData = {
@@ -36,6 +36,7 @@ export async function submitContactMessage(prevState: any, formData: FormData) {
 
   revalidatePath("/contact");
   revalidatePath("/admin/contact-messages");
+  revalidateTag("admin-recent-messages");
   return {
     success: true,
     message:

@@ -5,7 +5,7 @@ import connectToDB from "@/lib/db/connect";
 import Cart from "@/lib/db/models/Cart";
 import Order from "@/lib/db/models/Order";
 import Product from "@/lib/db/models/Product";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 
 export async function confirmPaymentAction(orderId: string) {
   const { user } = await getMeAction();
@@ -57,7 +57,9 @@ export async function confirmPaymentAction(orderId: string) {
 
   revalidatePath("/user/orders");
   revalidatePath(`/payment/${orderId}`);
-
+  revalidateTag("admin-stats");
+  revalidateTag("admin-revenue");
+  revalidateTag("admin-recent-orders");
   return {
     success: true,
     message: "پرداخت با موفقیت انجام شد.",

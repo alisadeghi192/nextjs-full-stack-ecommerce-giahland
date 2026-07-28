@@ -184,8 +184,8 @@ export async function createArticleAction(
 
   revalidatePath("/user/articles");
   revalidatePath("/blog");
-  revalidateTag("home-articles")
-
+  revalidateTag("home-articles");
+  revalidateTag("admin-stats");
   return {
     success: true,
     message: "مقاله با موفقیت ثبت شد!",
