@@ -1,7 +1,7 @@
 import {
+  MdOutlineLocalShipping,
   MdOutlinePayment,
   MdOutlineVerified,
-  MdOutlineLocalShipping,
 } from "react-icons/md";
 import ServiceCard from "./ServiceCard";
 

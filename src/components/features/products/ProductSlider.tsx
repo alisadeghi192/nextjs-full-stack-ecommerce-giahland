@@ -3,9 +3,9 @@
 import { IProductCardData } from "@/features/products/types/product.types";
 import { useRef } from "react";
 import {
-    MdKeyboardArrowLeft,
-    MdNavigateBefore,
-    MdOutlineNavigateNext,
+  MdKeyboardArrowLeft,
+  MdNavigateBefore,
+  MdOutlineNavigateNext,
 } from "react-icons/md";
 import type { Swiper as SwiperType } from "swiper";
 import { Autoplay, Navigation } from "swiper/modules";
@@ -13,9 +13,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import ProductCardGrid from "./ProductCardGrid";
 
 import {
-    PRODUCT_SWIPER_AUTOPLAY_DELAY,
-    PRODUCT_SWIPER_BREAKPOINTS,
-    PRODUCT_SWIPER_SPACE_BETWEEN,
+  PRODUCT_SWIPER_AUTOPLAY_DELAY,
+  PRODUCT_SWIPER_BREAKPOINTS,
+  PRODUCT_SWIPER_SPACE_BETWEEN,
 } from "@/lib/constants";
 import Link from "next/link";
 import "swiper/css";
@@ -26,14 +26,12 @@ interface ProductSliderProps {
   title: string;
   products: IProductCardData[];
   link: string;
-  likeStatuses?: Record<string, boolean>;
 }
 
 export default function ProductSlider({
   title,
   products,
   link,
-  likeStatuses,
 }: ProductSliderProps) {
   const swiperRef = useRef<SwiperType | null>(null);
 
@@ -77,7 +75,6 @@ export default function ProductSlider({
             <SwiperSlide key={product._id} className="h-auto">
               <ProductCardGrid
                 {...product}
-                isLiked={likeStatuses?.[product._id]}
                 usedInSlider={true}
               />
             </SwiperSlide>

@@ -81,7 +81,7 @@ export default function ProductCardGrid({
       ) : (
         <Link href={`/products/${category}/${slug}`}>{contentElement}</Link>
       )}
-      {!isOutOfStock && (
+      {!isOutOfStock && !usedInSlider &&(
         <LikeButton
           className="top-4 -left-9 group-hover:left-4 max-md:left-4!"
           productId={_id}
