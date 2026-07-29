@@ -31,7 +31,7 @@ export default function AboutPage() {
             <h1 className="max-lg:textlg mb-4 text-xl/8 font-bold max-sm:text-lg">
               حال گیاه‌تون رو از ما بپرسید.
             </h1>
-            <p className="text-neutral10 text-justify text-xl leading-8 max-xl:text-lg max-lg:text-base/7.25">
+            <p className="text-neutral10 dark:text-text-dark transition-colors text-justify text-xl leading-8 max-xl:text-lg max-lg:text-base/7.25">
               فروشگاه ما صرفاً یک مرکز عرضه گل و گیاه نیست؛ بلکه یک کلینیک تخصصی
               گیاه‌پزشکی است که پیش از هر چیز به فکر سلامت و نجات گیاهان شماست.
               ما به خوبی آگاهیم که مشاهده علائمی همچون زردی برگ‌ها، لکه‌دار شدن
@@ -52,7 +52,7 @@ export default function AboutPage() {
           </PrimaryButton>
         </div>
         <div className="relative -mr-4 shrink-0 basis-1/3 max-lg:basis-1/2 max-md:mt-6 max-md:w-70/100 max-sm:w-full">
-          <div className="w-full overflow-hidden rounded-xl shadow-[-16px_-16px_0px_0px_rgba(227,247,234)]">
+          <div className="w-full overflow-hidden rounded-xl shadow-[-16px_-16px_0px_0px_rgba(227,247,234)] dark:shadow-[-16px_-16px_0px_0px_rgba(65,127,86)] transition-shadow">
             <Image
               alt="plants"
               src={"/static/images/about-us1.webp"}
@@ -63,7 +63,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-      <section className="bg-shade3 max-xs:px-6 max-xs:h-130 mt-10 h-35 rounded-xl px-11.25 max-lg:h-69 max-sm:h-138">
+      <section className="bg-shade3  max-xs:px-6 max-xs:h-130 mt-10 h-35 rounded-xl px-11.25 max-lg:h-69 max-sm:h-138">
         <div className="max-xs:translate-y-6 grid translate-y-11.25 grid-cols-4 gap-3 max-lg:grid-cols-2 max-sm:grid-cols-1">
           <AboutStatsItem end={943} label="گیاهان نجات داده شده" />
           <AboutStatsItem end={1234} label="مشاوره های موفق" />
@@ -76,7 +76,7 @@ export default function AboutPage() {
       </section>
       <section className="mt-10 max-sm:mt-6">
         <h2 className="mb-4 text-lg font-bold">داستان ما</h2>
-        <p className="text-neutral10 text-justify leading-7.25">
+        <p className="text-neutral10 dark:text-text-dark text-justify leading-7.25">
           «سال‌ها پیش، وقتی یکی از بنیان‌گذاران ما متوجه شد گیاه آپارتمانی‌اش که
           سال‌ها کنارش بود، ناگهان شروع به زرد شدن و ریزش برگ‌ کرده، به هر
           گلفروشی مراجعه کرد اما هیچ‌کس نتوانست تشخیص دقیقی بدهد. بعضی گفتند آب
@@ -97,7 +97,7 @@ export default function AboutPage() {
           بین نرود. این قول ماست.»
         </p>
       </section>
-      <div className="border-neutral6 mx-auto mt-10 w-8/10 overflow-hidden rounded-xl border max-lg:w-full max-sm:mt-4">
+      <div className="border-neutral6 shadow-lg dark:shadow-shade3 dark:border-neutral10 mx-auto mt-10 w-8/10 overflow-hidden rounded-xl border max-lg:w-full max-sm:mt-4">
         <Image
           alt="about-us-pic"
           src={"/static/images/about-us2.webp"}
@@ -109,27 +109,27 @@ export default function AboutPage() {
       <section className="mt-10 max-sm:mt-6">
         <h4 className="mb-4 text-lg font-bold">خدمات ما</h4>
         <div className="service-grid grid grid-cols-4 gap-4 max-[510px]:flex max-[510px]:flex-col max-lg:grid-cols-3 max-md:grid-cols-2">
-          <div className="flex flex-col gap-y-4 rounded-xl bg-[#E3F7EA] py-6 text-center shadow-lg">
-            <FaUserDoctor className="text-primary mx-auto size-8" />
-            <span className="text-neutral10 font-medium">
+          <div className="flex flex-col gap-y-4 rounded-xl bg-[#E3F7EA] dark:bg-shade4 py-6 text-center shadow-lg dark:shadow-shade3">
+            <FaUserDoctor className="text-primary dark:text-primary-dark mx-auto size-8" />
+            <span className="text-neutral10 dark:text-text-dark font-medium">
               ویزیت آنلاین و گیاه‌پزشک
             </span>
           </div>
-          <div className="flex flex-col gap-y-4 rounded-xl bg-[#E3F7EA] py-6 text-center shadow-lg">
-            <RiPlantFill className="text-primary mx-auto size-8" />
-            <span className="text-neutral10 font-medium">
+          <div className="flex flex-col gap-y-4 rounded-xl bg-[#E3F7EA] dark:bg-shade4 py-6 text-center shadow-lg dark:shadow-shade3">
+            <RiPlantFill className="text-primary dark:text-primary-dark mx-auto size-8" />
+            <span className="text-neutral10 dark:text-text-dark font-medium">
               فروش تخصصی گیاهان آپارتمانی
             </span>
           </div>
-          <div className="flex flex-col gap-y-4 rounded-xl bg-[#E3F7EA] py-6 text-center shadow-lg">
-            <MdPestControl className="text-primary mx-auto size-8" />
-            <span className="text-neutral10 font-medium">
+          <div className="flex flex-col gap-y-4 rounded-xl bg-[#E3F7EA] dark:bg-shade4 py-6 text-center shadow-lg dark:shadow-shade3">
+            <MdPestControl className="text-primary dark:text-primary-dark mx-auto size-8" />
+            <span className="text-neutral10 dark:text-text-dark font-medium">
               تشخیص آفات و بیماری‌های گیاهی
             </span>
           </div>
-          <div className="flex flex-col gap-y-4 rounded-xl bg-[#E3F7EA] py-6 text-center shadow-lg max-lg:col-span-1 max-lg:col-start-2">
-            <MdLocalShipping className="text-primary mx-auto size-8" />
-            <span className="text-neutral10 font-medium">
+          <div className="flex flex-col gap-y-4 rounded-xl bg-[#E3F7EA] dark:bg-shade4 py-6 text-center shadow-lg dark:shadow-shade3 max-lg:col-span-1 max-lg:col-start-2">
+            <MdLocalShipping className="text-primary dark:text-primary-dark mx-auto size-8" />
+            <span className="text-neutral10 dark:text-text-dark font-medium">
               ارسال سریع به سراسر کشور
             </span>
           </div>

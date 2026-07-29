@@ -58,12 +58,12 @@ export default function CartModal({ onClose }: CartModalProps) {
   };
 
   return (
-    <div className="border-neutral3 w-115 rounded-xl border bg-white p-3 pr-1.5 shadow-lg max-md:w-full">
+    <div className="border-neutral3 dark:border-primary transition-colors dark:shadow-shade3 w-115 rounded-xl border bg-white dark:bg-shade4  p-3 pr-1.5 shadow-lg max-md:w-full">
       <div className="mr-1.5 mb-2 flex items-center justify-between">
         <div className="flex gap-x-1 leading-7.25 font-medium">
           <span>سبد خرید</span>
           {items.length > 0 && (
-            <span className="text-neutral8">
+            <span className="text-neutral8 dark:text-text-dark">
               ({toPersianNumber(totalItems)} کالا)
             </span>
           )}
@@ -87,7 +87,7 @@ export default function CartModal({ onClose }: CartModalProps) {
 
           <div className="mt-4 mr-1.5 space-y-2">
             <div className="flex items-center justify-between gap-x-3 gap-y-2">
-              <span className="text-neutral9 leading-7.25 font-medium">
+              <span className="text-neutral9 dark:text-text-dark leading-7.25 font-medium">
                 جمع مبلغ:
               </span>
               <PriceSection
@@ -115,7 +115,7 @@ export default function CartModal({ onClose }: CartModalProps) {
             </div>
             <div className="flex flex-col gap-y-1 text-center">
               <span className="text-sm/6.25">سبد خرید شما خالی است!</span>
-              <span className="text-neutral9 text-[13px]/5.75">
+              <span className="text-neutral9 dark:text-text-dark text-[13px]/5.75">
                 برای مشاهده محصولات به فروشگاه مراجعه کنید.
               </span>
             </div>

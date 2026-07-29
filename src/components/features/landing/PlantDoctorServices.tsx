@@ -1,9 +1,9 @@
-import { RiFlowerFill, RiPlantFill, RiTreeFill } from "react-icons/ri";
-import PlantDoctorServiceCard from "./PlantDoctorServiceCard";
 import { AiFillExperiment } from "react-icons/ai";
 import { FaTemperatureFull, FaTree } from "react-icons/fa6";
-import { PiPlantFill } from "react-icons/pi";
 import { GiFlowerEmblem } from "react-icons/gi";
+import { PiPlantFill } from "react-icons/pi";
+import { RiFlowerFill, RiPlantFill, RiTreeFill } from "react-icons/ri";
+import PlantDoctorServiceCard from "./PlantDoctorServiceCard";
 
 export default function PlantDoctorServices() {
   const plantDoctorServices = [
@@ -57,7 +57,7 @@ export default function PlantDoctorServices() {
   ];
   return (
     <section className="mt-16 max-sm:mt-10">
-      <h4 className="text-primary mb-6 text-2xl/8.5 font-bold max-sm:text-xl/7 max-sm:font-semibold">
+      <h4 className="text-primary dark:text-white transition-colors mb-6 text-2xl/8.5 font-bold max-sm:text-xl/7 max-sm:font-semibold">
         خدمات گیاه پزشکی
       </h4>
       <div className="max-xs:grid-cols-1 [&>*:nth-child(even)]:max-xs:justify-self-start mt-8 grid grid-cols-4 gap-x-6 gap-y-12 max-xl:grid-cols-3 max-xl:gap-y-10 max-lg:grid-cols-2 max-lg:gap-y-8 max-sm:mt-6 max-sm:grid-cols-1 max-sm:gap-y-6 [&>*:nth-child(even)]:max-sm:justify-self-end">

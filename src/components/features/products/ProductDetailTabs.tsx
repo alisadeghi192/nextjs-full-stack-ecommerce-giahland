@@ -37,7 +37,7 @@ export default function ProductDetailTabs({ tabs }: ProductDetailTabsProps) {
   }, [tabs]);
 
   return (
-    <div className="border-neutral5 z-20 sticky top-15.25 max-md:top-24.5 max-sm:top-24.25 flex w-full items-center border-b bg-white">
+    <div className="border-neutral5 z-20 sticky top-15.25 max-md:top-24.5 max-sm:top-24.25 flex w-full items-center border-b bg-white dark:bg-shade5 transition-colors">
       {tabs.map((tab) => (
         <Link
           key={tab.id}
@@ -45,8 +45,8 @@ export default function ProductDetailTabs({ tabs }: ProductDetailTabsProps) {
           onClick={() => setActiveTab(tab.id)}
           className={`border-neutral5 z-20 basis-44.5 cursor-pointer py-2 text-center text-lg/6 transition-all ${
             activeTab === tab.id
-              ? "text-primary border-primary border-b-2 leading-6 font-bold"
-              : "text-neutral9 hover:text-primary"
+              ? "text-primary dark:text-primary-dark border-primary dark:border-primary-dark border-b-2 leading-6 font-bold"
+              : "text-neutral9 hover:text-primary dark:text-white dark:hover:text-primary-dark"
           }`}
         >
           {tab.label}

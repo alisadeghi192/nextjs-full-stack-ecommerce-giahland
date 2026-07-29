@@ -10,8 +10,8 @@ interface AboutStatsItemProps {
 
 const AboutStatsItem = ({ end, label }: AboutStatsItemProps) => {
   return (
-    <div className="flex h-31.5 flex-col items-center justify-center rounded-lg bg-white p-4 shadow-xl">
-      <span className="text-shade3 text-[32px]/11.25 font-medium">
+    <div className="flex h-31.5 flex-col items-center justify-center rounded-lg bg-white dark:bg-primary p-4 shadow-xl dark:shadow-shade3">
+      <span className="text-shade3 dark:text-white text-[32px]/11.25 font-medium">
         <CountUp
           start={0}
           end={end}
@@ -20,7 +20,7 @@ const AboutStatsItem = ({ end, label }: AboutStatsItemProps) => {
         />
         +
       </span>
-      <span className="text-shade4 leading-7.25">
+      <span className="text-shade4 dark:text-white leading-7.25">
         {label}
       </span>
     </div>

@@ -30,7 +30,7 @@ export default function ProductSpecs({
         <ProductSpecBox label="ابعاد" value={formatDimensions(potDimensions)} />
         <ProductSpecBox label="وضعیت نسبت به آفتاب" value={sunlight} />
         <div className="text-primary mx-auto flex h-10 cursor-pointer items-center gap-x-2 self-end max-md:hidden max-sm:flex">
-          <Link href="#features" className="text-sm/6.25 font-medium">
+          <Link href="#features" className="text-sm/6.25 font-medium dark:text-primary-dark">
             مشاهده همه ویژگی ها
           </Link>
           <MdKeyboardArrowDown className="size-6" />

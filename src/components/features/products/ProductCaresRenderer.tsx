@@ -30,7 +30,7 @@ export default function ProductCaresRenderer({
     >
       <h5 className="font-bold">شرایط نگهداری (مخصوص آپارتمان)</h5>
 
-      <div className="text-neutral10 max-xs:text-sm/6.25">
+      <div className="text-neutral10 dark:text-text-dark transition-colors max-xs:text-sm/6.25">
         <ol className="list-decimal pr-6">
           {careSections.map((section) => (
             <li key={section.title}>

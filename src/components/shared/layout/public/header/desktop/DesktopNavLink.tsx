@@ -1,13 +1,13 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useRef } from "react";
-import { MdKeyboardArrowDown, MdKeyboardArrowLeft } from "react-icons/md";
 import {
   useActiveNavHover,
   useSetActiveNavHover,
 } from "@/stores/selectors/ui.selectors";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useRef } from "react";
+import { MdKeyboardArrowDown, MdKeyboardArrowLeft } from "react-icons/md";
 
 interface SubMenuItem {
   href: string;
@@ -73,7 +73,7 @@ const DesktopNavLink = ({
       >
         <Link
           href={href}
-          className={`flex items-center gap-x-1 max-lg:gap-x-px ${className} ${isActive ? "text-primary" : ""}`}
+          className={`flex items-center gap-x-1 max-lg:gap-x-px ${className} ${isActive ? "text-primary dark:text-primary-dark" : ""}`}
         >
           {children}
           <MdKeyboardArrowDown
@@ -90,12 +90,12 @@ const DesktopNavLink = ({
           onMouseEnter={clearCloseTimeout}
           onMouseLeave={handleMouseLeave}
         >
-          <div className="border-neutral3 divide-neutral3 w-53.5 divide-y overflow-hidden rounded-xl border bg-white shadow-lg">
+          <div className="border-neutral3 dark:border-primary divide-neutral3 dark:divide-primary w-53.5 divide-y overflow-hidden rounded-xl border bg-white shadow-lg dark:bg-shade2">
             {submenu.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-neutral10 hover:text-primary flex items-center justify-between px-3 py-3 text-sm/6.25 transition-colors"
+                className="text-neutral10 dark:text-white hover:text-primary dark:hover:text-primary-dark flex items-center justify-between px-3 py-3 text-sm/6.25 transition-colors"
                 onClick={closeSubmenu}
               >
                 {item.text}
@@ -111,7 +111,7 @@ const DesktopNavLink = ({
   return (
     <Link
       href={href}
-      className={`${className} ${isActive ? "text-primary" : ""}`}
+      className={`${className} ${isActive ? "text-primary dark:text-primary-dark" : ""}`}
     >
       {children}
     </Link>

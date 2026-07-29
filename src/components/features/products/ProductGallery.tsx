@@ -58,8 +58,8 @@ export default function ProductGallery({
             <div
               key={img}
               onClick={() => setActiveImage(img)}
-              className={`border-neutral6 size-20 rounded-lg border p-1 max-[400px]:size-17.5 ${
-                activeImage === img ? "border-primary" : ""
+              className={`border-neutral6 dark:border-neutral10 transition-colors size-20 rounded-lg border p-1 max-[400px]:size-17.5 ${
+                activeImage === img ? "border-primary dark:border-primary-dark" : ""
               }`}
             >
               <Image

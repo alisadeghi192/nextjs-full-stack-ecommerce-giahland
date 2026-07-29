@@ -12,7 +12,7 @@ export default function ContentRenderer({
         return (
           <p
             key={index}
-            className="text-neutral10 max-xs:text-sm/6.25 mb-10 text-justify leading-7.25 max-sm:mb-6"
+            className="text-neutral10 dark:text-text-dark transition-colors max-xs:text-sm/6.25 mb-10 text-justify leading-7.25 max-sm:mb-6"
           >
             {block.data.text}
           </p>
@@ -31,7 +31,7 @@ export default function ContentRenderer({
               />
             </div>
             {block.data.caption && (
-              <figcaption className="text-neutral8 mt-3 text-center text-sm italic">
+              <figcaption className="text-neutral8 dark:text-text-dark transition-colors mt-3 text-center text-sm italic">
                 {block.data.caption}
               </figcaption>
             )}
@@ -44,7 +44,7 @@ export default function ContentRenderer({
         return (
           <HeadingTag
             key={index}
-            className="text-neutral12 max-xs:mt-7 max-xs:text-base mt-10 mb-4 text-xl font-semibold max-sm:text-lg"
+            className="text-neutral12 dark:text-white transition-colors max-xs:mt-7 max-xs:text-base mt-10 mb-4 text-xl font-semibold max-sm:text-lg"
           >
             {block.data.text}
           </HeadingTag>
@@ -54,7 +54,7 @@ export default function ContentRenderer({
         return (
           <ul
             key={index}
-            className="text-neutral10 max-xs:text-sm/6.25 mr-6 mb-4 list-disc space-y-2"
+            className="text-neutral10 dark:text-text-dark transition-colors max-xs:text-sm/6.25 mr-6 mb-4 list-disc space-y-2"
           >
             {block.data.items.map((item, i) => (
               <li key={i}>{item}</li>

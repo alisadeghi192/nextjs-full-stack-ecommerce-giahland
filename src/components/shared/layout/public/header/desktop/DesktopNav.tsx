@@ -11,7 +11,7 @@ export default function DesktopNav() {
           key={link.href}
           href={link.href}
           submenu={link.submenu}
-          className="text-lg/8 font-medium transition-colors hover:text-primary max-xl:text-base"
+          className="text-lg/8 font-medium transition-colors hover:text-primary dark:hover:text-primary-dark max-xl:text-base"
         >
           {link.text}
         </DesktopNavLink>

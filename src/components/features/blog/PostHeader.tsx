@@ -1,5 +1,5 @@
-import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { toPersianNumber } from "@/lib/utils/format";
+import { MdOutlineRemoveRedEye } from "react-icons/md";
 
 interface PostHeaderProps {
   title: string;
@@ -13,10 +13,10 @@ export default function PostHeader({ title, views }: PostHeaderProps) {
         {title}
       </h1>
       <div className="mr-auto flex items-center justify-center gap-x-0.5">
-        <MdOutlineRemoveRedEye className="text-neutral9 size-5" />
-        <span className="text-neutral9 text-sm">
+        <span className="text-neutral9 dark:text-text-dark transition-colors text-sm">
           تعداد بازدید: {toPersianNumber(views)}
         </span>
+        <MdOutlineRemoveRedEye className="text-neutral9 dark:text-text-dark transition-colors size-5" />
       </div>
     </div>
   );

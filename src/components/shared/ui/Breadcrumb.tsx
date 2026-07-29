@@ -34,7 +34,7 @@ export default function Breadcrumb({ title }: BreadcrumbProps) {
     <nav className=" my-6 flex flex-wrap items-center gap-y-2 max-lg:my-4 ">
       <Link
         href="/"
-        className="text-primary hover:text-shade2 max-xs:text-sm flex items-center gap-x-1 text-base/6.25 font-normal transition-colors"
+        className="text-primary hover:text-shade2 dark:hover:text-primary-dark max-xs:text-sm flex items-center gap-x-1 text-base/6.25 font-normal transition-colors"
       >
         <MdOutlineHome className="max-xs:size-4 size-5 mb-1 max-xs:m-0" />
         خانه
@@ -60,7 +60,7 @@ export default function Breadcrumb({ title }: BreadcrumbProps) {
             ) : (
               <Link
                 href={href}
-                className="hover:text-shade2 text-primary max-xs:text-sm inline-block text-base/6.25 font-normal transition-colors"
+                className="hover:text-shade2 dark:hover:text-primary-dark text-primary max-xs:text-sm inline-block text-base/6.25 font-normal transition-colors"
               >
                 <span>{displayName}</span>
               </Link>

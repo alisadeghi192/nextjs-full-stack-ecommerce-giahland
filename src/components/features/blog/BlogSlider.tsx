@@ -32,12 +32,12 @@ export default function BlogSlider({
   return (
     <section className="relative mt-16 max-sm:mt-10">
       <div className="flex items-center justify-between">
-        <h4 className="text-primary dark:text-white transition-colors mb-6 text-2xl/8.5 font-bold max-sm:text-xl/7 max-sm:font-semibold">
+        <h4 className="text-primary mb-6 text-2xl/8.5 font-bold transition-colors max-sm:text-xl/7 max-sm:font-semibold dark:text-white">
           {title}
         </h4>
         <Link
           href={link}
-          className="text-primary dark:text-primary-dark hover:text-shade2 mb-6 text-xl font-semibold transition-colors max-sm:text-base"
+          className="text-primary dark:text-primary-dark hover:text-shade2 dark:hover:text-primary mb-6 text-xl font-semibold transition-colors max-sm:text-base"
         >
           <div className="flex items-center justify-center">
             <h4 className="">مشاهده همه</h4>
@@ -67,7 +67,7 @@ export default function BlogSlider({
         >
           {posts.map((post, index) => (
             <SwiperSlide key={index}>
-              <BlogCard {...post} usedInSlider={true}/>
+              <BlogCard {...post} usedInSlider={true} />
             </SwiperSlide>
           ))}
         </Swiper>

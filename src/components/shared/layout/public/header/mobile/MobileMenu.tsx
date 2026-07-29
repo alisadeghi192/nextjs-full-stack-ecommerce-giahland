@@ -40,9 +40,9 @@ const MobileMenu = () => {
     <>
       <button
         onClick={toggleMenu}
-        className="bg-neutral3 flex size-8 items-center justify-center rounded-lg sm:size-10"
+        className="bg-neutral3 dark:bg-shade3 transition-colors flex size-8 items-center justify-center rounded-lg sm:size-10"
       >
-        <MdOutlineMenu className="size-5 sm:size-6" />
+        <MdOutlineMenu className="size-5 sm:size-6 dark:text-primary-dark transition-colors" />
       </button>
       <div
         className={`border-neutral3 fixed top-0 -right-70 z-40 h-dvh w-70 rounded-tl-xl rounded-bl-xl border bg-white p-4 shadow-lg transition-all duration-200 ${

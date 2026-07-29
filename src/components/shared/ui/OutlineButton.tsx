@@ -17,7 +17,7 @@ export default function OutlineButton({
   className = "",
 }: OutlineButtonProps) {
   const baseClasses =
-    "border border-primary dark:border-primary-dark hover:text-shade2 hover:border-shade2 transition-colors cursor-pointer rounded-xl flex items-center justify-center text-primary dark:text-primary-dark";
+    "border border-primary dark:border-primary-dark hover:text-primary dark:hover:text-primary hover:border-shade2 transition-colors cursor-pointer rounded-xl flex items-center justify-center text-primary dark:text-primary-dark";
 
   const combinedClassName = `${baseClasses} ${className}`;
 

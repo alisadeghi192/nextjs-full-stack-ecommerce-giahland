@@ -22,7 +22,7 @@ export default function CommentList({ comments = [] }: CommentListProps) {
 
   if (comments.length === 0) {
     return (
-      <div className="text-neutral9 py-6 text-center">
+      <div className="text-neutral9 dark:text-text-dark py-6 text-center">
         هنوز دیدگاهی ثبت نشده است. اولین نفری باشید که نظر می‌دهید.
       </div>
     );

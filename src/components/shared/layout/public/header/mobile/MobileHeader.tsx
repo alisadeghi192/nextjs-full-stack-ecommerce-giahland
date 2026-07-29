@@ -1,15 +1,15 @@
 "use client";
-import {MobileMenu , SearchInput , Overlay , MobileActions , Logo} from ".."
 import MobileCartModal from "@/components/features/cart/MobileCartModal";
 import { HEADER_MOBILE_DEFAULT, HEADER_MOBILE_SCROLLED } from "@/lib/constants";
 import {
+  useCartActions,
   useIsCartOpen,
   useIsMenuOpen,
   useIsSearchOpen,
-  useCartActions,
   useMenuActions,
   useSearchActions,
 } from "@/stores/selectors/ui.selectors";
+import { Logo, MobileActions, MobileMenu, Overlay, SearchInput } from "..";
 
 interface MobileHeaderProps {
   isScrolled: boolean;
@@ -41,7 +41,7 @@ export default function MobileHeader({
 
   return (
     <nav
-      className={`border-neutral3 border-b bg-white ${useInLoginPage ? "h-12" : isScrolled ? "h-24.5" : "h-27"} flex items-center transition-all md:hidden`}
+      className={`border-neutral3 border-b bg-white dark:bg-shade5 ${useInLoginPage ? "h-12" : isScrolled ? "h-24.5" : "h-27"} flex items-center transition-all md:hidden`}
     >
       <div className="container flex flex-col">
         <div

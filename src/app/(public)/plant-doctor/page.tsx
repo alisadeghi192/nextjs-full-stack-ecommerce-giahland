@@ -19,19 +19,26 @@ export default function PlantDoctorPage() {
   return (
     <section className="container">
       <Breadcrumb />
-      <section className="border-neutral4 shadow-xl m-auto flex w-80/100 items-center justify-center gap-x-20 rounded-2xl border max-xl:w-full max-lg:gap-x-10 max-md:flex-col max-md:p-4">
+      <section className="border-neutral4 dark:bg-shade4 dark:border-neutral10 dark:shadow-shade3 m-auto flex w-80/100 items-center justify-center gap-x-20 rounded-2xl border shadow-xl max-xl:w-full max-lg:gap-x-10 max-md:flex-col max-md:p-4">
         <Image
           alt="plant-doctor"
           src={"/static/images/plantDoctor.webp"}
           width={600}
           height={380}
-          className="max-lg:w-100"
+          className="max-lg:w-100 dark:hidden"
+        />
+        <Image
+          alt="plant-doctor"
+          src={"/static/images/plantDoctor-dark.webp"}
+          width={600}
+          height={380}
+          className="hidden max-lg:w-100 dark:block"
         />
         <div className="text-center">
-          <h1 className="text-primary text-2xl/11 font-bold">
+          <h1 className="text-primary text-2xl/11 font-bold transition-colors">
             گیاه پزشک آنلاین
           </h1>
-          <p className="mt-4 mb-6 text-lg/8">عکس بفرست ، نسخه بگیر</p>
+          <p className="mt-4 mb-6 text-lg/8 transition-colors">عکس بفرست ، نسخه بگیر</p>
           <ConsultationButton
             className="m-auto h-10 w-34 rounded-lg!"
             variant="primary"
@@ -44,7 +51,7 @@ export default function PlantDoctorPage() {
         <h2 className="max-xs:text-base max-xs:mt-8 mt-10 mb-4 text-lg/8 font-bold">
           گیاه پزشک آنلاین؛ نجات‌دهنده سبز خانه شما
         </h2>
-        <p className="text-neutral10 max-xs:text-sm/6.25 text-justify leading-7.25">
+        <p className="text-neutral10 dark:text-text-dark max-xs:text-sm/6.25 text-justify leading-7.25">
           در سال‌های اخیر، بسیاری از علاقه‌مندان به گل و گیاه با مشکلاتی مانند
           زرد شدن برگ‌ها، آفات، قارچ‌ها و پوسیدگی ریشه مواجه‌اند. اما همیشه وقت
           یا امکان مراجعه حضوری به متخصص وجود ندارد. در چنین شرایطی، گیاه پزشک
@@ -56,7 +63,7 @@ export default function PlantDoctorPage() {
         <h2 className="max-xs:text-base max-xs:mt-8 mt-10 mb-4 text-lg/8 font-bold">
           گیاه پزشک آنلاین دقیقاً چیست؟
         </h2>
-        <p className="text-neutral10 max-xs:text-sm/6.25 text-justify leading-7.25">
+        <p className="text-neutral10 dark:text-text-dark max-xs:text-sm/6.25 text-justify leading-7.25">
           گیاه پزشک آنلاین یک کارشناس متخصص در زمینه سلامت گیاهان است که به‌صورت
           غیرحضوری (از طریق واتساپ، تماس تصویری یا ارسال عکس) وضعیت گیاه شما را
           بررسی و علت مشکل را تشخیص می‌دهد. این نوع مشاوره به‌ویژه برای افرادی
@@ -68,20 +75,27 @@ export default function PlantDoctorPage() {
           سم‌پاشی مناسب برای همان گیاه به شما داده می‌شود.
         </p>
       </section>
-      <section className="border-neutral4 shadow-lg mx-auto mt-10 w-5/10 overflow-hidden rounded-2xl border max-sm:w-full">
+      <section className="border-neutral4 dark:border-neutral10 dark:shadow-shade3 mx-auto mt-10 w-5/10 overflow-hidden rounded-2xl border shadow-lg max-sm:w-full">
         <Image
           alt="plant-doctor"
           src="/static/images/plantDoctor2.webp"
           width={735}
           height={549}
-          className="w-full"
+          className="w-full dark:hidden"
+        />
+        <Image
+          alt="plant-doctor"
+          src="/static/images/plantDoctor2-dark.webp"
+          width={735}
+          height={549}
+          className="w-full dark:block hidden"
         />
       </section>
       <section className="mx-auto w-80/100 max-xl:w-full">
         <h2 className="max-xs:text-base max-xs:mt-8 mt-10 mb-4 text-lg/8 font-bold">
           چه مشکلاتی با گیاه پزشک آنلاین قابل حل است؟
         </h2>
-        <div className="text-neutral10 max-xs:text-sm/6.25 text-justify leading-7.25">
+        <div className="text-neutral10 dark:text-text-dark max-xs:text-sm/6.25 text-justify leading-7.25">
           <p>
             بسیاری از مشکلات رایج گیاهان آپارتمانی را می‌توان با یک مشاوره
             آنلاین دقیق برطرف کرد، از جمله:

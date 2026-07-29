@@ -46,7 +46,7 @@ export default function CartModalItem({
   const discountedPrice = toPersianPrice(getDiscountedPrice(price, discount));
 
   return (
-    <div className="bg-neutral2 rtl border-neutral5 mr-1.5 flex gap-x-6 rounded-xl border p-4">
+    <div className="bg-neutral2 dark:bg-shade2 rtl border-neutral5 mr-1.5 flex gap-x-6 rounded-xl border p-4">
       <div className="relative size-25 shrink-0 self-center overflow-hidden rounded-lg">
         <Image
           alt={product.name}
@@ -69,7 +69,7 @@ export default function CartModalItem({
             {product.name}
           </Link>
           {product.slug && (
-            <span className="text-neutral9 line-clamp-1 text-sm/6.25">
+            <span className="text-neutral9 dark:text-text-dark line-clamp-1 text-sm/6.25">
             {toStyledSlug(product.slug)}
             </span>
           )}
@@ -78,11 +78,11 @@ export default function CartModalItem({
           <div className="flex items-center max-md:mr-auto">
             <button
               onClick={() => onIncrease(productId)}
-              className="text-primary hover:text-shade2 hover:border-shade2 border-primary flex size-6 cursor-pointer items-center justify-center rounded-sm border bg-white transition-colors"
+              className="text-primary hover:text-shade2 hover:border-shade2 border-primary flex size-6 cursor-pointer items-center justify-center rounded-sm border bg-white dark:bg-primary dark:border-white dark:text-white dark:hover:text-text-dark dark:hover:border-primary-dark transition-colors"
             >
               <FaPlus className="size-4 text-inherit" />
             </button>
-            <span className="text-primary inline-flex h-6 w-5 items-center justify-center text-[13px]/6 font-bold">
+            <span className="text-primary dark:text-text-dark inline-flex h-6 w-5 items-center justify-center text-[13px]/6 font-bold">
               {toPersianNumber(item.quantity)}
             </span>
             <button
@@ -93,7 +93,7 @@ export default function CartModalItem({
                   onDecrease(productId);
                 }
               }}
-              className="text-primary hover:text-shade2 hover:border-shade2 border-primary flex size-6 cursor-pointer items-center justify-center rounded-sm border bg-white transition-colors"
+              className="text-primary hover:text-shade2 hover:border-shade2 border-primary flex size-6 cursor-pointer items-center justify-center rounded-sm border bg-white dark:bg-primary dark:border-white dark:text-white dark:hover:text-text-dark dark:hover:border-primary-dark transition-colors"
             >
               {item.quantity === 1 ? (
                 <AiOutlineDelete className="size-4 text-inherit" />

@@ -39,15 +39,17 @@ export default function SortDropdown({
     <div className="max-xs:w-full relative" ref={menuRef}>
       <button
         onClick={() => setShowMenu(!showMenu)}
-        className={`bg-neutral2 border-neutral5 text-primary max-xs:text-sm max-xs:w-full flex w-36 cursor-pointer items-center justify-center gap-x-2 rounded-xl border max-md:h-11 max-sm:h-10 ${usedInPanel ? "h-10 max-md:h-10! w-full" : "h-12"}`}
+        className={`bg-neutral2 dark:border-primary-dark dark:bg-shade5 border-neutral5 text-primary dark:text-primary-dark max-xs:text-sm max-xs:w-full flex w-36 cursor-pointer items-center justify-center gap-x-2 rounded-xl border transition-colors max-md:h-11 max-sm:h-10 ${usedInPanel ? "h-10 w-full max-md:h-10!" : "h-12"}`}
       >
         <BsSortDownAlt className="size-6 max-sm:size-5" />
-        <span className={`${usedInPanel ? "text-base" : "text-lg max-lg:text-base"}`}>
+        <span
+          className={`${usedInPanel ? "text-base" : "text-lg max-lg:text-base"}`}
+        >
           {options.find((option) => option.value === selectedSort)?.label}
         </span>
       </button>
       {showMenu && (
-        <div className="border-neutral3 absolute top-full left-0 z-20 mt-2 w-full overflow-hidden rounded-xl border bg-white shadow-lg">
+        <div className="border-neutral3 dark:border-primary dark:bg-shade2 absolute top-full left-0 z-20 mt-2 w-full overflow-hidden rounded-xl border bg-white transition-colors shadow-lg">
           {options.map((option) => (
             <button
               key={option.value}
@@ -55,7 +57,7 @@ export default function SortDropdown({
                 onSortChange(option.value);
                 setShowMenu(false);
               }}
-              className={`hover:bg-neutral3 block w-full px-4 py-2 text-right ${selectedSort === option.value ? "bg-neutral3 text-primary" : "text-neutral12"}`}
+              className={`hover:bg-neutral3 cursor-pointer transition-colors dark:hover:bg-primary-dark block w-full px-4 py-2 text-right ${selectedSort === option.value ? "bg-neutral3 dark:bg-primary-dark dark:text-shade4 text-primary" : "text-neutral12 dark:text-white"}`}
             >
               {option.label}
             </button>

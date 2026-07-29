@@ -29,7 +29,7 @@ export default function Footer() {
           <div className="flex flex-col gap-y-6 max-lg:gap-y-4 max-md:gap-y-3">
             <Link
               href="/"
-              className="text-primary hover:text-shade2 max-xs:text-base max-xs:font-medium text-2xl/8.5 font-bold max-md:text-xl"
+              className="text-primary hover:text-shade2 dark:text-primary-dark transition-colors dark:hover:text-primary max-xs:text-base max-xs:font-medium text-2xl/8.5 font-bold max-md:text-xl"
             >
               گیاه لند
             </Link>
@@ -43,7 +43,7 @@ export default function Footer() {
           <div className="mt-10 flex items-center justify-between max-xl:mt-8">
             <div className="flex flex-col gap-y-4">
               <p className="text-neutral10 text-xl max-md:text-base">
-                <span className="dark:text-text-dark"> تلفن پشتیبانی :</span>
+                <span className="dark:text-text-dark transition-colors"> تلفن پشتیبانی :</span>
                 <Link
                   href="tel:09371921199"
                   className="hover:text-primary transition-colors dark:text-text-dark"

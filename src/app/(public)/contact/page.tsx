@@ -30,10 +30,10 @@ export default function ContactPage() {
   return (
     <section className="container">
       <Breadcrumb />
-      <section className="border-neutral4 shadow-xl rounded-xl border bg-white p-6 max-sm:px-4">
+      <section className="border-neutral4 dark:border-neutral10 dark:shadow-shade3 dark:bg-shade4 rounded-xl border bg-white p-6 shadow-xl transition-colors max-sm:px-4">
         <div className="space-y-2">
           <h4 className="leading-6 font-bold">تماس با ما</h4>
-          <p className="text-neutral10 text-sm/6 font-medium">
+          <p className="text-neutral10 dark:text-text-dark text-sm/6 font-medium">
             پیام خود را از طریق فرم زیر ارسال کنید. کارشناسان ما پس از بررسی، با
             شما تماس خواهند گرفت.
           </p>
@@ -41,33 +41,36 @@ export default function ContactPage() {
         <div className="mt-4 flex gap-x-8 gap-y-4 max-lg:gap-x-6 max-md:flex-col">
           <ContactForm />
           <div className="flex basis-1/2 flex-col gap-y-3">
-            <div className="border-neutral3 h-61 w-full overflow-hidden rounded-xl border">
-              <iframe
-                src={STORE_GOOGLE_MAPS_IFRAME_LINK}
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                title="نقشه فروشگاه"
-              ></iframe>
+            <div className="border-neutral3 dark:border-neutral10 h-61 w-full overflow-hidden rounded-xl border">
+              <div className="size-full dark:brightness-95 dark:contrast-90 dark:hue-rotate-180 dark:invert-90 dark:filter">
+                <iframe
+                  src={STORE_GOOGLE_MAPS_IFRAME_LINK}
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  title="نقشه فروشگاه"
+                  className="dark:dark-map-iframe"
+                ></iframe>
+              </div>
             </div>
-            <div className="border-neutral3 shadow-lg space-y-3 rounded-xl border p-3 text-sm/6">
+            <div className="border-neutral3 dark:border-neutral10 dark:shadow-shade3 space-y-3 rounded-xl border p-3 text-sm/6 shadow-lg">
               <div className="flex items-center justify-between">
-                <span className="text-neutral9 font-medium">تلفن:</span>
+                <span className="text-neutral9 dark:text-text-dark font-medium">تلفن:</span>
                 <Link
                   href="tel:09371921199"
-                  className="text-primary hover:text-shade2 transition-colors"
+                  className="text-primary hover:text-shade2 dark:text-primary-dark dark:hover:text-primary transition-colors"
                 >
                   {toPersianCode(STORE_PHONE_NUMBER)}
                 </Link>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-neutral9 font-medium">ایمیل:</span>
-                <span className="text-primary">{STORE_EMAIL_ADDRESS}</span>
+                <span className="text-neutral9 dark:text-text-dark font-medium">ایمیل:</span>
+                <span className="text-primary dark:text-primary-dark dark:hover:text-primary">{STORE_EMAIL_ADDRESS}</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-neutral9 font-medium">
+                <span className="text-neutral9 dark:text-text-dark font-medium">
                   شبکه‌های اجتماعی:
                 </span>
                 <div className="flex gap-x-2">
@@ -83,12 +86,12 @@ export default function ContactPage() {
                 </div>
               </div>
               <div className="flex flex-wrap items-start justify-between gap-y-2">
-                <span className="text-neutral9 font-medium">آدرس فروشنده:</span>
+                <span className="text-neutral9 dark:text-text-dark font-medium">آدرس فروشنده:</span>
                 <Link
                   href={STORE_LOCATION}
-                  className="hover:text-primary max-w-57.5 transition-colors"
+                  className="max-w-57.5"
                 >
-                  <span className="text-neutral10 hover:text-primary transition-colors">
+                  <span className="text-neutral10 hover:text-primary dark:text-text-dark dark:hover:text-primary transition-colors">
                     {STORE_ADDRESS}
                   </span>
                 </Link>

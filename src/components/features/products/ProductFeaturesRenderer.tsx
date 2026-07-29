@@ -28,7 +28,7 @@ export default function ProductFeaturesRenderer({
         <div className="space-y-2">
           <h5 className="font-bold">معرفی کلی گیاه {productName}</h5>
           {overview.map((text, idx) => (
-            <p key={idx} className="text-neutral10 max-xs:text-sm/6.25">
+            <p key={idx} className="text-neutral10 dark:text-text-dark transition-colors max-xs:text-sm/6.25">
               {text}
             </p>
           ))}
@@ -36,7 +36,7 @@ export default function ProductFeaturesRenderer({
 
         <div className="space-y-2">
           <h5 className="font-bold">ویژگی های ظاهری</h5>
-          <div className="text-neutral10 max-xs:text-sm/6.25">
+          <div className="text-neutral10 dark:text-text-dark transition-colors max-xs:text-sm/6.25">
             <ul className="list-disc pr-6">
               {appearance.map((item, idx) => (
                 <li key={idx}>{item}</li>
@@ -47,7 +47,7 @@ export default function ProductFeaturesRenderer({
 
         <div className="space-y-2">
           <h5 className="font-bold">نکات ویژه و هشدارها</h5>
-          <div className="text-neutral10 max-xs:text-sm/6.25">
+          <div className="text-neutral10 dark:text-text-dark transition-colors max-xs:text-sm/6.25">
             <ol className="list-decimal pr-6">
               {warnings.map((item, idx) => (
                 <li key={idx}>{item}</li>
@@ -58,7 +58,7 @@ export default function ProductFeaturesRenderer({
 
         <div className="space-y-2">
           <h5 className="font-bold">تکثیر {productName}</h5>
-          <div className="text-neutral10 max-xs:text-sm/6.25">
+          <div className="text-neutral10 dark:text-text-dark transition-colors max-xs:text-sm/6.25">
             <ol className="list-decimal pr-6">
               {propagation.map((item, idx) => (
                 <li key={idx}>{item}</li>
@@ -70,13 +70,13 @@ export default function ProductFeaturesRenderer({
         <div className="space-y-2">
           <h5 className="font-bold">جمع بندی</h5>
           {summary.map((text, idx) => (
-            <p key={idx} className="text-neutral10 max-xs:text-sm/6.25">
+            <p key={idx} className="text-neutral10 dark:text-text-dark transition-colors max-xs:text-sm/6.25">
               {text}
             </p>
           ))}
         </div>
 
-        <div className="border-neutral4 mx-auto mt-10 w-fit overflow-hidden rounded-2xl border">
+        <div className="border-neutral4 mx-auto shadow-lg transition-shadow dark:shadow-shade3 mt-10 w-fit overflow-hidden rounded-2xl border">
           <Image
             alt={productName}
             src={productImage}

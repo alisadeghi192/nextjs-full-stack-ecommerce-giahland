@@ -42,23 +42,23 @@ export default function ProductPurchaseCard({
   };
 
   return (
-    <div className="border-neutral7 shadow-lg w-78 rounded-2xl border px-6 py-7.75 max-xl:mt-9 max-sm:mt-8 max-sm:w-full max-sm:self-center">
+    <div className="border-neutral7 dark:border-neutral10 dark:shadow-shade3 shadow-lg w-78 rounded-2xl border px-6 py-7.75 max-xl:mt-9 max-sm:mt-8 max-sm:w-full max-sm:self-center">
       <div className="space-y-2">
-        <div className="bg-neutral3 flex items-center gap-x-3 rounded-xl p-3">
-          <MdOutlineChangeCircle className="text-shade1 size-7.5" />
-          <span className="text-neutral9 text-sm/6 font-medium">
+        <div className="bg-neutral3 dark:bg-shade4 transition-colors flex items-center gap-x-3 rounded-xl p-3">
+          <MdOutlineChangeCircle className="text-shade1 dark:text-primary-dark size-7.5" />
+          <span className="text-neutral9 dark:text-text-dark text-sm/6 font-medium">
             ۷ روز ضمانت بازگشت کالا
           </span>
         </div>
-        <div className="bg-neutral3 flex items-center gap-x-3 rounded-xl p-3">
-          <BiSupport className="text-shade1 size-7.5" />
-          <span className="text-neutral9 text-sm/6 font-medium">
+        <div className="bg-neutral3 dark:bg-shade4 transition-colors flex items-center gap-x-3 rounded-xl p-3">
+          <BiSupport className="text-shade1 dark:text-primary-dark size-7.5" />
+          <span className="text-neutral9 dark:text-text-dark text-sm/6 font-medium">
             پشتیبانی ۲۴ ساعته
           </span>
         </div>
-        <div className="bg-neutral3 flex items-center gap-x-3 rounded-xl p-3">
-          <AiOutlineDollarCircle className="text-shade1 size-7.5" />
-          <span className="text-neutral9 text-sm/6 font-medium">
+        <div className="bg-neutral3 dark:bg-shade4 transition-colors flex items-center gap-x-3 rounded-xl p-3">
+          <AiOutlineDollarCircle className="text-shade1 dark:text-primary-dark size-7.5" />
+          <span className="text-neutral9 dark:text-text-dark text-sm/6 font-medium">
             ضمانت بهترین قیمت
           </span>
         </div>

@@ -12,7 +12,7 @@ const Logo = () => {
         className="max-lg:size-8"
       />
 
-      <span className="text-primary dark:text-primary-dark text-nowrap group-hover:text-shade3 text-2xl/8.5 max-lg:text-xl font-bold transition-colors max-sm:text-lg">
+      <span className="text-primary dark:text-primary-dark text-nowrap dark:group-hover:text-primary group-hover:text-shade3 text-2xl/8.5 max-lg:text-xl font-bold transition-colors max-sm:text-lg">
         گیاه لند
       </span>
     </Link>

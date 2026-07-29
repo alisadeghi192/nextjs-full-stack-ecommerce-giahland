@@ -116,7 +116,7 @@ export default function AuthButtons() {
           <span className="text-lg max-lg:hidden">سلام {userFirstName}</span>
         </Link>
         <div
-          className={`bg-neutral2 absolute top-full left-0 z-50 flex w-55 flex-col gap-y-2 rounded-lg p-2 shadow-lg transition-all duration-200 ${
+          className={`bg-neutral2 dark:bg-shade2 absolute top-full left-0 z-50 flex w-55 flex-col gap-y-2 rounded-lg p-2 shadow-lg transition-all duration-200 ${
             isProfileDropdownOpen
               ? "visible translate-y-0 opacity-100"
               : "invisible -translate-y-2 opacity-0"
@@ -127,7 +127,7 @@ export default function AuthButtons() {
           <Link
             href={`${isAdmin ? "/admin/dashboard" : "/user/profile"}`}
             onClick={closeProfileDropdown}
-            className="text-neutral10 hover:text-primary relative flex h-14 w-full cursor-pointer items-center gap-x-3 rounded-lg bg-white px-4 transition-colors"
+            className="text-neutral10 dark:text-white dark:hover:text-primary-dark hover:text-primary relative flex h-14 w-full cursor-pointer items-center gap-x-3 rounded-lg bg-white dark:bg-primary px-4 transition-colors"
           >
             {isAdmin ? (
               <IoSettingsOutline className="size-6" />
@@ -154,7 +154,7 @@ export default function AuthButtons() {
             title="آیا مایل به خروج از حساب کاربری هستید؟"
             confirmText="بله، خروج"
             cancelText="خیر"
-            className="text-error hover:bg-bg-error flex h-14 w-full cursor-pointer items-center gap-x-3 rounded-lg bg-white px-4 transition-colors"
+            className="text-error dark:text-red-500 hover:bg-bg-error flex h-14 w-full cursor-pointer items-center gap-x-3 rounded-lg bg-white  px-4 transition-colors"
           >
             <HiOutlineLogout className="size-6" />
             <span className="font-medium text-nowrap">خروج از حساب کاربری</span>

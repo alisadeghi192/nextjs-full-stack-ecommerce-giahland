@@ -8,7 +8,7 @@ const BannerSection = () => {
       {BANNERS.map((banner) => (
         <div
           key={banner.id}
-          className="group relative shadow-xl w-full overflow-hidden rounded-2xl bg-cover bg-center p-6 font-bold text-white md:h-38 lg:h-51"
+          className="group relative shadow-xl dark:shadow-shade3 w-full overflow-hidden rounded-2xl bg-cover bg-center p-6 font-bold text-white md:h-38 lg:h-51"
           style={{ backgroundImage: `url(${banner.background})` }}
         >
           <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(0,0,0,0.3),rgba(0,0,0,0.3)),linear-gradient(180deg,rgba(65,127,86,0)_0%,rgba(65,127,86,0.2)_100%)]"></div>

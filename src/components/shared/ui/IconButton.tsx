@@ -9,9 +9,9 @@ const IconButton = ({ icon, onClick }: IconButtonProps) => {
   return (
     <button
       onClick={onClick}
-      className={`border-primary dark:border-primary-dark hover:border-shade2 group flex size-8 cursor-pointer items-center justify-center rounded-lg border transition-colors sm:size-10 sm:rounded-xl lg:size-12`}
+      className={`border-primary dark:border-primary-dark dark:hover:border-primary hover:border-shade2 group flex size-8 cursor-pointer items-center justify-center rounded-lg border transition-colors sm:size-10 sm:rounded-xl lg:size-12`}
     >
-      <span className="text-primary dark:text-primary-dark group-hover:text-shade2 transition-colors">
+      <span className="text-primary dark:text-primary-dark dark:group-hover:text-primary group-hover:text-shade2 transition-colors">
         {icon}
       </span>
     </button>

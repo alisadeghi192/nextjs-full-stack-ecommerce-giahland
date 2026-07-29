@@ -38,10 +38,10 @@ export default function Accordion({
           <div
             key={item.id}
             onClick={() => toggleItem(item.id)}
-            className="bg-neutral2 group border-neutral4 flex w-full cursor-pointer flex-col rounded-xl border p-4"
+            className="bg-neutral2 dark:bg-shade4 group transition-colors border-neutral4 dark:border-neutral10 flex w-full cursor-pointer flex-col rounded-xl border p-4"
           >
             <div className="flex items-start justify-between">
-              <span className="font-bold transition-colors group-hover:text-primary">
+              <span className="font-bold transition-colors group-hover:text-primary dark:group-hover:text-primary-dark">
                 {toPersianNumber(+item.id)}. {item.title}
               </span>
               <MdKeyboardArrowDown
@@ -56,7 +56,7 @@ export default function Accordion({
               }`}
             >
               <div className="overflow-hidden">
-                <p className="text-neutral10 text-justify leading-7.25">
+                <p className="text-neutral10 dark:text-text-dark text-justify leading-7.25">
                   {item.content}
                 </p>
               </div>

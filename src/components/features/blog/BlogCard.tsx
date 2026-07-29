@@ -17,7 +17,7 @@ export default function BlogCard({
   return (
     <>
       <div
-        className={`text-white ${usedInSlider ? "" : "shadow-lg"} w-full overflow-hidden rounded-xl`}
+        className={`text-white ${usedInSlider ? "" : "shadow-lg dark:shadow-shade3"} w-full overflow-hidden rounded-xl`}
       >
         <Link href={`/blog/${category}/${slug}`}>
           <div

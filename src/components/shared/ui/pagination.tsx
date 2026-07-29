@@ -77,7 +77,7 @@ export default function Pagination({
             className={`border-primary flex size-10 max-md:size-7 items-center justify-center rounded-lg border leading-6 transition-colors ${
               currentPage === page
                 ? "bg-primary text-white"
-                : "hover:bg-gray-50"
+                : "hover:bg-gray-50 dark:bg-shade4 dark:hover:bg-shade2 transition-colors"
             }`}
           >
             {toPersianNumber(+page)}
