@@ -38,7 +38,7 @@ export default function CartPageItem({ item }: CartPageItemProps) {
 
 
   return (
-    <div className="border-neutral3 flex gap-x-4 rounded-xl border p-4 shadow-lg">
+    <div className="border-neutral3 dark:border-neutral10 dark:shadow-shade3 flex gap-x-4 rounded-xl border p-4 shadow-lg">
       <div className="relative size-25 shrink-0 overflow-hidden rounded-lg">
         <Image
           src={product.image}
@@ -53,12 +53,12 @@ export default function CartPageItem({ item }: CartPageItemProps) {
       <div className="flex flex-1 flex-col justify-between">
         <Link
           href={`/products/${product.category}/${product.slug}`}
-          className="hover:text-primary text-lg/8 max-md:text-base font-medium transition-colors"
+          className="hover:text-primary dark:hover:text-primary-dark text-lg/8 max-md:text-base font-medium transition-colors"
         >
           {product.name}
         </Link>
         {product.potDimensions && (
-          <p className="text-neutral9 text-sm/6.25 line-clamp-1">
+          <p className="text-neutral9 dark:text-text-dark text-sm/6.25 line-clamp-1">
             {toStyledSlug(product.slug)}
           </p>
         )}
@@ -67,16 +67,16 @@ export default function CartPageItem({ item }: CartPageItemProps) {
           <div className="flex items-center gap-x-4 max-sm:gap-x-2">
             <button
               onClick={handleIncrease}
-              className="border-primary text-primary hover:text-shade2 hover:border-shade2 flex size-6 cursor-pointer items-center justify-center rounded-sm border transition-colors"
+              className="border-primary dark:border-primary-dark text-primary dark:text-primary-dark hover:text-shade2 dark:hover:text-primary hover:border-shade2 dark:hover:border-primary flex size-6 cursor-pointer items-center justify-center rounded-sm border transition-colors"
             >
               <FaPlus className="size-4" />
             </button>
-            <span className="text-primary tex text-center font-medium">
+            <span className="text-primary dark:text-primary-dark tex text-center font-medium">
               {toPersianNumber(item.quantity)}
             </span>
             <button
               onClick={handleDecrease}
-              className="border-primary text-primary hover:text-shade2 hover:border-shade2 flex size-6 cursor-pointer items-center justify-center rounded-sm border transition-colors"
+              className="border-primary dark:border-primary-dark text-primary dark:text-primary-dark hover:text-shade2 dark:hover:text-primary hover:border-shade2 dark:hover:border-primary flex size-6 cursor-pointer items-center justify-center rounded-sm border transition-colors"
             >
               {item.quantity === 1 ? (
                 <AiOutlineDelete className="size-4.5" />

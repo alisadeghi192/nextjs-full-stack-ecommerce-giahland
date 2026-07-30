@@ -86,7 +86,7 @@ export default function CheckoutUserInfo({
   const isCourier = deliveryMethod === "courier";
 
   return (
-    <div className="border-neutral4 rounded-xl border p-4 shadow-lg">
+    <div className="border-neutral4 dark:border-neutral10 dark:shadow-shade3 rounded-xl border p-4 shadow-lg">
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
@@ -95,13 +95,13 @@ export default function CheckoutUserInfo({
         <div className="flex items-center gap-2">
           <span className="text-lg max-md:text-base">مشخصات و آدرس</span>
           {isConfirmed ? (
-            <span className="text-primary text-sm">✓ تایید شد</span>
+            <span className="text-primary dark:text-primary-dark text-sm">✓ تایید شد</span>
           ) : (
             <span className="text-error text-sm">تایید نشده</span>
           )}
         </div>
         <MdKeyboardArrowDown
-          className={`text-primary size-6 transition-transform duration-200 ${
+          className={`text-primary dark:text-primary-dark size-6 transition-transform duration-200 ${
             isOpen ? "rotate-180" : ""
           }`}
         />

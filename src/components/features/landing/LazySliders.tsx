@@ -12,10 +12,10 @@ const LazyProductSlider = dynamic(
     loading: () => (
       <div className="mt-16">
         <div className="mb-6 flex items-center justify-between">
-          <div className="h-8 w-48 animate-pulse rounded bg-gray-200" />
-          <div className="h-6 w-24 animate-pulse rounded bg-gray-200" />
+          <div className="h-8 w-48 animate-pulse rounded bg-gray-200 dark:bg-shade3" />
+          <div className="h-6 w-24 animate-pulse rounded bg-gray-200 dark:bg-shade3" />
         </div>
-        <div className="h-80 w-full animate-pulse rounded-2xl bg-gray-200" />
+        <div className="h-80 w-full animate-pulse rounded-2xl bg-gray-200 dark:bg-shade3" />
       </div>
     ),
   }
@@ -28,10 +28,10 @@ const LazyBlogSlider = dynamic(
     loading: () => (
       <div className="mt-16">
         <div className="mb-6 flex items-center justify-between">
-          <div className="h-8 w-48 animate-pulse rounded bg-gray-200" />
-          <div className="h-6 w-24 animate-pulse rounded bg-gray-200" />
+          <div className="h-8 w-48 animate-pulse rounded bg-gray-200 dark:bg-shade3" />
+          <div className="h-6 w-24 animate-pulse rounded bg-gray-200 dark:bg-shade3" />
         </div>
-        <div className="h-80 w-full animate-pulse rounded-2xl bg-gray-200" />
+        <div className="h-80 w-full animate-pulse rounded-2xl bg-gray-200 dark:bg-shade3" />
       </div>
     ),
   }

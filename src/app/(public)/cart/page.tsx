@@ -22,7 +22,7 @@ export default async function CartPage() {
           <h2 className="max-xs:text-xl text-2xl font-bold">
             سبد خرید شما خالی است
           </h2>
-          <p className="text-neutral9 max-xs:text-sm mt-2">
+          <p className="text-neutral9 dark:text-text-dark max-xs:text-sm mt-2">
             برای مشاهده محصولات به فروشگاه مراجعه کنید.
           </p>
           <PrimaryButton

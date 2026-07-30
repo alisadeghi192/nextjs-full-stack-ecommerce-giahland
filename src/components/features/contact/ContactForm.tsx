@@ -93,7 +93,7 @@ useEffect(() => {
         value={message}
         onChange={(e) => setMessage(e.target.value)}
       />
-      <div className="text-neutral9 dark:text-text-dark border-neutral6 dark:border-neutral10 rounded-xl border px-4 py-2.5">
+      <div className="text-neutral9 dark:text-text-dark border-neutral6 dark:border-neutral5 rounded-xl border px-4 py-2.5">
         <label className="flex cursor-pointer items-center justify-between rounded-xl leading-6 font-medium">
           <div className="flex gap-x-2" onClick={() => setNotRobot(!notRobot)}>
             {notRobot ? (

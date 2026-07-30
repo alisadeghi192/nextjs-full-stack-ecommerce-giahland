@@ -30,7 +30,7 @@ export default function ContactPage() {
   return (
     <section className="container">
       <Breadcrumb />
-      <section className="border-neutral4 dark:border-neutral10 dark:shadow-shade3 dark:bg-shade4 rounded-xl border bg-white p-6 shadow-xl transition-colors max-sm:px-4">
+      <section className="border-neutral4 dark:border-neutral10 dark:shadow-shade3 dark:bg-shade5 rounded-xl border bg-white p-6 shadow-xl transition-colors max-sm:px-4">
         <div className="space-y-2">
           <h4 className="leading-6 font-bold">تماس با ما</h4>
           <p className="text-neutral10 dark:text-text-dark text-sm/6 font-medium">

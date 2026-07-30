@@ -64,7 +64,7 @@ const ScrollToTop = () => {
 
   return (
     <button
-      className={`${isScrolled ? "opacity-100!" : "hidden"} text-primary fixed bottom-6 left-6 z-40 flex size-10 cursor-pointer items-center justify-center rounded-full bg-white text-3xl opacity-0 shadow transition-all ${bottomPosition}`}
+      className={`${isScrolled ? "opacity-100!" : "hidden"} text-primary  fixed bottom-6 left-6 z-40 flex size-10 cursor-pointer items-center justify-center rounded-full bg-white dark:bg-shade3 text-3xl opacity-0 shadow-lg dark:shadow-shade3 transition-all ${bottomPosition}`}
       onClick={() => {
         window.scrollTo({
           top: 0,
@@ -83,8 +83,8 @@ const ScrollToTop = () => {
           cy="20"
           r={radius}
           fill="none"
-          stroke="#E5E7EB"
           strokeWidth="2"
+          className="stroke-[#E5E7EB] dark:stroke-shade2 transition-colors"
         />
         <circle
           cx="20"
@@ -95,10 +95,10 @@ const ScrollToTop = () => {
           strokeWidth="2"
           strokeDasharray={circumference}
           strokeDashoffset={offset}
-          className="text-primary"
+          className="text-primary dark:text-white transition-colors"
         />
       </svg>
-      <MdOutlineArrowUpward className="relative" />
+      <MdOutlineArrowUpward className="relative dark:text-white transition-colors" />
     </button>
   );
 };

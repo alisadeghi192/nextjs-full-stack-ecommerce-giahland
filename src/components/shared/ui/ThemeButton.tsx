@@ -9,8 +9,8 @@ export default function ThemeButton() {
 
   if (isLoading) {
     return (
-      <div className="border-primary group flex size-8 animate-pulse cursor-wait items-center justify-center rounded-lg border bg-neutral3 sm:size-10 sm:rounded-xl lg:size-12">
-        <div className="bg-neutral5 size-5 rounded-full"></div>
+      <div className="border-primary group flex size-8 animate-pulse cursor-wait items-center justify-center rounded-lg border bg-neutral3 dark:bg-shade3 sm:size-10 sm:rounded-xl lg:size-12">
+        <div className="bg-neutral5 size-5 dark:bg-shade4 rounded-full"></div>
       </div>
     );
   }

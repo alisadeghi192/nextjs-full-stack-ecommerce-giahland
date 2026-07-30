@@ -6,7 +6,7 @@ interface DesktopHeaderProps {
 
 export default function DesktopHeader({ isScrolled }: DesktopHeaderProps) {
   return (
-    <nav className="border-neutral5 container border-b font-medium max-md:hidden">
+    <nav className="border-neutral5 dark:border-neutral10 container border-b font-medium max-md:hidden">
       <div
         className={`text-neutral12 dark:text-white flex items-center justify-between dark:bg-shade5 bg-white transition-all ${
           isScrolled ? "h-15" : "h-24"

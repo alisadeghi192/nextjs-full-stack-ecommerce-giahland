@@ -1,6 +1,6 @@
 import PublicHeader from "@/components/shared/layout/public/header/PublicHeader";
-import Image from "next/image";
 import PrimaryButton from "@/components/shared/ui/PrimaryButton";
+import Image from "next/image";
 
 export default function NotFound() {
   return (
@@ -10,13 +10,13 @@ export default function NotFound() {
       </div>
       <div className="flex min-h-dvh basis-1/2 items-center justify-center px-4 text-center max-sm:flex-col-reverse">
         <div>
-          <h1 className="text-primary text-8xl font-black max-sm:text-5xl">
+          <h1 className="text-primary dark:text-primary-dark text-8xl font-black max-sm:text-5xl">
             ۴۰۴
           </h1>
-          <h2 className="text-neutral11 mt-5 text-2xl font-semibold max-sm:text-xl">
+          <h2 className="text-neutral11 dark:text-white mt-5 text-2xl font-semibold max-sm:text-xl">
             صفحه مورد نظر یافت نشد.
           </h2>
-          <p className="text-neutral9 mt-3 max-w-120">
+          <p className="text-neutral9 dark:text-text-dark mt-3 max-w-120">
             متأسفیم! صفحه‌ای که به دنبال آن هستید وجود ندارد یا ممکن است حذف شده
             باشد.
           </p>

@@ -46,7 +46,7 @@ export default function CartModalItem({
   const discountedPrice = toPersianPrice(getDiscountedPrice(price, discount));
 
   return (
-    <div className="bg-neutral2 dark:bg-shade2 rtl border-neutral5 mr-1.5 flex gap-x-6 rounded-xl border p-4">
+    <div className="bg-neutral2 dark:bg-shade2 rtl border-neutral5 dark:border-neutral10 mr-1.5 flex gap-x-6 rounded-xl border p-4">
       <div className="relative size-25 shrink-0 self-center overflow-hidden rounded-lg">
         <Image
           alt={product.name}

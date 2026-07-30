@@ -1,8 +1,8 @@
 "use client";
 import PrimaryButton from "@/components/shared/ui/PrimaryButton";
 import {
-    useIsAuthenticated,
-    useUserRole,
+  useIsAuthenticated,
+  useUserRole,
 } from "@/features/auth/selectors/auth.selectors";
 import { useCartStoreActions } from "@/features/cart/selectors/cart.selectors";
 import { useFooterVisibility } from "@/lib/hooks/useFooterVisibility";
@@ -50,7 +50,7 @@ export default function MobileStickyCart({
   return (
     <>
       <div
-        className={`border-neutral4 max-xs:gap-x-8 max-xs:justify-between fixed right-0 bottom-0 left-0 z-40 flex h-20 items-center justify-center gap-x-15 border-t bg-white px-4 shadow-[0_-25px_50px_-12px_rgba(0,0,0,0.5)] transition-all duration-300 sm:hidden ${isFooterVisible ? "pointer-events-none translate-y-full opacity-0" : "translate-y-0 opacity-100"}`}
+        className={`border-neutral4 dark:border-primary dark:shadow-shade3 max-xs:gap-x-8 max-xs:justify-between fixed right-0 bottom-0 left-0 z-40 flex h-20 items-center justify-center gap-x-15 border-t bg-white dark:bg-shade4 px-4 shadow-[0_-25px_50px_-12px_rgba(0,0,0,0.5)] transition-all duration-300 sm:hidden ${isFooterVisible ? "pointer-events-none translate-y-full opacity-0" : "translate-y-0 opacity-100"}`}
       >
         <PrimaryButton
           onClick={handleAddToCart}

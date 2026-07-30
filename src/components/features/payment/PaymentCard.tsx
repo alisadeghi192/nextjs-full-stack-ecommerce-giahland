@@ -4,10 +4,10 @@ import PrimaryButton from "@/components/shared/ui/PrimaryButton";
 import { toPersianCode, toPersianPrice } from "@/lib/utils/format";
 import { useState } from "react";
 import {
-    MdArrowBack,
-    MdCheckCircle,
-    MdPayment,
-    MdSecurity,
+  MdArrowBack,
+  MdCheckCircle,
+  MdPayment,
+  MdSecurity,
 } from "react-icons/md";
 
 interface PaymentCardProps {
@@ -46,12 +46,12 @@ export default function PaymentCard({
 
   return (
     <div className="flex items-center justify-center">
-      <div className="border-neutral3 relative w-full max-w-md overflow-hidden rounded-2xl border bg-white shadow-xl transition-all duration-300 hover:shadow-2xl">
+      <div className="border-neutral3 dark:border-neutral10 dark:shadow-shade3 dark:bg-shade4 relative w-full max-w-md overflow-hidden rounded-2xl border bg-white shadow-xl transition-all duration-300 hover:shadow-2xl">
         <div className="bg-primary h-2 w-full"></div>
 
         <button
           onClick={onBack || (() => window.history.back())}
-          className="absolute top-4 left-4 flex h-8 w-25 cursor-pointer items-center justify-center gap-x-1 rounded-full bg-gray-100 px-4 text-gray-600 transition-colors hover:bg-gray-200"
+          className="dark:bg-shade2 dark:hover:bg-primary absolute top-4 left-4 flex h-8 w-25 cursor-pointer items-center justify-center gap-x-1 rounded-full bg-gray-100 px-4 text-gray-600 transition-colors hover:bg-gray-200 dark:text-white"
         >
           <span>بازگشت</span>
           <MdArrowBack className="size-5 shrink-0" />
@@ -59,12 +59,12 @@ export default function PaymentCard({
 
         <div className="p-8">
           <div className="mb-4 text-center">
-            <div className="bg-primary/10 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full">
-              <MdPayment className="text-primary h-8 w-8" />
+            <div className="bg-primary/10 dark:bg-shade3 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full">
+              <MdPayment className="text-primary dark:text-primary-dark h-8 w-8" />
             </div>
             <h2 className="text-2xl font-bold">{title}</h2>
             {code && (
-              <p className="text-neutral9 mt-1 text-sm">
+              <p className="text-neutral9 dark:text-text-dark mt-1 text-sm">
                 {codeLabel}: {toPersianCode(code)}
               </p>
             )}
@@ -73,18 +73,19 @@ export default function PaymentCard({
             )}
           </div>
 
-          <div className="border-primary/20 bg-primary/5 mb-4 rounded-xl border p-4 text-center">
-            <span className="text-neutral8 text-sm">مبلغ قابل پرداخت</span>
+          <div className="border-primary/20 bg-primary/5 dark:bg-shade3 mb-4 rounded-xl border p-4 text-center">
+            <span className="text-neutral8 dark:text-text-dark text-sm">
+              مبلغ قابل پرداخت
+            </span>
             <div className="mt-1 text-3xl font-bold">{formattedAmount}</div>
-            <span className="text-neutral9 mt-1 inline-flex items-center gap-1 text-xs">
+            <span className="text-neutral9 dark:text-text-dark mt-1 inline-flex items-center gap-1 text-xs">
               <MdSecurity className="size-3" />
               پرداخت امن و رمزنگاری شده
             </span>
           </div>
 
-
-          <div className="mb-6 rounded-lg border border-yellow-200 bg-yellow-50 p-3 text-center">
-            <p className="text-xs text-yellow-700">
+          <div className="dark:border-neutral10 mb-6 rounded-lg border border-yellow-200 bg-yellow-50 p-3 text-center dark:bg-tint7 transition-colors">
+            <p className="text-xs text-yellow-700 dark:text-white">
               🔒 این یک درگاه پرداخت آزمایشی است.
             </p>
           </div>
@@ -107,7 +108,7 @@ export default function PaymentCard({
             )}
           </PrimaryButton>
 
-          <p className="text-neutral9 mt-4 text-center text-xs">
+          <p className="text-neutral9 dark:text-text-dark mt-4 text-center text-xs">
             با کلیک روی دکمه، شما با شرایط و قوانین سایت موافقت می‌کنید.
           </p>
         </div>

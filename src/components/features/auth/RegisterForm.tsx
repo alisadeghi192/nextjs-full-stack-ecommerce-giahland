@@ -23,7 +23,7 @@ export default function RegisterForm({
   onSubmit,
 }: RegisterFormProps) {
   return (
-    <div className="relative z-10 w-1/2 bg-white max-lg:w-2/3 max-sm:h-5/8 max-sm:w-full max-sm:rounded-t-[20px]">
+    <div className="relative z-10 w-1/2 bg-white dark:bg-shade5 max-lg:w-2/3 max-sm:h-5/8 max-sm:w-full max-sm:rounded-t-[20px]">
       <div className="mx-auto w-72/100 pb-4 max-md:w-90/100">
         <h5 className="mb-8 text-xl/7 font-semibold max-sm:mt-3.25 max-sm:mb-6 max-sm:text-center max-sm:text-lg/8 max-sm:font-normal">
           ثبت نام
@@ -73,7 +73,7 @@ export default function RegisterForm({
 
         <p className="mt-3 text-center max-sm:text-sm">
           حساب کاربری دارید؟
-          <span onClick={onToggle} className="text-primary mr-1 cursor-pointer">
+          <span onClick={onToggle} className="text-primary dark:text-primary-dark mr-1 cursor-pointer">
             ورود{" "}
           </span>
           کنید.

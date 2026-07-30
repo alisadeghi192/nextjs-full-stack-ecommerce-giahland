@@ -52,10 +52,10 @@ export default function PaymentSuccess({
   };
 
   return (
-    <div className="border-neutral3 w-full max-w-md rounded-2xl border bg-white p-8 text-center shadow-xl">
-      <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-green-100">
+    <div className="border-neutral3 dark:border-neutral10 dark:shadow-shade3 w-full max-w-md rounded-2xl border bg-white dark:bg-shade4 p-8 text-center shadow-xl">
+      <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-green-100 dark:bg-shade3">
         <svg
-          className="h-10 w-10 text-green-600"
+          className="h-10 w-10 text-green-600 dark:text-primary-dark"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -69,27 +69,27 @@ export default function PaymentSuccess({
         </svg>
       </div>
 
-      <h1 className="text-2xl font-bold text-gray-800">پرداخت موفق</h1>
-      <p className="text-neutral9 mt-2">{config.message}</p>
+      <h1 className="text-2xl font-bold text-gray-800 dark:text-white">پرداخت موفق</h1>
+      <p className="text-neutral9 dark:text-text-dark mt-2">{config.message}</p>
 
-      <div className="border-neutral3 mt-6 rounded-xl border p-4 text-right">
+      <div className="border-neutral3 dark:border-neutral10 mt-6 rounded-xl border p-4 text-right">
         <div className="flex justify-between py-1">
-          <span className="text-neutral9">{config.codeLabel}</span>
+          <span className="text-neutral9 dark:text-text-dark">{config.codeLabel}</span>
           <span className="font-medium">{toPersianCode(trackingCode)}</span>
         </div>
         <div className="flex justify-between py-1">
-          <span className="text-neutral9">مبلغ پرداختی</span>
-          <span className="text-primary font-medium">{toPersianPrice(price)}</span>
+          <span className="text-neutral9 dark:text-text-dark">مبلغ پرداختی</span>
+          <span className="text-primary dark:text-primary-dark font-medium">{toPersianPrice(price)}</span>
         </div>
         {extraInfo && (
           <div className="flex justify-between py-1">
-            <span className="text-neutral9">{extraInfo.label}</span>
+            <span className="text-neutral9 dark:text-text-dark">{extraInfo.label}</span>
             <span className="font-medium">{extraInfo.value}</span>
           </div>
         )}
       </div>
 
-      <p className="text-neutral9 mt-2 text-sm">{config.infoMessage}</p>
+      <p className="text-neutral9 dark:text-text-dark mt-2 text-sm">{config.infoMessage}</p>
 
       <div className="mt-6 space-y-3">
         <PrimaryButton href={config.primaryButtinLink} className="h-12 w-full">

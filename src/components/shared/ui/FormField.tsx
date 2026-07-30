@@ -43,10 +43,10 @@ const FormField = forwardRef<HTMLInputElement, FormFieldProps>(
     return (
       <div>
         <div
-          className={`group relative ${isPanelSearch ? "bg-neutral3 h-10" : isMainSearch ? "h-10" : "h-14 max-sm:h-12"} flex items-center gap-x-2 rounded-xl border px-3.75 transition-colors duration-200 ${hasError ? "border-error focus-within:border-error" : "border-neutral6 focus-within:border-primary"}`}
+          className={`group relative ${isPanelSearch ? "bg-neutral3 h-10" : isMainSearch ? "h-10" : "h-14 max-sm:h-12 "} flex items-center gap-x-2 rounded-xl border px-3.75 transition-colors duration-200 ${hasError ? "border-error focus-within:border-error" : "border-neutral6 dark:border-neutral5 focus-within:border-primary dark:focus-within:border-primary-dark"}`}
         >
           <span
-            className={`relative z-10 size-5.5 transition-colors duration-200 ${hasError ? "text-error group-focus-within:text-error" : "text-neutral9 group-focus-within:text-primary"}`}
+            className={`relative z-10 size-5.5 transition-colors duration-200 ${hasError ? "text-error group-focus-within:text-error" : "text-neutral9 dark:text-neutral5 group-focus-within:text-primary dark:group-focus-within:text-primary-dark"}`}
           >
             {icon}
           </span>
@@ -57,8 +57,8 @@ const FormField = forwardRef<HTMLInputElement, FormFieldProps>(
             id={id}
             placeholder={isPanelSearch ? label : " "}
             className={`peer flex-1 border-0 outline-0 ${
-              isPanelSearch ? "placeholder:text-neutral9 w-18" : ""
-            } ${disabled ? "text-neutral9" : "text-neutral11"}`}
+              isPanelSearch ? "placeholder:text-neutral9 dark:placeholder:text-neutral7 w-18" : ""
+            } ${disabled ? "text-neutral9 dark:text-neutral7" : "text-neutral11 dark:text-neutral3"}`}
             value={value}
             defaultValue={defaultValue}
             onChange={onChange}
@@ -68,7 +68,7 @@ const FormField = forwardRef<HTMLInputElement, FormFieldProps>(
           />
           <label
             htmlFor={id}
-            className={`pointer-events-none absolute right-10.25 rounded-2xl bg-white px-1 transition-all duration-300 peer-focus:right-4 ${isPanelSearch ? "hidden" : "visible"} ${isMainSearch ? "peer-focus:-translate-y-5.5 peer-[:not(:placeholder-shown)]:-translate-y-5.5" : "peer-focus:-translate-y-7 peer-[:not(:placeholder-shown)]:-translate-y-7"} peer-[:not(:placeholder-shown)]:right-4 max-sm:peer-focus:text-sm max-sm:peer-[:not(:placeholder-shown)]:text-sm ${hasError ? "text-error peer-focus:text-error peer-[:not(:placeholder-shown)]:text-error" : "text-neutral9 peer-focus:text-primary peer-[:not(:placeholder-shown)]:text-primary"}`}
+            className={`pointer-events-none absolute right-10.25 rounded-2xl bg-white dark:bg-shade5 px-1 transition-all duration-300 peer-focus:right-4 ${isPanelSearch ? "hidden" : "visible"} ${isMainSearch ? "peer-focus:-translate-y-5.5 dark:bg-shade3! peer-[:not(:placeholder-shown)]:-translate-y-5.5" : "peer-focus:-translate-y-7 peer-[:not(:placeholder-shown)]:-translate-y-7"} peer-[:not(:placeholder-shown)]:right-4 max-sm:peer-focus:text-sm max-sm:peer-[:not(:placeholder-shown)]:text-sm ${hasError ? "text-error peer-focus:text-error peer-[:not(:placeholder-shown)]:text-error" : "text-neutral9 dark:text-neutral5 peer-focus:text-primary dark:peer-focus:text-primary-dark peer-[:not(:placeholder-shown)]:text-primary dark:peer-[:not(:placeholder-shown)]:text-primary-dark"}`}
           >
             {label}
           </label>

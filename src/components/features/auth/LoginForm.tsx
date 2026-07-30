@@ -23,7 +23,7 @@ export default function LoginForm({
   onSubmit,
 }: LoginFormProps) {
   return (
-    <div className="relative z-10 w-1/2 bg-white max-lg:w-2/3 max-sm:h-5/8 max-sm:w-full max-sm:rounded-t-[20px]">
+    <div className="relative z-10 w-1/2 bg-white dark:bg-shade5 max-lg:w-2/3 max-sm:h-5/8 max-sm:w-full max-sm:rounded-t-[20px]">
       <div className="mx-auto mb-4 w-72/100 max-md:w-90/100">
         <h5 className="mb-8 text-xl/7 font-semibold max-sm:mt-3.25 max-sm:mb-6 max-sm:text-center max-sm:text-lg/8 max-sm:font-normal">
           ورود
@@ -50,7 +50,7 @@ export default function LoginForm({
             {...register("password")}
           />
 
-          <p className="text-primary -mt-2 cursor-pointer text-sm max-sm:-mt-1">
+          <p className="text-primary dark:text-primary-dark -mt-2 cursor-pointer text-sm max-sm:-mt-1">
             بازیابی رمز عبور
           </p>
 
@@ -64,7 +64,7 @@ export default function LoginForm({
 
         <p className="mt-3 text-center max-sm:text-sm">
           حساب کاربری ندارید؟
-          <span onClick={onToggle} className="text-primary mr-1 cursor-pointer">
+          <span onClick={onToggle} className="text-primary dark:text-primary-dark mr-1 cursor-pointer">
             ثبت نام{" "}
           </span>
           کنید.

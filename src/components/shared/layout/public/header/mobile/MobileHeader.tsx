@@ -41,7 +41,7 @@ export default function MobileHeader({
 
   return (
     <nav
-      className={`border-neutral3 border-b bg-white dark:bg-shade5 ${useInLoginPage ? "h-12" : isScrolled ? "h-24.5" : "h-27"} flex items-center transition-all md:hidden`}
+      className={`border-neutral3 border-b dark:border-neutral10 bg-white dark:bg-shade5 ${useInLoginPage ? "h-12" : isScrolled ? "h-24.5" : "h-27"} flex items-center transition-all md:hidden`}
     >
       <div className="container flex flex-col">
         <div

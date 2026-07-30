@@ -23,7 +23,7 @@ export default function ProductSpecs({
       <span className="mb-4 inline-block text-lg/8 font-semibold max-sm:mb-2 max-sm:text-base/7.25">
         ویژگی ها
       </span>
-      <div className="border-neutral6 grid grid-cols-2 gap-x-6 gap-y-10 max-md:grid-cols-1 max-md:gap-y-2.25 max-sm:gap-y-2 max-sm:border-b max-sm:pb-4">
+      <div className="border-neutral6 grid grid-cols-2 gap-x-6 gap-y-10 max-md:grid-cols-1 max-md:gap-y-2.25 max-sm:gap-y-2 max-sm:border-b dark:border-neutral10 max-sm:pb-4">
         <ProductSpecBox label="جنس گلدان" value={potMaterial} />
         <ProductSpecBox label="خاک گیاه" value={soilType} />
         <ProductSpecBox label="وزن" value={`${toPersianNumber(weight)} گرم`} />

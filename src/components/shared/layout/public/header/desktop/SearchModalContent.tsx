@@ -31,7 +31,7 @@ export default function SearchModalContent({ onClose, isOpen }: SearchModalConte
   };
 
   return (
-    <div className="border-neutral3 w-115 rounded-xl border bg-white p-3 pt-4 pr-1.5 shadow-lg max-md:hidden">
+    <div className="border-neutral3 dark:border-neutral10 w-115 rounded-xl border bg-white dark:bg-shade3 p-3 pt-4 pr-1.5 shadow-lg max-md:hidden">
       <FormField
         icon={<IoMdSearch size={22} />}
         id="search"
@@ -47,7 +47,7 @@ export default function SearchModalContent({ onClose, isOpen }: SearchModalConte
       <div className="custom-scroll ltr mt-2 max-h-80 overflow-y-auto">
         {isLoading ? (
           <div className="flex items-center justify-center py-6">
-            <div className="border-primary h-6 w-6 animate-spin rounded-full border-4 border-t-transparent" />
+            <div className="border-primary dark:border-primary-dark dark:border-t-transparent h-6 w-6 animate-spin rounded-full border-4 border-t-transparent" />
           </div>
         ) : results.length > 0 ? (
           <div className="space-y-1">
@@ -56,7 +56,7 @@ export default function SearchModalContent({ onClose, isOpen }: SearchModalConte
                 key={item._id}
                 href={`/products/${item.category}/${item.slug}`}
                 onClick={handleSelect}
-                className="hover:bg-neutral2 rtl mr-1.5 block rounded-lg px-4 py-2 leading-7.25 transition-colors"
+                className="hover:bg-neutral2 dark:hover:bg-shade4 rtl mr-1.5 block rounded-lg px-4 py-2 leading-7.25 transition-colors"
               >
                 <div className="flex items-center gap-3">
                   {item.image && (
@@ -66,14 +66,14 @@ export default function SearchModalContent({ onClose, isOpen }: SearchModalConte
                   )}
                   <div>
                     <p className="font-medium">{item.name}</p>
-                    <p className="text-neutral9 text-sm">{toPersianPrice(item.price)}</p>
+                    <p className="text-neutral9 dark:text-text-dark text-sm">{toPersianPrice(item.price)}</p>
                   </div>
                 </div>
               </Link>
             ))}
           </div>
         ) : query && results.length === 0 ? (
-          <p className="text-neutral9 rtl px-3 py-2 text-sm">محصولی یافت نشد.</p>
+          <p className="text-neutral9 rtl px-3 dark:text-text-dark py-2 text-sm">محصولی یافت نشد.</p>
         ) : null}
       </div>
     </div>

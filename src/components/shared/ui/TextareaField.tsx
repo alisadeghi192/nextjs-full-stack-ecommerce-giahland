@@ -5,9 +5,9 @@ import { ReactNode } from "react";
 interface TextareaFieldProps {
   icon: ReactNode;
   name: string;
-  id:string;
+  id: string;
   label: string;
-  disabled?:boolean;
+  disabled?: boolean;
   value?: string;
   onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
   rows?: number;
@@ -24,12 +24,12 @@ export default function TextareaField({
   rows = 4,
 }: TextareaFieldProps) {
   return (
-    <div className="border-neutral6 focus-within:border-primary group py-4 relative flex min-h-14 gap-x-2 rounded-xl border px-3.75 transition-colors duration-200">
-      <span className="text-neutral9 group-focus-within:text-primary relative z-10 size-5.5 transition-colors duration-200">
+    <div className="border-neutral6  dark:border-neutral5 focus-within:border-primary dark:focus-within:border-primary-dark group relative flex min-h-14 gap-x-2 rounded-xl border px-3.75 py-4 transition-colors duration-200">
+      <span className="text-neutral9 dark:text-neutral5 group-focus-within:text-primary dark:group-focus-within:text-primary-dark relative z-10 size-5.5 transition-colors duration-200">
         {icon}
       </span>
       <textarea
-        className="peer text-neutral11 flex-1 resize-none border-0 outline-0"
+        className="peer text-neutral11 custom-scroll dark:text-neutral3 flex-1 resize-none border-0 outline-0"
         name={name}
         id={id}
         placeholder=" "
@@ -40,7 +40,7 @@ export default function TextareaField({
       />
       <label
         htmlFor={name}
-        className="text-neutral9 peer-focus:text-primary peer-[:not(:placeholder-shown)]:text-primary absolute right-10.25 bg-white px-1 transition-all duration-300 peer-focus:right-4 peer-focus:-translate-y-7 peer-[:not(:placeholder-shown)]:right-4 peer-[:not(:placeholder-shown)]:-translate-y-7 max-sm:peer-focus:text-sm max-sm:peer-[:not(:placeholder-shown)]:text-sm"
+        className="text-neutral9 dark:text-neutral5 peer-focus:text-primary dark:peer-focus:text-primary-dark peer-[:not(:placeholder-shown)]:text-primary dark:peer-[:not(:placeholder-shown)]:text-primary-dark dark:bg-shade5 absolute right-10.25 rounded-2xl bg-white px-1 transition-all duration-300 peer-focus:right-4 peer-focus:-translate-y-7 peer-[:not(:placeholder-shown)]:right-4 peer-[:not(:placeholder-shown)]:-translate-y-7 max-sm:peer-focus:text-sm max-sm:peer-[:not(:placeholder-shown)]:text-sm"
       >
         {label}
       </label>
