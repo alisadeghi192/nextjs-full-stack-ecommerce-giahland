@@ -9,15 +9,15 @@ interface OrderStatusBadgeProps {
 const statusConfig: Record<OrderStatus, { label: string; className: string }> = {
   pending: {
     label: "در انتظار پرداخت",
-    className: "bg-bg-error text-error",
+    className: "bg-bg-error text-error dark:bg-error dark:text-bg-error",
   },
   paid: {
     label: "در حال آماده‌سازی",
-    className: "bg-blue-100 text-blue-800 ",
+    className: "bg-blue-100 text-blue-800 dark:text-blue-100 dark:bg-blue-800",
   },
   delivered: {
     label: "تحویل داده شده",
-    className: "bg-[#BEFFD4] text-[#358C4A]",
+    className: "bg-[#BEFFD4] text-[#358C4A] dark:text-[#BEFFD4] dark:bg-[#358C4A]",
   },
 };
 

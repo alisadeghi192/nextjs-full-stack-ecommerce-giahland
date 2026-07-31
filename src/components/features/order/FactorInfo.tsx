@@ -29,22 +29,22 @@ export default function FactorInfo({ order }: FactorInfoProps) {
           {toPersianDateAndTime(new Date(order.createdAt))}
         </span>
         {/* customer full name*/}
-        <div className="flex w-full items-center justify-between rounded-xl bg-white px-4 py-2 shadow-sm max-sm:text-sm">
-          <span className="text-neutral10">خریدار: </span>
+        <div className="flex w-full items-center justify-between rounded-xl dark:shadow-shade6 bg-white dark:bg-shade1 px-4 py-2 shadow-sm max-sm:text-sm">
+          <span className="text-neutral10 dark:text-text-dark">خریدار: </span>
           <span className="font-medium max-md:font-normal">
             {userInfo.firstName} {userInfo.lastName}
           </span>
         </div>{" "}
         {/* customer mobile*/}
-        <div className="flex w-full items-center justify-between rounded-xl bg-white px-4 py-2 shadow-sm max-sm:text-sm">
-          <span className="text-neutral10">موبایل خریدار:</span>
+        <div className="flex w-full items-center justify-between rounded-xl dark:shadow-shade6 bg-white dark:bg-shade1 px-4 py-2 shadow-sm max-sm:text-sm">
+          <span className="text-neutral10 dark:text-text-dark">موبایل خریدار:</span>
           <span className="font-medium max-md:font-normal">
             {toPersianCode(userInfo.mobile)}
           </span>
         </div>
         {/* delivery method */}
-        <div className="max-xs:flex max-xs:items-center max-xs:justify-between rounded-xl bg-white px-4 py-2 shadow-sm">
-          <span className="text-neutral10 max-sm:text-sm">روش تحویل:</span>
+        <div className="max-xs:flex max-xs:items-center max-xs:justify-between rounded-xl bg-white dark:bg-shade1 px-4 py-2 dark:shadow-shade6 shadow-sm">
+          <span className="text-neutral10 dark:text-text-dark max-sm:text-sm">روش تحویل:</span>
           <p className="max-xs:mt-0 mt-1 font-medium max-[580px]:text-sm max-md:font-normal">
             {order.deliveryMethod === "courier"
               ? "ارسال با پیک مخصوص 🚚"
@@ -52,8 +52,8 @@ export default function FactorInfo({ order }: FactorInfoProps) {
           </p>
         </div>
         {/* customer address */}
-        <div className="rounded-xl bg-white px-4 py-2 shadow-sm">
-          <span className="text-neutral10 max-sm:text-sm">آدرس خریدار:</span>
+        <div className="rounded-xl bg-white dark:shadow-shade6 dark:bg-shade1 px-4 py-2 shadow-sm">
+          <span className="text-neutral10 dark:text-text-dark max-sm:text-sm">آدرس خریدار:</span>
           <p className="mt-1 font-medium max-[580px]:text-sm max-md:font-normal">
             {order.deliveryMethod === "courier" ? (
               <>

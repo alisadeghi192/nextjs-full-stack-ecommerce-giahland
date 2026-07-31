@@ -35,7 +35,7 @@ export default async function WishListPage({
     return (
       <div className="w-full">
         <SectionTitle title="علاقه مندی ها" />
-        <div className="border-neutral3 rounded-2xl border p-6 text-center text-gray-500 shadow-lg">
+        <div className="border-neutral3 dark:border-neutral10 dark:bg-shade4 dark:shadow-shade6 rounded-2xl border p-6 text-center text-gray-500 dark:text-gray-50 shadow-lg">
           محصولی در لیست علاقه‌مندی‌های شما وجود ندارد.
         </div>
       </div>

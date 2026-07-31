@@ -22,7 +22,7 @@ export default function TicketList({ tickets }: TicketListProps) {
 
   if (tickets.length === 0) {
     return (
-      <div className="mt-6 rounded-lg shadow-lg bg-gray-50 dark:bg-shade4 dark:text-text-dark dark:shadow-shade6 p-8 text-center text-gray-500">
+      <div className="dark:border-neutral10 border-neutral3 border dark:bg-shade4 dark:shadow-shade6 mt-6 rounded-xl bg-gray-50 p-8 text-center text-gray-500 shadow-lg  dark:text-gray-50">
         هیچ تیکتی ثبت نشده است.
       </div>
     );

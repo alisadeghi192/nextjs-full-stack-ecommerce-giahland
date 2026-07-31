@@ -43,7 +43,7 @@ const FormField = forwardRef<HTMLInputElement, FormFieldProps>(
     return (
       <div>
         <div
-          className={`group relative ${isPanelSearch ? "bg-neutral3 h-10" : isMainSearch ? "h-10" : "h-14 max-sm:h-12"} flex items-center gap-x-2 rounded-xl border px-3.75 transition-colors duration-200 ${hasError ? "border-error focus-within:border-error" : "border-neutral6 dark:border-neutral5 focus-within:border-primary dark:focus-within:border-primary-dark"}`}
+          className={`group relative ${isPanelSearch ? "bg-neutral3 dark:border-neutral10 dark:bg-shade4 h-10" : isMainSearch ? "h-10" : "h-14 max-sm:h-12"} flex items-center gap-x-2 rounded-xl border px-3.75 transition-colors duration-200 ${hasError ? "border-error focus-within:border-error" : "border-neutral6 dark:border-neutral5 focus-within:border-primary dark:focus-within:border-primary-dark"}`}
         >
           <span
             className={`relative z-10 size-5.5 transition-colors duration-200 ${hasError ? "text-error group-focus-within:text-error" : "text-neutral9 dark:text-neutral5 group-focus-within:text-primary dark:group-focus-within:text-primary-dark"}`}
@@ -58,7 +58,7 @@ const FormField = forwardRef<HTMLInputElement, FormFieldProps>(
             placeholder={isPanelSearch ? label : " "}
             className={`peer flex-1 border-0 outline-0 ${
               isPanelSearch
-                ? "placeholder:text-neutral9 dark:placeholder:text-neutral7 w-18"
+                ? "placeholder:text-neutral9 dark:placeholder:text-neutral5 w-18"
                 : ""
             } ${disabled ? "text-neutral9 dark:text-neutral7" : "text-neutral11 dark:text-neutral3"}`}
             value={value}

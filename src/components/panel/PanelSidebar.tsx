@@ -135,7 +135,7 @@ export default function PanelSidebar({
                   {link.icon}
                   {!isPanelOpen && (
                     <div className="pointer-events-none invisible absolute -top-8.5 left-1/2 z-50 -translate-x-1/2 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
-                      <div className="bg-primary relative rounded-lg border px-2 py-1 text-xs whitespace-nowrap text-white shadow-lg">
+                      <div className="bg-primary relative rounded-lg border dark:border-neutral10 px-2 py-1 text-xs whitespace-nowrap text-white shadow-lg">
                         {link.tooltipLabel}
                         <span className="text-primary absolute top-3 left-1/2 -translate-x-1/2 text-lg">
                           ▼

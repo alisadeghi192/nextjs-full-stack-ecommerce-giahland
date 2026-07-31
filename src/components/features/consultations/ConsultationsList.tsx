@@ -1,7 +1,7 @@
 "use client";
 
 import {
-    useIsLoading
+  useIsLoading
 } from "@/features/auth/selectors/auth.selectors";
 import { IConsultationWithDetails } from "@/features/consultations/types/consultation.types";
 import { useAllNotifications } from "@/features/notifications/hooks/useAllNotifications";
@@ -34,12 +34,12 @@ export default function ConsultationsList({
         {[1, 2].map((i) => (
           <div
             key={i}
-            className="border-neutral5 flex animate-pulse items-center gap-x-4 rounded-lg border p-4 shadow-lg"
+            className="border-neutral5 dark:border-neutral10 flex animate-pulse items-center gap-x-4 rounded-lg border p-4 shadow-lg"
           >
-            <div className="bg-neutral3 size-18 shrink-0 rounded-full" />
+            <div className="bg-neutral3 dark:bg-shade3 size-18 shrink-0 rounded-full" />
             <div className="flex w-full flex-col gap-2">
-              <div className="bg-neutral3 mt-auto h-6 w-1/3 rounded" />
-              <div className="bg-neutral3 h-4 w-1/2 rounded" />
+              <div className="bg-neutral3 dark:bg-shade3 mt-auto h-6 w-1/3 rounded" />
+              <div className="bg-neutral3 dark:bg-shade3 h-4 w-1/2 rounded" />
             </div>
           </div>
         ))}

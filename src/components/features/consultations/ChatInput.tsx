@@ -89,15 +89,15 @@ export default function ChatInput({
   return (
     <div className="sticky bottom-3 mx-auto w-9/10">
       {isChatClosed ? (
-        <div className="border-error text-error flex h-12 items-center justify-center rounded-full border bg-white">
-          <span className="text-lg max-sm:text-base">
+        <div className="border-error text-red-500 dark:text-gray-50 flex h-12 items-center justify-center backdrop-blur-lg rounded-full border bg-white/30 dark:bg-primary/50">
+          <span className="text-lg max-sm:text-base ">
             {username} عزیز این مشاوره پایان یافته.
           </span>
         </div>
       ) : (
         <>
           {imagePreview && (
-            <div className="absolute bottom-12 left-0 mb-2 rounded-lg border bg-white p-2">
+            <div className="absolute bottom-12 dark:border-neutral10 left-0 mb-2 rounded-lg border bg-white dark:bg-shade2 p-2">
               <img
                 src={imagePreview}
                 alt="preview"
@@ -105,7 +105,7 @@ export default function ChatInput({
               />
               <button
                 onClick={removeImage}
-                className="border-error hover:bg-bg-error mt-1 block w-full cursor-pointer rounded-lg border text-xs text-red-500"
+                className="border-error hover:bg-bg-error dark:bg-error dark:text-white dark:hover:text-error dark:hover:bg-white mt-1 block w-full cursor-pointer rounded-lg border text-xs text-red-500"
               >
                 حذف
               </button>
@@ -123,11 +123,11 @@ export default function ChatInput({
               <MdSend className="size-5 rotate-180" />
             </PrimaryButton>
             <div className="flex-1">
-              <div className="border-neutral6 focus-within:border-primary relative flex min-h-12 items-center rounded-full border bg-white/40 px-3.75 backdrop-blur-lg transition-colors duration-200">
+              <div className="border-neutral6 dark:border-neutral10 dark:focus-within:border-primary-dark focus-within:border-primary dark:bg-primary/10 relative flex min-h-12 items-center rounded-full border bg-white/40 px-3.75 backdrop-blur-lg transition-colors duration-200">
                 <textarea
                   ref={textareaRef}
                   rows={1}
-                  className="placeholder:text-neutral10 text-neutral11 custom-scroll h-auto max-h-20 w-full resize-none overflow-y-auto py-2 outline-0"
+                  className="placeholder:text-neutral10 dark:placeholder:text-neutral5 text-neutral11 dark:text-white custom-scroll h-auto max-h-20 w-full resize-none overflow-y-auto py-2 outline-0"
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   placeholder="پیام خود را بنویسید..."
@@ -136,8 +136,8 @@ export default function ChatInput({
               </div>
             </div>
 
-            <label className="hover:bg-neutral3 border-neutral5 flex size-12 cursor-pointer items-center justify-center rounded-full border bg-white">
-              <ImAttachment className="text-primary size-6" />
+            <label className="hover:bg-neutral3 dark:hover:bg-shade2 border-neutral5 dark:border-neutral10 flex size-12 cursor-pointer items-center justify-center rounded-full border bg-white dark:bg-primary ">
+              <ImAttachment className="text-primary dark:text-white size-6" />
               <input
                 ref={fileInputRef}
                 type="file"

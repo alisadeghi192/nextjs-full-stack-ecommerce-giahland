@@ -47,7 +47,7 @@ export default async function UserOrdersPage({
       </div>
 
       {result.orders.length === 0 ? (
-        <div className="border-neutral3 rounded-2xl border p-6 text-center text-gray-500 shadow-lg">
+        <div className="dark:border-neutral10 border-neutral3 dark:bg-shade4 dark:shadow-shade6 rounded-2xl border p-6 text-center text-gray-500 shadow-lg dark:text-gray-50">
           {search
             ? "سفارشی با این کد پیگیری یافت نشد."
             : "هیچ سفارشی ثبت نشده است."}

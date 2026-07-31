@@ -20,7 +20,7 @@ interface DoctorCardProps {
 
 export default function DoctorCard({ doctor }: DoctorCardProps) {
   return (
-    <div className="border-neutral5 rounded-lg border p-4 shadow-lg">
+    <div className="border-neutral5 dark:border-neutral10 dark:shadow-shade6 rounded-lg border p-4 shadow-lg">
       <div className="max-xs:gap-x-2.5 flex gap-x-6">
         <div className="max-xs:size-21 relative size-30 shrink-0 overflow-hidden rounded-lg">
           <Image
@@ -34,15 +34,15 @@ export default function DoctorCard({ doctor }: DoctorCardProps) {
           <span className="max-xs:text-sm block text-lg">
             دکتر {doctor.firstName} {doctor.lastName}
           </span>
-          <span className="text-neutral9 block text-sm">
+          <span className="text-neutral9 dark:text-text-dark block text-sm">
             {doctor.specialties}
           </span>
           <div className="flex items-center gap-x-4 max-sm:gap-x-2">
-            <span className="text-neutral9 text-sm">
+            <span className="text-neutral9 dark:text-text-dark text-sm">
               ویزیت موفق: {toPersianNumber(doctor.successfulConsultations)}
             </span>
-            <span className="bg-primary inline-block h-4 w-0.5 rounded-xs" />
-            <span className="text-neutral9 text-sm">
+            <span className="bg-primary dark:text-primary-dark inline-block h-4 w-0.5 rounded-xs" />
+            <span className="text-neutral9 dark:text-text-dark text-sm">
               سابقه: {toPersianNumber(doctor.yearsOfExperience)} سال
             </span>
           </div>

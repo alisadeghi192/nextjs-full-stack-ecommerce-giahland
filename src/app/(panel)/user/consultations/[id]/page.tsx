@@ -34,7 +34,7 @@ export default async function ChatPage({ params }: ChatPageProps) {
   const displayAvatar = displayPerson.avatar || DEFAULT_PROFILE_PIC;
 
   return (
-    <section className="relative flex h-[calc(100dvh-61px)] flex-col bg-[url('/static/images/chat-bg.webp')] bg-size-[350px] bg-fixed bg-repeat max-md:h-[calc(100dvh-56px)]">
+    <section className="relative flex h-[calc(100dvh-61px)] flex-col dark:bg-[url('/static/images/chat-bg-dark.webp')] bg-[url('/static/images/chat-bg.webp')] bg-size-[350px] bg-fixed bg-repeat max-md:h-[calc(100dvh-56px)]">
       {/* Header */}
       <ChatHeader
         consultationId={id}

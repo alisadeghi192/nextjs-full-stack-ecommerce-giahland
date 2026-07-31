@@ -121,7 +121,7 @@ export default function TicketItem({
                 </div>
               </div>
               {ticket.adminReply && (
-                <div className="border-primary transition-colors rounded-lg border-r-4 bg-[#E3F7EA] p-4 dark:bg-yellow-300/10">
+                <div className="border-primary transition-colors rounded-lg border-r-4 bg-[#E3F7EA] p-4 dark:bg-emerald-800">
                   <div className="flex items-center justify-between">
                     <div className="mb-1 font-medium">پاسخ ادمین:</div>
                     <div className="ltr text-neutral11 transition-colors dark:text-text-dark max-md:text-sm">

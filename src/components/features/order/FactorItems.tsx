@@ -11,10 +11,10 @@ interface FactorItemsProps {
 
 export default function FactorItems({ order }: FactorItemsProps) {
   return (
-    <div className="mt-3 overflow-x-auto rounded-2xl bg-white shadow-sm">
+    <div className="mt-3 overflow-x-auto rounded-2xl bg-white dark:bg-shade2 dark:shadow-shade6 shadow-sm">
       <table className="w-full">
         <thead>
-          <tr className="bg-primary/5 text-neutral11 *:max-md:font-normal">
+          <tr className="bg-primary/5 dark:dark:bg-emerald-800 text-neutral11 dark:text-white *:max-md:font-normal">
             <th className="rounded-tr-2xl p-3 text-right max-[580px]:hidden">
               #
             </th>
@@ -48,7 +48,7 @@ export default function FactorItems({ order }: FactorItemsProps) {
             return (
               <tr
                 key={index}
-                className="border-neutral3 border-b last:border-0"
+                className="border-neutral3 dark:border-neutral6 border-b last:border-0"
               >
                 <td className="max-xs:p-1 p-3 text-right max-[580px]:hidden max-[580px]:p-2">
                   {toPersianNumber(index + 1)}
@@ -71,13 +71,13 @@ export default function FactorItems({ order }: FactorItemsProps) {
                     <div>
                       <Link
                         href={`/products/${category}/${slug}`}
-                        className="group-hover:text-primary line-clamp-1 font-medium transition-colors max-[580px]:text-sm max-sm:font-normal"
+                        className="group-hover:text-primary dark:group-hover:text-primary-dark line-clamp-1 font-medium transition-colors max-[580px]:text-sm max-sm:font-normal"
                       >
                         <span className="max-xs:hidden">{name}</span>
                         <span className="xs:hidden">{`${toPersianNumber(quantity)}× ${name}`}</span>
                         
                       </Link>
-                      <p className="text-neutral9 line-clamp-1 text-sm max-[580px]:text-xs">
+                      <p className="text-neutral9 dark:text-text-dark line-clamp-1 text-sm max-[580px]:text-xs">
                         {toStyledSlug(slug)}
                       </p>
                     </div>
@@ -86,23 +86,23 @@ export default function FactorItems({ order }: FactorItemsProps) {
                 <td className="max-xs:p-1 max-xs:hidden p-3 text-center max-[580px]:p-2 max-[580px]:text-sm">
                   {toPersianNumber(quantity)}
                 </td>
-                <td className="text-primary max-xs:p-1 p-3 text-center font-bold max-[580px]:p-2 max-xl:hidden">
+                <td className="text-primary dark:text-primary-dark max-xs:p-1 p-3 text-center font-bold max-[580px]:p-2 max-xl:hidden">
                   ×
                 </td>
                 <td className="max-xs:p-1 p-3 text-center max-[580px]:p-2 max-md:hidden">
                   {toPersianPrice(discountedPrice)}
                 </td>
-                <td className="text-primary max-xs:p-1 p-3 text-center font-bold max-[580px]:p-2 max-xl:hidden">
+                <td className="text-primary dark:text-primary-dark max-xs:p-1 p-3 text-center font-bold max-[580px]:p-2 max-xl:hidden">
                   =
                 </td>
-                <td className="text-primary max-xs:p-1 p-3 text-center font-bold max-[580px]:p-2 max-[580px]:text-sm max-sm:font-normal">
+                <td className="text-primary dark:text-primary-dark max-xs:p-1 p-3 text-center font-bold max-[580px]:p-2 max-[580px]:text-sm max-sm:font-normal">
                   {toPersianPrice(discountedPrice * quantity)}
                 </td>
               </tr>
             );
           })}
 
-          <tr className="border-neutral3 bg-neutral1 border-t-2">
+          <tr className="border-neutral3 dark:border-neutral6 bg-neutral1 dark:bg-shade2 border-t-2">
             <td colSpan={4} className="max-[580px]:hidden max-xl:hidden"></td>
             <td
               colSpan={3}
@@ -118,14 +118,14 @@ export default function FactorItems({ order }: FactorItemsProps) {
               {toPersianPrice(order.totalAmount)}
             </td>
           </tr>
-          <tr className="bg-neutral1">
+          <tr className="bg-neutral1 dark:bg-shade3">
             <td colSpan={4} className="max-[580px]:hidden max-xl:hidden"></td>
             <td
               colSpan={3}
               className="max-[580px]:hidden max-md:hidden xl:hidden"
             ></td>
             <td colSpan={1} className="max-[580px]:hidden md:hidden"></td>
-            <td className="border-neutral5 text-neutral9 max-xs:p-1 p-3 text-center font-medium max-[580px]:p-2 max-[580px]:text-sm">
+            <td className="border-neutral5 text-neutral9 dark:text-text-dark max-xs:p-1 p-3 text-center font-medium max-[580px]:p-2 max-[580px]:text-sm">
               هزینه ارسال
             </td>
             <td className="max-[580px]:hidden max-xl:hidden"></td>
@@ -136,7 +136,7 @@ export default function FactorItems({ order }: FactorItemsProps) {
                 : "رایگان"}
             </td>
           </tr>
-          <tr className="bg-primary/10 border-primary/20 border-t">
+          <tr className="bg-primary/10 dark:dark:bg-shade4 border-primary/20 border-t">
             <td
               colSpan={4}
               className="rounded-br-2xl max-[580px]:hidden max-xl:hidden"
@@ -149,12 +149,12 @@ export default function FactorItems({ order }: FactorItemsProps) {
               colSpan={1}
               className="max-[580px]:hidden max-md:rounded-br-2xl md:hidden"
             ></td>
-            <td className="text-primary max-xs:p-1 p-3 text-center text-lg font-bold max-[580px]:rounded-br-2xl max-[580px]:p-2 max-[580px]:text-base">
+            <td className="text-primary dark:text-primary-dark max-xs:p-1 p-3 text-center text-lg font-bold max-[580px]:rounded-br-2xl max-[580px]:p-2 max-[580px]:text-base">
               مبلغ نهایی
             </td>
             <td className="max-[580px]:hidden max-xl:hidden"></td>
             <td className="max-xs:hidden md:hidden"></td>
-            <td className="text-primary max-xs:p-1 rounded-bl-2xl p-3 text-center text-lg font-bold max-[580px]:p-2 max-[580px]:text-base">
+            <td className="text-primary dark:text-primary-dark max-xs:p-1 rounded-bl-2xl p-3 text-center text-lg font-bold max-[580px]:p-2 max-[580px]:text-base">
               {toPersianPrice(order.finalAmount)}
             </td>
           </tr>

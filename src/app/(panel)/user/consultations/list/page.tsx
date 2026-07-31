@@ -37,7 +37,7 @@ export default async function UserConsultationsPage({
       <ConsultationsListHeader searchQuery={searchQuery} isDoctor={isDoctor} />
 
       {result.total === 0 ? (
-        <div className="border-neutral3 rounded-2xl border p-6 text-center text-gray-500 shadow-lg">
+        <div className="border-neutral3 dark:border-neutral10 dark:shadow-shade6 dark:bg-shade4 rounded-2xl border p-6 text-center text-gray-500 dark:text-gray-50 shadow-lg">
           مشاوره ای پیدا نشد.
         </div>
       ) : (

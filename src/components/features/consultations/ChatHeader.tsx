@@ -57,7 +57,7 @@ export default function ChatHeader({
           confirmText="بله"
           title="آیا از بستن مشاوره مطمئنید؟"
           disabled={isLoading}
-          className={`border-neutral9 max-xs:size-10 flex h-14 shrink-0 cursor-pointer items-center justify-center gap-x-2 rounded-full border bg-red-500/60 backdrop-blur-lg px-2 text-white transition-colors hover:bg-red-500 max-sm:size-14 ${isSidebarOpen ? "max-lg:size-14" : ""}`}
+          className={`border-neutral9 dark:border-neutral10 max-xs:size-10 flex h-14 shrink-0 cursor-pointer items-center justify-center gap-x-2 rounded-full border bg-red-500/60 backdrop-blur-lg px-2 text-white transition-colors hover:bg-red-500 max-sm:size-14 ${isSidebarOpen ? "max-lg:size-14" : ""}`}
         >
           <span
             className={`leading-tight max-sm:hidden ${isSidebarOpen ? "max-lg:hidden" : ""}`}
@@ -71,7 +71,7 @@ export default function ChatHeader({
       )}
 
       {/* display person details */}
-      <div className="border-neutral5 max-xs:p-0 maxsm:h-10 flex w-full items-center justify-between rounded-full border bg-white/40 backdrop-blur-lg p-1">
+      <div className="border-neutral5 dark:border-neutral10 max-xs:p-0 maxsm:h-10 flex w-full items-center justify-between rounded-full border bg-white/40 dark:bg-primary/10 backdrop-blur-lg p-1">
         <div className="max-xs:gap-2 max-xs:w-full flex items-center gap-4">
           <div className="max-xs:size-10 relative size-12 shrink-0 overflow-hidden rounded-full">
             <Image
@@ -83,14 +83,14 @@ export default function ChatHeader({
           </div>
           <div className="max-xs:flex max-xs:justify-between max-xs:items-center max-xs:w-full">
             <h2 className="font-medium">{displayName}</h2>
-            <p className="text-primary max-xs:ml-2 text-sm">
+            <p className="text-primary dark:text-primary-dark max-xs:ml-2 text-sm">
               {displayPersonRole}
             </p>
           </div>
         </div>
         {/* consultation status */}
         <div
-          className={`max-xs:hidden ml-2 rounded-full px-2 py-2 text-sm ${isChatActive ? "text-primary bg-green-100" : "bg-bg-error text-error"}`}
+          className={`max-xs:hidden ml-2 rounded-full px-2 py-2 text-sm ${isChatActive ? "text-primary bg-green-100 dark:bg-primary dark:text-green-100" : "bg-bg-error text-error dark:text-bg-error dark:bg-error"}`}
         >
           <span>{isChatActive ? "چت فعال" : "چت بسته"}</span>
         </div>
@@ -98,7 +98,7 @@ export default function ChatHeader({
       {/* back button */}
       <Link
         href="/user/consultations/list"
-        className="border-neutral5 max-xs:size-10 flex h-14 items-center justify-center gap-x-2 rounded-full border bg-gray-100/40 px-4 text-gray-600 transition-colors cursor-pointer hover:bg-gray-200/40 backdrop-blur-lg"
+        className="border-neutral5 max-xs:size-10 dark:border-neutral10 flex h-14 items-center justify-center gap-x-2 rounded-full border bg-gray-100/40 dark:bg-primary/10 dark:hover:bg-primary/20 px-4 text-gray-600 dark:text-gray-200 transition-colors cursor-pointer hover:bg-gray-200/40 backdrop-blur-lg"
       >
         <span
           className={`max-sm:hidden ${isSidebarOpen ? "max-lg:hidden" : ""}`}

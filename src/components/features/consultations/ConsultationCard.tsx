@@ -36,7 +36,7 @@ export default function ConsultationCard({
   return (
     <Link href={`/user/consultations/${consultation._id}`}>
       <div
-        className={`border-neutral5 hover:border-primary relative cursor-pointer overflow-hidden rounded-lg border p-4 pl-6 shadow-lg transition-all max-[400px]:pl-4 ${isClosedConsultation ? "hover:border-error!" : ""}`}
+        className={`border-neutral5 dark:border-neutral10 dark:shadow-shade6 hover:border-primary relative cursor-pointer overflow-hidden rounded-lg border p-4 pl-6 shadow-lg transition-all max-[400px]:pl-4 ${isClosedConsultation ? "hover:border-error!" : ""}`}
       >
         {isClosedConsultation && (
           <span className="bg-error absolute top-2 -left-5 z-10 w-20 -rotate-45 text-center font-medium text-white">
@@ -60,7 +60,7 @@ export default function ConsultationCard({
               <h3 className="font-medium max-[400px]:font-normal text-nowrap">
                 {personName}
               </h3>
-              <div className="text-neutral9 flex flex-wrap items-center justify-end gap-x-1 text-sm max-[400px]:text-xs">
+              <div className="text-neutral9 dark:text-text-dark flex flex-wrap items-center justify-end gap-x-1 text-sm max-[400px]:text-xs">
                 <span>
                    کد {toPersianCode(consultation.code) || ""}
                 </span>
@@ -71,12 +71,12 @@ export default function ConsultationCard({
             </div>
 
             <div className="relative mt-1 flex items-center justify-between">
-              <p className="text-primary line-clamp-1 flex-1 max-[400px]:text-sm">
+              <p className="text-primary dark:text-primary-dark line-clamp-1 flex-1 max-[400px]:text-sm">
                 {lastMsg?.text || consultation.title}
               </p>
 
               <div className="mr-2 flex shrink-0 items-center gap-1">
-                <span className="text-primary text-sm max-[400px]:text-xs">
+                <span className="text-primary dark:text-primary-dark text-sm max-[400px]:text-xs">
                   {lastMsg
                     ? new Date(lastMsg.createdAt).toLocaleTimeString("fa-IR", {
                         hour: "2-digit",
@@ -96,9 +96,9 @@ export default function ConsultationCard({
                     {toPersianNumber(consultation.unreadCount as number)}
                   </span>
                 )}
-                {showSeen && <IoCheckmarkDoneSharp className="text-primary" />}
+                {showSeen && <IoCheckmarkDoneSharp className="text-primary dark:text-primary-dark" />}
 
-                {showSent && <IoCheckmarkSharp className="text-primary" />}
+                {showSent && <IoCheckmarkSharp className="text-primary dark:text-primary-dark" />}
               </div>
             </div>
           </div>

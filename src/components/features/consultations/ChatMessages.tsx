@@ -75,8 +75,8 @@ useEffect(() => {
   if (initialMessages.length === 0) {
     return (
       <div className="flex flex-1 items-center justify-center overflow-y-auto">
-        <div className="border-neutral9 fixed top-45/100 rounded-2xl border bg-white p-10">
-          <p className="text-neutral11 text-center">
+        <div className="border-neutral9 dark:border-neutral10 fixed top-45/100 rounded-2xl border bg-white/40 dark:bg-primary/10 backdrop-blur-lg p-10">
+          <p className="text-neutral11 text-center dark:text-white">
             هنوز پیامی ارسال نشده؛
             <br />
             اولین پیام را شما ارسال کنید.
@@ -96,11 +96,11 @@ useEffect(() => {
           >
             <div
               className={`max-w-6/10 rounded-2xl px-4 py-3 ${
-                i % 2 === 0 ? "bg-neutral2" : "bg-[#E3F7EA]"
+                i % 2 === 0 ? "bg-neutral2 dark:bg-shade2" : "bg-[#E3F7EA] dark:bg-shade3"
               }`}
             >
-              <div className="h-4 w-48 animate-pulse rounded bg-gray-300" />
-              <div className="mt-2 h-3 w-32 animate-pulse rounded bg-gray-300" />
+              <div className="h-4 w-48 animate-pulse rounded bg-gray-300 dark:bg-primary" />
+              <div className="mt-2 h-3 w-32 animate-pulse rounded bg-gray-300 dark:bg-primary" />
             </div>
           </div>
         ))}
@@ -123,10 +123,10 @@ useEffect(() => {
             className={`rtl flex ${isMyMessage ? "justify-start" : "justify-end"}`}
           >
             <div
-              className={`text-neutral10 border-neutral9 max-w-6/10 rounded-2xl border px-4 py-2 max-lg:max-w-8/10 ${
+              className={` border-neutral9 dark:border-neutral10 max-w-6/10 rounded-2xl border px-4 py-2 max-lg:max-w-8/10 ${
                 isMyMessage
-                  ? "bg-neutral2 rounded-br-none"
-                  : "rounded-bl-none bg-[#E3F7EA]"
+                  ? "rounded-br-none bg-neutral2 text-neutral10 dark:text-neutral3 dark:bg-emerald-700 "
+                  : "rounded-bl-none bg-[#E3F7EA] text-neutral10 dark:text-neutral3 dark:bg-emerald-900 "
               }`}
             >
               {message.image && (
@@ -156,7 +156,7 @@ useEffect(() => {
               )}
 
               <div
-                className={`text-primary mt-1 flex items-center gap-1 text-xs font-medium ${isMyMessage ? "justify-start" : "justify-end"}`}
+                className={`text-primary dark:text-primary-dark mt-1 flex items-center gap-1 text-xs font-medium ${isMyMessage ? "justify-start" : "justify-end"}`}
               >
                 {isMyMessage && (
                   <>
