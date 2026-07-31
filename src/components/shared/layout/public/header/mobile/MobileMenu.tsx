@@ -3,12 +3,12 @@
 import ConfirmDialog from "@/components/shared/ui/ConfirmDialog";
 import NotificationBadge from "@/components/shared/ui/NotificationBadge";
 import {
-  useAuthActions,
-  useIsAdmin,
-  useIsAuthenticated,
-  useUserAvatar,
-  useUserFirstName,
-  useUserRole,
+    useAuthActions,
+    useIsAdmin,
+    useIsAuthenticated,
+    useUserAvatar,
+    useUserFirstName,
+    useUserRole,
 } from "@/features/auth/selectors/auth.selectors";
 import { useAllNotifications } from "@/features/notifications/hooks/useAllNotifications";
 import { DEFAULT_PROFILE_PIC, NAV_LINKS } from "@/lib/constants";
@@ -45,7 +45,7 @@ const MobileMenu = () => {
         <MdOutlineMenu className="size-5 sm:size-6 dark:text-primary-dark transition-colors" />
       </button>
       <div
-        className={`border-neutral3 fixed top-0 -right-70 z-40 h-dvh w-70 rounded-tl-xl rounded-bl-xl border bg-white p-4 shadow-lg transition-all duration-200 ${
+        className={`border-neutral3 dark:border-neutral10 fixed top-0 -right-70 z-40 h-dvh w-70 rounded-tl-xl rounded-bl-xl border bg-white p-4 shadow-lg dark:bg-shade4 dark:shadow-shade6 transition-all duration-200 ${
           isMenuOpen
             ? "visible -translate-x-70 opacity-100"
             : "invisible translate-x-70 opacity-0"
@@ -75,7 +75,7 @@ const MobileMenu = () => {
               <Link
                 href={`${isAdmin ? "/admin/dashboard" : "/user/profile"}`}
                 onClick={closeMenu}
-                className="text-neutral10 border-neutral3 hover:text-primary relative flex h-14 w-full cursor-pointer items-center rounded-lg border-b bg-white transition-colors"
+                className="text-neutral10 dark:text-text-dark dark:hover:text-primary-dark border-neutral3 dark:border-neutral10 dark:bg-shade4 hover:text-primary relative flex h-14 w-full cursor-pointer items-center  border-b bg-white transition-colors"
               >
                 {isAdmin ? (
                   <IoSettingsOutline className="size-5" />
@@ -100,7 +100,7 @@ const MobileMenu = () => {
             </div>
           )}
 
-          <div className="divide-neutral3 flex flex-col divide-y overflow-x-hidden overflow-y-auto">
+          <div className="divide-neutral3 dark:divide-neutral10 flex flex-col divide-y overflow-x-hidden overflow-y-auto">
             {NAV_LINKS.map((link) => (
               <MobileNavLink
                 key={link.href}
@@ -108,14 +108,14 @@ const MobileMenu = () => {
                 submenu={link.submenu}
                 menuOpen={isMenuOpen}
                 onLinkClick={closeMenu}
-                className="text-neutral10 flex h-14 items-center justify-between"
+                className="text-neutral10 dark:text-text-dark flex h-14 items-center justify-between"
               >
                 {link.text}
               </MobileNavLink>
             ))}
           </div>
 
-          <div className="bg-neutral2 mt-auto w-full rounded-lg">
+          <div className="bg-neutral2 dark:bg-error/20 mt-auto w-full rounded-lg">
             {isAuthenticated ? (
               <ConfirmDialog
                 onConfirm={handleLogout}

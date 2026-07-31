@@ -2,17 +2,17 @@
 import FormField from "@/components/shared/ui/FormField";
 import PrimaryButton from "@/components/shared/ui/PrimaryButton";
 import {
-  useCheckAuth,
-  useUserAddress,
-  useUserConsultationFee,
-  useUserEmail,
-  useUserFirstName,
-  useUserLastName,
-  useUserMobile,
-  useUserPostalCode,
-  useUserRole,
-  useUserSpecialties,
-  useUserYearsOfExperience,
+    useCheckAuth,
+    useUserAddress,
+    useUserConsultationFee,
+    useUserEmail,
+    useUserFirstName,
+    useUserLastName,
+    useUserMobile,
+    useUserPostalCode,
+    useUserRole,
+    useUserSpecialties,
+    useUserYearsOfExperience,
 } from "@/features/auth/selectors/auth.selectors";
 import { updateProfileAction } from "@/features/user/actions/updateProfile.actions";
 import { toPersianNumber } from "@/lib/utils/format";
@@ -72,7 +72,7 @@ export default function ProfileInfoForm() {
 
   if (role === "plant-doctor") {
     return (
-      <div className="border-neutral3 rounded-2xl border p-6 shadow-lg max-md:p-3.5">
+      <div className="border-neutral3 dark:border-neutral10 dark:shadow-shade6 rounded-2xl border p-6 shadow-lg max-md:p-3.5">
         <AvatarUpload />
 
         <form action={formAction} noValidate>
@@ -158,7 +158,7 @@ export default function ProfileInfoForm() {
   }
 
   return (
-    <div className="border-neutral3 rounded-2xl border p-6 shadow-lg max-md:p-3.5">
+    <div className="border-neutral3 dark:border-neutral10 dark:shadow-shade6 rounded-2xl border p-6 shadow-lg max-md:p-3.5">
       <AvatarUpload />
 
       <form action={formAction} noValidate>

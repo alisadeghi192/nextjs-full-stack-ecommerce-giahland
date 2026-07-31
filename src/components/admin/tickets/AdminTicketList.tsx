@@ -121,16 +121,16 @@ export default function AdminTicketList({ tickets }: AdminTicketListProps) {
         return (
           <div
             key={ticket._id}
-            className="border-neutral3 max-xs:p-2.5 relative rounded-2xl border p-3.5 shadow-lg"
+            className="border-neutral3 dark:border-neutral10 dark:shadow-shade6 max-xs:p-2.5 relative rounded-2xl border p-3.5 shadow-lg"
           >
             <div className="text-neutral9 mb-2 flex items-center justify-between text-sm">
               <div className="max-xs:gap-1 flex flex-wrap items-center gap-2">
-                <span className="text-primary font-medium max-sm:hidden">
+                <span className="text-primary dark:text-primary-dark font-medium max-sm:hidden">
                   {userLabel}:
                 </span>
-                <span>{userDisplayName}</span>
-                <span className="text-gray-400">|</span>
-                <span>{ticket.user.mobile}</span>
+                <span className="dark:text-text-dark">{userDisplayName}</span>
+                <span className="text-gray-400 dark:text-primary-dark">|</span>
+                <span className="dark:text-text-dark">{ticket.user.mobile}</span>
               </div>
 
               <ConfirmDialog
@@ -165,7 +165,7 @@ export default function AdminTicketList({ tickets }: AdminTicketListProps) {
               }`}
             >
               <div className="overflow-hidden">
-                <div className="border-primary rounded-xl border border-dashed bg-white p-4 shadow-sm">
+                <div className="border-primary dark:border-primary-dark rounded-xl border border-dashed bg-white dark:bg-shade5 p-4 shadow-sm">
                   <TextareaField
                     icon={<MdDriveFileRenameOutline size={20} />}
                     id={`admin-reply-${ticket._id}`}

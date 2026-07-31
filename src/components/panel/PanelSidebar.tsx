@@ -4,7 +4,7 @@ import {
   useAuthActions,
   useUserAvatar,
   useUserFirstName,
-  useUserMobile
+  useUserMobile,
 } from "@/features/auth/selectors/auth.selectors";
 import { useAllNotifications } from "@/features/notifications/hooks/useAllNotifications";
 import { DEFAULT_PROFILE_PIC } from "@/lib/constants";
@@ -47,9 +47,9 @@ export default function PanelSidebar({
   } = useAllNotifications();
 
   const displayName = firstName || "کاربر";
-  let persianMobile = ""
-  if(mobile){
-    persianMobile = toPersianCode(mobile)
+  let persianMobile = "";
+  if (mobile) {
+    persianMobile = toPersianCode(mobile);
   }
 
   useEffect(() => {
@@ -70,7 +70,9 @@ export default function PanelSidebar({
           {isPanelOpen && (
             <div className="flex flex-col gap-y-1 text-sm/6.25">
               <span className="font-medium">{displayName}</span>
-              <span className="text-neutral9">{persianMobile}</span>
+              <span className="text-neutral9 dark:text-text-dark">
+                {persianMobile}
+              </span>
             </div>
           )}
         </div>
@@ -117,10 +119,10 @@ export default function PanelSidebar({
               <Link
                 href={link.href}
                 onClick={onClose}
-                className={`text-neutral10 hover:text-primary flex ${isAdminPanel ? "h-11" : "h-14"} items-center gap-x-3 rounded-r-lg pr-4 transition-colors max-md:h-12 ${
+                className={`text-neutral10 dark:text-primary-dark flex ${isAdminPanel ? "h-11" : "h-14"} items-center gap-x-3 rounded-r-lg pr-4 transition-colors max-md:h-12 ${
                   isActive
-                    ? "text-primary border-primary border-l-4 bg-[#F3FDFA]"
-                    : ""
+                    ? "text-primary border-primary dark:bg-shade3 border-l-4 bg-[#F3FDFA]"
+                    : "hover:text-primary"
                 }`}
               >
                 {showBadge && badgeCount > 0 && (
@@ -164,7 +166,7 @@ export default function PanelSidebar({
         title="آیا مایل به خروج از حساب کاربری هستید؟"
         confirmText="بله، خروج"
         cancelText="خیر"
-        className="text-error bg-neutral2 border-error hover:bg-error/10 mt-auto flex h-14 w-full shrink-0 cursor-pointer items-center gap-x-3 rounded-r-lg border-l-4 px-4 transition-colors max-md:h-12"
+        className="text-error bg-neutral2 dark:bg-error/10 dark:hover:bg-error/20 border-error hover:bg-error/10 mt-auto flex h-14 w-full shrink-0 cursor-pointer items-center gap-x-3 rounded-r-lg border-l-4 px-4 transition-colors max-md:h-12"
       >
         <span className="flex w-6 shrink-0 items-center justify-center">
           <HiOutlineLogout className="size-6" />

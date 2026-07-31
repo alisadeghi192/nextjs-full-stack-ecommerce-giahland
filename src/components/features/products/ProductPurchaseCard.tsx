@@ -42,7 +42,7 @@ export default function ProductPurchaseCard({
   };
 
   return (
-    <div className="border-neutral7 dark:border-neutral10 dark:shadow-shade3 shadow-lg w-78 rounded-2xl border px-6 py-7.75 max-xl:mt-9 max-sm:mt-8 max-sm:w-full max-sm:self-center">
+    <div className="border-neutral7 dark:border-neutral10 dark:shadow-shade6 shadow-lg w-78 rounded-2xl border px-6 py-7.75 max-xl:mt-9 max-sm:mt-8 max-sm:w-full max-sm:self-center">
       <div className="space-y-2">
         <div className="bg-neutral3 dark:bg-shade4 transition-colors flex items-center gap-x-3 rounded-xl p-3">
           <MdOutlineChangeCircle className="text-shade1 dark:text-primary-dark size-7.5" />

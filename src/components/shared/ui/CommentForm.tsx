@@ -3,10 +3,10 @@
 import FormField from "@/components/shared/ui/FormField";
 import TextareaField from "@/components/shared/ui/TextareaField";
 import {
-  useIsAuthenticated,
-  useUserEmail,
-  useUserFirstName,
-  useUserLastName,
+    useIsAuthenticated,
+    useUserEmail,
+    useUserFirstName,
+    useUserLastName,
 } from "@/features/auth/selectors/auth.selectors";
 import { createCommentAction } from "@/features/comments/actions/createComment.actions";
 import { useActionState, useEffect } from "react";
@@ -51,7 +51,7 @@ export default function CommentForm({
   return (
     <div
       id="comments"
-      className="border-neutral3 dark:border-neutral10 dark:shadow-shade3 shadow-xl mt-6 mb-4 flex scroll-mt-25.5 flex-col space-y-4 rounded-xl border p-6 max-md:scroll-mt-35 max-sm:scroll-mt-35"
+      className="border-neutral3 dark:border-neutral10 dark:shadow-shade6 shadow-xl mt-6 mb-4 flex scroll-mt-25.5 flex-col space-y-4 rounded-xl border p-6 max-md:scroll-mt-35 max-sm:scroll-mt-35"
     >
       <h3 className="font-bold">دیدگاه خود را ثبت کنید.</h3>
       <form className="space-y-4" noValidate action={formAction}>

@@ -30,24 +30,24 @@ export default function TicketForm() {
     fileInputRef.current?.click();
   };
 
-const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  const file = e.target.files?.[0];
-  if (!file) return;
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
 
-  if (file.size > 5 * 1024 * 1024) {
-    toast.error("حجم فایل نباید بیشتر از ۵ مگابایت باشد.");
-    if (fileInputRef.current) fileInputRef.current.value = "";
-    return;
-  }
+    if (file.size > 5 * 1024 * 1024) {
+      toast.error("حجم فایل نباید بیشتر از ۵ مگابایت باشد.");
+      if (fileInputRef.current) fileInputRef.current.value = "";
+      return;
+    }
 
-  if (!file.type.startsWith("image/")) {
-    toast.error("فایل انتخابی یک تصویر معتبر نیست.");
-    if (fileInputRef.current) fileInputRef.current.value = "";
-    return;
-  }
+    if (!file.type.startsWith("image/")) {
+      toast.error("فایل انتخابی یک تصویر معتبر نیست.");
+      if (fileInputRef.current) fileInputRef.current.value = "";
+      return;
+    }
 
-  setImagePreview(URL.createObjectURL(file));
-};
+    setImagePreview(URL.createObjectURL(file));
+  };
 
   const removeImage = () => {
     setImagePreview(null);
@@ -56,7 +56,7 @@ const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     }
   };
   return (
-    <div className="border-neutral3 rounded-2xl border p-6 shadow-lg max-md:p-3.5">
+    <div className="border-neutral3 dark:border-neutral10 dark:shadow-shade6 rounded-2xl border p-6 shadow-lg max-md:p-3.5">
       <form
         ref={formRef}
         action={formAction}
@@ -73,8 +73,8 @@ const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
               type="text"
             />
 
-            <div className="group border-neutral6 focus-within:border-primary relative flex h-14 items-center gap-x-2 rounded-xl border px-3.75 transition-colors duration-200 max-sm:h-12">
-              <span className="text-neutral9 group-focus-within:text-primary relative z-10 size-5.5 transition-colors duration-200">
+            <div className="group border-neutral6 dark:border-neutral5 focus-within:border-primary relative flex h-14 items-center gap-x-2 rounded-xl border px-3.75 transition-colors duration-200 max-sm:h-12">
+              <span className="text-neutral9 dark:text-neutral5 group-focus-within:text-primary relative z-10 size-5.5 transition-colors duration-200">
                 <MdDriveFileRenameOutline size={20} />
               </span>
               <select
@@ -82,22 +82,26 @@ const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
                 name="department"
                 defaultValue=""
                 id="department"
-                className="peer text-neutral11 invalid:text-neutral9 flex-1 cursor-pointer appearance-none border-0 bg-transparent outline-0"
+                className="peer text-neutral11 dark:text-neutral5 invalid:text-neutral9 dark:invalid:text-neutral8 flex-1 cursor-pointer appearance-none border-0 bg-transparent outline-0"
               >
-                <option value="" disabled className="text-neutral9">
+                <option
+                  value=""
+                  disabled
+                  className="text-neutral9 dark:text-neutral5 dark:bg-shade2"
+                >
                   دپارتمان مورد نظر
                 </option>
                 {TICKET_DEPARTMENTS.map((department) => (
                   <option
                     key={department.value}
                     value={department.value}
-                    className="text-neutral11 bg-white"
+                    className="text-neutral11 dark:bg-shade3 dark:text-text-dark bg-white"
                   >
                     {department.label}
                   </option>
                 ))}
               </select>
-              <MdKeyboardArrowDown className="text-primary pointer-events-none absolute top-1/2 left-4 size-6 -translate-y-1/2 transition-colors duration-200" />
+              <MdKeyboardArrowDown className="text-primary dark:text-primary-dark pointer-events-none absolute top-1/2 left-4 size-6 -translate-y-1/2 transition-colors duration-200" />
             </div>
 
             <TextareaField
@@ -108,7 +112,7 @@ const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
               rows={2}
             />
             {imagePreview && (
-              <div className=" rounded-lg border bg-white p-1 w-fit lg:hidden -my-1.5">
+              <div className="dark:border-neutral10 dark:bg-shade3 -my-1.5 w-fit rounded-lg border bg-white p-1 lg:hidden">
                 <img
                   src={imagePreview}
                   alt="preview"
@@ -116,7 +120,7 @@ const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
                 />
                 <button
                   onClick={removeImage}
-                  className="border-error hover:bg-bg-error mt-1 block w-full cursor-pointer rounded-lg border text-xs text-red-500"
+                  className="border-error hover:bg-bg-error dark:bg-error dark:hover:text-error mt-1 block w-full cursor-pointer rounded-lg border text-xs text-red-500 dark:text-white"
                 >
                   حذف
                 </button>
@@ -138,12 +142,12 @@ const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
               type="button"
               onClick={handleFileClick}
               disabled={isPending}
-              className="border-neutral4 text-primary hover:border-primary relative flex h-12 w-14 shrink-0 cursor-pointer items-center justify-center rounded-xl border transition-colors disabled:opacity-50"
+              className="border-neutral4 dark:border-neutral5 text-primary dark:text-primary-dark dark:hover:border-primary-dark hover:border-primary relative flex h-12 w-14 shrink-0 cursor-pointer items-center justify-center rounded-xl border transition-colors disabled:opacity-50"
             >
               <ImAttachment className="size-6" />
             </button>
             {imagePreview && (
-              <div className="absolute right-0 bottom-13.75 rounded-lg border bg-white p-1 max-lg:hidden">
+              <div className="dark:border-neutral10 dark:bg-shade3 absolute right-0 bottom-13.75 rounded-lg border bg-white p-1 max-lg:hidden">
                 <img
                   src={imagePreview}
                   alt="preview"
@@ -151,7 +155,7 @@ const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
                 />
                 <button
                   onClick={removeImage}
-                  className="border-error hover:bg-bg-error mt-1 block w-full cursor-pointer rounded-lg border text-xs text-red-500"
+                  className="border-error hover:bg-bg-error dark:bg-error dark:hover:text-error mt-1 block w-full cursor-pointer rounded-lg border text-xs text-red-500 dark:text-white"
                 >
                   حذف
                 </button>

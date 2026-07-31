@@ -23,9 +23,9 @@ const PasswordField = forwardRef<HTMLInputElement, PasswordFieldProps>(
     const hasError = !!error;
 
     return (
-      <div >
+      <div>
         <div
-          className={`group relative flex h-14  items-center gap-x-2 rounded-xl border px-3.75 transition-colors duration-200 max-sm:h-12 ${hasError ? "border-error focus-within:border-error" : "border-neutral6 dark:border-neutral5 focus-within:border-primary dark:focus-within:border-primary-dark"} `}
+          className={`group relative flex h-14 items-center gap-x-2 rounded-xl border px-3.75 transition-colors duration-200 max-sm:h-12 ${hasError ? "border-error focus-within:border-error" : "border-neutral6 dark:border-neutral5 focus-within:border-primary dark:focus-within:border-primary-dark"} `}
         >
           <MdOutlineKey
             className={`relative z-10 size-5.5 transition-colors duration-200 ${hasError ? "text-error group-focus-within:text-error" : "text-neutral9 dark:text-neutral5 group-focus-within:text-primary dark:group-focus-within:text-primary-dark"}`}
@@ -45,7 +45,11 @@ const PasswordField = forwardRef<HTMLInputElement, PasswordFieldProps>(
 
           <label
             htmlFor={id}
-            className={`absolute right-10.25 rounded-2xl bg-white dark:bg-shade5 px-1 transition-all duration-300 peer-focus:right-4 peer-focus:-translate-y-7 peer-[:not(:placeholder-shown)]:right-4 peer-[:not(:placeholder-shown)]:-translate-y-7 max-sm:peer-focus:text-sm max-sm:peer-[:not(:placeholder-shown)]:text-sm ${hasError ? "text-error peer-focus:text-error peer-[:not(:placeholder-shown)]:text-error" : "text-neutral9 dark:text-neutral5 peer-focus:text-primary dark:peer-focus:text-primary-dark peer-[:not(:placeholder-shown)]:text-primary dark:peer-[:not(:placeholder-shown)]:text-primary-dark"}`}
+            className={`dark:bg-shade5 absolute right-10.25 rounded-2xl bg-white px-1 transition-all duration-300 peer-focus:right-4 peer-focus:-translate-y-7 peer-[:not(:placeholder-shown)]:right-4 peer-[:not(:placeholder-shown)]:-translate-y-7 max-sm:peer-focus:text-sm max-sm:peer-[:not(:placeholder-shown)]:text-sm ${hasError ? "text-error peer-focus:text-error peer-[:not(:placeholder-shown)]:text-error" : "text-neutral9 dark:text-neutral5 peer-focus:text-primary dark:peer-focus:text-primary-dark peer-[:not(:placeholder-shown)]:text-primary dark:peer-[:not(:placeholder-shown)]:text-primary-dark"}`}
+            style={{
+              transition:
+                "translate 300ms ease ,right 300ms, background-color 150ms cubic-bezier(0.4, 0, 0.2, 1)",
+            }}
           >
             {label}
           </label>
@@ -53,7 +57,7 @@ const PasswordField = forwardRef<HTMLInputElement, PasswordFieldProps>(
           <button
             type="button"
             onClick={() => setShowPassword(!showPassword)}
-            className={`relative z-10 transition-colors cursor-pointer duration-200 ${hasError ? "text-error group-focus-within:text-error" : "text-neutral9 dark:text-neutral-50 group-focus-within:text-primary dark:group-focus-within:text-primary-dark"}`}
+            className={`relative z-10 cursor-pointer transition-colors duration-200 ${hasError ? "text-error group-focus-within:text-error" : "text-neutral9 group-focus-within:text-primary dark:group-focus-within:text-primary-dark dark:text-neutral-50"}`}
             tabIndex={-1}
           >
             {showPassword ? (
@@ -63,7 +67,7 @@ const PasswordField = forwardRef<HTMLInputElement, PasswordFieldProps>(
             )}
           </button>
         </div>
-        {error && <p className="relative top-1 text-error text-sm">{error}</p>}
+        {error && <p className="text-error relative top-1 text-sm">{error}</p>}
       </div>
     );
   },

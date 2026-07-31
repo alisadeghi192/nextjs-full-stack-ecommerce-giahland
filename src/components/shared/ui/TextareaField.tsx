@@ -24,8 +24,11 @@ export default function TextareaField({
   rows = 4,
 }: TextareaFieldProps) {
   return (
-    <div className="border-neutral6  dark:border-neutral5 focus-within:border-primary dark:focus-within:border-primary-dark group relative flex min-h-14 gap-x-2 rounded-xl border px-3.75 py-4 transition-colors duration-200">
-      <span className="text-neutral9 dark:text-neutral5 group-focus-within:text-primary dark:group-focus-within:text-primary-dark relative z-10 size-5.5 transition-colors duration-200">
+    <div
+      className="border-neutral6 dark:border-neutral5 focus-within:border-primary dark:focus-within:border-primary-dark group relative flex min-h-14 gap-x-2 rounded-xl border px-3.75 py-4 transition-colors"
+
+    >
+      <span className="text-neutral9 dark:text-neutral5 group-focus-within:text-primary dark:group-focus-within:text-primary-dark relative z-10 size-5.5 transition-colors">
         {icon}
       </span>
       <textarea
@@ -40,7 +43,11 @@ export default function TextareaField({
       />
       <label
         htmlFor={name}
-        className="text-neutral9 dark:text-neutral5 peer-focus:text-primary dark:peer-focus:text-primary-dark peer-[:not(:placeholder-shown)]:text-primary dark:peer-[:not(:placeholder-shown)]:text-primary-dark dark:bg-shade5 absolute right-10.25 rounded-2xl bg-white px-1 transition-all duration-300 peer-focus:right-4 peer-focus:-translate-y-7 peer-[:not(:placeholder-shown)]:right-4 peer-[:not(:placeholder-shown)]:-translate-y-7 max-sm:peer-focus:text-sm max-sm:peer-[:not(:placeholder-shown)]:text-sm"
+        className="text-neutral9 dark:text-neutral5 peer-focus:text-primary dark:peer-focus:text-primary-dark peer-[:not(:placeholder-shown)]:text-primary dark:peer-[:not(:placeholder-shown)]:text-primary-dark dark:bg-shade5 absolute right-10.25 rounded-2xl bg-white px-1  peer-focus:right-4 peer-focus:-translate-y-7 peer-[:not(:placeholder-shown)]:right-4 peer-[:not(:placeholder-shown)]:-translate-y-7 max-sm:peer-focus:text-sm max-sm:peer-[:not(:placeholder-shown)]:text-sm"
+        style={{
+          transition:
+            "translate 300ms ease ,right 300ms, background-color 150ms cubic-bezier(0.4, 0, 0.2, 1)",
+        }}
       >
         {label}
       </label>

@@ -40,36 +40,33 @@ export default function TicketItem({
 
   return (
     <>
-      <div className="group border-neutral4 flex w-full flex-col rounded-xl border bg-white p-4 shadow-lg max-md:p-2">
-        <div className="flex items-center justify-between">
+      <div className="group border-neutral4 dark:border-neutral10 dark:bg-shade5 dark:shadow-shade6 flex w-full flex-col rounded-xl border bg-white p-4 shadow-lg transition-colors max-md:p-2">
+        <div
+          className="flex cursor-pointer items-center justify-between"
+          onClick={handleToggle}
+        >
           <div className="flex flex-wrap items-center gap-4">
-            <span
-              className="group-hover:text-primary cursor-pointer font-bold transition-colors"
-              onClick={handleToggle}
-            >
+            <span className="group-hover:text-primary dark:group-hover:text-primary-dark cursor-pointer font-bold transition-colors">
               {ticket.subject}
             </span>
-            <span className="bg-primary inline-block h-5 w-0.5 rounded-xs" />
+            <span className="bg-primary dark:bg-primary-dark inline-block h-5 w-0.5 rounded-xs" />
             {toPersianDate(ticket.createdAt)}
             <span
-              className={`rounded-full px-2 py-0.5 text-xs ${
+              className={`rounded-full px-2 py-0.5 text-xs transition-colors ${
                 ticket.status === "pending"
-                  ? "text-error bg-red-100"
-                  : "bg-green-100 text-green-600"
+                  ? "text-error dark:bg-error bg-red-100 dark:text-red-100"
+                  : "bg-green-100 text-green-600 dark:bg-green-600 dark:text-green-100"
               }`}
             >
               {ticket.status === "pending" ? "بی پاسخ" : "بسته شده"}
             </span>
           </div>
-          <div
-            className="flex cursor-pointer items-center gap-x-2"
-            onClick={handleToggle}
-          >
-            <span className="text-shade2 hover:text-primary font-medium transition-colors max-md:hidden">
+          <div className="flex cursor-pointer items-center gap-x-2">
+            <span className="text-shade2 dark:text-primary-dark group-hover:text-primary font-medium transition-colors max-md:hidden">
               مشاهده جزئیات
             </span>
             <MdKeyboardArrowDown
-              className={`group-hover:text-primary size-6 shrink-0 transition-transform duration-200 ${
+              className={`group-hover:text-primary dark:group-hover:text-primary-dark size-6 shrink-0 transition-transform duration-200 ${
                 isOpen && "rotate-180"
               }`}
             />
@@ -101,37 +98,37 @@ export default function TicketItem({
                     />
                   </div>
                 )}
-                <div className="custom-scroll border-primary bg-neutral2 flex h-30 w-full flex-col overflow-y-auto rounded-lg border-r-4 px-3 py-4">
+                <div className="custom-scroll border-primary bg-neutral2 dark:bg-shade3 flex h-30 w-full flex-col overflow-y-auto rounded-lg border-r-4 px-3 py-4 transition-colors">
                   <div className="flex items-center justify-between max-md:items-start">
                     <div className="mb-2 flex items-center gap-x-2 max-md:flex-col max-md:items-start">
                       <span className="font-medium max-md:font-normal">
                         <span className="max-md:hidden">موضوع:</span>{" "}
                         {ticket.subject}
                       </span>
-                      <span className="bg-primary inline-block h-5 w-0.5 rounded-xs max-md:hidden" />
+                      <span className="bg-primary dark:bg-primary-dark inline-block h-5 w-0.5 rounded-xs max-md:hidden" />
                       <span className="font-medium max-md:mt-1 max-md:font-normal">
                         <span className="max-md:hidden">دپارتمان:</span>{" "}
                         {getDepartmentLabel(ticket.department)}
                       </span>
                     </div>
-                    <div className="ltr text-neutral11 max-md:text-sm">
+                    <div className="ltr text-neutral11 dark:text-text-dark max-md:text-sm">
                       {toPersianDateAndTime(ticket.createdAt)}
                     </div>
                   </div>
-                  <p className="text-neutral10 whitespace-pre-wrap max-md:text-sm">
+                  <p className="text-neutral10 dark:text-text-dark transition-colors whitespace-pre-wrap max-md:text-sm">
                     {ticket.message}
                   </p>
                 </div>
               </div>
               {ticket.adminReply && (
-                <div className="border-primary rounded-lg border-r-4 bg-[#E3F7EA] p-4">
+                <div className="border-primary transition-colors rounded-lg border-r-4 bg-[#E3F7EA] p-4 dark:bg-yellow-300/10">
                   <div className="flex items-center justify-between">
                     <div className="mb-1 font-medium">پاسخ ادمین:</div>
-                    <div className="ltr text-neutral11 max-md:text-sm">
+                    <div className="ltr text-neutral11 transition-colors dark:text-text-dark max-md:text-sm">
                       {toPersianDateAndTime(ticket.adminReply.createdAt)}
                     </div>
                   </div>
-                  <p className="mt-2 whitespace-pre-wrap text-gray-700 max-md:text-sm">
+                  <p className="dark:text-text-dark mt-2 whitespace-pre-wrap text-gray-700 max-md:text-sm">
                     {ticket.adminReply.message}
                   </p>
                 </div>

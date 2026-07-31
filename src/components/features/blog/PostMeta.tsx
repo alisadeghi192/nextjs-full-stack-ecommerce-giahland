@@ -18,7 +18,7 @@ export default function PostMeta({
   publishedAt,
 }: PostMetaProps) {
   return (
-    <div className="border-neutral3 dark:border-neutral10 dark:shadow-shade3 mt-7 rounded-xl border p-3 shadow-lg max-sm:mt-4">
+    <div className="border-neutral3 dark:border-neutral10 dark:shadow-shade6 mt-7 rounded-xl border p-3 shadow-lg max-sm:mt-4">
       <Image
         alt={title}
         src={mainImage}

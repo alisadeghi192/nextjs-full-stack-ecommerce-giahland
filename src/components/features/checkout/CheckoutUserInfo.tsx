@@ -6,17 +6,17 @@ import { useForm } from "react-hook-form";
 import { BsSignpost } from "react-icons/bs";
 import { GoHome } from "react-icons/go";
 import {
-  MdDriveFileRenameOutline,
-  MdKeyboardArrowDown,
-  MdOutlineMobileFriendly,
+    MdDriveFileRenameOutline,
+    MdKeyboardArrowDown,
+    MdOutlineMobileFriendly,
 } from "react-icons/md";
 
 import FormField from "@/components/shared/ui/FormField";
 import PrimaryButton from "@/components/shared/ui/PrimaryButton";
 import {
-  UserInfoCourierSchema,
-  UserInfoFormData,
-  UserInfoPickupSchema,
+    UserInfoCourierSchema,
+    UserInfoFormData,
+    UserInfoPickupSchema,
 } from "@/features/order/schemas/order.schema";
 
 interface CheckoutUserInfoProps {
@@ -86,7 +86,7 @@ export default function CheckoutUserInfo({
   const isCourier = deliveryMethod === "courier";
 
   return (
-    <div className="border-neutral4 dark:border-neutral10 dark:shadow-shade3 rounded-xl border p-4 shadow-lg">
+    <div className="border-neutral4 dark:border-neutral10 dark:shadow-shade6 rounded-xl border p-4 shadow-lg">
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}

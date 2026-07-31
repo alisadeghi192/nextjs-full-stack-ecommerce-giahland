@@ -23,7 +23,7 @@ export default function ChangePasswordForm() {
   }, [state]);
 
   return (
-    <div className="border-neutral3 rounded-2xl border p-6 shadow-lg max-md:p-3.5">
+    <div className="border-neutral3 dark:border-neutral10 dark:shadow-shade6 rounded-2xl border p-6 shadow-lg max-md:p-3.5">
       <form action={formAction} noValidate>
         <div className="grid grid-cols-2 gap-4 max-lg:grid-cols-1 max-md:gap-3.5 lg:[&>*:first-child]:col-span-2">
           <PasswordField

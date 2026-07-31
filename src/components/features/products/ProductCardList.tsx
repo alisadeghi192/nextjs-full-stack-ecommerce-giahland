@@ -67,7 +67,7 @@ export default function ProductCardList({
   );
 
   return (
-    <div className="border-neutral5 dark:bg-shade4 dark:border-shade3 dark:shadow-shade3 transition-colors group relative overflow-hidden rounded-lg border shadow-lg">
+    <div className="border-neutral5 dark:bg-shade4 dark:border-shade3 dark:shadow-shade6 transition-colors group relative overflow-hidden rounded-lg border shadow-lg">
       {isOutOfStock ? (
         <div className="cursor-default">{Content()}</div>
       ) : (

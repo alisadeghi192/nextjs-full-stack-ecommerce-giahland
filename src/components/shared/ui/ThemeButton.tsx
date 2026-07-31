@@ -9,8 +9,8 @@ export default function ThemeButton() {
 
   if (isLoading) {
     return (
-      <div className="border-primary group flex size-8 animate-pulse cursor-wait items-center justify-center rounded-lg border bg-neutral3 dark:bg-shade3 sm:size-10 sm:rounded-xl lg:size-12">
-        <div className="bg-neutral5 size-5 dark:bg-shade4 rounded-full"></div>
+      <div className="border-primary group bg-neutral3 dark:bg-shade3 flex size-8 animate-pulse cursor-wait items-center justify-center rounded-lg border sm:size-10 sm:rounded-xl lg:size-12">
+        <div className="bg-neutral5 dark:bg-shade4 size-5 rounded-full"></div>
       </div>
     );
   }
@@ -21,7 +21,11 @@ export default function ThemeButton() {
       className={`border-primary dark:border-primary-dark hover:border-shade2 dark:hover:border-primary group flex size-8 cursor-pointer items-center justify-center rounded-lg border transition-colors sm:size-10 sm:rounded-xl lg:size-12`}
     >
       <span className="text-primary dark:text-primary-dark dark:group-hover:text-primary group-hover:text-shade2 transition-colors">
-        {theme === "dark" ? <MdOutlineLightMode size={24} /> : <MdOutlineDarkMode size={24} />}
+        {theme === "dark" ? (
+          <MdOutlineLightMode className="size-6 text-amber-500 group-hover:text-amber-600" />
+        ) : (
+          <MdOutlineDarkMode className="size-6 text-blue-800 group-hover:text-blue-900" />
+        )}
       </span>
     </button>
   );

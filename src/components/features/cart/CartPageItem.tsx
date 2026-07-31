@@ -2,9 +2,9 @@
 
 import { useCartStoreActions } from "@/features/cart/selectors/cart.selectors";
 import {
-  toPersianNumber,
-  toPersianPrice,
-  toStyledSlug
+    toPersianNumber,
+    toPersianPrice,
+    toStyledSlug
 } from "@/lib/utils/format";
 import { getDiscountedPrice } from "@/lib/utils/price";
 import Image from "next/image";
@@ -38,7 +38,7 @@ export default function CartPageItem({ item }: CartPageItemProps) {
 
 
   return (
-    <div className="border-neutral3 dark:border-neutral10 dark:shadow-shade3 flex gap-x-4 rounded-xl border p-4 shadow-lg">
+    <div className="border-neutral3 dark:border-neutral10 dark:shadow-shade6 flex gap-x-4 rounded-xl border p-4 shadow-lg">
       <div className="relative size-25 shrink-0 overflow-hidden rounded-lg">
         <Image
           src={product.image}

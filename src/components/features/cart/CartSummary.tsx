@@ -9,7 +9,7 @@ interface CartSummaryProps {
 
 export default function CartSummary({ totalItems, totalPrice }: CartSummaryProps) {
   return (
-    <div className="border-neutral3 dark:border-neutral10 dark:shadow-shade3 rounded-xl border p-4 shadow-lg">
+    <div className="border-neutral3 dark:border-neutral10 dark:shadow-shade6 rounded-xl border p-4 shadow-lg">
       <h3 className="mb-4 text-lg font-bold max-md:text-base">خلاصه سبد خرید</h3>
 
       <div className="space-y-3">

@@ -52,7 +52,7 @@ export default function PaymentSuccess({
   };
 
   return (
-    <div className="border-neutral3 dark:border-neutral10 dark:shadow-shade3 w-full max-w-md rounded-2xl border bg-white dark:bg-shade4 p-8 text-center shadow-xl">
+    <div className="border-neutral3 dark:border-neutral10 dark:shadow-shade6 w-full max-w-md rounded-2xl border bg-white dark:bg-shade4 p-8 text-center shadow-xl">
       <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-green-100 dark:bg-shade3">
         <svg
           className="h-10 w-10 text-green-600 dark:text-primary-dark"

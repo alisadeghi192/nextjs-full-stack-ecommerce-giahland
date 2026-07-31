@@ -4,8 +4,8 @@ import PriceSection from "@/components/features/products/PriceSection";
 import PrimaryButton from "@/components/shared/ui/PrimaryButton";
 import { useIsAuthenticated } from "@/features/auth/selectors/auth.selectors";
 import {
-  useCartStoreActions,
-  useCartSummary,
+    useCartStoreActions,
+    useCartSummary,
 } from "@/features/cart/selectors/cart.selectors";
 import { toPersianNumber } from "@/lib/utils/format";
 import Image from "next/image";
@@ -58,7 +58,7 @@ export default function CartModal({ onClose }: CartModalProps) {
   };
 
   return (
-    <div className="border-neutral3 dark:border-primary transition-colors dark:shadow-shade3 w-115 rounded-xl border bg-white dark:bg-shade4  p-3 pr-1.5 shadow-lg max-md:w-full">
+    <div className="border-neutral3 dark:border-primary transition-colors dark:shadow-shade6 w-115 rounded-xl border bg-white dark:bg-shade4  p-3 pr-1.5 shadow-lg max-md:w-full">
       <div className="mr-1.5 mb-2 flex items-center justify-between">
         <div className="flex gap-x-1 leading-7.25 font-medium">
           <span>سبد خرید</span>

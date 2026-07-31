@@ -154,7 +154,7 @@ export default function AuthButtons() {
             title="آیا مایل به خروج از حساب کاربری هستید؟"
             confirmText="بله، خروج"
             cancelText="خیر"
-            className="text-error dark:text-red-500 hover:bg-bg-error flex h-14 w-full cursor-pointer items-center gap-x-3 rounded-lg bg-white  px-4 transition-colors"
+            className="text-error dark:text-red-500 hover:bg-bg-error dark:hover:bg-error/50 flex h-14 w-full cursor-pointer items-center gap-x-3 rounded-lg bg-white dark:bg-error/20 px-4 transition-colors"
           >
             <HiOutlineLogout className="size-6" />
             <span className="font-medium text-nowrap">خروج از حساب کاربری</span>

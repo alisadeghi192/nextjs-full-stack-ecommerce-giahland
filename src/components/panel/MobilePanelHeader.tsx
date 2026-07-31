@@ -1,13 +1,13 @@
 "use client";
 import { Logo } from "@/components/shared/layout/public/header";
-import IconButton from "@/components/shared/ui/IconButton";
-import {
-  useUserAvatar,
-} from "@/features/auth/selectors/auth.selectors";
+import { useUserAvatar } from "@/features/auth/selectors/auth.selectors";
 import { DEFAULT_PROFILE_PIC } from "@/lib/constants";
 import Image from "next/image";
-import { MdOutlineDarkMode } from "react-icons/md";
-import { TbLayoutSidebarLeftExpandFilled, TbLayoutSidebarRightExpandFilled } from "react-icons/tb";
+import {
+  TbLayoutSidebarLeftExpandFilled,
+  TbLayoutSidebarRightExpandFilled,
+} from "react-icons/tb";
+import ThemeButton from "../shared/ui/ThemeButton";
 
 interface MobilePanelHeaderProps {
   isSidebarOpen: boolean;
@@ -21,11 +21,11 @@ export default function MobilePanelHeader({
   const userAvatar = useUserAvatar();
 
   return (
-    <nav className="border-neutral3 flex h-14 items-center border-b bg-white md:hidden">
+    <nav className="border-neutral3 dark:bg-shade5 dark:border-neutral10 flex h-14 items-center border-b bg-white md:hidden">
       <div className="container flex w-full items-center justify-between">
         <div className="flex w-full items-center gap-x-3">
           <div
-            className="text-primary hover:text-shade2 cursor-pointer"
+            className="text-primary hover:text-shade2 dark:text-primary-dark dark:hover:text-primary cursor-pointer"
             onClick={toggleSidebar}
           >
             {isSidebarOpen ? (
@@ -37,7 +37,7 @@ export default function MobilePanelHeader({
           <Logo />
         </div>
         <div className="flex shrink-0 items-center gap-x-2">
-          <IconButton icon={<MdOutlineDarkMode size={20} />} />
+          <ThemeButton/>
           <Image
             src={userAvatar || DEFAULT_PROFILE_PIC}
             alt="user profile"

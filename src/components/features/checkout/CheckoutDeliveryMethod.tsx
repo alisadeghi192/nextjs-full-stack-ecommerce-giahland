@@ -31,7 +31,7 @@ export default function CheckoutDeliveryMethod({
   };
 
   return (
-    <div className="border-neutral3 dark:border-neutral10 dark:shadow-shade3 rounded-xl border p-4 shadow-lg">
+    <div className="border-neutral3 dark:border-neutral10 dark:shadow-shade6 rounded-xl border p-4 shadow-lg">
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}

@@ -19,7 +19,7 @@ export default function CheckoutItems({
   finalTotal,
 }: CheckoutItemsProps) {
   return (
-    <div className="border-neutral3 dark:border-neutral10 dark:shadow-shade3 rounded-xl border p-4 shadow-lg">
+    <div className="border-neutral3 dark:border-neutral10 dark:shadow-shade6 rounded-xl border p-4 shadow-lg">
       <div className="mb-3 flex items-center justify-between">
         <span className="text-lg font-bold max-md:text-base">سبد خرید</span>
         <span className="text-neutral8 dark:text-text-dark text-sm">

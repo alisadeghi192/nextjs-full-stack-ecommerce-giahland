@@ -4,10 +4,10 @@ import PrimaryButton from "@/components/shared/ui/PrimaryButton";
 import { toPersianCode, toPersianPrice } from "@/lib/utils/format";
 import { useState } from "react";
 import {
-  MdArrowBack,
-  MdCheckCircle,
-  MdPayment,
-  MdSecurity,
+    MdArrowBack,
+    MdCheckCircle,
+    MdPayment,
+    MdSecurity,
 } from "react-icons/md";
 
 interface PaymentCardProps {
@@ -46,7 +46,7 @@ export default function PaymentCard({
 
   return (
     <div className="flex items-center justify-center">
-      <div className="border-neutral3 dark:border-neutral10 dark:shadow-shade3 dark:bg-shade4 relative w-full max-w-md overflow-hidden rounded-2xl border bg-white shadow-xl transition-all duration-300 hover:shadow-2xl">
+      <div className="border-neutral3 dark:border-neutral10 dark:shadow-shade6 dark:bg-shade4 relative w-full max-w-md overflow-hidden rounded-2xl border bg-white shadow-xl transition-all duration-300 hover:shadow-2xl">
         <div className="bg-primary h-2 w-full"></div>
 
         <button

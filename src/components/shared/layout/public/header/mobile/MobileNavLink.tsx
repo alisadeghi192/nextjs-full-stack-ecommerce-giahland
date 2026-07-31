@@ -1,13 +1,13 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useEffect } from "react";
-import { MdKeyboardArrowDown } from "react-icons/md";
 import {
   useOpenSubmenu,
   useSetOpenSubmenu,
 } from "@/stores/selectors/ui.selectors";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect } from "react";
+import { MdKeyboardArrowDown } from "react-icons/md";
 
 interface SubMenuItem {
   href: string;
@@ -88,7 +88,7 @@ const MobileNavLink = ({
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-neutral10 px-3 py-2 text-sm/6.25"
+                className="text-neutral10 dark:text-text-dark px-3 py-2 text-sm/6.25"
                 onClick={handleClick}
               >
                 {item.text}

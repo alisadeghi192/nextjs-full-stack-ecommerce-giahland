@@ -64,7 +64,7 @@ const ScrollToTop = () => {
 
   return (
     <button
-      className={`${isScrolled ? "opacity-100!" : "hidden"} text-primary  fixed bottom-6 left-6 z-40 flex size-10 cursor-pointer items-center justify-center rounded-full bg-white dark:bg-shade3 text-3xl opacity-0 shadow-lg dark:shadow-shade3 transition-all ${bottomPosition}`}
+      className={`${isScrolled ? "opacity-100!" : "hidden"} text-primary  fixed bottom-6 left-6 z-40 flex size-10 cursor-pointer items-center justify-center rounded-full bg-white dark:bg-shade3 text-3xl opacity-0 shadow-lg dark:shadow-shade6 transition-all ${bottomPosition}`}
       onClick={() => {
         window.scrollTo({
           top: 0,

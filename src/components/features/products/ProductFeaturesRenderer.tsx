@@ -76,7 +76,7 @@ export default function ProductFeaturesRenderer({
           ))}
         </div>
 
-        <div className="border-neutral4 mx-auto shadow-lg transition-shadow dark:shadow-shade3 mt-10 w-fit overflow-hidden rounded-2xl border">
+        <div className="border-neutral4 mx-auto shadow-lg transition-shadow dark:shadow-shade6 mt-10 w-fit overflow-hidden rounded-2xl border">
           <Image
             alt={productName}
             src={productImage}

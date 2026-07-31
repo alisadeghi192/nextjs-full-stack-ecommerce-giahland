@@ -74,7 +74,7 @@ export default function ProductCardGrid({
 
   return (
     <div
-      className={`group border-neutral5 dark:shadow-shade3 relative flex h-full flex-col justify-between gap-y-2 justify-self-center overflow-hidden rounded-xl border bg-white transition-colors dark:bg-shade4 dark:border-shade3 p-4 ${usedInSlider ? "" : "shadow-lg"} max-xl:gap-y-4`}
+      className={`group border-neutral5 dark:shadow-shade6 relative flex h-full flex-col justify-between gap-y-2 justify-self-center overflow-hidden rounded-xl border bg-white transition-colors dark:bg-shade4 dark:border-shade3 p-4 ${usedInSlider ? "" : "shadow-lg"} max-xl:gap-y-4`}
     >
       {isOutOfStock ? (
         <div className="cursor-default">{contentElement}</div>

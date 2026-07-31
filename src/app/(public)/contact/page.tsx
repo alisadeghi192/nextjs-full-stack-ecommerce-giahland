@@ -2,14 +2,14 @@ import ContactForm from "@/components/features/contact/ContactForm";
 import Breadcrumb from "@/components/shared/ui/Breadcrumb";
 import { CONTACT_METADATA } from "@/lib/constants";
 import {
-  STORE_ADDRESS,
-  STORE_EMAIL_ADDRESS,
-  STORE_GOOGLE_MAPS_IFRAME_LINK,
-  STORE_INSTAGRAM,
-  STORE_LOCATION,
-  STORE_PHONE_NUMBER,
-  STORE_TELEGRAM,
-  STORE_WHATSAPP,
+    STORE_ADDRESS,
+    STORE_EMAIL_ADDRESS,
+    STORE_GOOGLE_MAPS_IFRAME_LINK,
+    STORE_INSTAGRAM,
+    STORE_LOCATION,
+    STORE_PHONE_NUMBER,
+    STORE_TELEGRAM,
+    STORE_WHATSAPP,
 } from "@/lib/constants/";
 import { toPersianCode } from "@/lib/utils/format";
 import type { Metadata } from "next";
@@ -30,7 +30,7 @@ export default function ContactPage() {
   return (
     <section className="container">
       <Breadcrumb />
-      <section className="border-neutral4 dark:border-neutral10 dark:shadow-shade3 dark:bg-shade5 rounded-xl border bg-white p-6 shadow-xl transition-colors max-sm:px-4">
+      <section className="border-neutral4 dark:border-neutral10 dark:shadow-shade6 dark:bg-shade5 rounded-xl border bg-white p-6 shadow-xl transition-colors max-sm:px-4">
         <div className="space-y-2">
           <h4 className="leading-6 font-bold">تماس با ما</h4>
           <p className="text-neutral10 dark:text-text-dark text-sm/6 font-medium">
@@ -55,7 +55,7 @@ export default function ContactPage() {
                 ></iframe>
               </div>
             </div>
-            <div className="border-neutral3 dark:border-neutral10 dark:shadow-shade3 space-y-3 rounded-xl border p-3 text-sm/6 shadow-lg">
+            <div className="border-neutral3 dark:border-neutral10 dark:shadow-shade6 space-y-3 rounded-xl border p-3 text-sm/6 shadow-lg">
               <div className="flex items-center justify-between">
                 <span className="text-neutral9 dark:text-text-dark font-medium">تلفن:</span>
                 <Link

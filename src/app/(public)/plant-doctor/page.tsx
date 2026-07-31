@@ -19,7 +19,7 @@ export default function PlantDoctorPage() {
   return (
     <section className="container">
       <Breadcrumb />
-      <section className="border-neutral4 dark:bg-shade4 dark:border-neutral10 dark:shadow-shade3 m-auto flex w-80/100 items-center justify-center gap-x-20 rounded-2xl border shadow-xl max-xl:w-full max-lg:gap-x-10 max-md:flex-col max-md:p-4">
+      <section className="border-neutral4 dark:bg-shade4 dark:border-neutral10 dark:shadow-shade6 m-auto flex w-80/100 items-center justify-center gap-x-20 rounded-2xl border shadow-xl max-xl:w-full max-lg:gap-x-10 max-md:flex-col max-md:p-4">
         <Image
           alt="plant-doctor"
           src={"/static/images/plantDoctor.webp"}
@@ -75,7 +75,7 @@ export default function PlantDoctorPage() {
           سم‌پاشی مناسب برای همان گیاه به شما داده می‌شود.
         </p>
       </section>
-      <section className="border-neutral4 dark:border-neutral10 dark:shadow-shade3 mx-auto mt-10 w-5/10 overflow-hidden rounded-2xl border shadow-lg max-sm:w-full">
+      <section className="border-neutral4 dark:border-neutral10 dark:shadow-shade6 mx-auto mt-10 w-5/10 overflow-hidden rounded-2xl border shadow-lg max-sm:w-full">
         <Image
           alt="plant-doctor"
           src="/static/images/plantDoctor2.webp"
