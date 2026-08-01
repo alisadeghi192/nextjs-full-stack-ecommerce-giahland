@@ -164,7 +164,7 @@ export default function ArticleForm() {
                   e.target.value as "care" | "health" | "styling",
                 )
               }
-              className="border-neutral6 text-neutral11 dark:text-neutral5 focus:border-primary dark:focus:border-primary-dark invalid:text-neutral9 dark:invalid:text-neutral8 w-full appearance-none rounded-xl border px-4 py-3 outline-0 transition-colors"
+              className="border-neutral6  text-neutral11 dark:text-neutral5 focus:border-primary dark:focus:border-primary-dark invalid:text-neutral9 dark:invalid:text-neutral8 w-full appearance-none rounded-xl border px-4 py-3 outline-0 transition-colors"
             >
               <option value="" disabled className="text-neutral9 dark:text-neutral5 dark:bg-shade2">
                 دسته بندی:

@@ -3,11 +3,11 @@ import AvatarUpload from "@/components/panel/AvatarUpload";
 import FormField from "@/components/shared/ui/FormField";
 import PrimaryButton from "@/components/shared/ui/PrimaryButton";
 import {
-    useCheckAuth,
-    useUserEmail,
-    useUserFirstName,
-    useUserLastName,
-    useUserMobile
+  useCheckAuth,
+  useUserEmail,
+  useUserFirstName,
+  useUserLastName,
+  useUserMobile
 } from "@/features/auth/selectors/auth.selectors";
 import { updateAdminProfileAction } from "@/features/user/actions/updateAdminProfile.actions";
 import { useActionState, useEffect, useState } from "react";
@@ -53,7 +53,7 @@ export default function AdminProfileForm () {
 
 
   return (
-    <div className="border-neutral3 rounded-2xl border p-6 shadow-lg max-md:p-3.5">
+    <div className="border-neutral3 dark:border-neutral10 dark:shadow-shade6 transition-colors rounded-2xl border p-6 shadow-lg max-md:p-3.5">
       <AvatarUpload />
 
       <form action={formAction} noValidate>

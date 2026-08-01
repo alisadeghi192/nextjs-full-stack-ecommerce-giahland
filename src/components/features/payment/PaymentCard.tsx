@@ -4,10 +4,10 @@ import PrimaryButton from "@/components/shared/ui/PrimaryButton";
 import { toPersianCode, toPersianPrice } from "@/lib/utils/format";
 import { useState } from "react";
 import {
-    MdArrowBack,
-    MdCheckCircle,
-    MdPayment,
-    MdSecurity,
+  MdArrowBack,
+  MdCheckCircle,
+  MdPayment,
+  MdSecurity,
 } from "react-icons/md";
 
 interface PaymentCardProps {
@@ -69,7 +69,7 @@ export default function PaymentCard({
               </p>
             )}
             {extraInfo && (
-              <p className="text-primary mt-2">{extraInfo.value}</p>
+              <p className="text-primary dark:text-primary-dark mt-2">{extraInfo.value}</p>
             )}
           </div>
 

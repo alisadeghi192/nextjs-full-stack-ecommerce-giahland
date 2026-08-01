@@ -19,19 +19,19 @@ export default function ProductSeoFields({ register }: ProductSeoFieldsProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="border-neutral4 rounded-xl border p-4 shadow-lg">
+    <div className="border-neutral4 dark:border-neutral10 dark:shadow-shade6 rounded-xl border p-4 shadow-lg">
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
         className="flex w-full items-center cursor-pointer group justify-between text-sm font-medium"
       >
-        <span className="group-hover:text-primary text-base">⚙️ سئو </span>
+        <span className="group-hover:text-primary dark:group-hover:text-primary-dark text-base">⚙️ سئو </span>
         <span
-          className={`text-neutral8 transition-transform duration-200 ${
+          className={`transition-transform duration-200 ${
             isOpen ? "rotate-180" : ""
           }`}
         >
-          <MdKeyboardArrowDown className="text-primary pointer-events-none size-6 transition-colors duration-200" />
+          <MdKeyboardArrowDown className="group-hover:text-primary dark:group-hover:text-primary-dark pointer-events-none size-6 transition-colors duration-200" />
         </span>
       </button>
 
@@ -67,7 +67,7 @@ export default function ProductSeoFields({ register }: ProductSeoFieldsProps) {
               icon={<MdTag size={20} />}
               {...register("seo.keywords")}
             />
-            <p className="text-neutral8 text-xs">
+            <p className="text-neutral8 dark:text-text-dark text-xs">
               کلمات را با کاما (،) یا فاصله جدا کنید.
             </p>
           </div>

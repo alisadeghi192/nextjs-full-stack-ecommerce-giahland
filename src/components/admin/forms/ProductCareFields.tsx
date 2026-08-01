@@ -24,8 +24,7 @@ export default function ProductCareFields({
   return (
     <div className="space-y-6">
       {/* light */}
-
-      <div className="border-neutral4 rounded-xl border p-4 shadow-lg">
+      <div className="border-neutral4 dark:border-neutral10 dark:shadow-shade6 rounded-xl border p-4 shadow-lg">
         <h4 className="mb-4 font-medium">نور</h4>
         {lightTitles.map((title, index) => (
           <div
@@ -60,8 +59,7 @@ export default function ProductCareFields({
       </div>
 
       {/* watering */}
-
-      <div className="border-neutral4 rounded-xl border p-4 shadow-lg">
+      <div className="border-neutral4 dark:border-neutral10 dark:shadow-shade6 rounded-xl border p-4 shadow-lg">
         <h4 className="mb-4 font-medium">آبیاری</h4>
         {wateringTitles.map((title, index) => (
           <div key={index} className="mb-4 flex items-center gap-x-1.5 gap-y-2 max-lg:flex-col">
@@ -91,7 +89,7 @@ export default function ProductCareFields({
       </div>
 
       {/* soil */}
-      <div className="border-neutral4 rounded-xl border p-4 shadow-lg">
+      <div className="border-neutral4 dark:border-neutral10 dark:shadow-shade6 rounded-xl border p-4 shadow-lg">
         <h4 className="mb-4 font-medium">خاک</h4>
         {soilTitles.map((title, index) => (
           <div key={index} className="mb-4 flex items-center gap-x-1.5 gap-y-2 max-lg:flex-col">
@@ -121,7 +119,7 @@ export default function ProductCareFields({
       </div>
 
       {/* temperature */}
-      <div className="border-neutral4 rounded-xl border p-4 shadow-lg">
+      <div className="border-neutral4 dark:border-neutral10 dark:shadow-shade6 rounded-xl border p-4 shadow-lg">
         <h4 className="mb-4 font-medium">دما و رطوبت</h4>
         {temperatureTitles.map((title, index) => (
           <div key={index} className="mb-4 flex items-center gap-x-1.5 gap-y-2 max-lg:flex-col">
@@ -151,7 +149,7 @@ export default function ProductCareFields({
       </div>
 
       {/* fertilization */}
-      <div className="border-neutral4 rounded-xl border p-4 shadow-lg">
+      <div className="border-neutral4 dark:border-neutral10 dark:shadow-shade6 rounded-xl border p-4 shadow-lg">
         <h4 className="mb-4 font-medium">کوددهی</h4>
         {fertilizationTitles.map((title, index) => (
           <div

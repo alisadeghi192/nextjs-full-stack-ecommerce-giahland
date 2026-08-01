@@ -49,7 +49,7 @@ export default function AdminChatHeader({
           confirmText="بله"
           title="آیا از بستن مشاوره مطمئنید؟"
           disabled={isClosing}
-          className={`border-neutral9 max-xs:size-10 flex h-14 shrink-0 cursor-pointer items-center justify-center gap-x-2 rounded-full border bg-red-500/60 px-2 text-white backdrop-blur-lg transition-colors hover:bg-red-500 max-sm:size-14 ${
+          className={`border-neutral9 dark:border-neutral10 max-xs:size-10 flex h-14 shrink-0 cursor-pointer items-center justify-center gap-x-2 rounded-full border bg-red-500/60 px-2 text-white backdrop-blur-lg transition-colors hover:bg-red-500 max-sm:size-14 ${
             isSidebarOpen ? "max-lg:size-14" : ""
           }`}
         >
@@ -66,7 +66,7 @@ export default function AdminChatHeader({
         </ConfirmDialog>
       )}
 
-      <div className="border-neutral5 max-xs:p-0 maxsm:h-10 flex w-full items-center justify-between rounded-full border bg-white/40 p-1 backdrop-blur-md">
+      <div className="border-neutral5 dark:border-neutral10 max-xs:p-0 maxsm:h-10 flex w-full items-center justify-between rounded-full border bg-white/40 dark:bg-primary/10 p-1 backdrop-blur-md">
         {/* user */}
         <div className="max-xs:gap-2 max-xs:w-full flex items-center gap-4 max-sm:gap-2">
           <div className="max-xs:size-10 relative size-12 shrink-0 overflow-hidden rounded-full">
@@ -79,7 +79,7 @@ export default function AdminChatHeader({
           </div>
           <div className="max-xs:flex max-xs:justify-between max-xs:items-center max-xs:w-full">
             <h2 className="font-medium max-sm:text-sm">{userDisplayName}</h2>
-            <p className="text-primary max-xs:ml-2 text-sm max-sm:hidden">کاربر</p>
+            <p className="text-primary dark:text-primary-dark max-xs:ml-2 text-sm max-sm:hidden">کاربر</p>
           </div>
         </div>
         {/* doctor */}
@@ -88,7 +88,7 @@ export default function AdminChatHeader({
             <h2 className="font-medium text-left max-sm:text-sm mr-auto">
               {doctorDisplayName}
             </h2>
-            <p className="text-primary text-left max-xs:ml-2 text-sm max-sm:hidden">پزشک</p>
+            <p className="text-primary dark:text-primary-dark text-left max-xs:ml-2 text-sm max-sm:hidden">پزشک</p>
           </div>
           <div className="max-xs:size-10 relative size-12 shrink-0 overflow-hidden rounded-full">
             <Image
@@ -104,7 +104,7 @@ export default function AdminChatHeader({
       {/* back button */}
       <button
         onClick={() => router.back()}
-        className="border-neutral5 max-xs:size-10 flex h-14 cursor-pointer items-center justify-center gap-x-2 rounded-full border bg-gray-100/40 px-4 text-gray-600 backdrop-blur-lg transition-colors hover:bg-gray-200/40"
+        className="border-neutral5 max-xs:size-10 dark:border-neutral10 flex h-14 cursor-pointer items-center justify-center gap-x-2 rounded-full border bg-gray-100/40 px-4 dark:bg-primary/10 dark:hover:bg-primary/20 text-gray-600 dark:text-gray-200 backdrop-blur-lg transition-colors hover:bg-gray-200/40"
       >
         <span
           className={`max-sm:hidden ${isSidebarOpen ? "max-lg:hidden" : ""}`}

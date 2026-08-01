@@ -35,8 +35,8 @@ interface AdminConsultationCardProps {
 }
 
 const statusConfig = {
-  active: { label: "فعال", className: "bg-green-100 text-green-700" },
-  closed: { label: "بسته", className: "bg-bg-error text-error" },
+  active: { label: "فعال", className: "bg-green-100 text-green-700 dark:bg-green-700 dark:text-green-100" },
+  closed: { label: "بسته", className: "bg-bg-error text-error dark:bg-error dark:text-bg-error" },
 };
 
 export default function AdminConsultationCard({
@@ -55,15 +55,15 @@ export default function AdminConsultationCard({
   const toggleOpen = () => setIsOpen(!isOpen);
 
   return (
-    <div className="border-neutral3 hover:border-primary group max-xs:p-2 rounded-xl border bg-white p-4 shadow-lg transition-all hover:shadow-xl">
+    <div className="border-neutral3 dark:border-neutral10 dark:hover:border-primary-dark hover:border-primary group max-xs:p-2 rounded-xl border bg-white dark:bg-shade3 p-4 shadow-lg dark:shadow-shade6 transition-all hover:shadow-xl">
       {/* accordion header */}
       <div
         className="flex cursor-pointer items-center justify-between gap-2"
         onClick={toggleOpen}
       >
         <div className="flex items-center gap-x-3">
-          <span className="text-neutral9 text-sm font-medium">کد مشاوره:</span>
-          <span className="text-neutral11 max-xs:text-sm font-bold">
+          <span className="text-neutral9 dark:text-text-dark text-sm font-medium">کد مشاوره:</span>
+          <span className="text-neutral11 dark:text-primary-dark max-xs:text-sm font-bold">
             {toPersianCode(consultation.code)}
           </span>
           <span
@@ -80,7 +80,7 @@ export default function AdminConsultationCard({
           <MdKeyboardArrowDown
             className={`size-5 transition-transform duration-200 ${
               isOpen ? "rotate-180" : ""
-            } text-neutral9 group-hover:text-primary`}
+            } text-neutral9 dark:text-primary-dark  group-hover:text-primary dark:group-hover:text-text-dark`}
           />
         </div>
       </div>
@@ -101,7 +101,7 @@ export default function AdminConsultationCard({
                 isSidebarOpen ? "max-lg:flex-wrap" : "max-[580px]:flex-wrap"
               }`}
             >
-              <div className="bg-neutral2 flex w-full items-center gap-3 rounded-xl px-4 py-2.5 transition-colors">
+              <div className="bg-neutral2 dark:bg-shade1 flex w-full items-center gap-3 rounded-xl px-4 py-2.5 transition-colors">
                 <div className="max-xs:size-12 relative size-16 shrink-0 overflow-hidden rounded-full">
                   <Image
                     src={consultation.doctor.avatar}
@@ -111,13 +111,13 @@ export default function AdminConsultationCard({
                   />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <p className="text-primary text-sm font-medium">پزشک</p>
+                  <p className="text-primary dark:text-text-dark text-sm font-medium">پزشک</p>
                   <p className="truncate font-medium max-sm:text-sm">
                     دکتر {doctorDisplayName}
                   </p>
                 </div>
               </div>
-              <div className="bg-neutral2 flex w-full items-center gap-3 rounded-xl px-4 py-2.5 transition-colors">
+              <div className="bg-neutral2 dark:bg-shade1 flex w-full items-center gap-3 rounded-xl px-4 py-2.5 transition-colors">
                 <div className="max-xs:size-12 relative size-16 shrink-0 overflow-hidden rounded-full">
                   <Image
                     src={consultation.user.avatar}
@@ -127,7 +127,7 @@ export default function AdminConsultationCard({
                   />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <p className="text-neutral9 text-sm font-medium">کاربر</p>
+                  <p className="text-neutral9 dark:text-text-dark text-sm font-medium">کاربر</p>
                   <p className="truncate font-medium max-sm:text-sm">
                     {userDisplayName}
                   </p>
@@ -136,19 +136,19 @@ export default function AdminConsultationCard({
             </div>
 
             {/* last message detials */}
-            <div className="bg-neutral2 flex items-center justify-between rounded-xl px-4 py-2.5">
+            <div className="bg-neutral2 dark:bg-shade1 flex items-center justify-between rounded-xl px-4 py-2.5">
               <div className="flex items-center gap-2">
-                <span className="text-neutral9 shrink-0 text-sm">
+                <span className="text-neutral9 dark:text-text-dark shrink-0 text-sm">
                   آخرین پیام:
                 </span>
-                <span className="text-neutral11 max-xs:text-sm line-clamp-1 text-sm">
+                <span className="text-neutral11 dark:text-white max-xs:text-sm line-clamp-1 text-sm">
                   {consultation.lastMessage === "💬 "
                     ? "🖼️ تصویر"
                     : consultation.lastMessage || "پیامی ارسال نشده"}
                 </span>
               </div>
               {consultation.lastMessageAt && (
-                <span className="ltr text-neutral9 shrink-0 text-xs">
+                <span className="ltr text-neutral9 dark:text-text-dark shrink-0 text-xs">
                   ⏱️{" "}
                   {toPersianDateAndTime(new Date(consultation.lastMessageAt))}
                 </span>

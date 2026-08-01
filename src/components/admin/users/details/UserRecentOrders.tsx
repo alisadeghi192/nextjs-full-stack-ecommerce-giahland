@@ -17,15 +17,15 @@ interface UserRecentOrdersProps {
 
 export default function UserRecentOrders({ orders }: UserRecentOrdersProps) {
   return (
-    <div className="border-neutral3 rounded-xl border bg-white p-4 shadow-lg">
+    <div className="border-neutral3 dark:border-neutral10 dark:shadow-shade6 rounded-xl border bg-white dark:bg-shade3 p-4 shadow-lg">
       <SectionTitle title="آخرین سفارش‌ها 📦" className="mb-2!" />
       {orders.length === 0 ? (
-        <p className="text-neutral9 text-center">هیچ سفارشی ثبت نشده است.</p>
+        <p className="text-neutral9 dark:text-text-dark py-4 text-center">هیچ سفارشی ثبت نشده است.</p>
       ) : (
         <div className="overflow-x-auto">
           <table className="w-full border-separate border-spacing-y-2">
             <thead>
-              <tr className="text-primary text-right text-sm">
+              <tr className="text-primary dark:text-text-dark text-right text-sm">
                 <th className="p-2 text-center">کد پیگیری</th>
                 <th className="p-2 text-center">مبلغ</th>
                 <th className="p-2 text-center max-xs:hidden">وضعیت</th>
@@ -34,11 +34,11 @@ export default function UserRecentOrders({ orders }: UserRecentOrdersProps) {
             </thead>
             <tbody>
               {orders.map((order) => (
-                <tr key={order._id} className="group bg-neutral2 text-center">
+                <tr key={order._id} className="group bg-neutral2 dark:bg-emerald-800 text-center">
                   <td className="p-2 text-center font-medium">
                     <Link
                       href={`/admin/orders/${order._id}`}
-                      className="group-hover:text-primary transition-colors"
+                      className="group-hover:text-primary dark:group-hover:text-primary-dark transition-colors"
                     >
                       {toPersianCode(order.trackingCode || order._id.slice(-8))}
                     </Link>
@@ -54,7 +54,7 @@ export default function UserRecentOrders({ orders }: UserRecentOrdersProps) {
                   <td className="p-2 text-center max-xs:hidden">
                     <OrderStatusBadge status={order.status} />
                   </td>
-                  <td className="text-neutral9 p-2 text-center text-sm">
+                  <td className="text-neutral9 dark:text-text-dark p-2 text-center text-sm">
                     {toPersianDate(new Date(order.createdAt))}
                   </td>
                 </tr>

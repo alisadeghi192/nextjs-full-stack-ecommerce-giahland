@@ -11,10 +11,10 @@ import Image from "next/image";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import {
-    MdBlock,
-    MdCheckCircle,
-    MdDeleteOutline,
-    MdEdit,
+  MdBlock,
+  MdCheckCircle,
+  MdDeleteOutline,
+  MdEdit,
 } from "react-icons/md";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
@@ -128,10 +128,11 @@ export default function UserInfoCard({
   return (
     <>
       <div
-        className={`border-neutral3 rounded-xl border bg-white p-4 pb-7 shadow-lg ${
+        className={`border-neutral3 dark:border-neutral10 dark:shadow-shade6 dark:bg-shade3 rounded-xl border bg-white p-4 pb-7 shadow-lg ${
           isSidebarOpen ? "max-lg:pb-4" : "max-sm:pb-4"
         }`}
       >
+        {/* header */}
         <div className="mb-4 flex items-center justify-between">
           <SectionTitle title="اطلاعات شخصی" className="mb-0!" />
           <div className="flex items-center gap-x-2">
@@ -141,7 +142,7 @@ export default function UserInfoCard({
               {ROLE_CONFIG[user.role].label}
             </span>
             {user.role === "user" && user.isBlocked && (
-              <span className="rounded-full bg-red-100 px-3 py-1 text-sm font-medium text-red-700">
+              <span className="rounded-full bg-red-100 px-3 py-1 text-sm font-medium text-red-700 dark:bg-red-700 dark:text-red-100">
                 🔒 مسدود
               </span>
             )}
@@ -155,6 +156,7 @@ export default function UserInfoCard({
               : "max-sm:flex-col max-sm:items-center max-sm:gap-4"
           }`}
         >
+          {/* profile pic and delete pic button */}
           <div className="flex flex-col items-center justify-center gap-y-4">
             <div
               onClick={() => {
@@ -189,7 +191,7 @@ export default function UserInfoCard({
                 cancelText="خیر"
                 confirmText="بله"
                 disabled={isLoading}
-                className="flex cursor-pointer items-center justify-center gap-1 rounded-lg border border-red-400 px-3 py-1.5 text-sm font-medium text-red-600 transition hover:bg-red-50 disabled:opacity-50 max-sm:hidden lg:hidden"
+                className="flex cursor-pointer items-center justify-center gap-1 rounded-lg border border-red-400 px-3 py-1.5 text-sm font-medium text-red-600 transition hover:bg-red-50 disabled:opacity-50 max-sm:hidden lg:hidden dark:border-red-500 dark:bg-red-600 dark:text-white dark:hover:bg-red-700"
               >
                 <MdDeleteOutline className="size-4" />
                 حذف عکس
@@ -198,6 +200,7 @@ export default function UserInfoCard({
           </div>
 
           <div className="w-full flex-1">
+            {/* top buttons */}
             <div className="mb-4 flex items-center justify-between">
               <h2 className="text-xl font-bold">{displayName}</h2>
               <div className="flex items-center gap-x-2">
@@ -205,7 +208,7 @@ export default function UserInfoCard({
                   <button
                     onClick={handleEdit}
                     disabled={isLoading}
-                    className={`flex cursor-pointer items-center gap-1 rounded-lg border border-blue-400 px-3 py-1.5 text-sm font-medium text-blue-600 transition hover:bg-blue-50 disabled:opacity-50 ${
+                    className={`flex cursor-pointer items-center gap-1 rounded-lg border border-blue-400 px-3 py-1.5 text-sm font-medium text-blue-600 transition hover:bg-blue-50 disabled:opacity-50 dark:border-blue-500 dark:bg-blue-600 dark:text-white dark:hover:bg-blue-700 ${
                       isSidebarOpen ? "max-lg:hidden" : "max-sm:hidden"
                     }`}
                   >
@@ -220,7 +223,7 @@ export default function UserInfoCard({
                     cancelText="خیر"
                     confirmText="بله"
                     disabled={isLoading}
-                    className="flex cursor-pointer items-center justify-center gap-1 rounded-lg border border-red-400 px-3 py-1.5 text-sm font-medium text-red-600 transition hover:bg-red-50 disabled:opacity-50 max-lg:hidden"
+                    className="flex cursor-pointer items-center justify-center gap-1 rounded-lg border border-red-400 px-3 py-1.5 text-sm font-medium text-red-600 transition hover:bg-red-50 disabled:opacity-50 max-lg:hidden dark:border-red-500 dark:bg-red-600 dark:text-white dark:hover:bg-red-700"
                   >
                     <MdDeleteOutline className="size-4" />
                     حذف عکس
@@ -234,8 +237,8 @@ export default function UserInfoCard({
                       isSidebarOpen ? "max-lg:hidden" : "max-sm:hidden"
                     } ${
                       user.isBlocked
-                        ? "border-green-400 text-green-600 hover:bg-green-50"
-                        : "border-red-400 text-red-600 hover:bg-red-50"
+                        ? "border-green-400 text-green-600 hover:bg-green-50 dark:border-green-500 dark:bg-green-600 dark:text-green-50 dark:hover:bg-green-700"
+                        : "border-red-400 text-red-600 hover:bg-red-50 dark:border-red-500 dark:bg-red-600 dark:text-red-50 dark:hover:bg-red-700"
                     }`}
                   >
                     {user.isBlocked ? (
@@ -255,7 +258,7 @@ export default function UserInfoCard({
             </div>
 
             <UserInfoFields user={user} />
-
+            {/* bottom buttons */}
             <div
               className={`mt-2 flex items-center gap-2 ${
                 isSidebarOpen ? "lg:hidden" : "sm:hidden"
@@ -265,7 +268,7 @@ export default function UserInfoCard({
                 <button
                   onClick={handleEdit}
                   disabled={isLoading}
-                  className="flex cursor-pointer items-center gap-1 rounded-lg border border-blue-400 px-3 py-1.5 text-sm font-medium text-blue-600 transition hover:bg-blue-50 disabled:opacity-50"
+                  className="flex cursor-pointer items-center gap-1 rounded-lg border border-blue-400 px-3 py-1.5 text-sm font-medium text-blue-600 transition hover:bg-blue-50 disabled:opacity-50 dark:border-blue-500 dark:bg-blue-600 dark:text-white dark:hover:bg-blue-700"
                 >
                   <MdEdit className="size-4" />
                   ویرایش
@@ -278,7 +281,7 @@ export default function UserInfoCard({
                   cancelText="خیر"
                   confirmText="بله"
                   disabled={isLoading}
-                  className="flex cursor-pointer items-center justify-center gap-1 rounded-lg border border-red-400 px-3 py-1.5 text-sm font-medium text-red-600 transition hover:bg-red-50 disabled:opacity-50 sm:hidden"
+                  className="flex cursor-pointer items-center justify-center gap-1 rounded-lg border border-red-400 px-3 py-1.5 text-sm font-medium text-red-600 transition hover:bg-red-50 disabled:opacity-50 sm:hidden dark:border-red-500 dark:bg-red-600 dark:text-white dark:hover:bg-red-700"
                 >
                   <MdDeleteOutline className="size-4" />
                   حذف عکس
@@ -290,8 +293,8 @@ export default function UserInfoCard({
                   disabled={isLoading}
                   className={`flex cursor-pointer items-center gap-1 rounded-lg border px-3 py-1.5 text-sm font-medium transition disabled:opacity-50 ${
                     user.isBlocked
-                      ? "border-green-400 text-green-600 hover:bg-green-50"
-                      : "border-red-400 text-red-600 hover:bg-red-50"
+                      ? "border-green-400 text-green-600 hover:bg-green-50 dark:border-green-500 dark:bg-green-600 dark:text-green-50 dark:hover:bg-green-700"
+                      : "border-red-400 text-red-600 hover:bg-red-50 dark:border-red-500 dark:bg-red-600 dark:text-red-50 dark:hover:bg-red-700"
                   }`}
                 >
                   {user.isBlocked ? (

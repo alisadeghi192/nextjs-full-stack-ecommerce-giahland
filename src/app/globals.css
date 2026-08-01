@@ -58,15 +58,24 @@
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
   input:-webkit-autofill:focus {
-    -webkit-box-shadow: 0 0 0 1000px #fff inset !important; 
-    -webkit-text-fill-color: var(--color-BLACK) !important; 
+    -webkit-box-shadow: 0 0 0 1000px #fff inset !important;
+    -webkit-text-fill-color: var(--color-BLACK) !important;
   }
 
   html.dark input:-webkit-autofill,
   html.dark input:-webkit-autofill:hover,
   html.dark input:-webkit-autofill:focus {
-    -webkit-box-shadow: 0 0 0 1000px #183020 inset !important; 
+    -webkit-box-shadow: 0 0 0 1000px #183020 inset !important;
     -webkit-text-fill-color: var(--color-neutral1) !important;
+  }
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield; /* Firefox */
   }
 }
 

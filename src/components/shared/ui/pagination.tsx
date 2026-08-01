@@ -55,7 +55,7 @@ export default function Pagination({
     <div className="mt-8 flex flex-wrap items-center justify-center gap-2">
       {currentPage > 1 && (
         <Link href={`${baseUrl}&page=${currentPage - 1}`} className="p-2">
-          <MdKeyboardArrowRight className="text-primary size-6" />
+          <MdKeyboardArrowRight className="text-primary dark:text-text-dark size-6" />
         </Link>
       )}
 
@@ -64,7 +64,7 @@ export default function Pagination({
           return (
             <span
               key={index}
-              className="border-primary flex size-10 max-md:size-7 items-center justify-center rounded-lg border leading-6"
+              className="border-primary dark:bg-shade4 flex size-10 max-md:size-7 items-center justify-center rounded-lg border leading-6"
             >
               ...
             </span>
@@ -87,7 +87,7 @@ export default function Pagination({
 
       {currentPage < totalPages && (
         <Link href={`${baseUrl}&page=${currentPage + 1}`} className="p-2">
-          <MdOutlineKeyboardArrowLeft className="text-primary size-6" />
+          <MdOutlineKeyboardArrowLeft className="text-primary dark:text-text-dark size-6" />
         </Link>
       )}
     </div>

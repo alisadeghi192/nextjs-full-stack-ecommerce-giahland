@@ -183,7 +183,7 @@ export default function ProductForm({
       noValidate
     >
       {/* product basic info */}
-      <div className="border-neutral4 rounded-xl border p-4 shadow-lg">
+      <div className="border-neutral4 dark:border-neutral10 dark:shadow-shade6 rounded-xl border p-4 shadow-lg">
         <button
           type="button"
           onClick={() => toggleSection("basic")}
@@ -191,7 +191,7 @@ export default function ProductForm({
         >
           <SectionTitle
             title="اطلاعات پایه"
-            className="group-hover:text-primary mb-0! transition-colors"
+            className="group-hover:text-primary dark:group-hover:text-primary-dark mb-0! transition-colors"
           />
           <MdKeyboardArrowDown
             className={`size-6 transition-transform duration-200 ${
@@ -213,7 +213,7 @@ export default function ProductForm({
       </div>
 
       {/* product images */}
-      <div className="border-neutral4 rounded-xl border p-4 shadow-lg">
+      <div className="border-neutral4 dark:border-neutral10 dark:shadow-shade6 rounded-xl border p-4 shadow-lg">
         <button
           type="button"
           onClick={() => toggleSection("images")}
@@ -221,10 +221,10 @@ export default function ProductForm({
         >
           <SectionTitle
             title="تصاویر محصول"
-            className="group-hover:text-primary mb-0! transition-colors"
+            className="group-hover:text-primary dark:group-hover:text-primary-dark mb-0! transition-colors"
           />
           <MdKeyboardArrowDown
-            className={`size-6 transition-transform duration-200 ${
+            className={`size-6 group-hover:text-primary dark:group-hover:text-primary-dark transition-transform duration-200 ${
               openSections.images ? "rotate-180" : ""
             }`}
           />
@@ -243,8 +243,7 @@ export default function ProductForm({
       </div>
 
       {/* product physical info */}
-
-      <div className="border-neutral4 rounded-xl border p-4 shadow-lg">
+      <div className="border-neutral4 dark:border-neutral10 dark:shadow-shade6 rounded-xl border p-4 shadow-lg">
         <button
           type="button"
           onClick={() => toggleSection("physical")}
@@ -252,10 +251,10 @@ export default function ProductForm({
         >
           <SectionTitle
             title="مشخصات فیزیکی"
-            className="group-hover:text-primary mb-0! transition-colors"
+            className="group-hover:text-primary dark:group-hover:text-primary-dark mb-0! transition-colors"
           />
           <MdKeyboardArrowDown
-            className={`size-6 transition-transform duration-200 ${
+            className={`size-6 transition-transform group-hover:text-primary dark:group-hover:text-primary-dark duration-200 ${
               openSections.physical ? "rotate-180" : ""
             }`}
           />
@@ -274,7 +273,7 @@ export default function ProductForm({
       </div>
 
       {/* product features */}
-      <div className="border-neutral4 rounded-xl border p-4 shadow-lg">
+      <div className="border-neutral4 dark:border-neutral10 dark:shadow-shade6 rounded-xl border p-4 shadow-lg">
         <button
           type="button"
           onClick={() => toggleSection("features")}
@@ -282,10 +281,10 @@ export default function ProductForm({
         >
           <SectionTitle
             title="ویژگی‌ها"
-            className="group-hover:text-primary mb-0! transition-colors"
+            className="group-hover:text-primary dark:group-hover:text-primary-dark mb-0! transition-colors"
           />
           <MdKeyboardArrowDown
-            className={`size-6 transition-transform duration-200 ${
+            className={`size-6 transition-transform group-hover:text-primary dark:group-hover:text-primary-dark duration-200 ${
               openSections.features ? "rotate-180" : ""
             }`}
           />
@@ -304,7 +303,7 @@ export default function ProductForm({
       </div>
 
       {/* product cares */}
-      <div className="border-neutral4 rounded-xl border p-4 shadow-lg">
+      <div className="border-neutral4 dark:border-neutral10 dark:shadow-shade6 rounded-xl border p-4 shadow-lg">
         <button
           type="button"
           onClick={() => toggleSection("cares")}
@@ -312,10 +311,10 @@ export default function ProductForm({
         >
           <SectionTitle
             title="مراقبت‌ها"
-            className="group-hover:text-primary mb-0! transition-colors"
+            className="group-hover:text-primary dark:group-hover:text-primary-dark mb-0! transition-colors"
           />
           <MdKeyboardArrowDown
-            className={`size-6 transition-transform duration-200 ${
+            className={`size-6 transition-transform group-hover:text-primary dark:group-hover:text-primary-dark duration-200 ${
               openSections.cares ? "rotate-180" : ""
             }`}
           />
@@ -337,9 +336,10 @@ export default function ProductForm({
       <ProductSeoFields register={register} />
 
       <div className="flex items-center justify-between gap-y-2 max-md:h-50 max-md:flex-col-reverse">
-        <p className="text-sm text-yellow-700 max-md:mb-auto">
+        <p className="text-sm text-yellow-700 dark:text-yellow-500 max-md:mb-auto">
           ⚠️ پس از ثبت، محصول قابل ویرایش است.
         </p>
+        {/* submit product button */}
         <PrimaryButton
           disabled={isPending}
           className="max-md:shadow-primary h-12 w-37.5 text-lg max-md:fixed max-md:bottom-6 max-md:mx-auto max-md:w-8/10 max-md:shadow-2xl md:self-end"

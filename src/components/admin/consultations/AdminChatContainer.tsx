@@ -61,7 +61,7 @@ export default function AdminChatContainer({
   };
 
   return (
-    <div className="relative flex h-full flex-col bg-[url('/static/images/chat-bg.webp')] bg-size-[350px] bg-fixed bg-repeat">
+    <div className="relative flex h-full flex-col bg-[url('/static/images/chat-bg.webp')] dark:bg-[url('/static/images/chat-bg-dark.webp')] bg-size-[350px] bg-fixed bg-repeat">
       <AdminChatHeader
         user={user}
         doctor={doctor}
@@ -76,9 +76,9 @@ export default function AdminChatContainer({
         <ChatMessages initialMessages={messages} />
       </div>
 
-      <div className="text-neutral9 flex shrink-0 items-center justify-center gap-x-2 bg-white/40 px-4 py-2 text-center text-sm backdrop-blur-lg">
-        <span className="text-primary">فقط مشاهده👀</span>
-        <span className="text-primary">
+      <div className="flex shrink-0 items-center justify-center gap-x-2 bg-white/40 dark:bg-primary/10 px-4 py-2 text-center text-sm backdrop-blur-lg">
+        <span className="text-primary dark:text-primary-dark">فقط مشاهده👀</span>
+        <span className="text-primary dark:text-primary-dark">
           کد: {toPersianCode(code)} - {toPersianDate(createdAt)}
         </span>
       </div>

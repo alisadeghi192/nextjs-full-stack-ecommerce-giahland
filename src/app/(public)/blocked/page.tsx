@@ -13,16 +13,16 @@ export default async function BlockedPage() {
 
   return (
     <section className="flex items-center justify-center">
-      <div className="mt-6 w-full max-w-md rounded-2xl bg-white p-8 max-sm:p-4 text-center shadow-2xl">
+      <div className="mt-6 w-full max-w-md rounded-2xl bg-white dark:bg-shade3 dark:shadow-shade6 p-8 max-sm:p-4 text-center shadow-2xl">
         <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-red-100">
           <MdBlock className="size-10 text-red-600" />
         </div>
 
-        <h1 className="mb-2 text-2xl max-sm:text-xl font-bold text-gray-800">
+        <h1 className="mb-2 text-2xl max-sm:text-xl font-bold text-gray-800 dark:text-white">
           حساب کاربری مسدود است.
         </h1>
 
-        <p className="text-neutral9 mb-4 text-sm">
+        <p className="text-neutral9 dark:text-text-dark mb-4 text-sm">
           حساب کاربری شما توسط ادمین مسدود شده است.
           <br />
           برای اطلاعات بیشتر با پشتیبانی تماس بگیرید.

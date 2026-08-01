@@ -25,7 +25,7 @@ export default function UserCard({ user }: UserCardProps) {
   return (
     <Link
       href={`/admin/users/${user._id}`}
-      className="border-neutral3 group relative rounded-2xl border bg-white p-4 shadow-lg transition-all hover:shadow-xl"
+      className="border-neutral3 dark:border-neutral10 dark:shadow-shade6 dark:bg-shade3 group relative rounded-2xl border bg-white p-4 shadow-lg transition-all hover:shadow-xl"
     >
       <div className="flex flex-col items-center text-center">
         <div className="relative size-20 overflow-hidden rounded-full">
@@ -36,17 +36,17 @@ export default function UserCard({ user }: UserCardProps) {
             className="object-cover"
           />
         </div>
-        <h4 className="group-hover:text-primary mt-3 font-semibold transition-colors">
+        <h4 className="group-hover:text-primary dark:group-hover:text-primary-dark mt-3 font-semibold transition-colors">
           {displayName}
         </h4>
-        <h4 className="text-neutral10 mt-1 font-semibold">
+        <h4 className="text-neutral10 dark:text-gray-300 mt-1 font-semibold">
           {toPersianCode(user.mobile)}
         </h4>
-        <p className="text-neutral9 mt-1 text-xs">
+        <p className="text-neutral9 dark:text-text-dark mt-1 text-xs">
           ثبت‌نام: {toPersianDate(new Date(user.createdAt))}
         </p>
         {user.isBlocked && (
-          <span className="absolute top-3 left-3 inline-flex items-center gap-1 rounded-full bg-red-100 px-3 py-1 text-xs font-medium text-red-700">
+          <span className="absolute top-3 left-3 inline-flex items-center gap-1 rounded-full bg-red-100 px-3 py-1 text-xs font-medium text-red-700 dark:text-red-100 dark:bg-red-700">
             مسدود
           </span>
         )}

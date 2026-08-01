@@ -61,7 +61,7 @@ export default function CreateDoctorForm() {
   };
 
   return (
-    <div className="border-neutral3 rounded-2xl border bg-white p-6 shadow-lg max-md:p-4">
+    <div className="border-neutral3 dark:border-neutral10 rounded-2xl border bg-white dark:bg-shade5 transition-colors dark:shadow-shade6 p-6 shadow-lg max-md:p-4">
       <form onSubmit={handleSubmit} noValidate className="space-y-4">
         <div className="grid grid-cols-2 gap-4 max-lg:grid-cols-1">
           <FormField

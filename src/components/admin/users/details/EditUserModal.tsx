@@ -40,30 +40,30 @@ export default function EditUserModal({
   const isDoctor = role === "plant-doctor";
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
-      <div className="w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 dark:bg-black/70 p-4">
+      <div className="w-full max-w-md rounded-2xl bg-white dark:bg-shade3 p-6 shadow-2xl">
         <h3 className="mb-4 text-xl font-bold">ویرایش اطلاعات کاربر</h3>
         <form onSubmit={onSubmit}>
           <div className="space-y-4">
             <div>
-              <label className="text-neutral9 text-sm font-medium">نام</label>
+              <label className="text-neutral9 dark:text-text-dark text-sm font-medium">نام</label>
               <input
                 type="text"
                 value={firstName}
                 onChange={(e) => onFirstNameChange(e.target.value)}
-                className="border-neutral3 focus:border-primary mt-1 w-full rounded-xl border px-4 py-2 outline-0"
+                className="border-neutral3 dark:border-neutral8 focus:border-primary dark:focus:border-primary-dark mt-1 w-full rounded-xl border px-4 py-2 outline-0"
                 required
               />
             </div>
             <div>
-              <label className="text-neutral9 text-sm font-medium">
+              <label className="text-neutral9 dark:text-text-dark text-sm font-medium">
                 نام خانوادگی
               </label>
               <input
                 type="text"
                 value={lastName}
                 onChange={(e) => onLastNameChange(e.target.value)}
-                className="border-neutral3 focus:border-primary mt-1 w-full rounded-xl border px-4 py-2 outline-0"
+                className="border-neutral3 dark:border-neutral8 focus:border-primary dark:focus:border-primary-dark mt-1 w-full rounded-xl border px-4 py-2 outline-0"
                 required
               />
             </div>
@@ -71,37 +71,37 @@ export default function EditUserModal({
             {isDoctor && (
               <>
                 <div>
-                  <label className="text-neutral9 text-sm font-medium">
+                  <label className="text-neutral9 dark:text-text-dark text-sm font-medium">
                     تخصص
                   </label>
                   <input
                     type="text"
                     value={specialties}
                     onChange={(e) => onSpecialtiesChange(e.target.value)}
-                    className="border-neutral3 focus:border-primary mt-1 w-full rounded-xl border px-4 py-2 outline-0"
+                    className="border-neutral3 dark:border-neutral8 focus:border-primary dark:focus:border-primary-dark mt-1 w-full rounded-xl border px-4 py-2 outline-0"
                   />
                 </div>
                 <div>
-                  <label className="text-neutral9 text-sm font-medium">
+                  <label className="text-neutral9 dark:text-text-dark text-sm font-medium">
                     سال‌های تجربه
                   </label>
                   <input
                     type="number"
                     value={yearsOfExperience}
                     onChange={(e) => onYearsOfExperienceChange(e.target.value)}
-                    className="border-neutral3 focus:border-primary mt-1 w-full rounded-xl border px-4 py-2 outline-0"
+                    className="border-neutral3 dark:border-neutral8 focus:border-primary dark:focus:border-primary-dark mt-1 w-full rounded-xl border px-4 py-2 outline-0"
                     min="0"
                   />
                 </div>
                 <div>
-                  <label className="text-neutral9 text-sm font-medium">
+                  <label className="text-neutral9 dark:text-text-dark text-sm font-medium">
                     هزینه مشاوره (تومان)
                   </label>
                   <input
                     type="number"
                     value={consultationFee}
                     onChange={(e) => onConsultationFeeChange(e.target.value)}
-                    className="border-neutral3 focus:border-primary mt-1 w-full rounded-xl border px-4 py-2 outline-0"
+                    className="border-neutral3 dark:border-neutral8 focus:border-primary dark:focus:border-primary-dark mt-1 w-full rounded-xl border px-4 py-2 outline-0"
                     min="0"
                   />
                 </div>
@@ -113,7 +113,7 @@ export default function EditUserModal({
             <button
               type="button"
               onClick={onClose}
-              className="border-neutral3 text-neutral9 hover:bg-neutral3 cursor-pointer rounded-lg border px-4 py-2 text-sm font-medium transition"
+              className="border-neutral3 text-neutral9 dark:text-text-dark dark:hover:bg-shade4 hover:bg-neutral3 cursor-pointer rounded-lg border px-4 py-2 text-sm font-medium transition"
             >
               انصراف
             </button>

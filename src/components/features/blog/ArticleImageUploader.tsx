@@ -68,7 +68,7 @@ export default function ArticleImageUploader({
       ) : (
         <label
           htmlFor={`file-upload-${name}`}
-          className="border-neutral6 hover:border-primary flex h-40 cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed transition"
+          className="border-neutral6  hover:border-primary flex h-40 cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed transition"
         >
           <MdCloudUpload className="text-neutral7 dark:text-text-dark size-10" />
           <span className="text-neutral8 dark:text-text-dark mt-2 text-sm">

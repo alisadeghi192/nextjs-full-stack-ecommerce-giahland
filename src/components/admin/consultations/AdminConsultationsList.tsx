@@ -29,14 +29,6 @@ interface AdminConsultationsListProps {
 export default function AdminConsultationsList({
   consultations,
 }: AdminConsultationsListProps) {
-  if (consultations.length === 0) {
-    return (
-      <div className="border-neutral3 rounded-2xl border p-8 text-center text-gray-500 shadow-lg">
-        هیچ مشاوره‌ای یافت نشد.
-      </div>
-    );
-  }
-
   return (
     <div className="space-y-4">
       {consultations.map((consultation) => (

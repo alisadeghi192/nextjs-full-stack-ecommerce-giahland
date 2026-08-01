@@ -82,11 +82,11 @@ export default function ProductImageUploader({
           htmlFor={`file-upload-${name}`}
           className="border-neutral6 hover:border-primary flex h-40 cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed transition"
         >
-          <MdCloudUpload className="text-neutral7 size-10" />
-          <span className="text-neutral8 mt-2 text-sm">
+          <MdCloudUpload className="text-neutral7 dark:text-text-dark size-10" />
+          <span className="text-neutral8 dark:text-text-dark mt-2 text-sm">
             برای آپلود کلیک کنید
           </span>
-          <span className="text-neutral8 text-center text-xs">
+          <span className="text-neutral8 dark:text-text-dark text-center text-xs">
             (حداکثر ۵ مگابایت، JPEG/PNG/WebP)
           </span>
           <input

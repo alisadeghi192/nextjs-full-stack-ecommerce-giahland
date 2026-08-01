@@ -68,16 +68,16 @@ export default function ProductFeaturesFields({
   return (
     <div className="space-y-6">
       {/* ====== Overview ====== */}
-      <div className="border-neutral4 rounded-xl border px-4 py-2 shadow-lg">
+      <div className="border-neutral4 dark:border-neutral10 dark:shadow-shade6 rounded-xl border px-4 py-2 shadow-lg">
         <div className="flex items-center justify-between">
           <div>
             <h4 className="mb-2 font-medium">معرفی کلی </h4>
-            <p className="text-neutral8 text-xs">حداقل ۱ مورد</p>
+            <p className="text-neutral8 dark:text-text-dark text-xs">حداقل ۱ مورد</p>
           </div>
           <button
             type="button"
             onClick={() => appendOverview("")}
-            className="text-primary hover:bg-primary/10 flex cursor-pointer items-center gap-1 rounded-lg px-3 py-1.5 text-sm transition-colors"
+            className="text-primary dark:text-text-dark hover:bg-primary/10 flex cursor-pointer items-center gap-1 rounded-lg px-3 py-1.5 text-sm transition-colors"
           >
             <MdAdd className="size-5" />
             افزودن
@@ -112,16 +112,16 @@ export default function ProductFeaturesFields({
       </div>
 
       {/* ====== Appearance ====== */}
-      <div className="border-neutral4 rounded-xl border px-4 py-2 shadow-lg">
+      <div className="border-neutral4 dark:border-neutral10 dark:shadow-shade6 rounded-xl border px-4 py-2 shadow-lg">
         <div className="flex items-center justify-between">
           <div>
             <h4 className="mb-2 font-medium">ویژگی‌های ظاهری</h4>
-            <p className="text-neutral8 text-xs">حداقل ۳ مورد</p>
+            <p className="text-neutral8 dark:text-text-dark text-xs">حداقل ۳ مورد</p>
           </div>
           <button
             type="button"
             onClick={() => appendAppearance("")}
-            className="text-primary hover:bg-primary/10 flex cursor-pointer items-center gap-1 rounded-lg px-3 py-1.5 text-sm transition-colors"
+            className="text-primary dark:text-text-dark hover:bg-primary/10 flex cursor-pointer items-center gap-1 rounded-lg px-3 py-1.5 text-sm transition-colors"
           >
             <MdAdd className="size-5" />
             افزودن
@@ -155,16 +155,16 @@ export default function ProductFeaturesFields({
       </div>
 
       {/* ====== Warnings ====== */}
-      <div className="border-neutral4 rounded-xl border px-4 py-2 shadow-lg">
+      <div className="border-neutral4 dark:border-neutral10 dark:shadow-shade6 rounded-xl border px-4 py-2 shadow-lg">
         <div className="flex items-center justify-between">
           <div>
             <h4 className="mb-2 font-medium">نکات ویژه و هشدارها</h4>
-            <p className="text-neutral8 text-xs">حداقل ۳ مورد</p>
+            <p className="text-neutral8 dark:text-text-dark text-xs">حداقل ۳ مورد</p>
           </div>
           <button
             type="button"
             onClick={() => appendWarnings("")}
-            className="text-primary hover:bg-primary/10 flex cursor-pointer items-center gap-1 rounded-lg px-3 py-1.5 text-sm transition-colors"
+            className="text-primary dark:text-text-dark hover:bg-primary/10 flex cursor-pointer items-center gap-1 rounded-lg px-3 py-1.5 text-sm transition-colors"
           >
             <MdAdd className="size-5" />
             افزودن
@@ -198,16 +198,16 @@ export default function ProductFeaturesFields({
       </div>
 
       {/* ====== Propagation ====== */}
-      <div className="border-neutral4 rounded-xl border px-4 py-2 shadow-lg">
+      <div className="border-neutral4 dark:border-neutral10 dark:shadow-shade6 rounded-xl border px-4 py-2 shadow-lg">
         <div className="flex items-center justify-between">
           <div>
             <h4 className="mb-2 font-medium">تکثیر</h4>
-            <p className="text-neutral8 text-xs">حداقل ۳ مورد</p>
+            <p className="text-neutral8 dark:text-text-dark text-xs">حداقل ۳ مورد</p>
           </div>
           <button
             type="button"
             onClick={() => appendPropagation("")}
-            className="text-primary hover:bg-primary/10 flex cursor-pointer items-center gap-1 rounded-lg px-3 py-1.5 text-sm transition-colors"
+            className="text-primary dark:text-text-dark hover:bg-primary/10 flex cursor-pointer items-center gap-1 rounded-lg px-3 py-1.5 text-sm transition-colors"
           >
             <MdAdd className="size-5" />
             افزودن
@@ -241,16 +241,16 @@ export default function ProductFeaturesFields({
       </div>
 
       {/* ====== Summary ====== */}
-      <div className="border-neutral4 rounded-xl border px-4 py-2 shadow-lg">
+      <div className="border-neutral4 dark:border-neutral10 dark:shadow-shade6 rounded-xl border px-4 py-2 shadow-lg">
         <div className="flex items-center justify-between">
           <div>
             <h4 className="mb-2 font-medium">جمع‌بندی</h4>
-            <p className="text-neutral8 text-xs">حداقل ۱ مورد</p>
+            <p className="text-neutral8 dark:text-text-dark text-xs">حداقل ۱ مورد</p>
           </div>
           <button
             type="button"
             onClick={() => appendSummary("")}
-            className="text-primary hover:bg-primary/10 flex cursor-pointer items-center gap-1 rounded-lg px-3 py-1.5 text-sm transition-colors"
+            className="text-primary dark:text-text-dark hover:bg-primary/10 flex cursor-pointer items-center gap-1 rounded-lg px-3 py-1.5 text-sm transition-colors"
           >
             <MdAdd className="size-5" />
             افزودن

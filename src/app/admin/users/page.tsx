@@ -68,7 +68,7 @@ export default async function AdminUsersPage({ searchParams }: PageProps) {
       <UsersHeader />
 
       {result.users.length === 0 ? (
-        <div className="border-neutral3 rounded-2xl border p-8 text-center text-gray-500 shadow-lg">
+        <div className="border-neutral3 dark:border-neutral10 dark:bg-shade4 dark:shadow-shade6 dark:text-gray-50 rounded-2xl border p-8 text-center text-gray-500 shadow-lg">
           {search
             ? "کاربری با این مشخصات یافت نشد."
             : "هیچ کاربری ثبت نام نکرده است."}

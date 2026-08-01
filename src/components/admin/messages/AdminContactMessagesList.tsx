@@ -67,7 +67,7 @@ export default function AdminContactMessagesList({
 
   if (messages.length === 0) {
     return (
-      <div className="border-neutral3 rounded-2xl border p-6 text-center text-gray-500 shadow-lg">
+      <div className="border-neutral3 dark:border-neutral10 dark:bg-shade4 dark:shadow-shade6 rounded-2xl border p-6 text-center text-gray-500 shadow-lg dark:text-gray-50">
         هیچ پیامی دریافت نشده است.
       </div>
     );
@@ -79,29 +79,29 @@ export default function AdminContactMessagesList({
         <div
           key={msg._id}
           className={`border-primary rounded-2xl border-r-4 p-6 shadow-lg transition ${
-            !msg.isRead ? "bg-neutral2" : "bg-[#E3F7EA]"
+            !msg.isRead ? "bg-neutral2 dark:bg-teal-900" : "bg-[#E3F7EA] dark:bg-emerald-900"
           }`}
         >
           <div className="flex flex-wrap items-start justify-between gap-2">
             <div className="flex flex-wrap items-center gap-3">
               <span className="font-bold">{msg.subject}</span>
-              <span className="text-neutral9 text-sm">|</span>
+              <span className="text-neutral9 text-sm dark:text-text-dark">|</span>
               <span className="text-sm">{msg.name}</span>
-              <span className="text-neutral9 text-sm">|</span>
-              <span className="text-sm text-gray-500">{msg.mobile}</span>
+              <span className="text-neutral9 text-sm dark:text-text-dark">|</span>
+              <span className="text-sm text-gray-500 dark:text-text-dark">{msg.mobile}</span>
               {!msg.isRead && (
                 <span className="bg-primary rounded-full px-2 py-0.5 text-xs text-white">
                   خوانده نشده
                 </span>
               )}
             </div>
-            <div className="ltr flex items-center gap-2 text-sm text-gray-400">
+            <div className="ltr flex items-center gap-2 text-sm dark:text-text-dark text-gray-400">
               {toPersianDateAndTime(msg.createdAt)}
             </div>
           </div>
 
           <div className="mt-3 pt-3">
-            <p className="whitespace-pre-wrap text-gray-700">{msg.message}</p>
+            <p className="whitespace-pre-wrap text-gray-700 dark:text-text-dark">{msg.message}</p>
           </div>
 
           <div className="mt-4 flex items-center justify-end gap-2 pt-3">
@@ -109,7 +109,7 @@ export default function AdminContactMessagesList({
               onClick={() => handleToggleRead(msg._id)}
               disabled={isLoading === msg._id}
               className={`hover:bg-primary/10 flex cursor-pointer items-center gap-1 rounded-lg px-3 py-1.5 text-sm transition disabled:opacity-50 ${
-                msg.isRead ? "text-gray-500" : "text-primary"
+                msg.isRead ? "text-gray-500 dark:text-primary-dark" : "text-primary dark:text-primary-dark"
               }`}
             >
               {msg.isRead ? (
