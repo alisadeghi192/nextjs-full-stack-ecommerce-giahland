@@ -54,7 +54,7 @@ export default function ArticleSeoFields({
         }`}
       >
         <div className="overflow-hidden">
-          <div className="space-y-3">
+          <div className="space-y-3 mt-2">
             <FormField
               id="seo-title"
               name="seoTitle"
@@ -84,7 +84,7 @@ export default function ArticleSeoFields({
               value={keywords}
               onChange={(e) => onChange("keywords", e.target.value)}
             />
-            <p className="text-neutral8 text-xs">
+            <p className="text-neutral8 dark:text-text-dark text-xs">
               کلمات را با کاما (،) یا فاصله جدا کنید.
             </p>
           </div>

@@ -167,7 +167,7 @@ export default function TiptapEditor({
           className={`rounded px-2 py-1 ${
             editor.isActive("bold")
               ? "bg-primary/20 text-primary"
-              : "hover:bg-gray-100"
+              : "hover:bg-gray-100 dark:hover:bg-shade4"
           }`}
         >
           <strong>B</strong>
@@ -178,7 +178,7 @@ export default function TiptapEditor({
           className={`rounded px-2 py-1 ${
             editor.isActive("italic")
               ? "bg-primary/20 text-primary"
-              : "hover:bg-gray-100"
+              : "hover:bg-gray-100 dark:hover:bg-shade4"
           }`}
         >
           <em>I</em>
@@ -191,7 +191,7 @@ export default function TiptapEditor({
           className={`rounded px-2 py-1 ${
             editor.isActive("heading", { level: 1 })
               ? "bg-primary/20 text-primary"
-              : "hover:bg-gray-100"
+              : "hover:bg-gray-100 dark:hover:bg-shade4"
           }`}
         >
           H1
@@ -204,7 +204,7 @@ export default function TiptapEditor({
           className={`rounded px-2 py-1 ${
             editor.isActive("heading", { level: 2 })
               ? "bg-primary/20 text-primary"
-              : "hover:bg-gray-100"
+              : "hover:bg-gray-100 dark:hover:bg-shade4"
           }`}
         >
           H2
@@ -217,7 +217,7 @@ export default function TiptapEditor({
           className={`rounded px-2 py-1 ${
             editor.isActive("heading", { level: 3 })
               ? "bg-primary/20 text-primary"
-              : "hover:bg-gray-100"
+              : "hover:bg-gray-100 dark:hover:bg-shade4"
           }`}
         >
           H3
@@ -230,7 +230,7 @@ export default function TiptapEditor({
           className={`rounded px-2 py-1 ${
             editor.isActive("heading", { level: 4 })
               ? "bg-primary/20 text-primary"
-              : "hover:bg-gray-100"
+              : "hover:bg-gray-100 dark:hover:bg-shade4"
           }`}
         >
           H4
@@ -241,7 +241,7 @@ export default function TiptapEditor({
           className={`rounded px-2 py-1 ${
             editor.isActive("bulletList")
               ? "bg-primary/20 text-primary"
-              : "hover:bg-gray-100"
+              : "hover:bg-gray-100 dark:hover:bg-shade4"
           }`}
         >
           • لیست
@@ -252,7 +252,7 @@ export default function TiptapEditor({
           className={`rounded px-2 py-1 ${
             editor.isActive("orderedList")
               ? "bg-primary/20 text-primary"
-              : "hover:bg-gray-100"
+              : "hover:bg-gray-100 dark:hover:bg-shade4"
           }`}
         >
           ۱. لیست
@@ -260,7 +260,7 @@ export default function TiptapEditor({
         <button
           type="button"
           onClick={addImage}
-          className="rounded px-2 py-1 hover:bg-gray-100"
+          className="rounded px-2 py-1 hover:bg-gray-100 dark:hover:bg-shade4"
         >
           🖼️ عکس
         </button>

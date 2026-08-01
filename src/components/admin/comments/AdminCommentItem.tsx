@@ -101,19 +101,19 @@ export default function AdminCommentItem({
 
   return (
     <div
-      className={`border-neutral3 rounded-2xl border p-6 shadow-lg transition max-sm:p-3 ${
-        !comment.isApproved ? "border-yellow-400 bg-yellow-50" : ""
+      className={`border-neutral3 dark:border-neutral10 dark:shadow-shade6 rounded-2xl border p-6 shadow-lg transition max-sm:p-3 ${
+        !comment.isApproved ? "border-yellow-400 bg-yellow-50 dark:bg-teal-900 dark:border-neutral10" : "dark:bg-shade4"
       }`}
     >
       <div
-        className="flex cursor-pointer items-start justify-between gap-2"
+        className="flex cursor-pointer group items-start justify-between gap-2"
         onClick={onToggle}
       >
         <div className="flex flex-wrap items-center gap-3">
           {comment.targetInfo ? (
             <Link
               href={comment.targetInfo.url}
-              className="text-primary hover:underline"
+              className="text-primary dark:text-text-dark hover:underline"
               onClick={(e) => e.stopPropagation()}
             >
               <span className="text-sm font-medium">
@@ -123,29 +123,29 @@ export default function AdminCommentItem({
               </span>
             </Link>
           ) : (
-            <span className="text-sm text-gray-400">
+            <span className="text-sm text-gray-400 dark:text-gray-50">
               {comment.targetType === "products" ? "محصول" : "مقاله"}
             </span>
           )}
           {!comment.isApproved && (
-            <span className="rounded-full bg-yellow-500 px-2 py-0.5 text-xs text-white">
+            <span className="rounded-full bg-yellow-500 dark:bg-yellow-600  px-2 py-0.5 text-xs text-white">
               در انتظار تایید
             </span>
           )}
           {comment.isReadByAdmin && comment.isApproved && (
-            <span className="rounded-full bg-green-100 px-2 py-0.5 text-xs text-green-700">
+            <span className="rounded-full bg-green-100 px-2 py-0.5 text-xs text-green-700 dark:bg-green-700 dark:text-green-100">
               تایید شده
             </span>
           )}
           {comment.reply && (
-            <span className="rounded-full bg-blue-100 px-2 py-0.5 text-xs text-blue-700">
+            <span className="rounded-full bg-blue-100 px-2 py-0.5 text-xs text-blue-700 dark:bg-blue-700 dark:text-blue-100">
               پاسخ داده شده
             </span>
           )}
         </div>
         <div className="flex items-center gap-2">
           <MdKeyboardArrowDown
-            className={`size-5 transition-transform duration-200 ${
+            className={`size-5 transition-transform group-hover:text-primary dark:group-hover:text-primary-dark duration-200 ${
               isOpen ? "rotate-180" : ""
             }`}
           />
@@ -160,35 +160,35 @@ export default function AdminCommentItem({
         }`}
       >
         <div className="overflow-hidden">
-          <div className="custom-scroll border-primary bg-neutral2 flex h-30 w-full flex-col overflow-y-auto rounded-lg border-r-4 px-3 py-4">
+          <div className="custom-scroll border-primary bg-neutral2 dark:bg-shade3 flex h-30 w-full flex-col overflow-y-auto rounded-lg border-r-4 px-3 py-4">
             <div className="flex items-center justify-between max-md:items-start">
               <div className="flex items-center gap-2 text-sm">
-                <span className="text-primary font-bold">
+                <span className="text-primary dark:text-primary-dark font-bold">
                   {comment.user.name}
                 </span>
-                <span className="text-gray-400">|</span>
-                <div className="ltr text-sm text-gray-400">
+                <span className="text-gray-400 dark:text-gray-50">|</span>
+                <div className="ltr text-sm text-gray-400 dark:text-text-dark">
                   {toPersianDateAndTime(comment.createdAt || comment.date)}
                 </div>
               </div>
             </div>
-            <p className="text-neutral10 mt-1 whitespace-pre-wrap max-md:text-sm">
+            <p className="text-neutral10 mt-1 dark:text-text-dark whitespace-pre-wrap max-md:text-sm">
               {comment.text}
             </p>
           </div>
 
           {comment.reply && (
-            <div className="border-primary mt-3 h-30 rounded-xl border-r-4 bg-[#E3F7EA] p-4">
+            <div className="border-primary mt-3 h-30 overflow-auto custom-scroll dark:bg-emerald-800 rounded-xl border-r-4 bg-[#E3F7EA] p-4">
               <div className="flex items-center gap-2 text-sm">
-                <span className="text-primary font-bold">
+                <span className="text-primary dark:text-text-dark font-bold">
                   {comment.reply.user.name}
                 </span>
-                <span className="text-gray-400">|</span>
-                <span className="ltr text-gray-400">
+                <span className="text-gray-400 dark:text-gray-50">|</span>
+                <span className="ltr text-gray-400 dark:text-text-dark">
                   {toPersianDateAndTime(comment.reply.date)}
                 </span>
               </div>
-              <p className="mt-1 text-gray-700">{comment.reply.text}</p>
+              <p className="mt-1 text-gray-700 dark:text-text-dark">{comment.reply.text}</p>
             </div>
           )}
 
@@ -199,7 +199,7 @@ export default function AdminCommentItem({
                   onClick={handleToggleRead}
                   disabled={isLoading}
                   className={`hover:bg-primary/10 flex cursor-pointer items-center gap-1 rounded-lg px-3 py-1.5 text-sm transition disabled:opacity-50 ${
-                    comment.isReadByAdmin ? "text-gray-500" : "text-primary"
+                    comment.isReadByAdmin ? "text-gray-500 dark:text-text-dark" : "text-primary dark:text-text-dark"
                   }`}
                 >
                   {comment.isReadByAdmin ? (
@@ -218,7 +218,7 @@ export default function AdminCommentItem({
                 <button
                   onClick={handleApprove}
                   disabled={isLoading}
-                  className="flex cursor-pointer items-center gap-1 rounded-lg px-3 py-1.5 text-sm text-green-600 transition hover:bg-green-50 disabled:opacity-50"
+                  className="flex cursor-pointer items-center gap-1 rounded-lg px-3 py-1.5 text-sm text-green-500 transition hover:bg-green-50 dark:hover:bg-primary/10 disabled:opacity-50"
                 >
                   <MdCheck size={18} />
                   <span>تایید</span>
@@ -230,7 +230,7 @@ export default function AdminCommentItem({
             >
               <button
                 onClick={() => setIsReplyOpen((prev) => !prev)}
-                className="text-primary hover:bg-primary/10 flex cursor-pointer items-center gap-1 rounded-lg px-3 py-1.5 text-sm transition"
+                className="text-primary dark:text-text-dark hover:bg-primary/10 flex cursor-pointer items-center gap-1 rounded-lg px-3 py-1.5 text-sm transition"
               >
                 <MdReply size={18} />
                 <span>{comment.reply ? "پاسخ جدید" : "پاسخ"}</span>
@@ -258,7 +258,7 @@ export default function AdminCommentItem({
             }`}
           >
             <div className="overflow-hidden">
-              <div className="border-primary max-xs:p-3 rounded-xl border border-dashed bg-white p-4">
+              <div className="border-primary max-xs:p-3 rounded-xl border border-dashed bg-white dark:bg-shade5 p-4">
                 <TextareaField
                   icon={<MdDriveFileRenameOutline size={20} />}
                   id={`admin-reply-${comment._id}`}

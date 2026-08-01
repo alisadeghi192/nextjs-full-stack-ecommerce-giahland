@@ -17,7 +17,7 @@ export default function BlogCard({
   return (
     <>
       <div
-        className={`text-white ${usedInSlider ? "" : "shadow-lg dark:shadow-shade6"} w-full overflow-hidden rounded-xl`}
+        className={`text-white ${usedInSlider ? "" : "dark:shadow-shade6 shadow-lg"} w-full overflow-hidden rounded-xl`}
       >
         <Link href={`/blog/${category}/${slug}`}>
           <div
@@ -41,7 +41,7 @@ export default function BlogCard({
               </span>
               <span className="max-xs:text-xs flex items-center justify-center gap-x-0.5 self-start text-sm">
                 <span className="max-sm:order-2">
-                  {toPersianDate(new Date(publishedAt) || new Date(createdAt) )}
+                  {toPersianDate(new Date(publishedAt) || new Date(createdAt))}
                 </span>
                 <MdOutlineCalendarMonth className="size-5" />
               </span>

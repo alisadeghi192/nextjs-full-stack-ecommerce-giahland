@@ -56,7 +56,7 @@ export default function DoctorCommentItem({
   };
 
   return (
-    <div className="border-neutral3 rounded-2xl border p-6 shadow-lg transition max-sm:p-3">
+    <div className="border-neutral3 dark:border-neutral10 dark:bg-shade4 dark:shadow-shade6 rounded-2xl border p-6 shadow-lg transition max-sm:p-3">
       <div
         className="flex cursor-pointer items-start justify-between gap-2"
         onClick={onToggle}
@@ -65,7 +65,7 @@ export default function DoctorCommentItem({
           {comment.targetInfo ? (
             <Link
               href={comment.targetInfo.url}
-              className="text-primary hover:underline"
+              className="text-primary dark:text-text-dark  hover:underline"
               onClick={(e) => e.stopPropagation()}
             >
               <span className="text-sm font-medium">
@@ -80,12 +80,12 @@ export default function DoctorCommentItem({
             </span>
           )}
           {comment.isReadByAdmin && comment.isApproved && (
-            <span className="rounded-full bg-green-100 px-2 py-0.5 text-xs text-green-700">
+            <span className="rounded-full bg-green-100  px-2 py-0.5 text-xs text-green-700 dark:bg-green-700 dark:text-green-100">
               تایید شده
             </span>
           )}
           {comment.reply && (
-            <span className="rounded-full bg-blue-100 px-2 py-0.5 text-xs text-blue-700">
+            <span className="rounded-full bg-blue-100 px-2 py-0.5 text-xs text-blue-700 dark:bg-blue-700 dark:text-blue-100">
               پاسخ داده شده
             </span>
           )}
@@ -107,19 +107,19 @@ export default function DoctorCommentItem({
         }`}
       >
         <div className="overflow-hidden">
-          <div className="custom-scroll border-primary bg-neutral2 flex h-30 w-full flex-col overflow-y-auto rounded-lg border-r-4 px-3 py-4">
+          <div className="custom-scroll border-primary bg-neutral2 dark:bg-shade3 flex h-30 w-full flex-col overflow-y-auto rounded-lg border-r-4 px-3 py-4">
             <div className="flex items-center justify-between max-md:items-start">
               <div className="flex items-center gap-2 text-sm">
-                <span className="text-primary font-bold">
+                <span className="text-primary dark:text-primary-dark  font-bold">
                   {comment.user.name}
                 </span>
-                <span className="text-gray-400">|</span>
-                <div className="ltr text-sm text-gray-400">
+                <span className="text-gray-400 dark:text-gray-50">|</span>
+                <div className="ltr text-sm text-gray-400 dark:text-text-dark">
                   {toPersianDateAndTime(comment.createdAt || comment.date)}
                 </div>
               </div>
             </div>
-            <p className="text-neutral10 mt-1 whitespace-pre-wrap max-md:text-sm">
+            <p className="text-neutral10 dark:text-text-dark mt-1 whitespace-pre-wrap max-md:text-sm">
               {comment.text}
             </p>
           </div>
@@ -143,7 +143,7 @@ export default function DoctorCommentItem({
             <div className="flex items-center gap-2 max-[550px]:mr-auto">
               <button
                 onClick={() => setIsReplyOpen((prev) => !prev)}
-                className="text-primary hover:bg-primary/10 flex cursor-pointer items-center gap-1 rounded-lg px-3 py-1.5 text-sm transition"
+                className="text-primary dark:text-text-dark hover:bg-primary/10 flex cursor-pointer items-center gap-1 rounded-lg px-3 py-1.5 text-sm transition"
               >
                 <MdReply size={18} />
                 <span>{comment.reply ? "پاسخ جدید" : "پاسخ"}</span>
@@ -159,7 +159,7 @@ export default function DoctorCommentItem({
             }`}
           >
             <div className="overflow-hidden">
-              <div className="border-primary max-xs:p-3 rounded-xl border border-dashed bg-white p-4">
+              <div className="border-primary max-xs:p-3 rounded-xl border border-dashed bg-white dark:bg-shade5 p-4">
                 <TextareaField
                   icon={<MdDriveFileRenameOutline size={20} />}
                   id={`doctor-reply-${comment._id}`}

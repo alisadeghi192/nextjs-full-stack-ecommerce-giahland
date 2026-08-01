@@ -105,7 +105,7 @@ export default function ArticleForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="border-neutral3 rounded-2xl border bg-white p-6 shadow-lg"
+      className="border-neutral3 dark:border-neutral10 dark:shadow-shade6 rounded-2xl border dark:bg-shade5 transition-colors bg-white p-6 shadow-lg"
       noValidate
     >
       <div className="flex flex-col gap-y-4">
@@ -133,10 +133,10 @@ export default function ArticleForm() {
               onChange={(e) => handleChange("slug", e.target.value)}
             />
             <p
-              className={`text-neutral8 mt-1 flex items-center gap-x-1 text-xs ${isOpenSidebar ? "" : "items-start max-[400px]:flex-col"}`}
+              className={`text-neutral8 dark:text-neutral6 mt-1 flex items-center gap-x-1 text-xs ${isOpenSidebar ? "" : "items-start max-[400px]:flex-col"}`}
             >
               <span>⚠️ فقط حروف لاتین کوچک، خط تیره (-) :</span>
-              <span className="text-primary font-mono">this-is-example</span>
+              <span className="text-primary dark:text-primary-dark font-mono">this-is-example</span>
             </p>
           </div>
         </div>
@@ -164,16 +164,16 @@ export default function ArticleForm() {
                   e.target.value as "care" | "health" | "styling",
                 )
               }
-              className="border-neutral6 text-neutral11 focus:border-primary invalid:text-neutral9 w-full appearance-none rounded-xl border px-4 py-3 outline-0 transition-colors"
+              className="border-neutral6 text-neutral11 dark:text-neutral5 focus:border-primary dark:focus:border-primary-dark invalid:text-neutral9 dark:invalid:text-neutral8 w-full appearance-none rounded-xl border px-4 py-3 outline-0 transition-colors"
             >
-              <option value="" disabled className="text-neutral9">
+              <option value="" disabled className="text-neutral9 dark:text-neutral5 dark:bg-shade2">
                 دسته بندی:
               </option>
-              <option value="care">نگهداری</option>
-              <option value="health">آفت‌ها و بیماری‌ها</option>
-              <option value="styling">چیدمان</option>
+              <option className="text-neutral11 dark:bg-shade3 dark:text-text-dark bg-white" value="care">نگهداری</option>
+              <option className="text-neutral11 dark:bg-shade3 dark:text-text-dark bg-white" value="health">آفت‌ها و بیماری‌ها</option>
+              <option className="text-neutral11 dark:bg-shade3 dark:text-text-dark bg-white" value="styling">چیدمان</option>
             </select>
-            <MdKeyboardArrowDown className="text-primary pointer-events-none absolute top-1/2 left-4 size-6 -translate-y-1/2 transition-colors duration-200" />
+            <MdKeyboardArrowDown className="text-primary dark:text-primary-dark pointer-events-none absolute top-1/2 left-4 size-6 -translate-y-1/2 transition-colors duration-200" />
           </div>
         </div>
 
@@ -211,7 +211,7 @@ export default function ArticleForm() {
           onChange={handleSeoChange}
         />
         <div className="flex items-center justify-between gap-y-2 max-lg:gap-x-4 max-md:flex-col-reverse">
-          <p className="text-sm text-yellow-700">
+          <p className="text-sm text-yellow-700 dark:text-yellow-500">
             ⚠️ مقاله پس از انتشار غیرقابل ویرایش است و فقط ادمین می تواند آن را
             حذف کند. لطفاً اطلاعات را دقیق بررسی کنید.
           </p>
