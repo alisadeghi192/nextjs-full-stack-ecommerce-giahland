@@ -91,7 +91,7 @@ export default async function AdminDashboardPage() {
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <SectionTitle title="داشبورد مدیریت" className="mb-0!" />
-        <span className="text-primary font-medium">
+        <span className="text-primary dark:text-primary-dark font-medium">
           {toPersianDate(new Date())}
         </span>
       </div>

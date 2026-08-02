@@ -342,7 +342,7 @@ export default function ProductForm({
         {/* submit product button */}
         <PrimaryButton
           disabled={isPending}
-          className="max-md:shadow-primary h-12 w-37.5 text-lg max-md:fixed max-md:bottom-6 max-md:mx-auto max-md:w-8/10 max-md:shadow-2xl md:self-end"
+          className="max-md:shadow-primary dark:shadow-shade6 h-12 w-37.5 text-lg max-md:fixed max-md:bottom-6 max-md:mx-auto max-md:w-8/10 max-md:shadow-2xl md:self-end"
         >
           {isPending ? "در حال ثبت..." : isEdit ? "ویرایش محصول" : "ثبت محصول"}
         </PrimaryButton>

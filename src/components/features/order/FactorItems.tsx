@@ -118,7 +118,7 @@ export default function FactorItems({ order }: FactorItemsProps) {
               {toPersianPrice(order.totalAmount)}
             </td>
           </tr>
-          <tr className="bg-neutral1 dark:bg-shade3">
+          <tr className="bg-neutral3 dark:bg-shade3">
             <td colSpan={4} className="max-[580px]:hidden max-xl:hidden"></td>
             <td
               colSpan={3}

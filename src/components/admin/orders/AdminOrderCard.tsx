@@ -49,27 +49,27 @@ export default function AdminOrderCard({ order }: AdminOrderCardProps) {
 
   return (
     <Link href={`/admin/orders/${_id}`} className="block">
-      <div className="border-neutral3 bg-neutral2 hover:border-primary group rounded-xl border p-4 shadow-lg transition-all hover:shadow-xl">
+      <div className="border-neutral3 dark:border-neutral10 dark:shadow-shade6 dark:bg-shade3 bg-neutral2 hover:border-primary group rounded-xl border p-4 shadow-lg transition-all hover:shadow-xl">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <div className="flex items-center gap-x-2">
             <span>کد پیگیری:</span>
             <span>{toPersianCode(trackingCode || "")}</span>
             <OrderStatusBadge status={status} />
           </div>
-          <span className="text-neutral9 group-hover:text-primary flex items-center gap-x-2 text-sm font-medium transition-colors">
+          <span className="text-neutral9 dark:text-text-dark dark:group-hover:text-primary-dark group-hover:text-primary flex items-center gap-x-2 text-sm font-medium transition-colors">
             <span className="max-sm:hidden">مشاهده جزئیات</span>
-            <MdOutlineKeyboardArrowLeft className="text-neutral9 group-hover:text-primary size-6 transition-colors" />
+            <MdOutlineKeyboardArrowLeft className="text-neutral9 dark:text-text-dark group-hover:text-primary dark:group-hover:text-primary-dark size-6 transition-colors" />
           </span>
         </div>
 
         <div
           className={`mt-3 flex items-center gap-x-4 ${isSidebarOpen ? "max-lg:flex-col max-lg:gap-y-3" : "max-sm:flex-col max-sm:gap-y-3"}`}
         >
-          <div className="text-neutral10 flex w-full items-center justify-between rounded-xl bg-white px-4 py-2 max-sm:text-sm">
+          <div className="text-neutral10 dark:text-text-dark dark:bg-shade1 flex w-full items-center justify-between rounded-xl bg-white px-4 py-2 max-sm:text-sm">
             <span>تاریخ ثبت سفارش:</span>
             <span>{toPersianDate(new Date(createdAt))}</span>
           </div>
-          <div className="text-neutral10 flex w-full items-center justify-between rounded-xl bg-white px-4 py-2 max-sm:text-sm">
+          <div className="text-neutral10 dark:text-text-dark dark:bg-shade1 flex w-full items-center justify-between rounded-xl bg-white px-4 py-2 max-sm:text-sm">
             <span>مبلغ کل:</span>
             <span>{toPersianPrice(finalAmount)}</span>
           </div>
@@ -77,13 +77,13 @@ export default function AdminOrderCard({ order }: AdminOrderCardProps) {
         <div
           className={`mt-3 flex items-center gap-x-4 ${isSidebarOpen ? "max-lg:flex-col max-lg:gap-y-3" : "max-sm:flex-col max-sm:gap-y-3"}`}
         >
-          <div className="text-neutral10 flex w-full items-center justify-between rounded-xl bg-white px-4 py-2 max-sm:text-sm">
+          <div className="text-neutral10 dark:text-text-dark dark:bg-shade1 flex w-full items-center justify-between rounded-xl bg-white px-4 py-2 max-sm:text-sm">
             <span> خریدار:</span>
             <span>
               {order.userInfo.firstName} {order.userInfo.lastName}
             </span>
           </div>
-          <div className="text-neutral10 flex w-full items-center justify-between rounded-xl bg-white px-4 py-2 max-sm:text-sm">
+          <div className="text-neutral10  dark:text-text-dark dark:bg-shade1 flex w-full items-center justify-between rounded-xl bg-white px-4 py-2 max-sm:text-sm">
             <span> موبایل خریدار:</span>
             <span>{toPersianCode(order.userInfo.mobile)}</span>
           </div>
@@ -103,13 +103,13 @@ export default function AdminOrderCard({ order }: AdminOrderCardProps) {
                   height={72}
                   className="size-full object-cover"
                 />
-                <div className="text-neutral11 absolute bottom-0 left-0 flex size-6 items-center justify-center rounded-lg bg-white text-sm font-bold opacity-80">
+                <div className="text-neutral11 dark:text-neutral12 absolute bottom-0 left-0 flex size-6 items-center justify-center rounded-lg bg-white text-sm font-bold opacity-80 dark:bg-gray-400">
                   {toPersianNumber(item.quantity)}
                 </div>
               </div>
             ))}
             {remainingCount > 0 && (
-              <div className="max-xs:size-14 bg-neutral4 flex size-18 shrink-0 items-center justify-center rounded-lg text-sm font-medium text-gray-600">
+              <div className="max-xs:size-14 bg-neutral4 dark:text-neutral12 flex size-18 shrink-0 items-center justify-center rounded-lg text-sm font-medium text-gray-600 dark:bg-gray-400">
                 +{toPersianNumber(remainingCount)}
               </div>
             )}
@@ -118,7 +118,7 @@ export default function AdminOrderCard({ order }: AdminOrderCardProps) {
           {canChangeStatus && (
             <PrimaryButton
               onClick={(e) => {
-                e.preventDefault();;
+                e.preventDefault();
                 handleStatusUpdate(e);
               }}
               disabled={isUpdating}

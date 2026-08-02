@@ -54,7 +54,7 @@ export default async function AdminOrdersPage({ searchParams }: PageProps) {
       <AdminOrdersHeader />
 
       {orders.length === 0 ? (
-        <div className="border-neutral3 rounded-2xl border p-6 text-center text-gray-500 shadow-lg">
+        <div className="border-neutral3 dark:border-neutral10 dark:bg-shade4 rounded-2xl border p-6 text-center text-gray-500 shadow-lg dark:shadow-shade6 dark:text-gray-50">
           {search
             ? "سفارشی با این کد پیگیری یافت نشد."
             : "هیچ سفارشی ثبت نشده است."}

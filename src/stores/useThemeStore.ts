@@ -1,4 +1,3 @@
-import { setThemeCookieAction } from "@/features/theme/actions/setThemeCookieAction";
 import { create } from "zustand";
 
 type Theme = "light" | "dark";
@@ -20,7 +19,7 @@ export const useThemeStore = create<ThemeState>((set, get) => ({
     if (typeof document !== "undefined") {
       document.documentElement.classList.toggle("dark", newTheme === "dark");
     }
-    setThemeCookieAction(newTheme);
+    document.cookie = `theme=${newTheme}; path=/; max-age=${60 * 60 * 24 * 365}; SameSite=Lax`;
     localStorage.setItem("theme", newTheme);
   },
   setTheme: (theme) => set({ theme }),
