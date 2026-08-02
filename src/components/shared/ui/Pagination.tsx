@@ -1,8 +1,8 @@
 import { toPersianNumber } from "@/lib/utils/format";
 import Link from "next/link";
 import {
-  MdKeyboardArrowRight,
-  MdOutlineKeyboardArrowLeft,
+    MdKeyboardArrowRight,
+    MdOutlineKeyboardArrowLeft,
 } from "react-icons/md";
 
 interface PaginationProps {
