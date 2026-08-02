@@ -105,7 +105,7 @@ export default function AdminTicketList({ tickets }: AdminTicketListProps) {
 
   if (tickets.length === 0) {
     return (
-      <div className="border-neutral3 rounded-2xl border p-6 text-center text-gray-500 shadow-lg">
+      <div className="border-neutral3 dark:border-neutral10 dark:bg-shade4 dark:shadow-shade6 rounded-2xl border p-6 text-center text-gray-500 shadow-lg dark:text-gray-50">
         هیچ تیکتی ثبت نشده است.
       </div>
     );
@@ -129,8 +129,10 @@ export default function AdminTicketList({ tickets }: AdminTicketListProps) {
                   {userLabel}:
                 </span>
                 <span className="dark:text-text-dark">{userDisplayName}</span>
-                <span className="text-gray-400 dark:text-primary-dark">|</span>
-                <span className="dark:text-text-dark">{ticket.user.mobile}</span>
+                <span className="dark:text-primary-dark text-gray-400">|</span>
+                <span className="dark:text-text-dark">
+                  {ticket.user.mobile}
+                </span>
               </div>
 
               <ConfirmDialog
@@ -165,7 +167,7 @@ export default function AdminTicketList({ tickets }: AdminTicketListProps) {
               }`}
             >
               <div className="overflow-hidden">
-                <div className="border-primary dark:border-primary-dark rounded-xl border border-dashed bg-white dark:bg-shade5 p-4 shadow-sm">
+                <div className="border-primary dark:border-primary-dark dark:bg-shade5 rounded-xl border border-dashed bg-white p-4 shadow-sm">
                   <TextareaField
                     icon={<MdDriveFileRenameOutline size={20} />}
                     id={`admin-reply-${ticket._id}`}

@@ -52,7 +52,7 @@ export default async function AdminConsultationsPage({
       <AdminConsultationsHeader />
 
       {result.consultations.length === 0 ? (
-        <div className="border-neutral3 dark:border-neutral10 dark:bg-shade4 dark:shadow-shade6 rounded-2xl border p-8 text-center text-gray-500 dark:text-gray-50 shadow-lg">
+        <div className="border-neutral3 dark:border-neutral10 dark:bg-shade4 dark:shadow-shade6 rounded-2xl border p-6 text-center text-gray-500 dark:text-gray-50 shadow-lg">
           {search
             ? "مشاوره‌ای با این مشخصات یافت نشد."
             : "هیچ مشاوره‌ای ثبت نشده است."}

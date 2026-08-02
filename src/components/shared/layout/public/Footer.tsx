@@ -29,7 +29,7 @@ export default function Footer() {
           <div className="flex flex-col gap-y-6 max-lg:gap-y-4 max-md:gap-y-3">
             <Link
               href="/"
-              className="text-primary hover:text-shade2 dark:text-primary-dark transition-colors dark:hover:text-primary max-xs:text-base max-xs:font-medium text-2xl/8.5 font-bold max-md:text-xl"
+              className="text-primary w-fit hover:text-shade2 dark:text-primary-dark transition-colors dark:hover:text-primary max-xs:text-base max-xs:font-medium text-2xl/8.5 font-bold max-md:text-xl"
             >
               گیاه لند
             </Link>

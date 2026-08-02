@@ -16,11 +16,11 @@ const data = [
   { name: "کادویی", value: 25 },
 ];
 
-const COLORS = ["#2E7D5E", "#E67E22", "#2980B9"];
+const COLORS = ["var(--chart-decoration-color)", "#E67E22", "#2980B9"];
 
 export default function CategoryPieChart() {
   return (
-    <div className="h-full rounded-xl bg-white p-4 shadow-lg">
+    <div className="h-full rounded-xl bg-white dark:bg-shade3 transition-colors p-4 shadow-lg">
       <div className="mb-4">
         <SectionTitle title="سهم فروش هر دسته" className="mb-0!"/>
         <h3 className="text-lg font-bold"></h3>

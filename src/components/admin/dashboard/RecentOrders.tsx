@@ -12,9 +12,9 @@ interface RecentOrdersProps {
 export default async function RecentOrders({ orders }: RecentOrdersProps) {
   if (orders.length === 0) {
     return (
-      <div className="border-neutral3 rounded-xl border bg-white p-5 shadow-lg">
+      <div className="border-neutral3 dark:border-neutral10 dark:shadow-shade6 dark:bg-shade3 transition-colors rounded-xl border bg-white p-5 shadow-lg">
         <SectionTitle title="📋 آخرین سفارش‌ها" />
-        <p className="text-neutral9 py-4 text-center">
+        <p className="text-neutral9 dark:text-text-dark py-4 text-center">
           هیچ سفارشی ثبت نشده است.
         </p>
       </div>
@@ -22,22 +22,22 @@ export default async function RecentOrders({ orders }: RecentOrdersProps) {
   }
 
   return (
-    <div className="border-neutral3 rounded-xl border bg-white p-4 shadow-lg">
+    <div className="border-neutral3 dark:border-neutral10 dark:shadow-shade6 dark:bg-shade3 rounded-xl border bg-white transition-colors p-4 shadow-lg">
       <div className="mb-2 flex items-center justify-between">
         <SectionTitle title="آخرین سفارش‌ها📋" className="mb-0!" />
 
         <Link
           href="/admin/orders"
-          className="text-primary hover:text-shade2 *: flex items-center justify-center text-sm"
+          className="text-primary dark:text-primary-dark hover:text-shade2 dark:hover:text-primary transition-colors flex items-center justify-center text-sm"
         >
-          <span className="">مشاهده همه</span>
+          <span >مشاهده همه</span>
           <MdKeyboardArrowLeft className="size-5" />
         </Link>
       </div>
       <div className="overflow-x-auto">
         <table className="w-full border-separate border-spacing-y-2">
           <thead>
-            <tr className="text-primary text-center text-sm">
+            <tr className="text-primary dark:text-primary-dark text-center text-sm">
               <th className="max-xs:p-1 p-2">کد پیگیری</th>
               <th className="max-xs:p-1 p-2 max-[550px]:hidden">خریدار</th>
               <th className="max-xs:p-1 p-2">مبلغ</th>
@@ -46,16 +46,16 @@ export default async function RecentOrders({ orders }: RecentOrdersProps) {
           </thead>
           <tbody>
             {orders.map((order) => (
-              <tr key={order._id} className="group bg-neutral2 text-center">
+              <tr key={order._id} className="group bg-neutral2 dark:bg-emerald-800 text-center">
                 <td className="max-xs:p-1 p-2 py-3">
                   <Link
                     href={`/admin/orders/${order._id}`}
-                    className="hover:text-primary group-hover:text-primary transition-colors"
+                    className="group-hover:text-primary dark:group-hover:text-primary-dark transition-colors"
                   >
                     {toPersianCode(order.trackingCode || order._id.slice(-8))}
                   </Link>
                 </td>
-                <td className="group-hover:text-primary transition-colors max-xs:p-1 max-w-50 truncate overflow-hidden p-2 py-3 max-[550px]:hidden">
+                <td className="group-hover:text-primary dark:group-hover:text-primary-dark max-xs:p-1 max-w-50 truncate overflow-hidden p-2 py-3 transition-colors max-[550px]:hidden">
                   <Link href={`/admin/users/${order.userInfo.userId}`}>
                     {order.userInfo.firstName} {order.userInfo.lastName}
                   </Link>

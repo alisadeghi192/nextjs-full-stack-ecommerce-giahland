@@ -43,11 +43,11 @@ export default function QuickStats({
       {stats.map((stat) => (
         <div
           key={stat.label}
-          className="border-neutral3 dark:border-neutral10 dark:shadow-shade6 max-xs:p-2 flex items-center gap-4 rounded-xl border bg-white dark:bg-shade3 p-4 shadow-lg"
+          className="border-neutral3 dark:border-neutral10 dark:shadow-shade6 transition-colors max-xs:p-2 flex items-center gap-4 rounded-xl border bg-white dark:bg-shade3 p-4 shadow-lg"
         >
           <div className={`rounded-xl p-3 ${stat.color}`}>{stat.icon}</div>
           <div className="flex w-full items-center justify-between">
-            <p className="text-primary dark:text-primary-dark font-medium">{stat.label}</p>
+            <p className="text-primary dark:text-primary-dark transition-colors font-medium">{stat.label}</p>
             <p className="text-xl font-bold max-sm:text-base max-sm:font-medium">
               <CountUp
                 start={0}

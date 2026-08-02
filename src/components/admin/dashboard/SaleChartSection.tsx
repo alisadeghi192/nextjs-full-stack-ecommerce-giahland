@@ -29,23 +29,25 @@ const data = [
 
 export default function SaleChartSection() {
   return (
-    <div className="bg-white rounded-xl p-4 shadow-lg">
+    <div className="dark:bg-shade3 dark:shadow-shade6 rounded-xl bg-white p-4 shadow-lg transition-colors">
       <div className="mb-4 flex items-center justify-between">
-        <SectionTitle title=" فروش ماهانه 📈" className="mb-0!"/>
+        <SectionTitle title=" فروش ماهانه 📈" className="mb-0!" />
         <h3 className="text-lg font-bold"></h3>
-        <span className="text-neutral9 text-sm">۱۲ ماه اخیر</span>
+        <span className="text-neutral9 dark:text-text-dark text-sm">۱۲ ماه اخیر</span>
       </div>
       <div className="h-64 w-full">
         <ResponsiveContainer width="100%" height="100%">
-          <LineChart
-            data={data}
-          >
-            <CartesianGrid strokeDasharray="3 3"  />
+          <LineChart data={data}>
+            <CartesianGrid strokeDasharray="3 3" />
             <XAxis
               dataKey="month"
               axisLine={false}
               tickLine={false}
-              tick={{ fontSize: 11, fill: "#717171", textAnchor:"start"}}
+              tick={{
+                fontSize: 11,
+                fill: "var(--chart-text)",
+                textAnchor: "start",
+              }}
               interval={0}
               angle={-45}
               textAnchor="end"
@@ -55,7 +57,12 @@ export default function SaleChartSection() {
             <YAxis
               axisLine={false}
               tickLine={false}
-              tick={{ fontSize: 12, fill: "#717171", textAnchor:"start", dy:-2}}
+              tick={{
+                fontSize: 12,
+                fill: "var(--chart-text)",
+                textAnchor: "start",
+                dy: -2,
+              }}
               tickFormatter={(value) =>
                 `${toPersianNumber(+(value / 1000000).toFixed(0))}` + "میلیون"
               }
@@ -64,11 +71,15 @@ export default function SaleChartSection() {
               tickMargin={0}
             />
             <Tooltip
-              cursor={{ stroke: "#417F56", strokeWidth: 1 }}
+              cursor={{ stroke: "var(--chart-tooltip-stroke)", strokeWidth: 1 }}
               contentStyle={{
+                backgroundColor: "var(--chart-tooltip-bg)",
+                border: "1px solid var(--chart-tooltip-border)",
                 borderRadius: "8px",
-                border: "1px solid #efefef",
                 boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
+              }}
+              itemStyle={{
+                color: "var(--chart-tooltip-stroke)"
               }}
               formatter={(value) => [
                 toPersianNumber(Number(value) || 0) + " تومان",
@@ -78,16 +89,16 @@ export default function SaleChartSection() {
             <Line
               type="monotone"
               dataKey="value"
-              stroke="#417F56"
+              stroke="var(--chart-line-color)"
               strokeWidth={3}
               dot={{
-                fill: "#417F56",
+                fill: "var(--chart-dot-stroke)",
                 stroke: "#fff",
                 strokeWidth: 2,
                 r: 5,
               }}
               activeDot={{
-                fill: "#417F56",
+                fill: "var(--chart-dot-stroke)",
                 stroke: "#fff",
                 strokeWidth: 2,
                 r: 7,

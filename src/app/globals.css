@@ -55,6 +55,28 @@
     background-color: #417f56;
     border-radius: 9999px;
   }
+  /* recharts colors */
+  :root {
+    --chart-grid: var(--color-neutral6);
+    --chart-text: var(--color-neutral9);
+    --chart-tooltip-bg: #fff;
+    --chart-line-color: var(--color-primary);
+    --chart-tooltip-border: var(--color-neutral3);
+    --chart-tooltip-stroke: var(--color-primary);
+    --chart-dot-stroke: var(--color-primary);
+    --chart-decoration-color: var(--color-primary)
+  }
+
+  .dark {
+    --chart-grid: var(--color-neutral10);
+    --chart-text: var(--color-neutral5);
+    --chart-tooltip-bg: var(--color-neutral10);
+    --chart-line-color: var(--color-neutral5);
+    --chart-tooltip-border: var(--color-neutral10);
+    --chart-tooltip-stroke: var(--color-primary-dark);
+    --chart-dot-stroke: var(--color-neutral10);
+    --chart-decoration-color: var(--color-primary-dark)
+  }
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
   input:-webkit-autofill:focus {
