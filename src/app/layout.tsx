@@ -1,11 +1,11 @@
 import GeneralProvider from "@/components/providers/GeneralProvider";
+import ToasterProvider from "@/components/providers/ToasterProvider";
 import { getMeAction } from "@/features/auth/actions/me.actions";
 import { THEME_COOKIE_NAME } from "@/lib/constants/theme";
 import ScrollToTop from "@/lib/utils/ScrollToTop";
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import { cookies } from "next/headers";
-import { Toaster } from "react-hot-toast";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -126,7 +126,7 @@ export default async function RootLayout({
           </main>
         </GeneralProvider>
         <ScrollToTop />
-        <Toaster position="top-center" />
+        <ToasterProvider/>
       </body>
     </html>
   );

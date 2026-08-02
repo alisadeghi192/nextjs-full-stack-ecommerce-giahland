@@ -51,7 +51,7 @@ export default function ConfirmDialog({
                 toast.dismiss(t.id);
                 setIsConfirmOpen(false);
               }}
-              className="bg-neutral3 cursor-pointer rounded-lg px-3 py-1"
+              className="bg-neutral3 dark:bg-shade3 cursor-pointer rounded-lg px-3 py-1"
             >
               {cancelText}
             </button>
