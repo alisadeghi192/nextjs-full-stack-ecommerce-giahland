@@ -64,7 +64,7 @@
     --chart-tooltip-border: var(--color-neutral3);
     --chart-tooltip-stroke: var(--color-primary);
     --chart-dot-stroke: var(--color-primary);
-    --chart-decoration-color: var(--color-primary)
+    --chart-decoration-color: var(--color-primary);
   }
 
   .dark {
@@ -75,7 +75,7 @@
     --chart-tooltip-border: var(--color-neutral10);
     --chart-tooltip-stroke: var(--color-primary-dark);
     --chart-dot-stroke: var(--color-neutral10);
-    --chart-decoration-color: var(--color-primary-dark)
+    --chart-decoration-color: var(--color-primary-dark);
   }
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
@@ -98,6 +98,12 @@
 
   input[type="number"] {
     -moz-appearance: textfield; /* Firefox */
+  }
+
+  @media (max-width: 768px) {
+    * {
+      cursor: default !important;
+    }
   }
 }
 
