@@ -251,6 +251,7 @@ Starting from that basic starting point, **Giahland was built from the ground up
 </div>
 
 ---
+<div align="left">
 
 ### 🏠 Homepage
 <details open>
@@ -341,5 +342,6 @@ Starting from that basic starting point, **Giahland was built from the ground up
   </tr>
 </table>
 </details>
+</div>
 
 ---
