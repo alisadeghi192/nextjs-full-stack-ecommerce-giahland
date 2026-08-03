@@ -182,13 +182,13 @@ Giahland has **three distinct roles**, each with carefully scoped permissions. T
 | Browse & search products | ✅ | ✅ | ✅ |
 | Add to cart & checkout | ✅ | ❌ | ❌ |
 | Like/Wishlist products | ✅ | ❌ | ❌ |
-| Create & manage consultations | ✅ | ✅ (own) | ✅ (monitor all) |
-| Real‑time chat in consultations | ✅ | ✅ | 👁️ Read‑only |
-| Create support tickets | ✅ | ✅ | ✅ (manage all) |
+| Create & manage consultations | ✅(create) | ✅ (close) | ✅ (monitor all and close) |
+| Real‑time chat in consultations | ✅ | ✅ | 👀 Read‑only |
+| Create support tickets | ✅ | ✅ | ✅ (manage all and reply) |
 | Write & publish blog articles | ❌ | ✅ | ✅ |
-| Reply to approved comments | ❌ | ✅ | ✅ |
+| Reply to approved comments | ❌ | ✅(conditional) | ✅ |
 | Comment moderation | ❌ | ❌ | ✅ |
-| View order history & factors | ✅ | ❌ | ✅ (all users) |
+| View order history & factors | ✅(pay pending) | ❌ | ✅ (all users) |
 | Update own profile & avatar | ✅ | ✅ | ✅ |
 | Access admin dashboard | ❌ | ❌ | ✅ |
 | Manage products (CRUD) | ❌ | ❌ | ✅ |
