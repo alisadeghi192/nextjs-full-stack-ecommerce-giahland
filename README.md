@@ -512,7 +512,6 @@ When you're done, go back to the terminal and press **`Ctrl + C`** to stop the s
 Here's a quick map of the project's main folders, so you know where everything lives.  
 
 
-> 
 
 <details>
 <summary>📂 View Full Project Tree</summary>
@@ -651,3 +650,38 @@ giahland/
 ├── tsconfig.json
 └── README.md                       #👋 Hello you are here now.
 ```
+</details>
+
+---
+
+<a name="-license"></a>
+
+<div align="left">
+
+## 📝 License
+
+This project is created for educational and portfolio purposes.  
+You are free to use, modify, and learn from it, **provided that proper credit is given to the original author**.
+
+</div>
+
+<a name="-contact"></a>
+
+<div align="left">
+
+## 📬 Contact
+
+**Ali Sadeghi**  
+📧 [aliisadeghii192@gmail.com](mailto:aliisadeghii192@gmail.com)  
+📱 [+98 937 192 1199](tel:+989371921199)  
+💬 [Telegram (prefer)](https://t.me/alisadeghi_dev) <br>
+📷 [Instagram](https://instagram.com/alisadeghi_dev)  
+🔗 [GitHub](https://github.com/alisadeghi192)
+
+---
+
+<div align="center">
+  Made with ❤️ and lots of code
+</div>
+
+</div>
