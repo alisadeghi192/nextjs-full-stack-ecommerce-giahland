@@ -5,7 +5,6 @@
   <p>
     <strong>Online Houseplant Shop &amp; Professional Plant Clinic</strong>
   </p>
-  <br />
 
   ---
 
@@ -238,6 +237,8 @@ Starting from that basic starting point, **Giahland was built from the ground up
 
 </div>
 
+---
+
 <div align="left">
 
 ## 🖼️ Screenshots
@@ -246,7 +247,7 @@ Starting from that basic starting point, **Giahland was built from the ground up
 
 </div>
 
----
+
 <div align="left">
 
 ### 🏠 Homepage
