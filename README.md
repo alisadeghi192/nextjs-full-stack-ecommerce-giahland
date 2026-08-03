@@ -416,7 +416,7 @@ Let's import them into your database using Compass:
     - `users`
 3.  Now, for each collection, do the following:
     - Click on the collection name (e.g., `products`).
-    - Click the green **"Add Data"** button → **"Import JSON or CSV file"**.
+    - Click the green **"Add Data"** button → **"Import JSON or CSV file or Import file"**.
     - Browse to the `seed` folder inside the project and select the matching JSON file.
     - Click **"Import"**.
 
@@ -508,3 +508,138 @@ When you're done, go back to the terminal and press **`Ctrl + C`** to stop the s
 Here's a quick map of the project's main folders, so you know where everything lives.  
 No need to memorize it – just come back here if you ever get lost.
 
+<details>
+<summary>📂 View Full Project Tree</summary>
+
+```
+giahland/
+├── public/                         # Static assets
+│   ├── static/                     # Static files (images, fonts)
+│   │   ├── fonts/                  # Custom Modam font
+│   │   └── images/                 # Logo, banners, hero images, blog images, product images
+│   └── uploads/                    # User uploaded files (gitignored)
+│       ├── users/                  # User avatars
+│       ├── products/               # Product gallery images
+│       ├── blog/                   # Blog article images
+│       ├── consultations/          # Chat images
+│       └── tickets/                # Ticket attachments
+│
+├── seed/                           # Database seed data (for initial setup)
+│   ├── users.json                  # Sample users (admin, doctor, regular users)
+│   ├── products.json               # Sample products (indoor, decoration, gift)
+│   ├── articles.json               # Sample blog articles (care, health, styling)
+│   ├── orders.json                 # Sample orders
+│   ├── comments.json               # Sample comments
+│   └── consultations.json          # Sample consultations
+│
+├── src/
+│   ├── app/                        # Next.js App Router
+│   │   ├── (auth)/                 # Authentication routes (login/register)
+│   │   ├── (panel)/                # User & Doctor dashboard
+│   │   │   └── user/
+│   │   │       ├── (doctor)/       # Doctor-specific pages (articles, comments)
+│   │   │       ├── consultations/  # Consultation pages
+│   │   │       ├── orders/         # Order pages
+│   │   │       ├── profile/        # Profile page
+│   │   │       ├── tickets/        # Ticket pages
+│   │   │       └── wishlist/       # Wishlist page
+│   │   ├── (public)/               # Public routes
+│   │   │   ├── about/              # About page
+│   │   │   ├── blog/               # Blog listing & detail pages
+│   │   │   ├── cart/               # Cart page
+│   │   │   ├── checkout/           # Checkout page
+│   │   │   ├── contact/            # Contact page
+│   │   │   ├── payment/            # Payment pages
+│   │   │   ├── plant-doctor/       # Plant doctor landing page
+│   │   │   └── products/           # Product listing & detail pages
+│   │   ├── admin/                  # Admin panel
+│   │   │   ├── articles/           # Article management
+│   │   │   ├── comments/           # Comment management
+│   │   │   ├── consultations/      # Consultation management
+│   │   │   ├── contact-messages/   # Contact messages management
+│   │   │   ├── dashboard/          # Admin dashboard
+│   │   │   ├── orders/             # Order management
+│   │   │   ├── products/           # Product management
+│   │   │   ├── tickets/            # Ticket management
+│   │   │   └── users/              # User management
+│   │   ├── api/                    # API routes (image fallback)
+│   │   ├── favicon.ico
+│   │   ├── globals.css             # Global styles (Tailwind + dark mode)
+│   │   ├── layout.tsx              # Root layout with SSR theme support
+│   │   └── not-found.tsx           # 404 page
+│   │
+│   ├── components/                 # Reusable UI components
+│   │   ├── admin/                  # Admin-specific components
+│   │   │   ├── comments/           # Admin comment components
+│   │   │   ├── consultations/      # Admin consultation components
+│   │   │   ├── dashboard/          # Dashboard components (charts, stats, recent lists)
+│   │   │   ├── forms/              # Admin forms (product, profile)
+│   │   │   ├── messages/           # Contact messages components
+│   │   │   ├── orders/             # Admin order components
+│   │   │   ├── products/           # Admin product components
+│   │   │   ├── tickets/            # Admin ticket components
+│   │   │   └── users/              # Admin user components
+│   │   ├── doctor/                 # Doctor panel components (articles, comments)
+│   │   ├── features/               # Feature-based components
+│   │   │   ├── about/              # About page components
+│   │   │   ├── auth/               # Authentication components (login, register, logout)
+│   │   │   ├── blog/               # Blog components (cards, sliders, forms)
+│   │   │   ├── cart/               # Cart components (modal, items, summary)
+│   │   │   ├── checkout/           # Checkout components (delivery, user info)
+│   │   │   ├── consultations/      # Consultation components (chat, cards, doctors)
+│   │   │   ├── contact/            # Contact form
+│   │   │   ├── landing/            # Landing page components (hero, banners, services)
+│   │   │   ├── order/              # Order components (factors, cards, badges)
+│   │   │   ├── payment/            # Payment components (cards, success)
+│   │   │   ├── plant-doctor/       # Plant doctor CTA components
+│   │   │   ├── products/           # Product components (cards, grids, galleries, specs)
+│   │   │   └── tickets/            # Ticket components (form, list, items)
+│   │   ├── panel/                  # Panel layout components (sidebar, header, layout)
+│   │   ├── providers/              # Context providers (Auth, Theme, Toaster)
+│   │   └── shared/                 # Shared components
+│   │       ├── layout/             # Layout components (header, footer)
+│   │       └── ui/                 # Reusable UI components (buttons, inputs, modals, pagination)
+│   │
+│   ├── features/                   # Feature modules (business logic)
+│   │   ├── auth/                   # Authentication (actions, schemas, types, selectors)
+│   │   ├── blog/                   # Blog (actions, schemas, types)
+│   │   ├── cart/                   # Cart (actions, selectors, types)
+│   │   ├── comments/               # Comments (actions, schemas, types)
+│   │   ├── consultations/          # Consultations (actions, types)
+│   │   ├── contact/                # Contact (actions, schemas)
+│   │   ├── notifications/          # Notifications (actions, hooks, types)
+│   │   ├── order/                  # Order (actions, schemas, types)
+│   │   ├── payment/                # Payment (actions)
+│   │   ├── products/               # Products (actions, schemas, types)
+│   │   ├── tickets/                # Tickets (actions, schemas, types, utils)
+│   │   ├── theme/                  # Theme (actions)
+│   │   └── user/                   # User management (actions, schemas, types)
+│   │
+│   ├── lib/                        # Utilities, helpers, constants, DB models
+│   │   ├── auth/                   # JWT helpers (tokens, cookies, password)
+│   │   ├── constants/              # App constants (banners, roles, nav, pagination)
+│   │   ├── db/                     # Database connection & Mongoose models
+│   │   │   ├── models/             # Mongoose models (User, Product, Order, Article, etc.)
+│   │   │   └── connect.ts          # MongoDB connection
+│   │   ├── hooks/                  # Custom React hooks (useScroll, useUrlParams)
+│   │   └── utils/                  # Utility functions (format, price, image-upload)
+│   │
+│   ├── stores/                     # Zustand state management
+│   │   ├── selectors/              # UI selectors
+│   │   ├── useAuthStore.ts         # Authentication store
+│   │   ├── useCartStore.ts         # Cart store
+│   │   ├── useNotificationStore.ts # Notification store
+│   │   ├── useThemeStore.ts        # Theme store
+│   │   └── useUIStore.ts           # UI state store (modals, menus)
+│   │
+│   ├── types/                      # Global TypeScript type definitions
+│   └── middleware.ts               # Next.js middleware (auth, redirects, refresh token)
+│
+├── .env.local.example              # Environment variables example
+├── .gitignore                      # Git ignore file (includes node_modules, .next, public/uploads)
+├── next.config.ts                  # Next.js configuration (body size, rewrites)
+├── package.json
+├── tailwind.config.ts              # Tailwind CSS configuration
+├── tsconfig.json
+└── README.md
+```
