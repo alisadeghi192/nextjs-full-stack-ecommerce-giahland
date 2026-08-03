@@ -46,10 +46,8 @@
 </div>
 
 ---
-
-<div align="left">
-
 ## 📖 About The Project
+<div align="left">
 
 Giahland is a fully Persian (RTL), full‑stack e‑commerce platform built from the ground up with **Next.js 15**, **TypeScript**, and **MongoDB**. It combines a beautiful online plant shop with a real‑time **plant clinic**, where users can chat with professional plant doctors, upload images, and receive expert advice.
 
@@ -57,11 +55,11 @@ The application includes **three dedicated panels** — User, Plant Doctor, and 
 
 From the cart to the checkout, the live chat to the admin dashboard charts, every detail has been implemented to mirror a **real‑world, production‑ready application**. This project demonstrates a strong command of modern front‑end architecture, server‑side rendering, and clean, scalable code.
 
-
+</div>
 ---
 
 ## ✨ Key Features
-
+<div align="left">
 ### 🛒 Online Store
 - Browse plants by category (**Indoor**, **Decorative**, **Gift**, **Discounted**).
 - Switch between **Grid** and **List** view with sorting (newest, price, popularity).
@@ -160,7 +158,7 @@ From the cart to the checkout, the live chat to the admin dashboard charts, ever
 - **Blocked user flow:** a logged‑in blocked user is immediately restricted from accessing any panel and redirected to the `/blocked` page with a helpful message. Once they log out, they cannot sign in again.
 - Empty states designed with helpful illustrations and CTA buttons (empty cart, no orders, etc.).
 - **Fallback images** for broken or missing profile pictures.
-
 </div>
+
 
 ---
