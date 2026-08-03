@@ -398,14 +398,17 @@ Now you need to create a space where all your store data (products, users, order
     - Click **"Create Database"**.
 
 > ✅ You now have an empty database ready to receive our sample data!
+
+<div id="-database--seed-data"></div>
+
 ### 📦 Step 4: Import Sample Data (Seed)
 
 I've prepared a package of sample data so your store doesn't look empty.  
 Inside the project folder, you'll find a folder called **`seed`**. It contains three files:
 
-- `products.json` – all the beautiful plants for the shop
-- `articles.json` – blog posts about plant care and styling
-- `users.json` – test accounts (admin, doctor, customer)
+- `giahland.products.json` – all the beautiful plants for the shop
+- `giahland.articles.json` – blog posts about plant care and styling
+- `giahland.users.json` – test accounts (admin, doctor, customer)
 
 Let's import them into your database using Compass:
 
