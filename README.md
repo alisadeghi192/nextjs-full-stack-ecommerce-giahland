@@ -242,9 +242,10 @@ Starting from that basic starting point, **Giahland was built from the ground up
 
 <a name="-screenshots"></a>
 
-## 🖼️ Screenshots
 
 <div align="left">
+
+## 🖼️ Screenshots
 
 > Each GIF shows the **desktop & mobile** view with a **light → dark mode** transition.
 
