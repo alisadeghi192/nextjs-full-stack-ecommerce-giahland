@@ -47,9 +47,9 @@
 
 ---
 
-## 📖 About The Project
 <div align="left">
 
+## 📖 About The Project
 
 Giahland is a fully Persian (RTL), full‑stack e‑commerce platform built from the ground up with **Next.js 15**, **TypeScript**, and **MongoDB**. It combines a beautiful online plant shop with a real‑time **plant clinic**, where users can chat with professional plant doctors, upload images, and receive expert advice.
 
