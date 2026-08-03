@@ -46,7 +46,9 @@
 </div>
 
 ---
+
 ## 📖 About The Project
+
 <div align="left">
 
 Giahland is a fully Persian (RTL), full‑stack e‑commerce platform built from the ground up with **Next.js 15**, **TypeScript**, and **MongoDB**. It combines a beautiful online plant shop with a real‑time **plant clinic**, where users can chat with professional plant doctors, upload images, and receive expert advice.
@@ -56,39 +58,63 @@ The application includes **three dedicated panels** — User, Plant Doctor, and 
 From the cart to the checkout, the live chat to the admin dashboard charts, every detail has been implemented to mirror a **real‑world, production‑ready application**. This project demonstrates a strong command of modern front‑end architecture, server‑side rendering, and clean, scalable code.
 
 </div>
+
 ---
 
 ## ✨ Key Features
-<div align="left">
+
 ### 🛒 Online Store
+
+<div align="left">
+
 - Browse plants by category (**Indoor**, **Decorative**, **Gift**, **Discounted**).
 - Switch between **Grid** and **List** view with sorting (newest, price, popularity).
 - Product detail page with **image gallery (lightbox)**, specifications, care guides, and approved comments.
 - Add to cart, toggle wishlist, and checkout with **delivery method** selection.
 - **Simulated payment flow** with a dedicated payment page, order tracking, and printable factor.
 
+</div>
+
 ### 🩺 Plant Clinic
+
+<div align="left">
+
 - Choose from a list of professional **plant doctors**.
 - Start a consultation and chat **in real time** (text + image upload).
 - Chat UI inspired by **Telegram's** clean and familiar messaging experience.
 - Messages marked as **sent/seen**, with unread count notifications.
 - Close consultations and increment doctor's successful visits.
 
+</div>
+
 ### 👤 User Panel
+
+<div align="left">
+
 - View **order history** and detailed factor (invoice) for each order.
 - Manage **consultations** (list, search, sort, chat).
 - Create **support tickets** with file attachments and track replies.
 - Update profile information and **upload avatar**.
 - **Wishlist** with grid/list view.
 
+</div>
+
 ### 🧑‍⚕️ Plant Doctor Panel
+
+<div align="left">
+
 - Write and manage **articles** using a rich‑text editor (TipTap).
 - View and **reply to approved comments** on your articles/products.
 - Handle **active consultations**, chat with users, and close them.
 - Update profile information and **upload avatar**.
 - Create **support tickets** with file attachments and track replies.
 
+</div>
+
 ### 🛠️ Admin Dashboard
+
+<div align="left">
+
 - Dashboard with **real‑time stats** (revenue, orders, users, doctors).
 - Interactive **charts** (monthly sales, category pie chart) with fake data.
 - Full **product CRUD** with multi‑image upload (optimized to WebP).
@@ -99,14 +125,24 @@ From the cart to the checkout, the live chat to the admin dashboard charts, ever
 - **Comment moderation** (approve, reply, delete, mark read/unread).
 - Manage **contact messages** and **support tickets**.
 
+</div>
+
 ### 🔔 Notifications
+
+<div align="left">
+
 - **Role‑based notification system** that keeps every user informed in real time.
 - **Users** receive alerts for new consultation messages and ticket replies.
 - **Plant Doctors** get notified about new consultation messages, new approved comments on their articles/products, and ticket updates.
 - **Admins** see notifications for pending tickets, unread contact messages, and comments awaiting approval.
 - Notification badges appear in the header and sidebar, with automatic refresh across pages.
 
+</div>
+
 ### 🛡️ Authentication & Security
+
+<div align="left">
+
 - **JWT‑based auth** with access & refresh tokens (HTTP‑only cookies).
 - Automatic **token refresh** via middleware, no user interruption.
 - **Role‑based route protection** (middleware + server‑side checks).
@@ -114,51 +150,85 @@ From the cart to the checkout, the live chat to the admin dashboard charts, ever
 - All server actions validate user identity and role before execution.
 - **Blocked users** are prevented from signing in or accessing any protected route and are redirected to the dedicated blocked page.
 
+</div>
+
 ### 🖼️ Image Handling
+
+<div align="left">
+
 - **Client‑side preview** before upload for avatars, products, articles, tickets, and chat.
 - Automatic **WebP conversion** with quality optimization via Sharp.
 - Secure file naming with random strings to prevent **path traversal** attacks.
 - Old images cleaned up on update/delete (disk space management).
 - **Lightbox gallery** for product images (swipe, keyboard navigation).
 
+</div>
+
 ### 🔍 Search & Navigation
+
+<div align="left">
+
 - **Real‑time product search** with 500ms debounce and loading state.
 - **Breadcrumb navigation** with dynamic title support and responsive truncation.
 - **URL‑based filtering & sorting** on all product and blog listing pages.
 - **Pagination** on all list pages with proper page reset on filter change.
 - **Scroll‑to‑top button** with circular progress indicator, visible on all pages except the chat screen to avoid overlap.
 
+</div>
+
 ### ⚡ Performance & SEO
+
+<div align="left">
+
 - **Next.js 15 App Router** with Server Components for optimal performance.
 - **unstable_cache** and **revalidateTag** for smart cache invalidation.
 - **Lazy loading** for below‑the‑fold content (homepage sliders, product images).
 - **Metadata & Open Graph** tags on all pages for SEO.
 - Custom **404 page** with Persian messaging and navigation.
 
+</div>
+
 ### ✍️ Content & Forms
+
+<div align="left">
+
 - **Rich‑text editor** (TipTap) with image embedding for blog articles.
 - **Zod validation** on both client (React Hook Form) and server (Server Actions).
 - Inline **error handling** with toast notifications and field‑level messages.
 
+</div>
+
 ### 📊 Charts & Dashboard
+
+<div align="left">
+
 - **Monthly sales line chart** and **category pie chart** with dark‑mode‑aware colors.
 - **Animated counters** (CountUp) for stats and hero numbers.
 - Real‑time stats calculation using MongoDB aggregation pipelines.
 
+</div>
+
 ### 🎨 User Experience
+
+<div align="left">
+
 - **Full Dark Mode** – persisted in cookies & localStorage, zero flicker on reload.
 - **Fully responsive** from mobile to wide desktop.
 - Skeleton loaders, smooth animations, toast notifications.
 - Custom Persian font (**Modam**) with full RTL support.
 - Sticky headers and dynamic overlays for smooth navigation.
 
+</div>
 
 ### 🎯 Attention to Detail
+
+<div align="left">
+
 - **Custom‑styled scrollbar** matching the brand’s green identity (`#417f56`), applied globally.
 - **Blocked user flow:** a logged‑in blocked user is immediately restricted from accessing any panel and redirected to the `/blocked` page with a helpful message. Once they log out, they cannot sign in again.
 - Empty states designed with helpful illustrations and CTA buttons (empty cart, no orders, etc.).
 - **Fallback images** for broken or missing profile pictures.
-</div>
 
+</div>
 
 ---
