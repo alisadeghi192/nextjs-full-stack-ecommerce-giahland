@@ -637,9 +637,14 @@ giahland/
 │
 ├── .env.local.example              # Environment variables example
 ├── .gitignore                      # Git ignore file (includes node_modules, .next, public/uploads)
+├── declarations.d.ts               # Global type declarations (CSS modules, SVG, Swiper)
+├── eslint.config.mjs               # ESLint configuration (flat config)
 ├── next.config.ts                  # Next.js configuration (body size, rewrites)
 ├── package.json
-├── tailwind.config.ts              # Tailwind CSS configuration
+├── package-lock.json               # Exact dependency tree (git committed)
+├── postcss.config.mjs              # PostCSS configuration (Tailwind)
+├── prettier.config.js              # Prettier configuration (aliases)
+├── swiper.d.ts                     # Swiper type definitions (for CSS modules)
 ├── tsconfig.json
-└── README.md
+└── README.md                       #👋 Hello you are here now.
 ```
