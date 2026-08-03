@@ -504,9 +504,12 @@ When you're done, go back to the terminal and press **`Ctrl + C`** to stop the s
 <div align="left">
 
 ## 📁 Project Structure
+📊 This project is built with **47 pages** and **190 components**, organized across a clean and scalable architecture.
 
 Here's a quick map of the project's main folders, so you know where everything lives.  
-No need to memorize it – just come back here if you ever get lost.
+
+
+> 
 
 <details>
 <summary>📂 View Full Project Tree</summary>
@@ -519,18 +522,15 @@ giahland/
 │   │   └── images/                 # Logo, banners, hero images, blog images, product images
 │   └── uploads/                    # User uploaded files (gitignored)
 │       ├── users/                  # User avatars
-│       ├── products/               # Product gallery images
-│       ├── blog/                   # Blog article images
+│       ├── products/               # New Product gallery images
+│       ├── blog/                   # New Blog article images
 │       ├── consultations/          # Chat images
 │       └── tickets/                # Ticket attachments
 │
 ├── seed/                           # Database seed data (for initial setup)
-│   ├── users.json                  # Sample users (admin, doctor, regular users)
-│   ├── products.json               # Sample products (indoor, decoration, gift)
-│   ├── articles.json               # Sample blog articles (care, health, styling)
-│   ├── orders.json                 # Sample orders
-│   ├── comments.json               # Sample comments
-│   └── consultations.json          # Sample consultations
+│   ├── giahland.users.json         # initial users (admin, doctors)
+│   ├── giahland.products.json      # Sample products (indoor, decoration, gift)
+│   └── giahland.articles.json      # Sample blog articles (care, health, styling)
 │
 ├── src/
 │   ├── app/                        # Next.js App Router
