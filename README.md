@@ -339,3 +339,172 @@ Starting from that basic starting point, **Giahland was built from the ground up
 </div>
 
 ---
+
+<a name="-getting-started"></a>
+
+<div align="left">
+
+## 🚀 Getting Started
+
+
+
+### 🛠️ Step 1: Install the Tools You Need
+
+You need **three free tools** installed on your computer:
+
+| Tool | What it does | Download link |
+|---|---|---|
+| **Node.js** | Runs the website code | [Download Node.js](https://nodejs.org/) (choose the LTS version) |
+| **MongoDB Server** | The database engine that stores all data | [Download MongoDB](https://www.mongodb.com/try/download/community) |
+| **MongoDB Compass** | A visual app to view and manage the database | [Download Compass](https://www.mongodb.com/try/download/compass) |
+
+> 🔄 **Important:** After installing all three, restart your computer to make sure everything is set up correctly.
+
+> 💡 **MongoDB Server** runs in the background (you won't see a window for it).  
+> **MongoDB Compass** is the app you'll actually open to see your data.
+
+---
+
+### 📁 Step 2: Get the Project Files
+
+1.  Open **Command Prompt** (Windows) or **Terminal** (Mac).
+2.  Type these commands one by one, pressing **Enter** after each:
+
+    ```bash
+    # Download the project to your computer
+    git clone https://github.com/alisadeghi192/nextjs-full-stack-ecommerce-giahland.git
+
+    # Go inside the project folder
+    cd nextjs-full-stack-ecommerce-giahland
+
+    # Install all the pieces the project needs to run
+    npm install
+    ```
+
+### 🗄️ Step 3: Set Up the Database
+
+Now you need to create a space where all your store data (products, users, orders) will live.
+
+1.  Make sure **MongoDB Server** is running:
+    - On Windows, it usually starts automatically after installation. If not, search for "Services" in the Start menu, find "MongoDB" and start it.
+    - On Mac, if you installed via Homebrew, run: `brew services start mongodb-community`
+2.  **Open MongoDB Compass**.
+3.  In the connection bar at the top, you should see: `mongodb://localhost:27017`.
+    - If not, type it and click **"Connect"**.
+4.  On the left sidebar, you'll see **Databases**. Click the **"+"** button to create a new one.
+5.  Fill in:
+    - **Database Name:** `giahland`
+    - **Collection Name:** `users` (just a temporary name)
+    - Click **"Create Database"**.
+
+> ✅ You now have an empty database ready to receive our sample data!
+### 📦 Step 4: Import Sample Data (Seed)
+
+I've prepared a package of sample data so your store doesn't look empty.  
+Inside the project folder, you'll find a folder called **`seed`**. It contains three files:
+
+- `products.json` – all the beautiful plants for the shop
+- `articles.json` – blog posts about plant care and styling
+- `users.json` – test accounts (admin, doctor, customer)
+
+Let's import them into your database using Compass:
+
+1.  In **MongoDB Compass**, select your database (`giahland`) from the left sidebar.
+2.  Click the **"Create Collection"** button and make these three collections **with exactly these names**: 
+    - `products`
+    - `articles`
+    - `users`
+3.  Now, for each collection, do the following:
+    - Click on the collection name (e.g., `products`).
+    - Click the green **"Add Data"** button → **"Import JSON or CSV file"**.
+    - Browse to the `seed` folder inside the project and select the matching JSON file.
+    - Click **"Import"**.
+
+After importing all three files, your database is full of data! 🎉
+
+---
+
+### ⚙️ Step 5: Configure the Environment (Secret Keys)
+
+The project needs to know where your database is and some secret keys for security.
+
+1.  Inside the project folder, find the file named **`.env.example`**.
+2.  Make a copy of it and rename the copy to **`.env.local`** (just delete the `.example` part).
+3.  Open `.env.local` with Notepad (or any text editor). You'll see something like:
+
+    ```env
+    ACCESS_TOKEN_SECRET=your_access_token_secret
+    REFRESH_TOKEN_SECRET=your_refresh_token_secret
+    MONGO_URL=mongodb://localhost:27017/giahland
+    ```
+
+
+4.  You can keep the `MONGO_URL` as it is (if you used the local database setup).  
+    For `ACCESS_TOKEN_SECRET` and `REFRESH_TOKEN_SECRET`, you can type any long random string (like `my_super_secret_key_123`).  
+    Example of a filled `.env.local`:
+
+    ```env
+    ACCESS_TOKEN_SECRET=my_super_secret_key_123
+    REFRESH_TOKEN_SECRET=my_super_refresh_key_456
+    MONGO_URL=mongodb://localhost:27017/giahland
+>🔒 These are just for local testing. In a real website, you would use much more complex secrets.
+
+### 🚀 Step 6: Start the Website!
+
+Everything is ready. In your terminal (still inside the project folder), run:
+
+```bash
+npm run dev
+```
+
+You'll see some output, and after a few seconds, it will say something like:  
+`Ready on http://localhost:3000`
+
+1.  Open your web browser.
+2.  Go to **http://localhost:3000**.
+
+The store should now appear, filled with plants and articles! 🎉
+
+---
+
+### 👤 Test Accounts (from seed data)
+
+Use these accounts to log in and explore different roles:
+
+| Role | Mobile | Password | What you can see |
+|---|---|---|---|
+| **Admin** | `09111111111` | `Admin123` | Full admin dashboard, manage everything |
+| **6 Plant Doctors** | `09122222222 to  09127777777` | `Admin123` | Doctor panels, write articles, reply to comments |
+
+
+> 💡 **You can also register a new account that will be regular user** 
+
+>💡 Additionally, the seed data already includes **admin** and **6 plant doctors**, so you can immediately test consultations without creating new doctor accounts.
+
+---
+
+### 🛑 Stopping the Website
+
+When you're done, go back to the terminal and press **`Ctrl + C`** to stop the server.
+
+---
+
+### ❓ Something Went Wrong?
+
+- If the website doesn't start, make sure **MongoDB Server** is running (check Step 3).
+- If you see a database error, double‑check that you imported all three seed files correctly with correct collection name.
+- If you encounter any other issue, don't panic! Ask a developer friend or paste the error message into an AI assistant like ChatGPT or Claude – they can usually spot the problem instantly.
+
+</div>
+
+---
+
+<a name="-project-structure"></a>
+
+<div align="left">
+
+## 📁 Project Structure
+
+Here's a quick map of the project's main folders, so you know where everything lives.  
+No need to memorize it – just come back here if you ever get lost.
+
