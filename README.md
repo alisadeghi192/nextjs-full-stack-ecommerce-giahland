@@ -27,9 +27,10 @@
 
 ---
 
-## 📑 Table of Contents
 
 <div align="left">
+## 📑 Table of Contents
+  
   <ol style="list-style: none; padding-left: 0;">
     <li> <a href="#-about-the-project">📖 About The Project</a></li>
     <li> <a href="#-key-features">✨ Key Features</a></li>
@@ -47,9 +48,10 @@
 
 ---
 
-## 📖 About The Project
 
 <div align="left">
+  
+## 📖 About The Project
 
 Giahland is a fully Persian (RTL), full‑stack e‑commerce platform built from the ground up with **Next.js 15**, **TypeScript**, and **MongoDB**. It combines a beautiful online plant shop with a real‑time **plant clinic**, where users can chat with professional plant doctors, upload images, and receive expert advice.
 
@@ -61,11 +63,11 @@ From the cart to the checkout, the live chat to the admin dashboard charts, ever
 
 ---
 
+<div align="left">
 ## ✨ Key Features
 
 ### 🛒 Online Store
 
-<div align="left">
 
 - Browse plants by category (**Indoor**, **Decorative**, **Gift**, **Discounted**).
 - Switch between **Grid** and **List** view with sorting (newest, price, popularity).
@@ -75,9 +77,8 @@ From the cart to the checkout, the live chat to the admin dashboard charts, ever
 
 </div>
 
-### 🩺 Plant Clinic
-
 <div align="left">
+### 🩺 Plant Clinic
 
 - Choose from a list of professional **plant doctors**.
 - Start a consultation and chat **in real time** (text + image upload).
@@ -99,9 +100,10 @@ From the cart to the checkout, the live chat to the admin dashboard charts, ever
 
 </div>
 
-### 🧑‍⚕️ Plant Doctor Panel
 
 <div align="left">
+  
+### 🧑‍⚕️ Plant Doctor Panel
 
 - Write and manage **articles** using a rich‑text editor (TipTap).
 - View and **reply to approved comments** on your articles/products.
@@ -111,9 +113,9 @@ From the cart to the checkout, the live chat to the admin dashboard charts, ever
 
 </div>
 
-### 🛠️ Admin Dashboard
-
 <div align="left">
+  
+### 🛠️ Admin Dashboard
 
 - Dashboard with **real‑time stats** (revenue, orders, users, doctors).
 - Interactive **charts** (monthly sales, category pie chart) with fake data.
@@ -127,9 +129,9 @@ From the cart to the checkout, the live chat to the admin dashboard charts, ever
 
 </div>
 
-### 🔔 Notifications
-
 <div align="left">
+  
+### 🔔 Notifications
 
 - **Role‑based notification system** that keeps every user informed in real time.
 - **Users** receive alerts for new consultation messages and ticket replies.
@@ -152,9 +154,9 @@ From the cart to the checkout, the live chat to the admin dashboard charts, ever
 
 </div>
 
-### 🖼️ Image Handling
-
 <div align="left">
+  
+### 🖼️ Image Handling
 
 - **Client‑side preview** before upload for avatars, products, articles, tickets, and chat.
 - Automatic **WebP conversion** with quality optimization via Sharp.
@@ -164,9 +166,9 @@ From the cart to the checkout, the live chat to the admin dashboard charts, ever
 
 </div>
 
-### 🔍 Search & Navigation
-
 <div align="left">
+  
+### 🔍 Search & Navigation
 
 - **Real‑time product search** with 500ms debounce and loading state.
 - **Breadcrumb navigation** with dynamic title support and responsive truncation.
@@ -176,9 +178,9 @@ From the cart to the checkout, the live chat to the admin dashboard charts, ever
 
 </div>
 
-### ⚡ Performance & SEO
-
 <div align="left">
+  
+### ⚡ Performance & SEO
 
 - **Next.js 15 App Router** with Server Components for optimal performance.
 - **unstable_cache** and **revalidateTag** for smart cache invalidation.
@@ -188,9 +190,9 @@ From the cart to the checkout, the live chat to the admin dashboard charts, ever
 
 </div>
 
-### ✍️ Content & Forms
-
 <div align="left">
+  
+### ✍️ Content & Forms
 
 - **Rich‑text editor** (TipTap) with image embedding for blog articles.
 - **Zod validation** on both client (React Hook Form) and server (Server Actions).
@@ -198,9 +200,9 @@ From the cart to the checkout, the live chat to the admin dashboard charts, ever
 
 </div>
 
-### 📊 Charts & Dashboard
-
 <div align="left">
+  
+### 📊 Charts & Dashboard
 
 - **Monthly sales line chart** and **category pie chart** with dark‑mode‑aware colors.
 - **Animated counters** (CountUp) for stats and hero numbers.
@@ -208,9 +210,9 @@ From the cart to the checkout, the live chat to the admin dashboard charts, ever
 
 </div>
 
-### 🎨 User Experience
-
 <div align="left">
+  
+### 🎨 User Experience
 
 - **Full Dark Mode** – persisted in cookies & localStorage, zero flicker on reload.
 - **Fully responsive** from mobile to wide desktop.
@@ -220,9 +222,9 @@ From the cart to the checkout, the live chat to the admin dashboard charts, ever
 
 </div>
 
-### 🎯 Attention to Detail
-
 <div align="left">
+  
+### 🎯 Attention to Detail
 
 - **Custom‑styled scrollbar** matching the brand’s green identity (`#417f56`), applied globally.
 - **Blocked user flow:** a logged‑in blocked user is immediately restricted from accessing any panel and redirected to the `/blocked` page with a helpful message. Once they log out, they cannot sign in again.
