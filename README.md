@@ -27,66 +27,140 @@
 
 ---
 
-
 ## 📑 Table of Contents
 
-<ol style="list-style: none; padding-right: 0; font-size: 1.1em; text-align:left;">
-  <li style="margin-bottom: 8px;">
-    <span style="color: #417f56; font-weight: bold; margin-left: 8px;">1.</span>
-    <a href="#-about-the-project" style="color: #417f56; text-decoration: none; font-size:18px">📖 About The Project</a>
-  </li>
-  <li style="margin-bottom: 8px;">
-    <span style="color: #417f56; font-weight: bold; margin-left: 8px;">2.</span>
-    <a href="#-key-features" style="color: #417f56; text-decoration: none; font-size:18px;">✨ Key Features</a>
-  </li>
-  <li style="margin-bottom: 8px;">
-    <span style="color: #417f56; font-weight: bold; margin-left: 8px;">3.</span>
-    <a href="#-roles--rules" style="color: #417f56; text-decoration: none; font-size:18px;">👥 Roles & Rules</a>
-  </li>
-  <li style="margin-bottom: 8px;">
-    <span style="color: #417f56; font-weight: bold; margin-left: 8px;">4.</span>
-    <a href="#-design-inspiration" style="color: #417f56; text-decoration: none; font-size:18px;">🎨 Design Inspiration</a>
-  </li>
-  <li style="margin-bottom: 8px;">
-    <span style="color: #417f56; font-weight: bold; margin-left: 8px;">5.</span>
-    <a href="#-screenshots" style="color: #417f56; text-decoration: none; font-size:18px;">🖼️ Screenshots</a>
-  </li>
-  <li style="margin-bottom: 8px;">
-    <span style="color: #417f56; font-weight: bold; margin-left: 8px;">6.</span>
-    <a href="#-built-with" style="color: #417f56; text-decoration: none; font-size:18px;">🧰 Built With</a>
-  </li>
-  <li style="margin-bottom: 8px;">
-    <span style="color: #417f56; font-weight: bold; margin-left: 8px;">7.</span>
-    <a href="#-getting-started" style="color: #417f56; text-decoration: none; font-size:18px;">🚀 Getting Started</a>
-  </li>
-  <li style="margin-bottom: 8px;">
-    <span style="color: #417f56; font-weight: bold; margin-left: 8px;">8.</span>
-    <a href="#-database--seed-data" style="color: #417f56; text-decoration: none; font-size:18px;">🗄️ Database & Seed Data</a>
-  </li>
-  <li style="margin-bottom: 8px;">
-    <span style="color: #417f56; font-weight: bold; margin-left: 8px;">9.</span>
-    <a href="#-project-structure" style="color: #417f56; text-decoration: none; font-size:18px;">📁 Project Structure</a>
-  </li>
-  <li style="margin-bottom: 8px;">
-    <span style="color: #417f56; font-weight: bold; margin-left: 8px;">10.</span>
-    <a href="#-license" style="color: #417f56; text-decoration: none; font-size:18px;">📝 License</a>
-  </li>
-  <li style="margin-bottom: 8px;">
-    <span style="color: #417f56; font-weight: bold; margin-left: 8px;">11.</span>
-    <a href="#-contact" style="color: #417f56; text-decoration: none; font-size:18px">📬 Contact</a>
-  </li>
-</ol>
+<div align="left">
+  <ol style="list-style: none; padding-left: 0;">
+    <li> <a href="#about-the-project">📖 About The Project</a></li>
+    <li> <a href="#key-features">✨ Key Features</a></li>
+    <li> <a href="#roles--rules">👥 Roles & Rules</a></li>
+    <li> <a href="#design-inspiration">🎨 Design Inspiration</a></li>
+    <li> <a href="#screenshots">🖼️ Screenshots</a></li>
+    <li> <a href="#built-with">🧰 Built With</a></li>
+    <li> <a href="#getting-started">🚀 Getting Started</a></li>
+    <li> <a href="#database--seed-data">🗄️ Database & Seed Data</a></li>
+    <li> <a href="#project-structure">📁 Project Structure</a></li>
+    <li> <a href="#license">📝 License</a></li>
+    <li> <a href="#contact">📬 Contact</a></li>
+  </ol>
+</div>
 
 ---
 
+<div align="left">
+
 ## 📖 About The Project
 
-Giahland is a fully functional, full‑stack e‑commerce platform built from the ground up with **Next.js 15**, **TypeScript**, and **MongoDB**. It combines a beautiful online plant shop with a real‑time **plant clinic**, where users can chat with professional plant doctors, upload images, and receive expert advice.
+Giahland is a fully Persian (RTL), full‑stack e‑commerce platform built from the ground up with **Next.js 15**, **TypeScript**, and **MongoDB**. It combines a beautiful online plant shop with a real‑time **plant clinic**, where users can chat with professional plant doctors, upload images, and receive expert advice.
 
 The application includes **three dedicated panels** — User, Plant Doctor, and Admin — each with role‑specific features and a fully responsive, dark‑mode‑enabled interface.
 
 From the cart to the checkout, the live chat to the admin dashboard charts, every detail has been implemented to mirror a **real‑world, production‑ready application**. This project demonstrates a strong command of modern front‑end architecture, server‑side rendering, and clean, scalable code.
 
-> "Design is not just what it looks like and feels like. Design is how it works." — Steve Jobs
+
+---
+
+## ✨ Key Features
+
+### 🛒 Online Store
+- Browse plants by category (**Indoor**, **Decorative**, **Gift**, **Discounted**).
+- Switch between **Grid** and **List** view with sorting (newest, price, popularity).
+- Product detail page with **image gallery (lightbox)**, specifications, care guides, and approved comments.
+- Add to cart, toggle wishlist, and checkout with **delivery method** selection.
+- **Simulated payment flow** with a dedicated payment page, order tracking, and printable factor.
+
+### 🩺 Plant Clinic
+- Choose from a list of professional **plant doctors**.
+- Start a consultation and chat **in real time** (text + image upload).
+- Chat UI inspired by **Telegram's** clean and familiar messaging experience.
+- Messages marked as **sent/seen**, with unread count notifications.
+- Close consultations and increment doctor's successful visits.
+
+### 👤 User Panel
+- View **order history** and detailed factor (invoice) for each order.
+- Manage **consultations** (list, search, sort, chat).
+- Create **support tickets** with file attachments and track replies.
+- Update profile information and **upload avatar**.
+- **Wishlist** with grid/list view.
+
+### 🧑‍⚕️ Plant Doctor Panel
+- Write and manage **articles** using a rich‑text editor (TipTap).
+- View and **reply to approved comments** on your articles/products.
+- Handle **active consultations**, chat with users, and close them.
+- Update profile information and **upload avatar**.
+- Create **support tickets** with file attachments and track replies.
+
+### 🛠️ Admin Dashboard
+- Dashboard with **real‑time stats** (revenue, orders, users, doctors).
+- Interactive **charts** (monthly sales, category pie chart) with fake data.
+- Full **product CRUD** with multi‑image upload (optimized to WebP).
+- **Article** management (list, create, delete).
+- Monitor all **consultations** (read‑only chat view).
+- **User management** (list, detail, block/unblock, edit info, create new doctor).
+- **Order management** (list, detail, change status to delivered).
+- **Comment moderation** (approve, reply, delete, mark read/unread).
+- Manage **contact messages** and **support tickets**.
+
+### 🔔 Notifications
+- **Role‑based notification system** that keeps every user informed in real time.
+- **Users** receive alerts for new consultation messages and ticket replies.
+- **Plant Doctors** get notified about new consultation messages, new approved comments on their articles/products, and ticket updates.
+- **Admins** see notifications for pending tickets, unread contact messages, and comments awaiting approval.
+- Notification badges appear in the header and sidebar, with automatic refresh across pages.
+
+### 🛡️ Authentication & Security
+- **JWT‑based auth** with access & refresh tokens (HTTP‑only cookies).
+- Automatic **token refresh** via middleware, no user interruption.
+- **Role‑based route protection** (middleware + server‑side checks).
+- Passwords hashed with **bcryptjs** (12 salt rounds).
+- All server actions validate user identity and role before execution.
+- **Blocked users** are prevented from signing in or accessing any protected route and are redirected to the dedicated blocked page.
+
+### 🖼️ Image Handling
+- **Client‑side preview** before upload for avatars, products, articles, tickets, and chat.
+- Automatic **WebP conversion** with quality optimization via Sharp.
+- Secure file naming with random strings to prevent **path traversal** attacks.
+- Old images cleaned up on update/delete (disk space management).
+- **Lightbox gallery** for product images (swipe, keyboard navigation).
+
+### 🔍 Search & Navigation
+- **Real‑time product search** with 500ms debounce and loading state.
+- **Breadcrumb navigation** with dynamic title support and responsive truncation.
+- **URL‑based filtering & sorting** on all product and blog listing pages.
+- **Pagination** on all list pages with proper page reset on filter change.
+- **Scroll‑to‑top button** with circular progress indicator, visible on all pages except the chat screen to avoid overlap.
+
+### ⚡ Performance & SEO
+- **Next.js 15 App Router** with Server Components for optimal performance.
+- **unstable_cache** and **revalidateTag** for smart cache invalidation.
+- **Lazy loading** for below‑the‑fold content (homepage sliders, product images).
+- **Metadata & Open Graph** tags on all pages for SEO.
+- Custom **404 page** with Persian messaging and navigation.
+
+### ✍️ Content & Forms
+- **Rich‑text editor** (TipTap) with image embedding for blog articles.
+- **Zod validation** on both client (React Hook Form) and server (Server Actions).
+- Inline **error handling** with toast notifications and field‑level messages.
+
+### 📊 Charts & Dashboard
+- **Monthly sales line chart** and **category pie chart** with dark‑mode‑aware colors.
+- **Animated counters** (CountUp) for stats and hero numbers.
+- Real‑time stats calculation using MongoDB aggregation pipelines.
+
+### 🎨 User Experience
+- **Full Dark Mode** – persisted in cookies & localStorage, zero flicker on reload.
+- **Fully responsive** from mobile to wide desktop.
+- Skeleton loaders, smooth animations, toast notifications.
+- Custom Persian font (**Modam**) with full RTL support.
+- Sticky headers and dynamic overlays for smooth navigation.
+
+
+### 🎯 Attention to Detail
+- **Custom‑styled scrollbar** matching the brand’s green identity (`#417f56`), applied globally.
+- **Blocked user flow:** a logged‑in blocked user is immediately restricted from accessing any panel and redirected to the `/blocked` page with a helpful message. Once they log out, they cannot sign in again.
+- Empty states designed with helpful illustrations and CTA buttons (empty cart, no orders, etc.).
+- **Fallback images** for broken or missing profile pictures.
+
+</div>
 
 ---
