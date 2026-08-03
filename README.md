@@ -168,6 +168,7 @@ From the cart to the checkout, the live chat to the admin dashboard charts, ever
 <a name="roles--rules"></a>
 
 <div align="left">
+  
 ## 👥 Roles & Rules
 
 Giahland has **three distinct roles**, each with carefully scoped permissions. This separation ensures security, clean UX, and prevents unauthorized access.
