@@ -204,6 +204,11 @@ Giahland has **three distinct roles**, each with carefully scoped permissions. T
 ### 🚫 Important Restrictions
 
 - **Plant Doctors & Admins** cannot add items to cart, checkout, or like products. These UI elements are **hidden** for them.
+- **Plant Doctors** can only reply to comments that are:
+  - on **any product** or on their **own articles**.
+  - already **approved** by admin.
+  - **not yet replied to** by admin.
+- **Admins** can reply to any comment, and their reply **replaces** any existing doctor or admin response.
 - **Blocked users** are instantly logged out and redirected to `/blocked`. They **cannot sign in** until unblocked by an admin.
 - **The first registered user** automatically becomes the **super admin** with full system access.
 
