@@ -1,0 +1,170 @@
+[{
+  "_id": {
+    "$oid": "6a5f6dbe5c2cee698dfdb6fb"
+  },
+  "mobile": "09121111111",
+  "email": "admin@giahland.com",
+  "password": "$2b$12$x3VE6Ec/B8.61fxqUW79ReQ51bs5Zdn0ULuMFt.6L1HoIiW3gFz3W",
+  "role": "admin",
+  "firstName": "ادمین",
+  "lastName": "",
+  "avatar": "/uploads/users/6a5f6dbe5c2cee698dfdb6fb/avatar-1785140413982.webp",
+  "isSuperAdmin": true,
+  "createdAt": {
+    "$date": "2026-03-21T13:01:50.520Z"
+  },
+  "updatedAt": {
+    "$date": "2026-07-27T08:20:13.993Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a2eda94a50cc4b25f29cfa3"
+  },
+  "mobile": "09122222222",
+  "email": "dr.baqcheban@giahland.com",
+  "password": "$2b$12$RVxVBC9o5GDdbnwhk/LopOpORVPaU6AbOHVaG6Pd84cMjmtMG7bza",
+  "role": "plant-doctor",
+  "firstName": "مجید",
+  "lastName": "باغچه بان",
+  "avatar": "/uploads/users/6a2eda94a50cc4b25f29cfa3/avatar-1785140111660.webp",
+  "specialties": "نگهداری و احیای گیاهان آپارتمانی",
+  "yearsOfExperience": 20,
+  "consultationFee": 650000,
+  "successfulConsultations": 156,
+  "articles": [],
+  "consultations": [],
+  "__t": "PlantDoctor",
+  "updatedAt": {
+    "$date": "2026-07-27T08:15:11.667Z"
+  },
+  "createdAt": {
+    "$date": "2026-06-15T10:47:33.762Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a2eda94a50cc4b25f29cfa4"
+  },
+  "mobile": "09123333333",
+  "email": "dr.golparvar@giahland.com",
+  "password": "$2b$12$RVxVBC9o5GDdbnwhk/LopOpORVPaU6AbOHVaG6Pd84cMjmtMG7bza",
+  "role": "plant-doctor",
+  "firstName": "شقایق",
+  "lastName": "گل پرور",
+  "avatar": "/uploads/users/6a2eda94a50cc4b25f29cfa4/avatar-1785140146725.webp",
+  "specialties": "فیزیولوژی و تنش‌های محیطی گیاهان",
+  "yearsOfExperience": 5,
+  "consultationFee": 350000,
+  "successfulConsultations": 93,
+  "articles": [],
+  "consultations": [],
+  "__t": "PlantDoctor",
+  "updatedAt": {
+    "$date": "2026-08-01T11:52:23.285Z"
+  },
+  "createdAt": {
+    "$date": "2026-06-21T09:20:45.995Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a2eda94a50cc4b25f29cfa5"
+  },
+  "mobile": "09124444444",
+  "email": "dr.golkar@giahland.com",
+  "password": "$2b$12$RVxVBC9o5GDdbnwhk/LopOpORVPaU6AbOHVaG6Pd84cMjmtMG7bza",
+  "role": "plant-doctor",
+  "firstName": "نسترن",
+  "lastName": "گلکار",
+  "avatar": "/uploads/users/6a2eda94a50cc4b25f29cfa5/avatar-1785140196666.webp",
+  "specialties": "تغذیه و کوددهی گیاهان",
+  "yearsOfExperience": 12,
+  "consultationFee": 400000,
+  "successfulConsultations": 245,
+  "articles": [],
+  "consultations": [],
+  "__t": "PlantDoctor",
+  "updatedAt": {
+    "$date": "2026-07-27T08:16:36.670Z"
+  },
+  "createdAt": {
+    "$date": "2026-06-15T10:46:48.176Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a2eda94a50cc4b25f29cfa6"
+  },
+  "mobile": "09125555555",
+  "email": "dr.keshavarz@giahland.com",
+  "password": "$2b$12$RVxVBC9o5GDdbnwhk/LopOpORVPaU6AbOHVaG6Pd84cMjmtMG7bza",
+  "role": "plant-doctor",
+  "firstName": "بهرام",
+  "lastName": "کشاورز",
+  "avatar": "/uploads/users/6a2eda94a50cc4b25f29cfa6/avatar-1785140234327.webp",
+  "specialties": "خاک و ریشه گیاهان",
+  "yearsOfExperience": 12,
+  "consultationFee": 500000,
+  "successfulConsultations": 156,
+  "articles": [],
+  "consultations": [],
+  "__t": "PlantDoctor",
+  "updatedAt": {
+    "$date": "2026-07-27T08:17:14.332Z"
+  },
+  "createdAt": {
+    "$date": "2026-06-21T09:21:19.917Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a2eda94a50cc4b25f29cfa7"
+  },
+  "mobile": "09126666666",
+  "email": "dr.baqi@giahland.com",
+  "password": "$2b$12$RVxVBC9o5GDdbnwhk/LopOpORVPaU6AbOHVaG6Pd84cMjmtMG7bza",
+  "role": "plant-doctor",
+  "firstName": "رضا",
+  "lastName": "باغی",
+  "avatar": "/uploads/users/6a2eda94a50cc4b25f29cfa7/avatar-1785140276879.webp",
+  "specialties": "تکثیر و قلمه گیاهان",
+  "yearsOfExperience": 10,
+  "consultationFee": 450000,
+  "successfulConsultations": 156,
+  "articles": [],
+  "consultations": [],
+  "__t": "PlantDoctor",
+  "updatedAt": {
+    "$date": "2026-07-27T08:17:56.883Z"
+  },
+  "createdAt": {
+    "$date": "2026-06-15T10:49:33.378Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a2eda94a50cc4b25f29cfa2"
+  },
+  "mobile": "09127777777",
+  "email": "dr.chamanara@giahland.com",
+  "password": "$2b$12$RVxVBC9o5GDdbnwhk/LopOpORVPaU6AbOHVaG6Pd84cMjmtMG7bza",
+  "role": "plant-doctor",
+  "firstName": "مریم",
+  "lastName": "چمن آرا",
+  "avatar": "/uploads/users/6a2eda94a50cc4b25f29cfa2/avatar-1785140367271.webp",
+  "specialties": "آفات و بیماری‌های گیاهان",
+  "yearsOfExperience": 8,
+  "consultationFee": 350000,
+  "successfulConsultations": 127,
+  "articles": [],
+  "consultations": [],
+  "updatedAt": {
+    "$date": "2026-07-27T08:19:27.275Z"
+  },
+  "__t": "PlantDoctor",
+  "createdAt": {
+    "$date": "2026-06-15T10:45:00.442Z"
+  }
+}]
