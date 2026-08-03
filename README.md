@@ -238,11 +238,6 @@ Starting from that basic starting point, **Giahland was built from the ground up
 
 </div>
 
----
-
-<a name="-screenshots"></a>
-
-
 <div align="left">
 
 ## 🖼️ Screenshots
@@ -257,92 +252,60 @@ Starting from that basic starting point, **Giahland was built from the ground up
 ### 🏠 Homepage
 <details open>
 <summary>View Screenshots</summary>
-<table>
-  <tr>
-    <td align="center"><strong>🖥️ Desktop</strong></td>
-    <td align="center"><strong>📱 Mobile</strong></td>
-  </tr>
-  <tr>
-    <td><img src="screenshots/homepage-desktop.gif" width="640" /></td>
-    <td><img src="screenshots/homepage-mobile.gif" width="187" /></td>
-  </tr>
-</table>
+
+| 🖥️ Desktop | 📱 Mobile |
+|:---:|:---:|
+| <img src="screenshots/homepage-desktop.gif" width="600" /> | <img src="screenshots/homepage-mobile.gif" width="180" /> |
+
 </details>
 
 ### 🛒 Products
 <details>
 <summary>View Screenshots</summary>
-<table>
-  <tr>
-    <td align="center"><strong>🖥️ Desktop</strong></td>
-    <td align="center"><strong>📱 Mobile</strong></td>
-  </tr>
-  <tr>
-    <td><img src="screenshots/products-desktop.gif" width="640" /></td>
-    <td><img src="screenshots/products-mobile.gif" width="187" /></td>
-  </tr>
-</table>
+
+| 🖥️ Desktop | 📱 Mobile |
+|:---:|:---:|
+| <img src="screenshots/products-desktop.gif" width="600" /> | <img src="screenshots/products-mobile.gif" width="180" /> |
+
 </details>
 
 ### 📱 Product Detail
 <details>
 <summary>View Screenshots</summary>
-<table>
-  <tr>
-    <td align="center"><strong>🖥️ Desktop</strong></td>
-    <td align="center"><strong>📱 Mobile</strong></td>
-  </tr>
-  <tr>
-    <td><img src="screenshots/product-detail-desktop.gif" width="640" /></td>
-    <td><img src="screenshots/product-detail-mobile.gif" width="187" /></td>
-  </tr>
-</table>
+
+| 🖥️ Desktop | 📱 Mobile |
+|:---:|:---:|
+| <img src="screenshots/product-detail-desktop.gif" width="600" /> | <img src="screenshots/product-detail-mobile.gif" width="180" /> |
+
 </details>
 
 ### 👤 User Panel
 <details>
 <summary>View Screenshots</summary>
-<table>
-  <tr>
-    <td align="center"><strong>🖥️ Desktop</strong></td>
-    <td align="center"><strong>📱 Mobile</strong></td>
-  </tr>
-  <tr>
-    <td><img src="screenshots/user-panel-desktop.gif" width="640" /></td>
-    <td><img src="screenshots/user-panel-mobile.gif" width="187" /></td>
-  </tr>
-</table>
+
+| 🖥️ Desktop | 📱 Mobile |
+|:---:|:---:|
+| <img src="screenshots/user-panel-desktop.gif" width="600" /> | <img src="screenshots/user-panel-mobile.gif" width="180" /> |
+
 </details>
 
 ### 🩺 Consultation & Chat
 <details>
 <summary>View Screenshots</summary>
-<table>
-  <tr>
-    <td align="center"><strong>🖥️ Desktop</strong></td>
-    <td align="center"><strong>📱 Mobile</strong></td>
-  </tr>
-  <tr>
-    <td><img src="screenshots/consultation-desktop.gif" width="640" /></td>
-    <td><img src="screenshots/consultation-mobile.gif" width="187" /></td>
-  </tr>
-</table>
+
+| 🖥️ Desktop | 📱 Mobile |
+|:---:|:---:|
+| <img src="screenshots/consultation-desktop.gif" width="600" /> | <img src="screenshots/consultation-mobile.gif" width="180" /> |
+
 </details>
 
 ### 🛠️ Admin Dashboard
 <details>
 <summary>View Screenshots</summary>
-<table>
-  <tr>
-    <td align="center"><strong>🖥️ Desktop</strong></td>
-    <td align="center"><strong>📱 Mobile</strong></td>
-  </tr>
-  <tr>
-    <td><img src="screenshots/admin-dashboard-desktop.gif" width="640" /></td>
-    <td><img src="screenshots/admin-dashboard-mobile.gif" width="187" /></td>
-  </tr>
-</table>
+
+| 🖥️ Desktop | 📱 Mobile |
+|:---:|:---:|
+| <img src="screenshots/admin-dashboard-desktop.gif" width="600" /> | <img src="screenshots/admin-dashboard-mobile.gif" width="180" /> |
+
 </details>
 </div>
-
----
