@@ -31,17 +31,17 @@
 
 <div align="left">
   <ol style="list-style: none; padding-left: 0;">
-    <li> <a href="#about-the-project">📖 About The Project</a></li>
-    <li> <a href="#key-features">✨ Key Features</a></li>
-    <li> <a href="#roles--rules">👥 Roles & Rules</a></li>
-    <li> <a href="#design-inspiration">🎨 Design Inspiration</a></li>
-    <li> <a href="#screenshots">🖼️ Screenshots</a></li>
-    <li> <a href="#built-with">🧰 Built With</a></li>
-    <li> <a href="#getting-started">🚀 Getting Started</a></li>
-    <li> <a href="#database--seed-data">🗄️ Database & Seed Data</a></li>
-    <li> <a href="#project-structure">📁 Project Structure</a></li>
-    <li> <a href="#license">📝 License</a></li>
-    <li> <a href="#contact">📬 Contact</a></li>
+    <li> <a href="#-about-the-project">📖 About The Project</a></li>
+    <li> <a href="#-key-features">✨ Key Features</a></li>
+    <li> <a href="#-roles--rules">👥 Roles & Rules</a></li>
+    <li> <a href="#-design-inspiration">🎨 Design Inspiration</a></li>
+    <li> <a href="#-screenshots">🖼️ Screenshots</a></li>
+    <li> <a href="#-built-with">🧰 Built With</a></li>
+    <li> <a href="#-getting-started">🚀 Getting Started</a></li>
+    <li> <a href="#-database--seed-data">🗄️ Database & Seed Data</a></li>
+    <li> <a href="#-project-structure">📁 Project Structure</a></li>
+    <li> <a href="#-license">📝 License</a></li>
+    <li> <a href="#-contact">📬 Contact</a></li>
   </ol>
 </div>
 
