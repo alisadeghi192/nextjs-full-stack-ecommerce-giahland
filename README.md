@@ -164,3 +164,48 @@ From the cart to the checkout, the live chat to the admin dashboard charts, ever
 </div>
 
 ---
+
+<a name="roles--rules"></a>
+## 👥 Roles & Rules
+
+<div align="left">
+
+Giahland has **three distinct roles**, each with carefully scoped permissions. This separation ensures security, clean UX, and prevents unauthorized access.
+
+</div>
+
+<br>
+
+| Permission | 👤 User | 🧑‍⚕️ Plant Doctor | 🛠️ Admin |
+|---|---|---|---|
+| Browse & search products | ✅ | ✅ | ✅ |
+| Add to cart & checkout | ✅ | ❌ | ❌ |
+| Like/Wishlist products | ✅ | ❌ | ❌ |
+| Create & manage consultations | ✅ | ✅ (own) | ✅ (monitor all) |
+| Real‑time chat in consultations | ✅ | ✅ | 👁️ Read‑only |
+| Create support tickets | ✅ | ✅ | ✅ (manage all) |
+| Write & publish blog articles | ❌ | ✅ | ✅ |
+| Reply to approved comments | ❌ | ✅ | ✅ |
+| Comment moderation | ❌ | ❌ | ✅ |
+| View order history & factors | ✅ | ❌ | ✅ (all users) |
+| Update own profile & avatar | ✅ | ✅ | ✅ |
+| Access admin dashboard | ❌ | ❌ | ✅ |
+| Manage products (CRUD) | ❌ | ❌ | ✅ |
+| Manage users (block/edit/create) | ❌ | ❌ | ✅ |
+| Manage contact messages | ❌ | ❌ | ✅ |
+| Change order status | ❌ | ❌ | ✅ |
+| Receive role‑based notifications | ✅ | ✅ | ✅ |
+
+<br>
+
+<div align="left">
+
+### 🚫 Important Restrictions
+
+- **Plant Doctors & Admins** cannot add items to cart, checkout, or like products. These UI elements are **hidden** for them.
+- **Blocked users** are instantly logged out and redirected to `/blocked`. They **cannot sign in** until unblocked by an admin.
+- **The first registered user** automatically becomes the **super admin** with full system access.
+
+</div>
+
+---
