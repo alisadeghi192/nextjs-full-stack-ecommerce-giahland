@@ -217,3 +217,25 @@ Giahland has **three distinct roles**, each with carefully scoped permissions. T
 </div>
 
 ---
+
+<a name="-design-inspiration"></a>
+
+<div align="left">
+
+## 🎨 Design Inspiration
+
+The initial visual direction for the homepage was loosely inspired by an **early, unfinished concept** shared by **[Farhad Raoufi](https://www.figma.com/@farhadraoufi)** on Figma Community ([view concept](https://www.figma.com/community/file/1402547134501760376)), licensed under **CC BY 4.0**.  
+As the original creator noted, *"this was designed as a concept and was never continued."*
+
+Starting from that basic starting point, **Giahland was built from the ground up** and expanded into a full-featured, production‑grade platform — orders of magnitude beyond the initial idea:
+
+- A fully integrated **e‑commerce store** with cart, checkout, and payment flow.
+- A real‑time **plant clinic** with live chat and image sharing.
+- Three dedicated **panels** for Users, Plant Doctors, and Admins.
+- A complete **dark mode** system, role‑based notifications, interactive charts, and much more.
+
+> This is not a redesign — it's a complete **product development**, turning an unfinished concept into a scalable, real‑world application.
+
+</div>
+
+---
