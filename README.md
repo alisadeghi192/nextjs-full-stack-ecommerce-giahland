@@ -249,7 +249,7 @@ Starting from that basic starting point, **Giahland was built from the ground up
 
 
 ### 🏠 Homepage
-<details open>
+<details>
 <summary>View Screenshots</summary>
 
 | 🖥️ Desktop | 📱 Mobile |
@@ -319,22 +319,22 @@ Starting from that basic starting point, **Giahland was built from the ground up
 
 | Category | Technology |
 |---|---|
-| **Framework** | Next.js 15 (App Router) |
+| **Framework** | Next.js 15.5 (App Router) |
 | **Language** | TypeScript 5 |
 | **Styling** | Tailwind CSS 4 |
-| **State Management** | Zustand |
-| **Database** | MongoDB + Mongoose |
-| **Authentication** | JWT + bcryptjs |
-| **Validation** | Zod (client & server) |
-| **Forms** | React Hook Form |
-| **Charts** | Recharts |
-| **Rich Text Editor** | TipTap |
-| **Image Processing** | Sharp |
-| **Carousel** | Swiper |
-| **Lightbox** | Yet Another React Lightbox |
-| **Animations** | CountUp |
-| **Notifications** | React Hot Toast |
-| **Icons** | React Icons |
+| **State Management** | Zustand 5 |
+| **Database** | MongoDB + Mongoose 9 |
+| **Authentication** | JWT (jsonwebtoken 9) + bcryptjs 3 |
+| **Validation** | Zod 4 (client & server) |
+| **Forms** | React Hook Form 7 |
+| **Charts** | Recharts 3 |
+| **Rich Text Editor** | TipTap 3 |
+| **Image Processing** | Sharp 0.35 |
+| **Carousel** | Swiper 12 |
+| **Lightbox** | Yet Another React Lightbox 3 |
+| **Animations** | CountUp 6 |
+| **Notifications** | React Hot Toast 2 |
+| **Icons** | React Icons 5 |
 
 </div>
 
