@@ -27,9 +27,11 @@
 
 ---
 
-## 📑 Table of Contents
 
 <div align="left">
+
+## 📑 Table of Contents
+
   <ol style="list-style: none; padding-left: 0;">
     <li> <a href="#-about-the-project">📖 About The Project</a></li>
     <li> <a href="#-key-features">✨ Key Features</a></li>
