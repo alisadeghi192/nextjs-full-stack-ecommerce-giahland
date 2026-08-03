@@ -308,3 +308,34 @@ Starting from that basic starting point, **Giahland was built from the ground up
 
 </details>
 </div>
+
+---
+
+<a name="-built-with"></a>
+
+<div align="left">
+
+## 🧰 Built With
+
+| Category | Technology |
+|---|---|
+| **Framework** | Next.js 15 (App Router) |
+| **Language** | TypeScript 5 |
+| **Styling** | Tailwind CSS 4 |
+| **State Management** | Zustand |
+| **Database** | MongoDB + Mongoose |
+| **Authentication** | JWT + bcryptjs |
+| **Validation** | Zod (client & server) |
+| **Forms** | React Hook Form |
+| **Charts** | Recharts |
+| **Rich Text Editor** | TipTap |
+| **Image Processing** | Sharp |
+| **Carousel** | Swiper |
+| **Lightbox** | Yet Another React Lightbox |
+| **Animations** | CountUp |
+| **Notifications** | React Hot Toast |
+| **Icons** | React Icons |
+
+</div>
+
+---
