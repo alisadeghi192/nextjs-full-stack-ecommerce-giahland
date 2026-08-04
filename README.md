@@ -5,8 +5,11 @@
   <p>
     <strong>Online Houseplant Shop &amp; Professional Plant Clinic</strong>
   </p>
+<a href="https://giahland-two.vercel.app" target="_blank">
+  <img src="https://img.shields.io/badge/Live_Demo-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Demo on Vercel" />
+</a>
 
-  ---
+---
 
 <div align="center">
   <img src="https://img.shields.io/badge/Next.js-15.5-417f56?style=for-the-badge&logo=nextdotjs&logoColor=white" />
@@ -25,7 +28,6 @@
 </div>
 
 ---
-
 
 <div align="left">
 
@@ -58,12 +60,12 @@ The application includes **three dedicated panels** — User, Plant Doctor, and 
 
 From the cart to the checkout, the live chat to the admin dashboard charts, every detail has been implemented to mirror a **real‑world, production‑ready application**. This project demonstrates a strong command of modern front‑end architecture, server‑side rendering, and clean, scalable code.
 
-
 ---
 
 ## ✨ Key Features
 
 ### 🛒 Online Store
+
 - Browse plants by category (**Indoor**, **Decorative**, **Gift**, **Discounted**).
 - Switch between **Grid** and **List** view with sorting (newest, price, popularity).
 - Product detail page with **image gallery (lightbox)**, specifications, care guides, and approved comments.
@@ -71,6 +73,7 @@ From the cart to the checkout, the live chat to the admin dashboard charts, ever
 - **Simulated payment flow** with a dedicated payment page, order tracking, and printable factor.
 
 ### 🩺 Plant Clinic
+
 - Choose from a list of professional **plant doctors**.
 - Start a consultation and chat **in real time** (text + image upload).
 - Chat UI inspired by **Telegram's** clean and familiar messaging experience.
@@ -78,6 +81,7 @@ From the cart to the checkout, the live chat to the admin dashboard charts, ever
 - Close consultations and increment doctor's successful visits.
 
 ### 👤 User Panel
+
 - View **order history** and detailed factor (invoice) for each order.
 - Manage **consultations** (list, search, sort, chat).
 - Create **support tickets** with file attachments and track replies.
@@ -85,6 +89,7 @@ From the cart to the checkout, the live chat to the admin dashboard charts, ever
 - **Wishlist** with grid/list view.
 
 ### 🧑‍⚕️ Plant Doctor Panel
+
 - Write and manage **articles** using a rich‑text editor (TipTap).
 - View and **reply to approved comments** on your articles/products.
 - Handle **active consultations**, chat with users, and close them.
@@ -92,6 +97,7 @@ From the cart to the checkout, the live chat to the admin dashboard charts, ever
 - Create **support tickets** with file attachments and track replies.
 
 ### 🛠️ Admin Dashboard
+
 - Dashboard with **real‑time stats** (revenue, orders, users, doctors).
 - Interactive **charts** (monthly sales, category pie chart) with fake data.
 - Full **product CRUD** with multi‑image upload (optimized to WebP).
@@ -103,6 +109,7 @@ From the cart to the checkout, the live chat to the admin dashboard charts, ever
 - Manage **contact messages** and **support tickets**.
 
 ### 🔔 Notifications
+
 - **Role‑based notification system** that keeps every user informed in real time.
 - **Users** receive alerts for new consultation messages and ticket replies.
 - **Plant Doctors** get notified about new consultation messages, new approved comments on their articles/products, and ticket updates.
@@ -110,6 +117,7 @@ From the cart to the checkout, the live chat to the admin dashboard charts, ever
 - Notification badges appear in the header and sidebar, with automatic refresh across pages.
 
 ### 🛡️ Authentication & Security
+
 - **JWT‑based auth** with access & refresh tokens (HTTP‑only cookies).
 - Automatic **token refresh** via middleware, no user interruption.
 - **Role‑based route protection** (middleware + server‑side checks).
@@ -118,6 +126,7 @@ From the cart to the checkout, the live chat to the admin dashboard charts, ever
 - **Blocked users** are prevented from signing in or accessing any protected route and are redirected to the dedicated blocked page.
 
 ### 🖼️ Image Handling
+
 - **Client‑side preview** before upload for avatars, products, articles, tickets, and chat.
 - Automatic **WebP conversion** with quality optimization via Sharp.
 - Secure file naming with random strings to prevent **path traversal** attacks.
@@ -125,6 +134,7 @@ From the cart to the checkout, the live chat to the admin dashboard charts, ever
 - **Lightbox gallery** for product images (swipe, keyboard navigation).
 
 ### 🔍 Search & Navigation
+
 - **Real‑time product search** with 500ms debounce and loading state.
 - **Breadcrumb navigation** with dynamic title support and responsive truncation.
 - **URL‑based filtering & sorting** on all product and blog listing pages.
@@ -132,6 +142,7 @@ From the cart to the checkout, the live chat to the admin dashboard charts, ever
 - **Scroll‑to‑top button** with circular progress indicator, visible on all pages except the chat screen to avoid overlap.
 
 ### ⚡ Performance & SEO
+
 - **Next.js 15 App Router** with Server Components for optimal performance.
 - **unstable_cache** and **revalidateTag** for smart cache invalidation.
 - **Lazy loading** for below‑the‑fold content (homepage sliders, product images).
@@ -139,24 +150,27 @@ From the cart to the checkout, the live chat to the admin dashboard charts, ever
 - Custom **404 page** with Persian messaging and navigation.
 
 ### ✍️ Content & Forms
+
 - **Rich‑text editor** (TipTap) with image embedding for blog articles.
 - **Zod validation** on both client (React Hook Form) and server (Server Actions).
 - Inline **error handling** with toast notifications and field‑level messages.
 
 ### 📊 Charts & Dashboard
+
 - **Monthly sales line chart** and **category pie chart** with dark‑mode‑aware colors.
 - **Animated counters** (CountUp) for stats and hero numbers.
 - Real‑time stats calculation using MongoDB aggregation pipelines.
 
 ### 🎨 User Experience
+
 - **Full Dark Mode** – persisted in cookies & localStorage, zero flicker on reload.
 - **Fully responsive** from mobile to wide desktop.
 - Skeleton loaders, smooth animations, toast notifications.
 - Custom Persian font (**Modam**) with full RTL support.
 - Sticky headers and dynamic overlays for smooth navigation.
 
-
 ### 🎯 Attention to Detail
+
 - **Custom‑styled scrollbar** matching the brand’s green identity (`#417f56`), applied globally.
 - **Blocked user flow:** a logged‑in blocked user is immediately restricted from accessing any panel and redirected to the `/blocked` page with a helpful message. Once they log out, they cannot sign in again.
 - Empty states designed with helpful illustrations and CTA buttons (empty cart, no orders, etc.).
@@ -178,25 +192,25 @@ Giahland has **three distinct roles**, each with carefully scoped permissions. T
 
 <br>
 
-| Permission | 👤 User | 🧑‍⚕️ Plant Doctor | 🛠️ Admin |
-|---|---|---|---|
-| Browse & search products | ✅ | ✅ | ✅ |
-| Add to cart & checkout | ✅ | ❌ | ❌ |
-| Like/Wishlist products | ✅ | ❌ | ❌ |
-| Create & manage consultations | ✅(create) | ✅ (close) | ✅ (monitor all and close) |
-| Real‑time chat in consultations | ✅ | ✅ | 👀 Read‑only |
-| Create support tickets | ✅ | ✅ | ✅ (manage all and reply) |
-| Write & publish blog articles | ❌ | ✅ | ✅ |
-| Reply to approved comments | ❌ | ✅(conditional) | ✅ |
-| Comment moderation | ❌ | ❌ | ✅ |
-| View order history & factors | ✅(pay pending) | ❌ | ✅ (all users) |
-| Update own profile & avatar | ✅ | ✅ | ✅ |
-| Access admin dashboard | ❌ | ❌ | ✅ |
-| Manage products (CRUD) | ❌ | ❌ | ✅ |
-| Manage users (block/edit/create) | ❌ | ❌ | ✅ |
-| Manage contact messages | ❌ | ❌ | ✅ |
-| Change order status | ❌ | ❌ | ✅ |
-| Receive role‑based notifications | ✅ | ✅ | ✅ |
+| Permission                       | 👤 User         | 🧑‍⚕️ Plant Doctor | 🛠️ Admin                   |
+| -------------------------------- | --------------- | --------------- | -------------------------- |
+| Browse & search products         | ✅              | ✅              | ✅                         |
+| Add to cart & checkout           | ✅              | ❌              | ❌                         |
+| Like/Wishlist products           | ✅              | ❌              | ❌                         |
+| Create & manage consultations    | ✅(create)      | ✅ (close)      | ✅ (monitor all and close) |
+| Real‑time chat in consultations  | ✅              | ✅              | 👀 Read‑only               |
+| Create support tickets           | ✅              | ✅              | ✅ (manage all and reply)  |
+| Write & publish blog articles    | ❌              | ✅              | ✅                         |
+| Reply to approved comments       | ❌              | ✅(conditional) | ✅                         |
+| Comment moderation               | ❌              | ❌              | ✅                         |
+| View order history & factors     | ✅(pay pending) | ❌              | ✅ (all users)             |
+| Update own profile & avatar      | ✅              | ✅              | ✅                         |
+| Access admin dashboard           | ❌              | ❌              | ✅                         |
+| Manage products (CRUD)           | ❌              | ❌              | ✅                         |
+| Manage users (block/edit/create) | ❌              | ❌              | ✅                         |
+| Manage contact messages          | ❌              | ❌              | ✅                         |
+| Change order status              | ❌              | ❌              | ✅                         |
+| Receive role‑based notifications | ✅              | ✅              | ✅                         |
 
 <br>
 
@@ -224,7 +238,7 @@ Giahland has **three distinct roles**, each with carefully scoped permissions. T
 ## 🎨 Design Inspiration
 
 The initial visual direction for the homepage was inspired by an **early, unfinished concept** shared by **[Farhad Raoufi](https://www.figma.com/@farhadraoufi)** on Figma Community ([view concept](https://www.figma.com/community/file/1402547134501760376)), licensed under **CC BY 4.0**.  
-As the original creator noted, *"this was designed as a concept and was never continued."*
+As the original creator noted, _"this was designed as a concept and was never continued."_
 
 Starting from that basic starting point, **Giahland was built from the ground up** and expanded into a full-featured, production‑grade platform — orders of magnitude beyond the initial idea:
 
@@ -247,63 +261,68 @@ Starting from that basic starting point, **Giahland was built from the ground up
 
 > Each GIF shows the **desktop & mobile** view with a **light → dark mode** transition.
 
-
 ### 🏠 Homepage
+
 <details>
 <summary>View Screenshots</summary>
 
-| 🖥️ Desktop | 📱 Mobile |
-|:---:|:---:|
+|                         🖥️ Desktop                         |                         📱 Mobile                         |
+| :--------------------------------------------------------: | :-------------------------------------------------------: |
 | <img src="screenshots/homepage-desktop.gif" width="600" /> | <img src="screenshots/homepage-mobile.gif" width="180" /> |
 
 </details>
 
 ### 🛒 Products
+
 <details>
 <summary>View Screenshots</summary>
 
-| 🖥️ Desktop | 📱 Mobile |
-|:---:|:---:|
+|                         🖥️ Desktop                         |                         📱 Mobile                         |
+| :--------------------------------------------------------: | :-------------------------------------------------------: |
 | <img src="screenshots/products-desktop.gif" width="600" /> | <img src="screenshots/products-mobile.gif" width="180" /> |
 
 </details>
 
 ### 📱 Product Detail
+
 <details>
 <summary>View Screenshots</summary>
 
-| 🖥️ Desktop | 📱 Mobile |
-|:---:|:---:|
+|                            🖥️ Desktop                            |                            📱 Mobile                            |
+| :--------------------------------------------------------------: | :-------------------------------------------------------------: |
 | <img src="screenshots/product-detail-desktop.gif" width="600" /> | <img src="screenshots/product-detail-mobile.gif" width="180" /> |
 
 </details>
 
 ### 👤 User Panel
+
 <details>
 <summary>View Screenshots</summary>
 
-| 🖥️ Desktop | 📱 Mobile |
-|:---:|:---:|
+|                          🖥️ Desktop                          |                          📱 Mobile                          |
+| :----------------------------------------------------------: | :---------------------------------------------------------: |
 | <img src="screenshots/user-panel-desktop.gif" width="600" /> | <img src="screenshots/user-panel-mobile.gif" width="180" /> |
 
 </details>
 
 ### 🩺 Consultation & Chat
+
 <details>
 <summary>View Screenshots</summary>
 
-| 🖥️ Desktop | 📱 Mobile |
-|:---:|:---:|
+|                           🖥️ Desktop                           |                           📱 Mobile                           |
+| :------------------------------------------------------------: | :-----------------------------------------------------------: |
 | <img src="screenshots/consultation-desktop.gif" width="600" /> | <img src="screenshots/consultation-mobile.gif" width="180" /> |
 
 </details>
 
 ### 🛠️ Admin Dashboard
+
 <details>
 <summary>View Screenshots</summary>
 
-| 🖥️ Desktop | 📱 Mobile |
-|:---:|:---:|
+|                            🖥️ Desktop                             |                            📱 Mobile                             |
+| :---------------------------------------------------------------: | :--------------------------------------------------------------: |
 | <img src="screenshots/admin-dashboard-desktop.gif" width="600" /> | <img src="screenshots/admin-dashboard-mobile.gif" width="180" /> |
 
 </details>
@@ -317,24 +336,24 @@ Starting from that basic starting point, **Giahland was built from the ground up
 
 ## 🧰 Built With
 
-| Category | Technology |
-|---|---|
-| **Framework** | Next.js 15.5 (App Router) |
-| **Language** | TypeScript 5 |
-| **Styling** | Tailwind CSS 4 |
-| **State Management** | Zustand 5 |
-| **Database** | MongoDB + Mongoose 9 |
-| **Authentication** | JWT (jsonwebtoken 9) + bcryptjs 3 |
-| **Validation** | Zod 4 (client & server) |
-| **Forms** | React Hook Form 7 |
-| **Charts** | Recharts 3 |
-| **Rich Text Editor** | TipTap 3 |
-| **Image Processing** | Sharp 0.35 |
-| **Carousel** | Swiper 12 |
-| **Lightbox** | Yet Another React Lightbox 3 |
-| **Animations** | CountUp 6 |
-| **Notifications** | React Hot Toast 2 |
-| **Icons** | React Icons 5 |
+| Category             | Technology                        |
+| -------------------- | --------------------------------- |
+| **Framework**        | Next.js 15.5 (App Router)         |
+| **Language**         | TypeScript 5                      |
+| **Styling**          | Tailwind CSS 4                    |
+| **State Management** | Zustand 5                         |
+| **Database**         | MongoDB + Mongoose 9              |
+| **Authentication**   | JWT (jsonwebtoken 9) + bcryptjs 3 |
+| **Validation**       | Zod 4 (client & server)           |
+| **Forms**            | React Hook Form 7                 |
+| **Charts**           | Recharts 3                        |
+| **Rich Text Editor** | TipTap 3                          |
+| **Image Processing** | Sharp 0.35                        |
+| **Carousel**         | Swiper 12                         |
+| **Lightbox**         | Yet Another React Lightbox 3      |
+| **Animations**       | CountUp 6                         |
+| **Notifications**    | React Hot Toast 2                 |
+| **Icons**            | React Icons 5                     |
 
 </div>
 
@@ -346,17 +365,15 @@ Starting from that basic starting point, **Giahland was built from the ground up
 
 ## 🚀 Getting Started
 
-
-
 ### 🛠️ Step 1: Install the Tools You Need
 
 You need **three free tools** installed on your computer:
 
-| Tool | What it does | Download link |
-|---|---|---|
-| **Node.js** | Runs the website code | [Download Node.js](https://nodejs.org/) (choose the LTS version) |
-| **MongoDB Server** | The database engine that stores all data | [Download MongoDB](https://www.mongodb.com/try/download/community) |
-| **MongoDB Compass** | A visual app to view and manage the database | [Download Compass](https://www.mongodb.com/try/download/compass) |
+| Tool                | What it does                                 | Download link                                                      |
+| ------------------- | -------------------------------------------- | ------------------------------------------------------------------ |
+| **Node.js**         | Runs the website code                        | [Download Node.js](https://nodejs.org/) (choose the LTS version)   |
+| **MongoDB Server**  | The database engine that stores all data     | [Download MongoDB](https://www.mongodb.com/try/download/community) |
+| **MongoDB Compass** | A visual app to view and manage the database | [Download Compass](https://www.mongodb.com/try/download/compass)   |
 
 > 🔄 **Important:** After installing all three, restart your computer to make sure everything is set up correctly.
 
@@ -413,7 +430,7 @@ Inside the project folder, you'll find a folder called **`seed`**. It contains t
 Let's import them into your database using Compass:
 
 1.  In **MongoDB Compass**, select your database (`giahland`) from the left sidebar.
-2.  Click the **"Create Collection"** button and make these three collections **with exactly these names**: 
+2.  Click the **"Create Collection"** button and make these three collections **with exactly these names**:
     - `products`
     - `articles`
     - `users`
@@ -441,16 +458,16 @@ The project needs to know where your database is and some secret keys for securi
     MONGO_URL=mongodb://localhost:27017/giahland
     ```
 
-
 4.  You can keep the `MONGO_URL` as it is (if you used the local database setup).  
-    For `ACCESS_TOKEN_SECRET` and `REFRESH_TOKEN_SECRET`, you can type any long random string (like `my_super_secret_key_123`).  
-    Example of a filled `.env.local`:
+     For `ACCESS_TOKEN_SECRET` and `REFRESH_TOKEN_SECRET`, you can type any long random string (like `my_super_secret_key_123`).  
+     Example of a filled `.env.local`:
 
-    ```env
-    ACCESS_TOKEN_SECRET=my_super_secret_key_123
-    REFRESH_TOKEN_SECRET=my_super_refresh_key_456
-    MONGO_URL=mongodb://localhost:27017/giahland
->🔒 These are just for local testing. In a real website, you would use much more complex secrets.
+        ```env
+        ACCESS_TOKEN_SECRET=my_super_secret_key_123
+        REFRESH_TOKEN_SECRET=my_super_refresh_key_456
+        MONGO_URL=mongodb://localhost:27017/giahland
+
+    > 🔒 These are just for local testing. In a real website, you would use much more complex secrets.
 
 ### 🚀 Step 6: Start the Website!
 
@@ -474,15 +491,14 @@ The store should now appear, filled with plants and articles! 🎉
 
 Use these accounts to log in and explore different roles:
 
-| Role | Mobile | Password | What you can see |
-|---|---|---|---|
-| **Admin** | `09111111111` | `Admin123` | Full admin dashboard, manage everything |
+| Role                | Mobile                        | Password   | What you can see                                 |
+| ------------------- | ----------------------------- | ---------- | ------------------------------------------------ |
+| **Admin**           | `09111111111`                 | `Admin123` | Full admin dashboard, manage everything          |
 | **6 Plant Doctors** | `09122222222 to  09127777777` | `Admin123` | Doctor panels, write articles, reply to comments |
 
+> 💡 **You can also register a new account that will be regular user**
 
-> 💡 **You can also register a new account that will be regular user** 
-
->💡 Additionally, the seed data already includes **admin** and **6 plant doctors**, so you can immediately test consultations without creating new doctor accounts.
+> 💡 Additionally, the seed data already includes **admin** and **6 plant doctors**, so you can immediately test consultations without creating new doctor accounts.
 
 ---
 
@@ -507,11 +523,10 @@ When you're done, go back to the terminal and press **`Ctrl + C`** to stop the s
 <div align="left">
 
 ## 📁 Project Structure
+
 📊 This project is built with **47 pages** and **190 components**, organized across a clean and scalable architecture.
 
-Here's a quick map of the project's main folders, so you know where everything lives.  
-
-
+Here's a quick map of the project's main folders, so you know where everything lives.
 
 <details>
 <summary>📂 View Full Project Tree</summary>
@@ -650,6 +665,7 @@ giahland/
 ├── tsconfig.json
 └── README.md                       #👋 Hello you are here now.
 ```
+
 </details>
 
 ---
