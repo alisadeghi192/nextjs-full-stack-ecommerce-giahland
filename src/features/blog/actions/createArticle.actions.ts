@@ -5,10 +5,7 @@ import { ArticleFormSchema } from "@/features/blog/schemas/article.schema";
 import type { ContentBlock } from "@/features/blog/types/blog.types";
 import connectToDB from "@/lib/db/connect";
 import Article from "@/lib/db/models/Article";
-import { validateAndProcessImage } from "@/lib/utils/image-upload";
-import { mkdir, writeFile } from "fs/promises";
 import { revalidateTag } from "next/cache";
-import path from "path";
 
 export async function createArticleAction(
   prevState: any,
@@ -20,18 +17,15 @@ export async function createArticleAction(
 }> {
   const { user } = await getMeAction();
   if (!user || (user.role !== "plant-doctor" && user.role !== "admin")) {
-    return {
-      success: false,
-      message: "شما مجاز به ایجاد مقاله نیستید.",
-    };
+    return { success: false, message: "شما مجاز به ایجاد مقاله نیستید." };
   }
 
   const title = formData.get("title") as string;
   const slugInput = formData.get("slug") as string;
   const excerpt = formData.get("excerpt") as string;
   const categoryRaw = formData.get("category") as string;
-  const coverImageFile = formData.get("coverImage") as File | null;
-  const mainImageFile = formData.get("mainImage") as File | null;
+  const coverImage = formData.get("coverImage") as string; // Base64
+  const mainImage = formData.get("mainImage") as string; // Base64
   const contentRaw = formData.get("content") as string;
   const seoTitle = formData.get("seoTitle") as string;
   const seoDescription = formData.get("seoDescription") as string;
@@ -41,28 +35,24 @@ export async function createArticleAction(
   try {
     content = contentRaw ? JSON.parse(contentRaw) : [];
   } catch {
-    return {
-      success: false,
-      message: "فرمت محتوای مقاله نامعتبر است.",
-    };
+    return { success: false, message: "فرمت محتوای مقاله نامعتبر است." };
   }
 
-  const validationData = {
+  const validationResult = ArticleFormSchema.safeParse({
     title,
     slug: slugInput,
     excerpt,
     category: categoryRaw,
-    coverImage: coverImageFile,
-    mainImage: mainImageFile,
+    coverImage: coverImage || undefined,
+    mainImage: mainImage || undefined,
     content,
     seo: {
       title: seoTitle || undefined,
       description: seoDescription || undefined,
       keywords: seoKeywords || undefined,
     },
-  };
+  });
 
-  const validationResult = ArticleFormSchema.safeParse(validationData);
   if (!validationResult.success) {
     return {
       success: false,
@@ -71,110 +61,40 @@ export async function createArticleAction(
   }
 
   const validatedData = validationResult.data;
-
   const category = validatedData.category as "care" | "health" | "styling";
-  const slug = validatedData.slug;
 
   await connectToDB();
 
-  const existingArticle = await Article.findOne({ slug });
+  const existingArticle = await Article.findOne({ slug: validatedData.slug });
   if (existingArticle) {
     return {
       success: false,
       errors: {
-        slug: ["این اسلاگ قبلاً استفاده شده است. لطفاً اسلاگ دیگری وارد کنید."],
+        slug: ["این اسلاگ قبلاً استفاده شده است."],
       },
     };
   }
 
-  const uploadDir = path.join(
-    process.cwd(),
-    "public/uploads/blog",
-    category,
-    slug,
-  );
-  await mkdir(uploadDir, { recursive: true });
-
-  const saveImage = async (
-    file: File | null,
-    fileName: string,
-  ): Promise<string | null> => {
-    if (!file || file.size === 0) return null;
-    try {
-      const webpBuffer = await validateAndProcessImage(file);
-      const fullFileName = `${fileName}.webp`;
-      const filePath = path.join(uploadDir, fullFileName);
-      await writeFile(filePath, webpBuffer);
-      return `/uploads/blog/${category}/${slug}/${fullFileName}`;
-    } catch (error: any) {
-      console.error(`Error saving image ${fileName}:`, error.message);
-      return null;
-    }
-  };
-
-  const coverImageUrl = await saveImage(coverImageFile, "cover");
-  const mainImageUrl = await saveImage(mainImageFile, "main");
-
-  let imageCounter = 1;
-  const updatedContent: ContentBlock[] = [];
-
-  for (const block of validatedData.content) {
-    if (block.type === "image" && block.data.src) {
-      const imageUrl = block.data.src;
-
-      if (imageUrl.startsWith("data:image")) {
-        try {
-          const base64Data = imageUrl.split(",")[1];
-          const buffer = Buffer.from(base64Data, "base64");
-          const sharp = require("sharp");
-          const webpBuffer = await sharp(buffer)
-            .webp({ quality: 80 })
-            .toBuffer();
-          const fileName = `${imageCounter}.webp`;
-          const filePath = path.join(uploadDir, fileName);
-          await writeFile(filePath, webpBuffer);
-          const newUrl = `/uploads/blog/${category}/${slug}/${fileName}`;
-
-          updatedContent.push({
-            ...block,
-            data: {
-              ...block.data,
-              src: newUrl,
-            },
-          });
-          imageCounter++;
-        } catch (error) {
-          console.error("Error processing base64 image:", error);
-          updatedContent.push(block);
-        }
-      } else {
-        updatedContent.push(block);
-      }
-    } else {
-      updatedContent.push(block);
-    }
-  }
+  const updatedContent = validatedData.content;
 
   const seoData = validatedData.seo
     ? {
         title: validatedData.seo.title,
         description: validatedData.seo.description,
         keywords: validatedData.seo.keywords
-          ? validatedData.seo.keywords
-              .split(/[،,、\s]+/)
-              .filter((k) => k.trim())
+          ? validatedData.seo.keywords.split(/[،,、\s]+/).filter((k) => k.trim())
           : [],
-        ogImage: coverImageUrl || undefined,
+        ogImage: coverImage || undefined,
       }
     : undefined;
 
   await Article.create({
     title: validatedData.title,
-    slug: slug,
+    slug: validatedData.slug,
     excerpt: validatedData.excerpt,
     category: category,
-    coverImage: coverImageUrl || "",
-    mainImage: mainImageUrl || coverImageUrl || "",
+    coverImage: coverImage || "",
+    mainImage: mainImage || coverImage || "",
     author: user._id,
     content: updatedContent,
     seo: seoData,
@@ -185,8 +105,5 @@ export async function createArticleAction(
   revalidateTag("home-articles");
   revalidateTag("admin-stats");
   revalidateTag("blog");
-  return {
-    success: true,
-    message: "مقاله با موفقیت ثبت شد!",
-  };
+  return { success: true, message: "مقاله با موفقیت ثبت شد!" };
 }

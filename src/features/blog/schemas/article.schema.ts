@@ -1,5 +1,16 @@
 import { z } from "zod";
 
+const isValidImage = (val: unknown): boolean => {
+  if (typeof val === "string" && val.startsWith("data:image/")) {
+    return val.length > 0;
+  }
+  if (val instanceof File) {
+    if (val.size > 5 * 1024 * 1024) return false;
+    if (!val.type.startsWith("image/")) return false;
+    return val.size > 0;
+  }
+  return false;
+};
 
 export const ArticleFormSchema = z.object({
   title: z.string().min(3, "عنوان حداقل ۳ کاراکتر است."),
@@ -17,10 +28,10 @@ export const ArticleFormSchema = z.object({
     .refine((val) => ["care", "health", "styling"].includes(val), {
       message: "دسته‌بندی نامعتبر است.",
     }),
-  coverImage: z.any().refine((file) => file instanceof File && file.size > 0, {
+  coverImage: z.any().refine(isValidImage, {
     message: "عکس کارت مقاله الزامی است.",
   }),
-  mainImage: z.any().refine((file) => file instanceof File && file.size > 0, {
+  mainImage: z.any().refine(isValidImage, {
     message: "عکس بنر مقاله الزامی است.",
   }),
   content: z.array(z.any()).min(1, "محتوای مقاله نمی‌تواند خالی باشد."),

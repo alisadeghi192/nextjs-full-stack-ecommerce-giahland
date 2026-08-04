@@ -1,47 +1,38 @@
 "use client";
 
-import { useIsAdmin } from "@/features/auth/selectors/auth.selectors";
-import { useIsSidebarOpen } from "@/stores/selectors/ui.selectors";
-import { useRouter } from "next/navigation";
-import { useState, useTransition } from "react";
-import toast from "react-hot-toast";
-import {
-  MdDescription,
-  MdKeyboardArrowDown,
-  MdLink,
-  MdTitle,
-} from "react-icons/md";
-
 import SectionTitle from "@/components/panel/SectionTitle";
 import FormField from "@/components/shared/ui/FormField";
 import PrimaryButton from "@/components/shared/ui/PrimaryButton";
 import TextareaField from "@/components/shared/ui/TextareaField";
+import { useIsAdmin } from "@/features/auth/selectors/auth.selectors";
 import { createArticleAction } from "@/features/blog/actions/createArticle.actions";
-import { type ArticleFormData } from "@/features/blog/schemas/article.schema";
 import type { ContentBlock } from "@/features/blog/types/blog.types";
+import { useRouter } from "next/navigation";
+import { useState, useTransition } from "react";
+import toast from "react-hot-toast";
+import { MdDescription, MdKeyboardArrowDown, MdLink, MdTitle } from "react-icons/md";
 import ArticleImageUploader from "./ArticleImageUploader";
 import ArticleSeoFields from "./ArticleSeoFields";
 import TiptapEditor from "./TiptapEditor";
 
-const initialFormData: ArticleFormData = {
+const initialFormData = {
   title: "",
   slug: "",
   excerpt: "",
   category: "",
-  coverImage: null,
-  mainImage: null,
-  content: [],
+  coverImage: null as string | null,
+  mainImage: null as string | null,
+  content: [] as ContentBlock[],
   seo: { title: "", description: "", keywords: "" },
 };
 
 export default function ArticleForm() {
-  const [formData, setFormData] = useState<ArticleFormData>(initialFormData);
+  const [formData, setFormData] = useState(initialFormData);
   const [isPending, startTransition] = useTransition();
-  const isOpenSidebar = useIsSidebarOpen();
   const router = useRouter();
   const isAdmin = useIsAdmin();
 
-  const handleChange = (field: keyof ArticleFormData, value: any) => {
+  const handleChange = (field: string, value: any) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
@@ -52,11 +43,7 @@ export default function ArticleForm() {
     }));
   };
 
-  const resetForm = () => {
-    setFormData(initialFormData);
-  };
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const formDataObj = new FormData();
@@ -65,32 +52,22 @@ export default function ArticleForm() {
     formDataObj.append("excerpt", formData.excerpt);
     formDataObj.append("category", formData.category);
     formDataObj.append("content", JSON.stringify(formData.content));
+
     if (formData.coverImage) {
       formDataObj.append("coverImage", formData.coverImage);
     }
     if (formData.mainImage) {
       formDataObj.append("mainImage", formData.mainImage);
     }
-    if (formData.seo?.title) {
-      formDataObj.append("seoTitle", formData.seo.title);
-    }
-    if (formData.seo?.description) {
-      formDataObj.append("seoDescription", formData.seo.description);
-    }
-    if (formData.seo?.keywords) {
-      formDataObj.append("seoKeywords", formData.seo.keywords);
-    }
+    if (formData.seo?.title) formDataObj.append("seoTitle", formData.seo.title);
+    if (formData.seo?.description) formDataObj.append("seoDescription", formData.seo.description);
+    if (formData.seo?.keywords) formDataObj.append("seoKeywords", formData.seo.keywords);
 
     startTransition(async () => {
       const result = await createArticleAction(null, formDataObj);
-
       if (result.success) {
         toast.success(result.message || "مقاله با موفقیت ثبت شد!");
-        if (isAdmin) {
-          router.push("/admin/articles");
-        }else{
-          router.push("/user/articles");
-        }
+        router.push(isAdmin ? "/admin/articles" : "/user/articles");
       } else {
         if (result.errors) {
           const firstError = Object.values(result.errors).flat()[0];
@@ -105,7 +82,7 @@ export default function ArticleForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="border-neutral3 dark:border-neutral10 dark:shadow-shade6 rounded-2xl border dark:bg-shade5 transition-colors bg-white p-6 shadow-lg"
+      className="border-neutral3 rounded-2xl border bg-white p-6 shadow-lg"
       noValidate
     >
       <div className="flex flex-col gap-y-4">
@@ -121,7 +98,6 @@ export default function ArticleForm() {
               onChange={(e) => handleChange("title", e.target.value)}
             />
           </div>
-
           <div className="w-full">
             <FormField
               id="slug"
@@ -132,12 +108,6 @@ export default function ArticleForm() {
               value={formData.slug}
               onChange={(e) => handleChange("slug", e.target.value)}
             />
-            <p
-              className={`text-neutral8 dark:text-neutral6 mt-1 flex items-center gap-x-1 text-xs ${isOpenSidebar ? "" : "items-start max-[400px]:flex-col"}`}
-            >
-              <span>⚠️ فقط حروف لاتین کوچک، خط تیره (-) :</span>
-              <span className="text-primary dark:text-primary-dark font-mono">this-is-example</span>
-            </p>
           </div>
         </div>
 
@@ -151,30 +121,23 @@ export default function ArticleForm() {
           onChange={(e) => handleChange("excerpt", e.target.value)}
         />
 
-        <div>
-          <div className="relative">
-            <select
-              required
-              name="category"
-              id="category"
-              value={formData.category}
-              onChange={(e) =>
-                handleChange(
-                  "category",
-                  e.target.value as "care" | "health" | "styling",
-                )
-              }
-              className="border-neutral6  text-neutral11 dark:text-neutral5 focus:border-primary dark:focus:border-primary-dark invalid:text-neutral9 dark:invalid:text-neutral8 w-full appearance-none rounded-xl border px-4 py-3 outline-0 transition-colors"
-            >
-              <option value="" disabled className="text-neutral9 dark:text-neutral5 dark:bg-shade2">
-                دسته بندی:
-              </option>
-              <option className="text-neutral11 dark:bg-shade3 dark:text-text-dark bg-white" value="care">نگهداری</option>
-              <option className="text-neutral11 dark:bg-shade3 dark:text-text-dark bg-white" value="health">آفت‌ها و بیماری‌ها</option>
-              <option className="text-neutral11 dark:bg-shade3 dark:text-text-dark bg-white" value="styling">چیدمان</option>
-            </select>
-            <MdKeyboardArrowDown className="text-primary dark:text-primary-dark pointer-events-none absolute top-1/2 left-4 size-6 -translate-y-1/2 transition-colors duration-200" />
-          </div>
+        <div className="relative">
+          <select
+            required
+            name="category"
+            id="category"
+            value={formData.category}
+            onChange={(e) => handleChange("category", e.target.value as "care" | "health" | "styling")}
+            className="border-neutral6 text-neutral11 focus:border-primary invalid:text-neutral9 w-full appearance-none rounded-xl border px-4 py-3 outline-0 transition-colors"
+          >
+            <option value="" disabled className="text-neutral9">
+              دسته بندی:
+            </option>
+            <option value="care">نگهداری</option>
+            <option value="health">آفت‌ها و بیماری‌ها</option>
+            <option value="styling">چیدمان</option>
+          </select>
+          <MdKeyboardArrowDown className="text-primary pointer-events-none absolute top-1/2 left-4 size-6 -translate-y-1/2 transition-colors duration-200" />
         </div>
 
         <div className="flex w-full gap-x-4 *:basis-1/2 max-sm:flex-col max-sm:gap-y-2">
@@ -199,9 +162,7 @@ export default function ArticleForm() {
           <TiptapEditor
             name="content"
             value={formData.content}
-            onChange={(blocks: ContentBlock[]) =>
-              handleChange("content", blocks)
-            }
+            onChange={(blocks: ContentBlock[]) => handleChange("content", blocks)}
             required
           />
         </div>
@@ -211,9 +172,8 @@ export default function ArticleForm() {
           onChange={handleSeoChange}
         />
         <div className="flex items-center justify-between gap-y-2 max-lg:gap-x-4 max-md:flex-col-reverse">
-          <p className="text-sm text-yellow-700 dark:text-yellow-500">
-            ⚠️ مقاله پس از انتشار غیرقابل ویرایش است و فقط ادمین می تواند آن را
-            حذف کند. لطفاً اطلاعات را دقیق بررسی کنید.
+          <p className="text-sm text-yellow-700">
+            ⚠️ مقاله پس از انتشار غیرقابل ویرایش است و فقط ادمین می تواند آن را حذف کند.
           </p>
           <PrimaryButton
             disabled={isPending}
