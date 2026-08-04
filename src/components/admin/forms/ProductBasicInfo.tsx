@@ -65,7 +65,7 @@ export default function ProductBasicInfo({ register }: ProductBasicInfoProps) {
             id="category"
             required
             defaultValue="-1"
-            className="peer text-neutral1 focus-within:border-primary dark:focus:border-primary-dark dark:text-neutral5 transition-colors invalid:text-neutral9 dark:invalid:text-neutral8 flex-1 appearance-none border-0 outline-0"
+            className="peer text-neutral11 focus-within:border-primary dark:focus:border-primary-dark dark:text-neutral5 transition-colors invalid:text-neutral9 dark:invalid:text-neutral8 flex-1 appearance-none border-0 outline-0"
             {...register("category")}
           >
             <option
