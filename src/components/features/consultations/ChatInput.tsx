@@ -20,7 +20,7 @@ export default function ChatInput({
 }: ChatInputProps) {
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [selectedImage, setSelectedImage] = useState<File | null>(null);
+  const [selectedImageBase64, setSelectedImageBase64] = useState<string | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const isChatClosed = consultationStatus === "closed";
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -50,12 +50,17 @@ export default function ChatInput({
       return;
     }
 
-    setSelectedImage(file);
-    setImagePreview(URL.createObjectURL(file));
+    const reader = new FileReader();
+    reader.onload = () => {
+      const base64 = reader.result as string;
+      setSelectedImageBase64(base64);
+      setImagePreview(base64);
+    };
+    reader.readAsDataURL(file);
   };
 
   const removeImage = () => {
-    setSelectedImage(null);
+    setSelectedImageBase64(null);
     setImagePreview(null);
     if (fileInputRef.current) {
       fileInputRef.current.value = "";
@@ -64,21 +69,21 @@ export default function ChatInput({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!message.trim() && !selectedImage) {
+    if (!message.trim() && !selectedImageBase64) {
       return;
     }
     setIsLoading(true);
     const formData = new FormData();
     formData.append("consultationId", consultationId);
     formData.append("text", message);
-    if (selectedImage) {
-      formData.append("image", selectedImage);
+    if (selectedImageBase64) {
+      formData.append("imageBase64", selectedImageBase64);
     }
 
     const result = await sendMessage(formData);
     if (result.success) {
       setMessage("");
-      setSelectedImage(null);
+      setSelectedImageBase64(null);
       setImagePreview(null);
     } else {
       toast.error(result.message || "خطا در ارسال پیام");
@@ -116,7 +121,7 @@ export default function ChatInput({
             className="flex items-center gap-2 max-sm:gap-1"
           >
             <PrimaryButton
-              disabled={isLoading || (!message.trim() && !selectedImage)}
+              disabled={isLoading || (!message.trim() && !selectedImageBase64)}
               className="flex h-12 shrink-0 items-center justify-center gap-x-1 rounded-full! p-2 text-white transition-colors max-md:size-12 max-md:p-0"
             >
               <span className="max-md:hidden">ارسال</span>
