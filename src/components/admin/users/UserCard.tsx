@@ -1,6 +1,6 @@
 "use client";
 
-import { ROLE_CONFIG } from "@/lib/constants";
+import { DEFAULT_PROFILE_PIC, ROLE_CONFIG } from "@/lib/constants";
 import { toPersianCode, toPersianDate } from "@/lib/utils/format";
 import Image from "next/image";
 import Link from "next/link";
@@ -30,7 +30,7 @@ export default function UserCard({ user }: UserCardProps) {
       <div className="flex flex-col items-center text-center">
         <div className="relative size-20 overflow-hidden rounded-full">
           <Image
-            src={user.avatar}
+            src={user.avatar || DEFAULT_PROFILE_PIC}
             alt={displayName}
             fill
             className="object-cover"

@@ -4,7 +4,6 @@ import {
   useUserAvatar,
   useUserFirstName,
 } from "@/features/auth/selectors/auth.selectors";
-import { deleteAvatarAction } from "@/features/user/actions/deleteAvatar.actions";
 import { uploadAvatarAction } from "@/features/user/actions/uploadAvatar.actions";
 import { DEFAULT_PROFILE_PIC } from "@/lib/constants";
 import Image from "next/image";
@@ -16,7 +15,6 @@ import ConfirmDialog from "../shared/ui/ConfirmDialog";
 export default function AvatarUpload() {
   const [isLoading, setIsLoading] = useState(false);
   const userAvatar = useUserAvatar() || DEFAULT_PROFILE_PIC;
-  const isDefaultAvatar = userAvatar === DEFAULT_PROFILE_PIC;
   const firstName = useUserFirstName() || "";
   const checkAuth = useCheckAuth();
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -27,9 +25,8 @@ export default function AvatarUpload() {
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (!file) {
-      return;
-    }
+    if (!file) return;
+
     if (file.size > 5 * 1024 * 1024) {
       toast.error("حجم عکس نباید بیشتر از ۵ مگابایت باشد.");
       if (fileInputRef.current) fileInputRef.current.value = "";
@@ -42,26 +39,32 @@ export default function AvatarUpload() {
       return;
     }
 
-
     setIsLoading(true);
-    const formData = new FormData();
-    formData.append("avatar", file);
 
-    const result = await uploadAvatarAction(formData);
-    if (result.success) {
-      toast.success(result.message);
-      checkAuth();
-    } else {
-      toast.error(result.message || "خطا در آپلود");
-    }
-    setIsLoading(false);
-    if (fileInputRef.current) {
-      fileInputRef.current.value = "";
+    try {
+      const reader = new FileReader();
+      reader.onload = async () => {
+        const base64 = reader.result as string;
+        const result = await uploadAvatarAction(base64);
+        if (result.success) {
+          toast.success(result.message);
+          checkAuth(); 
+        } else {
+          toast.error(result.message || "خطا در آپلود");
+        }
+        setIsLoading(false);
+        if (fileInputRef.current) fileInputRef.current.value = "";
+      };
+      reader.readAsDataURL(file);
+    } catch (error) {
+      toast.error("خطا در آپلود");
+      setIsLoading(false);
     }
   };
 
   const confirmDelete = async () => {
     setIsLoading(true);
+    const { deleteAvatarAction } = await import("@/features/user/actions/deleteAvatar.actions");
     const result = await deleteAvatarAction();
     if (result.success) {
       toast.success(result.message);
@@ -71,6 +74,8 @@ export default function AvatarUpload() {
     }
     setIsLoading(false);
   };
+
+  const isDefaultAvatar = userAvatar.includes("default-user.webp");
 
   return (
     <div className="mb-4 flex items-center gap-x-4">
