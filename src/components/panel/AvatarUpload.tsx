@@ -48,7 +48,7 @@ export default function AvatarUpload() {
         const result = await uploadAvatarAction(base64);
         if (result.success) {
           toast.success(result.message);
-          checkAuth(); 
+          checkAuth();
         } else {
           toast.error(result.message || "خطا در آپلود");
         }
@@ -64,7 +64,9 @@ export default function AvatarUpload() {
 
   const confirmDelete = async () => {
     setIsLoading(true);
-    const { deleteAvatarAction } = await import("@/features/user/actions/deleteAvatar.actions");
+    const { deleteAvatarAction } = await import(
+      "@/features/user/actions/deleteAvatar.actions"
+    );
     const result = await deleteAvatarAction();
     if (result.success) {
       toast.success(result.message);

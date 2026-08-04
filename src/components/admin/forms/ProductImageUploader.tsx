@@ -1,17 +1,16 @@
 "use client";
 
+import SectionTitle from "@/components/panel/SectionTitle";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { MdCloudUpload, MdDelete } from "react-icons/md";
 
-import SectionTitle from "@/components/panel/SectionTitle";
-
 interface ProductImageUploaderProps {
   label: string;
   name: string;
   value: File | string | null;
-  onChange: (file: File | null) => void;
+  onChange: (base64: string | null) => void; 
   required?: boolean;
 }
 
@@ -27,10 +26,6 @@ export default function ProductImageUploader({
   useEffect(() => {
     if (typeof value === "string" && value) {
       setPreview(value);
-    } else if (value instanceof File) {
-      const objectUrl = URL.createObjectURL(value);
-      setPreview(objectUrl);
-      return () => URL.revokeObjectURL(objectUrl);
     } else {
       setPreview(null);
     }
@@ -52,9 +47,13 @@ export default function ProductImageUploader({
       return;
     }
 
-    const objectUrl = URL.createObjectURL(file);
-    setPreview(objectUrl);
-    onChange(file);
+    const reader = new FileReader();
+    reader.onload = () => {
+      const base64 = reader.result as string;
+      setPreview(base64);
+      onChange(base64);
+    };
+    reader.readAsDataURL(file);
   };
 
   const handleRemove = () => {
@@ -82,13 +81,9 @@ export default function ProductImageUploader({
           htmlFor={`file-upload-${name}`}
           className="border-neutral6 hover:border-primary flex h-40 cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed transition"
         >
-          <MdCloudUpload className="text-neutral7 dark:text-text-dark size-10" />
-          <span className="text-neutral8 dark:text-text-dark mt-2 text-sm">
-            برای آپلود کلیک کنید
-          </span>
-          <span className="text-neutral8 dark:text-text-dark text-center text-xs">
-            (حداکثر ۵ مگابایت، JPEG/PNG/WebP)
-          </span>
+          <MdCloudUpload className="text-neutral7 size-10" />
+          <span className="text-neutral8 mt-2 text-sm">برای آپلود کلیک کنید</span>
+          <span className="text-neutral8 text-center text-xs">(حداکثر ۵ مگابایت، JPEG/PNG/WebP)</span>
           <input
             type="file"
             id={`file-upload-${name}`}
