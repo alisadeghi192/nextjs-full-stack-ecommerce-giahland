@@ -10,7 +10,12 @@ import type { ContentBlock } from "@/features/blog/types/blog.types";
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import toast from "react-hot-toast";
-import { MdDescription, MdKeyboardArrowDown, MdLink, MdTitle } from "react-icons/md";
+import {
+  MdDescription,
+  MdKeyboardArrowDown,
+  MdLink,
+  MdTitle,
+} from "react-icons/md";
 import ArticleImageUploader from "./ArticleImageUploader";
 import ArticleSeoFields from "./ArticleSeoFields";
 import TiptapEditor from "./TiptapEditor";
@@ -60,8 +65,10 @@ export default function ArticleForm() {
       formDataObj.append("mainImage", formData.mainImage);
     }
     if (formData.seo?.title) formDataObj.append("seoTitle", formData.seo.title);
-    if (formData.seo?.description) formDataObj.append("seoDescription", formData.seo.description);
-    if (formData.seo?.keywords) formDataObj.append("seoKeywords", formData.seo.keywords);
+    if (formData.seo?.description)
+      formDataObj.append("seoDescription", formData.seo.description);
+    if (formData.seo?.keywords)
+      formDataObj.append("seoKeywords", formData.seo.keywords);
 
     startTransition(async () => {
       const result = await createArticleAction(null, formDataObj);
@@ -82,7 +89,7 @@ export default function ArticleForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="border-neutral3 dark:border-neutral10 dark:shadow-shade6 rounded-2xl border bg-white dark:bg-shade5 transition-colors p-6 shadow-lg"
+      className="border-neutral3 dark:border-neutral10 dark:shadow-shade6 dark:bg-shade5 rounded-2xl border bg-white p-6 shadow-lg transition-colors"
       noValidate
     >
       <div className="flex flex-col gap-y-4">
@@ -127,17 +134,41 @@ export default function ArticleForm() {
             name="category"
             id="category"
             value={formData.category}
-            onChange={(e) => handleChange("category", e.target.value as "care" | "health" | "styling")}
-            className="border-neutral6 text-neutral11 focus:border-primary invalid:text-neutral9 w-full appearance-none rounded-xl border px-4 py-3 outline-0 transition-colors"
+            onChange={(e) =>
+              handleChange(
+                "category",
+                e.target.value as "care" | "health" | "styling",
+              )
+            }
+            className="border-neutral6 text-neutral11 dark:text-neutral5 focus:border-primary dark:focus:border-primary-dark invalid:text-neutral9 dark:invalid:text-neutral8 w-full appearance-none rounded-xl border px-4 py-3 outline-0 transition-colors"
           >
-            <option value="" disabled className="text-neutral9">
+            <option
+              value=""
+              disabled
+              className="text-neutral9 dark:text-neutral5 dark:bg-shade2"
+            >
               دسته بندی:
             </option>
-            <option value="care">نگهداری</option>
-            <option value="health">آفت‌ها و بیماری‌ها</option>
-            <option value="styling">چیدمان</option>
+            <option
+              className="text-neutral11 dark:bg-shade3 dark:text-text-dark bg-white"
+              value="care"
+            >
+              نگهداری
+            </option>
+            <option
+              className="text-neutral11 dark:bg-shade3 dark:text-text-dark bg-white"
+              value="health"
+            >
+              آفت‌ها و بیماری‌ها
+            </option>
+            <option
+              className="text-neutral11 dark:bg-shade3 dark:text-text-dark bg-white"
+              value="styling"
+            >
+              چیدمان
+            </option>
           </select>
-          <MdKeyboardArrowDown className="text-primary pointer-events-none absolute top-1/2 left-4 size-6 -translate-y-1/2 transition-colors duration-200" />
+          <MdKeyboardArrowDown className="text-primary dark:text-primary-dark pointer-events-none absolute top-1/2 left-4 size-6 -translate-y-1/2 transition-colors duration-200" />
         </div>
 
         <div className="flex w-full gap-x-4 *:basis-1/2 max-sm:flex-col max-sm:gap-y-2">
@@ -162,7 +193,9 @@ export default function ArticleForm() {
           <TiptapEditor
             name="content"
             value={formData.content}
-            onChange={(blocks: ContentBlock[]) => handleChange("content", blocks)}
+            onChange={(blocks: ContentBlock[]) =>
+              handleChange("content", blocks)
+            }
             required
           />
         </div>
@@ -173,7 +206,8 @@ export default function ArticleForm() {
         />
         <div className="flex items-center justify-between gap-y-2 max-lg:gap-x-4 max-md:flex-col-reverse">
           <p className="text-sm text-yellow-700 dark:text-yellow-500">
-            ⚠️ مقاله پس از انتشار غیرقابل ویرایش است و فقط ادمین می تواند آن را حذف کند.
+            ⚠️ مقاله پس از انتشار غیرقابل ویرایش است و فقط ادمین می تواند آن را
+            حذف کند.
           </p>
           <PrimaryButton
             disabled={isPending}
