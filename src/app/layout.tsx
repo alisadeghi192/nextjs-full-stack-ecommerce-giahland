@@ -9,6 +9,7 @@ import { cookies } from "next/headers";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://giahland-two.vercel.app/"),
   title: "گیاه لند | فروشگاه  گیاهان آپارتمانی و مشاوره گیاه‌پزشکی",
   description:
     "خرید آنلاین گیاهان آپارتمانی، دکوراتیو و کادویی با قیمت مناسب. مشاوره رایگان با گیاه‌پزشک، تشخیص بیماری و آفات گیاهان + ارسال سریع به سراسر کشور.",
@@ -119,14 +120,14 @@ export default async function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
-      <body className="font-modam text-BLACK antialiased dark:text-white dark:bg-shade5 transition-colors">
+      <body className="font-modam text-BLACK dark:bg-shade5 antialiased transition-colors dark:text-white">
         <GeneralProvider initialUser={initialUser}>
           <main className="flex min-h-dvh flex-col justify-between">
             {children}
           </main>
         </GeneralProvider>
         <ScrollToTop />
-        <ToasterProvider/>
+        <ToasterProvider />
       </body>
     </html>
   );
