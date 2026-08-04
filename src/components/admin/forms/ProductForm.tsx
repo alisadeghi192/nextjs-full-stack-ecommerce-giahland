@@ -194,7 +194,7 @@ export default function ProductForm({
             className="group-hover:text-primary dark:group-hover:text-primary-dark mb-0! transition-colors"
           />
           <MdKeyboardArrowDown
-            className={`size-6 transition-transform duration-200 ${
+            className={`size-6 group-hover:text-primary dark:group-hover:text-primary-dark transition-transform duration-200 ${
               openSections.basic ? "rotate-180" : ""
             }`}
           />

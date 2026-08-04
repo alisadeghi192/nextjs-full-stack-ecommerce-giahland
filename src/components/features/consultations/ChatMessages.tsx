@@ -74,8 +74,8 @@ useEffect(() => {
 
   if (initialMessages.length === 0) {
     return (
-      <div className="flex flex-1 items-center justify-center overflow-y-auto">
-        <div className="border-neutral9 dark:border-neutral10 fixed top-45/100 rounded-2xl border bg-white/40 dark:bg-primary/10 backdrop-blur-lg p-10">
+      <div className="flex items-center justify-center overflow-y-auto" style={{ height: messagesHeight }}>
+        <div className="border-neutral9 dark:border-neutral10 rounded-2xl border bg-white/40 dark:bg-primary/10 backdrop-blur-lg p-10 transition">
           <p className="text-neutral11 text-center dark:text-white">
             هنوز پیامی ارسال نشده؛
             <br />
