@@ -84,7 +84,7 @@ export default function AvatarUpload() {
       <div className="size-20 overflow-hidden rounded-full max-md:size-15">
         <Image
           alt={firstName || "user profile"}
-          src={userAvatar}
+          src={userAvatar }
           width={80}
           height={80}
           className="size-full object-cover object-center"
@@ -101,7 +101,7 @@ export default function AvatarUpload() {
       <button
         onClick={handleEdit}
         disabled={isLoading}
-        className="flex size-9 cursor-pointer items-center justify-center rounded-lg border text-[#00BBFF] transition-colors hover:bg-blue-50 disabled:opacity-50"
+        className="flex size-9 cursor-pointer items-center justify-center rounded-lg border text-[#00BBFF] transition-colors hover:bg-blue-50 dark:hover:bg-shade3 disabled:opacity-50"
       >
         <TbEdit className="size-6" />
       </button>
@@ -111,7 +111,7 @@ export default function AvatarUpload() {
         title="آیا از حذف عکس پروفایل مطمئن هستید؟"
         confirmText="بله، حذف شود"
         cancelText="انصراف"
-        className="text-error flex size-9 cursor-pointer items-center justify-center rounded-lg border transition-colors hover:bg-red-50 disabled:cursor-default disabled:opacity-50"
+        className="text-error flex size-9 cursor-pointer items-center justify-center rounded-lg border transition-colors hover:bg-red-50 dark:hover:bg-shade3 disabled:cursor-default disabled:opacity-50"
       >
         <TbTrash className="size-6" />
       </ConfirmDialog>

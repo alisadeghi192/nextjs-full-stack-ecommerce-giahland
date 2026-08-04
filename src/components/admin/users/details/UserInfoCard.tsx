@@ -5,7 +5,7 @@ import ConfirmDialog from "@/components/shared/ui/ConfirmDialog";
 import { deleteUserAvatar } from "@/features/user/actions/deleteUserAvatar.actions";
 import { toggleUserBlock } from "@/features/user/actions/toggleUserBlock.actions";
 import { updateUserInfo } from "@/features/user/actions/updateUserInfo.actions";
-import { ROLE_CONFIG } from "@/lib/constants";
+import { DEFAULT_PROFILE_PIC, ROLE_CONFIG } from "@/lib/constants";
 import { useIsSidebarOpen } from "@/stores/selectors/ui.selectors";
 import Image from "next/image";
 import { useState } from "react";
@@ -171,7 +171,7 @@ export default function UserInfoCard({
               }`}
             >
               <Image
-                src={user.avatar}
+                src={user.avatar || DEFAULT_PROFILE_PIC}
                 alt={displayName}
                 fill
                 className="object-cover"

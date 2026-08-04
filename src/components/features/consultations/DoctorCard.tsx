@@ -1,6 +1,7 @@
 "use client";
 
 import PrimaryButton from "@/components/shared/ui/PrimaryButton";
+import { DEFAULT_PROFILE_PIC } from "@/lib/constants";
 import { toPersianNumber, toPersianPrice } from "@/lib/utils/format";
 import Image from "next/image";
 import Link from "next/link";
@@ -25,7 +26,7 @@ export default function DoctorCard({ doctor }: DoctorCardProps) {
         <div className="max-xs:size-21 relative size-30 shrink-0 overflow-hidden rounded-lg">
           <Image
             alt={`${doctor.firstName} ${doctor.lastName}`}
-            src={doctor.avatar}
+            src={doctor.avatar || DEFAULT_PROFILE_PIC}
             fill
             className="object-cover"
           />

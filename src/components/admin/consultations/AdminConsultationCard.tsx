@@ -1,6 +1,7 @@
 "use client";
 
 import PrimaryButton from "@/components/shared/ui/PrimaryButton";
+import { DEFAULT_PROFILE_PIC } from "@/lib/constants";
 import {
   toPersianCode,
   toPersianDate,
@@ -104,7 +105,7 @@ export default function AdminConsultationCard({
               <div className="bg-neutral2 dark:bg-shade1 flex w-full items-center gap-3 rounded-xl px-4 py-2.5 transition-colors">
                 <div className="max-xs:size-12 relative size-16 shrink-0 overflow-hidden rounded-full">
                   <Image
-                    src={consultation.doctor.avatar}
+                    src={consultation.doctor.avatar || DEFAULT_PROFILE_PIC}
                     alt={doctorDisplayName}
                     fill
                     className="object-cover"
@@ -120,7 +121,7 @@ export default function AdminConsultationCard({
               <div className="bg-neutral2 dark:bg-shade1 flex w-full items-center gap-3 rounded-xl px-4 py-2.5 transition-colors">
                 <div className="max-xs:size-12 relative size-16 shrink-0 overflow-hidden rounded-full">
                   <Image
-                    src={consultation.user.avatar}
+                    src={consultation.user.avatar || DEFAULT_PROFILE_PIC}
                     alt={userDisplayName}
                     fill
                     className="object-cover"

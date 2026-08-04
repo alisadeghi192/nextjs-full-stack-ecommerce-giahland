@@ -1,6 +1,7 @@
 "use client";
 import ConfirmDialog from "@/components/shared/ui/ConfirmDialog";
 import { closeConsultation } from "@/features/consultations/actions/closeConsultation.actions";
+import { DEFAULT_PROFILE_PIC } from "@/lib/constants";
 import { useIsSidebarOpen } from "@/stores/selectors/ui.selectors";
 import Image from "next/image";
 import Link from "next/link";
@@ -75,7 +76,7 @@ export default function ChatHeader({
         <div className="max-xs:gap-2 max-xs:w-full flex items-center gap-4">
           <div className="max-xs:size-10 relative size-12 shrink-0 overflow-hidden rounded-full">
             <Image
-              src={displayAvatar}
+              src={displayAvatar || DEFAULT_PROFILE_PIC}
               alt={displayName}
               fill
               className="size-full object-cover"
