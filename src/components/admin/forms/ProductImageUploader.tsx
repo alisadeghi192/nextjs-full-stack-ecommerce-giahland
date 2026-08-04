@@ -26,6 +26,10 @@ export default function ProductImageUploader({
   useEffect(() => {
     if (typeof value === "string" && value) {
       setPreview(value);
+    } else if (value instanceof File) {
+      const objectUrl = URL.createObjectURL(value);
+      setPreview(objectUrl);
+      return () => URL.revokeObjectURL(objectUrl);
     } else {
       setPreview(null);
     }
@@ -51,7 +55,7 @@ export default function ProductImageUploader({
     reader.onload = () => {
       const base64 = reader.result as string;
       setPreview(base64);
-      onChange(base64);
+      onChange(base64); 
     };
     reader.readAsDataURL(file);
   };
@@ -82,8 +86,12 @@ export default function ProductImageUploader({
           className="border-neutral6 hover:border-primary flex h-40 cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed transition"
         >
           <MdCloudUpload className="text-neutral7 size-10" />
-          <span className="text-neutral8 mt-2 text-sm">برای آپلود کلیک کنید</span>
-          <span className="text-neutral8 text-center text-xs">(حداکثر ۵ مگابایت، JPEG/PNG/WebP)</span>
+          <span className="text-neutral8 mt-2 text-sm">
+            برای آپلود کلیک کنید
+          </span>
+          <span className="text-neutral8 text-center text-xs">
+            (حداکثر ۵ مگابایت، JPEG/PNG/WebP)
+          </span>
           <input
             type="file"
             id={`file-upload-${name}`}

@@ -4,10 +4,7 @@ import { getMeAction } from "@/features/auth/actions/me.actions";
 import { ProductFormSchema } from "@/features/products/schemas/product.schema";
 import connectToDB from "@/lib/db/connect";
 import Product from "@/lib/db/models/Product";
-import { validateAndProcessImage } from "@/lib/utils/image-upload";
-import { mkdir, rm, stat, writeFile } from "fs/promises";
 import { revalidateTag } from "next/cache";
-import path from "path";
 
 const isEqual = (obj1: any, obj2: any): boolean => {
   return JSON.stringify(obj1) === JSON.stringify(obj2);
@@ -37,10 +34,10 @@ export async function updateProductAction(prevState: any, formData: FormData) {
   const stock = Number(formData.get("stock"));
   const category = formData.get("category") as string;
 
-  const mainImage = formData.get("mainImage") as File | null;
-  const gallery1 = formData.get("gallery1") as File | null;
-  const gallery2 = formData.get("gallery2") as File | null;
-  const gallery3 = formData.get("gallery3") as File | null;
+  const mainImage = formData.get("mainImage") as string | null;
+  const gallery1 = formData.get("gallery1") as string | null;
+  const gallery2 = formData.get("gallery2") as string | null;
+  const gallery3 = formData.get("gallery3") as string | null;
 
   const potMaterial = formData.get("potMaterial") as string;
   const soilType = formData.get("soilType") as string;
@@ -62,10 +59,10 @@ export async function updateProductAction(prevState: any, formData: FormData) {
     discount,
     stock,
     category: category as "indoor" | "decoration" | "gift",
-    mainImage,
-    gallery1,
-    gallery2,
-    gallery3,
+    mainImage: mainImage ? true : false,
+    gallery1: gallery1 ? true : false,
+    gallery2: gallery2 ? true : false,
+    gallery3: gallery3 ? true : false,
     potMaterial,
     soilType,
     weight,
@@ -107,11 +104,9 @@ export async function updateProductAction(prevState: any, formData: FormData) {
     }
   }
 
-  const hasNewImages =
-    mainImage instanceof File ||
-    gallery1 instanceof File ||
-    gallery2 instanceof File ||
-    gallery3 instanceof File;
+  const imagesArray = [mainImage, gallery1, gallery2, gallery3].filter(
+    (p): p is string => p !== null && p !== undefined && p !== "",
+  );
 
   const normalizeSeo = (seo: any) => {
     if (!seo) return { title: "", description: "", keywords: [] };
@@ -144,7 +139,10 @@ export async function updateProductAction(prevState: any, formData: FormData) {
     !isEqual(data.features, existingProduct.features) ||
     !isEqual(data.cares, existingProduct.cares) ||
     !isEqual(currentSeo, existingSeo) ||
-    hasNewImages;
+    mainImage !== existingProduct.image ||
+    gallery1 !== existingProduct.images?.[1] ||
+    gallery2 !== existingProduct.images?.[2] ||
+    gallery3 !== existingProduct.images?.[3];
 
   if (!hasChanges) {
     return {
@@ -153,70 +151,13 @@ export async function updateProductAction(prevState: any, formData: FormData) {
     };
   }
 
-  const uploadDir = path.join(
-    process.cwd(),
-    "public/uploads/products",
-    data.category,
-    data.slug,
-  );
-  await mkdir(uploadDir, { recursive: true });
-
-  const saveImage = async (
-    file: File | string | null,
-    fileName: string,
-  ): Promise<string | null> => {
-    if (typeof file === "string") return file;
-    if (!file || !(file instanceof File) || file.size === 0) return null;
-    try {
-      const webpBuffer = await validateAndProcessImage(file);
-      const filePath = path.join(uploadDir, `${fileName}.webp`);
-      await writeFile(filePath, webpBuffer);
-      return `/uploads/products/${data.category}/${data.slug}/${fileName}.webp`;
-    } catch (error: any) {
-      console.error(`Error saving image ${fileName}:`, error.message);
-      return null;
-    }
-  };
-
-  const deleteFolderIfExists = async (folderPath: string) => {
-    try {
-      await stat(folderPath);
-      await rm(folderPath, { recursive: true, force: true });
-    } catch {}
-  };
-
-  if (
-    data.slug !== existingProduct.slug ||
-    data.category !== existingProduct.category
-  ) {
-    const oldPath = path.join(
-      process.cwd(),
-      "public/uploads/products",
-      existingProduct.category,
-      existingProduct.slug,
-    );
-    await deleteFolderIfExists(oldPath);
-  }
-
-  const mainImagePath = await saveImage(data.mainImage, "main");
-  const gallery1Path = await saveImage(data.gallery1, "1");
-  const gallery2Path = await saveImage(data.gallery2, "2");
-  const gallery3Path = await saveImage(data.gallery3, "3");
-
-  const imagesArray = [
-    mainImagePath || existingProduct.image,
-    gallery1Path || existingProduct.images?.[1] || null,
-    gallery2Path || existingProduct.images?.[2] || null,
-    gallery3Path || existingProduct.images?.[3] || null,
-  ].filter((p): p is string => p !== null);
-
   const seoData = {
     title: data.seo?.title || "",
     description: data.seo?.description || "",
     keywords: data.seo?.keywords
       ? data.seo.keywords.split(/[،,、\s]+/).filter((k) => k.trim())
       : [],
-    ogImage: mainImagePath || existingProduct.image || "",
+    ogImage: mainImage || existingProduct.image || "",
   };
 
   await Product.findByIdAndUpdate(productId, {
@@ -226,8 +167,8 @@ export async function updateProductAction(prevState: any, formData: FormData) {
     discount: data.discount,
     stock: data.stock,
     category: data.category,
-    image: mainImagePath || existingProduct.image,
-    images: imagesArray,
+    image: mainImage || existingProduct.image,
+    images: imagesArray.length > 0 ? imagesArray : existingProduct.images,
     potMaterial: data.potMaterial,
     soilType: data.soilType,
     weight: data.weight,

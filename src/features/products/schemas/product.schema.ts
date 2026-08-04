@@ -44,17 +44,13 @@ const toNumber = (val: unknown) => {
 };
 
 const isValidImage = (val: unknown): boolean => {
-  if (val instanceof File) {
-    if (val.size > 5 * 1024 * 1024) {
-      return false;
-    }
-    if (!val.type.startsWith("image/")) {
-      return false;
-    }
-    return val.size > 0;
-  }
-  if (typeof val === "string") {
+  if (typeof val === "string" && val.startsWith("data:image/")) {
     return val.length > 0;
+  }
+  if (val instanceof File) {
+    if (val.size > 5 * 1024 * 1024) return false;
+    if (!val.type.startsWith("image/")) return false;
+    return val.size > 0;
   }
   return false;
 };
