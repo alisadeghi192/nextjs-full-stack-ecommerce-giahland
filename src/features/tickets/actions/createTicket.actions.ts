@@ -1,22 +1,21 @@
-"use server"
+"use server";
+
 import { getMeAction } from "@/features/auth/actions/me.actions";
+import { TicketSchema } from "@/features/tickets/schemas/ticket.schema";
 import { TICKET_DEPARTMENT } from "@/lib/constants";
 import connectToDB from "@/lib/db/connect";
 import Ticket from "@/lib/db/models/Ticket";
 import { revalidatePath } from "next/cache";
-import { TicketSchema } from "../schemas/ticket.schema";
-import { uploadAttachment } from "../utils/uploadAttachment";
 
 export async function createTicket(prevState: any, formData: FormData) {
   const { user } = await getMeAction();
-  if (!user) {
-    throw new Error("Unauthorized");
-  }
+  if (!user) throw new Error("Unauthorized");
+
   const rawData = {
     subject: formData.get("subject") as string,
     department: formData.get("department") as string,
     message: formData.get("message") as string,
-    attachment: formData.get("attachment") as File | null,
+    attachment: formData.get("attachmentBase64") as string | null,
   };
 
   const result = TicketSchema.safeParse(rawData);
@@ -30,17 +29,12 @@ export async function createTicket(prevState: any, formData: FormData) {
 
   await connectToDB();
 
-  let attachmentUrl = "";
-  if (attachment && attachment.size > 0) {
-    attachmentUrl = await uploadAttachment(attachment);
-  }
-
   await Ticket.create({
     user: user._id,
     subject: subject.trim(),
     department: department as TICKET_DEPARTMENT,
     message: message.trim(),
-    attachment: attachmentUrl,
+    attachment: attachment || "",
     status: "pending",
   });
 

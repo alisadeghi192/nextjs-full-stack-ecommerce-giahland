@@ -82,7 +82,7 @@ export default function ArticleForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="border-neutral3 rounded-2xl border bg-white p-6 shadow-lg"
+      className="border-neutral3 dark:border-neutral-100 rounded-2xl border bg-white dark:bg-shade5 transition-colors p-6 shadow-lg"
       noValidate
     >
       <div className="flex flex-col gap-y-4">

@@ -12,6 +12,7 @@ import { MdDriveFileRenameOutline, MdKeyboardArrowDown } from "react-icons/md";
 export default function TicketForm() {
   const [state, formAction, isPending] = useActionState(createTicket, null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
+  const [imageBase64, setImageBase64] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -20,9 +21,11 @@ export default function TicketForm() {
       toast.success(state.message);
       formRef.current?.reset();
       setImagePreview(null);
+      setImageBase64(null);
     } else if (state?.success === false && state?.message) {
       toast.error(state.message);
       setImagePreview(null);
+      setImageBase64(null);
     }
   }, [state]);
 
@@ -46,20 +49,35 @@ export default function TicketForm() {
       return;
     }
 
-    setImagePreview(URL.createObjectURL(file));
+    const reader = new FileReader();
+    reader.onload = () => {
+      const base64 = reader.result as string;
+      setImagePreview(base64);
+      setImageBase64(base64);
+    };
+    reader.readAsDataURL(file);
   };
 
   const removeImage = () => {
     setImagePreview(null);
+    setImageBase64(null);
     if (fileInputRef.current) {
       fileInputRef.current.value = "";
     }
   };
+
+  const handleSubmit = (formData: FormData) => {
+    if (imageBase64) {
+      formData.append("attachmentBase64", imageBase64);
+    }
+    formAction(formData);
+  };
+
   return (
     <div className="border-neutral3 dark:border-neutral10 dark:shadow-shade6 rounded-2xl border p-6 shadow-lg max-md:p-3.5">
       <form
         ref={formRef}
-        action={formAction}
+        action={handleSubmit}
         className="flex flex-col gap-4"
         noValidate
       >
