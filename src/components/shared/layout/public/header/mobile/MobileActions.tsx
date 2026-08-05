@@ -72,7 +72,7 @@ export default function MobileActions() {
             alt="user profile"
             width={48}
             height={48}
-            className="rounded-full max-md:size-10 max-sm:size-8"
+            className="rounded-full object-cover max-md:size-10 max-sm:size-8"
           />
           <NotificationBadge
             count={

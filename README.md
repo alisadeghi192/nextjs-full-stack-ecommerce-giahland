@@ -24,7 +24,6 @@
   <img src="https://img.shields.io/badge/Zod-Validation-417f56?style=for-the-badge&logo=zod&logoColor=white" />
   <img src="https://img.shields.io/badge/Recharts-Charts-417f56?style=for-the-badge&logo=recharts&logoColor=white" />
   <img src="https://img.shields.io/badge/TipTap-Editor-417f56?style=for-the-badge&logo=tiptap&logoColor=white" />
-  <img src="https://img.shields.io/badge/Sharp-Image_Processing-417f56?style=for-the-badge&logo=sharp&logoColor=white" />
 </div>
 
 ---
@@ -128,9 +127,6 @@ From the cart to the checkout, the live chat to the admin dashboard charts, ever
 ### 🖼️ Image Handling
 
 - **Client‑side preview** before upload for avatars, products, articles, tickets, and chat.
-- Automatic **WebP conversion** with quality optimization via Sharp.
-- Secure file naming with random strings to prevent **path traversal** attacks.
-- Old images cleaned up on update/delete (disk space management).
 - **Lightbox gallery** for product images (swipe, keyboard navigation).
 
 ### 🔍 Search & Navigation
@@ -348,7 +344,6 @@ Starting from that basic starting point, **Giahland was built from the ground up
 | **Forms**            | React Hook Form 7                 |
 | **Charts**           | Recharts 3                        |
 | **Rich Text Editor** | TipTap 3                          |
-| **Image Processing** | Sharp 0.35                        |
 | **Carousel**         | Swiper 12                         |
 | **Lightbox**         | Yet Another React Lightbox 3      |
 | **Animations**       | CountUp 6                         |
@@ -538,11 +533,7 @@ giahland/
 │   │   ├── fonts/                  # Custom Modam font
 │   │   └── images/                 # Logo, banners, hero images, blog images, product images
 │   └── uploads/                    # User uploaded files (gitignored)
-│       ├── users/                  # User avatars
-│       ├── products/               # New Product gallery images
-│       ├── blog/                   # New Blog article images
-│       ├── consultations/          # Chat images
-│       └── tickets/                # Ticket attachments
+│       └── users/                  # Initial User avatars
 │
 ├── seed/                           # Database seed data (for initial setup)
 │   ├── giahland.users.json         # initial users (admin, doctors)
@@ -579,7 +570,6 @@ giahland/
 │   │   │   ├── products/           # Product management
 │   │   │   ├── tickets/            # Ticket management
 │   │   │   └── users/              # User management
-│   │   ├── api/                    # API routes (image fallback)
 │   │   ├── favicon.ico
 │   │   ├── globals.css             # Global styles (Tailwind + dark mode)
 │   │   ├── layout.tsx              # Root layout with SSR theme support
@@ -628,7 +618,7 @@ giahland/
 │   │   ├── order/                  # Order (actions, schemas, types)
 │   │   ├── payment/                # Payment (actions)
 │   │   ├── products/               # Products (actions, schemas, types)
-│   │   ├── tickets/                # Tickets (actions, schemas, types, utils)
+│   │   ├── tickets/                # Tickets (actions, schemas, types)
 │   │   ├── theme/                  # Theme (actions)
 │   │   └── user/                   # User management (actions, schemas, types)
 │   │
@@ -639,7 +629,7 @@ giahland/
 │   │   │   ├── models/             # Mongoose models (User, Product, Order, Article, etc.)
 │   │   │   └── connect.ts          # MongoDB connection
 │   │   ├── hooks/                  # Custom React hooks (useScroll, useUrlParams)
-│   │   └── utils/                  # Utility functions (format, price, image-upload)
+│   │   └── utils/                  # Utility functions (format, price)
 │   │
 │   ├── stores/                     # Zustand state management
 │   │   ├── selectors/              # UI selectors
