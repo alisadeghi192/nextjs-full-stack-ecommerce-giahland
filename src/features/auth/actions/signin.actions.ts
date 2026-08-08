@@ -11,6 +11,7 @@ import {
 } from "@/lib/auth/auth.helpers";
 import connectToDB from "@/lib/db/connect";
 import BaseUser from "@/lib/db/models/User";
+import { toEnglishDigits } from "@/lib/utils/format";
 
 export async function signinAction(
   prevState: ISigninActionResult | null,
@@ -19,7 +20,9 @@ export async function signinAction(
   const mobile = formData.get("mobile") as string;
   const password = formData.get("password") as string;
 
-  const data = { mobile, password };
+  const convertedMobile = toEnglishDigits(mobile);
+
+  const data = { mobile : convertedMobile, password };
 
   const result = LoginSchema.safeParse(data);
   if (!result.success) {
@@ -39,7 +42,7 @@ export async function signinAction(
   if (!user) {
     return {
       success: false,
-      message: "کاربری با این شماره موبایل یافت نشد.",
+      message: "نام کاربری یا رمز عبور اشتباه است.",
     };
   }
 
@@ -55,7 +58,7 @@ export async function signinAction(
   if (!isPasswordValid) {
     return {
       success: false,
-      message: "رمز عبور اشتباه است.",
+      message: "نام کاربری یا رمز عبور اشتباه است.",
     };
   }
 

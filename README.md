@@ -164,6 +164,7 @@ From the cart to the checkout, the live chat to the admin dashboard charts, ever
 - Skeleton loaders, smooth animations, toast notifications.
 - Custom Persian font (**Modam**) with full RTL support.
 - Sticky headers and dynamic overlays for smooth navigation.
+- **Navigation Progress Bar** on header bottom border during page transitions.
 
 ### 🎯 Attention to Detail
 

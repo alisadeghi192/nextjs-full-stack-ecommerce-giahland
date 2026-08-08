@@ -2,6 +2,7 @@
 
 import PrimaryButton from "@/components/shared/ui/PrimaryButton";
 import { ILoginInput } from "@/features/auth/schemas/auth.schema";
+import { toEnglishDigits } from "@/lib/utils/format";
 import { FieldErrors, UseFormRegister } from "react-hook-form";
 import { MdOutlineMobileFriendly } from "react-icons/md";
 import FormField from "../../shared/ui/FormField";
@@ -23,7 +24,7 @@ export default function LoginForm({
   onSubmit,
 }: LoginFormProps) {
   return (
-    <div className="relative z-10 w-1/2 bg-white dark:bg-shade5 max-lg:w-2/3 max-sm:h-5/8 max-sm:w-full max-sm:rounded-t-[20px]">
+    <div className="dark:bg-shade5 relative z-10 w-1/2 bg-white max-lg:w-2/3 max-sm:h-5/8 max-sm:w-full max-sm:rounded-t-[20px]">
       <div className="mx-auto mb-4 w-72/100 max-md:w-90/100">
         <h5 className="mb-8 text-xl/7 font-semibold max-sm:mt-3.25 max-sm:mb-6 max-sm:text-center max-sm:text-lg/8 max-sm:font-normal">
           ورود
@@ -40,7 +41,11 @@ export default function LoginForm({
             type="text"
             label="شماره موبایل"
             error={errors.mobile?.message}
-            {...register("mobile")}
+            {...register("mobile", {
+              onChange: (e) => {
+                e.target.value = toEnglishDigits(e.target.value);
+              },
+            })}
           />
 
           <PasswordField
@@ -64,7 +69,10 @@ export default function LoginForm({
 
         <p className="mt-3 text-center max-sm:text-sm">
           حساب کاربری ندارید؟
-          <span onClick={onToggle} className="text-primary dark:text-primary-dark mr-1 cursor-pointer">
+          <span
+            onClick={onToggle}
+            className="text-primary dark:text-primary-dark mr-1 cursor-pointer"
+          >
             ثبت نام{" "}
           </span>
           کنید.

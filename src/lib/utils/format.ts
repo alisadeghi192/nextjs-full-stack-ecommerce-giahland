@@ -27,6 +27,10 @@ export const toPersianCode = (num: string): string => {
   return num.replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[+d]) || "";
 };
 
+export const toEnglishDigits = (str: string): string => {
+  return str.replace(/[۰-۹]/g, (d) => "۰۱۲۳۴۵۶۷۸۹".indexOf(d).toString());
+};
+
 export const toStyledSlug = (slug: string): string =>
   slug
     .split("-")

@@ -11,6 +11,7 @@ import {
 } from "@/lib/auth/auth.helpers";
 import connectToDB from "@/lib/db/connect";
 import BaseUser, { User } from "@/lib/db/models/User";
+import { toEnglishDigits } from "@/lib/utils/format";
 import { revalidateTag } from "next/cache";
 
 export async function signupAction(
@@ -22,7 +23,9 @@ export async function signupAction(
   const password = formData.get("password") as string;
   const confirmPassword = formData.get("confirmPassword") as string;
 
-  const data = { mobile, email, password, confirmPassword };
+  const convertedMobile = toEnglishDigits(mobile);
+
+  const data = { mobile: convertedMobile, email, password, confirmPassword };
 
   const result = RegisterSchema.safeParse(data);
   if (!result.success) {
