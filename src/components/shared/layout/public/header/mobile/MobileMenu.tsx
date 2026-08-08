@@ -3,12 +3,12 @@
 import ConfirmDialog from "@/components/shared/ui/ConfirmDialog";
 import NotificationBadge from "@/components/shared/ui/NotificationBadge";
 import {
-    useAuthActions,
-    useIsAdmin,
-    useIsAuthenticated,
-    useUserAvatar,
-    useUserFirstName,
-    useUserRole,
+  useAuthActions,
+  useIsAdmin,
+  useIsAuthenticated,
+  useUserAvatar,
+  useUserFirstName,
+  useUserRole,
 } from "@/features/auth/selectors/auth.selectors";
 import { useAllNotifications } from "@/features/notifications/hooks/useAllNotifications";
 import { DEFAULT_PROFILE_PIC, NAV_LINKS } from "@/lib/constants";
@@ -68,6 +68,7 @@ const MobileMenu = () => {
                     alt="user profile pic"
                     src={userAvatar || DEFAULT_PROFILE_PIC}
                     fill
+                    className="object-cover object-center"
                   ></Image>
                 </div>
                 <p>سلام {firstName}</p>
