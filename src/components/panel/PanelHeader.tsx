@@ -1,4 +1,5 @@
 "use client";
+import NavigationProgress from "@/components/shared/layout/public/NavigationProgress";
 import DesktopPanelHeader from "./DesktopPanelHeader";
 import MobilePanelHeader from "./MobilePanelHeader";
 
@@ -25,6 +26,7 @@ export default function PanelHeader({
         isSidebarOpen={isSidebarOpen}
         toggleSidebar={toggleSidebar}
       />
+      <NavigationProgress />
     </header>
   );
 }

@@ -1,4 +1,5 @@
 "use client";
+import NavigationProgress from "@/components/shared/layout/public/NavigationProgress";
 import { useAllNotifications } from "@/features/notifications/hooks/useAllNotifications";
 import { useScroll } from "@/lib/hooks/useScroll";
 import { usePathname } from "next/navigation";
@@ -18,6 +19,7 @@ export default function PublicHeader() {
     <header className="sticky top-0 right-0 left-0 z-50 bg-white dark:bg-shade5 transition-colors">
       <DesktopHeader isScrolled={isScrolled} />
       <MobileHeader isScrolled={isScrolled} />
+      <NavigationProgress/>
     </header>
   );
 }

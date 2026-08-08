@@ -1,5 +1,6 @@
 import { AuthUser } from "@/features/user/types/user.types";
 import AuthProvider from "./AuthProvider";
+import NavigationProgressProvider from "./NavigationProgressProvider";
 import ThemeInitializer from "./ThemeInitializer";
 
 interface GeneralProviderProps {
@@ -14,7 +15,7 @@ export default function GeneralProvider({
   return (
     <AuthProvider initialUser={JSON.parse(JSON.stringify(initialUser))}>
       <ThemeInitializer />
-      {children}
+      <NavigationProgressProvider>{children}</NavigationProgressProvider>
     </AuthProvider>
   );
 }
